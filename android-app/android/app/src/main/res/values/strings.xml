@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Sahil\'s Biz</string>
+    <string name="title_activity_main">Sahil\'s Biz</string>
+    <string name="package_name">com.skil.sahilsbiz</string>
+    <string name="custom_url_scheme">com.skil.sahilsbiz</string>
+</resources>

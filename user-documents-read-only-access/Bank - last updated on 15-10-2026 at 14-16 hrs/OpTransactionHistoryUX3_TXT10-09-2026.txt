@@ -1,0 +1,110 @@
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                        Statement of Account                                                                                       
+              SKIL LIFESTYLE LLP                                                                                                      Union Bank of India                                          
+              C/O SKIL LIFESTYLE LLP                                                                                                                                                               
+                                                                                                                                      Branch                  RAYAGADA                             
+              D NO 28 10 04 SHOP NO 7A THIRD FLOOR                                                                                                                                                 
+              VASAVI PLAZA THEATRE ROAD REVENUE WARD NO                                                                                                                                            
+                                                                                                                                      Customer Id             902316343                            
+                                       VISAK                                                                                          Account No              348621010000129                      
+              City                                                                                                                                                                                 
+                                       ANDHRA PRADESH                                                                                 Account Currency        INR                                  
+              State                    INDIA                                                                                          Account Type            Current Account                      
+              Country                                                                                                                                                                              
+                                       530020                                                                                                                                                      
+              Zip                      917989536155                                                                                                                                                
+              Mobile No                                                                                                                                                                            
+                                       SKILLIFESTYLE.VIZAG@GMAIL.COM                                                                                                                               
+              E-mail                                                                                                                                                                               
+              Statement Date : 10/09/2026 20:31               Statement Period From -01/04/2026  To 10/09/2026                                                                                     
+                Records from 1 to 16.                 No more records available.                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+               Date               Remarks                Tran Id           UTR Number            Instr. ID             Withdrawals              Deposits                Balance                    
+                                                                                                                                                                                                   
+         29/07/2026     UPIAB/357887146677/CR/SAHIL S86693806        -                                                                               1,00,000.00            1,00,000.00            
+                        KU/HDFC/     sync07@ax                                                                                                                                                     
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+         29/07/2026     IMPSAB/621022770439/SISINTI T8898958         -                                                                               1,00,000.00            2,00,000.00            
+                        LOKANATHA P/9437094667                                                                                                                                                     
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+         30/07/2026     RTGS:SRI BRUNDABAN ENTERPRI T26350054        -                                                                              10,00,000.00           12,00,000.00            
+                        SBINR12026073037097671                                                                                                                                                     
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+         30/07/2026     RTGSO-AJANTA SHOES INDIA PV T36074316        -                                                      10,00,000.00                                    2,00,000.00            
+                        UBINR22026073001763487                                                                                                                                                     
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+         01/08/2026     NEFTO-DHIRAJ AGRAWAL        U70746110        -                                                          7,500.00                                    1,92,500.00            
+                        002890295829                                                                                                                                                               
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+         06/08/2026     ePAY/To:ATOM TECHNOLOGIES   Y95415790        -                                                            408.95                                    1,92,091.05            
+                        /706684985/July Electric                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+         11/08/2026     NEFTO-AJANTA SHOES INDIA PVTV39458924        -                                                       1,00,000.00                                      92,091.05            
+                        LTD 002910886931                                                                                                                                                           
+                                                                                                                                                                                                   
+         17/08/2026     NEFTO-VM RAO AND CO         T99893264        -                                                          1,380.00                                      90,711.05            
+                        002921904036                                                                                                                                                               
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+         30/08/2026     NEFT:SHREE FOOTWEAR         X17645684        Sender                                                                          1,70,000.00            2,60,711.05            
+                        HDFCH01223056022                             No:HDFCH01223056022                                                                                                           
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+         30/08/2026     NEFTO-AJANTA SHOES INDIA PVTX22759429        -                                                       1,70,000.00                                      90,711.05            
+                        LTD 002944936808                                                                                                                                                           
+                                                                                                                                                                                                   
+         31/08/2026     NEFT:SALIM KHAN             Y12859134        Sender                                                                            50,000.00            1,40,711.05            
+                        BARBT26243438443                             No:BARBT26243438443                                                                                                           
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+         01/09/2026     NEFTO-DHIRAJ AGRAWAL        Y51638681        -                                                          7,500.00                                    1,33,211.05            
+                        002947638153                                                                                                                                                               
+                                                                                                                                                                                                   
+         02/09/2026     NEFTO-SALIM KHAN            T61753406        -                                                         50,000.00                                      83,211.05            
+                        002951852032                                                                                                                                                               
+                                                                                                                                                                                                   
+         02/09/2026     ePAY/To:ATOM TECHNOLOGIES   T62005583        -                                                            395.95                                      82,815.10            
+                        /709764788/                                                                                                                                                                
+                                                                                                                                                                                                   
+         10/09/2026     RTGS:SHREE FOOTWEAR         T67965279        -                                                                               2,00,000.00            2,82,815.10            
+                        HDFCR52026091057179784                                                                                                                                                     
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+         10/09/2026     RTGSO-AJANTA SHOES INDIA PV T69052816        -                                                       2,00,000.00                                      82,815.10            
+                        UBINR22026091001118390                                                                                                                                                     
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                          TO AVAIL OUR LOAN PRODUCTS GIVE MISSED CALL AT 9619333333 OR SMS <ULOAN> TO 56161                                                        
+                                                                                                                                                                                                   

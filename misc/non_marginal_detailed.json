@@ -1,0 +1,2606 @@
+[
+  {
+    "idx": 1,
+    "vch": "P#01 vs S#SKIL-001",
+    "ref": "1900402723",
+    "customer": "M/s Sri Brundabana Enterprises, Rayagada",
+    "purch_amt": 43399.0,
+    "sales_amt": 44490.0,
+    "diff": 1091.0,
+    "items": [
+      {
+        "item": "AJ CEG 1004 RED 06/10 MRP135/-",
+        "mrp": 135.0,
+        "purch_rate": 80.38,
+        "sales_rate": 128.57,
+        "purch_amt": 3858.24,
+        "sales_amt": 3857.1,
+        "amt_diff": -1.14,
+        "rate_diff": 48.19
+      },
+      {
+        "item": "AJ CPL 1 RED 04/07 MRP138/-",
+        "mrp": 138.0,
+        "purch_rate": 82.16,
+        "sales_rate": 131.43,
+        "purch_amt": 4929.6,
+        "sales_amt": 4928.62,
+        "amt_diff": -0.98,
+        "rate_diff": 49.27
+      },
+      {
+        "item": "AJ NANO 09 DP.CYAN 09/01 MRP129/-",
+        "mrp": 129.0,
+        "purch_rate": 68.98,
+        "sales_rate": 122.86,
+        "purch_amt": 4138.8,
+        "sales_amt": 4607.25,
+        "amt_diff": 468.45,
+        "rate_diff": 53.88
+      },
+      {
+        "item": "AJ PORI 26 S.GREEN 03/06 MRP159/-",
+        "mrp": 159.0,
+        "purch_rate": 85.02,
+        "sales_rate": 151.43,
+        "purch_amt": 5101.2,
+        "sales_amt": 5678.62,
+        "amt_diff": 577.42,
+        "rate_diff": 66.41
+      },
+      {
+        "item": "AJ TOTO SOFT/34 B.BLUE 05/08 MRP114/-",
+        "mrp": 114.0,
+        "purch_rate": 67.87,
+        "sales_rate": 108.57,
+        "purch_amt": 4886.64,
+        "sales_amt": 4885.65,
+        "amt_diff": -0.99,
+        "rate_diff": 40.7
+      },
+      {
+        "item": "AJ TOTO SOFT/34 RED 05/08 MRP114/-",
+        "mrp": 114.0,
+        "purch_rate": 67.87,
+        "sales_rate": 108.57,
+        "purch_amt": 4886.64,
+        "sales_amt": 4885.65,
+        "amt_diff": -0.99,
+        "rate_diff": 40.7
+      },
+      {
+        "item": "AJ TOTO SOFT/40 LAV 05/08 MRP114/-",
+        "mrp": 114.0,
+        "purch_rate": 67.87,
+        "sales_rate": 108.57,
+        "purch_amt": 4886.64,
+        "sales_amt": 4885.65,
+        "amt_diff": -0.99,
+        "rate_diff": 40.7
+      },
+      {
+        "item": "AJ TOTO SOFT/40 LAV 09/01 MRP121/-",
+        "mrp": 121.0,
+        "purch_rate": 72.04,
+        "sales_rate": 115.24,
+        "purch_amt": 4322.4,
+        "sales_amt": 4321.5,
+        "amt_diff": -0.9,
+        "rate_diff": 43.2
+      },
+      {
+        "item": "AJ TOTO SOFT/43 DP.CYAN 09/01 MRP121/-",
+        "mrp": 121.0,
+        "purch_rate": 72.04,
+        "sales_rate": 115.24,
+        "purch_amt": 4322.4,
+        "sales_amt": 4321.5,
+        "amt_diff": -0.9,
+        "rate_diff": 43.2
+      }
+    ]
+  },
+  {
+    "idx": 2,
+    "vch": "P#02 vs S#SKIL-002",
+    "ref": "1900402722",
+    "customer": "DELIGHT FOOT WEAR",
+    "purch_amt": 152653.5,
+    "sales_amt": 156164.0,
+    "diff": 3510.5,
+    "items": [
+      {
+        "item": "AJ ANOMA 02 CYAN 05/07 MRP155/-",
+        "mrp": 155.0,
+        "purch_rate": 92.28,
+        "sales_rate": 147.62,
+        "purch_amt": 5536.8,
+        "sales_amt": 5535.75,
+        "amt_diff": -1.05,
+        "rate_diff": 55.34
+      },
+      {
+        "item": "AJ ANOMA 17 F.GREEN 05/07 MRP155/-",
+        "mrp": 155.0,
+        "purch_rate": 92.28,
+        "sales_rate": 147.62,
+        "purch_amt": 5536.8,
+        "sales_amt": 5535.75,
+        "amt_diff": -1.05,
+        "rate_diff": 55.34
+      },
+      {
+        "item": "AJ BETA 07 GREY 06/10 MRP143/-",
+        "mrp": 143.0,
+        "purch_rate": 85.13,
+        "sales_rate": 136.19,
+        "purch_amt": 4086.24,
+        "sales_amt": 4085.7,
+        "amt_diff": -0.54,
+        "rate_diff": 51.06
+      },
+      {
+        "item": "AJ CEL 107 MAGENTA 05/07 MRP132/-",
+        "mrp": 132.0,
+        "purch_rate": 78.59,
+        "sales_rate": 125.71,
+        "purch_amt": 4715.4,
+        "sales_amt": 4714.12,
+        "amt_diff": -1.28,
+        "rate_diff": 47.12
+      },
+      {
+        "item": "AJ CEL 110 MAGENTA 05/08 MRP132/-",
+        "mrp": 132.0,
+        "purch_rate": 78.59,
+        "sales_rate": 125.71,
+        "purch_amt": 4715.4,
+        "sales_amt": 4714.12,
+        "amt_diff": -1.28,
+        "rate_diff": 47.12
+      },
+      {
+        "item": "AJ CG 40 N.BLUE 07/10 MRP319/-",
+        "mrp": 319.0,
+        "purch_rate": 184.37,
+        "sales_rate": 303.81,
+        "purch_amt": 4424.88,
+        "sales_amt": 4557.15,
+        "amt_diff": 132.27,
+        "rate_diff": 119.44
+      },
+      {
+        "item": "AJ CG 40 OLIVE 07/10 MRP290/-",
+        "mrp": 290.0,
+        "purch_rate": 167.61,
+        "sales_rate": 276.19,
+        "purch_amt": 4022.64,
+        "sales_amt": 4142.85,
+        "amt_diff": 120.21,
+        "rate_diff": 108.58
+      },
+      {
+        "item": "AJ CG 40 SKY 07/10 MRP290/-",
+        "mrp": 290.0,
+        "purch_rate": 184.37,
+        "sales_rate": 276.19,
+        "purch_amt": 4424.88,
+        "sales_amt": 4142.85,
+        "amt_diff": -282.03,
+        "rate_diff": 91.82
+      },
+      {
+        "item": "AJ CG 41 N.BLUE/RED 07/10 MRP290/-",
+        "mrp": 290.0,
+        "purch_rate": 167.61,
+        "sales_rate": 276.19,
+        "purch_amt": 4022.64,
+        "sales_amt": 4142.85,
+        "amt_diff": 120.21,
+        "rate_diff": 108.58
+      },
+      {
+        "item": "AJ CG 41 OLIVE GREEN 07/10 MRP290/-",
+        "mrp": 290.0,
+        "purch_rate": 167.61,
+        "sales_rate": 276.19,
+        "purch_amt": 4022.64,
+        "sales_amt": 4142.85,
+        "amt_diff": 120.21,
+        "rate_diff": 108.58
+      },
+      {
+        "item": "AJ CG 43 N.BLUE 07/10 MRP309/-",
+        "mrp": 309.0,
+        "purch_rate": 178.59,
+        "sales_rate": 294.29,
+        "purch_amt": 4286.16,
+        "sales_amt": 4414.35,
+        "amt_diff": 128.19,
+        "rate_diff": 115.7
+      },
+      {
+        "item": "AJ CG 44 N.BLUE 07/10 MRP319/-",
+        "mrp": 319.0,
+        "purch_rate": 184.37,
+        "sales_rate": 303.81,
+        "purch_amt": 4424.88,
+        "sales_amt": 4557.15,
+        "amt_diff": 132.27,
+        "rate_diff": 119.44
+      },
+      {
+        "item": "AJ CUSHION 024 06/10 MRP146/-",
+        "mrp": 146.0,
+        "purch_rate": 86.92,
+        "sales_rate": 139.05,
+        "purch_amt": 4172.16,
+        "sales_amt": 4171.5,
+        "amt_diff": -0.66,
+        "rate_diff": 52.13
+      },
+      {
+        "item": "AJ ECO PLUS 16 DP.S.BLUE 07/10 MRP179/-",
+        "mrp": 179.0,
+        "purch_rate": 106.56,
+        "sales_rate": 170.48,
+        "purch_amt": 5114.88,
+        "sales_amt": 5114.4,
+        "amt_diff": -0.48,
+        "rate_diff": 63.92
+      },
+      {
+        "item": "AJ FITNESS PLUS 101 DP.S.BLUE 07/10 MRP165/-",
+        "mrp": 165.0,
+        "purch_rate": 98.23,
+        "sales_rate": 157.14,
+        "purch_amt": 9430.08,
+        "sales_amt": 9428.4,
+        "amt_diff": -1.68,
+        "rate_diff": 58.91
+      },
+      {
+        "item": "AJ FITNESS PLUS 101 P.BLUE 07/10 MRP165/-",
+        "mrp": 165.0,
+        "purch_rate": 98.23,
+        "sales_rate": 157.14,
+        "purch_amt": 4715.04,
+        "sales_amt": 4714.2,
+        "amt_diff": -0.84,
+        "rate_diff": 58.91
+      },
+      {
+        "item": "AJ FITNESS PLUS 104 BRN 07/10 MRP165/-",
+        "mrp": 165.0,
+        "purch_rate": 98.23,
+        "sales_rate": 157.14,
+        "purch_amt": 4715.04,
+        "sales_amt": 4714.2,
+        "amt_diff": -0.84,
+        "rate_diff": 58.91
+      },
+      {
+        "item": "AJ FITNESS PLUS 105 F.GREEN 07/10 MRP165/-",
+        "mrp": 165.0,
+        "purch_rate": 98.23,
+        "sales_rate": 157.14,
+        "purch_amt": 9430.08,
+        "sales_amt": 9428.4,
+        "amt_diff": -1.68,
+        "rate_diff": 58.91
+      },
+      {
+        "item": "AJ LILY 110 MGNTA 05/07 MRP149/-",
+        "mrp": 149.0,
+        "purch_rate": 88.7,
+        "sales_rate": 141.9,
+        "purch_amt": 5322.0,
+        "sales_amt": 5321.25,
+        "amt_diff": -0.75,
+        "rate_diff": 53.2
+      },
+      {
+        "item": "AJ LILY 116 C.GRN 05/07 MRP149/-",
+        "mrp": 149.0,
+        "purch_rate": 88.7,
+        "sales_rate": 141.9,
+        "purch_amt": 5322.0,
+        "sales_amt": 5321.25,
+        "amt_diff": -0.75,
+        "rate_diff": 53.2
+      },
+      {
+        "item": "AJ LILY 125 N.BLUE 05/07 MRP149/-",
+        "mrp": 149.0,
+        "purch_rate": 88.7,
+        "sales_rate": 141.9,
+        "purch_amt": 5322.0,
+        "sales_amt": 5321.25,
+        "amt_diff": -0.75,
+        "rate_diff": 53.2
+      },
+      {
+        "item": "AJ LOOK 02 SILVER 06/09 MRP189/-",
+        "mrp": 189.0,
+        "purch_rate": 112.51,
+        "sales_rate": 180.0,
+        "purch_amt": 5400.48,
+        "sales_amt": 5400.0,
+        "amt_diff": -0.48,
+        "rate_diff": 67.49
+      },
+      {
+        "item": "AJ MEDI FIT (BR) 06/09 MRP188/-",
+        "mrp": 188.0,
+        "purch_rate": 111.92,
+        "sales_rate": 179.05,
+        "purch_amt": 6715.2,
+        "sales_amt": 6714.37,
+        "amt_diff": -0.83,
+        "rate_diff": 67.13
+      },
+      {
+        "item": "AJ PORI 26 P.BLUE 05/08 MRP159/-",
+        "mrp": 159.0,
+        "purch_rate": 85.02,
+        "sales_rate": 151.43,
+        "purch_amt": 5101.2,
+        "sales_amt": 5678.62,
+        "amt_diff": 577.42,
+        "rate_diff": 66.41
+      },
+      {
+        "item": "AJ PORI 28 LAV 05/08 MRP159/-",
+        "mrp": 159.0,
+        "purch_rate": 85.02,
+        "sales_rate": 151.43,
+        "purch_amt": 5101.2,
+        "sales_amt": 5678.62,
+        "amt_diff": 577.42,
+        "rate_diff": 66.41
+      },
+      {
+        "item": "AJ PORI 32 LAV 05/08 MRP159/-",
+        "mrp": 159.0,
+        "purch_rate": 85.02,
+        "sales_rate": 151.43,
+        "purch_amt": 5101.2,
+        "sales_amt": 5678.62,
+        "amt_diff": 577.42,
+        "rate_diff": 66.41
+      },
+      {
+        "item": "AJ PORI 33 MAGENTA 05/07 MRP159/-",
+        "mrp": 159.0,
+        "purch_rate": 85.02,
+        "sales_rate": 151.43,
+        "purch_amt": 5101.2,
+        "sales_amt": 5678.62,
+        "amt_diff": 577.42,
+        "rate_diff": 66.41
+      },
+      {
+        "item": "AJ PORI 33 P.BLUE 05/08 MRP159/-",
+        "mrp": 159.0,
+        "purch_rate": 85.02,
+        "sales_rate": 151.43,
+        "purch_amt": 5101.2,
+        "sales_amt": 5678.62,
+        "amt_diff": 577.42,
+        "rate_diff": 66.41
+      }
+    ]
+  },
+  {
+    "idx": 3,
+    "vch": "P#03 vs S#SKIL-003",
+    "ref": "1900402782",
+    "customer": "M/s Sri Brundabana Enterprises, Rayagada",
+    "purch_amt": 62032.0,
+    "sales_amt": 63488.0,
+    "diff": 1456.0,
+    "items": [
+      {
+        "item": "AJ CG 36 TAN 06/10 MRP281/-",
+        "mrp": 281.0,
+        "purch_rate": 162.41,
+        "sales_rate": 267.62,
+        "purch_amt": 3897.84,
+        "sales_amt": 4014.3,
+        "amt_diff": 116.46,
+        "rate_diff": 105.21
+      },
+      {
+        "item": "AJ CG 37 AQUA 06/10 MRP319/-",
+        "mrp": 319.0,
+        "purch_rate": 184.37,
+        "sales_rate": 303.81,
+        "purch_amt": 4424.88,
+        "sales_amt": 4557.15,
+        "amt_diff": 132.27,
+        "rate_diff": 119.44
+      },
+      {
+        "item": "AJ CG 37 BROWN 06/10 MRP309/-",
+        "mrp": 309.0,
+        "purch_rate": 178.59,
+        "sales_rate": 294.29,
+        "purch_amt": 4286.16,
+        "sales_amt": 4414.35,
+        "amt_diff": 128.19,
+        "rate_diff": 115.7
+      },
+      {
+        "item": "AJ CG 37 OLIVE 07/10 MRP319/-",
+        "mrp": 319.0,
+        "purch_rate": 184.37,
+        "sales_rate": 303.81,
+        "purch_amt": 4424.88,
+        "sales_amt": 4557.15,
+        "amt_diff": 132.27,
+        "rate_diff": 119.44
+      },
+      {
+        "item": "AJ CG 37 P.BLUE 06/10 MRP319/-",
+        "mrp": 319.0,
+        "purch_rate": 184.37,
+        "sales_rate": 303.81,
+        "purch_amt": 4424.88,
+        "sales_amt": 4557.15,
+        "amt_diff": 132.27,
+        "rate_diff": 119.44
+      },
+      {
+        "item": "AJ CG 39 TAN 06/10 MRP359/-",
+        "mrp": 359.0,
+        "purch_rate": 207.49,
+        "sales_rate": 341.9,
+        "purch_amt": 4979.76,
+        "sales_amt": 5128.5,
+        "amt_diff": 148.74,
+        "rate_diff": 134.41
+      },
+      {
+        "item": "AJ CG 40 N.BLUE 06/10 MRP319/-",
+        "mrp": 319.0,
+        "purch_rate": 184.37,
+        "sales_rate": 303.81,
+        "purch_amt": 4424.88,
+        "sales_amt": 4557.15,
+        "amt_diff": 132.27,
+        "rate_diff": 119.44
+      },
+      {
+        "item": "AJ CPL 87 LAV 04/07 MRP138/-",
+        "mrp": 138.0,
+        "purch_rate": 82.16,
+        "sales_rate": 131.43,
+        "purch_amt": 4929.6,
+        "sales_amt": 4928.62,
+        "amt_diff": -0.98,
+        "rate_diff": 49.27
+      },
+      {
+        "item": "AJ CPL 87 S.GREEN 04/07 MRP138/-",
+        "mrp": 138.0,
+        "purch_rate": 82.16,
+        "sales_rate": 131.43,
+        "purch_amt": 4929.6,
+        "sales_amt": 4928.62,
+        "amt_diff": -0.98,
+        "rate_diff": 49.27
+      },
+      {
+        "item": "AJ DIVA 108 DP.C.BLUE 04/07 MRP127/-",
+        "mrp": 127.0,
+        "purch_rate": 75.61,
+        "sales_rate": 120.95,
+        "purch_amt": 4536.6,
+        "sales_amt": 4535.62,
+        "amt_diff": -0.98,
+        "rate_diff": 45.34
+      },
+      {
+        "item": "AJ FITNESS PLUS B.GREEN 06/09 MRP165/-",
+        "mrp": 165.0,
+        "purch_rate": 98.23,
+        "sales_rate": 157.14,
+        "purch_amt": 4715.04,
+        "sales_amt": 4714.2,
+        "amt_diff": -0.84,
+        "rate_diff": 58.91
+      },
+      {
+        "item": "AJ LINA 03 BURGUNDI 04/07 MRP139/-",
+        "mrp": 139.0,
+        "purch_rate": 82.75,
+        "sales_rate": 132.38,
+        "purch_amt": 4965.0,
+        "sales_amt": 4964.25,
+        "amt_diff": -0.75,
+        "rate_diff": 49.63
+      },
+      {
+        "item": "AJ NANO 09 DP.CYAN 09/01 MRP129/-",
+        "mrp": 129.0,
+        "purch_rate": 68.98,
+        "sales_rate": 122.86,
+        "purch_amt": 4138.8,
+        "sales_amt": 4607.25,
+        "amt_diff": 468.45,
+        "rate_diff": 53.88
+      }
+    ]
+  },
+  {
+    "idx": 5,
+    "vch": "P#05 vs S#SKIL-005",
+    "ref": "1900402693",
+    "customer": "K G N FOOTWARE",
+    "purch_amt": 56045.0,
+    "sales_amt": 55796.0,
+    "diff": -249.0,
+    "items": [
+      {
+        "item": "AJ PG 440/4 06/10 MRP309/-",
+        "mrp": 309.0,
+        "purch_rate": 183.94,
+        "sales_rate": 294.29,
+        "purch_amt": 5518.2,
+        "sales_amt": 5517.94,
+        "amt_diff": -0.26,
+        "rate_diff": 110.35
+      },
+      {
+        "item": "AJ PG 440/41 06/09 MRP309/-",
+        "mrp": 309.0,
+        "purch_rate": 183.94,
+        "sales_rate": 294.29,
+        "purch_amt": 5518.2,
+        "sales_amt": 5517.94,
+        "amt_diff": -0.26,
+        "rate_diff": 110.35
+      },
+      {
+        "item": "AJ PG 480/1 06/09 MRP309/-",
+        "mrp": 309.0,
+        "purch_rate": 183.94,
+        "sales_rate": 294.29,
+        "purch_amt": 5518.2,
+        "sales_amt": 5517.94,
+        "amt_diff": -0.26,
+        "rate_diff": 110.35
+      },
+      {
+        "item": "AJ PG 482/1 06/09 MRP269/-",
+        "mrp": 269.0,
+        "purch_rate": 160.13,
+        "sales_rate": 256.19,
+        "purch_amt": 4803.9,
+        "sales_amt": 4803.56,
+        "amt_diff": -0.34,
+        "rate_diff": 96.06
+      },
+      {
+        "item": "AJ PG 482/4 06/09 MRP269/-",
+        "mrp": 269.0,
+        "purch_rate": 160.13,
+        "sales_rate": 256.19,
+        "purch_amt": 4803.9,
+        "sales_amt": 4803.56,
+        "amt_diff": -0.34,
+        "rate_diff": 96.06
+      },
+      {
+        "item": "AJ PUG 8415/4 06/09 MRP309/-",
+        "mrp": 309.0,
+        "purch_rate": 183.94,
+        "sales_rate": 294.29,
+        "purch_amt": 5518.2,
+        "sales_amt": 5517.94,
+        "amt_diff": -0.26,
+        "rate_diff": 110.35
+      },
+      {
+        "item": "AJ PUG 8415/41 06/09 MRP309/-",
+        "mrp": 309.0,
+        "purch_rate": 183.94,
+        "sales_rate": 294.29,
+        "purch_amt": 5518.2,
+        "sales_amt": 5517.94,
+        "amt_diff": -0.26,
+        "rate_diff": 110.35
+      },
+      {
+        "item": "AJ PUG 8464/41 06/09 MRP384/-",
+        "mrp": 384.0,
+        "purch_rate": 228.57,
+        "sales_rate": 365.71,
+        "purch_amt": 6857.1,
+        "sales_amt": 6857.06,
+        "amt_diff": -0.04,
+        "rate_diff": 137.14
+      },
+      {
+        "item": "AJ PUG 8507/4 06/09 MRP279/-",
+        "mrp": 279.0,
+        "purch_rate": 166.08,
+        "sales_rate": 265.71,
+        "purch_amt": 4982.4,
+        "sales_amt": 4982.06,
+        "amt_diff": -0.34,
+        "rate_diff": 99.63
+      },
+      {
+        "item": "AJ PUL 979E/CH+MR 04/07 MRP229.75/-",
+        "mrp": 229.75,
+        "purch_rate": 144.6,
+        "sales_rate": 218.81,
+        "purch_amt": 4338.0,
+        "sales_amt": 4102.69,
+        "amt_diff": -235.31,
+        "rate_diff": 74.21
+      }
+    ]
+  },
+  {
+    "idx": 7,
+    "vch": "P#07 vs S#SKIL-007",
+    "ref": "1900402797",
+    "customer": "M/s Sri Brundabana Enterprises, Rayagada",
+    "purch_amt": 84269.0,
+    "sales_amt": 84051.0,
+    "diff": -218.0,
+    "items": [
+      {
+        "item": "AJ PGA 1415/73 06/09 MRP265/-",
+        "mrp": 265.0,
+        "purch_rate": 157.74,
+        "sales_rate": 252.38,
+        "purch_amt": 4732.2,
+        "sales_amt": 4732.12,
+        "amt_diff": -0.08,
+        "rate_diff": 94.64
+      },
+      {
+        "item": "AJ PGA 1638/4 07/10 MRP259/-",
+        "mrp": 259.0,
+        "purch_rate": 154.17,
+        "sales_rate": 246.67,
+        "purch_amt": 4625.1,
+        "sales_amt": 4625.06,
+        "amt_diff": -0.04,
+        "rate_diff": 92.5
+      },
+      {
+        "item": "AJ PGA 1907E/4 05/09 MRP199.75/-",
+        "mrp": 199.75,
+        "purch_rate": 125.72,
+        "sales_rate": 190.24,
+        "purch_amt": 3771.6,
+        "sales_amt": 3567.0,
+        "amt_diff": -204.6,
+        "rate_diff": 64.52
+      },
+      {
+        "item": "AJ PUB 431/9 01/04 MRP314/-",
+        "mrp": 314.0,
+        "purch_rate": 186.91,
+        "sales_rate": 299.05,
+        "purch_amt": 5607.3,
+        "sales_amt": 5607.19,
+        "amt_diff": -0.11,
+        "rate_diff": 112.14
+      },
+      {
+        "item": "AJ PUB 431/9 11/13 MRP252/-",
+        "mrp": 252.0,
+        "purch_rate": 150.01,
+        "sales_rate": 240.0,
+        "purch_amt": 4500.3,
+        "sales_amt": 4500.0,
+        "amt_diff": -0.3,
+        "rate_diff": 89.99
+      },
+      {
+        "item": "AJ PUG 8464/41 06/10 MRP384/-",
+        "mrp": 384.0,
+        "purch_rate": 228.57,
+        "sales_rate": 365.71,
+        "purch_amt": 6857.1,
+        "sales_amt": 6857.06,
+        "amt_diff": -0.04,
+        "rate_diff": 137.14
+      },
+      {
+        "item": "AJ PUG 8464/73 06/10 MRP384/-",
+        "mrp": 384.0,
+        "purch_rate": 228.57,
+        "sales_rate": 365.71,
+        "purch_amt": 6857.1,
+        "sales_amt": 6857.06,
+        "amt_diff": -0.04,
+        "rate_diff": 137.14
+      },
+      {
+        "item": "AJ PUG 8465/41 06/09 MRP329/-",
+        "mrp": 329.0,
+        "purch_rate": 195.84,
+        "sales_rate": 313.33,
+        "purch_amt": 5875.2,
+        "sales_amt": 5874.94,
+        "amt_diff": -0.26,
+        "rate_diff": 117.49
+      },
+      {
+        "item": "AJ PUG 8468/41 06/10 MRP299/-",
+        "mrp": 299.0,
+        "purch_rate": 177.98,
+        "sales_rate": 284.76,
+        "purch_amt": 5339.4,
+        "sales_amt": 5339.25,
+        "amt_diff": -0.15,
+        "rate_diff": 106.78
+      },
+      {
+        "item": "AJ PUG 8511/1 06/10 MRP299/-",
+        "mrp": 299.0,
+        "purch_rate": 177.99,
+        "sales_rate": 284.76,
+        "purch_amt": 5339.7,
+        "sales_amt": 5339.25,
+        "amt_diff": -0.45,
+        "rate_diff": 106.77
+      },
+      {
+        "item": "AJ PUG 8511/4 06/10 MRP299/-",
+        "mrp": 299.0,
+        "purch_rate": 177.99,
+        "sales_rate": 284.76,
+        "purch_amt": 5339.7,
+        "sales_amt": 5339.25,
+        "amt_diff": -0.45,
+        "rate_diff": 106.77
+      },
+      {
+        "item": "AJ PUG 8513/41 06/10 MRP329/-",
+        "mrp": 329.0,
+        "purch_rate": 195.85,
+        "sales_rate": 313.33,
+        "purch_amt": 5875.5,
+        "sales_amt": 5874.94,
+        "amt_diff": -0.56,
+        "rate_diff": 117.48
+      },
+      {
+        "item": "AJ PUL 9295/83 04/07 MRP274/-",
+        "mrp": 274.0,
+        "purch_rate": 163.1,
+        "sales_rate": 260.95,
+        "purch_amt": 4893.0,
+        "sales_amt": 4892.81,
+        "amt_diff": -0.19,
+        "rate_diff": 97.85
+      },
+      {
+        "item": "AJ PUL 9300/80 04/07 MRP307/-",
+        "mrp": 307.0,
+        "purch_rate": 182.75,
+        "sales_rate": 292.38,
+        "purch_amt": 5482.5,
+        "sales_amt": 5482.12,
+        "amt_diff": -0.38,
+        "rate_diff": 109.63
+      },
+      {
+        "item": "AJ PUL 9329/1 05/08 MRP289/-",
+        "mrp": 289.0,
+        "purch_rate": 172.03,
+        "sales_rate": 275.24,
+        "purch_amt": 5160.9,
+        "sales_amt": 5160.75,
+        "amt_diff": -0.15,
+        "rate_diff": 103.21
+      }
+    ]
+  },
+  {
+    "idx": 11,
+    "vch": "P#11 vs S#SKIL-011",
+    "ref": "1900404091",
+    "customer": "M/S.SHREE FOOTWEAR",
+    "purch_amt": 70996.0,
+    "sales_amt": 70660.0,
+    "diff": -336.0,
+    "items": [
+      {
+        "item": "AJ AT 386/1 06/10 MRP304/-",
+        "mrp": 304.0,
+        "purch_rate": 180.96,
+        "sales_rate": 289.52,
+        "purch_amt": 6514.56,
+        "sales_amt": 6514.2,
+        "amt_diff": -0.36,
+        "rate_diff": 108.56
+      },
+      {
+        "item": "AJ AT 386/8 06/10 MRP295/-",
+        "mrp": 295.0,
+        "purch_rate": 175.61,
+        "sales_rate": 280.95,
+        "purch_amt": 6321.96,
+        "sales_amt": 6321.37,
+        "amt_diff": -0.59,
+        "rate_diff": 105.34
+      },
+      {
+        "item": "AJ PUB 452/9 01/04 MRP319/-",
+        "mrp": 319.0,
+        "purch_rate": 189.89,
+        "sales_rate": 303.81,
+        "purch_amt": 5696.7,
+        "sales_amt": 5696.44,
+        "amt_diff": -0.26,
+        "rate_diff": 113.92
+      },
+      {
+        "item": "AJ PUB 452/9 08/10 KIDS MRP279/-",
+        "mrp": 279.0,
+        "purch_rate": 166.09,
+        "sales_rate": 265.71,
+        "purch_amt": 4982.7,
+        "sales_amt": 4982.06,
+        "amt_diff": -0.64,
+        "rate_diff": 99.62
+      },
+      {
+        "item": "AJ PUB 452/9 11/13 MRP299/-",
+        "mrp": 299.0,
+        "purch_rate": 177.98,
+        "sales_rate": 284.76,
+        "purch_amt": 5339.4,
+        "sales_amt": 5339.25,
+        "amt_diff": -0.15,
+        "rate_diff": 106.78
+      },
+      {
+        "item": "AJ PUB 463/9 08/10 MRP270/-",
+        "mrp": 270.0,
+        "purch_rate": 160.72,
+        "sales_rate": 257.14,
+        "purch_amt": 4821.6,
+        "sales_amt": 4821.37,
+        "amt_diff": -0.23,
+        "rate_diff": 96.42
+      },
+      {
+        "item": "AJ PUB 463/9 11/13 MRP285/-",
+        "mrp": 285.0,
+        "purch_rate": 169.66,
+        "sales_rate": 271.43,
+        "purch_amt": 5089.8,
+        "sales_amt": 5089.31,
+        "amt_diff": -0.49,
+        "rate_diff": 101.77
+      },
+      {
+        "item": "AJ PUG 8468/41 06/10 MRP299/-",
+        "mrp": 299.0,
+        "purch_rate": 177.98,
+        "sales_rate": 284.76,
+        "purch_amt": 5339.4,
+        "sales_amt": 5339.25,
+        "amt_diff": -0.15,
+        "rate_diff": 106.78
+      },
+      {
+        "item": "AJ PUG 8482E/9 06/10 MRP309.75/-",
+        "mrp": 309.75,
+        "purch_rate": 194.94,
+        "sales_rate": 295.0,
+        "purch_amt": 5848.2,
+        "sales_amt": 5531.25,
+        "amt_diff": -316.95,
+        "rate_diff": 100.06
+      },
+      {
+        "item": "AJ PUG 8496/9 06/10 MRP384/-",
+        "mrp": 384.0,
+        "purch_rate": 228.57,
+        "sales_rate": 365.71,
+        "purch_amt": 6857.1,
+        "sales_amt": 6857.06,
+        "amt_diff": -0.04,
+        "rate_diff": 137.14
+      },
+      {
+        "item": "AJ PUG 8500/4 06/10 MRP309/-",
+        "mrp": 309.0,
+        "purch_rate": 183.93,
+        "sales_rate": 294.29,
+        "purch_amt": 5517.9,
+        "sales_amt": 5517.94,
+        "amt_diff": 0.04,
+        "rate_diff": 110.36
+      },
+      {
+        "item": "AJ PUG 8518 07/10 MRP296/-",
+        "mrp": 296.0,
+        "purch_rate": 176.2,
+        "sales_rate": 281.9,
+        "purch_amt": 5286.0,
+        "sales_amt": 5285.62,
+        "amt_diff": -0.38,
+        "rate_diff": 105.7
+      }
+    ]
+  },
+  {
+    "idx": 13,
+    "vch": "P#13 vs S#SKIL-013",
+    "ref": "1900404784",
+    "customer": "M/S.SHREE FOOTWEAR",
+    "purch_amt": 156024.0,
+    "sales_amt": 155995.0,
+    "diff": -29.0,
+    "items": [
+      {
+        "item": "AJ CUSHION 024 02/05 MRP137/-",
+        "mrp": 137.0,
+        "purch_rate": 81.57,
+        "sales_rate": 130.48,
+        "purch_amt": 9788.4,
+        "sales_amt": 9786.0,
+        "amt_diff": -2.4,
+        "rate_diff": 48.91
+      },
+      {
+        "item": "AJ CUSHION 024 04/05 MRP137/-",
+        "mrp": 137.0,
+        "purch_rate": 81.57,
+        "sales_rate": 130.48,
+        "purch_amt": 24471.0,
+        "sales_amt": 24465.0,
+        "amt_diff": -6.0,
+        "rate_diff": 48.91
+      },
+      {
+        "item": "AJ CUSHION 024 06/08 MRP146/-",
+        "mrp": 146.0,
+        "purch_rate": 86.92,
+        "sales_rate": 139.05,
+        "purch_amt": 16688.64,
+        "sales_amt": 16686.0,
+        "amt_diff": -2.64,
+        "rate_diff": 52.13
+      },
+      {
+        "item": "AJ CUSHION 024 06/09 MRP146/-",
+        "mrp": 146.0,
+        "purch_rate": 86.92,
+        "sales_rate": 139.05,
+        "purch_amt": 25032.96,
+        "sales_amt": 25029.0,
+        "amt_diff": -3.96,
+        "rate_diff": 52.13
+      },
+      {
+        "item": "AJ CUSHION 024 06/10 MRP146/-",
+        "mrp": 146.0,
+        "purch_rate": 86.92,
+        "sales_rate": 139.05,
+        "purch_amt": 41721.6,
+        "sales_amt": 41715.0,
+        "amt_diff": -6.6,
+        "rate_diff": 52.13
+      },
+      {
+        "item": "AJ CUSHION 024 07/10 MRP146/-",
+        "mrp": 146.0,
+        "purch_rate": 86.92,
+        "sales_rate": 139.05,
+        "purch_amt": 12516.48,
+        "sales_amt": 12514.5,
+        "amt_diff": -1.98,
+        "rate_diff": 52.13
+      },
+      {
+        "item": "AJ ENERGY PLUS BLK 06/10 MRP136/-",
+        "mrp": 136.0,
+        "purch_rate": 80.97,
+        "sales_rate": 129.52,
+        "purch_amt": 3886.56,
+        "sales_amt": 3885.6,
+        "amt_diff": -0.96,
+        "rate_diff": 48.55
+      },
+      {
+        "item": "AJ ENERGY PLUS BLUE BLK 06/10 MRP136/-",
+        "mrp": 136.0,
+        "purch_rate": 80.97,
+        "sales_rate": 129.52,
+        "purch_amt": 7773.12,
+        "sales_amt": 7771.2,
+        "amt_diff": -1.92,
+        "rate_diff": 48.55
+      },
+      {
+        "item": "AJ MEDI FIT BROWN 06/10 MRP188/-",
+        "mrp": 188.0,
+        "purch_rate": 111.92,
+        "sales_rate": 179.05,
+        "purch_amt": 6715.2,
+        "sales_amt": 6714.37,
+        "amt_diff": -0.83,
+        "rate_diff": 67.13
+      }
+    ]
+  },
+  {
+    "idx": 14,
+    "vch": "P#14 vs S#SKIL-014",
+    "ref": "1900404927",
+    "customer": "M/S.SHREE FOOTWEAR",
+    "purch_amt": 69191.0,
+    "sales_amt": 69232.0,
+    "diff": 41.0,
+    "items": [
+      {
+        "item": "AJ BETA 06 RED 06/10 MRP143/-",
+        "mrp": 143.0,
+        "purch_rate": 85.13,
+        "sales_rate": 136.19,
+        "purch_amt": 4086.24,
+        "sales_amt": 4085.7,
+        "amt_diff": -0.54,
+        "rate_diff": 51.06
+      },
+      {
+        "item": "AJ CEG 1001 B.BLUE 06/10 MRP135/-",
+        "mrp": 135.0,
+        "purch_rate": 80.38,
+        "sales_rate": 128.57,
+        "purch_amt": 3858.24,
+        "sales_amt": 3857.1,
+        "amt_diff": -1.14,
+        "rate_diff": 48.19
+      },
+      {
+        "item": "AJ CEG 1001 RED 06/10 MRP135/-",
+        "mrp": 135.0,
+        "purch_rate": 80.38,
+        "sales_rate": 128.57,
+        "purch_amt": 3858.24,
+        "sales_amt": 3857.1,
+        "amt_diff": -1.14,
+        "rate_diff": 48.19
+      },
+      {
+        "item": "AJ CEG 1002 BLUE 06/10 MRP135/-",
+        "mrp": 135.0,
+        "purch_rate": 80.38,
+        "sales_rate": 128.57,
+        "purch_amt": 3858.24,
+        "sales_amt": 3857.1,
+        "amt_diff": -1.14,
+        "rate_diff": 48.19
+      },
+      {
+        "item": "AJ CEG 1002 RED 06/10 MRP135/-",
+        "mrp": 135.0,
+        "purch_rate": 80.38,
+        "sales_rate": 128.57,
+        "purch_amt": 3858.24,
+        "sales_amt": 3857.1,
+        "amt_diff": -1.14,
+        "rate_diff": 48.19
+      },
+      {
+        "item": "AJ CEG 1003 B.BLUE 06/10 MRP135/-",
+        "mrp": 135.0,
+        "purch_rate": 80.38,
+        "sales_rate": 128.57,
+        "purch_amt": 3858.24,
+        "sales_amt": 3857.1,
+        "amt_diff": -1.14,
+        "rate_diff": 48.19
+      },
+      {
+        "item": "AJ CEG 1003 GREEN 06/10 MRP135/-",
+        "mrp": 135.0,
+        "purch_rate": 80.38,
+        "sales_rate": 128.57,
+        "purch_amt": 3858.24,
+        "sales_amt": 3857.1,
+        "amt_diff": -1.14,
+        "rate_diff": 48.19
+      },
+      {
+        "item": "AJ CEG 1006 B.GREEN 06/10 MRP135/-",
+        "mrp": 135.0,
+        "purch_rate": 80.38,
+        "sales_rate": 128.57,
+        "purch_amt": 3858.24,
+        "sales_amt": 3857.1,
+        "amt_diff": -1.14,
+        "rate_diff": 48.19
+      },
+      {
+        "item": "AJ CEL 111 C.BLUE 05/08 MRP127/-",
+        "mrp": 127.0,
+        "purch_rate": 76.25,
+        "sales_rate": 120.95,
+        "purch_amt": 4575.0,
+        "sales_amt": 4535.62,
+        "amt_diff": -39.38,
+        "rate_diff": 44.7
+      },
+      {
+        "item": "AJ CEL 111 S.GREEN 05/08 MRP127/-",
+        "mrp": 127.0,
+        "purch_rate": 76.25,
+        "sales_rate": 120.95,
+        "purch_amt": 4575.0,
+        "sales_amt": 4535.62,
+        "amt_diff": -39.38,
+        "rate_diff": 44.7
+      },
+      {
+        "item": "AJ ECO 19 S.GREEN 06/10 MRP159/-",
+        "mrp": 159.0,
+        "purch_rate": 94.66,
+        "sales_rate": 151.43,
+        "purch_amt": 4543.68,
+        "sales_amt": 4542.9,
+        "amt_diff": -0.78,
+        "rate_diff": 56.77
+      },
+      {
+        "item": "AJ ECO 20 DP.S.BLUE 06/09 MRP159/-",
+        "mrp": 159.0,
+        "purch_rate": 94.66,
+        "sales_rate": 151.43,
+        "purch_amt": 4543.68,
+        "sales_amt": 4542.9,
+        "amt_diff": -0.78,
+        "rate_diff": 56.77
+      },
+      {
+        "item": "AJ L-ORTHO SOFT 01 WINE 05/07 MRP165/-",
+        "mrp": 165.0,
+        "purch_rate": 96.06,
+        "sales_rate": 157.14,
+        "purch_amt": 5763.6,
+        "sales_amt": 5892.75,
+        "amt_diff": 129.15,
+        "rate_diff": 61.08
+      },
+      {
+        "item": "AJ LOOK 08 BRONZE 06/10 MRP189/-",
+        "mrp": 189.0,
+        "purch_rate": 112.51,
+        "sales_rate": 180.0,
+        "purch_amt": 5400.48,
+        "sales_amt": 5400.0,
+        "amt_diff": -0.48,
+        "rate_diff": 67.49
+      },
+      {
+        "item": "AJ LOOK 11 BRONZE 06/10 MRP189/-",
+        "mrp": 189.0,
+        "purch_rate": 112.51,
+        "sales_rate": 180.0,
+        "purch_amt": 5400.48,
+        "sales_amt": 5400.0,
+        "amt_diff": -0.48,
+        "rate_diff": 67.49
+      }
+    ]
+  },
+  {
+    "idx": 17,
+    "vch": "P#17 vs S#SKIL-017",
+    "ref": "1900405158",
+    "customer": "M/S.SHREE FOOTWEAR",
+    "purch_amt": 33922.0,
+    "sales_amt": 33840.0,
+    "diff": -82.0,
+    "items": [
+      {
+        "item": "AJ CEL 1023 MAGENTA 05/08 MRP120/-",
+        "mrp": 120.0,
+        "purch_rate": 72.05,
+        "sales_rate": 114.29,
+        "purch_amt": 4323.0,
+        "sales_amt": 4285.87,
+        "amt_diff": -37.13,
+        "rate_diff": 42.24
+      },
+      {
+        "item": "AJ CEL 1023 S.GRN 05/08 MRP120/-",
+        "mrp": 120.0,
+        "purch_rate": 72.05,
+        "sales_rate": 114.29,
+        "purch_amt": 4323.0,
+        "sales_amt": 4285.87,
+        "amt_diff": -37.13,
+        "rate_diff": 42.24
+      },
+      {
+        "item": "AJ EPG 01 WHT BLU 06/09 MRP139/-",
+        "mrp": 139.0,
+        "purch_rate": 82.75,
+        "sales_rate": 132.38,
+        "purch_amt": 19860.0,
+        "sales_amt": 19857.0,
+        "amt_diff": -3.0,
+        "rate_diff": 49.63
+      },
+      {
+        "item": "AJ FIRE 01 BLUE 06/10 MRP133/-",
+        "mrp": 133.0,
+        "purch_rate": 79.18,
+        "sales_rate": 126.67,
+        "purch_amt": 3800.64,
+        "sales_amt": 3800.1,
+        "amt_diff": -0.54,
+        "rate_diff": 47.49
+      }
+    ]
+  },
+  {
+    "idx": 19,
+    "vch": "P#19 vs S#SKIL-019",
+    "ref": "1900405893",
+    "customer": "M/S.SHREE FOOTWEAR",
+    "purch_amt": 75569.0,
+    "sales_amt": 74216.0,
+    "diff": -1353.0,
+    "items": [
+      {
+        "item": "AJ AT 395/4 BRN 06/10 MRP359/-",
+        "mrp": 359.0,
+        "purch_rate": 213.7,
+        "sales_rate": 341.9,
+        "purch_amt": 7693.2,
+        "sales_amt": 7692.75,
+        "amt_diff": -0.45,
+        "rate_diff": 128.2
+      },
+      {
+        "item": "AJ AT 395/41 TAN 06/10 MRP359/-",
+        "mrp": 359.0,
+        "purch_rate": 213.7,
+        "sales_rate": 341.9,
+        "purch_amt": 7693.2,
+        "sales_amt": 7692.75,
+        "amt_diff": -0.45,
+        "rate_diff": 128.2
+      },
+      {
+        "item": "AJ CG 21028/4 06/10 MRP259/-",
+        "mrp": 259.0,
+        "purch_rate": 189.89,
+        "sales_rate": 246.67,
+        "purch_amt": 6836.04,
+        "sales_amt": 5550.07,
+        "amt_diff": -1285.97,
+        "rate_diff": 56.78
+      },
+      {
+        "item": "AJ CG 21028M/9 06/10 MRP259/-",
+        "mrp": 259.0,
+        "purch_rate": 154.17,
+        "sales_rate": 246.67,
+        "purch_amt": 5550.12,
+        "sales_amt": 5550.07,
+        "amt_diff": -0.05,
+        "rate_diff": 92.5
+      },
+      {
+        "item": "AJ CG 21051/9 07/10 MRP319/-",
+        "mrp": 319.0,
+        "purch_rate": 189.89,
+        "sales_rate": 303.81,
+        "purch_amt": 5696.7,
+        "sales_amt": 5696.44,
+        "amt_diff": -0.26,
+        "rate_diff": 113.92
+      },
+      {
+        "item": "AJ PUG 8468/4 07/10 MRP299/-",
+        "mrp": 299.0,
+        "purch_rate": 177.98,
+        "sales_rate": 284.76,
+        "purch_amt": 10678.8,
+        "sales_amt": 10678.5,
+        "amt_diff": -0.3,
+        "rate_diff": 106.78
+      },
+      {
+        "item": "AJ PUG 8490/4 07/10 MRP604/-",
+        "mrp": 604.0,
+        "purch_rate": 359.52,
+        "sales_rate": 575.24,
+        "purch_amt": 10785.6,
+        "sales_amt": 10785.75,
+        "amt_diff": 0.15,
+        "rate_diff": 215.72
+      },
+      {
+        "item": "AJ PUG 8508/41 06/10 MRP329/-",
+        "mrp": 329.0,
+        "purch_rate": 195.84,
+        "sales_rate": 313.33,
+        "purch_amt": 5875.2,
+        "sales_amt": 5874.94,
+        "amt_diff": -0.26,
+        "rate_diff": 117.49
+      },
+      {
+        "item": "AJ PUG 8518/9 07/10 MRP296/-",
+        "mrp": 296.0,
+        "purch_rate": 176.2,
+        "sales_rate": 281.9,
+        "purch_amt": 5286.0,
+        "sales_amt": 5285.62,
+        "amt_diff": -0.38,
+        "rate_diff": 105.7
+      },
+      {
+        "item": "AJ PUL 9330/80 05/08 MRP329/-",
+        "mrp": 329.0,
+        "purch_rate": 195.85,
+        "sales_rate": 313.33,
+        "purch_amt": 5875.5,
+        "sales_amt": 5874.94,
+        "amt_diff": -0.56,
+        "rate_diff": 117.48
+      }
+    ]
+  },
+  {
+    "idx": 20,
+    "vch": "P#20 vs S#SKIL-020",
+    "ref": "1900403625",
+    "customer": "M/S.SHREE FOOTWEAR",
+    "purch_amt": 34753.0,
+    "sales_amt": 35197.0,
+    "diff": 444.0,
+    "items": [
+      {
+        "item": "AJ CEG 1007 SKY 06/09 MRP135/-",
+        "mrp": 135.0,
+        "purch_rate": 80.38,
+        "sales_rate": 128.57,
+        "purch_amt": 3858.24,
+        "sales_amt": 3857.1,
+        "amt_diff": -1.14,
+        "rate_diff": 48.19
+      },
+      {
+        "item": "AJ CEG 1007 SKY 07/10 MRP135/-",
+        "mrp": 135.0,
+        "purch_rate": 80.38,
+        "sales_rate": 128.57,
+        "purch_amt": 3858.24,
+        "sales_amt": 3857.1,
+        "amt_diff": -1.14,
+        "rate_diff": 48.19
+      },
+      {
+        "item": "AJ CEL 111 MAGENTA 05/08 MRP127/-",
+        "mrp": 127.0,
+        "purch_rate": 76.25,
+        "sales_rate": 120.95,
+        "purch_amt": 4575.0,
+        "sales_amt": 4535.62,
+        "amt_diff": -39.38,
+        "rate_diff": 44.7
+      },
+      {
+        "item": "AJ ENERGY PLUS BLUE BLK 06/10 MRP136/-",
+        "mrp": 136.0,
+        "purch_rate": 80.97,
+        "sales_rate": 129.52,
+        "purch_amt": 7773.12,
+        "sales_amt": 7771.2,
+        "amt_diff": -1.92,
+        "rate_diff": 48.55
+      },
+      {
+        "item": "AJ NANO 08 DP.BLUE 09/01 MRP129/-",
+        "mrp": 129.0,
+        "purch_rate": 68.99,
+        "sales_rate": 122.86,
+        "purch_amt": 4139.4,
+        "sales_amt": 4607.25,
+        "amt_diff": 467.85,
+        "rate_diff": 53.87
+      },
+      {
+        "item": "AJ TOTO SOFT B.BLUE 09/01 MRP121/-",
+        "mrp": 121.0,
+        "purch_rate": 72.04,
+        "sales_rate": 115.24,
+        "purch_amt": 4322.4,
+        "sales_amt": 4321.5,
+        "amt_diff": -0.9,
+        "rate_diff": 43.2
+      },
+      {
+        "item": "AJ TOTO SOFT MUSIC 09/01 MRP128/-",
+        "mrp": 128.0,
+        "purch_rate": 76.2,
+        "sales_rate": 121.9,
+        "purch_amt": 4572.0,
+        "sales_amt": 4571.25,
+        "amt_diff": -0.75,
+        "rate_diff": 45.7
+      }
+    ]
+  },
+  {
+    "idx": 21,
+    "vch": "P#21 vs S#SKIL-021",
+    "ref": "1900408353",
+    "customer": "M/s Sri Brundabana Enterprises, Rayagada",
+    "purch_amt": 157541.0,
+    "sales_amt": 158954.0,
+    "diff": 1413.0,
+    "items": [
+      {
+        "item": "AJ CG 37 AQUA 06/10 MRP319/-",
+        "mrp": 319.0,
+        "purch_rate": 184.37,
+        "sales_rate": 303.81,
+        "purch_amt": 4424.88,
+        "sales_amt": 4557.15,
+        "amt_diff": 132.27,
+        "rate_diff": 119.44
+      },
+      {
+        "item": "AJ CG 37 BEIGE 06/10 MRP319/-",
+        "mrp": 319.0,
+        "purch_rate": 184.37,
+        "sales_rate": 303.81,
+        "purch_amt": 4424.88,
+        "sales_amt": 4557.15,
+        "amt_diff": 132.27,
+        "rate_diff": 119.44
+      },
+      {
+        "item": "AJ CG 37 D.SKY 06/10 MRP319/-",
+        "mrp": 319.0,
+        "purch_rate": 184.37,
+        "sales_rate": 303.81,
+        "purch_amt": 4424.88,
+        "sales_amt": 4557.15,
+        "amt_diff": 132.27,
+        "rate_diff": 119.44
+      },
+      {
+        "item": "AJ CG 37 P.BLUE 06/10 MRP319/-",
+        "mrp": 319.0,
+        "purch_rate": 184.37,
+        "sales_rate": 303.81,
+        "purch_amt": 4424.88,
+        "sales_amt": 4557.15,
+        "amt_diff": 132.27,
+        "rate_diff": 119.44
+      },
+      {
+        "item": "AJ CG 40 OLIVE 06/10 MRP319/-",
+        "mrp": 319.0,
+        "purch_rate": 184.37,
+        "sales_rate": 303.81,
+        "purch_amt": 4424.88,
+        "sales_amt": 4557.15,
+        "amt_diff": 132.27,
+        "rate_diff": 119.44
+      },
+      {
+        "item": "AJ CG 40 SKY 06/10 MRP319/-",
+        "mrp": 319.0,
+        "purch_rate": 184.37,
+        "sales_rate": 303.81,
+        "purch_amt": 4424.88,
+        "sales_amt": 4557.15,
+        "amt_diff": 132.27,
+        "rate_diff": 119.44
+      },
+      {
+        "item": "AJ ECO 21 S.GREEN 02/05 MRP149/-",
+        "mrp": 149.0,
+        "purch_rate": 88.71,
+        "sales_rate": 141.9,
+        "purch_amt": 5322.6,
+        "sales_amt": 5321.25,
+        "amt_diff": -1.35,
+        "rate_diff": 53.19
+      },
+      {
+        "item": "AJ ECO PLUS 15 DP.S.BLUE 02/05 MRP169/-",
+        "mrp": 169.0,
+        "purch_rate": 100.61,
+        "sales_rate": 160.95,
+        "purch_amt": 6036.6,
+        "sales_amt": 6035.62,
+        "amt_diff": -0.98,
+        "rate_diff": 60.34
+      },
+      {
+        "item": "AJ ECO PLUS 15 F.GREEN 06/09 MRP179/-",
+        "mrp": 179.0,
+        "purch_rate": 106.56,
+        "sales_rate": 170.48,
+        "purch_amt": 5114.88,
+        "sales_amt": 5114.4,
+        "amt_diff": -0.48,
+        "rate_diff": 63.92
+      },
+      {
+        "item": "AJ ECO SMART 13 BLACK 06/10 MRP169/-",
+        "mrp": 169.0,
+        "purch_rate": 100.61,
+        "sales_rate": 160.95,
+        "purch_amt": 9658.56,
+        "sales_amt": 9657.0,
+        "amt_diff": -1.56,
+        "rate_diff": 60.34
+      },
+      {
+        "item": "AJ ECO SMART 13 L.BROWN 06/10 MRP169/-",
+        "mrp": 169.0,
+        "purch_rate": 100.61,
+        "sales_rate": 160.95,
+        "purch_amt": 4829.28,
+        "sales_amt": 4828.5,
+        "amt_diff": -0.78,
+        "rate_diff": 60.34
+      },
+      {
+        "item": "AJ ECO SMART 15 DP.S.BLUE 06/09 MRP169/-",
+        "mrp": 169.0,
+        "purch_rate": 100.61,
+        "sales_rate": 160.95,
+        "purch_amt": 9658.56,
+        "sales_amt": 9657.0,
+        "amt_diff": -1.56,
+        "rate_diff": 60.34
+      },
+      {
+        "item": "AJ ECO SMART 15 LT.BROWN 06/09 MRP169/-",
+        "mrp": 169.0,
+        "purch_rate": 100.61,
+        "sales_rate": 160.95,
+        "purch_amt": 4829.28,
+        "sales_amt": 4828.5,
+        "amt_diff": -0.78,
+        "rate_diff": 60.34
+      },
+      {
+        "item": "AJ FITNESS B.GREEN 06/10 MRP144/-",
+        "mrp": 144.0,
+        "purch_rate": 85.73,
+        "sales_rate": 137.14,
+        "purch_amt": 4115.04,
+        "sales_amt": 4114.2,
+        "amt_diff": -0.84,
+        "rate_diff": 51.41
+      },
+      {
+        "item": "AJ FITNESS L.BROWN 02/05 MRP134/-",
+        "mrp": 134.0,
+        "purch_rate": 79.78,
+        "sales_rate": 127.62,
+        "purch_amt": 4786.8,
+        "sales_amt": 4785.75,
+        "amt_diff": -1.05,
+        "rate_diff": 47.84
+      },
+      {
+        "item": "AJ FITNESS L.BROWN 06/09 MRP144/-",
+        "mrp": 144.0,
+        "purch_rate": 85.73,
+        "sales_rate": 137.14,
+        "purch_amt": 4115.04,
+        "sales_amt": 4114.2,
+        "amt_diff": -0.84,
+        "rate_diff": 51.41
+      },
+      {
+        "item": "AJ FITNESS PLUS 107 BLACK 07/10 MRP159/-",
+        "mrp": 159.0,
+        "purch_rate": 94.66,
+        "sales_rate": 151.43,
+        "purch_amt": 9087.36,
+        "sales_amt": 9085.8,
+        "amt_diff": -1.56,
+        "rate_diff": 56.77
+      },
+      {
+        "item": "AJ FITNESS PLUS B.GREEN 06/10 MRP159/-",
+        "mrp": 159.0,
+        "purch_rate": 94.66,
+        "sales_rate": 151.43,
+        "purch_amt": 4543.68,
+        "sales_amt": 4542.9,
+        "amt_diff": -0.78,
+        "rate_diff": 56.77
+      },
+      {
+        "item": "AJ FITNESS PLUS DP.SKY 06/10 MRP159/-",
+        "mrp": 159.0,
+        "purch_rate": 94.66,
+        "sales_rate": 151.43,
+        "purch_amt": 9087.36,
+        "sales_amt": 9085.8,
+        "amt_diff": -1.56,
+        "rate_diff": 56.77
+      },
+      {
+        "item": "AJ FITNESS PLUS N.BLUE 06/09 MRP159/-",
+        "mrp": 159.0,
+        "purch_rate": 94.66,
+        "sales_rate": 151.43,
+        "purch_amt": 4543.68,
+        "sales_amt": 4542.9,
+        "amt_diff": -0.78,
+        "rate_diff": 56.77
+      },
+      {
+        "item": "AJ FITNESS TURKISH 02/05 MRP134/-",
+        "mrp": 134.0,
+        "purch_rate": 79.78,
+        "sales_rate": 127.62,
+        "purch_amt": 4786.8,
+        "sales_amt": 4785.75,
+        "amt_diff": -1.05,
+        "rate_diff": 47.84
+      },
+      {
+        "item": "AJ LOOK 09 BRONZE 06/09 MRP189/-",
+        "mrp": 189.0,
+        "purch_rate": 106.56,
+        "sales_rate": 180.0,
+        "purch_amt": 10229.76,
+        "sales_amt": 10800.0,
+        "amt_diff": 570.24,
+        "rate_diff": 73.44
+      },
+      {
+        "item": "AJ LOOK PLUS 06 DP.S.BLUE 06/09 MRP199/-",
+        "mrp": 199.0,
+        "purch_rate": 118.46,
+        "sales_rate": 189.52,
+        "purch_amt": 5686.08,
+        "sales_amt": 5685.6,
+        "amt_diff": -0.48,
+        "rate_diff": 71.06
+      },
+      {
+        "item": "AJ LOOK PLUS 08 BROWN 06/10 MRP199/-",
+        "mrp": 199.0,
+        "purch_rate": 118.46,
+        "sales_rate": 189.52,
+        "purch_amt": 5686.08,
+        "sales_amt": 5685.6,
+        "amt_diff": -0.48,
+        "rate_diff": 71.06
+      },
+      {
+        "item": "AJ LOOK PLUS 08 DP.S.BLUE 07/10 MRP199/-",
+        "mrp": 199.0,
+        "purch_rate": 118.46,
+        "sales_rate": 189.52,
+        "purch_amt": 11372.16,
+        "sales_amt": 11371.2,
+        "amt_diff": -0.96,
+        "rate_diff": 71.06
+      }
+    ]
+  },
+  {
+    "idx": 28,
+    "vch": "P#28 vs S#SKIL-028",
+    "ref": "1900410929",
+    "customer": "K G N FOOTWARE",
+    "purch_amt": 56783.0,
+    "sales_amt": 57056.0,
+    "diff": 273.0,
+    "items": [
+      {
+        "item": "AJ CG 49 BROWN 06/09 MRP319/-",
+        "mrp": 319.0,
+        "purch_rate": 184.37,
+        "sales_rate": 303.81,
+        "purch_amt": 4424.88,
+        "sales_amt": 4557.15,
+        "amt_diff": 132.27,
+        "rate_diff": 119.44
+      },
+      {
+        "item": "AJ CG 49 N.BLUE 06/09 MRP319/-",
+        "mrp": 319.0,
+        "purch_rate": 184.37,
+        "sales_rate": 303.81,
+        "purch_amt": 4424.88,
+        "sales_amt": 4557.15,
+        "amt_diff": 132.27,
+        "rate_diff": 119.44
+      },
+      {
+        "item": "AJ FITNESS PLUS D.BLUE 06/09 MRP159/-",
+        "mrp": 159.0,
+        "purch_rate": 94.66,
+        "sales_rate": 151.43,
+        "purch_amt": 4543.68,
+        "sales_amt": 4542.9,
+        "amt_diff": -0.78,
+        "rate_diff": 56.77
+      },
+      {
+        "item": "AJ FITNESS PLUS DP.SKY 06/09 MRP159/-",
+        "mrp": 159.0,
+        "purch_rate": 94.66,
+        "sales_rate": 151.43,
+        "purch_amt": 4543.68,
+        "sales_amt": 4542.9,
+        "amt_diff": -0.78,
+        "rate_diff": 56.77
+      },
+      {
+        "item": "AJ FITNESS PLUS F.GREEN 06/09 MRP159/-",
+        "mrp": 159.0,
+        "purch_rate": 94.66,
+        "sales_rate": 151.43,
+        "purch_amt": 4543.68,
+        "sales_amt": 4542.9,
+        "amt_diff": -0.78,
+        "rate_diff": 56.77
+      },
+      {
+        "item": "AJ FITNESS PLUS N.BLUE 06/09 MRP159/-",
+        "mrp": 159.0,
+        "purch_rate": 94.66,
+        "sales_rate": 151.43,
+        "purch_amt": 4543.68,
+        "sales_amt": 4542.9,
+        "amt_diff": -0.78,
+        "rate_diff": 56.77
+      },
+      {
+        "item": "AJ PUG 8323/4 06/09 MRP309/-",
+        "mrp": 309.0,
+        "purch_rate": 183.94,
+        "sales_rate": 294.29,
+        "purch_amt": 5518.2,
+        "sales_amt": 5517.94,
+        "amt_diff": -0.26,
+        "rate_diff": 110.35
+      },
+      {
+        "item": "AJ PUG 8323/42 06/09 MRP309/-",
+        "mrp": 309.0,
+        "purch_rate": 183.94,
+        "sales_rate": 294.29,
+        "purch_amt": 5518.2,
+        "sales_amt": 5517.94,
+        "amt_diff": -0.26,
+        "rate_diff": 110.35
+      },
+      {
+        "item": "AJ PUG 8468/4 06/09 MRP299/-",
+        "mrp": 299.0,
+        "purch_rate": 177.98,
+        "sales_rate": 284.76,
+        "purch_amt": 5339.4,
+        "sales_amt": 5339.25,
+        "amt_diff": -0.15,
+        "rate_diff": 106.78
+      },
+      {
+        "item": "AJ PUG 8468/41 06/09 MRP299/-",
+        "mrp": 299.0,
+        "purch_rate": 177.98,
+        "sales_rate": 284.76,
+        "purch_amt": 5339.4,
+        "sales_amt": 5339.25,
+        "amt_diff": -0.15,
+        "rate_diff": 106.78
+      },
+      {
+        "item": "AJ PUG 8468/42 06/09 MRP299/-",
+        "mrp": 299.0,
+        "purch_rate": 177.98,
+        "sales_rate": 284.76,
+        "purch_amt": 5339.4,
+        "sales_amt": 5339.25,
+        "amt_diff": -0.15,
+        "rate_diff": 106.78
+      }
+    ]
+  },
+  {
+    "idx": 31,
+    "vch": "P#31 vs S#SKIL-031",
+    "ref": "1900412399",
+    "customer": "M/S.SHREE FOOTWEAR",
+    "purch_amt": 20988.0,
+    "sales_amt": 21375.0,
+    "diff": 387.0,
+    "items": [
+      {
+        "item": "AJ L-ORTHO SOFT 01 BROWN 05/08 MRP160/-",
+        "mrp": 160.0,
+        "purch_rate": 96.06,
+        "sales_rate": 152.38,
+        "purch_amt": 5763.6,
+        "sales_amt": 5714.25,
+        "amt_diff": -49.35,
+        "rate_diff": 56.32
+      },
+      {
+        "item": "AJ L-ORTHO SOFT 01 WINE 05/08 MRP160/-",
+        "mrp": 160.0,
+        "purch_rate": 96.06,
+        "sales_rate": 152.38,
+        "purch_amt": 5763.6,
+        "sales_amt": 5714.25,
+        "amt_diff": -49.35,
+        "rate_diff": 56.32
+      },
+      {
+        "item": "AJ NANO 08 DP.BLUE 09/01 MRP129/-",
+        "mrp": 129.0,
+        "purch_rate": 68.99,
+        "sales_rate": 122.86,
+        "purch_amt": 4139.4,
+        "sales_amt": 4607.25,
+        "amt_diff": 467.85,
+        "rate_diff": 53.87
+      },
+      {
+        "item": "AJ TOTO SOFT/46 DP.CYAN 09/01 MRP121/-",
+        "mrp": 121.0,
+        "purch_rate": 72.04,
+        "sales_rate": 115.24,
+        "purch_amt": 4322.4,
+        "sales_amt": 4321.5,
+        "amt_diff": -0.9,
+        "rate_diff": 43.2
+      }
+    ]
+  },
+  {
+    "idx": 38,
+    "vch": "P#38 vs S#SKIL-038",
+    "ref": "1900415903",
+    "customer": "M/s Sri Brundabana Enterprises, Rayagada",
+    "purch_amt": 10458.0,
+    "sales_amt": 10770.0,
+    "diff": 312.0,
+    "items": [
+      {
+        "item": "AJ CG 39 TAN 06/10 MRP359/-",
+        "mrp": 359.0,
+        "purch_rate": 207.49,
+        "sales_rate": 341.9,
+        "purch_amt": 9959.52,
+        "sales_amt": 10257.0,
+        "amt_diff": 297.48,
+        "rate_diff": 134.41
+      }
+    ]
+  },
+  {
+    "idx": 40,
+    "vch": "P#40 vs S#SKIL-040",
+    "ref": "1900416575",
+    "customer": "SRI SHARVANI TRADERS",
+    "purch_amt": 302019.0,
+    "sales_amt": 301964.0,
+    "diff": -55.0,
+    "items": [
+      {
+        "item": "AJ CUSHION 024 03 MRP137/-",
+        "mrp": 137.0,
+        "purch_rate": 81.57,
+        "sales_rate": 130.48,
+        "purch_amt": 9788.4,
+        "sales_amt": 9786.0,
+        "amt_diff": -2.4,
+        "rate_diff": 48.91
+      },
+      {
+        "item": "AJ CUSHION 024 04/05 MRP137/-",
+        "mrp": 137.0,
+        "purch_rate": 81.57,
+        "sales_rate": 130.48,
+        "purch_amt": 48942.0,
+        "sales_amt": 48930.0,
+        "amt_diff": -12.0,
+        "rate_diff": 48.91
+      },
+      {
+        "item": "AJ CUSHION 024 05 MRP137/-",
+        "mrp": 137.0,
+        "purch_rate": 81.57,
+        "sales_rate": 130.48,
+        "purch_amt": 24471.0,
+        "sales_amt": 24465.0,
+        "amt_diff": -6.0,
+        "rate_diff": 48.91
+      },
+      {
+        "item": "AJ CUSHION 024 06 MRP146/-",
+        "mrp": 146.0,
+        "purch_rate": 86.92,
+        "sales_rate": 139.05,
+        "purch_amt": 8344.32,
+        "sales_amt": 8343.0,
+        "amt_diff": -1.32,
+        "rate_diff": 52.13
+      },
+      {
+        "item": "AJ CUSHION 024 06/08 MRP146/-",
+        "mrp": 146.0,
+        "purch_rate": 86.92,
+        "sales_rate": 139.05,
+        "purch_amt": 62582.4,
+        "sales_amt": 62572.5,
+        "amt_diff": -9.9,
+        "rate_diff": 52.13
+      },
+      {
+        "item": "AJ CUSHION 024 06/09 MRP146/-",
+        "mrp": 146.0,
+        "purch_rate": 86.92,
+        "sales_rate": 139.05,
+        "purch_amt": 62582.4,
+        "sales_amt": 62572.5,
+        "amt_diff": -9.9,
+        "rate_diff": 52.13
+      },
+      {
+        "item": "AJ CUSHION 024 06/10 MRP146/-",
+        "mrp": 146.0,
+        "purch_rate": 86.92,
+        "sales_rate": 139.05,
+        "purch_amt": 62582.4,
+        "sales_amt": 62572.5,
+        "amt_diff": -9.9,
+        "rate_diff": 52.13
+      },
+      {
+        "item": "AJ CUSHION 024 07 MRP146/-",
+        "mrp": 146.0,
+        "purch_rate": 86.92,
+        "sales_rate": 139.05,
+        "purch_amt": 8344.32,
+        "sales_amt": 8343.0,
+        "amt_diff": -1.32,
+        "rate_diff": 52.13
+      }
+    ]
+  },
+  {
+    "idx": 42,
+    "vch": "P#42 vs S#SKIL-042",
+    "ref": "1900416622",
+    "customer": "SRI SHARVANI TRADERS",
+    "purch_amt": 50283.0,
+    "sales_amt": 50655.0,
+    "diff": 372.0,
+    "items": [
+      {
+        "item": "AJ BETA 03 B.BLUE 06/09 MRP143/-",
+        "mrp": 143.0,
+        "purch_rate": 85.13,
+        "sales_rate": 136.19,
+        "purch_amt": 4086.24,
+        "sales_amt": 4085.7,
+        "amt_diff": -0.54,
+        "rate_diff": 51.06
+      },
+      {
+        "item": "AJ BETA 09 RED 07/10 MRP143/-",
+        "mrp": 143.0,
+        "purch_rate": 85.13,
+        "sales_rate": 136.19,
+        "purch_amt": 4086.24,
+        "sales_amt": 4085.7,
+        "amt_diff": -0.54,
+        "rate_diff": 51.06
+      },
+      {
+        "item": "AJ CEL 1023 MAGENTA 05/08 MRP120/-",
+        "mrp": 120.0,
+        "purch_rate": 72.05,
+        "sales_rate": 114.29,
+        "purch_amt": 4323.0,
+        "sales_amt": 4285.87,
+        "amt_diff": -37.13,
+        "rate_diff": 42.24
+      },
+      {
+        "item": "AJ CG 37 N.BLUE 06/10 MRP319/-",
+        "mrp": 319.0,
+        "purch_rate": 184.37,
+        "sales_rate": 303.81,
+        "purch_amt": 4424.88,
+        "sales_amt": 4557.15,
+        "amt_diff": 132.27,
+        "rate_diff": 119.44
+      },
+      {
+        "item": "AJ CG 47 N.BL/SKY 06/10 MRP329/-",
+        "mrp": 329.0,
+        "purch_rate": 190.15,
+        "sales_rate": 313.33,
+        "purch_amt": 4563.6,
+        "sales_amt": 4699.95,
+        "amt_diff": 136.35,
+        "rate_diff": 123.18
+      },
+      {
+        "item": "AJ ECO PLUS 09 DP.S.BLUE 06/10 MRP179/-",
+        "mrp": 179.0,
+        "purch_rate": 106.56,
+        "sales_rate": 170.48,
+        "purch_amt": 5114.88,
+        "sales_amt": 5114.4,
+        "amt_diff": -0.48,
+        "rate_diff": 63.92
+      },
+      {
+        "item": "AJ FITNESS PLUS 101 DP.S.BLUE 07/10 MRP159/-",
+        "mrp": 159.0,
+        "purch_rate": 94.66,
+        "sales_rate": 151.43,
+        "purch_amt": 4543.68,
+        "sales_amt": 4542.9,
+        "amt_diff": -0.78,
+        "rate_diff": 56.77
+      },
+      {
+        "item": "AJ FITNESS PLUS 103 BROWN 07/10 MRP159/-",
+        "mrp": 159.0,
+        "purch_rate": 94.66,
+        "sales_rate": 151.43,
+        "purch_amt": 4543.68,
+        "sales_amt": 4542.9,
+        "amt_diff": -0.78,
+        "rate_diff": 56.77
+      },
+      {
+        "item": "AJ G-FORCE 01 DP.BEIGE 06/10 MRP219/-",
+        "mrp": 219.0,
+        "purch_rate": 130.37,
+        "sales_rate": 208.57,
+        "purch_amt": 6257.76,
+        "sales_amt": 6257.1,
+        "amt_diff": -0.66,
+        "rate_diff": 78.2
+      },
+      {
+        "item": "AJ LMB 07 B.GREEN 05/07 MRP170/-",
+        "mrp": 170.0,
+        "purch_rate": 99.07,
+        "sales_rate": 161.9,
+        "purch_amt": 5944.2,
+        "sales_amt": 6071.25,
+        "amt_diff": 127.05,
+        "rate_diff": 62.83
+      }
+    ]
+  },
+  {
+    "idx": 43,
+    "vch": "P#43 vs S#SKIL-043",
+    "ref": "1900416634",
+    "customer": "SRI SHARVANI TRADERS",
+    "purch_amt": 39608.0,
+    "sales_amt": 39697.0,
+    "diff": 89.0,
+    "items": [
+      {
+        "item": "AJ AT 303/1 06/10 MRP211/-",
+        "mrp": 211.0,
+        "purch_rate": 125.61,
+        "sales_rate": 200.95,
+        "purch_amt": 9043.92,
+        "sales_amt": 9042.75,
+        "amt_diff": -1.17,
+        "rate_diff": 75.34
+      },
+      {
+        "item": "AJ AT 303/1 10 MRP211/-",
+        "mrp": 211.0,
+        "purch_rate": 125.61,
+        "sales_rate": 200.95,
+        "purch_amt": 4521.96,
+        "sales_amt": 4521.37,
+        "amt_diff": -0.59,
+        "rate_diff": 75.34
+      },
+      {
+        "item": "AJ DIVA 105 DK.CYAN 05/07 MRP127/-",
+        "mrp": 127.0,
+        "purch_rate": 73.25,
+        "sales_rate": 120.95,
+        "purch_amt": 4395.0,
+        "sales_amt": 4535.62,
+        "amt_diff": 140.62,
+        "rate_diff": 47.7
+      },
+      {
+        "item": "AJ ENERGY PLUS BLUE BLK 06/09 MRP136/-",
+        "mrp": 136.0,
+        "purch_rate": 80.97,
+        "sales_rate": 129.52,
+        "purch_amt": 3886.56,
+        "sales_amt": 3885.6,
+        "amt_diff": -0.96,
+        "rate_diff": 48.55
+      },
+      {
+        "item": "AJ LINA 02 BURGUNDI 05/07 MRP139/-",
+        "mrp": 139.0,
+        "purch_rate": 82.75,
+        "sales_rate": 132.38,
+        "purch_amt": 4965.0,
+        "sales_amt": 4964.25,
+        "amt_diff": -0.75,
+        "rate_diff": 49.63
+      },
+      {
+        "item": "AJ LINA 02 MAGENTA 05/07 MRP139/-",
+        "mrp": 139.0,
+        "purch_rate": 82.75,
+        "sales_rate": 132.38,
+        "purch_amt": 4965.0,
+        "sales_amt": 4964.25,
+        "amt_diff": -0.75,
+        "rate_diff": 49.63
+      },
+      {
+        "item": "AJ LMB 07 ONION 05/07 MRP165/-",
+        "mrp": 165.0,
+        "purch_rate": 99.07,
+        "sales_rate": 157.14,
+        "purch_amt": 5944.2,
+        "sales_amt": 5892.75,
+        "amt_diff": -51.45,
+        "rate_diff": 58.07
+      }
+    ]
+  },
+  {
+    "idx": 44,
+    "vch": "P#44 vs S#SKIL-044",
+    "ref": "1900416912",
+    "customer": "M/s Sri Brundabana Enterprises, Rayagada",
+    "purch_amt": 38352.0,
+    "sales_amt": 39180.0,
+    "diff": 828.0,
+    "items": [
+      {
+        "item": "AJ CEL 1023 MAGENTA 05/08 MRP120/-",
+        "mrp": 120.0,
+        "purch_rate": 72.05,
+        "sales_rate": 114.29,
+        "purch_amt": 4323.0,
+        "sales_amt": 4285.87,
+        "amt_diff": -37.13,
+        "rate_diff": 42.24
+      },
+      {
+        "item": "AJ CG 37 BEIGE 06/09 MRP319/-",
+        "mrp": 319.0,
+        "purch_rate": 184.37,
+        "sales_rate": 303.81,
+        "purch_amt": 4424.88,
+        "sales_amt": 4557.15,
+        "amt_diff": 132.27,
+        "rate_diff": 119.44
+      },
+      {
+        "item": "AJ CG 37 N.BLUE 06/09 MRP319/-",
+        "mrp": 319.0,
+        "purch_rate": 184.37,
+        "sales_rate": 303.81,
+        "purch_amt": 4424.88,
+        "sales_amt": 4557.15,
+        "amt_diff": 132.27,
+        "rate_diff": 119.44
+      },
+      {
+        "item": "AJ CG 37 P.BLUE 06/09 MRP319/-",
+        "mrp": 319.0,
+        "purch_rate": 184.37,
+        "sales_rate": 303.81,
+        "purch_amt": 4424.88,
+        "sales_amt": 4557.15,
+        "amt_diff": 132.27,
+        "rate_diff": 119.44
+      },
+      {
+        "item": "AJ CG 39 TAN 06/10 MRP359/-",
+        "mrp": 359.0,
+        "purch_rate": 207.49,
+        "sales_rate": 341.9,
+        "purch_amt": 9959.52,
+        "sales_amt": 10257.0,
+        "amt_diff": 297.48,
+        "rate_diff": 134.41
+      },
+      {
+        "item": "AJ CG 40 N.BLUE 06/09 MRP319/-",
+        "mrp": 319.0,
+        "purch_rate": 184.37,
+        "sales_rate": 303.81,
+        "purch_amt": 4424.88,
+        "sales_amt": 4557.15,
+        "amt_diff": 132.27,
+        "rate_diff": 119.44
+      },
+      {
+        "item": "AJ FITNESS PLUS 101 DP.S.BLUE 07/10 MRP159/-",
+        "mrp": 159.0,
+        "purch_rate": 94.66,
+        "sales_rate": 151.43,
+        "purch_amt": 4543.68,
+        "sales_amt": 4542.9,
+        "amt_diff": -0.78,
+        "rate_diff": 56.77
+      }
+    ]
+  },
+  {
+    "idx": 46,
+    "vch": "P#46 vs S#SKIL-046",
+    "ref": "1900416947",
+    "customer": "M/s Sri Brundabana Enterprises, Rayagada",
+    "purch_amt": 24296.0,
+    "sales_amt": 24435.0,
+    "diff": 139.0,
+    "items": [
+      {
+        "item": "AJ 8438/1 06/09 MRP399/-",
+        "mrp": 399.0,
+        "purch_rate": 237.5,
+        "sales_rate": 380.0,
+        "purch_amt": 7125.0,
+        "sales_amt": 7125.0,
+        "amt_diff": 0.0,
+        "rate_diff": 142.5
+      },
+      {
+        "item": "AJ CG 37 BROWN 06/09 MRP319/-",
+        "mrp": 319.0,
+        "purch_rate": 184.37,
+        "sales_rate": 303.81,
+        "purch_amt": 4424.88,
+        "sales_amt": 4557.15,
+        "amt_diff": 132.27,
+        "rate_diff": 119.44
+      },
+      {
+        "item": "AJ PGA 1415/73 06/09 MRP265/-",
+        "mrp": 265.0,
+        "purch_rate": 157.74,
+        "sales_rate": 252.38,
+        "purch_amt": 4732.2,
+        "sales_amt": 4732.12,
+        "amt_diff": -0.08,
+        "rate_diff": 94.64
+      },
+      {
+        "item": "AJ PUG 8464/41 06/09 MRP384/-",
+        "mrp": 384.0,
+        "purch_rate": 228.57,
+        "sales_rate": 365.71,
+        "purch_amt": 6857.1,
+        "sales_amt": 6857.06,
+        "amt_diff": -0.04,
+        "rate_diff": 137.14
+      }
+    ]
+  },
+  {
+    "idx": 48,
+    "vch": "P#48 vs S#SKIL-048",
+    "ref": "1900417852",
+    "customer": "M/S SRI BRUNDABAN ENTERPRISES, MALKANGIRI",
+    "purch_amt": 28053.0,
+    "sales_amt": 28890.0,
+    "diff": 837.0,
+    "items": [
+      {
+        "item": "AJ CG 3040 N.BLUE 06/10 MRP321/-",
+        "mrp": 321.0,
+        "purch_rate": 185.53,
+        "sales_rate": 305.71,
+        "purch_amt": 4452.72,
+        "sales_amt": 4585.65,
+        "amt_diff": 132.93,
+        "rate_diff": 120.18
+      },
+      {
+        "item": "AJ CG 40 AQUA 06/10 MRP319/-",
+        "mrp": 319.0,
+        "purch_rate": 184.37,
+        "sales_rate": 303.81,
+        "purch_amt": 4424.88,
+        "sales_amt": 4557.15,
+        "amt_diff": 132.27,
+        "rate_diff": 119.44
+      },
+      {
+        "item": "AJ CG 48 BROWN/BEIGE 06/10 MRP319/-",
+        "mrp": 319.0,
+        "purch_rate": 184.37,
+        "sales_rate": 303.81,
+        "purch_amt": 4424.88,
+        "sales_amt": 4557.15,
+        "amt_diff": 132.27,
+        "rate_diff": 119.44
+      },
+      {
+        "item": "AJ CG 55 SKY 06/10 MRP349/-",
+        "mrp": 349.0,
+        "purch_rate": 201.71,
+        "sales_rate": 332.38,
+        "purch_amt": 4841.04,
+        "sales_amt": 4985.7,
+        "amt_diff": 144.66,
+        "rate_diff": 130.67
+      },
+      {
+        "item": "AJ CG 56 MOSS GREEN 06/10 MRP299/-",
+        "mrp": 299.0,
+        "purch_rate": 172.83,
+        "sales_rate": 284.76,
+        "purch_amt": 4147.92,
+        "sales_amt": 4271.4,
+        "amt_diff": 123.48,
+        "rate_diff": 111.93
+      },
+      {
+        "item": "AJ CG 57 N.BLUE 06/10 MRP319/-",
+        "mrp": 319.0,
+        "purch_rate": 184.39,
+        "sales_rate": 303.81,
+        "purch_amt": 4425.36,
+        "sales_amt": 4557.15,
+        "amt_diff": 131.79,
+        "rate_diff": 119.42
+      }
+    ]
+  },
+  {
+    "idx": 49,
+    "vch": "P#49 vs S#SKIL-049",
+    "ref": "1900417853",
+    "customer": "M/S.SHREE FOOTWEAR",
+    "purch_amt": 8697.0,
+    "sales_amt": 8835.0,
+    "diff": 138.0,
+    "items": [
+      {
+        "item": "AJ CEG 1008 RED 06/10 MRP135/-",
+        "mrp": 135.0,
+        "purch_rate": 80.38,
+        "sales_rate": 128.57,
+        "purch_amt": 3858.24,
+        "sales_amt": 3857.1,
+        "amt_diff": -1.14,
+        "rate_diff": 48.19
+      },
+      {
+        "item": "AJ CG 37 N.BLUE 07/10 MRP319/-",
+        "mrp": 319.0,
+        "purch_rate": 184.37,
+        "sales_rate": 303.81,
+        "purch_amt": 4424.88,
+        "sales_amt": 4557.15,
+        "amt_diff": 132.27,
+        "rate_diff": 119.44
+      }
+    ]
+  },
+  {
+    "idx": 52,
+    "vch": "P#52 vs S#SKIL-052",
+    "ref": "1900417925",
+    "customer": "M/S SRI BRUNDABAN ENTERPRISES, MALKANGIRI",
+    "purch_amt": 64992.0,
+    "sales_amt": 65531.0,
+    "diff": 539.0,
+    "items": [
+      {
+        "item": "AJ CG 37 BROWN 06/10 MRP319/-",
+        "mrp": 319.0,
+        "purch_rate": 184.37,
+        "sales_rate": 303.81,
+        "purch_amt": 4424.88,
+        "sales_amt": 4557.15,
+        "amt_diff": 132.27,
+        "rate_diff": 119.44
+      },
+      {
+        "item": "AJ CG 40 SKY 06/10 MRP319/-",
+        "mrp": 319.0,
+        "purch_rate": 184.37,
+        "sales_rate": 303.81,
+        "purch_amt": 4424.88,
+        "sales_amt": 4557.15,
+        "amt_diff": 132.27,
+        "rate_diff": 119.44
+      },
+      {
+        "item": "AJ CG 48 N.BLUE/RED 06/10 MRP319/-",
+        "mrp": 319.0,
+        "purch_rate": 184.37,
+        "sales_rate": 303.81,
+        "purch_amt": 4424.88,
+        "sales_amt": 4557.15,
+        "amt_diff": 132.27,
+        "rate_diff": 119.44
+      },
+      {
+        "item": "AJ CG 50 MOSS GREEN 06/10 MRP290/-",
+        "mrp": 290.0,
+        "purch_rate": 167.61,
+        "sales_rate": 276.19,
+        "purch_amt": 4022.64,
+        "sales_amt": 4142.85,
+        "amt_diff": 120.21,
+        "rate_diff": 108.58
+      },
+      {
+        "item": "AJ PUG 8464/73 06/10 MRP384/-",
+        "mrp": 384.0,
+        "purch_rate": 228.57,
+        "sales_rate": 365.71,
+        "purch_amt": 6857.1,
+        "sales_amt": 6857.06,
+        "amt_diff": -0.04,
+        "rate_diff": 137.14
+      },
+      {
+        "item": "AJ PUG 8502/9 05/09 MRP234/-",
+        "mrp": 234.0,
+        "purch_rate": 139.3,
+        "sales_rate": 222.86,
+        "purch_amt": 4179.0,
+        "sales_amt": 4178.62,
+        "amt_diff": -0.38,
+        "rate_diff": 83.56
+      },
+      {
+        "item": "AJ PUG 8507/1 06/09 MRP307/-",
+        "mrp": 307.0,
+        "purch_rate": 182.75,
+        "sales_rate": 292.38,
+        "purch_amt": 5482.5,
+        "sales_amt": 5482.12,
+        "amt_diff": -0.38,
+        "rate_diff": 109.63
+      },
+      {
+        "item": "AJ PUG 8527/1 06/09 MRP289/-",
+        "mrp": 289.0,
+        "purch_rate": 172.03,
+        "sales_rate": 275.24,
+        "purch_amt": 5160.9,
+        "sales_amt": 5160.75,
+        "amt_diff": -0.15,
+        "rate_diff": 103.21
+      },
+      {
+        "item": "AJ PUL 9299/72 03/07 MRP269/-",
+        "mrp": 269.0,
+        "purch_rate": 160.13,
+        "sales_rate": 256.19,
+        "purch_amt": 4803.9,
+        "sales_amt": 4803.56,
+        "amt_diff": -0.34,
+        "rate_diff": 96.06
+      },
+      {
+        "item": "AJ PUL 9299/83 04/07 MRP269/-",
+        "mrp": 269.0,
+        "purch_rate": 160.13,
+        "sales_rate": 256.19,
+        "purch_amt": 4803.9,
+        "sales_amt": 4803.56,
+        "amt_diff": -0.34,
+        "rate_diff": 96.06
+      },
+      {
+        "item": "AJ PUL 9315/9 03/07 MRP229/-",
+        "mrp": 229.0,
+        "purch_rate": 136.32,
+        "sales_rate": 218.1,
+        "purch_amt": 4089.6,
+        "sales_amt": 4089.37,
+        "amt_diff": -0.23,
+        "rate_diff": 81.78
+      },
+      {
+        "item": "AJ TOPZ 101 06/09 MRP149/-",
+        "mrp": 149.0,
+        "purch_rate": 88.7,
+        "sales_rate": 141.9,
+        "purch_amt": 4257.6,
+        "sales_amt": 4257.0,
+        "amt_diff": -0.6,
+        "rate_diff": 53.2
+      },
+      {
+        "item": "AJ TOPZ 101 RED 02/05 MRP139/-",
+        "mrp": 139.0,
+        "purch_rate": 82.75,
+        "sales_rate": 132.38,
+        "purch_amt": 4965.0,
+        "sales_amt": 4964.25,
+        "amt_diff": -0.75,
+        "rate_diff": 49.63
+      }
+    ]
+  },
+  {
+    "idx": 53,
+    "vch": "P#53 vs S#SKIL-053",
+    "ref": "1900417926",
+    "customer": "M/S.SHREE FOOTWEAR",
+    "purch_amt": 22614.0,
+    "sales_amt": 22725.0,
+    "diff": 111.0,
+    "items": [
+      {
+        "item": "AJ PUG 8415/1 07/10 MRP309/-",
+        "mrp": 309.0,
+        "purch_rate": 183.94,
+        "sales_rate": 294.29,
+        "purch_amt": 5518.2,
+        "sales_amt": 5517.94,
+        "amt_diff": -0.26,
+        "rate_diff": 110.35
+      },
+      {
+        "item": "AJ PUG 8415/4 07/10 MRP309/-",
+        "mrp": 309.0,
+        "purch_rate": 183.94,
+        "sales_rate": 294.29,
+        "purch_amt": 5518.2,
+        "sales_amt": 5517.94,
+        "amt_diff": -0.26,
+        "rate_diff": 110.35
+      },
+      {
+        "item": "AJ PUG 8460/1 07/10 MRP305/-",
+        "mrp": 305.0,
+        "purch_rate": 177.98,
+        "sales_rate": 290.48,
+        "purch_amt": 5339.4,
+        "sales_amt": 5446.5,
+        "amt_diff": 107.1,
+        "rate_diff": 112.5
+      },
+      {
+        "item": "AJ PUL 9280/80 04/07 MRP289/-",
+        "mrp": 289.0,
+        "purch_rate": 172.03,
+        "sales_rate": 275.24,
+        "purch_amt": 5160.9,
+        "sales_amt": 5160.75,
+        "amt_diff": -0.15,
+        "rate_diff": 103.21
+      }
+    ]
+  }
+]

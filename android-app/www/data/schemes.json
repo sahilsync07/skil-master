@@ -1,0 +1,162 @@
+{
+  "summary": {
+    "augTaxable": 1192130.3399999999,
+    "augGross": 1251736.5,
+    "sepTaxable": 997322.7600000001,
+    "sepGross": 1047192,
+    "q2Taxable": 2189453.1,
+    "q2Gross": 2298928.5,
+    "totalClaimedReceived": 111949.06999999999,
+    "q2PendingClaimTotal": 177091.138128
+  },
+  "indicators": [
+    {
+      "id": "missing-cd",
+      "title": "Missing Cash Discount (CD 3%)",
+      "rate": "3.00%",
+      "clause": "Agreement Table Row 7",
+      "frequency": "Monthly / Prompt Settlement",
+      "description": "Ajanta is legally liable to issue 3% Cash Discount on basic purchase value against prompt payment settlement.",
+      "august": {
+        "turnover": 1192130.3399999999,
+        "claimed": 37552.12,
+        "docNo": "160005126",
+        "status": "SATISFIED",
+        "statusText": "Received (CN #160005126: ₹37,552.12)"
+      },
+      "september": {
+        "turnover": 997322.7600000001,
+        "eligible": 29919.682800000002,
+        "status": "PENDING_CLAIM",
+        "statusText": "Accrued: ₹29,919.68 (Pending Claim)"
+      },
+      "q2Total": 67471.8028,
+      "overallStatus": "ACTIVE_COMPLIANT"
+    },
+    {
+      "id": "retailer-scheme",
+      "title": "Retailer Scheme (HW+FTW 3.78%)",
+      "rate": "3.78%",
+      "clause": "Agreement Table Row 9",
+      "frequency": "Monthly",
+      "description": "Monthly promotional trade discount @ 3.78% on eligible Hardware and Footwear purchases.",
+      "august": {
+        "turnover": 1192130.3399999999,
+        "claimed": 45896,
+        "docNo": "160005123",
+        "status": "SATISFIED",
+        "statusText": "Received (CN #160005123: ₹45,896.00)"
+      },
+      "september": {
+        "turnover": 997322.7600000001,
+        "eligible": 37698.800328000005,
+        "status": "PENDING_CLAIM",
+        "statusText": "Accrued: ₹37,698.8 (Pending Claim)"
+      },
+      "q2Total": 83594.80032800001,
+      "overallStatus": "ACTIVE_COMPLIANT"
+    },
+    {
+      "id": "rate-difference",
+      "title": "Rate Difference (< 37.5% Liable, > 37.5% Ignore)",
+      "rate": "Shortfall below 37.5%",
+      "clause": "Agreement Category Margins (Sec 2.1)",
+      "frequency": "Per Invoice Audit",
+      "description": "Asymmetric price protection rule: If net margin < 37.50%, Ajanta compensates shortfall. If > 37.50%, IGNORE (retained by SKIL).",
+      "august": {
+        "shortfallIdentified": 2745.06,
+        "claimed": 2773.95,
+        "docNo": "160005127",
+        "status": "SATISFIED",
+        "statusText": "Settled (CN #160005127 for UL 979E: ₹2,773.95)"
+      },
+      "september": {
+        "shortfallIdentified": 0,
+        "status": "SATISFIED",
+        "statusText": "Audited (Zero Shortfall Billed)"
+      },
+      "q2Total": 2773.95,
+      "overallStatus": "COMPLIANT"
+    },
+    {
+      "id": "monthly-target-bonus",
+      "title": "Monthly Target Achievement Bonus (3% Quarterly Payable)",
+      "rate": "3.00%",
+      "clause": "Agreement Note 1",
+      "frequency": "Quarterly Settlement",
+      "description": "Achieve minimum ₹10.00 Lakhs basic turnover every month. Earns 3% bonus on basic price, settled quarterly.",
+      "august": {
+        "target": 1000000,
+        "achieved": 1192130.3399999999,
+        "percentage": 119.21303399999998,
+        "bonus": 35763.91019999999,
+        "status": "SATISFIED",
+        "statusText": "Target Met (119.2% of target)"
+      },
+      "september": {
+        "target": 1000000,
+        "achieved": 997322.7600000001,
+        "percentage": 99.73227600000001,
+        "bonus": 29919.682800000002,
+        "status": "SATISFIED",
+        "statusText": "Target Met (125.2% of target)"
+      },
+      "q2Total": 65683.593,
+      "overallStatus": "SATISFIED"
+    },
+    {
+      "id": "quarterly-turnover-bonus",
+      "title": "Quarterly Turnover Bonus (QTB 2% Quarterly Payable)",
+      "rate": "2.00%",
+      "clause": "Agreement Table Row 8",
+      "frequency": "Quarterly Settlement",
+      "description": "2.00% bonus calculated on total Quarterly Basic turnover.",
+      "q2Turnover": 2189453.1,
+      "q2Bonus": 43789.062000000005,
+      "status": "SATISFIED",
+      "statusText": "Eligible: ₹43,789.06 (Due for Q2 Claim)"
+    },
+    {
+      "id": "annual-turnover-bonus",
+      "title": "Annual Turnover Bonus (ATB 3% on ₹1.20 Cr Target)",
+      "rate": "3.00%",
+      "clause": "Additional Bonus Sl. 1",
+      "frequency": "Annual Settlement",
+      "description": "3.00% annual bonus on reaching the ₹1.20 Crore annual target (average ₹10 Lakhs/month over 12 months).",
+      "annualTarget": 12000000,
+      "monthsElapsed": 2,
+      "proRataTarget": 2000000,
+      "achievedToDate": 2189453.1,
+      "progressPct": 18.2454425,
+      "pacePct": 109.472655,
+      "aheadAmount": 189453.1000000001,
+      "projectedAnnualBonus": 360000,
+      "status": "ON_TRACK",
+      "statusText": "Ahead of Target (+₹1.89 Lacs ahead)"
+    },
+    {
+      "id": "slab-tier-1",
+      "title": "Higher Slab Tier 1 (3.50% Milestone)",
+      "rate": "3.50%",
+      "clause": "Upgradation Table",
+      "thresholdText": "Monthly ₹30L - ₹49.99L (Annual ₹3.60Cr - ₹5.99Cr)",
+      "monthlyThreshold": 3000000,
+      "currentMonthlyAvg": 1094726.55,
+      "progressPct": 36.490885,
+      "status": "IN_PROGRESS",
+      "statusText": "Current Avg: ₹10.95L/mo (40.7% to Threshold)"
+    },
+    {
+      "id": "slab-tier-2",
+      "title": "Higher Slab Tier 2 (4.50% Milestone)",
+      "rate": "4.50%",
+      "clause": "Upgradation Table",
+      "thresholdText": "Monthly ₹50L & Above (Annual ₹6.00Cr & Above)",
+      "monthlyThreshold": 5000000,
+      "currentMonthlyAvg": 1094726.55,
+      "progressPct": 21.894531,
+      "status": "IN_PROGRESS",
+      "statusText": "Current Avg: ₹10.95L/mo (24.4% to Threshold)"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Box",
+    "isSimple": true,
+    "originalName": ""
+  },
+  {
+    "name": "Box of 48 Pairs",
+    "isSimple": false,
+    "originalName": ""
+  },
+  {
+    "name": "Pairs",
+    "isSimple": true,
+    "originalName": ""
+  }
+]

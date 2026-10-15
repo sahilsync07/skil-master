@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKIL Lifestyle LLP - Ship to Party Declaration</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ===== CSS VARIABLES ===== */
+        :root {
+            --gold: #C8943E;
+            --gold-light: #E8C96A;
+            --gold-mid: #D4A94E;
+            --gold-dark: #8B6914;
+            --gold-gradient: linear-gradient(90deg, var(--gold-dark) 0%, var(--gold) 20%, var(--gold-light) 50%, var(--gold) 80%, var(--gold-dark) 100%);
+            --gold-gradient-v: linear-gradient(180deg, var(--gold-dark) 0%, var(--gold) 20%, var(--gold-light) 50%, var(--gold) 80%, var(--gold-dark) 100%);
+            --black: #1A1A1A;
+            --dark-gray: #333333;
+            --medium-gray: #666666;
+            --light-gray: #999999;
+            --border-gray: #E0E0E0;
+            --bg-light: #FAFAFA;
+            --white: #FFFFFF;
+            --page-width: 21cm;
+            --page-height: 29.7cm;
+            --margin-x: 1.8cm;
+            --margin-top: 1.2cm;
+            --margin-bottom: 0;
+        }
+
+        /* ===== PAGE SETUP ===== */
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark-gray);
+            background: #E8E8E8;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        /* ===== MAIN PAGE ===== */
+        .page {
+            width: var(--page-width);
+            min-height: var(--page-height);
+            background: var(--white);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+            overflow: hidden;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            display: flex;
+            align-items: flex-start;
+            padding: var(--margin-top) var(--margin-x) 0;
+            gap: 0;
+        }
+
+        .header-logo {
+            flex: 0 0 auto;
+            width: 210px;
+            padding-right: 28px;
+            padding-top: 4px;
+        }
+
+        .header-logo img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .header-divider {
+            width: 2.5px;
+            background: var(--gold-gradient-v);
+            align-self: stretch;
+            min-height: 120px;
+            flex-shrink: 0;
+            border-radius: 1px;
+        }
+
+        .header-info {
+            flex: 1;
+            padding-left: 24px;
+            padding-top: 4px;
+        }
+
+        .company-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22pt;
+            font-weight: 700;
+            color: var(--black);
+            letter-spacing: 1.5px;
+            margin-bottom: 2px;
+            line-height: 1.15;
+        }
+
+        .company-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9pt;
+            font-weight: 500;
+            color: var(--gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .statutory-table {
+            font-size: 9.5pt;
+            color: var(--dark-gray);
+        }
+
+        .statutory-table .stat-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 3px;
+        }
+
+        .statutory-table .stat-label {
+            font-weight: 700;
+            width: 58px;
+            color: var(--black);
+            letter-spacing: 1px;
+        }
+
+        .statutory-table .stat-sep {
+            margin: 0 6px;
+            color: var(--dark-gray);
+        }
+
+        .statutory-table .stat-value {
+            font-weight: 400;
+            color: var(--dark-gray);
+        }
+
+        /* ===== HEADER BOTTOM LINE ===== */
+        .header-line-wrapper {
+            position: relative;
+            margin: 18px var(--margin-x) 0;
+        }
+
+        .header-line {
+            height: 2px;
+            background: var(--gold-gradient);
+            border-radius: 1px;
+        }
+
+        /* ===== DIAMOND SEPARATOR ===== */
+        .diamond-sep {
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+
+        .diamond-sep::before {
+            content: '';
+            display: block;
+            width: 9px;
+            height: 9px;
+            background: var(--gold-gradient);
+            transform: rotate(45deg);
+            border: 1px solid var(--gold-dark);
+            box-shadow: 0 1px 3px rgba(200, 148, 62, 0.3);
+        }
+
+        /* ===== REF & DATE FIELD ===== */
+        .ref-date-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 16px var(--margin-x) 0;
+            font-size: 10pt;
+            color: var(--dark-gray);
+        }
+
+        .ref-field span,
+        .date-field-inline span {
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .ref-line,
+        .date-line {
+            display: inline-block;
+            width: 140px;
+            border-bottom: 1.5px solid var(--dark-gray);
+            margin-left: 4px;
+            vertical-align: baseline;
+            text-align: center;
+            font-weight: 400;
+        }
+
+        /* ===== CONTENT AREA ===== */
+        .content {
+            flex: 1;
+            padding: 20px var(--margin-x);
+            position: relative;
+            min-height: 400px;
+        }
+
+        .content p {
+            font-size: 10.5pt;
+            line-height: 1.7;
+            margin-bottom: 10px;
+            text-align: justify;
+        }
+
+        /* ===== ADDRESSEE BLOCK ===== */
+        .addressee {
+            font-size: 10.5pt;
+            line-height: 1.6;
+            margin-bottom: 18px;
+            color: var(--dark-gray);
+        }
+
+        .addressee strong {
+            font-weight: 700;
+        }
+
+        /* ===== SUBJECT LINE ===== */
+        .subject-line {
+            font-size: 10.5pt;
+            margin-bottom: 6px;
+            color: var(--dark-gray);
+        }
+
+        .subject-line strong {
+            font-weight: 700;
+        }
+
+        /* ===== CLOSING BLOCK ===== */
+        .closing-block {
+            margin-top: 28px;
+            font-size: 10.5pt;
+            line-height: 1.6;
+        }
+
+        .closing-block p {
+            text-align: left;
+        }
+
+        .signature-area {
+            margin-top: 16px;
+            height: 80px;
+        }
+
+        .signatory-info {
+            font-size: 10.5pt;
+            line-height: 1.5;
+            color: var(--dark-gray);
+        }
+
+        .signatory-info strong {
+            font-weight: 700;
+        }
+
+        /* ===== WATERMARK ===== */
+        .watermark {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            width: 280px;
+            opacity: 0.06;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .watermark img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            margin-top: auto;
+        }
+
+        .footer-line {
+            height: 2px;
+            background: var(--gold-gradient);
+            margin: 0 var(--margin-x);
+            border-radius: 1px;
+        }
+
+        .footer-content {
+            display: flex;
+            padding: 14px var(--margin-x) 12px;
+            gap: 0;
+            align-items: flex-start;
+        }
+
+        .footer-col {
+            flex: 1;
+            font-size: 8pt;
+            color: var(--medium-gray);
+            line-height: 1.6;
+        }
+
+        .footer-col:first-child {
+            flex: 1.3;
+        }
+
+        .footer-col:last-child {
+            flex: 1;
+        }
+
+        .footer-col-title {
+            font-weight: 700;
+            font-size: 8.5pt;
+            color: var(--black);
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-col .contact-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+            margin-bottom: 3px;
+        }
+
+        .footer-col .contact-icon {
+            flex-shrink: 0;
+            width: 13px;
+            height: 13px;
+            margin-top: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-col .contact-icon svg {
+            width: 12px;
+            height: 12px;
+            fill: var(--gold);
+        }
+
+        .footer-address-icon {
+            flex-shrink: 0;
+            width: 13px;
+            height: 13px;
+            margin-top: 2px;
+        }
+
+        .footer-address-icon svg {
+            width: 12px;
+            height: 12px;
+            fill: var(--gold);
+        }
+
+        .footer-col .business-nature-text {
+            font-style: italic;
+            color: var(--medium-gray);
+            line-height: 1.6;
+        }
+
+        .footer-divider {
+            width: 1px;
+            background: var(--border-gray);
+            align-self: stretch;
+            margin: 0 14px;
+        }
+
+        /* ===== TAGLINE BAR ===== */
+        .tagline-bar {
+            background: var(--black);
+            padding: 9px var(--margin-x);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .tagline-accent {
+            width: 32px;
+            height: 2px;
+            background: var(--gold-gradient);
+            flex-shrink: 0;
+            border-radius: 1px;
+        }
+
+        .tagline-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        /* ===== PRINT STYLES ===== */
+        @media print {
+
+            *,
+            *::before,
+            *::after {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+
+            @page {
+                size: A4;
+                margin: 0;
+            }
+
+            html,
+            body {
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                padding: 0;
+                background: none;
+                overflow: hidden;
+            }
+
+            .page {
+                width: 210mm;
+                min-height: 297mm;
+                height: 297mm;
+                box-shadow: none;
+                margin: 0;
+                overflow: hidden;
+                page-break-after: always;
+            }
+
+            /* Force gradient backgrounds to print */
+            .header-line {
+                background: linear-gradient(90deg, #8B6914 0%, #C8943E 20%, #E8C96A 50%, #C8943E 80%, #8B6914 100%) !important;
+            }
+
+            .header-divider {
+                background: linear-gradient(180deg, #8B6914 0%, #C8943E 20%, #E8C96A 50%, #C8943E 80%, #8B6914 100%) !important;
+            }
+
+            .footer-line {
+                background: linear-gradient(90deg, #8B6914 0%, #C8943E 20%, #E8C96A 50%, #C8943E 80%, #8B6914 100%) !important;
+            }
+
+            .diamond-sep::before {
+                background: linear-gradient(90deg, #8B6914 0%, #C8943E 20%, #E8C96A 50%, #C8943E 80%, #8B6914 100%) !important;
+                border-color: #8B6914 !important;
+            }
+
+            .tagline-bar {
+                background: #1A1A1A !important;
+            }
+
+            .tagline-accent {
+                background: linear-gradient(90deg, #8B6914 0%, #C8943E 20%, #E8C96A 50%, #C8943E 80%, #8B6914 100%) !important;
+            }
+
+            .tagline-text {
+                color: #C8943E !important;
+            }
+
+            .watermark {
+                opacity: 0.06 !important;
+            }
+
+            .watermark img {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="header-logo">
+                <img src="SKIL Lifestyle/SKIL Lifestyle Black Transparent BG Logo.png" alt="SKIL Lifestyle Logo">
+            </div>
+            <div class="header-divider"></div>
+            <div class="header-info">
+                <div class="company-name">SKIL LIFESTYLE LLP</div>
+                <div class="company-subtitle">Visakhapatnam, Andhra Pradesh</div>
+                <div style="display: flex; gap: 40px; margin-top: 4px;">
+                    <div class="statutory-table">
+                        <div class="stat-row">
+                            <span class="stat-label">LLPIN</span>
+                            <span class="stat-sep">:</span>
+                            <span class="stat-value">ACZ-4485</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">PAN</span>
+                            <span class="stat-sep">:</span>
+                            <span class="stat-value">AFZFS2777J</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">TAN</span>
+                            <span class="stat-sep">:</span>
+                            <span class="stat-value">VPNS35691F</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">GSTIN</span>
+                            <span class="stat-sep">:</span>
+                            <span class="stat-value">37AFZFS2777J1ZV</span>
+                        </div>
+                    </div>
+                    <div style="font-size: 9.5pt; color: var(--dark-gray);">
+                        <div style="display: flex; align-items: flex-start; gap: 6px; margin-bottom: 3px;">
+                            <div
+                                style="flex-shrink: 0; width: 13px; height: 13px; margin-top: 2px; display: flex; align-items: center; justify-content: center;">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                                    style="width: 12px; height: 12px; fill: var(--gold);">
+                                    <path
+                                        d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div>+91 93483 43310</div>
+                                <div>+91 79895 36155</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: flex-start; gap: 6px; margin-top: 4px;">
+                            <div
+                                style="flex-shrink: 0; width: 13px; height: 13px; margin-top: 2px; display: flex; align-items: center; justify-content: center;">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                                    style="width: 12px; height: 12px; fill: var(--gold);">
+                                    <path
+                                        d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                                </svg>
+                            </div>
+                            <span>skillifestyle.vizag@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="header-line-wrapper">
+            <div class="header-line"></div>
+            <div class="diamond-sep"></div>
+        </div>
+
+        <!-- DATE -->
+        <div class="ref-date-row" style="justify-content: flex-end;">
+            <div class="date-field-inline">
+                <span>Date: <span class="date-line">10/09/2026</span></span>
+            </div>
+        </div>
+
+        <!-- BODY CONTENT -->
+        <div class="content" style="padding: 14px var(--margin-x) 10px;">
+            <!-- Watermark -->
+            <div class="watermark">
+                <img src="SKIL Lifestyle/SKIL Lifestyle Black Transparent BG Logo.png" alt="">
+            </div>
+
+            <!-- Addressee -->
+            <div class="addressee">
+                Ajanta shoes (India) Private Limited.<br>
+                79/2 AJC Bose Road,<br>
+                Kolkata-700014
+            </div>
+
+            <!-- Subject -->
+            <div class="subject-line" style="margin-bottom: 4px;">
+                <strong>Sub : Declaration letter for Ship to Party.</strong>
+            </div>
+            <p style="margin-bottom: 16px;">Dear Sir,</p>
+
+            <!-- Declaration Body -->
+            <p style="text-indent: 2em;">
+                I here by declaring you, The Party <strong>&ldquo;JYOTHI FOOT WEAR&rdquo;</strong>
+                (12/5/88, BARUVARI STREET, BESIDE RAJA THEATRE, ANAKAPALLI,
+                Visakhapatnam, Andhra Pradesh, 531001) bearing <strong>GSTIN NO&ndash;37AUQPP0952Q1ZO</strong>,
+                Proprietor: <strong>SATYANARAYANA PACHIGOLLA</strong>,
+                Contact No: <strong>99666 53233</strong>,
+                is my Sub-Dealer.
+            </p>
+
+            <p style="text-indent: 2em;">
+                Kindly allow to make <strong>BILL TO SHIP TO INVOICE</strong> and dispatch directly to the
+                party on my behalf and I shall the responsibility against the dealer.
+            </p>
+
+            <!-- Closing -->
+            <div class="closing-block">
+                <p style="margin-bottom: 4px;">Thanking You.</p>
+                <p style="margin-bottom: 4px;">Yours Faithfully,</p>
+                <p style="margin-bottom: 4px;"><strong>For SKIL LIFESTYLE LLP</strong></p>
+
+                <div class="signature-area"></div>
+
+                <div class="signatory-info">
+                    <p>(Authorised Signatory)</p>
+                    <p style="margin-top: 6px;"><strong>SKIL LIFESTYLE LLP</strong></p>
+                    <p><strong>VISAKHAPATNAM</strong></p>
+                    <p><strong>ANDHRA PRADESH</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <div class="footer-line"></div>
+            <div class="footer-content" style="padding-top: 10px; padding-bottom: 12px;">
+                <!-- Registered Office -->
+                <div class="footer-col" style="flex: 1;">
+                    <div style="display: flex; align-items: flex-start; gap: 6px;">
+                        <div class="footer-address-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="footer-col-title">REGISTERED OFFICE</div>
+                            <div>7-14(1)-9, AST 1085003765,</div>
+                            <div>2nd Floor, New Colony, Srikakulam II Town,</div>
+                            <div>Srikakulam, Srikakulam &ndash; 532001,</div>
+                            <div>Andhra Pradesh, India</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-divider" style="margin: 0 20px;"></div>
+
+                <!-- Principal Place of Business -->
+                <div class="footer-col" style="flex: 1;">
+                    <div style="display: flex; align-items: flex-start; gap: 6px;">
+                        <div class="footer-address-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="footer-col-title">PRINCIPAL PLACE OF BUSINESS</div>
+                            <div>Shop No.7A, D.No. 28-10-4, Third Floor,</div>
+                            <div>Vasavi Plaza, Theatre Road, Revenue Ward No.27,</div>
+                            <div>Jagadamba Jn, Visakhapatnam &ndash; 530020,</div>
+                            <div>Andhra Pradesh</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tagline -->
+            <div class="tagline-bar">
+                <span class="tagline-accent"></span>
+                <span class="tagline-text">Step into Excellence</span>
+                <span class="tagline-accent"></span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sahil's Biz — SKIL Lifestyle LLP Intelligence Platform</title>
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css?v=2.1.0">
+</head>
+<body>
+
+  <!-- Mobile Backdrop Overlay -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-wrapper">
+    <!-- LEFT SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <div>
+        <div class="sidebar-brand-wrap" style="display: flex; align-items: center; justify-content: space-between; padding-right: 6px;">
+          <div class="sidebar-brand" id="brandToggleBtn">
+            <div style="background: #FFFFFF; border-radius: 12px; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; padding: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); flex-shrink: 0;">
+              <img src="assets/skil-logo.png" alt="SKIL Logo" style="width: 34px; height: 34px; object-fit: contain;">
+            </div>
+            <div>
+              <div class="brand-title">Sahil's Biz</div>
+              <div style="font-size: 11px; font-weight: 700; color: #A3E635; letter-spacing: 0.05em; margin-top: 2px;">SKIL LIFESTYLE LLP</div>
+            </div>
+          </div>
+          <button class="sidebar-close-btn" id="btnSidebarClose" aria-label="Close Navigation Menu">
+            <i data-lucide="x" style="width: 20px; height: 20px;"></i>
+          </button>
+        </div>
+
+        <ul class="sidebar-menu">
+          <li class="nav-item active" data-tab="dashboard">
+            <a class="nav-link">
+              <i data-lucide="layout-grid"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="sales-metrics">
+            <a class="nav-link">
+              <i data-lucide="pie-chart"></i>
+              <span>Sales Metrics</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="parties">
+            <a class="nav-link">
+              <i data-lucide="users"></i>
+              <span>Parties & Aging</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="inventory">
+            <a class="nav-link">
+              <i data-lucide="box"></i>
+              <span>Inventory</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="bills-vouchers">
+            <a class="nav-link">
+              <i data-lucide="receipt"></i>
+              <span>Bills & Vouchers</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="schemes">
+            <a class="nav-link">
+              <i data-lucide="award"></i>
+              <span>Credit Notes & Schemes</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="overdues">
+            <a class="nav-link">
+              <i data-lucide="clock-3"></i>
+              <span>Payment Aging & Overdue</span>
+              <span class="nav-badge-dot"></span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="audit-reconcile">
+            <a class="nav-link">
+              <i data-lucide="shield-check"></i>
+              <span>Audit & Reconcile</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="tally-guide">
+            <a class="nav-link">
+              <i data-lucide="file-check-2"></i>
+              <span>Tally Posting Guide</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="lineman">
+            <a class="nav-link">
+              <i data-lucide="map-pin"></i>
+              <span>Lineman Route View</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="ledger-book">
+            <a class="nav-link">
+              <i data-lucide="book-open"></i>
+              <span>Ledger Book</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Bottom Profile Card -->
+      <div class="sidebar-profile">
+        <div class="profile-avatar">SK</div>
+        <div class="profile-info">
+          <div class="profile-name">Sahil Kumar</div>
+          <div class="profile-role">Managing Partner • SKIL</div>
+        </div>
+        <div class="profile-action" id="btnRefreshApp" title="Reload Dashboard">
+          <i data-lucide="rotate-cw" style="width: 16px; height: 16px;"></i>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN APP CANVAS -->
+    <main class="app-main">
+      <!-- TOP BAR -->
+      <header class="top-bar">
+        <div class="top-bar-left">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <button class="mobile-burger-btn" id="btnMobileMenuToggle" aria-label="Open Navigation Menu">
+              <i data-lucide="menu" style="width: 22px; height: 22px;"></i>
+            </button>
+            <div>
+              <h1 class="page-title" id="activePageTitle">Dashboard</h1>
+              <div class="page-date">
+                <span id="currentDateDisplay">15 October 2026</span> • <span style="color: #4D7C0F; font-weight: 700;">SKIL LIFESTYLE LLP</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="top-bar-center">
+          <div class="search-pill-box">
+            <i data-lucide="search"></i>
+            <input type="text" id="globalSearchInput" placeholder="Search Ledger, Party, Lineman, Bill #...">
+          </div>
+        </div>
+
+        <div class="top-bar-right">
+          <div class="company-pill" id="companyPillBtn">
+            <div class="company-avatar" style="background: #FFFFFF; overflow: hidden; padding: 2px; border: 1px solid #E2E8F0;">
+              <img src="assets/skil-logo.png" alt="SKIL" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+            <div class="company-info">
+              <div class="company-name" id="activeCompanyLabel">SKIL LIFESTYLE LLP</div>
+              <div class="sync-time-text" id="lastSyncedText">Synced: 15-Oct 19:29</div>
+            </div>
+            <i data-lucide="check-circle-2" style="width: 14px; height: 14px; color: #16A34A;"></i>
+          </div>
+
+          <button class="sync-now-btn" id="syncNowBtn">
+            <i data-lucide="refresh-cw" style="width: 15px; height: 15px;"></i>
+            <span>Sync Now</span>
+          </button>
+
+          <a href="/api/data/export" download class="btn-icon-action" title="Export Full Tally JSON" style="text-decoration: none;">
+            <i data-lucide="download"></i>
+          </a>
+        </div>
+      </header>
+
+      <!-- ============================================== -->
+      <!-- VIEW 1: DASHBOARD -->
+      <!-- ============================================== -->
+      <section class="view-panel active-view" id="view-dashboard">
+        <div class="section-header-row">
+          <div>
+            <h2 class="section-title">Financial Overview</h2>
+            <div class="section-subtitle" id="dashboardSnapshotSubtitle">Real Tally Intelligence for All Months</div>
+          </div>
+
+          <select class="filter-pill-dropdown" id="monthFilterSelect">
+            <option value="all">All Months</option>
+            <option value="2026-10">October 26</option>
+            <option value="2026-09">September 26</option>
+            <option value="2026-08">August 26</option>
+          </select>
+        </div>
+
+        <!-- 4 KPI Stat Cards (Real Tally Numbers) -->
+        <div class="kpi-grid-4">
+          <!-- Total Sales -->
+          <div class="stat-card stat-lime">
+            <div class="stat-card-top">
+              <div class="stat-icon-square">
+                <i data-lucide="arrow-up-right"></i>
+              </div>
+              <span class="stat-badge-pill">Selected Month</span>
+            </div>
+            <div>
+              <div class="stat-label">Total Sales (B2B Retail)</div>
+              <div class="stat-value" id="kpiTotalSales">₹31,23,318</div>
+            </div>
+          </div>
+
+          <!-- Total Purchase -->
+          <div class="stat-card stat-purple">
+            <div class="stat-card-top">
+              <div class="stat-icon-square">
+                <i data-lucide="activity"></i>
+              </div>
+              <span class="stat-badge-pill">Selected Month</span>
+            </div>
+            <div>
+              <div class="stat-label">Total Purchase (COGS)</div>
+              <div class="stat-value" id="kpiTotalPurchase">₹31,13,458</div>
+            </div>
+          </div>
+
+          <!-- Gross Profit / Trading Margin + Schemes -->
+          <div class="stat-card stat-blue">
+            <div class="stat-card-top">
+              <div class="stat-icon-square">
+                <i data-lucide="wallet"></i>
+              </div>
+              <span class="stat-badge-pill">Selected Month</span>
+            </div>
+            <div>
+              <div class="stat-label">Gross Margin + Claims</div>
+              <div class="stat-value" id="kpiGrossProfit">₹2,08,752</div>
+            </div>
+          </div>
+
+          <!-- Net Realized Profit -->
+          <div class="stat-card stat-red">
+            <div class="stat-card-top">
+              <div class="stat-icon-square">
+                <i data-lucide="credit-card"></i>
+              </div>
+              <span class="stat-badge-pill">Selected Month</span>
+            </div>
+            <div>
+              <div class="stat-label">Net Realized Profit</div>
+              <div class="stat-value" id="kpiNetProfit">₹77,986</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Middle Split: Spline Line Chart + Dark Liability Ratio Card -->
+        <div class="dashboard-middle-split">
+          <!-- Left: Income vs Expense -->
+          <div class="card-white">
+            <div class="chart-card-header">
+              <div>
+                <h3 class="section-title">Income vs Expense</h3>
+                <div class="section-subtitle">Real monthly turnover & procurement trajectory (Tally Verified)</div>
+              </div>
+              <div class="chart-legend-pills">
+                <div class="legend-pill sales-legend">
+                  <span class="legend-dot"></span>
+                  <span>Sales</span>
+                </div>
+                <div class="legend-pill purchase-legend">
+                  <span class="legend-dot"></span>
+                  <span>Purchase</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="chart-container-box">
+              <canvas id="incomeExpenseChart"></canvas>
+            </div>
+          </div>
+
+          <!-- Right: Dark Liability Ratio Card -->
+          <div class="dark-liability-card">
+            <div>
+              <div class="dark-card-title">Liability Ratio</div>
+              <div class="dark-card-subtitle">Receivables (Debtors) vs Payables (Creditors)</div>
+            </div>
+
+            <div class="donut-gauge-wrap">
+              <canvas id="liabilityDonutChart"></canvas>
+            </div>
+
+            <div class="dark-legend-row">
+              <div class="dark-legend-item dark-legend-creditors">
+                <span class="legend-dot"></span>
+                <span>Creditors (Payables)</span>
+              </div>
+              <div class="dark-legend-item dark-legend-debtors">
+                <span class="legend-dot"></span>
+                <span>Debtors (Receivables)</span>
+              </div>
+            </div>
+
+            <div class="dark-split-pills">
+              <div class="dark-pill-box">
+                <span class="dark-pill-label">RECEIVABLES (12 DEBTORS)</span>
+                <span class="dark-pill-val-lime" id="receivablesValue">₹17,62,534</span>
+              </div>
+              <div class="dark-pill-box">
+                <span class="dark-pill-label">PAYABLES (CREDITORS)</span>
+                <span class="dark-pill-val-lavender" id="payablesValue">₹9,23,458</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW 2: SALES METRICS -->
+      <!-- ============================================== -->
+      <section class="view-panel" id="view-sales-metrics">
+        <div class="card-white">
+          <div class="section-header-row">
+            <div>
+              <h2 class="section-title">Monthly Volume Analysis</h2>
+              <div class="section-subtitle">Turnover and net operating margin velocity across active months</div>
+            </div>
+            <div class="chart-legend-pills">
+              <div class="legend-pill purchase-legend">
+                <span class="legend-dot"></span>
+                <span>Purchase</span>
+              </div>
+              <div class="legend-pill sales-legend">
+                <span class="legend-dot"></span>
+                <span>Sales</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="chart-container-box" style="height: 320px;">
+            <canvas id="monthlyVolumeBarChart"></canvas>
+          </div>
+        </div>
+
+        <div class="card-white">
+          <div class="table-responsive">
+            <table class="biz-table" id="salesMetricsTable">
+              <thead>
+                <tr>
+                  <th>MONTH</th>
+                  <th>TOTAL SALES</th>
+                  <th>TOTAL PURCHASE</th>
+                  <th>NET PROFIT/LOSS</th>
+                </tr>
+              </thead>
+              <tbody id="salesMetricsTbody">
+                <!-- Dynamically populated from Tally vouchers -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW 3: PARTIES & AGING -->
+      <!-- ============================================== -->
+      <section class="view-panel" id="view-parties">
+        <div class="parties-kpi-grid">
+          <div class="card-white">
+            <div class="stat-label">Total Outstanding Balance</div>
+            <div class="stat-value" id="partiesTotalBalance">₹17,62,534</div>
+          </div>
+
+          <div class="card-white">
+            <div class="stat-label">Total Active Parties</div>
+            <div class="stat-value" id="partiesTotalCount">12</div>
+          </div>
+
+          <div class="card-white parties-risk-card">
+            <div class="pulse-icon-watermark">
+              <i data-lucide="activity"></i>
+            </div>
+            <div class="stat-label">High Risk (>90 Days)</div>
+            <div class="risk-val-row">
+              <span class="risk-val-red" id="partiesHighRiskCount">0</span>
+              <span class="risk-val-suffix">parties</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-white">
+          <div class="section-header-row">
+            <div style="display: flex; align-items: center; gap: 14px;">
+              <h2 class="section-title" id="partyListHeading">Debtors List</h2>
+              <div class="segmented-pills">
+                <button class="segment-btn active" id="btnPartyDebtors">Debtors (Receivables)</button>
+                <button class="segment-btn" id="btnPartyCreditors">Creditors (Payables)</button>
+              </div>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <input type="text" class="filter-pill-dropdown" id="partySearchInput" placeholder="Filter party name..." style="width: 200px;">
+              <span class="badge-pill badge-neutral">Sorted by Balance</span>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="biz-table">
+              <thead>
+                <tr>
+                  <th>PARTY NAME</th>
+                  <th>BALANCE</th>
+                  <th>&lt; 30 DAYS</th>
+                  <th>30-90 DAYS</th>
+                  <th>&gt; 90 DAYS</th>
+                </tr>
+              </thead>
+              <tbody id="partiesTbody">
+                <!-- Dynamically populated from live aging report -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW 4: INVENTORY -->
+      <!-- ============================================== -->
+      <section class="view-panel" id="view-inventory">
+        <div class="inventory-kpi-grid">
+          <div class="stat-card stat-lime">
+            <div class="stat-card-top">
+              <div class="stat-icon-square">
+                <i data-lucide="box"></i>
+              </div>
+              <span class="stat-badge-pill" style="background: #F1F5F9; color: #475569;">Tracked Items</span>
+            </div>
+            <div>
+              <div class="stat-label">Total Stock Items in Tally</div>
+              <div class="stat-value" id="invTotalValuation">362 Items</div>
+            </div>
+          </div>
+
+          <div class="stat-card stat-red">
+            <div class="stat-card-top">
+              <div class="stat-icon-square">
+                <i data-lucide="activity"></i>
+              </div>
+              <span class="stat-badge-pill">Model</span>
+            </div>
+            <div>
+              <div class="stat-label">Business Model</div>
+              <div class="stat-value" style="font-size: 20px; color: #0284C7;">Zero-Inventory Drop-Ship</div>
+            </div>
+          </div>
+
+          <div class="dark-revenue-card">
+            <div class="dark-revenue-label">Top Revenue Generator in Tally</div>
+            <div class="dark-revenue-title" id="invTopRevenueItemName">AJ CUSHION 024 06/09 MRP146/-</div>
+            <div class="dark-revenue-val" id="invTopRevenueAmount">₹1,62,689</div>
+          </div>
+        </div>
+
+        <div class="inventory-middle-grid">
+          <div class="card-white">
+            <div class="section-header-row">
+              <div>
+                <h3 class="section-title">Stock Movement</h3>
+                <div class="section-subtitle">Velocity ratio of tracked footwear items</div>
+              </div>
+            </div>
+            <div class="donut-gauge-wrap" style="height: 190px;">
+              <canvas id="stockMovementDonutChart"></canvas>
+            </div>
+            <div class="dark-legend-row" style="color: #64748B;">
+              <div class="dark-legend-item"><span class="legend-dot" style="background: #A3E635;"></span><span>Active / Moving</span></div>
+              <div class="dark-legend-item"><span class="legend-dot" style="background: #FB7185;"></span><span>Non-Moving</span></div>
+              <div class="dark-legend-item"><span class="legend-dot" style="background: #A78BFA;"></span><span>Slow</span></div>
+            </div>
+          </div>
+
+          <div class="card-white">
+            <h3 class="section-title">Quick Stats</h3>
+            <div class="quick-stats-list">
+              <div class="quick-stat-pill-row">
+                <div class="quick-stat-left">
+                  <span class="legend-dot" style="background: #A3E635;"></span>
+                  <span>Active Moving Items</span>
+                </div>
+                <span class="quick-stat-val" id="statFastCount">362</span>
+              </div>
+              <div class="quick-stat-pill-row">
+                <div class="quick-stat-left">
+                  <span class="legend-dot" style="background: #A78BFA;"></span>
+                  <span>Slow Items</span>
+                </div>
+                <span class="quick-stat-val" id="statSlowCount">0</span>
+              </div>
+              <div class="quick-stat-pill-row">
+                <div class="quick-stat-left">
+                  <span class="legend-dot" style="background: #FB7185;"></span>
+                  <span>Non-Moving Items</span>
+                </div>
+                <span class="quick-stat-val" id="statNonMovingCount">0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-white">
+          <div class="section-header-row">
+            <h2 class="section-title">Detailed Stock Report</h2>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <input type="text" class="filter-pill-dropdown" id="stockSearchInput" placeholder="Search Item..." style="width: 220px;">
+              <div class="segmented-pills">
+                <button class="segment-btn active" data-filter="All">All</button>
+                <button class="segment-btn" data-filter="Fast">Active</button>
+                <button class="segment-btn" data-filter="Slow">Slow</button>
+                <button class="segment-btn" data-filter="Non-Moving">Non-Moving</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="biz-table">
+              <thead>
+                <tr>
+                  <th>ITEM NAME</th>
+                  <th>IN (PAIRS)</th>
+                  <th>OUT (PAIRS)</th>
+                  <th>CLOSING</th>
+                  <th>VALUATION</th>
+                  <th>STATUS</th>
+                </tr>
+              </thead>
+              <tbody id="inventoryTbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW 5: BILLS & VOUCHERS (STINTS + 27-COL MATRIX + RAW) -->
+      <!-- ============================================== -->
+      <section class="view-panel" id="view-bills-vouchers">
+        <div class="card-white">
+          <div class="section-header-row">
+            <div>
+              <h2 class="section-title">Drop-Ship Procurement & Sales Vouchers</h2>
+              <div class="section-subtitle">Consignments, 1:1 drop-ship pairing, and complete audit matrix</div>
+            </div>
+
+            <!-- View Switcher -->
+            <div class="segmented-pills">
+              <button class="segment-btn active" id="btnViewStints">
+                <i data-lucide="layers" style="width: 13px; height: 13px; display: inline-block; vertical-align: middle;"></i>
+                <span>Stints (27 Batches)</span>
+              </button>
+              <button class="segment-btn" id="btnViewMasterGrid">
+                <i data-lucide="table" style="width: 13px; height: 13px; display: inline-block; vertical-align: middle;"></i>
+                <span>Master Spreadsheet (27 Cols)</span>
+              </button>
+              <button class="segment-btn" id="btnViewRawVouchers">
+                <i data-lucide="list" style="width: 13px; height: 13px; display: inline-block; vertical-align: middle;"></i>
+                <span>Raw Vouchers Catalog</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- SUB-VIEW 5A: STINTS VIEW -->
+          <div id="subview-stints">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; gap: 10px;">
+              <input type="text" class="filter-pill-dropdown" id="stintSearchInput" placeholder="Search customer, vch #, ref..." style="width: 250px;">
+              <select class="filter-pill-dropdown" id="stintMonthSelect">
+                <option value="all">All Stints (27)</option>
+                <option value="2026-10">October 26</option>
+                <option value="2026-09">September 26</option>
+                <option value="2026-08">August 26</option>
+              </select>
+            </div>
+
+            <div class="table-responsive">
+              <table class="biz-table" id="stintsTable">
+                <thead>
+                  <tr>
+                    <th>STINT #</th>
+                    <th>DATE</th>
+                    <th>CUSTOMER</th>
+                    <th>BILLS</th>
+                    <th>PURCHASE (REF)</th>
+                    <th>SALES (VCH)</th>
+                    <th>CTN / PAIRS</th>
+                    <th>PURCHASE ₹</th>
+                    <th>SALES ₹</th>
+                    <th>TRADE MARGIN</th>
+                    <th>STATUS</th>
+                    <th>INSPECT</th>
+                  </tr>
+                </thead>
+                <tbody id="stintsTbody">
+                  <!-- Dynamically populated -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- SUB-VIEW 5B: MASTER 27-COLUMN SPREADSHEET GRID -->
+          <div id="subview-master-grid" style="display: none;">
+            <div class="master-grid-box">
+              <table class="master-grid-table">
+                <thead>
+                  <tr>
+                    <th colspan="4" class="super-header-id">📦 Drop-Ship Consignment</th>
+                    <th colspan="4" class="super-header-purch">🔷 Purchase (Supplier)</th>
+                    <th colspan="4" class="super-header-sales">🔶 Sales (Retailer B2B)</th>
+                    <th colspan="4" class="super-header-supp-rebates">🟣 Supplier Rebates (Inbound)</th>
+                    <th colspan="4" class="super-header-cust-cd">🟠 Customer 5% CD (Outbound)</th>
+                    <th colspan="3" class="super-header-aging">🟡 Collection & Aging</th>
+                    <th colspan="2" class="super-header-profit">🟢 Net Profit</th>
+                    <th colspan="2" class="super-header-action">⚡ Actions</th>
+                  </tr>
+                  <tr>
+                    <th class="sticky-c1" style="width: 45px;">#</th>
+                    <th class="sticky-c2" style="width: 90px;">Date</th>
+                    <th class="sticky-c3" style="min-width: 180px;">Customer</th>
+                    <th>CTN / Prs</th>
+                    <th>Supplier Inv</th>
+                    <th>Supplier</th>
+                    <th style="text-align: right;">Buy ₹</th>
+                    <th>Narration</th>
+                    <th>Sales Vch</th>
+                    <th style="text-align: right;">Sell ₹</th>
+                    <th style="text-align: right;">Spread ₹</th>
+                    <th>Spread %</th>
+                    <th style="text-align: right;">3% CD ₹</th>
+                    <th style="text-align: right;">3.78% Scheme</th>
+                    <th style="text-align: right;">Total Claim</th>
+                    <th>Claim Status</th>
+                    <th style="text-align: right;">Taxable ₹</th>
+                    <th style="text-align: right;">5% CD ₹</th>
+                    <th style="text-align: right;">Net Due ₹</th>
+                    <th>CN Status</th>
+                    <th>Due Date</th>
+                    <th>Days</th>
+                    <th>Aging Status</th>
+                    <th style="text-align: right; color: #15803D;">Net Profit ₹</th>
+                    <th style="color: #15803D;">Margin %</th>
+                    <th>WhatsApp</th>
+                    <th>Copy</th>
+                  </tr>
+                </thead>
+                <tbody id="masterGridTbody">
+                  <!-- Dynamically populated from masterGrid.rows -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- SUB-VIEW 5C: RAW VOUCHERS CATALOG -->
+          <div id="subview-raw-vouchers" style="display: none;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
+              <div class="segmented-pills">
+                <button class="segment-btn active" data-vch-type="">All (161)</button>
+                <button class="segment-btn" data-vch-type="Sales">Sales (57)</button>
+                <button class="segment-btn" data-vch-type="Purchase">Purchase (57)</button>
+                <button class="segment-btn" data-vch-type="Payment">Payment (21)</button>
+                <button class="segment-btn" data-vch-type="Receipt">Receipt (13)</button>
+                <button class="segment-btn" data-vch-type="Debit Note">Debit Note (7)</button>
+                <button class="segment-btn" data-vch-type="Credit Note">Credit Note (6)</button>
+              </div>
+
+              <input type="text" class="filter-pill-dropdown" id="rawVchSearchInput" placeholder="Filter vouchers..." style="width: 220px;">
+            </div>
+
+            <div class="table-responsive">
+              <table class="biz-table">
+                <thead>
+                  <tr>
+                    <th>DATE</th>
+                    <th>TYPE</th>
+                    <th>VOUCHER #</th>
+                    <th>PARTY / LEDGER</th>
+                    <th>REFERENCE</th>
+                    <th style="text-align: right;">AMOUNT (₹)</th>
+                    <th>NARRATION</th>
+                  </tr>
+                </thead>
+                <tbody id="rawVouchersTbody">
+                  <!-- Dynamically populated -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW 6: CREDIT NOTES & SCHEMES -->
+      <!-- ============================================== -->
+      <section class="view-panel" id="view-schemes">
+        <div class="card-white" style="margin-bottom: 16px;">
+          <div class="section-header-row">
+            <div>
+              <h2 class="section-title">2-Way Credit Notes & Rebate Claims</h2>
+              <div class="section-subtitle">Inbound Ajanta Manufacturer Claims & Outbound Customer 5% Cash Discounts</div>
+            </div>
+          </div>
+
+          <div class="schemes-card-grid">
+            <div class="indicator-card">
+              <div>
+                <div class="indicator-header">
+                  <div class="indicator-title">Inbound Supplier Claims (Ajanta)</div>
+                  <span class="badge-pill badge-success">₹1,98,891 Realized</span>
+                </div>
+                <div class="indicator-clause">Settled via Debit Notes 1–7 in Tally</div>
+              </div>
+              <div style="font-size: 13px; color: #475569;">
+                <div>• August 2026: ₹1,11,949.07 (DN 1–4 Settled)</div>
+                <div>• September 2026: ₹86,942.20 (DN 5–7 Settled)</div>
+                <div>• 3% Cash Discount + 3.78% Retail Scheme + Scratch Coupon + Rate Diff</div>
+              </div>
+              <div class="progress-track"><div class="progress-fill" style="width: 100%;"></div></div>
+            </div>
+
+            <div class="indicator-card">
+              <div>
+                <div class="indicator-header">
+                  <div class="indicator-title">Outbound Customer 5% Cash Discounts</div>
+                  <span class="badge-pill badge-info">₹1,30,766 Issued</span>
+                </div>
+                <div class="indicator-clause">Issued via Credit Notes 1–6 to Customers</div>
+              </div>
+              <div style="font-size: 13px; color: #475569;">
+                <div>• August 2026: ₹59,876.00 (CN 1–4 Issued)</div>
+                <div>• September 2026: ₹70,890.00 (CN 5–6 Issued)</div>
+                <div>• Calculated on taxable value for prompt 30-day payment settlements</div>
+              </div>
+              <div class="progress-track"><div class="progress-fill" style="width: 100%; background: #38BDF8;"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contract Incentive Indicators -->
+        <div class="card-white">
+          <h2 class="section-title" style="margin-bottom: 14px;">Contract Incentives & Quarterly Bonus Milestones</h2>
+          <div class="schemes-card-grid" id="contractIndicatorsGrid">
+            <!-- Dynamically populated from /api/schemes/indicators -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW 7: PAYMENT AGING & OVERDUES -->
+      <!-- ============================================== -->
+      <section class="view-panel" id="view-overdues">
+        <div class="card-white">
+          <div class="section-header-row">
+            <div>
+              <h2 class="section-title">Customer Payment Aging & 30-Day Settlement Cycle</h2>
+              <div class="section-subtitle">Real-time status of all retail customer accounts vs 30-day prompt discount term</div>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="biz-table">
+              <thead>
+                <tr>
+                  <th>CUSTOMER</th>
+                  <th>SALES BILL</th>
+                  <th>BILL DATE</th>
+                  <th>30-DAY DUE DATE</th>
+                  <th>DAYS ELAPSED</th>
+                  <th>BILL AMOUNT (₹)</th>
+                  <th>5% CD ELIGIBLE</th>
+                  <th>STATUS</th>
+                </tr>
+              </thead>
+              <tbody id="paymentAgingTbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW 8: AUDIT & RECONCILE -->
+      <!-- ============================================== -->
+      <section class="view-panel" id="view-audit-reconcile">
+        <div class="card-white" style="margin-bottom: 16px;">
+          <div class="section-header-row">
+            <div>
+              <h2 class="section-title">Accounting Reconciliation & Discrepancy Auditor</h2>
+              <div class="section-subtitle">Physical PDF vs Tally Vouchers cross-verification engine</div>
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <a href="/api/reconcile/discount-excel" download class="sync-now-btn" style="text-decoration: none;">
+                <i data-lucide="file-spreadsheet" style="width: 14px; height: 14px;"></i>
+                <span>Download Audit Excel</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="schemes-card-grid">
+            <div class="indicator-card">
+              <div class="indicator-header">
+                <div class="indicator-title">Missing in Tally</div>
+                <span class="badge-pill badge-success" id="auditMissingTallyCount">0 Missing</span>
+              </div>
+              <p style="font-size: 13px; color: #64748B;">All 57 supplier invoices are 100% entered in Tally.</p>
+            </div>
+
+            <div class="indicator-card">
+              <div class="indicator-header">
+                <div class="indicator-title">Bank Reconciliation Variance</div>
+                <span class="badge-pill badge-success">₹0.00 Variance</span>
+              </div>
+              <p style="font-size: 13px; color: #64748B;">Union Bank Current A/c is ₹27,575.20 Dr, matching bank statement to exact paisa.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Folder Timestamps Manager -->
+        <div class="card-white">
+          <div class="section-header-row">
+            <div>
+              <h2 class="section-title">Folder Timestamps Manager</h2>
+              <div class="section-subtitle">Live last-updated timestamps for organized accounting directories</div>
+            </div>
+            <button class="sync-now-btn" id="btnRefreshFolders">
+              <i data-lucide="refresh-cw" style="width: 14px; height: 14px;"></i>
+              <span>Refresh Timestamps</span>
+            </button>
+          </div>
+
+          <div class="folder-list-grid" id="folderTimestampsList">
+            <!-- Dynamically populated from /api/folders/status -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW 9: TALLY POSTING GUIDE -->
+      <!-- ============================================== -->
+      <section class="view-panel" id="view-tally-guide">
+        <div class="card-white">
+          <div class="section-header-row">
+            <div>
+              <h2 class="section-title">Tally Prime Voucher Posting Assistant</h2>
+              <div class="section-subtitle">Step-by-step voucher guide with shortcuts, accounts, and 1-click copy narrations</div>
+            </div>
+          </div>
+
+          <div class="guide-card-list" id="tallyGuideList">
+            <!-- Dynamically populated from /api/tally-guide/entries -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW 10: LINEMAN ROUTE VIEW -->
+      <!-- ============================================== -->
+      <section class="view-panel" id="view-lineman">
+        <div class="card-white">
+          <div class="section-header-row">
+            <div>
+              <h2 class="section-title">Lineman Delivery & Route View</h2>
+              <div class="section-subtitle">Dispatches and pending collections organized by destination route</div>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="biz-table">
+              <thead>
+                <tr>
+                  <th>ROUTE / AREA</th>
+                  <th>CONSIGNEE PARTY</th>
+                  <th>DISPATCH DATE</th>
+                  <th>CARTONS</th>
+                  <th>COLLECTION ₹</th>
+                  <th>STATUS</th>
+                </tr>
+              </thead>
+              <tbody id="linemanTbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW 11: LEDGER BOOK -->
+      <!-- ============================================== -->
+      <section class="view-panel" id="view-ledger-book">
+        <div class="card-white">
+          <div class="section-header-row">
+            <div>
+              <h2 class="section-title">Ledger Statement Explorer</h2>
+              <div class="section-subtitle">Chronological accounting statement and running balance for any Tally ledger</div>
+            </div>
+            <select class="ledger-dropdown" id="ledgerBookSelect">
+              <option value="">Select Ledger...</option>
+            </select>
+          </div>
+
+          <div class="modal-stint-summary-cards" style="margin-bottom: 20px;">
+            <div class="modal-mini-card">
+              <div class="modal-mini-label">Total Debits</div>
+              <div class="modal-mini-val" id="ledgerTotalDebits">₹0.00</div>
+            </div>
+            <div class="modal-mini-card">
+              <div class="modal-mini-label">Total Credits</div>
+              <div class="modal-mini-val" id="ledgerTotalCredits">₹0.00</div>
+            </div>
+            <div class="modal-mini-card">
+              <div class="modal-mini-label">Closing Balance</div>
+              <div class="modal-mini-val" id="ledgerClosingBalance">₹0.00</div>
+            </div>
+            <div class="modal-mini-card">
+              <div class="modal-mini-label">Total Vouchers</div>
+              <div class="modal-mini-val" id="ledgerVoucherCount">0</div>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="biz-table">
+              <thead>
+                <tr>
+                  <th>DATE</th>
+                  <th>VOUCHER TYPE</th>
+                  <th>VCH NO</th>
+                  <th>REFERENCE</th>
+                  <th>NARRATION</th>
+                  <th>DEBIT (₹)</th>
+                  <th>CREDIT (₹)</th>
+                  <th>BALANCE (₹)</th>
+                </tr>
+              </thead>
+              <tbody id="ledgerStatementTbody">
+                <tr><td colspan="8" style="text-align: center; color: #94A3B8; padding: 30px;">Please select a ledger above to view its statement.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- MOBILE BOTTOM NAVIGATION DOCK -->
+  <nav class="mobile-bottom-nav" id="mobileBottomNav">
+    <button class="mobile-nav-btn active" data-tab="dashboard">
+      <i data-lucide="layout-grid"></i>
+      <span>Dashboard</span>
+    </button>
+    <button class="mobile-nav-btn" data-tab="sales-metrics">
+      <i data-lucide="pie-chart"></i>
+      <span>Sales</span>
+    </button>
+    <button class="mobile-nav-btn" data-tab="bills-vouchers">
+      <i data-lucide="receipt"></i>
+      <span>Bills</span>
+    </button>
+    <button class="mobile-nav-btn" data-tab="parties">
+      <i data-lucide="users"></i>
+      <span>Parties</span>
+    </button>
+    <button class="mobile-nav-btn" id="btnBottomMore">
+      <i data-lucide="menu"></i>
+      <span>More</span>
+    </button>
+  </nav>
+
+  <!-- STINT INSPECTION MODAL (👁 EYE BUTTON) -->
+  <div class="modal-backdrop" id="stintModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <h3 id="modalCustomerTitle">Customer Consignment</h3>
+          <p id="modalStintSubtitle">Stint # — Date</p>
+        </div>
+        <button class="modal-close-btn" id="modalCloseBtn">
+          <i data-lucide="x" style="width: 18px; height: 18px;"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-stint-summary-cards">
+          <div class="modal-mini-card">
+            <div class="modal-mini-label">Total Bills</div>
+            <div class="modal-mini-val" id="modalTotalBills">2</div>
+          </div>
+          <div class="modal-mini-card">
+            <div class="modal-mini-label">Total Sales</div>
+            <div class="modal-mini-val" id="modalTotalSales">₹0.00</div>
+          </div>
+          <div class="modal-mini-card">
+            <div class="modal-mini-label">Trade Margin</div>
+            <div class="modal-mini-val" id="modalTotalMargin" style="color: #4D7C0F;">₹0.00</div>
+          </div>
+          <div class="modal-mini-card">
+            <div class="modal-mini-label">5% CD Status</div>
+            <div class="modal-mini-val" id="modalCdStatus" style="font-size: 13.5px;">₹0.00</div>
+          </div>
+        </div>
+
+        <h4 style="font-size: 15px; font-weight: 800; color: #0F172A; margin-top: 8px;">Individual Invoices in this Consignment</h4>
+        <div class="table-responsive">
+          <table class="biz-table">
+            <thead>
+              <tr>
+                <th>INVOICE REF</th>
+                <th>SALES VCH</th>
+                <th>SUPPLIER</th>
+                <th>CTN</th>
+                <th>PAIRS</th>
+                <th>PURCHASE ₹</th>
+                <th>SALES ₹</th>
+                <th>MARGIN</th>
+                <th>DUE DATE</th>
+                <th>PAYMENT</th>
+              </tr>
+            </thead>
+            <tbody id="modalBillsTbody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Application Logic -->
+  <script src="app.js?v=2.1.0"></script>
+</body>
+</html>

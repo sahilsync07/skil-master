@@ -1,0 +1,9 @@
+{
+  "appId": "com.skil.sahilsbiz",
+  "appName": "Sahil's Biz",
+  "webDir": "www",
+  "server": {
+    "cleartext": true,
+    "androidScheme": "https"
+  }
+}

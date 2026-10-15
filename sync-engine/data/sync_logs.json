@@ -1,0 +1,426 @@
+[
+  {
+    "id": "1792072790017",
+    "timestamp": "2026-10-15T13:59:50.017Z",
+    "type": "incremental",
+    "status": "success",
+    "durationMs": 542,
+    "company": "SKIL LIFESTYLE LLP",
+    "fetched": {
+      "ledgers": 0,
+      "stockItems": 0,
+      "vouchers": 0
+    },
+    "cursors": {
+      "masterAlterId": 802,
+      "stockAlterId": 795,
+      "voucherAlterId": 270
+    }
+  },
+  {
+    "id": "1792071348551",
+    "timestamp": "2026-10-15T13:35:48.551Z",
+    "type": "incremental",
+    "status": "success",
+    "durationMs": 640,
+    "company": "SKIL LIFESTYLE LLP",
+    "fetched": {
+      "ledgers": 2,
+      "stockItems": 0,
+      "vouchers": 6
+    },
+    "cursors": {
+      "masterAlterId": 802,
+      "stockAlterId": 795,
+      "voucherAlterId": 270
+    }
+  },
+  {
+    "id": "1792067495548",
+    "timestamp": "2026-10-15T12:31:35.548Z",
+    "type": "incremental",
+    "status": "success",
+    "durationMs": 1112,
+    "company": "SKIL LIFESTYLE LLP",
+    "fetched": {
+      "ledgers": 4,
+      "stockItems": 30,
+      "vouchers": 17
+    },
+    "cursors": {
+      "masterAlterId": 799,
+      "stockAlterId": 795,
+      "voucherAlterId": 263
+    }
+  },
+  {
+    "id": "1790874195337",
+    "timestamp": "2026-10-01T17:03:15.337Z",
+    "type": "full",
+    "status": "success",
+    "durationMs": 8213,
+    "company": "SKIL LIFESTYLE LLP",
+    "fetched": {
+      "ledgers": 33,
+      "stockItems": 332,
+      "vouchers": 142
+    },
+    "cursors": {
+      "masterAlterId": 755,
+      "stockAlterId": 752,
+      "voucherAlterId": 242
+    }
+  },
+  {
+    "id": "1790869194736",
+    "timestamp": "2026-10-01T15:39:54.736Z",
+    "type": "full",
+    "status": "success",
+    "durationMs": 3657,
+    "company": "SKIL LIFESTYLE LLP",
+    "fetched": {
+      "ledgers": 31,
+      "stockItems": 332,
+      "vouchers": 127
+    },
+    "cursors": {
+      "masterAlterId": 753,
+      "stockAlterId": 752,
+      "voucherAlterId": 227
+    }
+  },
+  {
+    "id": "1790865053422",
+    "timestamp": "2026-10-01T14:30:53.422Z",
+    "type": "full",
+    "status": "success",
+    "durationMs": 5951,
+    "company": "SKIL LIFESTYLE LLP",
+    "fetched": {
+      "ledgers": 31,
+      "stockItems": 332,
+      "vouchers": 126
+    },
+    "cursors": {
+      "masterAlterId": 753,
+      "stockAlterId": 752,
+      "voucherAlterId": 221
+    }
+  },
+  {
+    "id": "1790860337283",
+    "timestamp": "2026-10-01T13:12:17.283Z",
+    "type": "incremental",
+    "status": "success",
+    "durationMs": 775,
+    "company": "SKIL LIFESTYLE LLP",
+    "fetched": {
+      "ledgers": 0,
+      "stockItems": 27,
+      "vouchers": 7
+    },
+    "cursors": {
+      "masterAlterId": 714,
+      "stockAlterId": 750,
+      "voucherAlterId": 190
+    }
+  },
+  {
+    "id": "1790856820254",
+    "timestamp": "2026-10-01T12:13:40.254Z",
+    "type": "incremental",
+    "status": "success",
+    "durationMs": 718,
+    "company": "SKIL LIFESTYLE LLP",
+    "fetched": {
+      "ledgers": 0,
+      "stockItems": 8,
+      "vouchers": 6
+    },
+    "cursors": {
+      "masterAlterId": 714,
+      "stockAlterId": 722,
+      "voucherAlterId": 183
+    }
+  },
+  {
+    "id": "1790836802453",
+    "timestamp": "2026-10-01T06:40:02.453Z",
+    "type": "incremental",
+    "status": "success",
+    "durationMs": 696,
+    "company": "SKIL LIFESTYLE LLP",
+    "fetched": {
+      "ledgers": 2,
+      "stockItems": 19,
+      "vouchers": 9
+    },
+    "cursors": {
+      "masterAlterId": 714,
+      "stockAlterId": 708,
+      "voucherAlterId": 175
+    }
+  },
+  {
+    "id": "1790150452623",
+    "timestamp": "2026-09-23T08:00:52.623Z",
+    "type": "incremental",
+    "status": "success",
+    "durationMs": 703,
+    "company": "SKIL LIFESTYLE LLP",
+    "fetched": {
+      "ledgers": 1,
+      "stockItems": 4,
+      "vouchers": 7
+    },
+    "cursors": {
+      "masterAlterId": 679,
+      "stockAlterId": 685,
+      "voucherAlterId": 159
+    }
+  },
+  {
+    "id": "1789831275392",
+    "timestamp": "2026-09-19T15:21:15.392Z",
+    "type": "full",
+    "status": "success",
+    "durationMs": 2982,
+    "company": "SKIL LIFESTYLE LLP",
+    "fetched": {
+      "ledgers": 27,
+      "stockItems": 273,
+      "vouchers": 88
+    },
+    "cursors": {
+      "masterAlterId": 678,
+      "stockAlterId": 677,
+      "voucherAlterId": 149
+    }
+  },
+  {
+    "id": "1789052893659",
+    "timestamp": "2026-09-10T15:08:13.659Z",
+    "type": "incremental",
+    "status": "success",
+    "durationMs": 523,
+    "company": "SKIL LIFESTYLE LLP",
+    "fetched": {
+      "ledgers": 0,
+      "stockItems": 0,
+      "vouchers": 0
+    },
+    "cursors": {
+      "masterAlterId": 589,
+      "stockAlterId": 588,
+      "voucherAlterId": 114
+    }
+  },
+  {
+    "id": "1789051686516",
+    "timestamp": "2026-09-10T14:48:06.516Z",
+    "type": "incremental",
+    "status": "success",
+    "durationMs": 520,
+    "company": "SKIL LIFESTYLE LLP",
+    "fetched": {
+      "ledgers": 0,
+      "stockItems": 0,
+      "vouchers": 0
+    },
+    "cursors": {
+      "masterAlterId": 589,
+      "stockAlterId": 588,
+      "voucherAlterId": 114
+    }
+  },
+  {
+    "id": "1789051550094",
+    "timestamp": "2026-09-10T14:45:50.094Z",
+    "type": "incremental",
+    "status": "success",
+    "durationMs": 568,
+    "company": "SKIL LIFESTYLE LLP",
+    "fetched": {
+      "ledgers": 0,
+      "stockItems": 0,
+      "vouchers": 0
+    },
+    "cursors": {
+      "masterAlterId": 589,
+      "stockAlterId": 588,
+      "voucherAlterId": 114
+    }
+  },
+  {
+    "id": "1789048786074",
+    "timestamp": "2026-09-10T13:59:46.074Z",
+    "type": "full",
+    "status": "success",
+    "durationMs": 3457,
+    "company": "SKIL LIFESTYLE LLP",
+    "fetched": {
+      "ledgers": 25,
+      "stockItems": 206,
+      "vouchers": 60
+    },
+    "cursors": {
+      "masterAlterId": 589,
+      "stockAlterId": 588,
+      "voucherAlterId": 114
+    }
+  },
+  {
+    "id": "1789048760860",
+    "timestamp": "2026-09-10T13:59:20.860Z",
+    "type": "full",
+    "status": "success",
+    "durationMs": 3477,
+    "company": "SKIL LIFESTYLE LLP",
+    "fetched": {
+      "ledgers": 25,
+      "stockItems": 206,
+      "vouchers": 60
+    },
+    "cursors": {
+      "masterAlterId": 589,
+      "stockAlterId": 588,
+      "voucherAlterId": 114
+    }
+  },
+  {
+    "id": "1789047466799",
+    "timestamp": "2026-09-10T13:37:46.799Z",
+    "type": "full",
+    "status": "success",
+    "durationMs": 2597,
+    "company": "SKIL LIFESTYLE LLP",
+    "fetched": {
+      "ledgers": 25,
+      "stockItems": 206,
+      "vouchers": 60
+    },
+    "cursors": {
+      "masterAlterId": 589,
+      "stockAlterId": 588,
+      "voucherAlterId": 114
+    }
+  },
+  {
+    "id": "1789047451066",
+    "timestamp": "2026-09-10T13:37:31.066Z",
+    "type": "full",
+    "status": "success",
+    "durationMs": 2372,
+    "company": "SKIL LIFESTYLE LLP",
+    "fetched": {
+      "ledgers": 25,
+      "stockItems": 206,
+      "vouchers": 60
+    },
+    "cursors": {
+      "masterAlterId": 589,
+      "stockAlterId": 588,
+      "voucherAlterId": 114
+    }
+  },
+  {
+    "id": "1789047360332",
+    "timestamp": "2026-09-10T13:36:00.332Z",
+    "type": "full",
+    "status": "success",
+    "durationMs": 2283,
+    "company": "SKIL LIFESTYLE LLP",
+    "fetched": {
+      "ledgers": 25,
+      "stockItems": 206,
+      "vouchers": 60
+    },
+    "cursors": {
+      "masterAlterId": 589,
+      "stockAlterId": 588,
+      "voucherAlterId": 114
+    }
+  },
+  {
+    "id": "1789046383090",
+    "timestamp": "2026-09-10T13:19:43.090Z",
+    "type": "incremental",
+    "status": "success",
+    "durationMs": 3037,
+    "company": "SKIL LIFESTYLE LLP",
+    "fetched": {
+      "ledgers": 25,
+      "stockItems": 206,
+      "vouchers": 60
+    },
+    "cursors": {
+      "masterAlterId": 0,
+      "stockAlterId": 0,
+      "voucherAlterId": 0
+    }
+  },
+  {
+    "id": "1789046267032",
+    "timestamp": "2026-09-10T13:17:47.032Z",
+    "type": "incremental",
+    "status": "error",
+    "durationMs": 755,
+    "error": "Connection to Tally at 127.0.0.1:9000 failed: connect ECONNREFUSED 127.0.0.1:9000"
+  },
+  {
+    "id": "1789046002807",
+    "timestamp": "2026-09-10T13:13:22.807Z",
+    "type": "incremental",
+    "status": "error",
+    "durationMs": 8461,
+    "error": "Tally request timed out after 8000ms"
+  },
+  {
+    "id": "1789045304537",
+    "timestamp": "2026-09-10T13:01:44.537Z",
+    "type": "full",
+    "status": "error",
+    "durationMs": 8012,
+    "error": "Tally request timed out after 8000ms"
+  },
+  {
+    "id": "1789045286763",
+    "timestamp": "2026-09-10T13:01:26.763Z",
+    "type": "full",
+    "status": "error",
+    "durationMs": 8014,
+    "error": "Tally request timed out after 8000ms"
+  },
+  {
+    "id": "1789045262820",
+    "timestamp": "2026-09-10T13:01:02.820Z",
+    "type": "full",
+    "status": "error",
+    "durationMs": 8017,
+    "error": "Tally request timed out after 8000ms"
+  },
+  {
+    "id": "1789045240161",
+    "timestamp": "2026-09-10T13:00:40.161Z",
+    "type": "full",
+    "status": "error",
+    "durationMs": 8478,
+    "error": "Tally request timed out after 8000ms"
+  },
+  {
+    "id": "1789045062467",
+    "timestamp": "2026-09-10T12:57:42.467Z",
+    "type": "full",
+    "status": "error",
+    "durationMs": 8476,
+    "error": "Tally request timed out after 8000ms"
+  },
+  {
+    "id": "1789045023976",
+    "timestamp": "2026-09-10T12:57:03.976Z",
+    "type": "full",
+    "status": "error",
+    "durationMs": 22,
+    "error": "Connection to Tally at 127.0.0.1:9000 failed: read ECONNRESET"
+  }
+]

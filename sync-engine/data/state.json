@@ -1,0 +1,18 @@
+{
+  "activeCompany": "SKIL LIFESTYLE LLP",
+  "companyInfo": {
+    "name": "SKIL LIFESTYLE LLP",
+    "startingFrom": "20260401",
+    "booksFrom": "20260401",
+    "companyNumber": "100000",
+    "gstin": "",
+    "stateName": "Andhra Pradesh"
+  },
+  "lastMasterAlterId": 802,
+  "lastStockAlterId": 795,
+  "lastVoucherAlterId": 270,
+  "lastSyncTimestamp": "2026-10-15T13:59:50.003Z",
+  "totalSyncRuns": 20,
+  "autoSyncEnabled": false,
+  "autoSyncIntervalSec": 30
+}

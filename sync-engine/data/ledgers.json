@@ -1,0 +1,1849 @@
+{
+  "Ajanta Shoes India Pvt. Ltd.": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000da",
+    "name": "Ajanta Shoes India Pvt. Ltd.",
+    "parent": "Sundry Creditors",
+    "openingBalance": 0,
+    "closingBalance": -3020.57,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 229,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000da",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Sundry Creditors",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "229",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "-3020.57",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "Ajanta Shoes India Pvt. Ltd.",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "Ajanta Shoes India Pvt. Ltd.",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "Cash": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-0000001f",
+    "name": "Cash",
+    "parent": "Cash-in-Hand",
+    "openingBalance": 0,
+    "closingBalance": 0,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 32,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-0000001f",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Cash-in-Hand",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "32",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "Cash",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "Cash",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "DELIGHT FOOT WEAR": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-0000013f",
+    "name": "DELIGHT FOOT WEAR",
+    "parent": "Sundry Debtors",
+    "openingBalance": 0,
+    "closingBalance": 0,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 369,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-0000013f",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Sundry Debtors",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "369",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "DELIGHT FOOT WEAR",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "DELIGHT FOOT WEAR",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "Eastern Power Electricity Charges": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000143",
+    "name": "Eastern Power Electricity Charges",
+    "parent": "Indirect Expenses",
+    "openingBalance": 0,
+    "closingBalance": -804.9,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 437,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000143",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Indirect Expenses",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "437",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "-804.90",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "Eastern Power Electricity Charges",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "Eastern Power Electricity Charges",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "GST Purchase": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000d5",
+    "name": "GST Purchase",
+    "parent": "Purchase Accounts",
+    "openingBalance": 0,
+    "closingBalance": -2606213.24,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 219,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000d5",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Purchase Accounts",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "219",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "-2606213.24",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "GST Purchase",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "GST Purchase",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "GST Sales": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000d6",
+    "name": "GST Sales",
+    "parent": "Sales Accounts",
+    "openingBalance": 0,
+    "closingBalance": 2615355.1,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 220,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000d6",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Sales Accounts",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "220",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "2615355.10",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "GST Sales",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "GST Sales",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "Input CGST": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000ce",
+    "name": "Input CGST",
+    "parent": "Current Assets",
+    "openingBalance": 0,
+    "closingBalance": -675,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 208,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000ce",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Current Assets",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "208",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "-675.00",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "Input CGST",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "Input CGST",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "Input IGST": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000d0",
+    "name": "Input IGST",
+    "parent": "Current Assets",
+    "openingBalance": 0,
+    "closingBalance": -124979.72,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 503,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000d0",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Current Assets",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "503",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "-124979.72",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": [
+            "Input IGST",
+            "IIGST"
+          ],
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "Input IGST",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "Input SGST": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000cf",
+    "name": "Input SGST",
+    "parent": "Current Assets",
+    "openingBalance": 0,
+    "closingBalance": -675,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 209,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000cf",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Current Assets",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "209",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "-675.00",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "Input SGST",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "Input SGST",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "K G N FOOTWARE": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000141",
+    "name": "K G N FOOTWARE",
+    "parent": "Sundry Debtors",
+    "openingBalance": 0,
+    "closingBalance": -150743,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 413,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000141",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Sundry Debtors",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "413",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "-150743.00",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "K G N FOOTWARE",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "K G N FOOTWARE",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "M/S.SHREE FOOTWEAR": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000153",
+    "name": "M/S.SHREE FOOTWEAR",
+    "parent": "Sundry Debtors",
+    "openingBalance": 0,
+    "closingBalance": -147238,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 457,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000153",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Sundry Debtors",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "457",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "-147238.00",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "M/S.SHREE FOOTWEAR",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "M/S.SHREE FOOTWEAR",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "M/s Sri Brundabana Enterprises, Rayagada": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000db",
+    "name": "M/s Sri Brundabana Enterprises, Rayagada",
+    "parent": "Sundry Debtors",
+    "openingBalance": 0,
+    "closingBalance": 765724,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 230,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000db",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Sundry Debtors",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "230",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "765724.00",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "M/s Sri Brundabana Enterprises, Rayagada",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "M/s Sri Brundabana Enterprises, Rayagada",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "M/S SUSHILA BOOT HOUSE": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000001be",
+    "name": "M/S SUSHILA BOOT HOUSE",
+    "parent": "Sundry Debtors",
+    "openingBalance": 0,
+    "closingBalance": -170306,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 589,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000001be",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Sundry Debtors",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "589",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "-170306.00",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "M/S SUSHILA BOOT HOUSE",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "M/S SUSHILA BOOT HOUSE",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "Office Rent A/c": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000dc",
+    "name": "Office Rent A/c",
+    "parent": "Indirect Expenses",
+    "openingBalance": 0,
+    "closingBalance": -15000,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 232,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000dc",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Indirect Expenses",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "232",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "-15000.00",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "Office Rent A/c",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "Office Rent A/c",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "Output CGST": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000d1",
+    "name": "Output CGST",
+    "parent": "Duties & Taxes",
+    "openingBalance": 0,
+    "closingBalance": 39167.06,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 513,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000d1",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Duties & Taxes",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "513",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "39167.06",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": [
+            "Output CGST",
+            "OCSGT"
+          ],
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "Output CGST",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "Output IGST": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000d3",
+    "name": "Output IGST",
+    "parent": "Duties & Taxes",
+    "openingBalance": 0,
+    "closingBalance": 51083.67,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 213,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000d3",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Duties & Taxes",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "213",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "51083.67",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "Output IGST",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "Output IGST",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "Output SGST": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000d2",
+    "name": "Output SGST",
+    "parent": "Duties & Taxes",
+    "openingBalance": 0,
+    "closingBalance": 39167.06,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 512,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000d2",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Duties & Taxes",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "512",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "39167.06",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": [
+            "Output SGST",
+            "OSGST"
+          ],
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "Output SGST",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "Profit & Loss A/c": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-0000001e",
+    "name": "Profit & Loss A/c",
+    "parent": "Primary",
+    "openingBalance": 0,
+    "closingBalance": 10046.6,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 31,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-0000001e",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": " Primary",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "31",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "10046.60",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "Profit & Loss A/c",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "Profit & Loss A/c",
+      "@_RESERVEDNAME": "Profit & Loss A/c"
+    }
+  },
+  "Round Off -(+/-)": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000d4",
+    "name": "Round Off -(+/-)",
+    "parent": "Indirect Expenses",
+    "openingBalance": 0,
+    "closingBalance": -2.59,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 214,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000d4",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Indirect Expenses",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "214",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "-2.59",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "Round Off -(+/-)",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "Round Off -(+/-)",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "Sadar Exp": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000001a6",
+    "name": "Sadar Exp",
+    "parent": "Indirect Expenses",
+    "openingBalance": 0,
+    "closingBalance": -30,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 564,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000001a6",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Indirect Expenses",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "564",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "-30.00",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "Sadar Exp",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "Sadar Exp",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "Sahil Kumar Capital A/c": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000d8",
+    "name": "Sahil Kumar Capital A/c",
+    "parent": "Capital Account",
+    "openingBalance": 0,
+    "closingBalance": 100000,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 227,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000d8",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Capital Account",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "227",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "100000.00",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "Sahil Kumar Capital A/c",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "Sahil Kumar Capital A/c",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "SALIM KHAN KGN, RAJAM": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000001a5",
+    "name": "SALIM KHAN KGN, RAJAM",
+    "parent": "Sundry Debtors",
+    "openingBalance": 0,
+    "closingBalance": 0,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 563,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000001a5",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Sundry Debtors",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "563",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "SALIM KHAN KGN, RAJAM",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "SALIM KHAN KGN, RAJAM",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "Sisinti Lokanatha Patro Capital A/c": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000d9",
+    "name": "Sisinti Lokanatha Patro Capital A/c",
+    "parent": "Capital Account",
+    "openingBalance": 0,
+    "closingBalance": 100000,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 228,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000d9",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Capital Account",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "228",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "100000.00",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "Sisinti Lokanatha Patro Capital A/c",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "Sisinti Lokanatha Patro Capital A/c",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "Union Bank Current A/c": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000d7",
+    "name": "Union Bank Current A/c",
+    "parent": "Bank Accounts",
+    "openingBalance": 0,
+    "closingBalance": -12493.1,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 226,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000d7",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Bank Accounts",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "226",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "-12493.10",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "Union Bank Current A/c",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "Union Bank Current A/c",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "XPANIA FOOTCARE LLP": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000001a7",
+    "name": "XPANIA FOOTCARE LLP",
+    "parent": "Sundry Creditors",
+    "openingBalance": 0,
+    "closingBalance": 437598,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 565,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000001a7",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Sundry Creditors",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "565",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "437598.00",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "XPANIA FOOTCARE LLP",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "XPANIA FOOTCARE LLP",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "JYOTHI FOOT WEAR": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000001e1",
+    "name": "JYOTHI FOOT WEAR",
+    "parent": "Sundry Debtors",
+    "openingBalance": 0,
+    "closingBalance": -128845,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 635,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000001e1",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Sundry Debtors",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "635",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "-128845.00",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "JYOTHI FOOT WEAR",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "JYOTHI FOOT WEAR",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "MAHAVIR SHOE HOUSE": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000205",
+    "name": "MAHAVIR SHOE HOUSE",
+    "parent": "Sundry Debtors",
+    "openingBalance": 0,
+    "closingBalance": -267292,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 678,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000205",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Sundry Debtors",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "678",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "-267292.00",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "MAHAVIR SHOE HOUSE",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "MAHAVIR SHOE HOUSE",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "Cash Discount Allowed - 30 Days": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000207",
+    "name": "Cash Discount Allowed - 30 Days",
+    "parent": "Indirect Expenses",
+    "openingBalance": 0,
+    "closingBalance": -31959.63,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 679,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000207",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Indirect Expenses",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "679",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "-31959.63",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "Cash Discount Allowed - 30 Days",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "Cash Discount Allowed - 30 Days",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "Cash Discount": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-0000021f",
+    "name": "Cash Discount",
+    "parent": "Indirect Expenses",
+    "openingBalance": 0,
+    "closingBalance": -59875.93,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 714,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-0000021f",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Indirect Expenses",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "714",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "-59875.93",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "Cash Discount",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "Cash Discount",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "Discount Allowed": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000207",
+    "name": "Discount Allowed",
+    "parent": "Direct Expenses",
+    "openingBalance": 0,
+    "closingBalance": 0,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 709,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000207",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Direct Expenses",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "709",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "Discount Allowed",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "Discount Allowed",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "Cash Discount Received": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000245",
+    "name": "Cash Discount Received",
+    "parent": "Direct Incomes",
+    "openingBalance": 0,
+    "closingBalance": 106618.16,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 753,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000245",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Direct Incomes",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "753",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "106618.16",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "Cash Discount Received",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "Cash Discount Received",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "Partner Renumeration - Sahil Kumar": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000243",
+    "name": "Partner Renumeration - Sahil Kumar",
+    "parent": "Indirect Expenses",
+    "openingBalance": 0,
+    "closingBalance": -30000,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 751,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000243",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Indirect Expenses",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "751",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "-30000.00",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "Partner Renumeration - Sahil Kumar",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "Partner Renumeration - Sahil Kumar",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "M/S SRI BRUNDABAN ENTERPRISES, MALKANGIRI": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000248",
+    "name": "M/S SRI BRUNDABAN ENTERPRISES, MALKANGIRI",
+    "parent": "Sundry Debtors",
+    "openingBalance": 0,
+    "closingBalance": -100402,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 755,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000248",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Sundry Debtors",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "755",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "-100402.00",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "M/S SRI BRUNDABAN ENTERPRISES, MALKANGIRI",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "M/S SRI BRUNDABAN ENTERPRISES, MALKANGIRI",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "SRI SHARVANI TRADERS": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000246",
+    "name": "SRI SHARVANI TRADERS",
+    "parent": "Sundry Debtors",
+    "openingBalance": 0,
+    "closingBalance": -436117,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 754,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000246",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Sundry Debtors",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "754",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "-436117.00",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "SRI SHARVANI TRADERS",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "SRI SHARVANI TRADERS",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "Incentive Received": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000256",
+    "name": "Incentive Received",
+    "parent": "Direct Incomes",
+    "openingBalance": 0,
+    "closingBalance": 132729.71,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 775,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000256",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Direct Incomes",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "775",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "132729.71",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "Incentive Received",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "Incentive Received",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "M/S. RAJAN TRADERS": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-0000026b",
+    "name": "M/S. RAJAN TRADERS",
+    "parent": "Sundry Debtors",
+    "openingBalance": 0,
+    "closingBalance": -110382,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 799,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-0000026b",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Sundry Debtors",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "799",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "-110382.00",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "M/S. RAJAN TRADERS",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "M/S. RAJAN TRADERS",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "Rate Difference Received": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000257",
+    "name": "Rate Difference Received",
+    "parent": "Direct Incomes",
+    "openingBalance": 0,
+    "closingBalance": 2641.86,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 776,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000257",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Direct Incomes",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "776",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "2641.86",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "Rate Difference Received",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "Rate Difference Received",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "SHREE ADITYA FOOT FASHION": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000262",
+    "name": "SHREE ADITYA FOOT FASHION",
+    "parent": "Sundry Debtors",
+    "openingBalance": 0,
+    "closingBalance": -125112,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 788,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000262",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Sundry Debtors",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "788",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "-125112.00",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "SHREE ADITYA FOOT FASHION",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "SHREE ADITYA FOOT FASHION",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "CA Professional Expenses": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-0000026d",
+    "name": "CA Professional Expenses",
+    "parent": "Indirect Expenses",
+    "openingBalance": 0,
+    "closingBalance": -22100,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 800,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-0000026d",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Indirect Expenses",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "800",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "-22100.00",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "CA Professional Expenses",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "CA Professional Expenses",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "Nakkina Ravi Kumar Salary A/c": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-0000026e",
+    "name": "Nakkina Ravi Kumar Salary A/c",
+    "parent": "Indirect Expenses",
+    "openingBalance": 0,
+    "closingBalance": -10000,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 802,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-0000026e",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Indirect Expenses",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "802",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "-10000.00",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "Nakkina Ravi Kumar Salary A/c",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "Nakkina Ravi Kumar Salary A/c",
+      "@_RESERVEDNAME": ""
+    }
+  }
+}

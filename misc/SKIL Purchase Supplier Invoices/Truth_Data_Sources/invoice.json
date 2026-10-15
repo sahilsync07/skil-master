@@ -1,0 +1,3691 @@
+[
+  {
+    "invoice no": "1900402692",
+    "supplier": "Ajanta Shoes (India) Pvt. Ltd.",
+    "ship to": {
+      "name": "K G N FOOTWARE",
+      "address": "NEAR MASSED, 22/24, MAIN ROAD,,PALAKONDA ROAD,, PARVATIPURAM,,VIZIANAGARAM-535501(India)",
+      "gstin": "37CPZPK0089M1ZW",
+      "phone": ""
+    },
+    "date": "06.08.2026",
+    "data": {
+      "bill data": [
+        {
+          "Brand/Product": "H2AJCN0246948",
+          "Description": "1AJ CUSHION 024 SZ-6X9 (48)/B1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 146.0,
+          "Rate": 86.92,
+          "Amount(Rs.)": 4172.16
+        },
+        {
+          "Brand/Product": "H2T62116948",
+          "Description": "1BETA 04 B.GREEN-SZ 06X09 (48)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 143.0,
+          "Rate": 85.13,
+          "Amount(Rs.)": 4086.24
+        },
+        {
+          "Brand/Product": "H2E30432560",
+          "Description": "1BETA 06 B.GREEN-SZ 2X5(60)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 135.0,
+          "Rate": 80.37,
+          "Amount(Rs.)": 4822.2
+        },
+        {
+          "Brand/Product": "H2E15816948",
+          "Description": "1BETA 07 RED-SZ 06X09 (48)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 143.0,
+          "Rate": 85.13,
+          "Amount(Rs.)": 4086.24
+        },
+        {
+          "Brand/Product": "1125176X948",
+          "Description": "1ECO 16 DK.MEHENDI- SZ-6X9 (48)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 159.0,
+          "Rate": 94.66,
+          "Amount(Rs.)": 4543.68
+        },
+        {
+          "Brand/Product": "H2YT93616948",
+          "Description": "1ECO 19 DP.S.BLUE- SZ-6X9 (48)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 159.0,
+          "Rate": 94.66,
+          "Amount(Rs.)": 4543.68
+        },
+        {
+          "Brand/Product": "H2T535086948",
+          "Description": "1ECO SMART 12 BURGUNDI SZ-6X9 (48)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 169.0,
+          "Rate": 100.61,
+          "Amount(Rs.)": 4829.28
+        },
+        {
+          "Brand/Product": "H2N8736948",
+          "Description": "1FITNESS PLUS 101 P.BLUE- SZ-6X9 (48)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 165.0,
+          "Rate": 98.23,
+          "Amount(Rs.)": 4715.04
+        },
+        {
+          "Brand/Product": "H2FD272706948",
+          "Description": "1FITNESS PLUS 104 BROWN-SZ-6X9(48)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 165.0,
+          "Rate": 98.23,
+          "Amount(Rs.)": 4715.04
+        },
+        {
+          "Brand/Product": "H2405606948",
+          "Description": "1FITNESS PLUS 105 BROWN-SZ-6X9(48)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 165.0,
+          "Rate": 98.23,
+          "Amount(Rs.)": 4715.04
+        },
+        {
+          "Brand/Product": "H2406606948",
+          "Description": "1FITNESS PLUS 105 F.GREEN-SZ-6X9(48)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 165.0,
+          "Rate": 98.23,
+          "Amount(Rs.)": 4715.04
+        }
+      ],
+      "total": {
+        "Carton": 11,
+        "Pair": 540,
+        "Amount(Rs.)": 49943.64
+      },
+      "gst": {
+        "description": "Add:IN:Integrated GST-OP(5.00%)",
+        "rate": 5.0,
+        "amount": 2497.16
+      },
+      "round off": {
+        "description": "Sales Round Off",
+        "amount": 0.2
+      },
+      "grand total": 52441.0
+    }
+  },
+  {
+    "invoice no": "1900402693",
+    "supplier": "Ajanta Shoes (India) Pvt. Ltd.",
+    "ship to": {
+      "name": "K G N FOOTWARE",
+      "address": "NEAR MASSED, 22/24, MAIN ROAD,,PALAKONDA ROAD,, PARVATIPURAM,,VIZIANAGARAM-535501(India)",
+      "gstin": "37CPZPK0089M1ZW",
+      "phone": ""
+    },
+    "date": "06.08.2026",
+    "data": {
+      "bill data": [
+        {
+          "Brand/Product": "8PG440461036",
+          "Description": "1PG 440/4 SZ-6X10-(30 PR)",
+          "HSN/SAC": "640199",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 309.0,
+          "Rate": 183.94,
+          "Amount(Rs.)": 5518.2
+        },
+        {
+          "Brand/Product": "8PG440416936",
+          "Description": "1PG 440/41 SZ-6X9-(30 PR)",
+          "HSN/SAC": "640199",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 309.0,
+          "Rate": 183.94,
+          "Amount(Rs.)": 5518.2
+        },
+        {
+          "Brand/Product": "91CF04906930",
+          "Description": "1PG 480/1 SZ-6X9-(30PR)",
+          "HSN/SAC": "640199",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 309.0,
+          "Rate": 183.94,
+          "Amount(Rs.)": 5518.2
+        },
+        {
+          "Brand/Product": "11ER372406930",
+          "Description": "PG 482/1 SZ-6X9-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 269.0,
+          "Rate": 160.13,
+          "Amount(Rs.)": 4803.9
+        },
+        {
+          "Brand/Product": "11ER373706930",
+          "Description": "PG 482/4 SZ-6X9-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 269.0,
+          "Rate": 160.13,
+          "Amount(Rs.)": 4803.9
+        },
+        {
+          "Brand/Product": "11413061030",
+          "Description": "PUG 8415/4 SZ-6X9-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 309.0,
+          "Rate": 183.94,
+          "Amount(Rs.)": 5518.2
+        },
+        {
+          "Brand/Product": "1126646930",
+          "Description": "PUG 8415/41 SZ-6X9-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 309.0,
+          "Rate": 183.94,
+          "Amount(Rs.)": 5518.2
+        },
+        {
+          "Brand/Product": "1138546930",
+          "Description": "PUG 8464/41 SZ-6X9-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 384.0,
+          "Rate": 228.57,
+          "Amount(Rs.)": 6857.1
+        },
+        {
+          "Brand/Product": "11T47736930",
+          "Description": "PUG 8507/4 SZ-6X9-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 279.0,
+          "Rate": 166.08,
+          "Amount(Rs.)": 4982.4
+        },
+        {
+          "Brand/Product": "113A32703730",
+          "Description": "PUL 979E/CH+MR SZ-4X7-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 229.75,
+          "Rate": 144.6,
+          "Amount(Rs.)": 4338.0
+        }
+      ],
+      "total": {
+        "Carton": 10,
+        "Pair": 300,
+        "Amount(Rs.)": 53376.3
+      },
+      "gst": {
+        "description": "Add:IN:Integrated GST-OP(5.00%)",
+        "rate": 5.0,
+        "amount": 2668.83
+      },
+      "round off": {
+        "description": "Sales Round Off",
+        "amount": -0.13
+      },
+      "grand total": 56045.0
+    }
+  },
+  {
+    "invoice no": "1900402694",
+    "supplier": "Ajanta Shoes (India) Pvt. Ltd.",
+    "ship to": {
+      "name": "K G N FOOTWARE",
+      "address": "NEAR MASSED, 22/24, MAIN ROAD,,PALAKONDA ROAD,, PARVATIPURAM,,VIZIANAGARAM-535501(India)",
+      "gstin": "37CPZPK0089M1ZW",
+      "phone": ""
+    },
+    "date": "06.08.2026",
+    "data": {
+      "bill data": [
+        {
+          "Brand/Product": "1127376930",
+          "Description": "PUG 8468/4 SZ-6X9-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 299.0,
+          "Rate": 177.98,
+          "Amount(Rs.)": 5339.4
+        }
+      ],
+      "total": {
+        "Carton": 1,
+        "Pair": 30,
+        "Amount(Rs.)": 5339.4
+      },
+      "gst": {
+        "description": "Add:IN:Integrated GST-OP(5.00%)",
+        "rate": 5.0,
+        "amount": 266.97
+      },
+      "round off": {
+        "description": "Sales Round Off",
+        "amount": -0.37
+      },
+      "grand total": 5606.0
+    }
+  },
+  {
+    "invoice no": "1900402722",
+    "supplier": "Ajanta Shoes (India) Pvt. Ltd.",
+    "ship to": {
+      "name": "DELIGHT FOOT WEAR",
+      "address": "2-11-2, NEAR POLYSTER HOUSE, VULLU,VEEDHI,, VIZIANAGARAM,,VIZIANAGARAM-535001(India)",
+      "gstin": "37AVCPK2090B1ZZ",
+      "phone": ""
+    },
+    "date": "06.08.2026",
+    "data": {
+      "bill data": [
+        {
+          "Brand/Product": "H2AJCN0261048",
+          "Description": "1AJ CUSHION 024 SZ-6X10 (48)/B1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 146.0,
+          "Rate": 86.92,
+          "Amount(Rs.)": 4172.16
+        },
+        {
+          "Brand/Product": "H24000925760",
+          "Description": "1ANOMA 02 CYAN SZ-5X7 (60)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 155.0,
+          "Rate": 92.28,
+          "Amount(Rs.)": 5536.8
+        },
+        {
+          "Brand/Product": "H2E9815760",
+          "Description": "1ANOMA 17 F.GREEN SZ-5X7 (60)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 155.0,
+          "Rate": 92.28,
+          "Amount(Rs.)": 5536.8
+        },
+        {
+          "Brand/Product": "H2E305161048",
+          "Description": "1BETA 07 GREY-SZ 06X10 (48)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 143.0,
+          "Rate": 85.13,
+          "Amount(Rs.)": 4086.24
+        },
+        {
+          "Brand/Product": "H2T47995760",
+          "Description": "1CEL 107 MAGENTA SZ-5X7 (60)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 132.0,
+          "Rate": 78.59,
+          "Amount(Rs.)": 4715.4
+        },
+        {
+          "Brand/Product": "H2E9135860",
+          "Description": "1CEL 110 MAGENTA SZ-5X8 (60)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 132.0,
+          "Rate": 78.59,
+          "Amount(Rs.)": 4715.4
+        },
+        {
+          "Brand/Product": "11362171024",
+          "Description": "1CG 40 N.BLUE 7X10#(24 PR)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 24,
+          "Carton": 1,
+          "Pair": 24,
+          "MRP": 319.0,
+          "Rate": 184.37,
+          "Amount(Rs.)": 4424.88
+        },
+        {
+          "Brand/Product": "H2Y84261024",
+          "Description": "1CG 40 OLIVE 7X10#(24 PR)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 24,
+          "Carton": 1,
+          "Pair": 24,
+          "MRP": 290.0,
+          "Rate": 167.61,
+          "Amount(Rs.)": 4022.64
+        },
+        {
+          "Brand/Product": "11362271024",
+          "Description": "1CG 40 SKY 7X10#(24 PR)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 24,
+          "Carton": 1,
+          "Pair": 24,
+          "MRP": 290.0,
+          "Rate": 184.37,
+          "Amount(Rs.)": 4424.88
+        },
+        {
+          "Brand/Product": "H2248271024",
+          "Description": "1CG 41#N.BLUE / RED 7X10#(24 PR)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 24,
+          "Carton": 1,
+          "Pair": 24,
+          "MRP": 290.0,
+          "Rate": 167.61,
+          "Amount(Rs.)": 4022.64
+        },
+        {
+          "Brand/Product": "H2248371024",
+          "Description": "1CG 41#OLIVE GREEN 7X10#(24 PR)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 24,
+          "Carton": 1,
+          "Pair": 24,
+          "MRP": 290.0,
+          "Rate": 167.61,
+          "Amount(Rs.)": 4022.64
+        },
+        {
+          "Brand/Product": "H2N95671024",
+          "Description": "1CG 43 N.BLUE 7X10#(24 PR)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 24,
+          "Carton": 1,
+          "Pair": 24,
+          "MRP": 309.0,
+          "Rate": 178.59,
+          "Amount(Rs.)": 4286.16
+        },
+        {
+          "Brand/Product": "H2Y65061024",
+          "Description": "1CG 44 N.BLUE 7X10#(24 PR)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 24,
+          "Carton": 1,
+          "Pair": 24,
+          "MRP": 319.0,
+          "Rate": 184.37,
+          "Amount(Rs.)": 4424.88
+        },
+        {
+          "Brand/Product": "H2E27907048",
+          "Description": "1ECO PLUS 16 DP.S.BLUE- SZ-7X10 (48)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 179.0,
+          "Rate": 106.56,
+          "Amount(Rs.)": 5114.88
+        },
+        {
+          "Brand/Product": "H2TK300171048",
+          "Description": "1FITNESS PLUS 101 DP.S.BLUE- SZ-7X10 (48",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 2,
+          "Pair": 96,
+          "MRP": 165.0,
+          "Rate": 98.23,
+          "Amount(Rs.)": 9430.08
+        },
+        {
+          "Brand/Product": "H2N87471048",
+          "Description": "1FITNESS PLUS 101 P.BLUE- SZ-7X10 (48)/J",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 165.0,
+          "Rate": 98.23,
+          "Amount(Rs.)": 4715.04
+        },
+        {
+          "Brand/Product": "H2FD272971048",
+          "Description": "1FITNESS PLUS 104 BROWN-SZ-7X10(48)/J",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 165.0,
+          "Rate": 98.23,
+          "Amount(Rs.)": 4715.04
+        },
+        {
+          "Brand/Product": "H2406871048",
+          "Description": "1FITNESS PLUS 105 F.GREEN-SZ-7X10(48)/J",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 2,
+          "Pair": 96,
+          "MRP": 165.0,
+          "Rate": 98.23,
+          "Amount(Rs.)": 9430.08
+        },
+        {
+          "Brand/Product": "11FK7177325760",
+          "Description": "1LILY 110 MGNTA SZ-5X7-(60)J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 149.0,
+          "Rate": 88.7,
+          "Amount(Rs.)": 5322.0
+        },
+        {
+          "Brand/Product": "H2GK146225760",
+          "Description": "1LILY 116 C.GRN SZ-5X7-(60)J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 149.0,
+          "Rate": 88.7,
+          "Amount(Rs.)": 5322.0
+        },
+        {
+          "Brand/Product": "H2T61445760",
+          "Description": "1LILY 125 N.BLUE SZ-5X7-(60)J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 149.0,
+          "Rate": 88.7,
+          "Amount(Rs.)": 5322.0
+        },
+        {
+          "Brand/Product": "H224656948",
+          "Description": "1LOOK 02 SILVER-SZ-6X9(48)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 189.0,
+          "Rate": 112.51,
+          "Amount(Rs.)": 5400.48
+        },
+        {
+          "Brand/Product": "H90AMF116960",
+          "Description": "1MEDI FIT (BR) SZ-6X9(60)/B1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 188.0,
+          "Rate": 111.92,
+          "Amount(Rs.)": 6715.2
+        },
+        {
+          "Brand/Product": "H2YT97015860",
+          "Description": "1PORI 26 P.BLUE SZ-5X8(60)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 159.0,
+          "Rate": 85.02,
+          "Amount(Rs.)": 5101.2
+        },
+        {
+          "Brand/Product": "H2T48565860",
+          "Description": "1PORI 28 LAVENDER SZ-5X8(60)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 159.0,
+          "Rate": 85.02,
+          "Amount(Rs.)": 5101.2
+        },
+        {
+          "Brand/Product": "H2E123745860",
+          "Description": "1PORI 32 LAVENDER SZ-5X8(60)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 159.0,
+          "Rate": 85.02,
+          "Amount(Rs.)": 5101.2
+        },
+        {
+          "Brand/Product": "H2E26865760",
+          "Description": "1PORI 33 MAGENTA SZ-5X7(60)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 159.0,
+          "Rate": 85.02,
+          "Amount(Rs.)": 5101.2
+        },
+        {
+          "Brand/Product": "H2E26955860",
+          "Description": "1PORI 33 P.BLUE SZ-5X8(60)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 159.0,
+          "Rate": 85.02,
+          "Amount(Rs.)": 5101.2
+        }
+      ],
+      "total": {
+        "Carton": 30,
+        "Pair": 1428,
+        "Amount(Rs.)": 145384.32
+      },
+      "gst": {
+        "description": "Add:IN:Integrated GST-OP(5.00%)",
+        "rate": 5.0,
+        "amount": 7269.18
+      },
+      "round off": {
+        "description": "Sales Round Off",
+        "amount": 0.0
+      },
+      "grand total": 152653.5
+    }
+  },
+  {
+    "invoice no": "1900402723",
+    "supplier": "Ajanta Shoes (India) Pvt. Ltd.",
+    "ship to": {
+      "name": "M/S SRI BRUNDABAN ENTERPRISES",
+      "address": "KT NO-50/1560, PLOT NO.126/1/1749, NEW,COLONY, NEAR BANK OF, BARODA, SAI,MANDIR ROAD,,RAYAGADA-765001(India)",
+      "gstin": "21ADKPC5405A1ZI",
+      "phone": ""
+    },
+    "date": "06.08.2026",
+    "data": {
+      "bill data": [
+        {
+          "Brand/Product": "H2YT963661048",
+          "Description": "1CEG 1004 RED-SZ 06X10 (48 PK)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 135.0,
+          "Rate": 80.38,
+          "Amount(Rs.)": 3858.24
+        },
+        {
+          "Brand/Product": "H20A30214760",
+          "Description": "1CPL 1 RED SZ-4X7 (60)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 138.0,
+          "Rate": 82.16,
+          "Amount(Rs.)": 4929.6
+        },
+        {
+          "Brand/Product": "H2E123629160",
+          "Description": "1NANO 09 DP.CYAN SZ-9X1(60)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 129.0,
+          "Rate": 68.98,
+          "Amount(Rs.)": 4138.8
+        },
+        {
+          "Brand/Product": "H2YT97023660",
+          "Description": "1PORI 26 S.GREEN SZ-3X6(60)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 159.0,
+          "Rate": 85.02,
+          "Amount(Rs.)": 5101.2
+        },
+        {
+          "Brand/Product": "H2MS699995872",
+          "Description": "1TOTO SOFT/34 B.BLUE SZ05X08(72)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 72,
+          "Carton": 1,
+          "Pair": 72,
+          "MRP": 114.0,
+          "Rate": 67.87,
+          "Amount(Rs.)": 4886.64
+        },
+        {
+          "Brand/Product": "H2MS700195872",
+          "Description": "1TOTO SOFT/34 RED SZ05X08(72)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 72,
+          "Carton": 1,
+          "Pair": 72,
+          "MRP": 114.0,
+          "Rate": 67.87,
+          "Amount(Rs.)": 4886.64
+        },
+        {
+          "Brand/Product": "H2YT96689160",
+          "Description": "1TOTO SOFT/40 LAVENDER SZ 09X01(60)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 121.0,
+          "Rate": 72.04,
+          "Amount(Rs.)": 4322.4
+        },
+        {
+          "Brand/Product": "H2YT96725872",
+          "Description": "1TOTO SOFT/40 LAVENDER SZ 05X08(72)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 72,
+          "Carton": 1,
+          "Pair": 72,
+          "MRP": 114.0,
+          "Rate": 67.87,
+          "Amount(Rs.)": 4886.64
+        },
+        {
+          "Brand/Product": "H2E8399160",
+          "Description": "1TOTO SOFT/43 DP.CYAN SZ 09X01(60)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 121.0,
+          "Rate": 72.04,
+          "Amount(Rs.)": 4322.4
+        }
+      ],
+      "total": {
+        "Carton": 9,
+        "Pair": 564,
+        "Amount(Rs.)": 41332.56
+      },
+      "gst": {
+        "description": "Add:IN:Integrated GST-OP(5.00%)",
+        "rate": 5.0,
+        "amount": 2066.62
+      },
+      "round off": {
+        "description": "Sales Round Off",
+        "amount": -0.18
+      },
+      "grand total": 43399.0
+    }
+  },
+  {
+    "invoice no": "1900402782",
+    "supplier": "Ajanta Shoes (India) Pvt. Ltd.",
+    "ship to": {
+      "name": "M/S SRI BRUNDABAN ENTERPRISES",
+      "address": "KT NO-50/1560, PLOT NO.126/1/1749, NEW,COLONY, NEAR BANK OF, BARODA, SAI,MANDIR ROAD,,RAYAGADA-765001(India)",
+      "gstin": "21ADKPC5405A1ZI",
+      "phone": ""
+    },
+    "date": "06.08.2026",
+    "data": {
+      "bill data": [
+        {
+          "Brand/Product": "H272946X1024",
+          "Description": "1CG 36 TAN 6X10#(24 PR)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 24,
+          "Carton": 1,
+          "Pair": 24,
+          "MRP": 281.0,
+          "Rate": 162.41,
+          "Amount(Rs.)": 3897.84
+        },
+        {
+          "Brand/Product": "1179206X924",
+          "Description": "1CG 37 AQUA 6X9#(24 PR)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 24,
+          "Carton": 1,
+          "Pair": 24,
+          "MRP": 319.0,
+          "Rate": 184.37,
+          "Amount(Rs.)": 4424.88
+        },
+        {
+          "Brand/Product": "H2Y83461024",
+          "Description": "1CG 37 BROWN 6X10#(24 PR)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 24,
+          "Carton": 1,
+          "Pair": 24,
+          "MRP": 309.0,
+          "Rate": 178.59,
+          "Amount(Rs.)": 4286.16
+        },
+        {
+          "Brand/Product": "11312671024",
+          "Description": "1CG 37 OLIVE 7X10#(24 PR)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 24,
+          "Carton": 1,
+          "Pair": 24,
+          "MRP": 319.0,
+          "Rate": 184.37,
+          "Amount(Rs.)": 4424.88
+        },
+        {
+          "Brand/Product": "H2Y82861024",
+          "Description": "1CG 37 P.BLUE 6X10#(24 PR)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 24,
+          "Carton": 1,
+          "Pair": 24,
+          "MRP": 319.0,
+          "Rate": 184.37,
+          "Amount(Rs.)": 4424.88
+        },
+        {
+          "Brand/Product": "H2273061024",
+          "Description": "1CG 39 TAN 6X10#(24 PR)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 24,
+          "Carton": 1,
+          "Pair": 24,
+          "MRP": 359.0,
+          "Rate": 207.49,
+          "Amount(Rs.)": 4979.76
+        },
+        {
+          "Brand/Product": "H2273461024",
+          "Description": "1CG 40 N.BLUE 6X10#(24 PR)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 24,
+          "Carton": 1,
+          "Pair": 24,
+          "MRP": 319.0,
+          "Rate": 184.37,
+          "Amount(Rs.)": 4424.88
+        },
+        {
+          "Brand/Product": "H2E124124760",
+          "Description": "1CPL 87 LAVENDER SZ-4X7 (60)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 138.0,
+          "Rate": 82.16,
+          "Amount(Rs.)": 4929.6
+        },
+        {
+          "Brand/Product": "H2E124084760",
+          "Description": "1CPL 87 S.GREEN SZ-4X7 (60)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 138.0,
+          "Rate": 82.16,
+          "Amount(Rs.)": 4929.6
+        },
+        {
+          "Brand/Product": "H2E124284760",
+          "Description": "1DIVA 108 DP.C.BLUE SZ-4X7 (60)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 127.0,
+          "Rate": 75.61,
+          "Amount(Rs.)": 4536.6
+        },
+        {
+          "Brand/Product": "1FK007706948",
+          "Description": "1FITNESS PLUS B.GREEN- SZ-6X9 (48)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 165.0,
+          "Rate": 98.23,
+          "Amount(Rs.)": 4715.04
+        },
+        {
+          "Brand/Product": "H2T534754760",
+          "Description": "1LINA 03 BURGUNDI SZ-4X7 (60)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 139.0,
+          "Rate": 82.75,
+          "Amount(Rs.)": 4965.0
+        },
+        {
+          "Brand/Product": "H2E123629160",
+          "Description": "1NANO 09 DP.CYAN SZ-9X1(60)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 129.0,
+          "Rate": 68.98,
+          "Amount(Rs.)": 4138.8
+        }
+      ],
+      "total": {
+        "Carton": 13,
+        "Pair": 516,
+        "Amount(Rs.)": 59077.92
+      },
+      "gst": {
+        "description": "Add:IN:Integrated GST-OP(5.00%)",
+        "rate": 5.0,
+        "amount": 2953.88
+      },
+      "round off": {
+        "description": "Sales Round Off",
+        "amount": 0.2
+      },
+      "grand total": 62032.0
+    }
+  },
+  {
+    "invoice no": "1900402797",
+    "supplier": "Ajanta Shoes (India) Pvt. Ltd.",
+    "ship to": {
+      "name": "M/S SRI BRUNDABAN ENTERPRISES",
+      "address": "KT NO-50/1560, PLOT NO.126/1/1749, NEW,COLONY, NEAR BANK OF, BARODA, SAI,MANDIR ROAD,,RAYAGADA-765001(India)",
+      "gstin": "21ADKPC5405A1ZI",
+      "phone": ""
+    },
+    "date": "06.08.2026",
+    "data": {
+      "bill data": [
+        {
+          "Brand/Product": "1132146930",
+          "Description": "PGA 1415/73 SZ-6X9-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 265.0,
+          "Rate": 157.74,
+          "Amount(Rs.)": 4732.2
+        },
+        {
+          "Brand/Product": "11PUC14371030",
+          "Description": "PGA 1638/4 SZ-7X10-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 259.0,
+          "Rate": 154.17,
+          "Amount(Rs.)": 4625.1
+        },
+        {
+          "Brand/Product": "113B3173N5930",
+          "Description": "PGA 1907E/4 SZ-5X9-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 199.75,
+          "Rate": 125.72,
+          "Amount(Rs.)": 3771.6
+        },
+        {
+          "Brand/Product": "118188S2211330",
+          "Description": "PUB 431/9 SZ-11X13-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 252.0,
+          "Rate": 150.01,
+          "Amount(Rs.)": 4500.3
+        },
+        {
+          "Brand/Product": "11ENP40401430",
+          "Description": "PUB 431/9 SZ-1X4-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 314.0,
+          "Rate": 186.91,
+          "Amount(Rs.)": 5607.3
+        },
+        {
+          "Brand/Product": "11386061030",
+          "Description": "PUG 8464/73 SZ-6X10-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 384.0,
+          "Rate": 228.57,
+          "Amount(Rs.)": 6857.1
+        },
+        {
+          "Brand/Product": "11385661030",
+          "Description": "PUG 8464/41 SZ-6X10-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 384.0,
+          "Rate": 228.57,
+          "Amount(Rs.)": 6857.1
+        },
+        {
+          "Brand/Product": "1135246930",
+          "Description": "PUG 8465/41 SZ-6X9-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 329.0,
+          "Rate": 195.84,
+          "Amount(Rs.)": 5875.2
+        },
+        {
+          "Brand/Product": "11274361030",
+          "Description": "PUG 8468/41 SZ-6X10-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 299.0,
+          "Rate": 177.98,
+          "Amount(Rs.)": 5339.4
+        },
+        {
+          "Brand/Product": "11T580861030",
+          "Description": "PUG 8511/1 SZ-6X10-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 299.0,
+          "Rate": 177.99,
+          "Amount(Rs.)": 5339.7
+        },
+        {
+          "Brand/Product": "11T580461030",
+          "Description": "PUG 8511/4 SZ-6X10-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 299.0,
+          "Rate": 177.99,
+          "Amount(Rs.)": 5339.7
+        },
+        {
+          "Brand/Product": "11T570461030",
+          "Description": "PUG 8513/41 SZ-6X10-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 329.0,
+          "Rate": 195.85,
+          "Amount(Rs.)": 5875.5
+        },
+        {
+          "Brand/Product": "1126814730",
+          "Description": "PUL 9295/83 SZ-4X7-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 274.0,
+          "Rate": 163.1,
+          "Amount(Rs.)": 4893.0
+        },
+        {
+          "Brand/Product": "1135134730",
+          "Description": "PUL 9300/80 SZ-4X7-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 307.0,
+          "Rate": 182.75,
+          "Amount(Rs.)": 5482.5
+        },
+        {
+          "Brand/Product": "11YT98825830",
+          "Description": "PUL 9329/1 SZ-5X8-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 289.0,
+          "Rate": 172.03,
+          "Amount(Rs.)": 5160.9
+        }
+      ],
+      "total": {
+        "Carton": 15,
+        "Pair": 450,
+        "Amount(Rs.)": 80256.6
+      },
+      "gst": {
+        "description": "Add:IN:Integrated GST-OP(5.00%)",
+        "rate": 5.0,
+        "amount": 4012.88
+      },
+      "round off": {
+        "description": "Sales Round Off",
+        "amount": -0.48
+      },
+      "grand total": 84269.0
+    }
+  },
+  {
+    "invoice no": "1900402814",
+    "supplier": "Ajanta Shoes (India) Pvt. Ltd.",
+    "ship to": {
+      "name": "M/S SRI BRUNDABAN ENTERPRISES",
+      "address": "KT NO-50/1560, PLOT NO.126/1/1749, NEW,COLONY, NEAR BANK OF, BARODA, SAI,MANDIR ROAD,,RAYAGADA-765001(India)",
+      "gstin": "21ADKPC5405A1ZI",
+      "phone": ""
+    },
+    "date": "06.08.2026",
+    "data": {
+      "bill data": [
+        {
+          "Brand/Product": "11T47555830",
+          "Description": "PUL 9331/1 SZ-5X8-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 339.0,
+          "Rate": 201.79,
+          "Amount(Rs.)": 6053.7
+        }
+      ],
+      "total": {
+        "Carton": 1,
+        "Pair": 30,
+        "Amount(Rs.)": 6053.7
+      },
+      "gst": {
+        "description": "Add:IN:Integrated GST-OP(5.00%)",
+        "rate": 5.0,
+        "amount": 302.69
+      },
+      "round off": {
+        "description": "Sales Round Off",
+        "amount": -0.39
+      },
+      "grand total": 6356.0
+    }
+  },
+  {
+    "invoice no": "1900402878",
+    "supplier": "Ajanta Shoes (India) Pvt. Ltd.",
+    "ship to": {
+      "name": "M/S SRI BRUNDABAN ENTERPRISES",
+      "address": "KT NO-50/1560, PLOT NO.126/1/1749, NEW,COLONY, NEAR BANK OF, BARODA, SAI,MANDIR ROAD,,RAYAGADA-765001(India)",
+      "gstin": "21ADKPC5405A1ZI",
+      "phone": ""
+    },
+    "date": "07.08.2026",
+    "data": {
+      "bill data": [
+        {
+          "Brand/Product": "1127376930",
+          "Description": "PUG 8468/4 SZ-6X9-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 299.0,
+          "Rate": 177.98,
+          "Amount(Rs.)": 5339.4
+        },
+        {
+          "Brand/Product": "11274471030",
+          "Description": "PUG 8468/41 SZ-7X10-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 299.0,
+          "Rate": 177.98,
+          "Amount(Rs.)": 5339.4
+        },
+        {
+          "Brand/Product": "11T580461030",
+          "Description": "PUG 8511/4 SZ-6X10-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 299.0,
+          "Rate": 177.99,
+          "Amount(Rs.)": 5339.7
+        }
+      ],
+      "total": {
+        "Carton": 3,
+        "Pair": 90,
+        "Amount(Rs.)": 16018.5
+      },
+      "gst": {
+        "description": "Add:IN:Integrated GST-OP(5.00%)",
+        "rate": 5.0,
+        "amount": 800.93
+      },
+      "round off": {
+        "description": "Sales Round Off",
+        "amount": -0.43
+      },
+      "grand total": 16819.0
+    }
+  },
+  {
+    "invoice no": "1900402879",
+    "supplier": "Ajanta Shoes (India) Pvt. Ltd.",
+    "ship to": {
+      "name": "M/S SRI BRUNDABAN ENTERPRISES",
+      "address": "KT NO-50/1560, PLOT NO.126/1/1749, NEW,COLONY, NEAR BANK OF, BARODA, SAI,MANDIR ROAD,,RAYAGADA-765001(India)",
+      "gstin": "21ADKPC5405A1ZI",
+      "phone": ""
+    },
+    "date": "07.08.2026",
+    "data": {
+      "bill data": [
+        {
+          "Brand/Product": "11274361030",
+          "Description": "PUG 8468/41 SZ-6X10-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 299.0,
+          "Rate": 177.98,
+          "Amount(Rs.)": 5339.4
+        },
+        {
+          "Brand/Product": "1137166830",
+          "Description": "PUG 8469/41 SZ-6X10-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 309.0,
+          "Rate": 183.94,
+          "Amount(Rs.)": 5518.2
+        },
+        {
+          "Brand/Product": "11T580861030",
+          "Description": "PUG 8511/1 SZ-6X10-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 299.0,
+          "Rate": 177.99,
+          "Amount(Rs.)": 5339.7
+        },
+        {
+          "Brand/Product": "11Y7034730",
+          "Description": "PUL 9305/2 SZ-4X7-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 289.0,
+          "Rate": 172.03,
+          "Amount(Rs.)": 5160.9
+        },
+        {
+          "Brand/Product": "11Y7074730",
+          "Description": "PUL 9316/9 SZ-4X7-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 299.0,
+          "Rate": 177.98,
+          "Amount(Rs.)": 5339.4
+        },
+        {
+          "Brand/Product": "11T47555830",
+          "Description": "PUL 9331/1 SZ-5X8-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 339.0,
+          "Rate": 201.79,
+          "Amount(Rs.)": 6053.7
+        },
+        {
+          "Brand/Product": "11T54195830",
+          "Description": "PUL 9335/2 SZ-5X8-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 319.0,
+          "Rate": 189.89,
+          "Amount(Rs.)": 5696.7
+        }
+      ],
+      "total": {
+        "Carton": 7,
+        "Pair": 210,
+        "Amount(Rs.)": 38448.0
+      },
+      "gst": {
+        "description": "Add:IN:Integrated GST-OP(5.00%)",
+        "rate": 5.0,
+        "amount": 1922.42
+      },
+      "round off": {
+        "description": "Sales Round Off",
+        "amount": -0.42
+      },
+      "grand total": 40370.0
+    }
+  },
+  {
+    "invoice no": "1900403625",
+    "supplier": "Ajanta Shoes (India) Pvt. Ltd.",
+    "ship to": {
+      "name": "M/S.SHREE FOOTWEAR",
+      "address": "SY NO 287/7, 287/8, PEDDAPADU ROAD,,PATRUNIVALASA, PANCHAYAT, SRIKAKULAM,,SRIKAKULAM-532001(India)",
+      "gstin": "37AEBPP0086L1Z9",
+      "phone": ""
+    },
+    "date": "11.08.2026",
+    "data": {
+      "bill data": [
+        {
+          "Brand/Product": "H2E9406948",
+          "Description": "1CEG 1007 SKY-SZ 06X09 (48 PK)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 135.0,
+          "Rate": 80.38,
+          "Amount(Rs.)": 3858.24
+        },
+        {
+          "Brand/Product": "H2E94271048",
+          "Description": "1CEG 1007 SKY-SZ 07X10 (48 PK)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 135.0,
+          "Rate": 80.38,
+          "Amount(Rs.)": 3858.24
+        },
+        {
+          "Brand/Product": "H2E124425860",
+          "Description": "1CEL 111 MAGENTA SZ-5X8 (60)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 127.0,
+          "Rate": 76.25,
+          "Amount(Rs.)": 4575.0
+        },
+        {
+          "Brand/Product": "H2T534009160",
+          "Description": "1NANO 08 DP.BLUE SZ-9X1(60)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 129.0,
+          "Rate": 68.99,
+          "Amount(Rs.)": 4139.4
+        },
+        {
+          "Brand/Product": "H91AK11190160",
+          "Description": "1TOTO SOFT MUSIC SZ09X01(60)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 128.0,
+          "Rate": 76.2,
+          "Amount(Rs.)": 4572.0
+        },
+        {
+          "Brand/Product": "H2MS700309160",
+          "Description": "1TOTO SOFT/34 B.BLUE SZ09X01(60)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 121.0,
+          "Rate": 72.04,
+          "Amount(Rs.)": 4322.4
+        },
+        {
+          "Brand/Product": "H24644161048",
+          "Description": "ENERGY PLUS BLUE BLK SZ-6X10(48)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 2,
+          "Pair": 96,
+          "MRP": 136.0,
+          "Rate": 80.97,
+          "Amount(Rs.)": 7773.12
+        }
+      ],
+      "total": {
+        "Carton": 8,
+        "Pair": 432,
+        "Amount(Rs.)": 33098.4
+      },
+      "gst": {
+        "description": "Add:IN:Integrated GST-OP(5.00%)",
+        "rate": 5.0,
+        "amount": 1654.92
+      },
+      "round off": {
+        "description": "Sales Round Off",
+        "amount": -0.32
+      },
+      "grand total": 34753.0
+    }
+  },
+  {
+    "invoice no": "1900404091",
+    "supplier": "Ajanta Shoes (India) Pvt. Ltd.",
+    "ship to": {
+      "name": "M/S.SHREE FOOTWEAR",
+      "address": "SY NO 287/7, 287/8, PEDDAPADU ROAD,,PATRUNIVALASA, PANCHAYAT, SRIKAKULAM,,SRIKAKULAM-532001(India)",
+      "gstin": "37AEBPP0086L1Z9",
+      "phone": "7989536155 /"
+    },
+    "date": "13.08.2026",
+    "data": {
+      "bill data": [
+        {
+          "Brand/Product": "11274361030",
+          "Description": "PUG 8468/41 SZ-6X10-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 299.0,
+          "Rate": 177.98,
+          "Amount(Rs.)": 5339.4
+        },
+        {
+          "Brand/Product": "2705202520430",
+          "Description": "PUB 452/9 SZ-08X10-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 279.0,
+          "Rate": 166.09,
+          "Amount(Rs.)": 4982.7
+        },
+        {
+          "Brand/Product": "2705202520530",
+          "Description": "PUB 452/9 SZ-11X13-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 299.0,
+          "Rate": 177.98,
+          "Amount(Rs.)": 5339.4
+        },
+        {
+          "Brand/Product": "2705202520730",
+          "Description": "PUB 452/9 SZ-1X4-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 319.0,
+          "Rate": 189.89,
+          "Amount(Rs.)": 5696.7
+        },
+        {
+          "Brand/Product": "11E122451036",
+          "Description": "AT 386/1 SZ-6X10-(36 PR)",
+          "HSN/SAC": "640419",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 304.0,
+          "Rate": 180.96,
+          "Amount(Rs.)": 6514.56
+        },
+        {
+          "Brand/Product": "11T1008851030",
+          "Description": "PUG 8500/4 SZ-6X10-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 309.0,
+          "Rate": 183.93,
+          "Amount(Rs.)": 5517.9
+        },
+        {
+          "Brand/Product": "11T1010651030",
+          "Description": "PUG 8482E/9 SZ-6X10-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 309.75,
+          "Rate": 194.94,
+          "Amount(Rs.)": 5848.2
+        },
+        {
+          "Brand/Product": "11T468761036",
+          "Description": "AT 386/8 SZ-6X10-(36PR)",
+          "HSN/SAC": "640419",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 295.0,
+          "Rate": 175.61,
+          "Amount(Rs.)": 6321.96
+        },
+        {
+          "Brand/Product": "11T536661030",
+          "Description": "PUG 8496/9 SZ-6X10-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 384.0,
+          "Rate": 228.57,
+          "Amount(Rs.)": 6857.1
+        },
+        {
+          "Brand/Product": "11T575871030",
+          "Description": "PUG 8518/73 SZ-7X10-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 296.0,
+          "Rate": 176.2,
+          "Amount(Rs.)": 5286.0
+        },
+        {
+          "Brand/Product": "11T649111330",
+          "Description": "PUB 463/9 SZ-11X13-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 285.0,
+          "Rate": 169.66,
+          "Amount(Rs.)": 5089.8
+        },
+        {
+          "Brand/Product": "11T650081030",
+          "Description": "PUB 463/9 SZ-08X10-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 270.0,
+          "Rate": 160.72,
+          "Amount(Rs.)": 4821.6
+        }
+      ],
+      "total": {
+        "Carton": 12,
+        "Pair": 372,
+        "Amount(Rs.)": 67615.32
+      },
+      "gst": {
+        "description": "Add:IN:Integrated GST-OP(5.00%)",
+        "rate": 5.0,
+        "amount": 3380.79
+      },
+      "round off": {
+        "description": "Sales Round Off",
+        "amount": -0.11
+      },
+      "grand total": 70996.0
+    }
+  },
+  {
+    "invoice no": "1900404102",
+    "supplier": "Ajanta Shoes (India) Pvt. Ltd.",
+    "ship to": {
+      "name": "M/S.SHREE FOOTWEAR",
+      "address": "SY NO 287/7, 287/8, PEDDAPADU ROAD,,PATRUNIVALASA, PANCHAYAT, SRIKAKULAM,,SRIKAKULAM-532001(India)",
+      "gstin": "37AEBPP0086L1Z9",
+      "phone": "7989536155 /"
+    },
+    "date": "13.08.2026",
+    "data": {
+      "bill data": [
+        {
+          "Brand/Product": "11742136X1036",
+          "Description": "AT 379/9 SZ-6X10-(36 PR)",
+          "HSN/SAC": "640419",
+          "Pack": 36,
+          "Carton": 2,
+          "Pair": 72,
+          "MRP": 229.0,
+          "Rate": 136.32,
+          "Amount(Rs.)": 9815.04
+        },
+        {
+          "Brand/Product": "11742696X1036",
+          "Description": "AT 378/9 SZ-6X10-(36 PR)",
+          "HSN/SAC": "640419",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 259.0,
+          "Rate": 154.17,
+          "Amount(Rs.)": 5550.12
+        },
+        {
+          "Brand/Product": "11T1009351030",
+          "Description": "PUG 8500/9 SZ-6X10-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 309.0,
+          "Rate": 183.93,
+          "Amount(Rs.)": 5517.9
+        },
+        {
+          "Brand/Product": "11T580461030",
+          "Description": "PUG 8511/4 SZ-6X10-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 299.0,
+          "Rate": 177.99,
+          "Amount(Rs.)": 5339.7
+        }
+      ],
+      "total": {
+        "Carton": 5,
+        "Pair": 168,
+        "Amount(Rs.)": 26222.76
+      },
+      "gst": {
+        "description": "Add:IN:Integrated GST-OP(5.00%)",
+        "rate": 5.0,
+        "amount": 1311.15
+      },
+      "round off": {
+        "description": "Sales Round Off",
+        "amount": 0.09
+      },
+      "grand total": 27534.0
+    }
+  },
+  {
+    "invoice no": "1900404784",
+    "supplier": "Ajanta Shoes (India) Pvt. Ltd.",
+    "ship to": {
+      "name": "M/S.SHREE FOOTWEAR",
+      "address": "SY NO 287/7, 287/8, PEDDAPADU ROAD,,PATRUNIVALASA, PANCHAYAT, SRIKAKULAM,,SRIKAKULAM-532001(India)",
+      "gstin": "37AEBPP0086L1Z9",
+      "phone": "7989536155 /"
+    },
+    "date": "17.08.2026",
+    "data": {
+      "bill data": [
+        {
+          "Brand/Product": "H2TT24961048",
+          "Description": "ENERGY PLUS BLK SZ-6X10(48)/B1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 136.0,
+          "Rate": 80.97,
+          "Amount(Rs.)": 3886.56
+        },
+        {
+          "Brand/Product": "H24644161048",
+          "Description": "ENERGY PLUS BLUE BLK SZ-6X10(48)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 2,
+          "Pair": 96,
+          "MRP": 136.0,
+          "Rate": 80.97,
+          "Amount(Rs.)": 7773.12
+        },
+        {
+          "Brand/Product": "H211JK261060",
+          "Description": "1MEDI FIT (BROWN) SZ-6X10-(60-PR)/B1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 188.0,
+          "Rate": 111.92,
+          "Amount(Rs.)": 6715.2
+        },
+        {
+          "Brand/Product": "H2AJCN0261048",
+          "Description": "1AJ CUSHION 024 SZ-6X10 (48)/B1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 10,
+          "Pair": 480,
+          "MRP": 146.0,
+          "Rate": 86.92,
+          "Amount(Rs.)": 41721.6
+        },
+        {
+          "Brand/Product": "H2AJCN0246848",
+          "Description": "1AJ CUSHION 024 SZ-6X8 (48)/B1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 4,
+          "Pair": 192,
+          "MRP": 146.0,
+          "Rate": 86.92,
+          "Amount(Rs.)": 16688.64
+        },
+        {
+          "Brand/Product": "H2YT939971048",
+          "Description": "AJ CUSHION 024 SZ-7X10 (48)/B1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 3,
+          "Pair": 144,
+          "MRP": 146.0,
+          "Rate": 86.92,
+          "Amount(Rs.)": 12516.48
+        },
+        {
+          "Brand/Product": "H2AJCN0246948",
+          "Description": "1AJ CUSHION 024 SZ-6X9 (48)/B1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 6,
+          "Pair": 288,
+          "MRP": 146.0,
+          "Rate": 86.92,
+          "Amount(Rs.)": 25032.96
+        },
+        {
+          "Brand/Product": "H2C172004560",
+          "Description": "1AJ CUSHION 024 SZ-04X05 (60)/B1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 5,
+          "Pair": 300,
+          "MRP": 137.0,
+          "Rate": 81.57,
+          "Amount(Rs.)": 24471.0
+        },
+        {
+          "Brand/Product": "H2C171902560",
+          "Description": "1AJ CUSHION 024 SZ-02X05 (60)/B1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 2,
+          "Pair": 120,
+          "MRP": 137.0,
+          "Rate": 81.57,
+          "Amount(Rs.)": 9788.4
+        }
+      ],
+      "total": {
+        "Carton": 34,
+        "Pair": 1728,
+        "Amount(Rs.)": 148593.96
+      },
+      "gst": {
+        "description": "Add:IN:Integrated GST-OP(5.00%)",
+        "rate": 5.0,
+        "amount": 7429.7
+      },
+      "round off": {
+        "description": "Sales Round Off",
+        "amount": 0.34
+      },
+      "grand total": 156024.0
+    }
+  },
+  {
+    "invoice no": "1900404927",
+    "supplier": "Ajanta Shoes (India) Pvt. Ltd.",
+    "ship to": {
+      "name": "M/S.SHREE FOOTWEAR",
+      "address": "SY NO 287/7, 287/8, PEDDAPADU ROAD,,PATRUNIVALASA, PANCHAYAT, SRIKAKULAM,,SRIKAKULAM-532001(India)",
+      "gstin": "37AEBPP0086L1Z9",
+      "phone": "7989536155 /"
+    },
+    "date": "18.08.2026",
+    "data": {
+      "bill data": [
+        {
+          "Brand/Product": "07072026BET00748",
+          "Description": "1BETA 06 RED-SZ 06X10 (48)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 143.0,
+          "Rate": 85.13,
+          "Amount(Rs.)": 4086.24
+        },
+        {
+          "Brand/Product": "H2Y84461048",
+          "Description": "1CEG 1001 B.BLUE-SZ 06X10 (48 PK)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 135.0,
+          "Rate": 80.38,
+          "Amount(Rs.)": 3858.24
+        },
+        {
+          "Brand/Product": "H2Y84761048",
+          "Description": "1CEG 1001 RED-SZ 06X10 (48 PK)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 135.0,
+          "Rate": 80.38,
+          "Amount(Rs.)": 3858.24
+        },
+        {
+          "Brand/Product": "H2YT981561048",
+          "Description": "1CEG 1002 BLUE-SZ 06X10 (48 PK)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 135.0,
+          "Rate": 80.38,
+          "Amount(Rs.)": 3858.24
+        },
+        {
+          "Brand/Product": "H2YT877461048",
+          "Description": "1CEG 1002 RED-SZ 06X10 (48 PK)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 135.0,
+          "Rate": 80.38,
+          "Amount(Rs.)": 3858.24
+        },
+        {
+          "Brand/Product": "H2YT925161048",
+          "Description": "1CEG 1003 B.BLUE-SZ 06X10 (48 PK)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 135.0,
+          "Rate": 80.38,
+          "Amount(Rs.)": 3858.24
+        },
+        {
+          "Brand/Product": "H2YT925461048",
+          "Description": "1CEG 1003 GREEN-SZ 06X10 (48 PK)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 135.0,
+          "Rate": 80.38,
+          "Amount(Rs.)": 3858.24
+        },
+        {
+          "Brand/Product": "H2T621561048",
+          "Description": "1CEG 1006 B.GREEN-SZ 06X10 (48 PK)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 135.0,
+          "Rate": 80.38,
+          "Amount(Rs.)": 3858.24
+        },
+        {
+          "Brand/Product": "H2E124505860",
+          "Description": "1CEL 111 C.BLUE SZ-5X8 (60)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 127.0,
+          "Rate": 76.25,
+          "Amount(Rs.)": 4575.0
+        },
+        {
+          "Brand/Product": "H2E124465860",
+          "Description": "1CEL 111 S.GREEN SZ-5X8 (60)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 127.0,
+          "Rate": 76.25,
+          "Amount(Rs.)": 4575.0
+        },
+        {
+          "Brand/Product": "H2YT922461048",
+          "Description": "1ECO 19 S.GREEN- SZ-6X10 (48)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 159.0,
+          "Rate": 94.66,
+          "Amount(Rs.)": 4543.68
+        },
+        {
+          "Brand/Product": "H2YT97106948",
+          "Description": "1ECO 20 DP.S.BLUE- SZ-6X9 (48)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 159.0,
+          "Rate": 94.66,
+          "Amount(Rs.)": 4543.68
+        },
+        {
+          "Brand/Product": "1130305760",
+          "Description": "1L-ORTHO SOFT 01 WINE SZ-5X7 (60)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 165.0,
+          "Rate": 96.06,
+          "Amount(Rs.)": 5763.6
+        },
+        {
+          "Brand/Product": "H2T616461048",
+          "Description": "1LOOK 08 BRONZE-SZ-6X10(48)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 189.0,
+          "Rate": 112.51,
+          "Amount(Rs.)": 5400.48
+        },
+        {
+          "Brand/Product": "H2E287961048",
+          "Description": "1LOOK 11 BRONZE-SZ-6X10(48)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 189.0,
+          "Rate": 112.51,
+          "Amount(Rs.)": 5400.48
+        }
+      ],
+      "total": {
+        "Carton": 15,
+        "Pair": 756,
+        "Amount(Rs.)": 65895.84
+      },
+      "gst": {
+        "description": "Add:IN:Integrated GST-OP(5.00%)",
+        "rate": 5.0,
+        "amount": 3294.76
+      },
+      "round off": {
+        "description": "Sales Round Off",
+        "amount": 0.4
+      },
+      "grand total": 69191.0
+    }
+  },
+  {
+    "invoice no": "1900405148",
+    "supplier": "Ajanta Shoes (India) Pvt. Ltd.",
+    "ship to": {
+      "name": "M/S.SHREE FOOTWEAR",
+      "address": "SY NO 287/7, 287/8, PEDDAPADU ROAD,,PATRUNIVALASA, PANCHAYAT, SRIKAKULAM,,SRIKAKULAM-532001(India)",
+      "gstin": "37AEBPP0086L1Z9",
+      "phone": "7989536155 /"
+    },
+    "date": "19.08.2026",
+    "data": {
+      "bill data": [
+        {
+          "Brand/Product": "310AT3176936",
+          "Description": "1AT 317/0/BL+GR SZ-6X9-(36 PR)",
+          "HSN/SAC": "640220",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 397.0,
+          "Rate": 236.31,
+          "Amount(Rs.)": 8507.16
+        },
+        {
+          "Brand/Product": "11FR56217936",
+          "Description": "AT 358/73 SZ-6X10-(36PR)",
+          "HSN/SAC": "640220",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 397.0,
+          "Rate": 236.31,
+          "Amount(Rs.)": 8507.16
+        },
+        {
+          "Brand/Product": "11742596X1036",
+          "Description": "AT 378/8 SZ-6X10-(36 PR)",
+          "HSN/SAC": "640419",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 267.0,
+          "Rate": 158.94,
+          "Amount(Rs.)": 5721.84
+        },
+        {
+          "Brand/Product": "11742036X1036",
+          "Description": "AT 379/8 SZ-6X10-(36 PR)",
+          "HSN/SAC": "640419",
+          "Pack": 36,
+          "Carton": 2,
+          "Pair": 72,
+          "MRP": 229.0,
+          "Rate": 136.32,
+          "Amount(Rs.)": 9815.04
+        },
+        {
+          "Brand/Product": "11T51875830",
+          "Description": "PUL 9330/72 SZ-5X8-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 329.0,
+          "Rate": 195.85,
+          "Amount(Rs.)": 5875.5
+        },
+        {
+          "Brand/Product": "11E316151030",
+          "Description": "PUG 8517/1 SZ-6X10-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 329.0,
+          "Rate": 195.84,
+          "Amount(Rs.)": 5875.2
+        },
+        {
+          "Brand/Product": "11386171030",
+          "Description": "PUG 8464/73 SZ-7X10-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 384.0,
+          "Rate": 228.57,
+          "Amount(Rs.)": 6857.1
+        }
+      ],
+      "total": {
+        "Carton": 8,
+        "Pair": 270,
+        "Amount(Rs.)": 51159.0
+      },
+      "gst": {
+        "description": "Add:IN:Integrated GST-OP(5.00%)",
+        "rate": 5.0,
+        "amount": 2557.96
+      },
+      "round off": {
+        "description": "Sales Round Off",
+        "amount": 0.04
+      },
+      "grand total": 53717.0
+    }
+  },
+  {
+    "invoice no": "1900405157",
+    "supplier": "Ajanta Shoes (India) Pvt. Ltd.",
+    "ship to": {
+      "name": "M/S.SHREE FOOTWEAR",
+      "address": "SY NO 287/7, 287/8, PEDDAPADU ROAD,,PATRUNIVALASA, PANCHAYAT, SRIKAKULAM,,SRIKAKULAM-532001(India)",
+      "gstin": "37AEBPP0086L1Z9",
+      "phone": "7989536155 /"
+    },
+    "date": "19.08.2026",
+    "data": {
+      "bill data": [
+        {
+          "Brand/Product": "11742055X936",
+          "Description": "AT 379/8 SZ-6X9-(36 PR)",
+          "HSN/SAC": "640419",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 229.0,
+          "Rate": 136.32,
+          "Amount(Rs.)": 4907.52
+        },
+        {
+          "Brand/Product": "11741986X1036",
+          "Description": "AT 379/73 SZ-6X10-(36 PR)",
+          "HSN/SAC": "640419",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 229.0,
+          "Rate": 136.32,
+          "Amount(Rs.)": 4907.52
+        },
+        {
+          "Brand/Product": "1137237930",
+          "Description": "PUG 8460/1 SZ-6X10 (30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 305.0,
+          "Rate": 181.55,
+          "Amount(Rs.)": 5446.5
+        },
+        {
+          "Brand/Product": "11YT9019661030",
+          "Description": "PUG 8483/1 SZ-6X10-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 329.0,
+          "Rate": 195.84,
+          "Amount(Rs.)": 5875.2
+        }
+      ],
+      "total": {
+        "Carton": 4,
+        "Pair": 132,
+        "Amount(Rs.)": 21136.74
+      },
+      "gst": {
+        "description": "Add:IN:Integrated GST-OP(5.00%)",
+        "rate": 5.0,
+        "amount": 1056.85
+      },
+      "round off": {
+        "description": "Sales Round Off",
+        "amount": 0.41
+      },
+      "grand total": 22194.0
+    }
+  },
+  {
+    "invoice no": "1900405158",
+    "supplier": "Ajanta Shoes (India) Pvt. Ltd.",
+    "ship to": {
+      "name": "M/S.SHREE FOOTWEAR",
+      "address": "SY NO 287/7, 287/8, PEDDAPADU ROAD,,PATRUNIVALASA, PANCHAYAT, SRIKAKULAM,,SRIKAKULAM-532001(India)",
+      "gstin": "37AEBPP0086L1Z9",
+      "phone": "7989536155 /"
+    },
+    "date": "19.08.2026",
+    "data": {
+      "bill data": [
+        {
+          "Brand/Product": "H2T1275860",
+          "Description": "1CEL 1023 MAGENTA SZ-5X8 (60)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 120.0,
+          "Rate": 72.05,
+          "Amount(Rs.)": 4323.0
+        },
+        {
+          "Brand/Product": "H2T1315860",
+          "Description": "1CEL 1023 S.GREEN SZ-5X8 (60)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 120.0,
+          "Rate": 72.05,
+          "Amount(Rs.)": 4323.0
+        },
+        {
+          "Brand/Product": "EPG01BLU6948",
+          "Description": "1EPG 01 WHITE BLUE-SZ 6x9-(48)/B1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 5,
+          "Pair": 240,
+          "MRP": 139.0,
+          "Rate": 82.75,
+          "Amount(Rs.)": 19860.0
+        },
+        {
+          "Brand/Product": "H2J28961048",
+          "Description": "1FIRE 01 BLUE-SZ 06X10 (48 PK)/B1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 133.0,
+          "Rate": 79.18,
+          "Amount(Rs.)": 3800.64
+        }
+      ],
+      "total": {
+        "Carton": 8,
+        "Pair": 408,
+        "Amount(Rs.)": 32306.64
+      },
+      "gst": {
+        "description": "Add:IN:Integrated GST-OP(5.00%)",
+        "rate": 5.0,
+        "amount": 1615.33
+      },
+      "round off": {
+        "description": "Sales Round Off",
+        "amount": 0.03
+      },
+      "grand total": 33922.0
+    }
+  },
+  {
+    "invoice no": "1900405361",
+    "supplier": "Ajanta Shoes (India) Pvt. Ltd.",
+    "ship to": {
+      "name": "M/S.SHREE FOOTWEAR",
+      "address": "SY NO 287/7, 287/8, PEDDAPADU ROAD,,PATRUNIVALASA, PANCHAYAT, SRIKAKULAM,,SRIKAKULAM-532001(India)",
+      "gstin": "37AEBPP0086L1Z9",
+      "phone": "7989536155 /"
+    },
+    "date": "20.08.2026",
+    "data": {
+      "bill data": [
+        {
+          "Brand/Product": "H233272548",
+          "Description": "1CEG 207 RED-SZ 02X05 (60 PK)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 131.0,
+          "Rate": 78.0,
+          "Amount(Rs.)": 4680.0
+        },
+        {
+          "Brand/Product": "H2MS689402560",
+          "Description": "1CEG 46 RED-SZ 02X05 (60 PK)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 2,
+          "Pair": 120,
+          "MRP": 131.0,
+          "Rate": 78.0,
+          "Amount(Rs.)": 9360.0
+        }
+      ],
+      "total": {
+        "Carton": 3,
+        "Pair": 180,
+        "Amount(Rs.)": 14040.0
+      },
+      "gst": {
+        "description": "Add:IN:Integrated GST-OP(5.00%)",
+        "rate": 5.0,
+        "amount": 702.0
+      },
+      "round off": {
+        "description": "Sales Round Off",
+        "amount": 0.0
+      },
+      "grand total": 14742.0
+    }
+  },
+  {
+    "invoice no": "1900405893",
+    "supplier": "Ajanta Shoes (India) Pvt. Ltd.",
+    "ship to": {
+      "name": "M/S.SHREE FOOTWEAR",
+      "address": "SY NO 287/7, 287/8, PEDDAPADU ROAD,,PATRUNIVALASA, PANCHAYAT, SRIKAKULAM,,SRIKAKULAM-532001(India)",
+      "gstin": "37AEBPP0086L1Z9",
+      "phone": "7989536155 /"
+    },
+    "date": "21.08.2026",
+    "data": {
+      "bill data": [
+        {
+          "Brand/Product": "11T597251030",
+          "Description": "CG 21051/9 SZ-7X10-(30 PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 319.0,
+          "Rate": 189.89,
+          "Amount(Rs.)": 5696.7
+        },
+        {
+          "Brand/Product": "H2M313561036",
+          "Description": "CG 21028M/9 SZ-6X10-(36 PR)",
+          "HSN/SAC": "640411",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 259.0,
+          "Rate": 154.17,
+          "Amount(Rs.)": 5550.12
+        },
+        {
+          "Brand/Product": "11E536951036",
+          "Description": "CG 21028/4 SZ-6X10-(36 PR)",
+          "HSN/SAC": "640419",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 259.0,
+          "Rate": 189.89,
+          "Amount(Rs.)": 6836.04
+        },
+        {
+          "Brand/Product": "11T519661030",
+          "Description": "PUG 8508/41 SZ-6X10-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 329.0,
+          "Rate": 195.84,
+          "Amount(Rs.)": 5875.2
+        },
+        {
+          "Brand/Product": "11T576471030",
+          "Description": "PUG 8518/9 SZ-7X10-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 296.0,
+          "Rate": 176.2,
+          "Amount(Rs.)": 5286.0
+        },
+        {
+          "Brand/Product": "11YT958071030",
+          "Description": "PUG 8490/4 SZ-7X10-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 604.0,
+          "Rate": 359.52,
+          "Amount(Rs.)": 10785.6
+        },
+        {
+          "Brand/Product": "DLA009561036",
+          "Description": "AT 395/4(BROWN) SZ-6X10 (36 PR)",
+          "HSN/SAC": "640419",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 359.0,
+          "Rate": 213.7,
+          "Amount(Rs.)": 7693.2
+        },
+        {
+          "Brand/Product": "DLA009761036",
+          "Description": "AT 395/41(TAN) SZ-6X10 (36 PR)",
+          "HSN/SAC": "640419",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 359.0,
+          "Rate": 213.7,
+          "Amount(Rs.)": 7693.2
+        },
+        {
+          "Brand/Product": "11274071030",
+          "Description": "PUG 8468/4 SZ-7X10-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 2,
+          "Pair": 60,
+          "MRP": 299.0,
+          "Rate": 177.98,
+          "Amount(Rs.)": 10678.8
+        },
+        {
+          "Brand/Product": "11T51925830",
+          "Description": "PUL 9330/80 SZ-5X8-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 329.0,
+          "Rate": 195.85,
+          "Amount(Rs.)": 5875.5
+        }
+      ],
+      "total": {
+        "Carton": 11,
+        "Pair": 354,
+        "Amount(Rs.)": 71970.36
+      },
+      "gst": {
+        "description": "Add:IN:Integrated GST-OP(5.00%)",
+        "rate": 5.0,
+        "amount": 3598.53
+      },
+      "round off": {
+        "description": "Sales Round Off",
+        "amount": 0.11
+      },
+      "grand total": 75569.0
+    }
+  },
+  {
+    "invoice no": "1900408353",
+    "supplier": "Ajanta Shoes (India) Pvt. Ltd.",
+    "ship to": {
+      "name": "M/S SRI BRUNDABAN ENTERPRISES",
+      "address": "KT NO-50/1560, PLOT NO.126/1/1749, NEW,COLONY, NEAR BANK OF, BARODA, SAI,MANDIR ROAD,,RAYAGADA-765001(India)",
+      "gstin": "21ADKPC5405A1ZI",
+      "phone": "9437094667 /"
+    },
+    "date": "31.08.2026",
+    "data": {
+      "bill data": [
+        {
+          "Brand/Product": "1179196X1024",
+          "Description": "1CG 37 AQUA 6X10#(24 PR)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 24,
+          "Carton": 1,
+          "Pair": 24,
+          "MRP": 319.0,
+          "Rate": 184.37,
+          "Amount(Rs.)": 4424.88
+        },
+        {
+          "Brand/Product": "H2Y83161024",
+          "Description": "1CG 37 BEIZE 6X10#(24 PR)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 24,
+          "Carton": 1,
+          "Pair": 24,
+          "MRP": 319.0,
+          "Rate": 184.37,
+          "Amount(Rs.)": 4424.88
+        },
+        {
+          "Brand/Product": "H2268861024",
+          "Description": "1CG 37 D.SKY 6X10#(24 PR)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 24,
+          "Carton": 1,
+          "Pair": 24,
+          "MRP": 319.0,
+          "Rate": 184.37,
+          "Amount(Rs.)": 4424.88
+        },
+        {
+          "Brand/Product": "H2Y82861024",
+          "Description": "1CG 37 P.BLUE 6X10#(24 PR)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 24,
+          "Carton": 1,
+          "Pair": 24,
+          "MRP": 319.0,
+          "Rate": 184.37,
+          "Amount(Rs.)": 4424.88
+        },
+        {
+          "Brand/Product": "H2Y84061024",
+          "Description": "1CG 40 OLIVE 6X10#(24 PR)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 24,
+          "Carton": 1,
+          "Pair": 24,
+          "MRP": 319.0,
+          "Rate": 184.37,
+          "Amount(Rs.)": 4424.88
+        },
+        {
+          "Brand/Product": "H2273661024",
+          "Description": "1CG 40 SKY 6X10#(24 PR)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 24,
+          "Carton": 1,
+          "Pair": 24,
+          "MRP": 319.0,
+          "Rate": 184.37,
+          "Amount(Rs.)": 4424.88
+        },
+        {
+          "Brand/Product": "H2T51202560",
+          "Description": "1ECO 21 S.GREEN- SZ-2X5 (60)/B1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 149.0,
+          "Rate": 88.71,
+          "Amount(Rs.)": 5322.6
+        },
+        {
+          "Brand/Product": "H2E9222560",
+          "Description": "1ECO PLUS 15 DP.S.BLUE- SZ-2X5 (60)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 169.0,
+          "Rate": 100.61,
+          "Amount(Rs.)": 6036.6
+        },
+        {
+          "Brand/Product": "H2E9316948",
+          "Description": "1ECO PLUS 15 F.GREEN- SZ-6X9 (48)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 179.0,
+          "Rate": 106.56,
+          "Amount(Rs.)": 5114.88
+        },
+        {
+          "Brand/Product": "H2E1247361048",
+          "Description": "1ECO SMART 13 BLACK SZ-6X10 (48)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 2,
+          "Pair": 96,
+          "MRP": 169.0,
+          "Rate": 100.61,
+          "Amount(Rs.)": 9658.56
+        },
+        {
+          "Brand/Product": "H2E1246961048",
+          "Description": "1ECO SMART 13 L.BROWN SZ-6X10 (48)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 169.0,
+          "Rate": 100.61,
+          "Amount(Rs.)": 4829.28
+        },
+        {
+          "Brand/Product": "H2E32636948",
+          "Description": "1ECO SMART 15 DP.S.BLUE SZ-6X9 (48)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 2,
+          "Pair": 96,
+          "MRP": 169.0,
+          "Rate": 100.61,
+          "Amount(Rs.)": 9658.56
+        },
+        {
+          "Brand/Product": "H2E32716948",
+          "Description": "1ECO SMART 15 LT.BROWN SZ-6X9 (48)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 169.0,
+          "Rate": 100.61,
+          "Amount(Rs.)": 4829.28
+        },
+        {
+          "Brand/Product": "11T447071048",
+          "Description": "1FITNESS PLUS 107 BLACK-SZ-7X10(48)/J",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 2,
+          "Pair": 96,
+          "MRP": 159.0,
+          "Rate": 94.66,
+          "Amount(Rs.)": 9087.36
+        },
+        {
+          "Brand/Product": "H2F360461048",
+          "Description": "1FITNESS PLUS B.GREEN- SZ-6X10 (48)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 159.0,
+          "Rate": 94.66,
+          "Amount(Rs.)": 4543.68
+        },
+        {
+          "Brand/Product": "H2Z365461048",
+          "Description": "1FITNESS PLUS DP.SKY- SZ-6X10 (48)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 2,
+          "Pair": 96,
+          "MRP": 159.0,
+          "Rate": 94.66,
+          "Amount(Rs.)": 9087.36
+        },
+        {
+          "Brand/Product": "1FK007606948",
+          "Description": "1FITNESS PLUS N.BLUE- SZ-6X9 (48)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 159.0,
+          "Rate": 94.66,
+          "Amount(Rs.)": 4543.68
+        },
+        {
+          "Brand/Product": "H2CPL1361048",
+          "Description": "FITNESS B.GREEN SZ -6X10(48)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 144.0,
+          "Rate": 85.73,
+          "Amount(Rs.)": 4115.04
+        },
+        {
+          "Brand/Product": "H2E169002560",
+          "Description": "FITNESS L.BROWN SZ-2X5(60)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 134.0,
+          "Rate": 79.78,
+          "Amount(Rs.)": 4786.8
+        },
+        {
+          "Brand/Product": "FITNESLB6948",
+          "Description": "FITNESS L.BROWN SZ -6X9(48)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 144.0,
+          "Rate": 85.73,
+          "Amount(Rs.)": 4115.04
+        },
+        {
+          "Brand/Product": "H2E169902560",
+          "Description": "FITNESS TURKISH SZ-2X5(60)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 134.0,
+          "Rate": 79.78,
+          "Amount(Rs.)": 4786.8
+        },
+        {
+          "Brand/Product": "H2E8866948",
+          "Description": "1LOOK 09 BRONZE-SZ-6X9(48)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 2,
+          "Pair": 96,
+          "MRP": 189.0,
+          "Rate": 106.56,
+          "Amount(Rs.)": 10229.76
+        },
+        {
+          "Brand/Product": "H2T2666948",
+          "Description": "1LOOK PLUS 06 DP.S.BLUE SZ-6X9 (48)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 199.0,
+          "Rate": 118.46,
+          "Amount(Rs.)": 5686.08
+        },
+        {
+          "Brand/Product": "H2E89861048",
+          "Description": "1LOOK PLUS 08 BROWN SZ-6X10 (48)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 1,
+          "Pair": 48,
+          "MRP": 199.0,
+          "Rate": 118.46,
+          "Amount(Rs.)": 5686.08
+        },
+        {
+          "Brand/Product": "H2E90371048",
+          "Description": "1LOOK PLUS 08 DP.S.BLUE SZ-7X10 (48)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 48,
+          "Carton": 2,
+          "Pair": 96,
+          "MRP": 199.0,
+          "Rate": 118.46,
+          "Amount(Rs.)": 11372.16
+        }
+      ],
+      "total": {
+        "Carton": 31,
+        "Pair": 1392,
+        "Amount(Rs.)": 150038.88
+      },
+      "gst": {
+        "description": "Add:IN:Integrated GST-OP(5.00%)",
+        "rate": 5.0,
+        "amount": 7501.9
+      },
+      "round off": {
+        "description": "Sales Round Off",
+        "amount": 0.22
+      },
+      "grand total": 157541.0
+    }
+  },
+  {
+    "invoice no": "1900408420",
+    "supplier": "Ajanta Shoes (India) Pvt. Ltd.",
+    "ship to": {
+      "name": "M/S SRI BRUNDABAN ENTERPRISES",
+      "address": "KT NO-50/1560, PLOT NO.126/1/1749, NEW,COLONY, NEAR BANK OF, BARODA, SAI,MANDIR ROAD,,RAYAGADA-765001(India)",
+      "gstin": "21ADKPC5405A1ZI",
+      "phone": "9437094667 /"
+    },
+    "date": "31.08.2026",
+    "data": {
+      "bill data": [
+        {
+          "Brand/Product": "1179486X930",
+          "Description": "PUG 8438/4 SZ-6X9-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 415.0,
+          "Rate": 247.03,
+          "Amount(Rs.)": 7410.9
+        },
+        {
+          "Brand/Product": "11382461030",
+          "Description": "PUG 8438/41 NEWSZ-6X10-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 415.0,
+          "Rate": 247.03,
+          "Amount(Rs.)": 7410.9
+        }
+      ],
+      "total": {
+        "Carton": 2,
+        "Pair": 60,
+        "Amount(Rs.)": 14821.8
+      },
+      "gst": {
+        "description": "Add:IN:Integrated GST-OP(5.00%)",
+        "rate": 5.0,
+        "amount": 741.1
+      },
+      "round off": {
+        "description": "Sales Round Off",
+        "amount": 0.1
+      },
+      "grand total": 15563.0
+    }
+  },
+  {
+    "invoice no": "1900412399",
+    "supplier": "Ajanta Shoes (India) Pvt. Ltd.",
+    "ship to": {
+      "name": "M/S.SHREE FOOTWEAR",
+      "address": "SY NO 287/7, 287/8, PEDDAPADU ROAD,,PATRUNIVALASA, PANCHAYAT, SRIKAKULAM,,SRIKAKULAM-532001(India)",
+      "gstin": "37AEBPP0086L1Z9",
+      "phone": "7989536155 /"
+    },
+    "date": "16.09.2026",
+    "data": {
+      "bill data": [
+        {
+          "Brand/Product": "H2N3705860",
+          "Description": "1L-ORTHO SOFT 01 BROWN SZ-5X8 (60)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 160.0,
+          "Rate": 96.06,
+          "Amount(Rs.)": 5763.6
+        },
+        {
+          "Brand/Product": "H2N6385860",
+          "Description": "1L-ORTHO SOFT 01 WINE SZ-5X8 (60)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 160.0,
+          "Rate": 96.06,
+          "Amount(Rs.)": 5763.6
+        },
+        {
+          "Brand/Product": "H2T534009160",
+          "Description": "1NANO 08 DP.BLUE SZ-9X1(60)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 129.0,
+          "Rate": 68.99,
+          "Amount(Rs.)": 4139.4
+        },
+        {
+          "Brand/Product": "H2E56479160",
+          "Description": "1TOTO SOFT/46 DP.CYAN SZ 09X01(60)/J1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 121.0,
+          "Rate": 72.04,
+          "Amount(Rs.)": 4322.4
+        }
+      ],
+      "total": {
+        "Carton": 4,
+        "Pair": 240,
+        "Amount(Rs.)": 19989.0
+      },
+      "gst": {
+        "description": "Add:IN:Integrated GST-OP(5.00%)",
+        "rate": 5.0,
+        "amount": 999.45
+      },
+      "round off": {
+        "description": "Sales Round Off",
+        "amount": -0.45
+      },
+      "grand total": 20988.0
+    }
+  },
+  {
+    "invoice no": "1900412471",
+    "supplier": "Ajanta Shoes (India) Pvt. Ltd.",
+    "ship to": {
+      "name": "M/S.SHREE FOOTWEAR",
+      "address": "SY NO 287/7, 287/8, PEDDAPADU ROAD,,PATRUNIVALASA, PANCHAYAT, SRIKAKULAM,,SRIKAKULAM-532001(India)",
+      "gstin": "37AEBPP0086L1Z9",
+      "phone": "7989536155 /"
+    },
+    "date": "16.09.2026",
+    "data": {
+      "bill data": [
+        {
+          "Brand/Product": "11T519661030",
+          "Description": "PUG 8508/41 SZ-6X10-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 329.0,
+          "Rate": 195.84,
+          "Amount(Rs.)": 5875.2
+        },
+        {
+          "Brand/Product": "11E15505830",
+          "Description": "PUL 9343/4 SZ-5X8-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 339.0,
+          "Rate": 201.79,
+          "Amount(Rs.)": 6053.7
+        }
+      ],
+      "total": {
+        "Carton": 2,
+        "Pair": 60,
+        "Amount(Rs.)": 11928.9
+      },
+      "gst": {
+        "description": "Add:IN:Integrated GST-OP(5.00%)",
+        "rate": 5.0,
+        "amount": 596.45
+      },
+      "round off": {
+        "description": "Sales Round Off",
+        "amount": -0.35
+      },
+      "grand total": 12525.0
+    }
+  },
+  {
+    "invoice no": "1900412530",
+    "supplier": "Ajanta Shoes (India) Pvt. Ltd.",
+    "ship to": {
+      "name": "M/S.SHREE FOOTWEAR",
+      "address": "SY NO 287/7, 287/8, PEDDAPADU ROAD,,PATRUNIVALASA, PANCHAYAT, SRIKAKULAM,,SRIKAKULAM-532001(India)",
+      "gstin": "37AEBPP0086L1Z9",
+      "phone": "7989536155 /"
+    },
+    "date": "16.09.2026",
+    "data": {
+      "bill data": [
+        {
+          "Brand/Product": "H211JK261060",
+          "Description": "1MEDI FIT (BROWN) SZ-6X10-(60-PR)/B1",
+          "HSN/SAC": "640220",
+          "Pack": 60,
+          "Carton": 1,
+          "Pair": 60,
+          "MRP": 188.0,
+          "Rate": 111.92,
+          "Amount(Rs.)": 6715.2
+        },
+        {
+          "Brand/Product": "11E123395830",
+          "Description": "PUL 9353/9 SZ-5X8-(30PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 289.0,
+          "Rate": 172.03,
+          "Amount(Rs.)": 5160.9
+        }
+      ],
+      "total": {
+        "Carton": 2,
+        "Pair": 90,
+        "Amount(Rs.)": 11876.1
+      },
+      "gst": {
+        "description": "Add:IN:Integrated GST-OP(5.00%)",
+        "rate": 5.0,
+        "amount": 593.81
+      },
+      "round off": {
+        "description": "Sales Round Off",
+        "amount": 0.09
+      },
+      "grand total": 12470.0
+    }
+  },
+  {
+    "invoice no": "1900412536",
+    "supplier": "Ajanta Shoes (India) Pvt. Ltd.",
+    "ship to": {
+      "name": "M/S.SHREE FOOTWEAR",
+      "address": "SY NO 287/7, 287/8, PEDDAPADU ROAD,,PATRUNIVALASA, PANCHAYAT, SRIKAKULAM,,SRIKAKULAM-532001(India)",
+      "gstin": "37AEBPP0086L1Z9",
+      "phone": "7989536155 /"
+    },
+    "date": "16.09.2026",
+    "data": {
+      "bill data": [
+        {
+          "Brand/Product": "11T597151030",
+          "Description": "CG 21051/9 SZ-6X10-(30 PR)",
+          "HSN/SAC": "640419",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 319.0,
+          "Rate": 189.89,
+          "Amount(Rs.)": 5696.7
+        }
+      ],
+      "total": {
+        "Carton": 1,
+        "Pair": 30,
+        "Amount(Rs.)": 5696.7
+      },
+      "gst": {
+        "description": "Add:IN:Integrated GST-OP(5.00%)",
+        "rate": 5.0,
+        "amount": 284.84
+      },
+      "round off": {
+        "description": "Sales Round Off",
+        "amount": 0.46
+      },
+      "grand total": 5982.0
+    }
+  },
+  {
+    "invoice no": "XPL/2041/26-27",
+    "supplier": "Xpania Footcare LLP",
+    "ship to": {
+      "name": "M/s SUSHILA BOOT HOUSE",
+      "address": "Gandhichowk, Gandaghora, Brajrajnagar, Jharsuguda",
+      "gstin": "32AAAFX4582E1ZB",
+      "phone": ""
+    },
+    "date": "9-Sep-26",
+    "data": {
+      "bill data": [
+        {
+          "Brand/Product": "W ART NO: 2203 BLACK 5/9",
+          "Description": "W ART NO: 2203 BLACK 5/9",
+          "HSN/SAC": "640299",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 349.0,
+          "Rate": 216.38,
+          "Amount(Rs.)": 7789.68
+        },
+        {
+          "Brand/Product": "ARTNO:C238 PEACH 5/9",
+          "Description": "ARTNO:C238 PEACH 5/9",
+          "HSN/SAC": "640299",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 369.0,
+          "Rate": 228.78,
+          "Amount(Rs.)": 8236.08
+        },
+        {
+          "Brand/Product": "ART NO: D 32 BEIGE 5/8",
+          "Description": "ART NO: D 32 BEIGE 5/8",
+          "HSN/SAC": "640299",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 419.0,
+          "Rate": 259.78,
+          "Amount(Rs.)": 7793.4
+        },
+        {
+          "Brand/Product": "ART NO: 8006 GREEN 5/9",
+          "Description": "ART NO: 8006 GREEN 5/9",
+          "HSN/SAC": "640299",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 369.0,
+          "Rate": 228.78,
+          "Amount(Rs.)": 8236.08
+        },
+        {
+          "Brand/Product": "ART NO: 80011 PEACH 5/9",
+          "Description": "ART NO: 80011 PEACH 5/9",
+          "HSN/SAC": "640299",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 349.0,
+          "Rate": 216.38,
+          "Amount(Rs.)": 7789.68
+        },
+        {
+          "Brand/Product": "ART NO: C222 BLACK 5/9",
+          "Description": "ART NO: C222 BLACK 5/9",
+          "HSN/SAC": "640299",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 369.0,
+          "Rate": 228.78,
+          "Amount(Rs.)": 8236.08
+        },
+        {
+          "Brand/Product": "ART NO: 90001 BEIGE 5/9",
+          "Description": "ART NO: 90001 BEIGE 5/9",
+          "HSN/SAC": "640299",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 329.0,
+          "Rate": 203.98,
+          "Amount(Rs.)": 7343.28
+        },
+        {
+          "Brand/Product": "ART NO: Z 31 CLOUD 5/9",
+          "Description": "ART NO: Z 31 CLOUD 5/9",
+          "HSN/SAC": "640299",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 429.0,
+          "Rate": 265.98,
+          "Amount(Rs.)": 7979.4
+        },
+        {
+          "Brand/Product": "ART NO: A64 CLOUD 5/8",
+          "Description": "ART NO: A64 CLOUD 5/8",
+          "HSN/SAC": "640299",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 449.0,
+          "Rate": 278.38,
+          "Amount(Rs.)": 8351.4
+        },
+        {
+          "Brand/Product": "ARTNO:S009 BLACK5/8",
+          "Description": "ARTNO:S009 BLACK5/8",
+          "HSN/SAC": "640299",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 399.0,
+          "Rate": 247.38,
+          "Amount(Rs.)": 7421.4
+        },
+        {
+          "Brand/Product": "ART NO : D16 BISCUIT 1/4",
+          "Description": "ART NO : D16 BISCUIT 1/4",
+          "HSN/SAC": "640299",
+          "Pack": 40,
+          "Carton": 1,
+          "Pair": 40,
+          "MRP": 389.0,
+          "Rate": 241.18,
+          "Amount(Rs.)": 9647.2
+        },
+        {
+          "Brand/Product": "ART NO: A43 BLUE 5/8 (2)",
+          "Description": "ART NO: A43 BLUE 5/8 (2)",
+          "HSN/SAC": "640299",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 419.0,
+          "Rate": 259.78,
+          "Amount(Rs.)": 7793.4
+        },
+        {
+          "Brand/Product": "ART NO : A25 PINK 5/8",
+          "Description": "ART NO : A25 PINK 5/8",
+          "HSN/SAC": "640299",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 430.0,
+          "Rate": 266.6,
+          "Amount(Rs.)": 7998.0
+        },
+        {
+          "Brand/Product": "ART NO: A43 BLACK 5/8 (2)",
+          "Description": "ART NO: A43 BLACK 5/8 (2)",
+          "HSN/SAC": "640299",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 419.0,
+          "Rate": 259.78,
+          "Amount(Rs.)": 7793.4
+        },
+        {
+          "Brand/Product": "ART NO: A54 CHIKOO 5/8",
+          "Description": "ART NO: A54 CHIKOO 5/8",
+          "HSN/SAC": "640299",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 419.0,
+          "Rate": 259.78,
+          "Amount(Rs.)": 7793.4
+        },
+        {
+          "Brand/Product": "ART NO: C112 WHITE 5/9 (2)",
+          "Description": "ART NO: C112 WHITE 5/9 (2)",
+          "HSN/SAC": "640299",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 299.0,
+          "Rate": 185.38,
+          "Amount(Rs.)": 6673.68
+        },
+        {
+          "Brand/Product": "ART NO: C245 BEIGE 5/9",
+          "Description": "ART NO: C245 BEIGE 5/9",
+          "HSN/SAC": "640299",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 359.0,
+          "Rate": 222.58,
+          "Amount(Rs.)": 8012.88
+        },
+        {
+          "Brand/Product": "ART NO: A 75 BLACK 5/8",
+          "Description": "ART NO: A 75 BLACK 5/8",
+          "HSN/SAC": "640299",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 439.0,
+          "Rate": 272.18,
+          "Amount(Rs.)": 8165.4
+        },
+        {
+          "Brand/Product": "V/A AIDA: 14A5 PINK 5/9",
+          "Description": "V/A AIDA: 14A5 PINK 5/9",
+          "HSN/SAC": "640299",
+          "Pack": 35,
+          "Carton": 1,
+          "Pair": 35,
+          "MRP": 449.0,
+          "Rate": 278.38,
+          "Amount(Rs.)": 9743.3
+        },
+        {
+          "Brand/Product": "ART NO : D16 BISCUIT 10/13",
+          "Description": "ART NO : D16 BISCUIT 10/13",
+          "HSN/SAC": "640299",
+          "Pack": 40,
+          "Carton": 1,
+          "Pair": 40,
+          "MRP": 379.0,
+          "Rate": 234.98,
+          "Amount(Rs.)": 9399.2
+        }
+      ],
+      "total": {
+        "Carton": 20,
+        "Pair": 673,
+        "Amount(Rs.)": 162196.34
+      },
+      "gst": {
+        "description": "Add:IN:Integrated GST-OP(5.00%)",
+        "rate": 5.0,
+        "amount": 8109.79
+      },
+      "round off": {
+        "description": "Sales Round Off",
+        "amount": 0.0
+      },
+      "grand total": 170306.0
+    }
+  },
+  {
+    "invoice no": "XPL/2140/26-27",
+    "supplier": "Xpania Footcare LLP",
+    "ship to": {
+      "name": "MAHAVIR SHOE HOUSE",
+      "address": "661/404, 4685, Sarang, Sarang, Dhenkanal",
+      "gstin": "32AAAFX4582E1ZB",
+      "phone": ""
+    },
+    "date": "19-Sep-26",
+    "data": {
+      "bill data": [
+        {
+          "Brand/Product": "ART NO: C218 LAVENDER 5/9",
+          "Description": "ART NO: C218 LAVENDER 5/9",
+          "HSN/SAC": "640299",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 339.0,
+          "Rate": 203.4,
+          "Amount(Rs.)": 7322.4
+        },
+        {
+          "Brand/Product": "ART NO: A 35 GREEN 5/9",
+          "Description": "ART NO: A 35 GREEN 5/9",
+          "HSN/SAC": "640299",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 429.0,
+          "Rate": 257.4,
+          "Amount(Rs.)": 7722.0
+        },
+        {
+          "Brand/Product": "ART NO: Z 31 CLOUD 5/9",
+          "Description": "ART NO: Z 31 CLOUD 5/9",
+          "HSN/SAC": "640299",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 429.0,
+          "Rate": 257.4,
+          "Amount(Rs.)": 7722.0
+        },
+        {
+          "Brand/Product": "ART NO: A43 BLUE 5/8 (2)",
+          "Description": "ART NO: A43 BLUE 5/8 (2)",
+          "HSN/SAC": "640299",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 419.0,
+          "Rate": 251.4,
+          "Amount(Rs.)": 7542.0
+        },
+        {
+          "Brand/Product": "ART NO: 80008 GREEN 5/9",
+          "Description": "ART NO: 80008 GREEN 5/9",
+          "HSN/SAC": "640299",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 329.0,
+          "Rate": 197.4,
+          "Amount(Rs.)": 7106.4
+        },
+        {
+          "Brand/Product": "ART NO: J 150 PEACH 5/9",
+          "Description": "ART NO: J 150 PEACH 5/9",
+          "HSN/SAC": "640299",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 399.0,
+          "Rate": 239.4,
+          "Amount(Rs.)": 7182.0
+        },
+        {
+          "Brand/Product": "ART NO: W14 BISCUT 10/12",
+          "Description": "ART NO: W14 BISCUT 10/12",
+          "HSN/SAC": "640299",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 419.0,
+          "Rate": 251.4,
+          "Amount(Rs.)": 9050.4
+        },
+        {
+          "Brand/Product": "ART NO: C231 CLOUD 5/9(2)",
+          "Description": "ART NO: C231 CLOUD 5/9(2)",
+          "HSN/SAC": "640299",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 349.0,
+          "Rate": 209.4,
+          "Amount(Rs.)": 7538.4
+        },
+        {
+          "Brand/Product": "ART NO : W09 BROWN 10/12",
+          "Description": "ART NO : W09 BROWN 10/12",
+          "HSN/SAC": "640299",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 419.0,
+          "Rate": 251.4,
+          "Amount(Rs.)": 9050.4
+        },
+        {
+          "Brand/Product": "ART NO: A54 CHIKOO 5/8",
+          "Description": "ART NO: A54 CHIKOO 5/8",
+          "HSN/SAC": "640299",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 419.0,
+          "Rate": 251.4,
+          "Amount(Rs.)": 7542.0
+        },
+        {
+          "Brand/Product": "ART NO: D 30 GREEN 10 /13 (2)",
+          "Description": "ART NO: D 30 GREEN 10 /13 (2)",
+          "HSN/SAC": "640299",
+          "Pack": 40,
+          "Carton": 1,
+          "Pair": 40,
+          "MRP": 379.0,
+          "Rate": 227.4,
+          "Amount(Rs.)": 9096.0
+        },
+        {
+          "Brand/Product": "ART NO: D 30 GREEN 1/4 (2)",
+          "Description": "ART NO: D 30 GREEN 1/4 (2)",
+          "HSN/SAC": "640299",
+          "Pack": 40,
+          "Carton": 1,
+          "Pair": 40,
+          "MRP": 389.0,
+          "Rate": 233.4,
+          "Amount(Rs.)": 9336.0
+        },
+        {
+          "Brand/Product": "ART NO: A46 WINE 5/8",
+          "Description": "ART NO: A46 WINE 5/8",
+          "HSN/SAC": "640299",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 419.0,
+          "Rate": 251.4,
+          "Amount(Rs.)": 7542.0
+        },
+        {
+          "Brand/Product": "ART NO: 90001 BEIGE 5/9",
+          "Description": "ART NO: 90001 BEIGE 5/9",
+          "HSN/SAC": "640299",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 329.0,
+          "Rate": 197.4,
+          "Amount(Rs.)": 7106.4
+        },
+        {
+          "Brand/Product": "ART NO: D 40 GOLD 10/13",
+          "Description": "ART NO: D 40 GOLD 10/13",
+          "HSN/SAC": "640299",
+          "Pack": 40,
+          "Carton": 1,
+          "Pair": 40,
+          "MRP": 349.0,
+          "Rate": 209.4,
+          "Amount(Rs.)": 8376.0
+        },
+        {
+          "Brand/Product": "ART NO: D 40 GOLD 1/4",
+          "Description": "ART NO: D 40 GOLD 1/4",
+          "HSN/SAC": "640299",
+          "Pack": 40,
+          "Carton": 1,
+          "Pair": 40,
+          "MRP": 359.0,
+          "Rate": 215.4,
+          "Amount(Rs.)": 8616.0
+        },
+        {
+          "Brand/Product": "V/A AIDA: 15A1 BLACK 5/9",
+          "Description": "V/A AIDA: 15A1 BLACK 5/9",
+          "HSN/SAC": "640299",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 379.0,
+          "Rate": 227.4,
+          "Amount(Rs.)": 8186.4
+        },
+        {
+          "Brand/Product": "VIA AIDA: 0804 BLACK 5/9",
+          "Description": "VIA AIDA: 0804 BLACK 5/9",
+          "HSN/SAC": "640299",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 369.0,
+          "Rate": 221.4,
+          "Amount(Rs.)": 7970.4
+        },
+        {
+          "Brand/Product": "V/A AIDA: 5002 ROSE 5/8",
+          "Description": "V/A AIDA: 5002 ROSE 5/8",
+          "HSN/SAC": "640299",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 419.0,
+          "Rate": 251.4,
+          "Amount(Rs.)": 9050.4
+        },
+        {
+          "Brand/Product": "V/A AIDA: 25A3 WINE 5/9",
+          "Description": "V/A AIDA: 25A3 WINE 5/9",
+          "HSN/SAC": "640299",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 429.0,
+          "Rate": 257.4,
+          "Amount(Rs.)": 9266.4
+        },
+        {
+          "Brand/Product": "V/A ART NO: 1819 E BLUE 5/8",
+          "Description": "V/A ART NO: 1819 E BLUE 5/8",
+          "HSN/SAC": "640299",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 399.0,
+          "Rate": 239.4,
+          "Amount(Rs.)": 8618.4
+        },
+        {
+          "Brand/Product": "V/A AIDA: 25A3 PEACOCK 5/9",
+          "Description": "V/A AIDA: 25A3 PEACOCK 5/9",
+          "HSN/SAC": "640299",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 429.0,
+          "Rate": 257.4,
+          "Amount(Rs.)": 9266.4
+        },
+        {
+          "Brand/Product": "V/A AIDA: 13A6 PEACOCK 5/9",
+          "Description": "V/A AIDA: 13A6 PEACOCK 5/9",
+          "HSN/SAC": "640299",
+          "Pack": 30,
+          "Carton": 1,
+          "Pair": 30,
+          "MRP": 449.0,
+          "Rate": 269.4,
+          "Amount(Rs.)": 8082.0
+        },
+        {
+          "Brand/Product": "V/A AIDA: 12A1 BLACK 5/9",
+          "Description": "V/A AIDA: 12A1 BLACK 5/9",
+          "HSN/SAC": "640299",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 399.0,
+          "Rate": 239.4,
+          "Amount(Rs.)": 8618.4
+        },
+        {
+          "Brand/Product": "V/A AIDA: 15A4 MAROON 5/9",
+          "Description": "V/A AIDA: 15A4 MAROON 5/9",
+          "HSN/SAC": "640299",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 355.0,
+          "Rate": 213.0,
+          "Amount(Rs.)": 7668.0
+        },
+        {
+          "Brand/Product": "V/A AIDA: 09A6 GREEN 5/9",
+          "Description": "V/A AIDA: 09A6 GREEN 5/9",
+          "HSN/SAC": "640299",
+          "Pack": 29,
+          "Carton": 1,
+          "Pair": 29,
+          "MRP": 359.0,
+          "Rate": 215.4,
+          "Amount(Rs.)": 6246.6
+        },
+        {
+          "Brand/Product": "V/A AIDA: 1821 PISTA 4/8",
+          "Description": "V/A AIDA: 1821 PISTA 4/8",
+          "HSN/SAC": "640299",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 399.0,
+          "Rate": 239.4,
+          "Amount(Rs.)": 8618.4
+        },
+        {
+          "Brand/Product": "V/A AIDA: 5002 CREAM 5/9",
+          "Description": "V/A AIDA: 5002 CREAM 5/9",
+          "HSN/SAC": "640299",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 419.0,
+          "Rate": 251.4,
+          "Amount(Rs.)": 9050.4
+        },
+        {
+          "Brand/Product": "V/A AIDA: 23A3 GREEN 10/13",
+          "Description": "V/A AIDA: 23A3 GREEN 10/13",
+          "HSN/SAC": "640299",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 359.0,
+          "Rate": 215.4,
+          "Amount(Rs.)": 7754.4
+        },
+        {
+          "Brand/Product": "V/A AIDA: 23A3 GREEN 1/4",
+          "Description": "V/A AIDA: 23A3 GREEN 1/4",
+          "HSN/SAC": "640299",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 379.0,
+          "Rate": 227.4,
+          "Amount(Rs.)": 8186.4
+        },
+        {
+          "Brand/Product": "V/A AIDA:0502 ROSE 5/9",
+          "Description": "V/A AIDA:0502 ROSE 5/9",
+          "HSN/SAC": "640299",
+          "Pack": 36,
+          "Carton": 1,
+          "Pair": 36,
+          "MRP": 469.0,
+          "Rate": 281.4,
+          "Amount(Rs.)": 10130.4
+        }
+      ],
+      "total": {
+        "Carton": 31,
+        "Pair": 1083,
+        "Amount(Rs.)": 254563.8
+      },
+      "gst": {
+        "description": "Add:IN:Integrated GST-OP(5.00%)",
+        "rate": 5.0,
+        "amount": 12728.19
+      },
+      "round off": {
+        "description": "Sales Round Off",
+        "amount": 0.01
+      },
+      "grand total": 267292.0
+    }
+  }
+]

@@ -1,0 +1,220 @@
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                        Statement of Account                                                                                       
+              SKIL LIFESTYLE LLP                                                                                                      Union Bank of India                                          
+              C/O SKIL LIFESTYLE LLP                                                                                                                                                               
+                                                                                                                                      Branch                  RAYAGADA                             
+              D NO 28 10 04 SHOP NO 7A THIRD FLOOR                                                                                                                                                 
+              VASAVI PLAZA THEATRE ROAD REVENUE WARD NO                                                                                                                                            
+                                                                                                                                      Customer Id             902316343                            
+                                       VISAK                                                                                          Account No              348621010000129                      
+              City                                                                                                                                                                                 
+                                       ANDHRA PRADESH                                                                                 Account Currency        INR                                  
+              State                    INDIA                                                                                          Account Type            Current Account                      
+              Country                                                                                                                                                                              
+                                       530020                                                                                                                                                      
+              Zip                      917989536155                                                                                                                                                
+              Mobile No                                                                                                                                                                            
+                                       SKILLIFESTYLE.VIZAG@GMAIL.COM                                                                                                                               
+              E-mail                                                                                                                                                                               
+              Statement Date : 01/10/2026 12:06               Statement Period From -01/07/2026  To 01/10/2026                                                                                     
+                Records from 1 to 28.                 No more records available.                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+               Date               Remarks                Tran Id           UTR Number            Instr. ID             Withdrawals              Deposits                Balance                    
+                                                                                                                                                                                                   
+         29/07/2026     UPIAB/357887146677/CR/SAHIL S86693806        -                                                                               1,00,000.00            1,00,000.00            
+                        KU/HDFC/     sync07@ax                                                                                                                                                     
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+         29/07/2026     IMPSAB/621022770439/SISINTI T8898958         -                                                                               1,00,000.00            2,00,000.00            
+                        LOKANATHA P/9437094667                                                                                                                                                     
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+         30/07/2026     RTGS:SRI BRUNDABAN ENTERPRI T26350054        -                                                                              10,00,000.00           12,00,000.00            
+                        SBINR12026073037097671                                                                                                                                                     
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+         30/07/2026     RTGSO-AJANTA SHOES INDIA PV T36074316        -                                                      10,00,000.00                                    2,00,000.00            
+                        UBINR22026073001763487                                                                                                                                                     
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+         01/08/2026     NEFTO-DHIRAJ AGRAWAL        U70746110        -                                                          7,500.00                                    1,92,500.00            
+                        002890295829                                                                                                                                                               
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+         06/08/2026     ePAY/To:ATOM TECHNOLOGIES   Y95415790        -                                                            408.95                                    1,92,091.05            
+                        /706684985/July Electric                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+         11/08/2026     NEFTO-AJANTA SHOES INDIA PVTV39458924        -                                                       1,00,000.00                                      92,091.05            
+                        LTD 002910886931                                                                                                                                                           
+                                                                                                                                                                                                   
+         17/08/2026     NEFTO-VM RAO AND CO         T99893264        -                                                          1,380.00                                      90,711.05            
+                        002921904036                                                                                                                                                               
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+         30/08/2026     NEFT:SHREE FOOTWEAR         X17645684        Sender                                                                          1,70,000.00            2,60,711.05            
+                        HDFCH01223056022                             No:HDFCH01223056022                                                                                                           
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+         30/08/2026     NEFTO-AJANTA SHOES INDIA PVTX22759429        -                                                       1,70,000.00                                      90,711.05            
+                        LTD 002944936808                                                                                                                                                           
+                                                                                                                                                                                                   
+         31/08/2026     NEFT:SALIM KHAN             Y12859134        Sender                                                                            50,000.00            1,40,711.05            
+                        BARBT26243438443                             No:BARBT26243438443                                                                                                           
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+         01/09/2026     NEFTO-DHIRAJ AGRAWAL        Y51638681        -                                                          7,500.00                                    1,33,211.05            
+                        002947638153                                                                                                                                                               
+                                                                                                                                                                                                   
+         02/09/2026     NEFTO-SALIM KHAN            T61753406        -                                                         50,000.00                                      83,211.05            
+                        002951852032                                                                                                                                                               
+                                                                                                                                                                                                   
+         02/09/2026     ePAY/To:ATOM TECHNOLOGIES   T62005583        -                                                            395.95                                      82,815.10            
+                        /709764788/                                                                                                                                                                
+                                                                                                                                                                                                   
+         10/09/2026     RTGS:SHREE FOOTWEAR         T67965279        -                                                                               2,00,000.00            2,82,815.10            
+                        HDFCR52026091057179784                                                                                                                                                     
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+         10/09/2026     RTGSO-AJANTA SHOES INDIA PV T69052816        -                                                       2,00,000.00                                      82,815.10            
+                        UBINR22026091001118390                                                                                                                                                     
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                          TO AVAIL OUR LOAN PRODUCTS GIVE MISSED CALL AT 9619333333 OR SMS <ULOAN> TO 56161                                                        
+                                                                                                                                                                                                   
+         17/09/2026     NEFT:K G N FOOTWARE         T8014488         Sender                                                                          1,02,300.00            1,85,115.10            
+                        BARBP26260996628                             No:BARBP26260996628                                                                                                           
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+         18/09/2026     GST/26093700068655/01/711677T52271120        -                                                          1,350.00                                    1,83,765.10            
+                        381/GST for August                                                                                                                                                         
+                                                                                                                                                                                                   
+         23/09/2026     NEFT:SHREE FOOTWEAR         X51944685        Sender                                                                          1,50,000.00            3,33,765.10            
+                        HDFCH01279663958                             No:HDFCH01279663958                                                                                                           
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+         24/09/2026     RTGSO-AJANTA SHOES INDIA PV X94393689        -                                                       3,00,000.00                                      33,765.10            
+                        UBINR22026092401189693                                                                                                                                                     
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+         28/09/2026     RTGS:SRI BRUNDABAN ENTERPRI U91534535        -                                                                               2,50,000.00            2,83,765.10            
+                        SBINR12026092844149169                                                                                                                                                     
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+         28/09/2026     RTGSO-AJANTA SHOES INDIA PV U95925022        -                                                       2,50,000.00                                      33,765.10            
+                        UBINR22026092801520658                                                                                                                                                     
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+         29/09/2026     NEFTO-AJANTA SHOES INDIA PVTV82983109        -                                                         30,000.00                                       3,765.10            
+                        LTD 003001739648                                                                                                                                                           
+                                                                                                                                                                                                   
+         30/09/2026     NEFT:SRI BRUNDABAN          W29493176        Sender                                                                          1,40,000.00            1,43,765.10            
+                        ENTERPRISES SBIN326273550311                 No:SBIN326273550311                                                                                                           
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+         30/09/2026     NEFTO-AJANTA SHOES INDIA PVTW30826780        -                                                       1,40,000.00                                       3,765.10            
+                        LTD 003003265197                                                                                                                                                           
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+         30/09/2026     IMPSAB/627320058872/s       W82505568        -                                                                               1,48,728.00            1,52,493.10            
+                        DELIGHT FOOT WEA/9440548998                                                                                                                                                
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+         01/10/2026     NEFTO-SRI BRUNDABANA        X9439801         -                                                       1,10,000.00                                      42,493.10            
+                        ENTERPRISES 003005579745                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+         01/10/2026     NEFTO-SAHIL KUMAR           X9652971         -                                                         30,000.00                                      12,493.10            
+                        003005590825                                                                                                                                                               
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   
+                                                          TO AVAIL OUR LOAN PRODUCTS GIVE MISSED CALL AT 9619333333 OR SMS <ULOAN> TO 56161                                                        
+                                                                                                                                                                                                   

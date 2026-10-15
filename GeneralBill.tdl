@@ -1,0 +1,314 @@
+;; ===================================================================
+;; GENERAL BILL - GST INCLUSIVE - TALLYPRIME
+;; ===================================================================
+;; Design: Row-wise GST absorption so customer sees:
+;;   MRP → Disc(%) → Rate (incl GST) → Amount (incl GST)
+;;
+;; Structural fixes applied (formulas untouched):
+;;   [1] Column widths: Item 42%→39%  (was 103%, now exactly 100%)
+;;   [2] Guard: skip item lines where BilledQty = 0 (division-by-zero)
+;;   [3] Top Parts / Bottom Parts for header reprint & footer pinning
+;;   [4] FullHeight + FullWidth for automatic page-break on overflow
+;; ===================================================================
+
+;; -------------------------------------------------------------------
+;; FORMULAS - pre-compute totals so Grand Total = voucher amount
+;; (avoids double-counting GST Sales ledger in $$Total:CustLedAmt)
+;; -------------------------------------------------------------------
+[System : Formula]
+    CustRawTotal : $$Total:CustColAmt
+    CustVchTotal : If $$IsEmpty:$Amount Then $$Round:@@CustRawTotal:1 Else $$Abs:$Amount
+    CustRoundOff : @@CustVchTotal - @@CustRawTotal
+
+;; -------------------------------------------------------------------
+;; 1. ADD BUTTON TO VOUCHER SCREEN
+;; -------------------------------------------------------------------
+[#Form : Voucher]
+    Add : Button : PrintCustomSalesInvoice
+
+[#Form : Accounting Voucher]
+    Add : Button : PrintCustomSalesInvoice
+
+[Button : PrintCustomSalesInvoice]
+    Title    : "General Bill"
+    Key      : Alt + W
+    Action   : Call : CustInvPrintFunction
+    Inactive : NOT $$IsSales:$VoucherTypeName
+
+;; -------------------------------------------------------------------
+;; 2. FUNCTION TO TRIGGER PRINT
+;; -------------------------------------------------------------------
+[Function : CustInvPrintFunction]
+    01 : Print Report : CustomSalesInvoiceReport
+
+;; -------------------------------------------------------------------
+;; 3. REPORT & FORM (A4 with proper margins)
+;; -------------------------------------------------------------------
+[Report : CustomSalesInvoiceReport]
+    Form   : CustomSalesInvoiceForm
+    Object : Voucher
+    Title  : "Custom Tax Invoice"
+
+[Form : CustomSalesInvoiceForm]
+    Top Parts    : CustInvHeader
+    Parts        : CustInvItemsPart, CustInvLedgersPart, CustInvFooter
+    Space Top    : 12 MM
+    Space Bottom : 12 MM
+    Space Left   : 12 MM
+    Space Right  : 12 MM
+    FullHeight   : Yes
+    FullWidth    : Yes
+
+;; -------------------------------------------------------------------
+;; 4. HEADER  (Top Parts — reprints on every page)
+;; -------------------------------------------------------------------
+[Part : CustInvHeader]
+    Lines      : CustInvTitleLine, CustInvBuyerLine
+    Border     : Thin Box
+    Space Top  : 2 MM
+
+[Line : CustInvTitleLine]
+    Fields    : CustInvTitleField
+    Space Top : 2 MM
+
+[Field : CustInvTitleField]
+    Use    : Name Field
+    Set as : "TAX INVOICE"
+    Style  : Large Bold
+    Align  : Centre
+    Width  : 100% Page
+
+[Line : CustInvBuyerLine]
+    Fields       : CustInvBuyerField, CustInvVchField
+    Space Top    : 2 MM
+    Space Bottom : 2 MM
+
+[Field : CustInvBuyerField]
+    Use    : Name Field
+    Set as : "Buyer: " + $PartyLedgerName
+    Width  : 55% Page
+
+[Field : CustInvVchField]
+    Use    : Name Field
+    Set as : "Inv: " + $VoucherNumber + " | " + $$String:$Date:"dd-MMM-yyyy"
+    Width  : 45% Page
+    Align  : Right
+
+;; -------------------------------------------------------------------
+;; 5. ITEM TABLE - 7 COLUMNS  (4+39+10+12+9+10+16 = 100%)
+;; -------------------------------------------------------------------
+[Part : CustInvItemsPart]
+    Lines      : CustInvItemHeaderLine, CustInvItemLine
+    Repeat     : CustInvItemLine : Inventory Entries
+    Border     : Thin Box
+    Space Top  : 2 MM
+    Total      : CustColAmt
+    Page Break : CustInvClPageBreak, CustInvOpPageBreak
+
+;; Column Headers
+[Line : CustInvItemHeaderLine]
+    Fields       : CustColHdrSNo, CustColHdrItem, CustColHdrQty, CustColHdrMRP, CustColHdrDisc, CustColHdrRate, CustColHdrAmt
+    Border       : Thin Bottom
+    Space Bottom : 1 MM
+
+[Field : CustColHdrSNo]
+    Use    : Name Field
+    Set as : "S.No"
+    Style  : Normal Bold
+    Align  : Centre
+    Width  : 4% Page
+
+[Field : CustColHdrItem]
+    Use    : Name Field
+    Set as : "Item Name"
+    Style  : Normal Bold
+    Width  : 39% Page
+
+[Field : CustColHdrQty]
+    Use    : Name Field
+    Set as : "Qty"
+    Style  : Normal Bold
+    Align  : Right
+    Width  : 10% Page
+
+[Field : CustColHdrMRP]
+    Use    : Name Field
+    Set as : "MRP"
+    Style  : Normal Bold
+    Align  : Right
+    Width  : 12% Page
+
+[Field : CustColHdrDisc]
+    Use    : Name Field
+    Set as : "Disc(%)"
+    Style  : Normal Bold
+    Align  : Right
+    Width  : 9% Page
+
+[Field : CustColHdrRate]
+    Use    : Name Field
+    Set as : "Rate"
+    Style  : Normal Bold
+    Align  : Right
+    Width  : 10% Page
+
+[Field : CustColHdrAmt]
+    Use    : Name Field
+    Set as : "Amount"
+    Style  : Normal Bold
+    Align  : Right
+    Width  : 16% Page
+
+;; Item Data Line
+;; Guard: skip lines where BilledQty = 0 to prevent division-by-zero
+[Line : CustInvItemLine]
+    Fields    : CustColSNo, CustColItem, CustColQty, CustColMRP, CustColDisc, CustColRate, CustColAmt
+    Remove If : $$Number:$BilledQty = 0
+
+;; Serial Number
+[Field : CustColSNo]
+    Use    : Name Field
+    Set as : $$String:$$Line
+    Align  : Centre
+    Width  : 4% Page
+
+;; Item Name
+[Field : CustColItem]
+    Use    : Name Field
+    Set as : $StockItemName
+    Width  : 39% Page
+
+;; Quantity
+[Field : CustColQty]
+    Use    : Name Field
+    Set as : $$String:$BilledQty
+    Align  : Right
+    Width  : 10% Page
+
+;; MRP (inclusive of GST, reverse-calculated from sale price + discount)
+;; Guard: if Discount=100 (free item), show 0 to prevent division-by-zero
+[Field : CustColMRP]
+    Use    : Amount Field
+    Set as : If ($Discount = 100) Then 0 Else (($Amount + $Amount * 5 / 100) * 100 / $$Number:$BilledQty / (100 - $Discount))
+    Align  : Right
+    Width  : 12% Page
+
+;; Discount with % symbol
+[Field : CustColDisc]
+    Use    : Name Field
+    Set as : $$String:$Discount + "%"
+    Align  : Right
+    Width  : 9% Page
+
+;; Rate after discount per unit (incl GST)
+[Field : CustColRate]
+    Use    : Amount Field
+    Set as : ($Amount + $Amount * 5 / 100) / $$Number:$BilledQty
+    Align  : Right
+    Width  : 10% Page
+
+;; Amount (inclusive of GST)
+[Field : CustColAmt]
+    Use    : Amount Field
+    Set as : $Amount + $Amount * 5 / 100
+    Align  : Right
+    Width  : 16% Page
+
+[Line : CustInvClPageBreak]
+    Fields : CustColSNo, CustColItem, CustColQty, CustColMRP, CustColDisc, CustColRate, CustColAmt
+    Local  : Field : CustColSNo  : Set as : ""
+    Local  : Field : CustColItem : Set as : "Continued..."
+    Local  : Field : CustColItem : Style  : Normal Bold
+    Local  : Field : CustColQty  : Set as : ""
+    Local  : Field : CustColMRP  : Set as : ""
+    Local  : Field : CustColDisc : Set as : ""
+    Local  : Field : CustColRate : Set as : ""
+    Local  : Field : CustColAmt  : Set as : $$Total:CustColAmt
+    Local  : Field : CustColAmt  : Style  : Normal Bold
+    Border : Thin Top
+
+[Line : CustInvOpPageBreak]
+    Fields : CustColSNo, CustColItem, CustColQty, CustColMRP, CustColDisc, CustColRate, CustColAmt
+    Local  : Field : CustColSNo  : Set as : ""
+    Local  : Field : CustColItem : Set as : "Brought Forward:"
+    Local  : Field : CustColItem : Style  : Normal Bold
+    Local  : Field : CustColQty  : Set as : ""
+    Local  : Field : CustColMRP  : Set as : ""
+    Local  : Field : CustColDisc : Set as : ""
+    Local  : Field : CustColRate : Set as : ""
+    Local  : Field : CustColAmt  : Set as : $$Total:CustColAmt
+    Local  : Field : CustColAmt  : Style  : Normal Bold
+    Border : Thin Bottom
+
+;; -------------------------------------------------------------------
+;; 6. ROUND OFF (formula-driven, no ledger iteration)
+;; -------------------------------------------------------------------
+[Part : CustInvLedgersPart]
+    Lines     : CustInvRoundOffLine
+    Border    : Thin Box
+    Space Top : 2 MM
+    Invisible : @@CustRoundOff = 0
+
+[Line : CustInvRoundOffLine]
+    Fields : CustLedSpacer, CustLedName, CustLedAmt
+
+[Field : CustLedSpacer]
+    Use    : Name Field
+    Set as : ""
+    Width  : 62% Page
+
+[Field : CustLedName]
+    Use    : Name Field
+    Set as : "Round Off:"
+    Align  : Right
+    Style  : Normal Italic
+    Width  : 19% Page
+
+[Field : CustLedAmt]
+    Use    : Amount Field
+    Set as : @@CustRoundOff
+    Align  : Right
+    Width  : 19% Page
+
+;; -------------------------------------------------------------------
+;; 7. FOOTER
+;; -------------------------------------------------------------------
+[Part : CustInvFooter]
+    Lines     : CustInvTotalLine, CustInvWordsLine
+    Border    : Thin Box
+    Space Top : 2 MM
+
+[Line : CustInvTotalLine]
+    Fields : CustTotalSpacer, CustTotalLabel, CustTotalAmt
+
+[Field : CustTotalSpacer]
+    Use    : Name Field
+    Set as : ""
+    Width  : 62% Page
+
+[Field : CustTotalLabel]
+    Use    : Name Field
+    Set as : "Grand Total:"
+    Align  : Right
+    Style  : Normal Bold
+    Width  : 19% Page
+
+;; Grand Total = voucher amount (via formula)
+[Field : CustTotalAmt]
+    Use    : Amount Field
+    Set as : @@CustVchTotal
+    Align  : Right
+    Style  : Normal Bold
+    Width  : 19% Page
+
+;; Amount in Words
+[Line : CustInvWordsLine]
+    Fields       : CustInvWordsField
+    Space Top    : 1 MM
+    Space Bottom : 1 MM
+
+[Field : CustInvWordsField]
+    Use    : Name Field
+    Set as : "Amount Chargeable (in words): " + $$InWords:@@CustVchTotal
+    Width  : 100% Page
+    Style  : Normal Italic

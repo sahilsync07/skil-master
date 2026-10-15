@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TallySync — Financial Intelligence, Aging & Reconciliation</title>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Dedicated Production Design System (Cache-busted v4.4.0) -->
+  <link rel="stylesheet" href="style.css?v=4.4.0">
+</head>
+<body>
+
+  <!-- Top Navbar (Fluid Full-Screen & Mobile-Crafted) -->
+  <header class="top-nav">
+    <div class="app-container">
+      <div class="top-nav-inner">
+        <!-- Left: Brand & Active Company -->
+        <div class="nav-left">
+          <a href="#" class="brand-mark">
+            <div class="brand-icon-box">
+              <i data-lucide="layers" style="width: 15px; height: 15px;"></i>
+            </div>
+            <span>TallySync</span>
+          </a>
+
+          <div class="nav-divider"></div>
+
+          <div class="workspace-badge">
+            <span id="companyNameText" style="color: var(--text-primary); font-weight: 600;">SKIL LIFESTYLE LLP</span>
+            <div class="live-indicator" id="tallyStatusBadge">
+              <span class="live-dot" id="tallyStatusDot"></span>
+              <span id="tallyStatusText">Port 9000</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Actions & Tools -->
+        <div class="nav-right">
+          <!-- Auto-Sync Status Switch (Hidden on mobile navbar) -->
+          <div class="nav-auto-sync-wrap">
+            <label style="display: inline-flex; align-items: center; gap: 0.45rem; font-size: 12px; color: var(--text-secondary); cursor: pointer; margin-right: 0.4rem;">
+              <input type="checkbox" id="autoSyncToggle" style="accent-color: var(--brand-primary); cursor: pointer;">
+              <span>Auto-Sync</span>
+            </label>
+          </div>
+
+          <!-- Theme Switcher -->
+          <button id="themeToggleBtn" onclick="toggleTheme()" class="btn btn-secondary btn-icon" title="Toggle Light / Dark Mode" aria-label="Toggle Theme">
+            <i data-lucide="moon" id="themeIcon" style="width: 15px; height: 15px;"></i>
+          </button>
+
+          <!-- Force Full Sync Button (Hidden on mobile navbar) -->
+          <div class="nav-force-sync-wrap">
+            <button onclick="triggerSync(true)" title="Force Full Sync (Re-fetch all Tally masters & vouchers)" class="btn btn-secondary btn-icon">
+              <i data-lucide="rotate-ccw" style="width: 15px; height: 15px;"></i>
+            </button>
+          </div>
+
+          <!-- Primary Sync Action -->
+          <button id="syncNowBtn" onclick="triggerSync(false)" class="btn btn-primary" title="Pull latest incremental transactions">
+            <i data-lucide="zap" id="syncIcon" style="width: 14px; height: 14px;"></i>
+            <span id="syncBtnText">Sync Now</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Business Intelligence KPI Summary Strip -->
+  <section class="kpi-summary-strip">
+    <div class="app-container">
+      <div class="kpi-grid">
+        <!-- Metric 1: Purchases -->
+        <div class="kpi-col">
+          <div class="kpi-label">Drop-Ship Purchases</div>
+          <div class="kpi-val-row">
+            <div class="kpi-number" id="kpiPurchases">₹ 27,36,527</div>
+            <div class="kpi-subtext" id="kpiPurchasesSub">53 Bills • 505 CTN • 21,328 Pairs</div>
+          </div>
+        </div>
+
+        <!-- Metric 2: Sales -->
+        <div class="kpi-col">
+          <div class="kpi-label">Drop-Ship Sales</div>
+          <div class="kpi-val-row">
+            <div class="kpi-number" id="kpiSales">₹ 27,46,123</div>
+            <div class="kpi-subtext" id="kpiSalesSub">53 Bills • 100% Back-to-Back Billed</div>
+          </div>
+        </div>
+
+        <!-- Metric 3: Net Realized Profit -->
+        <div class="kpi-col">
+          <div class="kpi-label">Net Realized Profit</div>
+          <div class="kpi-val-row">
+            <div class="kpi-number" id="kpiProfit" style="color: #10B981;">+₹ 77,722</div>
+            <div class="kpi-subtext" id="kpiProfitSub">Trade: +₹9,597 • Scheme Spread: +₹68,125</div>
+          </div>
+        </div>
+
+        <!-- Metric 4: Pending Claims & Discounts -->
+        <div class="kpi-col">
+          <div class="kpi-label">Action Required</div>
+          <div class="kpi-val-row">
+            <div class="kpi-number" id="kpiAction" style="color: #F59E0B;">₹ 1,57,832</div>
+            <div class="kpi-subtext" id="kpiActionSub">Supplier: ₹86,942 • Customer: ₹70,890</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clean 4-Tab Navigation Bar + Tools Menu -->
+  <div class="tab-bar-wrap">
+    <div class="app-container">
+      <nav class="tab-nav" style="align-items: center;">
+        <button onclick="switchTab('dropship')" id="tabBtn-dropship" class="tab-nav-btn active">
+          <i data-lucide="arrow-left-right" style="width: 14px; height: 14px; color: #10B981;"></i>
+          <span>Drop-Ship Matcher</span>
+          <span class="tab-badge badge-highlight" id="tabBadgeDropship">53 Pairs • 100% Matched</span>
+        </button>
+
+        <button onclick="switchTab('schemes')" id="tabBtn-schemes" class="tab-nav-btn">
+          <i data-lucide="award" style="width: 14px; height: 14px; color: #8B5CF6;"></i>
+          <span>Credit Notes & Schemes</span>
+          <span class="tab-badge" id="tabBadgeSchemes">2-Way Claims</span>
+        </button>
+
+        <button onclick="switchTab('aging')" id="tabBtn-aging" class="tab-nav-btn">
+          <i data-lucide="clock-3" style="width: 14px; height: 14px; color: #F59E0B;"></i>
+          <span>Payment Aging & 30-Day CD</span>
+          <span class="tab-badge" id="tabBadgeAging">Collection Cycle</span>
+        </button>
+
+        <button onclick="switchTab('analyzer')" id="tabBtn-analyzer" class="tab-nav-btn">
+          <i data-lucide="pie-chart" style="width: 14px; height: 14px; color: #3B82F6;"></i>
+          <span>Monthly Profit Analyzer</span>
+          <span class="tab-badge badge-highlight" id="tabBadgeAnalyzer">P&L & Margins</span>
+        </button>
+
+        <!-- Advanced Tools & Raw Catalogs Drawer Button -->
+        <div style="margin-left: auto;">
+          <button onclick="toggleAdvancedToolsModal()" id="btnAdvancedMenu" class="tab-nav-btn btn-secondary">
+            <i data-lucide="sliders-horizontal" style="width: 13px; height: 13px;"></i>
+            <span>Tools & Raw Data</span>
+            <i data-lucide="chevron-down" style="width: 12px; height: 12px;"></i>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Main View Workspace (Fluid Full Screen) -->
+  <main class="app-container" style="flex: 1; padding-top: 0.5rem; padding-bottom: 2rem;">
+
+    <!-- ============================================== -->
+    <!-- TAB 1: DROP-SHIP 1:1 MATCHER (PURCHASE -> SALE) -->
+    <!-- ============================================== -->
+    <div id="tab-dropship" class="tab-content" style="display: block;">
+      <!-- Toolbar with View Switcher, Month Filter, Status Filter & Search -->
+      <div class="table-toolbar" style="flex-wrap: wrap; gap: 0.75rem; align-items: center;">
+        <!-- View Switcher (Stints vs All Bills) -->
+        <div class="segmented-filter-group" style="background: #E2E8F0; padding: 2px; border-radius: var(--radius-full);">
+          <button onclick="switchDropShipView('stints'); updateViewPill(this)" id="viewBtnStints" class="ds-view-btn segmented-btn active" style="border-radius: var(--radius-full); font-weight: 700;">
+            <i data-lucide="layers" style="width: 13px; height: 13px; display: inline-block; vertical-align: middle; margin-right: 4px;"></i> Stints (23 Batches)
+          </button>
+          <button onclick="switchDropShipView('flat'); updateViewPill(this)" id="viewBtnFlat" class="ds-view-btn segmented-btn" style="border-radius: var(--radius-full); font-weight: 700;">
+            <i data-lucide="file-text" style="width: 13px; height: 13px; display: inline-block; vertical-align: middle; margin-right: 4px;"></i> All 53 Individual Bills
+          </button>
+        </div>
+
+        <!-- Month Filter Pills -->
+        <div class="segmented-filter-group">
+          <button onclick="loadDropShipMatches('all', currentDropShipStatus); updateMonthPill(this)" class="ds-month-btn segmented-btn active">All Months</button>
+          <button onclick="loadDropShipMatches('202608', currentDropShipStatus); updateMonthPill(this)" class="ds-month-btn segmented-btn">August</button>
+          <button onclick="loadDropShipMatches('202609', currentDropShipStatus); updateMonthPill(this)" class="ds-month-btn segmented-btn">September</button>
+        </div>
+
+        <!-- Status Filter Pills -->
+        <div class="segmented-filter-group">
+          <button onclick="loadDropShipMatches(currentDropShipMonth, 'all'); updateStatusPill(this)" class="ds-status-btn segmented-btn active">All Status</button>
+          <button onclick="loadDropShipMatches(currentDropShipMonth, 'MATCHED'); updateStatusPill(this)" class="ds-status-btn segmented-btn">Matched</button>
+          <button onclick="loadDropShipMatches(currentDropShipMonth, 'MARGIN_VARIANCE'); updateStatusPill(this)" class="ds-status-btn segmented-btn">Trade Spread</button>
+        </div>
+
+        <!-- Search Input -->
+        <div class="search-input-wrap" style="margin-left: auto;">
+          <i data-lucide="search" class="search-icon-left" style="width: 13px; height: 13px;"></i>
+          <input type="text" id="dropShipSearchInput" oninput="filterDropShipTable(this.value)" placeholder="Search customer, bill #, date..." class="search-input">
+        </div>
+      </div>
+
+      <!-- Master Drop-Ship Spreadsheet Grid Container -->
+      <div class="master-grid-container">
+        <table class="master-grid-table">
+          <thead>
+            <!-- Grouped Super Headers -->
+            <tr>
+              <th colspan="4" class="super-header-id">📦 Drop-Ship Dispatch Stint</th>
+              <th colspan="4" class="super-header-purch">🔷 Purchase (Supplier)</th>
+              <th colspan="4" class="super-header-sales">🔶 Sales (Retailer B2B)</th>
+              <th colspan="4" class="super-header-supp-rebates">🟣 Supplier Rebates (Inbound)</th>
+              <th colspan="4" class="super-header-cust-cd">🟠 Customer 5% CD (Outbound)</th>
+              <th colspan="3" class="super-header-aging">🟡 Collection & 30-Day Aging</th>
+              <th colspan="2" class="super-header-profit">🟢 Realized Net Profit</th>
+              <th colspan="2" class="super-header-action">⚡ Quick Actions</th>
+            </tr>
+            <!-- Detailed Column Headers -->
+            <tr>
+              <th class="sticky-c1" style="width: 48px;">#</th>
+              <th class="sticky-c2" style="width: 90px;">Date</th>
+              <th class="sticky-c3" style="min-width: 195px;">Customer (Consignee)</th>
+              <th style="min-width: 110px; text-align: center;">Bills Breakdown 👁️</th>
+
+              <!-- Purchase (Supplier) -->
+              <th style="min-width: 115px;">Supplier Inv #</th>
+              <th style="min-width: 105px; text-align: center;">Cartons / Pairs</th>
+              <th style="min-width: 115px; text-align: right;">Buy Cost (₹)</th>
+              <th style="min-width: 95px;">Supplier</th>
+
+              <!-- Sales (Customer) -->
+              <th style="min-width: 105px;">Sales Bill #</th>
+              <th style="min-width: 115px; text-align: right;">Sell Value (₹)</th>
+              <th style="min-width: 105px; text-align: right;">Trade Spread (₹)</th>
+              <th style="min-width: 70px; text-align: right;">Spread %</th>
+
+              <!-- Inbound Supplier Rebates -->
+              <th style="min-width: 95px; text-align: right;">3% CD (₹)</th>
+              <th style="min-width: 105px; text-align: right;">3.78% Scheme (₹)</th>
+              <th style="min-width: 110px; text-align: right;">Total Claim (₹)</th>
+              <th style="min-width: 120px; text-align: center;">Claim Status</th>
+
+              <!-- Outbound Customer 5% CD -->
+              <th style="min-width: 110px; text-align: right;">Taxable (₹)</th>
+              <th style="min-width: 95px; text-align: right;">5% CD (₹)</th>
+              <th style="min-width: 115px; text-align: right;">Payable w/ CD (₹)</th>
+              <th style="min-width: 110px; text-align: center;">CN Status</th>
+
+              <!-- Payment & 30-Day Aging -->
+              <th style="min-width: 95px; text-align: center;">30-Day Due</th>
+              <th style="min-width: 65px; text-align: center;">Days</th>
+              <th style="min-width: 130px; text-align: center;">Aging Status</th>
+
+              <!-- Net Realized Profit -->
+              <th style="min-width: 115px; text-align: right; color: #15803D; font-weight: 800;">Net Profit (₹)</th>
+              <th style="min-width: 70px; text-align: center; color: #15803D; font-weight: 800;">Margin %</th>
+
+              <!-- Quick Actions -->
+              <th style="min-width: 100px; text-align: center;">WhatsApp</th>
+              <th style="min-width: 85px; text-align: center;">Narration</th>
+            </tr>
+          </thead>
+          <tbody id="dropShipTableBody">
+            <tr>
+              <td colspan="27" style="padding: 2.5rem; text-align: center; color: var(--text-muted);">Loading Complete Drop-Ship Single-Row Master Matrix...</td>
+            </tr>
+          </tbody>
+          <tfoot id="dropShipTableFoot">
+            <!-- Totals row rendered by tracking-ui.js -->
+          </tfoot>
+        </table>
+      </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- TAB 1: TRANSACTIONS / VOUCHERS VIEW -->
+    <!-- ============================================== -->
+    <div id="tab-vouchers" class="tab-content" style="display: none;">
+      <!-- Toolbar -->
+      <div class="table-toolbar">
+        <!-- Segmented Filter Control -->
+        <div class="segmented-filter-group">
+          <button onclick="filterVouchers('')" class="vch-filter-btn segmented-btn active">All (60)</button>
+          <button onclick="filterVouchers('Sales')" class="vch-filter-btn segmented-btn">Sales (23)</button>
+          <button onclick="filterVouchers('Purchase')" class="vch-filter-btn segmented-btn">Purchase (23)</button>
+          <button onclick="filterVouchers('Payment')" class="vch-filter-btn segmented-btn">Payment (9)</button>
+          <button onclick="filterVouchers('Receipt')" class="vch-filter-btn segmented-btn">Receipt (5)</button>
+          <button onclick="filterVouchers('Journal')" class="vch-filter-btn segmented-btn">Journal</button>
+        </div>
+
+        <!-- Search Input -->
+        <div class="search-input-wrap">
+          <i data-lucide="search" class="search-icon-left" style="width: 13px; height: 13px;"></i>
+          <input type="text" id="voucherSearchInput" oninput="debounceSearchVouchers()" placeholder="Filter vouchers, parties, amounts..." class="search-input">
+          <span class="search-kbd-right">/</span>
+        </div>
+      </div>
+
+      <!-- Data Table Card -->
+      <div class="data-card">
+        <div class="data-table-wrap">
+          <table class="data-table mobile-card-list">
+            <thead>
+              <tr>
+                <th style="width: 110px;">Date</th>
+                <th style="width: 130px;">Type</th>
+                <th style="width: 100px;">Voucher #</th>
+                <th>Party / Ledger Account</th>
+                <th style="width: 140px; text-align: right;">Amount (₹)</th>
+                <th style="width: 130px;">Allocations</th>
+                <th style="width: 40px; text-align: center;"></th>
+              </tr>
+            </thead>
+            <tbody id="vouchersTableBody">
+              <tr>
+                <td colspan="7" style="padding: 2.5rem; text-align: center; color: var(--text-muted);">Loading synchronized transactions...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Table Footer Pagination -->
+        <div style="padding: 0.75rem 1.25rem; border-top: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: var(--text-secondary);">
+          <span id="vouchersPaginationInfo">Showing 1–25 of 60 vouchers</span>
+          <div style="display: flex; gap: 0.4rem;">
+            <button id="vchPrevBtn" onclick="prevVouchersPage()" disabled class="btn btn-secondary !h-[28px] !px-3 text-xs">Previous</button>
+            <button id="vchNextBtn" onclick="nextVouchersPage()" class="btn btn-secondary !h-[28px] !px-3 text-xs">Next</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- TAB 2: CREDITORS & DEBTORS AGING ANALYSIS -->
+    <!-- ============================================== -->
+    <div id="tab-aging" class="tab-content" style="display: none;">
+      <!-- Aging Toolbar & View Switcher -->
+      <div class="table-toolbar">
+        <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+          <div class="segmented-filter-group">
+            <button onclick="switchAgingPartyType('debtors')" id="agingBtn-debtors" class="aging-type-btn segmented-btn active">
+              <i data-lucide="users" style="width: 13px; height: 13px; display: inline-block; vertical-align: middle; margin-right: 4px;"></i>
+              <span>Debtors (Receivables)</span>
+            </button>
+            <button onclick="switchAgingPartyType('creditors')" id="agingBtn-creditors" class="aging-type-btn segmented-btn">
+              <i data-lucide="truck" style="width: 13px; height: 13px; display: inline-block; vertical-align: middle; margin-right: 4px;"></i>
+              <span>Creditors (Payables)</span>
+            </button>
+          </div>
+
+          <span style="font-size: 11.5px; color: var(--text-muted); font-family: var(--font-mono);" id="agingAsOfLabel">As of: 10-Sep-2026</span>
+        </div>
+
+        <div class="search-input-wrap">
+          <i data-lucide="search" class="search-icon-left" style="width: 13px; height: 13px;"></i>
+          <input type="text" id="agingSearchInput" oninput="filterAgingTable()" placeholder="Search customer or supplier name..." class="search-input">
+        </div>
+      </div>
+
+      <!-- 5 KPI Bucket Cards -->
+      <div class="aging-kpi-grid">
+        <!-- Card 1: Total Outstanding -->
+        <div class="aging-card">
+          <div class="kpi-label" id="agingKpiTitle">TOTAL RECEIVABLES</div>
+          <div class="kpi-number" id="agingTotalDue">₹ 0.00</div>
+          <div class="kpi-subtext" id="agingPartyCount">0 Parties</div>
+        </div>
+
+        <!-- Card 2: < 30 Days -->
+        <div class="aging-card">
+          <div class="kpi-label">&lt; 30 DAYS (CURRENT)</div>
+          <div class="kpi-number" style="color: #10B981;" id="agingBucketUnder30">₹ 0.00</div>
+          <div class="kpi-subtext"><span class="badge-tag aging-badge-under30">0 – 29 Days</span></div>
+        </div>
+
+        <!-- Card 3: 30 - 60 Days -->
+        <div class="aging-card">
+          <div class="kpi-label">30 – 60 DAYS</div>
+          <div class="kpi-number" style="color: #F59E0B;" id="agingBucket30to60">₹ 0.00</div>
+          <div class="kpi-subtext"><span class="badge-tag aging-badge-30to60">30 – 59 Days</span></div>
+        </div>
+
+        <!-- Card 4: 60 - 90 Days -->
+        <div class="aging-card">
+          <div class="kpi-label">60 – 90 DAYS</div>
+          <div class="kpi-number" style="color: #F97316;" id="agingBucket60to90">₹ 0.00</div>
+          <div class="kpi-subtext"><span class="badge-tag aging-badge-60to90">60 – 89 Days</span></div>
+        </div>
+
+        <!-- Card 5: 90+ Days -->
+        <div class="aging-card">
+          <div class="kpi-label">90+ DAYS (OVERDUE)</div>
+          <div class="kpi-number" style="color: #EF4444;" id="agingBucketOver90">₹ 0.00</div>
+          <div class="kpi-subtext"><span class="badge-tag aging-badge-90plus">Critical Overdue</span></div>
+      </div>
+
+      <!-- Live Debtor Balances Strip -->
+      <div style="margin-top: 1.25rem; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;" id="debtorSummaryPills"></div>
+
+      <!-- Bill-by-Bill 30-Day CD Tracker & WhatsApp Actions Card -->
+      <div class="data-card" style="margin-bottom: 1.75rem;">
+        <div style="padding: 0.85rem 1.25rem; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <div style="font-size: 13px; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 0.5rem;">
+            <i data-lucide="calendar-clock" style="width: 15px; height: 15px; color: #F59E0B;"></i>
+            <span>Bill-by-Bill 30-Day CD Tracker & WhatsApp Reminders</span>
+          </div>
+          <span style="font-size: 11.5px; color: var(--text-muted);">Tracks invoice date vs receipt date, 30-day CD eligibility & quick reminder messages</span>
+        </div>
+        <div class="data-table-wrap">
+          <table class="data-table mobile-card-list">
+            <thead>
+              <tr>
+                <th style="width: 95px;">Bill #</th>
+                <th style="width: 95px;">Date</th>
+                <th>Customer Name</th>
+                <th style="width: 120px; text-align: right;">Bill Total (₹)</th>
+                <th style="width: 120px; text-align: right;">Taxable (₹)</th>
+                <th style="width: 110px; text-align: right;">5% CD (₹)</th>
+                <th style="width: 125px; text-align: right;">Payable w/ CD (₹)</th>
+                <th style="width: 100px; text-align: center;">30-Day Due</th>
+                <th style="width: 130px; text-align: center;">CD Status</th>
+                <th style="width: 110px; text-align: center;">WhatsApp</th>
+              </tr>
+            </thead>
+            <tbody id="paymentAgingTableBody">
+              <tr>
+                <td colspan="10" style="padding: 2.5rem; text-align: center; color: var(--text-muted);">Loading Customer Aging & Collection Cycles...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Aging Matrix Header -->
+      <div style="font-size: 12.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem;">
+        <i data-lucide="users" style="width: 14px; height: 14px;"></i>
+        <span>Party-Wise Outstanding Aging Matrix</span>
+      </div>
+
+      <!-- Aging Matrix Table Card -->
+      <div class="data-card">
+        <div class="data-table-wrap">
+          <table class="data-table mobile-card-list">
+            <thead>
+              <tr>
+                <th>Party Name</th>
+                <th>State / GSTIN</th>
+                <th style="text-align: right;">Total Due (₹)</th>
+                <th style="text-align: right; color: #10B981;">&lt; 30 Days</th>
+                <th style="text-align: right; color: #F59E0B;">30 – 60 Days</th>
+                <th style="text-align: right; color: #F97316;">60 – 90 Days</th>
+                <th style="text-align: right; color: #EF4444;">90+ Days</th>
+                <th style="text-align: center;">Bills Count</th>
+                <th style="text-align: center;">Drilldown</th>
+              </tr>
+            </thead>
+            <tbody id="agingTableBody">
+              <tr>
+                <td colspan="9" style="padding: 2.5rem; text-align: center; color: var(--text-muted);">Loading aging analysis matrix...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- TAB 3: 3-WAY RECONCILIATION VIEW -->
+    <!-- ============================================== -->
+    <div id="tab-reconcile" class="tab-content" style="display: none;">
+      <!-- Audit Success Banner -->
+      <div class="recon-banner">
+        <div>
+          <div class="recon-banner-title">
+            <i data-lucide="check-circle-2" style="width: 17px; height: 17px; color: var(--brand-primary);"></i>
+            <span>3-Way Audit Verified: 100% In Sync with TallyPrime</span>
+          </div>
+          <div class="recon-banner-subtitle">
+            All 23 Supplier PDF Invoices (₹25.8L), 23 Customer Shipments, and 14 Bank Statement Transactions match Tally entries with zero discrepancies.
+          </div>
+        </div>
+        <div style="display: flex; gap: 0.6rem; align-items: center;">
+          <span style="font-size: 11px; color: var(--text-muted); font-family: var(--font-mono);" id="reconAuditTimestamp">Audited: Live</span>
+          <button onclick="loadReconciliation()" class="btn btn-secondary !h-[30px] !px-3 text-xs" title="Re-run reconciliation audit">
+            <i data-lucide="refresh-cw" id="reconRefreshIcon" style="width: 13px; height: 13px;"></i>
+            <span>Audit Now</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Sub-view Navigation & Search -->
+      <div class="table-toolbar">
+        <div class="segmented-filter-group">
+          <button onclick="switchReconSubView('purchases')" id="reconSubBtn-purchases" class="recon-sub-btn segmented-btn active">
+            <span>Supplier Invoices (23)</span>
+          </button>
+          <button onclick="switchReconSubView('billtoship')" id="reconSubBtn-billtoship" class="recon-sub-btn segmented-btn">
+            <span>Bill-to-Ship-to (23)</span>
+          </button>
+          <button onclick="switchReconSubView('bank')" id="reconSubBtn-bank" class="recon-sub-btn segmented-btn">
+            <span id="reconBankSubBtnText">Bank Match (16)</span>
+          </button>
+          <button onclick="switchReconSubView('discount')" id="reconSubBtn-discount" class="recon-sub-btn segmented-btn">
+            <span style="color: #EF4444; font-weight: 600;">Ajanta 37.5% Audit</span>
+          </button>
+          <button onclick="switchReconSubView('folders')" id="reconSubBtn-folders" class="recon-sub-btn segmented-btn">
+            <span style="color: #6366F1; font-weight: 600;">📁 Folder Timestamps</span>
+          </button>
+        </div>
+
+        <div class="search-input-wrap">
+          <i data-lucide="search" class="search-icon-left" style="width: 13px; height: 13px;"></i>
+          <input type="text" id="reconSearchInput" oninput="filterReconcileTables()" placeholder="Filter reconciliation items..." class="search-input">
+        </div>
+      </div>
+
+      <!-- Sub-View 1: Supplier Purchases -->
+      <div id="reconSubView-purchases" class="recon-sub-content">
+        <div class="data-card">
+          <div class="data-table-wrap">
+            <table class="data-table mobile-card-list">
+              <thead>
+                <tr>
+                  <th>PDF Source File</th>
+                  <th>Supplier Invoice #</th>
+                  <th>Supplier / Consignor</th>
+                  <th>Consignee</th>
+                  <th>Tally Purchase #</th>
+                  <th>Voucher Date</th>
+                  <th style="text-align: right;">Amount (₹)</th>
+                  <th style="text-align: center;">Match Status</th>
+                </tr>
+              </thead>
+              <tbody id="reconPurchasesTableBody">
+                <tr>
+                  <td colspan="8" style="padding: 2rem; text-align: center; color: var(--text-muted);">Loading supplier purchases audit...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sub-View 2: Bill-to-Ship-to -->
+      <div id="reconSubView-billtoship" class="recon-sub-content" style="display: none;">
+        <div class="data-card">
+          <div class="data-table-wrap">
+            <table class="data-table mobile-card-list">
+              <thead>
+                <tr>
+                  <th>Purchase Ref</th>
+                  <th>Supplier Inv #</th>
+                  <th>Supplier Name</th>
+                  <th style="text-align: right;">Purchase (₹)</th>
+                  <th>Ship-to Customer</th>
+                  <th>Sales Voucher #</th>
+                  <th style="text-align: right;">Sales (₹)</th>
+                  <th style="text-align: center;">Audit Status</th>
+                </tr>
+              </thead>
+              <tbody id="reconBillToShipTableBody">
+                <tr>
+                  <td colspan="8" style="padding: 2rem; text-align: center; color: var(--text-muted);">Loading bill-to-ship-to audit...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sub-View 3: Bank Reconciliation -->
+      <div id="reconSubView-bank" class="recon-sub-content" style="display: none;">
+        <div class="data-card">
+          <div class="data-table-wrap">
+            <table class="data-table mobile-card-list">
+              <thead>
+                <tr>
+                  <th>Txn Date</th>
+                  <th>Statement File</th>
+                  <th>Category</th>
+                  <th>Description / Narration</th>
+                  <th>Type</th>
+                  <th style="text-align: right;">Amount (₹)</th>
+                  <th>Tally Matched Voucher</th>
+                  <th style="text-align: center;">Status</th>
+                </tr>
+              </thead>
+              <tbody id="reconBankTableBody">
+                <tr>
+                  <td colspan="8" style="padding: 2rem; text-align: center; color: var(--text-muted);">Loading bank statement audit...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sub-View 4: Ajanta 37.5% Trade Discount Audit -->
+      <div id="reconSubView-discount" class="recon-sub-content" style="display: none;">
+        <!-- Banner with Excel download -->
+        <div style="background-color: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.25rem; margin-bottom: 1rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <div style="font-size: 14px; font-weight: 700; color: #EF4444; display: flex; align-items: center; gap: 0.5rem;">
+              <i data-lucide="alert-triangle" style="width: 17px; height: 17px;"></i>
+              <span>Ajanta Shoes 37.5% Landed Discount Audit</span>
+            </div>
+            <div style="font-size: 12px; color: var(--text-secondary); margin-top: 0.25rem;">
+              Rule: Billed Rate + 5% GST must reflect strictly 37.50% discount off MRP. Items below 37.45% are flagged for debit note recovery.
+            </div>
+            <div style="margin-top: 0.5rem; display: flex; gap: 0.6rem; font-size: 11.5px; flex-wrap: wrap;">
+              <span class="badge-tag" style="background: rgba(239, 68, 68, 0.12); color: #EF4444; font-weight: 600;" id="discDiscrepancyCountBadge">10 Discrepancies</span>
+              <span class="badge-tag badge-tag-neutral" id="discAuditedCountBadge">199 Items Audited</span>
+              <span class="badge-tag badge-tag-warning" id="discTotalClaimBadge">Total Overcharge Claim: Calculating...</span>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <a href="/api/reconcile/discount-excel" download="Ajanta_Discount_Discrepancies.xlsx" class="btn btn-primary text-xs" style="text-decoration: none;">
+              <i data-lucide="file-spreadsheet" style="width: 14px; height: 14px;"></i>
+              <span>Download Excel (.xlsx)</span>
+            </a>
+            <button onclick="refreshDiscountExcel()" class="btn btn-secondary text-xs" title="Re-run Python discrepancy audit and update Excel">
+              <i data-lucide="refresh-cw" id="discRefreshIcon" style="width: 13px; height: 13px;"></i>
+              <span>Update Excel</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="data-card">
+          <div class="data-table-wrap">
+            <table class="data-table mobile-card-list">
+              <thead>
+                <tr>
+                  <th>Invoice #</th>
+                  <th>Date</th>
+                  <th>Ship-To Customer</th>
+                  <th>Product Description</th>
+                  <th style="text-align: right;">Pairs</th>
+                  <th style="text-align: right;">MRP (₹)</th>
+                  <th style="text-align: right;">Billed Rate (₹)</th>
+                  <th style="text-align: right;">Net Disc %</th>
+                  <th style="text-align: right; color: #EF4444;">Shortfall Gap</th>
+                  <th style="text-align: right; color: #EF4444;">Overcharge Loss (₹)</th>
+                </tr>
+              </thead>
+              <tbody id="reconDiscountTableBody">
+                <tr>
+                  <td colspan="10" style="padding: 2rem; text-align: center; color: var(--text-muted);">Loading Ajanta discount audit...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sub-View 5: Folder Timestamps -->
+      <div id="reconSubView-folders" class="recon-sub-content" style="display: none;">
+        <div class="data-card" style="padding: 1.25rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.75rem;">
+            <div>
+              <h3 style="margin: 0; font-size: 1rem; font-weight: 600; color: var(--text-primary); display: flex; align-items: center; gap: 0.5rem;">
+                <i data-lucide="folder-clock" style="width: 18px; height: 18px; color: var(--brand-primary);"></i>
+                Automated Folder Timestamps & Latest User Uploads
+              </h3>
+              <p style="margin: 0.25rem 0 0; font-size: 0.8125rem; color: var(--text-muted);">
+                Folder names automatically update with the exact date/time whenever you upload new documents or run Sync / Reconcile.
+              </p>
+            </div>
+            <button onclick="refreshFolderTimestamps()" class="btn btn-primary !h-[32px] !px-3 text-xs">
+              <i data-lucide="refresh-cw" id="folderRefreshIcon" style="width: 13px; height: 13px;"></i>
+              <span>Refresh & Rename Folders Now</span>
+            </button>
+          </div>
+
+          <div id="folderCardsGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1rem;">
+            <!-- Rendered dynamically by app.js -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- TAB: CREDIT NOTES & DISCOUNT AUDIT -->
+    <!-- ============================================== -->
+    <div id="tab-credit-notes" class="tab-content" style="display: none;">
+      <!-- Header Banner & Claim Status -->
+      <div class="recon-banner" style="margin-bottom: 1rem;">
+        <div>
+          <div class="recon-banner-title" style="color: #EF4444;">
+            <i data-lucide="file-minus" style="width: 17px; height: 17px; color: #EF4444;"></i>
+            <span>Credit Notes & Supplier Claims Portal</span>
+          </div>
+          <div class="recon-banner-subtitle">
+            Auditing Ajanta Shoes purchase invoices against agreed trade policies: <strong>Under Discount (< 37.5%)</strong> price shortfall & <strong>Cash Discount (CD 1.88%)</strong> receivable.
+          </div>
+        </div>
+        <div style="display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap;">
+          <span style="font-size: 11px; color: var(--text-muted); font-family: var(--font-mono);" id="creditNotesAuditTimestamp">Audited: Live</span>
+          <a href="/api/reconcile/discount-excel" download="Ajanta_Discount_Discrepancies.xlsx" class="btn btn-primary !h-[30px] !px-3 text-xs" style="text-decoration: none;">
+            <i data-lucide="file-spreadsheet" style="width: 13px; height: 13px;"></i>
+            <span>Download Excel</span>
+          </a>
+          <button onclick="copyActiveCreditNoteTab()" class="btn btn-secondary !h-[30px] !px-3 text-xs" title="Copy current table data for Excel or WhatsApp">
+            <i data-lucide="copy" id="cnCopyIcon" style="width: 13px; height: 13px;"></i>
+            <span>Copy Table</span>
+          </button>
+          <button onclick="refreshCreditNotes()" class="btn btn-secondary !h-[30px] !px-3 text-xs" title="Re-extract discrepancies from purchases bills">
+            <i data-lucide="refresh-cw" id="creditNotesRefreshIcon" style="width: 13px; height: 13px;"></i>
+            <span>Extract & Re-Audit</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 3 Subtabs Navigation Strip -->
+      <div class="table-toolbar" style="margin-bottom: 1rem;">
+        <div class="segmented-filter-group">
+          <button onclick="switchCreditNoteSubtab('all')" id="cnSubBtn-all" class="cn-sub-btn segmented-btn active">
+            <i data-lucide="layers" style="width: 13px; height: 13px;"></i>
+            <span>All</span>
+            <span class="tab-badge badge-highlight" id="cnSubBadgeAll">₹40,462.80</span>
+          </button>
+
+          <button onclick="switchCreditNoteSubtab('under-discount')" id="cnSubBtn-under-discount" class="cn-sub-btn segmented-btn">
+            <i data-lucide="alert-triangle" style="width: 13px; height: 13px; color: #EF4444;"></i>
+            <span>Under Discount</span>
+            <span class="tab-badge badge-tag-danger" id="cnSubBadgeUnderDisc">10 Items (-₹2,641.86)</span>
+          </button>
+
+          <button onclick="switchCreditNoteSubtab('cash-discount')" id="cnSubBtn-cash-discount" class="cn-sub-btn segmented-btn">
+            <i data-lucide="percent" style="width: 13px; height: 13px; color: #10B981;"></i>
+            <span>Cash Discount</span>
+            <span class="tab-badge badge-tag-success" id="cnSubBadgeCashDisc">22 Bills (₹37,820.94)</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <!-- SUBTAB 1: ALL CREDIT NOTES OVERVIEW -->
+      <!-- ============================================== -->
+      <div id="cnSubView-all" class="cn-sub-content">
+        <!-- Grand Summary KPI Strip -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
+          <div class="data-card" style="padding: 1.15rem 1.25rem; border-left: 4px solid #6366F1;">
+            <div style="font-size: 11px; text-transform: uppercase; font-weight: 600; color: var(--text-muted); letter-spacing: 0.5px;">Combined Credit Note Claim</div>
+            <div style="font-size: 1.6rem; font-weight: 800; color: #6366F1; font-family: var(--font-mono); margin-top: 0.25rem;" id="allCnGrandTotal">₹40,462.80</div>
+            <div style="font-size: 11.5px; color: var(--text-secondary); margin-top: 0.25rem;">Under Discount + Cash Discount total</div>
+          </div>
+
+          <div class="data-card" style="padding: 1.15rem 1.25rem; border-left: 4px solid #EF4444; cursor: pointer;" onclick="switchCreditNoteSubtab('under-discount')" title="Click to view Under Discount breakdown">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 11px; text-transform: uppercase; font-weight: 600; color: var(--text-muted); letter-spacing: 0.5px;">1. Under Discount (< 37.5%)</span>
+              <i data-lucide="arrow-right" style="width: 12px; height: 12px; color: #EF4444;"></i>
+            </div>
+            <div style="font-size: 1.5rem; font-weight: 700; color: #EF4444; font-family: var(--font-mono); margin-top: 0.25rem;" id="allCnUnderDiscTotal">-₹2,641.86</div>
+            <div style="font-size: 11.5px; color: var(--text-secondary); margin-top: 0.25rem;">10 items across 6 bills (450 pairs)</div>
+          </div>
+
+          <div class="data-card" style="padding: 1.15rem 1.25rem; border-left: 4px solid #10B981; cursor: pointer;" onclick="switchCreditNoteSubtab('cash-discount')" title="Click to view Cash Discount bills">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 11px; text-transform: uppercase; font-weight: 600; color: var(--text-muted); letter-spacing: 0.5px;">2. Cash Discount (CD)</span>
+              <i data-lucide="arrow-right" style="width: 12px; height: 12px; color: #10B981;"></i>
+            </div>
+            <div style="font-size: 1.5rem; font-weight: 700; color: #10B981; font-family: var(--font-mono); margin-top: 0.25rem;" id="allCnCashDiscTotal">₹37,820.94</div>
+            <div style="font-size: 11.5px; color: var(--text-secondary); margin-top: 0.25rem;">22 bills • 10,410 total pairs (1.88% MRP)</div>
+          </div>
+
+          <div class="data-card" style="padding: 1.15rem 1.25rem; border-left: 4px solid #F59E0B;">
+            <div style="font-size: 11px; text-transform: uppercase; font-weight: 600; color: var(--text-muted); letter-spacing: 0.5px;">Supplier & Status</div>
+            <div style="font-size: 1.1rem; font-weight: 600; color: var(--text-primary); margin-top: 0.35rem;">Ajanta Shoes India</div>
+            <div style="font-size: 11.5px; color: #F59E0B; font-weight: 600; margin-top: 0.25rem;">Ready for Debit Note Submission</div>
+          </div>
+        </div>
+
+        <!-- Dual Consolidated Sections -->
+        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+          <!-- Section A: Under Discount Quick Table -->
+          <div class="data-card" style="padding: 1.25rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+              <div>
+                <h3 style="margin: 0; font-size: 0.95rem; font-weight: 600; color: var(--text-primary); display: flex; align-items: center; gap: 0.5rem;">
+                  <i data-lucide="alert-triangle" style="width: 16px; height: 16px; color: #EF4444;"></i>
+                  <span>Under Discount Price Discrepancies (< 37.5%)</span>
+                </h3>
+                <p style="margin: 0.2rem 0 0; font-size: 0.8rem; color: var(--text-muted);">
+                  10 items billed with net margins below agreed 37.50% base discount.
+                </p>
+              </div>
+              <button onclick="switchCreditNoteSubtab('under-discount')" class="btn btn-secondary !h-[28px] !px-2.5 text-xs">
+                <span>View Full Matrix</span>
+                <i data-lucide="external-link" style="width: 11px; height: 11px;"></i>
+              </button>
+            </div>
+            <div class="data-table-wrap">
+              <table class="data-table mobile-card-list">
+                <thead>
+                  <tr>
+                    <th>Invoice #</th>
+                    <th>Product Description</th>
+                    <th style="text-align: right;">MRP (₹)</th>
+                    <th style="text-align: right;">Landed (₹)</th>
+                    <th style="text-align: right; color: #EF4444;">Net Margin %</th>
+                    <th style="text-align: right;">Expected Buy Rate</th>
+                    <th style="text-align: right;">Diff / Pr</th>
+                    <th style="text-align: right;">Pairs</th>
+                    <th style="text-align: right; color: #10B981;">Total Difference</th>
+                  </tr>
+                </thead>
+                <tbody id="allTabUnderDiscTableBody">
+                  <!-- Populated dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Section B: Cash Discount Bills Quick Summary -->
+          <div class="data-card" style="padding: 1.25rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+              <div>
+                <h3 style="margin: 0; font-size: 0.95rem; font-weight: 600; color: var(--text-primary); display: flex; align-items: center; gap: 0.5rem;">
+                  <i data-lucide="percent" style="width: 16px; height: 16px; color: #10B981;"></i>
+                  <span>Cash Discount Summary by Bill (1.88% of MRP)</span>
+                </h3>
+                <p style="margin: 0.2rem 0 0; font-size: 0.8rem; color: var(--text-muted);">
+                  Total CD receivable across all 22 invoices (10,410 pairs).
+                </p>
+              </div>
+              <button onclick="switchCreditNoteSubtab('cash-discount')" class="btn btn-secondary !h-[28px] !px-2.5 text-xs">
+                <span>Open Accordion View</span>
+                <i data-lucide="external-link" style="width: 11px; height: 11px;"></i>
+              </button>
+            </div>
+            <div class="data-table-wrap">
+              <table class="data-table mobile-card-list">
+                <thead>
+                  <tr>
+                    <th>Invoice #</th>
+                    <th>Date</th>
+                    <th>Ship-To Customer</th>
+                    <th style="text-align: right;">Items</th>
+                    <th style="text-align: right;">Pairs</th>
+                    <th style="text-align: right;">Total MRP (₹)</th>
+                    <th style="text-align: right;">Bill Value (₹)</th>
+                    <th style="text-align: right; color: #10B981;">CD @ 1.88% MRP (₹)</th>
+                  </tr>
+                </thead>
+                <tbody id="allTabCashDiscTableBody">
+                  <!-- Populated dynamically -->
+                </tbody>
+                <tfoot id="allTabCashDiscTableFoot"></tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <!-- SUBTAB 2: UNDER DISCOUNT MATRIX (< 37.5%) -->
+      <!-- ============================================== -->
+      <div id="cnSubView-under-discount" class="cn-sub-content" style="display: none;">
+        <!-- KPI Summary Cards -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+          <div class="data-card" style="padding: 1rem 1.25rem; border-left: 4px solid #EF4444;">
+            <div style="font-size: 11px; text-transform: uppercase; font-weight: 600; color: var(--text-muted); letter-spacing: 0.5px;">Total Shortfall Claim</div>
+            <div style="font-size: 1.5rem; font-weight: 700; color: #EF4444; font-family: var(--font-mono); margin-top: 0.25rem;" id="cnTotalClaim">-₹2,641.86</div>
+            <div style="font-size: 11.5px; color: var(--text-secondary); margin-top: 0.25rem;">Rate gap below 37.50% base</div>
+          </div>
+
+          <div class="data-card" style="padding: 1rem 1.25rem; border-left: 4px solid #F59E0B;">
+            <div style="font-size: 11px; text-transform: uppercase; font-weight: 600; color: var(--text-muted); letter-spacing: 0.5px;">Discrepancy Line Items</div>
+            <div style="font-size: 1.5rem; font-weight: 700; color: #F59E0B; font-family: var(--font-mono); margin-top: 0.25rem;" id="cnItemCount">10 Items</div>
+            <div style="font-size: 11.5px; color: var(--text-secondary); margin-top: 0.25rem;" id="cnAuditedSubtext">Out of 199 total items (6 bills)</div>
+          </div>
+
+          <div class="data-card" style="padding: 1rem 1.25rem; border-left: 4px solid var(--brand-primary);">
+            <div style="font-size: 11px; text-transform: uppercase; font-weight: 600; color: var(--text-muted); letter-spacing: 0.5px;">Total Overcharged Pairs</div>
+            <div style="font-size: 1.5rem; font-weight: 700; color: var(--brand-text); font-family: var(--font-mono); margin-top: 0.25rem;" id="cnPairCount">450 Pairs</div>
+            <div style="font-size: 11.5px; color: var(--text-secondary); margin-top: 0.25rem;">Pairs impacted by low margins</div>
+          </div>
+
+          <div class="data-card" style="padding: 1rem 1.25rem; border-left: 4px solid #10B981;">
+            <div style="font-size: 11px; text-transform: uppercase; font-weight: 600; color: var(--text-muted); letter-spacing: 0.5px;">Supplier Target</div>
+            <div style="font-size: 1.15rem; font-weight: 600; color: var(--text-primary); margin-top: 0.35rem;">Ajanta Shoes India</div>
+            <div style="font-size: 11.5px; color: var(--text-secondary); margin-top: 0.25rem;">Rule: 37.50% Discount on MRP</div>
+          </div>
+        </div>
+
+        <!-- Toolbar with Search -->
+        <div class="table-toolbar">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-size: 12px; font-weight: 600; color: var(--text-primary);">Supplier Discrepancy Statement</span>
+            <span class="badge-tag badge-tag-neutral" style="font-size: 11px;">Matches Excel Matrix</span>
+          </div>
+
+          <div class="search-input-wrap">
+            <i data-lucide="search" class="search-icon-left" style="width: 13px; height: 13px;"></i>
+            <input type="text" id="creditNotesSearchInput" oninput="filterCreditNotes()" placeholder="Filter by invoice, product, ship-to..." class="search-input">
+          </div>
+        </div>
+
+        <!-- Discrepancy Data Table -->
+        <div class="data-card">
+          <div class="data-table-wrap">
+            <table class="data-table mobile-card-list" id="creditNotesTable">
+              <thead>
+                <tr>
+                  <th>Invoice #</th>
+                  <th>Stock Item Description</th>
+                  <th style="text-align: right;">MRP (Rs)</th>
+                  <th style="text-align: right;">Landed Cost (5% GST)</th>
+                  <th style="text-align: right; background-color: rgba(239, 68, 68, 0.08); color: #EF4444;">Net Margin %</th>
+                  <th style="text-align: right;">Expected Buy Rate @ 37.5% Disc. (Incl. GST)</th>
+                  <th style="text-align: right;">Difference</th>
+                  <th style="text-align: right;">Pairs</th>
+                  <th style="text-align: right; background-color: rgba(16, 185, 129, 0.08); color: #10B981;">Total Difference</th>
+                </tr>
+              </thead>
+              <tbody id="creditNotesTableBody">
+                <tr>
+                  <td colspan="9" style="padding: 2rem; text-align: center; color: var(--text-muted);">Loading price discrepancy items...</td>
+                </tr>
+              </tbody>
+              <tfoot id="creditNotesTableFoot">
+                <!-- Dynamically populated footer with totals -->
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <!-- SUBTAB 3: CASH DISCOUNT ACCORDION (1.88% MRP) -->
+      <!-- ============================================== -->
+      <div id="cnSubView-cash-discount" class="cn-sub-content" style="display: none;">
+        <!-- Banner & Calculation Formula -->
+        <div style="background-color: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.25rem; margin-bottom: 1rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <div style="font-size: 14px; font-weight: 700; color: #10B981; display: flex; align-items: center; gap: 0.5rem;">
+              <i data-lucide="percent" style="width: 17px; height: 17px;"></i>
+              <span>Cash Discount Audit (Flat 1.88% of MRP for 30-Day Payment Term)</span>
+            </div>
+            <div style="font-size: 12px; color: var(--text-secondary); margin-top: 0.25rem;">
+              Policy: Flat 1.88% on published MRP across all inward stock. Formula: <code>CD / Pair = round(MRP × 1.88%)</code>, <code>Line Total = CD / Pair × Pairs</code>.
+            </div>
+            <div style="margin-top: 0.5rem; display: flex; gap: 0.6rem; font-size: 11.5px; flex-wrap: wrap;">
+              <span class="badge-tag badge-tag-success" id="cdTotalClaimBadge">Total CD Claim: ₹37,820.94</span>
+              <span class="badge-tag badge-tag-neutral" id="cdTotalMrpBadge">Total Goods MRP: ₹20,11,849.50</span>
+              <span class="badge-tag badge-tag-neutral" id="cdTotalBillsBadge">22 Invoices</span>
+              <span class="badge-tag badge-tag-neutral" id="cdTotalPairsBadge">10,410 Total Pairs</span>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+            <button onclick="expandAllBills()" class="btn btn-secondary !h-[30px] !px-3 text-xs" title="Expand all bill accordions">
+              <i data-lucide="chevrons-down" style="width: 13px; height: 13px;"></i>
+              <span>Expand All</span>
+            </button>
+            <button onclick="collapseAllBills()" class="btn btn-secondary !h-[30px] !px-3 text-xs" title="Collapse all bill accordions">
+              <i data-lucide="chevrons-up" style="width: 13px; height: 13px;"></i>
+              <span>Collapse All</span>
+            </button>
+            <button onclick="copyCashDiscountToClipboard()" class="btn btn-primary !h-[30px] !px-3 text-xs" title="Copy Cash Discount table data">
+              <i data-lucide="copy" id="cdCopyIcon" style="width: 13px; height: 13px;"></i>
+              <span>Copy CD Table</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Search Toolbar -->
+        <div class="table-toolbar">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-size: 12px; font-weight: 600; color: var(--text-primary);">All 22 Supplier Bills</span>
+            <span class="badge-tag badge-tag-neutral" style="font-size: 11px;">Click any bill to expand items</span>
+          </div>
+
+          <div class="search-input-wrap">
+            <i data-lucide="search" class="search-icon-left" style="width: 13px; height: 13px;"></i>
+            <input type="text" id="cdSearchInput" oninput="filterCashDiscountBills()" placeholder="Search bills by invoice #, customer..." class="search-input">
+          </div>
+        </div>
+
+        <!-- Accordion Bills Container -->
+        <div id="cashDiscountBillsList" style="display: flex; flex-direction: column; gap: 0.75rem;">
+          <div style="padding: 2.5rem; text-align: center; color: var(--text-muted);">Loading Cash Discount bills...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- TAB: PARTY OVERVIEW (CONSIGNEE BREAKDOWN) -->
+    <!-- ============================================== -->
+    <div id="tab-party-overview" class="tab-content" style="display: none;">
+      <!-- Header Banner -->
+      <div class="recon-banner" style="margin-bottom: 1rem;">
+        <div>
+          <div class="recon-banner-title" style="color: #3B82F6;">
+            <i data-lucide="store" style="width: 17px; height: 17px; color: #3B82F6;"></i>
+            <span>Party Overview — Inward Purchases & Consignee Breakdown</span>
+          </div>
+          <div class="recon-banner-subtitle">
+            Consolidated overview of all 22 purchase supplier invoices grouped by consignee party, carton box quantities, pairs, and billed amounts.
+          </div>
+        </div>
+        <div style="display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap;">
+          <button onclick="copyPartyOverviewToClipboard()" class="btn btn-secondary !h-[30px] !px-3 text-xs" title="Copy table data for Excel or WhatsApp">
+            <i data-lucide="copy" id="partyCopyIcon" style="width: 13px; height: 13px;"></i>
+            <span>Copy Table</span>
+          </button>
+          <button onclick="loadPartyOverview(true)" class="btn btn-secondary !h-[30px] !px-3 text-xs" title="Refresh Party Overview">
+            <i data-lucide="refresh-cw" id="partyRefreshIcon" style="width: 13px; height: 13px;"></i>
+            <span>Refresh</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- KPI Summary Cards Strip -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
+        <div class="data-card" style="padding: 1.1rem 1.25rem; border-left: 4px solid #3B82F6;">
+          <div style="font-size: 11px; text-transform: uppercase; font-weight: 600; color: var(--text-muted); letter-spacing: 0.5px;">Total Invoiced Amount</div>
+          <div style="font-size: 1.55rem; font-weight: 800; color: #3B82F6; font-family: var(--font-mono); margin-top: 0.25rem;" id="partyTotalAmount">₹12,51,736.50</div>
+          <div style="font-size: 11.5px; color: var(--text-secondary); margin-top: 0.25rem;">Across all 22 invoices</div>
+        </div>
+
+        <div class="data-card" style="padding: 1.1rem 1.25rem; border-left: 4px solid #10B981;">
+          <div style="font-size: 11px; text-transform: uppercase; font-weight: 600; color: var(--text-muted); letter-spacing: 0.5px;">Total Carton Boxes</div>
+          <div style="font-size: 1.55rem; font-weight: 800; color: #10B981; font-family: var(--font-mono); margin-top: 0.25rem;" id="partyTotalCartons">241 Ctns</div>
+          <div style="font-size: 11.5px; color: var(--text-secondary); margin-top: 0.25rem;">Master carton packaging</div>
+        </div>
+
+        <div class="data-card" style="padding: 1.1rem 1.25rem; border-left: 4px solid #F59E0B;">
+          <div style="font-size: 11px; text-transform: uppercase; font-weight: 600; color: var(--text-muted); letter-spacing: 0.5px;">Total Quantity</div>
+          <div style="font-size: 1.55rem; font-weight: 800; color: #F59E0B; font-family: var(--font-mono); margin-top: 0.25rem;" id="partyTotalPairs">10,410 Pairs</div>
+          <div style="font-size: 11.5px; color: var(--text-secondary); margin-top: 0.25rem;">Footwear pairs audited</div>
+        </div>
+
+        <div class="data-card" style="padding: 1.1rem 1.25rem; border-left: 4px solid #8B5CF6;">
+          <div style="font-size: 11px; text-transform: uppercase; font-weight: 600; color: var(--text-muted); letter-spacing: 0.5px;">Active Consignees</div>
+          <div style="font-size: 1.55rem; font-weight: 800; color: #8B5CF6; font-family: var(--font-mono); margin-top: 0.25rem;" id="partyTotalCount">4 Parties</div>
+          <div style="font-size: 11.5px; color: var(--text-secondary); margin-top: 0.25rem;">22 Invoices distributed</div>
+        </div>
+      </div>
+
+      <!-- Party Summary Cards Grid -->
+      <div id="partyCardsGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem; margin-bottom: 1.25rem;">
+        <!-- Dynamically populated party cards -->
+      </div>
+
+      <!-- Toolbar with Party Filter Pills & Live Search -->
+      <div class="table-toolbar">
+        <div class="segmented-filter-group" id="partyFilterPills">
+          <button onclick="filterPartyOverview('')" class="party-filter-btn segmented-btn active">All Parties (22)</button>
+        </div>
+
+        <div class="search-input-wrap">
+          <i data-lucide="search" class="search-icon-left" style="width: 13px; height: 13px;"></i>
+          <input type="text" id="partySearchInput" oninput="debounceSearchParties()" placeholder="Filter by invoice #, party name..." class="search-input">
+        </div>
+      </div>
+
+      <!-- Main Data Table with EXACT 6 Columns -->
+      <div class="data-card">
+        <div class="data-table-wrap">
+          <table class="data-table mobile-card-list" id="partyOverviewTable">
+            <thead>
+              <tr>
+                <th style="width: 70px; text-align: center;">sl no</th>
+                <th style="width: 150px;">Invoice no</th>
+                <th>Party name</th>
+                <th style="width: 140px; text-align: right;">Ctn box qty</th>
+                <th style="width: 130px; text-align: right;">Pairs</th>
+                <th style="width: 170px; text-align: right; color: var(--brand-text);">Amount</th>
+              </tr>
+            </thead>
+            <tbody id="partyOverviewTableBody">
+              <tr>
+                <td colspan="6" style="padding: 2.5rem; text-align: center; color: var(--text-muted);">Loading party overview...</td>
+              </tr>
+            </tbody>
+            <tfoot id="partyOverviewTableFoot">
+              <!-- Dynamically rendered totals -->
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- TAB: TALLY ACCOUNTING & POSTING GUIDE -->
+    <!-- ============================================== -->
+    <div id="tab-tally-guide" class="tab-content" style="display: none;">
+      <!-- Header Banner -->
+      <div class="recon-banner" style="margin-bottom: 1rem;">
+        <div>
+          <div class="recon-banner-title" style="color: #10B981;">
+            <i data-lucide="book-check" style="width: 17px; height: 17px; color: #10B981;"></i>
+            <span>Tally Prime Accounting & Posting Guide</span>
+          </div>
+          <div class="recon-banner-subtitle">
+            Step-by-step guidance to enter unrecorded Ajanta Credit Notes, missing supplier bills, and journal adjustments directly into Tally Prime. Includes copyable pre-formatted narrations and double-entry breakdowns.
+          </div>
+        </div>
+        <div style="display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap;">
+          <button onclick="loadTallyGuide(true)" class="btn btn-secondary !h-[30px] !px-3 text-xs" title="Refresh Tally Guide Status">
+            <i data-lucide="refresh-cw" id="tallyGuideRefreshIcon" style="width: 13px; height: 13px;"></i>
+            <span>Refresh Status</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- KPI Summary Cards -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
+        <div class="data-card" style="padding: 1.1rem 1.25rem; border-left: 4px solid #EF4444;">
+          <div style="font-size: 11px; text-transform: uppercase; font-weight: 600; color: var(--text-muted); letter-spacing: 0.5px;">Pending Credit Notes</div>
+          <div style="font-size: 1.55rem; font-weight: 800; color: #EF4444; font-family: var(--font-mono); margin-top: 0.25rem;" id="guidePendingCnAmount">₹1,11,949.07</div>
+          <div style="font-size: 11.5px; color: var(--text-secondary); margin-top: 0.25rem;" id="guidePendingCnCount">4 Ajanta Credit Notes to post</div>
+        </div>
+
+        <div class="data-card" style="padding: 1.1rem 1.25rem; border-left: 4px solid #3B82F6;">
+          <div style="font-size: 11px; text-transform: uppercase; font-weight: 600; color: var(--text-muted); letter-spacing: 0.5px;">Bank & Customer Entries</div>
+          <div style="font-size: 1.55rem; font-weight: 800; color: #3B82F6; font-family: var(--font-mono); margin-top: 0.25rem;" id="guideBankEntriesAmount">₹1,03,650.00</div>
+          <div style="font-size: 11.5px; color: var(--text-secondary); margin-top: 0.25rem;" id="guideBankEntriesCount">KGN Receipt & GST Payment</div>
+        </div>
+
+        <div class="data-card" style="padding: 1.1rem 1.25rem; border-left: 4px solid #F59E0B;">
+          <div style="font-size: 11px; text-transform: uppercase; font-weight: 600; color: var(--text-muted); letter-spacing: 0.5px;">Voucher Quality Alerts</div>
+          <div style="font-size: 1.55rem; font-weight: 800; color: #F59E0B; font-family: var(--font-mono); margin-top: 0.25rem;" id="guideQualityAlertsCount">2 Notices</div>
+          <div style="font-size: 11.5px; color: var(--text-secondary); margin-top: 0.25rem;" id="guideQualityAlertsSubtitle">Missing Narration / Bill Allocation</div>
+        </div>
+
+        <div class="data-card" style="padding: 1.1rem 1.25rem; border-left: 4px solid #10B981;">
+          <div style="font-size: 11px; text-transform: uppercase; font-weight: 600; color: var(--text-muted); letter-spacing: 0.5px;">Tally Prime Status</div>
+          <div style="font-size: 1.3rem; font-weight: 800; color: #10B981; margin-top: 0.25rem;" id="guideTallyStatus">Online (localhost:9000)</div>
+          <div style="font-size: 11.5px; color: var(--text-secondary); margin-top: 0.25rem;">SKIL LIFESTYLE LLP</div>
+        </div>
+      </div>
+
+      <!-- Toolbar with Filter Pills & Search -->
+      <div class="table-toolbar">
+        <div class="segmented-filter-group" id="tallyGuideFilterPills">
+          <button onclick="filterTallyGuide('')" class="guide-filter-btn segmented-btn active" id="guideFilterAllBtn">All Entries (6)</button>
+          <button onclick="filterTallyGuide('credit_note')" class="guide-filter-btn segmented-btn" id="guideFilterCnBtn">Credit Notes (4)</button>
+          <button onclick="filterTallyGuide('bank_receipt')" class="guide-filter-btn segmented-btn" id="guideFilterReceiptBtn">Customer Receipts (1)</button>
+          <button onclick="filterTallyGuide('bank_payment')" class="guide-filter-btn segmented-btn" id="guideFilterPaymentBtn">Bank Payments (1)</button>
+        </div>
+
+        <div class="search-input-wrap">
+          <i data-lucide="search" class="search-icon-left" style="width: 13px; height: 13px;"></i>
+          <input type="text" id="tallyGuideSearchInput" oninput="debounceSearchTallyGuide()" placeholder="Filter by doc #, party, narration..." class="search-input">
+        </div>
+      </div>
+
+      <!-- Container for Tally Guide Cards -->
+      <div id="tallyGuideCardsContainer" style="display: flex; flex-direction: column; gap: 1rem;">
+        <!-- Dynamically rendered cards -->
+      </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- TAB: AJANTA CONTRACTUAL SCHEMES & TARGETS -->
+    <!-- ============================================== -->
+    <div id="tab-schemes" class="tab-content" style="display: none;">
+      <!-- Header Banner -->
+      <div class="recon-banner" style="margin-bottom: 1rem;">
+        <div>
+          <div class="recon-banner-title" style="color: #8B5CF6;">
+            <i data-lucide="award" style="width: 17px; height: 17px; color: #8B5CF6;"></i>
+            <span>Ajanta Contractual Schemes & Target Indicators</span>
+          </div>
+          <div class="recon-banner-subtitle">
+            Live compliance tracking across 8 contractual schemes: Missing CD (3%), Retailer Scheme (3.78%), Asymmetric Rate Difference (&lt; 37.5%), Monthly Target Bonus (3%), Quarterly Turnover Bonus (2%), Annual Turnover Bonus (3% on ₹1.2Cr Target), and Higher Slab Milestones (3.50% &amp; 4.50%).
+          </div>
+        </div>
+        <div style="display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap;">
+          <button onclick="loadSchemes(true)" class="btn btn-secondary !h-[30px] !px-3 text-xs" title="Refresh Scheme Indicators">
+            <i data-lucide="refresh-cw" id="schemesRefreshIcon" style="width: 13px; height: 13px;"></i>
+            <span>Refresh Audit</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- KPI Summary Cards -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
+        <div class="data-card" style="padding: 1.1rem 1.25rem; border-left: 4px solid #3B82F6;">
+          <div style="font-size: 11px; text-transform: uppercase; font-weight: 600; color: var(--text-muted); letter-spacing: 0.5px;">Q2 Basic Turnover</div>
+          <div style="font-size: 1.55rem; font-weight: 800; color: #3B82F6; font-family: var(--font-mono); margin-top: 0.25rem;" id="schemeQ2Basic">₹24,44,275.02</div>
+          <div style="font-size: 11.5px; color: var(--text-secondary); margin-top: 0.25rem;" id="schemeQ2Gross">Gross: ₹25,66,491.50 (Aug+Sep)</div>
+        </div>
+
+        <div class="data-card" style="padding: 1.1rem 1.25rem; border-left: 4px solid #10B981;">
+          <div style="font-size: 11px; text-transform: uppercase; font-weight: 600; color: var(--text-muted); letter-spacing: 0.5px;">Claimed &amp; Received</div>
+          <div style="font-size: 1.55rem; font-weight: 800; color: #10B981; font-family: var(--font-mono); margin-top: 0.25rem;" id="schemeClaimedAmount">₹1,11,949.07</div>
+          <div style="font-size: 11.5px; color: var(--text-secondary); margin-top: 0.25rem;">Settled via 4 Ajanta CNs</div>
+        </div>
+
+        <div class="data-card" style="padding: 1.1rem 1.25rem; border-left: 4px solid #F59E0B;">
+          <div style="font-size: 11px; text-transform: uppercase; font-weight: 600; color: var(--text-muted); letter-spacing: 0.5px;">Q2 Pending Accruals</div>
+          <div style="font-size: 1.55rem; font-weight: 800; color: #F59E0B; font-family: var(--font-mono); margin-top: 0.25rem;" id="schemePendingAmount">₹2,07,109.16</div>
+          <div style="font-size: 11.5px; color: var(--text-secondary); margin-top: 0.25rem;">Sep CD + Retailer + Q2 Bonuses</div>
+        </div>
+
+        <div class="data-card" style="padding: 1.1rem 1.25rem; border-left: 4px solid #8B5CF6;">
+          <div style="font-size: 11px; text-transform: uppercase; font-weight: 600; color: var(--text-muted); letter-spacing: 0.5px;">Annual Target Pace</div>
+          <div style="font-size: 1.55rem; font-weight: 800; color: #8B5CF6; font-family: var(--font-mono); margin-top: 0.25rem;" id="schemePaceStatus">122.2% Ahead</div>
+          <div style="font-size: 11.5px; color: var(--text-secondary); margin-top: 0.25rem;">+₹4.44L ahead of ₹20L pro-rata</div>
+        </div>
+      </div>
+
+      <!-- Indicators Grid (8 Cards) -->
+      <div id="schemeCardsContainer" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+        <!-- Dynamically rendered via loadSchemes() -->
+      </div>
+
+      <!-- 2-Way Credit Notes & Schemes Tables -->
+      <div style="margin-top: 1.5rem; margin-bottom: 1.5rem; display: grid; grid-template-columns: 1fr; gap: 1.5rem;">
+        <!-- Inbound Supplier Claims -->
+        <div class="data-card">
+          <div style="padding: 0.85rem 1.25rem; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+            <div style="font-size: 13px; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 0.5rem;">
+              <i data-lucide="arrow-down-left" style="width: 15px; height: 15px; color: #10B981;"></i>
+              <span>Inbound Claims from Supplier (Ajanta Shoes India Pvt. Ltd.)</span>
+            </div>
+            <span style="font-size: 11.5px; color: var(--text-muted);">Reconciled with Ajanta Ledger Statement 93081.pdf</span>
+          </div>
+          <div class="data-table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width: 110px;">Month</th>
+                  <th>Scheme / Rebate Description</th>
+                  <th style="width: 130px;">Supplier CN #</th>
+                  <th style="width: 130px; text-align: right;">Amount (₹)</th>
+                  <th style="width: 160px;">Tally Voucher</th>
+                  <th style="width: 150px; text-align: center;">Status</th>
+                </tr>
+              </thead>
+              <tbody id="supplierClaimsTableBody">
+                <tr>
+                  <td colspan="6" style="padding: 2rem; text-align: center; color: var(--text-muted);">Loading Supplier Claims...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Outbound Customer Cash Discounts -->
+        <div class="data-card">
+          <div style="padding: 0.85rem 1.25rem; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+            <div style="font-size: 13px; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 0.5rem;">
+              <i data-lucide="arrow-up-right" style="width: 15px; height: 15px; color: #F59E0B;"></i>
+              <span>Outbound 5% Cash Discounts to Customers (on Taxable Sales)</span>
+            </div>
+            <span style="font-size: 11.5px; color: var(--text-muted);">Commercial Credit Notes passed to retailers</span>
+          </div>
+          <div class="data-table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width: 110px;">Month</th>
+                  <th>Customer Party Name & Invoices</th>
+                  <th style="width: 130px; text-align: right;">Taxable Value (₹)</th>
+                  <th style="width: 120px; text-align: right;">5% CD (₹)</th>
+                  <th style="width: 130px; text-align: center;">Tally Status</th>
+                  <th style="width: 110px; text-align: center;">Action</th>
+                </tr>
+              </thead>
+              <tbody id="customerDiscountsTableBody">
+                <tr>
+                  <td colspan="6" style="padding: 2rem; text-align: center; color: var(--text-muted);">Loading Customer Cash Discounts...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparative Contractual Summary Table -->
+      <div class="data-card" style="margin-top: 1rem;">
+        <div style="padding: 0.85rem 1.25rem; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
+          <div style="font-size: 13px; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 0.5rem;">
+            <i data-lucide="table" style="width: 15px; height: 15px; color: var(--brand-primary);"></i>
+            <span>Contractual Scheme Audit Matrix &amp; Settlement Master</span>
+          </div>
+          <span style="font-size: 11.5px; color: var(--text-muted);">As per Ajanta Contract &amp; Audit Guide</span>
+        </div>
+        <div class="data-table-wrap">
+          <table class="data-table" id="schemesMatrixTable">
+            <thead>
+              <tr>
+                <th style="width: 45px; text-align: center;">#</th>
+                <th>Scheme Name</th>
+                <th style="width: 110px; text-align: center;">Rate / Clause</th>
+                <th style="width: 120px;">Frequency</th>
+                <th style="width: 160px; text-align: right;">Aug'26 Status</th>
+                <th style="width: 160px; text-align: right;">Sep'26 Status</th>
+                <th style="width: 140px; text-align: right;">Q2 Total Value</th>
+                <th style="width: 140px; text-align: center;">Audit Verdict</th>
+              </tr>
+            </thead>
+            <tbody id="schemesMatrixTableBody">
+              <!-- Dynamically populated or rendered -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- TAB 4: MONTHLY EXECUTIVE PROFIT ANALYZER -->
+    <!-- ============================================== -->
+    <div id="tab-analyzer" class="tab-content" style="display: none;">
+      <div class="table-toolbar" style="margin-bottom: 1.25rem;">
+        <div>
+          <h2 style="font-size: 16px; font-weight: 700; color: var(--text-primary); margin: 0;">Monthly Drop-Ship Profitability & Trade Margins</h2>
+          <span style="font-size: 12px; color: var(--text-secondary);">Comprehensive financial waterfall: Turnover ➔ COGS ➔ Trade Spread ➔ Supplier Rebates (+) ➔ Customer Discounts (-) ➔ Net Realized Profit</span>
+        </div>
+      </div>
+      <div id="monthlyAnalyzerCardsWrap"></div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- TAB 4: MASTER LEDGERS VIEW -->
+    <!-- ============================================== -->
+    <div id="tab-ledgers" class="tab-content" style="display: none;">
+      <div class="table-toolbar">
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Group:</span>
+          <select id="ledgerGroupFilter" onchange="loadLedgers()" class="search-input" style="width: 190px; height: 34px; padding: 0 0.65rem;">
+            <option value="">All Groups (25)</option>
+            <option value="Sundry Debtors">Sundry Debtors</option>
+            <option value="Sundry Creditors">Sundry Creditors</option>
+            <option value="Bank Accounts">Bank Accounts</option>
+            <option value="Duties & Taxes">Duties & Taxes</option>
+            <option value="Current Assets">Current Assets</option>
+            <option value="Capital Account">Capital Account</option>
+            <option value="Indirect Expenses">Indirect Expenses</option>
+          </select>
+        </div>
+
+        <div class="search-input-wrap">
+          <i data-lucide="search" class="search-icon-left" style="width: 13px; height: 13px;"></i>
+          <input type="text" id="ledgerSearchInput" oninput="loadLedgers()" placeholder="Search ledgers, GSTIN..." class="search-input">
+        </div>
+      </div>
+
+      <div class="data-card">
+        <div class="data-table-wrap">
+          <table class="data-table mobile-card-list">
+            <thead>
+              <tr>
+                <th>Ledger Name</th>
+                <th>Parent Group</th>
+                <th>GSTIN</th>
+                <th>State</th>
+                <th style="text-align: right;">Closing Balance</th>
+                <th style="text-align: right;">AlterID</th>
+              </tr>
+            </thead>
+            <tbody id="ledgersTableBody">
+              <tr>
+                <td colspan="6" style="padding: 2rem; text-align: center; color: var(--text-muted);">No ledgers loaded.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- TAB 5: INVENTORY CATALOG VIEW -->
+    <!-- ============================================== -->
+    <div id="tab-stock" class="tab-content" style="display: none;">
+      <div class="table-toolbar">
+        <div style="font-size: 12.5px; color: var(--text-secondary);">
+          Showing synchronized Stock Item Masters from TallyPrime
+        </div>
+
+        <div class="search-input-wrap">
+          <i data-lucide="search" class="search-icon-left" style="width: 13px; height: 13px;"></i>
+          <input type="text" id="stockSearchInput" oninput="loadStockItems()" placeholder="Search item name, brand..." class="search-input">
+        </div>
+      </div>
+
+      <div class="data-card">
+        <div class="data-table-wrap">
+          <table class="data-table mobile-card-list">
+            <thead>
+              <tr>
+                <th>Stock Item Name</th>
+                <th>Brand / Group</th>
+                <th>Base Unit</th>
+                <th>Alt Unit</th>
+                <th style="text-align: right;">AlterID</th>
+              </tr>
+            </thead>
+            <tbody id="stockTableBody">
+              <tr>
+                <td colspan="5" style="padding: 2rem; text-align: center; color: var(--text-muted);">No stock items loaded.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- TAB 6: SYNC ACTIVITY AUDIT LOGS -->
+    <!-- ============================================== -->
+    <div id="tab-logs" class="tab-content" style="display: none;">
+      <div class="table-toolbar">
+        <div style="font-size: 12.5px; color: var(--text-secondary);">
+          Incremental change audit logs & AlterID watermarks
+        </div>
+        <button onclick="loadLogs()" class="btn btn-secondary !h-[30px] !px-3 text-xs">
+          <i data-lucide="refresh-cw" style="width: 13px; height: 13px;"></i>
+          <span>Refresh</span>
+        </button>
+      </div>
+
+      <div class="data-card">
+        <div class="data-table-wrap">
+          <table class="data-table mobile-card-list">
+            <thead>
+              <tr>
+                <th>Timestamp</th>
+                <th>Sync Type</th>
+                <th>Status</th>
+                <th style="text-align: right;">Duration</th>
+                <th>Records Ingested</th>
+                <th>AlterID Watermarks</th>
+              </tr>
+            </thead>
+            <tbody id="logsTableBody" style="font-family: var(--font-mono); font-size: 12px;">
+              <tr>
+                <td colspan="6" style="padding: 2rem; text-align: center; color: var(--text-muted);">No sync logs recorded yet.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- TAB 7: EXPORT JSON DATA -->
+    <!-- ============================================== -->
+    <div id="tab-export" class="tab-content" style="display: none;">
+      <div class="data-card" style="padding: 1.5rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: gap; margin-bottom: 1.25rem;">
+          <div>
+            <div style="font-size: 14px; font-weight: 600; color: var(--text-primary);">Full Company Dataset JSON Export</div>
+            <div style="font-size: 12px; color: var(--text-secondary); margin-top: 0.2rem;">Export complete normalized metadata, masters, vouchers, aging, and audit logs.</div>
+          </div>
+          <div style="display: flex; gap: 0.5rem;">
+            <button onclick="copyExportJson()" class="btn btn-secondary text-xs">
+              <i data-lucide="copy" style="width: 13px; height: 13px;"></i>
+              <span id="copyJsonBtnText">Copy JSON</span>
+            </button>
+            <a href="/api/data/export" download class="btn btn-primary text-xs">
+              <i data-lucide="download" style="width: 13px; height: 13px;"></i>
+              <span>Download (.json)</span>
+            </a>
+          </div>
+        </div>
+
+        <div style="border: 1px solid var(--border-color); border-radius: var(--radius-sm); background-color: var(--bg-subtle); padding: 0.85rem; overflow: hidden;">
+          <pre id="jsonPreview" style="font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); max-height: 400px; overflow-y: auto;">Generating export preview...</pre>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Slide-Over Drawer: Voucher Details & Aging Drilldown -->
+  <div id="voucherDetailModal" class="drawer-backdrop" onclick="handleDrawerBackdropClick(event)">
+    <div class="drawer-panel" onclick="event.stopPropagation()">
+      <!-- Drawer Header -->
+      <div class="drawer-header">
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <span id="modalVchTypeBadge" class="badge-tag badge-tag-neutral">Voucher</span>
+          <span style="font-weight: 600; font-size: 14px; color: var(--text-primary);" id="modalVchTitle">Voucher Details</span>
+        </div>
+        <button onclick="closeModal()" class="btn btn-ghost btn-icon" title="Close (Esc)">
+          <i data-lucide="x" style="width: 15px; height: 15px;"></i>
+        </button>
+      </div>
+
+      <!-- Drawer Body -->
+      <div class="drawer-body">
+        <!-- Overview Grid -->
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; padding: 0.85rem; background-color: var(--bg-subtle); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);">
+          <div>
+            <span style="display: block; font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 600;">Date</span>
+            <span style="font-weight: 600; font-family: var(--font-mono); color: var(--text-primary);" id="modalDate">-</span>
+          </div>
+          <div>
+            <span style="display: block; font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 600;">Voucher #</span>
+            <span style="font-weight: 600; font-family: var(--font-mono); color: var(--text-primary);" id="modalNumber">-</span>
+          </div>
+          <div>
+            <span style="display: block; font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 600;">Amount</span>
+            <span style="font-weight: 700; font-family: var(--font-mono); color: var(--brand-text);" id="modalAmount">-</span>
+          </div>
+          <div>
+            <span style="display: block; font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 600;">AlterID</span>
+            <span style="font-family: var(--font-mono); color: var(--text-secondary);" id="modalAlterId">-</span>
+          </div>
+          <div style="grid-column: span 2;">
+            <span style="display: block; font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 600;">Party Account</span>
+            <span style="font-weight: 600; color: var(--text-primary);" id="modalParty">-</span>
+          </div>
+          <div style="grid-column: span 2;" id="modalNarrationRow">
+            <span style="display: block; font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 600;">Narration</span>
+            <span style="font-style: italic; color: var(--text-secondary); font-size: 12px;" id="modalNarration">-</span>
+          </div>
+        </div>
+
+        <!-- Inventory Allocations -->
+        <div id="modalInventorySection" style="display: none;">
+          <div style="font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); margin-bottom: 0.4rem;">Inventory Items</div>
+          <div class="data-card">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th style="text-align: right;">Qty</th>
+                  <th style="text-align: right;">Rate</th>
+                  <th style="text-align: right;">Amount</th>
+                </tr>
+              </thead>
+              <tbody id="modalInventoryTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Ledger Entries -->
+        <div>
+          <div style="font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); margin-bottom: 0.4rem;">Double-Entry Ledger Balancing</div>
+          <div class="data-card">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Account Ledger</th>
+                  <th style="text-align: right;">Debit (₹)</th>
+                  <th style="text-align: right;">Credit (₹)</th>
+                </tr>
+              </thead>
+              <tbody id="modalLedgerTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Raw JSON Payload -->
+        <details style="font-size: 12px; border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 0.6rem; background-color: var(--bg-surface);">
+          <summary style="cursor: pointer; font-weight: 500; color: var(--text-secondary);">View Raw JSON Payload</summary>
+          <pre id="modalRawJson" style="margin-top: 0.5rem; font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); background-color: var(--bg-subtle); padding: 0.65rem; border-radius: var(--radius-xs); overflow-x: auto; max-height: 200px;"></pre>
+        </details>
+      </div>
+
+      <!-- Drawer Footer -->
+      <div class="drawer-footer">
+        <button onclick="closeModal()" class="btn btn-secondary text-xs">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Advanced Tools & Tally Raw Data -->
+  <div id="advancedToolsModal" class="drawer-backdrop" onclick="toggleAdvancedToolsModal()" style="display: none; align-items: center; justify-content: center; z-index: 100;">
+    <div class="data-card" onclick="event.stopPropagation()" style="width: 90%; max-width: 680px; padding: 1.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-drawer); background: var(--bg-surface);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem;">
+        <div>
+          <h3 style="font-size: 16px; font-weight: 700; color: var(--text-primary); margin: 0; display: flex; align-items: center; gap: 0.5rem;">
+            <i data-lucide="sliders-horizontal" style="width: 17px; height: 17px; color: var(--brand-primary);"></i>
+            Advanced Tools & Tally Catalogs
+          </h3>
+          <span style="font-size: 11.5px; color: var(--text-muted);">Secondary views and raw database tables</span>
+        </div>
+        <button onclick="toggleAdvancedToolsModal()" class="btn btn-ghost btn-icon" title="Close">
+          <i data-lucide="x" style="width: 16px; height: 16px;"></i>
+        </button>
+      </div>
+
+      <!-- Quick Tiles Grid -->
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.85rem;">
+        <button onclick="openAdvancedTab('vouchers')" class="btn btn-secondary" style="height: auto; padding: 1rem; justify-content: flex-start; text-align: left; display: flex; gap: 0.75rem;">
+          <i data-lucide="receipt" style="width: 20px; height: 20px; color: #10B981; flex-shrink: 0;"></i>
+          <div>
+            <div style="font-weight: 600; color: var(--text-primary); font-size: 13px;">All Transactions</div>
+            <div style="font-size: 11px; color: var(--text-muted);">Raw list of 60+ Tally vouchers</div>
+          </div>
+        </button>
+
+        <button onclick="openAdvancedTab('ledgers')" class="btn btn-secondary" style="height: auto; padding: 1rem; justify-content: flex-start; text-align: left; display: flex; gap: 0.75rem;">
+          <i data-lucide="book-open" style="width: 20px; height: 20px; color: #3B82F6; flex-shrink: 0;"></i>
+          <div>
+            <div style="font-weight: 600; color: var(--text-primary); font-size: 13px;">Tally Ledgers</div>
+            <div style="font-size: 11px; color: var(--text-muted);">25 chart-of-account ledgers</div>
+          </div>
+        </button>
+
+        <button onclick="openAdvancedTab('stock')" class="btn btn-secondary" style="height: auto; padding: 1rem; justify-content: flex-start; text-align: left; display: flex; gap: 0.75rem;">
+          <i data-lucide="boxes" style="width: 20px; height: 20px; color: #F59E0B; flex-shrink: 0;"></i>
+          <div>
+            <div style="font-weight: 600; color: var(--text-primary); font-size: 13px;">Stock Catalog</div>
+            <div style="font-size: 11px; color: var(--text-muted);">206 items catalog</div>
+          </div>
+        </button>
+
+        <button onclick="openAdvancedTab('reconcile')" class="btn btn-secondary" style="height: auto; padding: 1rem; justify-content: flex-start; text-align: left; display: flex; gap: 0.75rem;">
+          <i data-lucide="shield-check" style="width: 20px; height: 20px; color: #10B981; flex-shrink: 0;"></i>
+          <div>
+            <div style="font-weight: 600; color: var(--text-primary); font-size: 13px;">Bank Reconciliation</div>
+            <div style="font-size: 11px; color: var(--text-muted);">Invoices vs bank statement match</div>
+          </div>
+        </button>
+
+        <button onclick="openAdvancedTab('tally-guide')" class="btn btn-secondary" style="height: auto; padding: 1rem; justify-content: flex-start; text-align: left; display: flex; gap: 0.75rem;">
+          <i data-lucide="book-check" style="width: 20px; height: 20px; color: #8B5CF6; flex-shrink: 0;"></i>
+          <div>
+            <div style="font-weight: 600; color: var(--text-primary); font-size: 13px;">Tally Posting Guide</div>
+            <div style="font-size: 11px; color: var(--text-muted);">Step-by-step voucher instructions</div>
+          </div>
+        </button>
+
+        <button onclick="openAdvancedTab('logs')" class="btn btn-secondary" style="height: auto; padding: 1rem; justify-content: flex-start; text-align: left; display: flex; gap: 0.75rem;">
+          <i data-lucide="list" style="width: 20px; height: 20px; color: var(--text-secondary); flex-shrink: 0;"></i>
+          <div>
+            <div style="font-weight: 600; color: var(--text-primary); font-size: 13px;">Sync Activity & Logs</div>
+            <div style="font-size: 11px; color: var(--text-muted);">Live Tally Prime sync audit history</div>
+          </div>
+        </button>
+      </div>
+
+      <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 11.5px; color: var(--text-muted);">SKIL Master Drop-Ship Tracking Suite</span>
+        <div style="display: flex; gap: 0.5rem;">
+          <button onclick="openAdvancedTab('export')" class="btn btn-primary text-xs">
+            <i data-lucide="download" style="width: 12px; height: 12px;"></i> Export Data
+          </button>
+          <button onclick="toggleAdvancedToolsModal()" class="btn btn-secondary text-xs">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="toast-container" role="status" aria-live="polite"></div>
+
+  <!-- Dashboard Script (Cache-busted v4.4.0) -->
+  <script src="app.js?v=4.4.0"></script>
+  <!-- Drop-Ship Tracking Engine Script -->
+  <script src="tracking-ui.js?v=1.0.0"></script>
+</body>
+</html>
