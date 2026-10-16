@@ -10,7 +10,7 @@
   "description": "SKIL Lifestyle LLP ERP, Tally Sync & Stint Tracking System",
   "icons": [
     {
-      "src": "/assets/skil-logo.png",
+      "src": "assets/skil-black-logo.png",
       "sizes": "192x192 512x512",
       "type": "image/png",
       "purpose": "any maskable"

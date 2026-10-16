@@ -1810,133 +1810,203 @@ async function loadLedgerBookDropdown() {
   const itemsList = document.getElementById('ledgerItemsList');
   const triggerText = document.getElementById('ledgerTriggerText');
 
+  let available = [];
   try {
-    const resp = await fetch('/api/ledger/statement');
-    const data = await resp.json();
-    const available = data.availableLedgers || [];
-
-    // Also populate native select as fallback
-    if (select) {
-      select.innerHTML = `<option value="">Select Ledger...</option>` + 
-        available.map(l => `<option value="${l}">${l}</option>`).join('');
-      select.onchange = () => {
-        if (select.value) loadLedgerStatement(select.value);
-      };
+    const resp = await fetch(getApiUrl('/api/ledger/statement'));
+    if (resp.ok) {
+      const data = await resp.json();
+      available = data.availableLedgers || [];
     }
+  } catch (err) {}
 
-    if (!itemsList) return;
-
-    function renderDropdownItems(filter = '') {
-      const q = filter.toLowerCase().trim();
-      const filtered = available.filter(l => l.toLowerCase().includes(q));
-
-      if (filtered.length === 0) {
-        itemsList.innerHTML = `<div style="padding: 12px; font-size: 12px; color: #94A3B8; text-align: center;">No matching ledgers found</div>`;
-        return;
-      }
-
-      itemsList.innerHTML = filtered.map(l => {
-        const isSelected = l === state.selectedLedger;
-        return `
-          <div class="dropdown-item ${isSelected ? 'selected' : ''}" data-ledger="${l}">
-            <span>${l}</span>
-            ${isSelected ? '<i data-lucide="check" style="width: 14px; height: 14px; color: #0284C7;"></i>' : ''}
-          </div>
-        `;
-      }).join('');
-
-      if (window.lucide) lucide.createIcons();
-
-      // Click handler
-      itemsList.querySelectorAll('.dropdown-item').forEach(item => {
-        item.addEventListener('click', () => {
-          const ledger = item.getAttribute('data-ledger');
-          state.selectedLedger = ledger;
-          if (triggerText) triggerText.innerText = ledger;
-          if (select) select.value = ledger;
-          if (menu) menu.classList.remove('dropdown-open');
-          loadLedgerStatement(ledger);
-          renderDropdownItems(searchInput ? searchInput.value : '');
-        });
+  // Offline fallback: extract unique ledgers from cached local data
+  if (!available || available.length === 0) {
+    const set = new Set();
+    if (state.rawVouchers && state.rawVouchers.length > 0) {
+      state.rawVouchers.forEach(v => {
+        if (v.partyName) set.add(v.partyName.trim());
       });
     }
+    if (state.aging?.debtors?.parties) {
+      state.aging.debtors.parties.forEach(p => set.add(p.partyName.trim()));
+    }
+    if (state.masterGrid?.rows) {
+      state.masterGrid.rows.forEach(r => {
+        if (r.customer) set.add(r.customer.trim());
+        if (r.supplier) set.add(r.supplier.trim());
+      });
+    }
+    set.add('Union Bank Current A/c');
+    available = Array.from(set).filter(Boolean).sort();
+  }
 
-    renderDropdownItems('');
+  // Also populate native select as fallback
+  if (select) {
+    select.innerHTML = `<option value="">Select Ledger...</option>` + 
+      available.map(l => `<option value="${l}">${l}</option>`).join('');
+    select.onchange = () => {
+      if (select.value) loadLedgerStatement(select.value);
+    };
+  }
 
-    // Toggle menu
-    if (triggerBtn && menu) {
-      triggerBtn.onclick = (e) => {
-        e.stopPropagation();
-        const isOpen = menu.classList.contains('dropdown-open');
-        menu.classList.toggle('dropdown-open', !isOpen);
-        if (!isOpen && searchInput) {
-          searchInput.value = '';
-          renderDropdownItems('');
-          setTimeout(() => searchInput.focus(), 60);
-        }
-      };
+  if (!itemsList) return;
+
+  function renderDropdownItems(filter = '') {
+    const q = filter.toLowerCase().trim();
+    const filtered = available.filter(l => l.toLowerCase().includes(q));
+
+    if (filtered.length === 0) {
+      itemsList.innerHTML = `<div style="padding: 12px; font-size: 12px; color: #94A3B8; text-align: center;">No matching ledgers found</div>`;
+      return;
     }
 
-    // Filter typing
-    if (searchInput) {
-      searchInput.oninput = (e) => {
-        renderDropdownItems(e.target.value);
-      };
-      searchInput.onclick = (e) => e.stopPropagation();
-    }
+    itemsList.innerHTML = filtered.map(l => {
+      const isSelected = l === state.selectedLedger;
+      return `
+        <div class="dropdown-item ${isSelected ? 'selected' : ''}" data-ledger="${l}">
+          <span>${l}</span>
+          ${isSelected ? '<i data-lucide="check" style="width: 14px; height: 14px; color: #0284C7;"></i>' : ''}
+        </div>
+      `;
+    }).join('');
 
-    // Close on outside click
-    document.addEventListener('click', (e) => {
-      if (customWrap && !customWrap.contains(e.target) && menu) {
-        menu.classList.remove('dropdown-open');
-      }
+    if (window.lucide) lucide.createIcons();
+
+    // Click handler
+    itemsList.querySelectorAll('.dropdown-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const ledger = item.getAttribute('data-ledger');
+        state.selectedLedger = ledger;
+        if (triggerText) triggerText.innerText = ledger;
+        if (select) select.value = ledger;
+        if (menu) menu.classList.remove('dropdown-open');
+        loadLedgerStatement(ledger);
+        renderDropdownItems(searchInput ? searchInput.value : '');
+      });
     });
+  }
 
-    // Auto-select Union Bank Current A/c by default
-    if (!state.selectedLedger && available.includes('Union Bank Current A/c')) {
-      state.selectedLedger = 'Union Bank Current A/c';
-      if (triggerText) triggerText.innerText = 'Union Bank Current A/c';
-      if (select) select.value = 'Union Bank Current A/c';
-      loadLedgerStatement('Union Bank Current A/c');
+  renderDropdownItems('');
+
+  // Toggle menu
+  if (triggerBtn && menu) {
+    triggerBtn.onclick = (e) => {
+      e.stopPropagation();
+      const isOpen = menu.classList.contains('dropdown-open');
+      menu.classList.toggle('dropdown-open', !isOpen);
+      if (!isOpen && searchInput) {
+        searchInput.value = '';
+        renderDropdownItems('');
+        setTimeout(() => searchInput.focus(), 60);
+      }
+    };
+  }
+
+  // Filter typing
+  if (searchInput) {
+    searchInput.oninput = (e) => {
+      renderDropdownItems(e.target.value);
+    };
+    searchInput.onclick = (e) => e.stopPropagation();
+  }
+
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    if (customWrap && !customWrap.contains(e.target) && menu) {
+      menu.classList.remove('dropdown-open');
     }
-  } catch (err) {
-    console.error('Error loading ledger list:', err);
+  });
+
+  // Auto-select Union Bank Current A/c by default
+  if (!state.selectedLedger && available.includes('Union Bank Current A/c')) {
+    state.selectedLedger = 'Union Bank Current A/c';
+    if (triggerText) triggerText.innerText = 'Union Bank Current A/c';
+    if (select) select.value = 'Union Bank Current A/c';
+    loadLedgerStatement('Union Bank Current A/c');
   }
 }
 
 async function loadLedgerStatement(ledgerName) {
+  let data = null;
   try {
-    const resp = await fetch(`/api/ledger/statement?ledger=${encodeURIComponent(ledgerName)}`);
-    const data = await resp.json();
-
-    document.getElementById('ledgerTotalDebits').innerText = formatINR(data.totalDebits);
-    document.getElementById('ledgerTotalCredits').innerText = formatINR(data.totalCredits);
-    document.getElementById('ledgerClosingBalance').innerText = formatINR(data.closingBalance);
-    document.getElementById('ledgerVoucherCount').innerText = data.transactions?.length || 0;
-
-    const tbody = document.getElementById('ledgerStatementTbody');
-    if (!tbody) return;
-
-    if (!data.transactions || data.transactions.length === 0) {
-      tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: #94A3B8; padding: 30px;">No transactions recorded for ${ledgerName}.</td></tr>`;
-      return;
+    const resp = await fetch(getApiUrl(`/api/ledger/statement?ledger=${encodeURIComponent(ledgerName)}`));
+    if (resp.ok) {
+      data = await resp.json();
     }
+  } catch (err) {}
 
-    tbody.innerHTML = data.transactions.map(t => `
-      <tr>
-        <td>${t.formattedDate || t.date}</td>
-        <td><span class="stint-tag-pill">${t.voucherType}</span></td>
-        <td class="td-bold">${t.voucherNumber || '—'}</td>
-        <td class="td-muted">${t.reference || '—'}</td>
-        <td style="max-width: 250px; font-size: 12px; color: #64748B;">${t.narration || '—'}</td>
-        <td style="color: #15803D; font-weight: 700;">${t.debit > 0 ? formatINR(t.debit) : '—'}</td>
-        <td style="color: #B91C1C; font-weight: 700;">${t.credit > 0 ? formatINR(t.credit) : '—'}</td>
-        <td class="td-bold">${formatINR(t.runningBalance)}</td>
-      </tr>
-    `).join('');
-  } catch (err) {
-    console.error('Error loading ledger statement:', err);
+  // Offline fallback: compute statement directly from state.rawVouchers
+  if (!data || !data.transactions) {
+    const vchs = (state.rawVouchers || []).filter(v => {
+      if (v.partyName && v.partyName.trim().toLowerCase() === ledgerName.trim().toLowerCase()) return true;
+      if (v.ledgerName && v.ledgerName.trim().toLowerCase() === ledgerName.trim().toLowerCase()) return true;
+      return false;
+    });
+
+    let totalDebits = 0;
+    let totalCredits = 0;
+    let runningBalance = 0;
+
+    const txs = vchs.map(v => {
+      const amt = Number(v.amount || 0);
+      let debit = 0;
+      let credit = 0;
+      if (v.voucherType === 'Sales' || v.voucherType === 'Payment' || v.voucherType === 'Debit Note') {
+        debit = amt;
+        totalDebits += amt;
+        runningBalance += amt;
+      } else {
+        credit = amt;
+        totalCredits += amt;
+        runningBalance -= amt;
+      }
+      return {
+        date: v.date,
+        formattedDate: formatDateStr(v.date),
+        voucherType: v.voucherType,
+        voucherNumber: v.voucherNumber,
+        reference: v.reference,
+        narration: v.narration,
+        debit,
+        credit,
+        runningBalance
+      };
+    });
+
+    data = {
+      ledgerName,
+      totalDebits,
+      totalCredits,
+      closingBalance: runningBalance,
+      transactions: txs
+    };
   }
+
+  document.getElementById('ledgerTotalDebits').innerText = formatINR(data.totalDebits);
+  document.getElementById('ledgerTotalCredits').innerText = formatINR(data.totalCredits);
+  document.getElementById('ledgerClosingBalance').innerText = formatINR(data.closingBalance);
+  document.getElementById('ledgerVoucherCount').innerText = data.transactions?.length || 0;
+
+  const tbody = document.getElementById('ledgerStatementTbody');
+  if (!tbody) return;
+
+  if (!data.transactions || data.transactions.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: #94A3B8; padding: 30px;">No transactions recorded for ${ledgerName}.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = data.transactions.map(t => `
+    <tr>
+      <td>${t.formattedDate || t.date}</td>
+      <td><span class="stint-tag-pill">${t.voucherType}</span></td>
+      <td class="td-bold">${t.voucherNumber || '—'}</td>
+      <td class="td-muted">${t.reference || '—'}</td>
+      <td style="max-width: 250px; font-size: 12px; color: #64748B;">${t.narration || '—'}</td>
+      <td style="color: #15803D; font-weight: 700;">${t.debit > 0 ? formatINR(t.debit) : '—'}</td>
+      <td style="color: #B91C1C; font-weight: 700;">${t.credit > 0 ? formatINR(t.credit) : '—'}</td>
+      <td class="td-bold">${formatINR(t.runningBalance)}</td>
+    </tr>
+  `).join('');
 }
 
 // ==========================================================================
