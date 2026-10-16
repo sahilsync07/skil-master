@@ -253,30 +253,59 @@ function setupNavigation() {
   });
 }
 
-// Setup Sync Button & Data Refresh
+// GitHub Cloud Storage Raw Base Configuration
+const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/sahilsync07/skil-master/main/sync-engine/public';
+
+// Setup Sync Button & Data Refresh (Works for both Desktop Topbar and Mobile Quick Sync)
 function setupSyncButton() {
   const syncBtn = document.getElementById('syncNowBtn');
-  if (syncBtn) {
-    syncBtn.addEventListener('click', async () => {
+  const mobileSyncBtn = document.getElementById('btnMobileQuickSync');
+
+  async function triggerSyncAction() {
+    if (syncBtn) {
       syncBtn.classList.add('syncing');
       syncBtn.disabled = true;
-      try {
-        const resp = await fetch('/api/sync/run', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ full: false })
-        });
-        const result = await resp.json();
-        console.log('Sync result:', result);
-      } catch (err) {
-        console.error('Sync failed:', err);
-      } finally {
-        await refreshAllData();
+    }
+    if (mobileSyncBtn) {
+      mobileSyncBtn.classList.add('syncing');
+      mobileSyncBtn.disabled = true;
+    }
+
+    try {
+      // If connected to local server on PC/Wi-Fi, trigger Tally live sync
+      if (!window._serverOffline) {
+        try {
+          const controller = new AbortController();
+          const tid = setTimeout(() => controller.abort(), 1500);
+          await fetch(getApiUrl('/api/sync/run'), {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ full: false }),
+            signal: controller.signal
+          });
+          clearTimeout(tid);
+        } catch (e) {
+          // If local server unreachable (e.g. mobile data outside), flag it immediately
+          window._serverOffline = true;
+        }
+      }
+    } catch (err) {
+      console.warn('Sync trigger skipped:', err);
+    } finally {
+      await refreshAllData();
+      if (syncBtn) {
         syncBtn.classList.remove('syncing');
         syncBtn.disabled = false;
       }
-    });
+      if (mobileSyncBtn) {
+        mobileSyncBtn.classList.remove('syncing');
+        mobileSyncBtn.disabled = false;
+      }
+    }
   }
+
+  if (syncBtn) syncBtn.addEventListener('click', triggerSyncAction);
+  if (mobileSyncBtn) mobileSyncBtn.addEventListener('click', triggerSyncAction);
 }
 
 // Get API Base URL (handles mobile/Capacitor localhost -> host PC IP)
@@ -295,37 +324,89 @@ function getApiUrl(endpoint) {
   return base ? `${base}${endpoint}` : endpoint;
 }
 
-// Update static download link targets to ensure absolute paths for mobile DownloadManager
+// Update static download link targets to ensure absolute paths for mobile downloads & cloud storage
 function updateStaticDownloadLinks() {
   const exportBtn = document.querySelector('a[href*="/api/data/export"]');
   if (exportBtn) {
-    exportBtn.href = getApiUrl('/api/data/export');
+    exportBtn.href = `${GITHUB_RAW_BASE}/data/master-grid.json`;
+    exportBtn.setAttribute('target', '_blank');
   }
   const apkBtn = document.getElementById('btnDownloadApk');
   if (apkBtn) {
-    apkBtn.href = getApiUrl('/download/app.apk');
+    apkBtn.href = 'https://raw.githubusercontent.com/sahilsync07/skil-master/main/SahilsBiz-SKIL.apk';
+    apkBtn.setAttribute('target', '_blank');
   }
   const excelBtn = document.querySelector('a[href*="/api/reconcile/discount-excel"]');
   if (excelBtn) {
-    excelBtn.href = getApiUrl('/api/reconcile/discount-excel');
+    excelBtn.href = `${GITHUB_RAW_BASE}/documents/ajanta/Ajanta_Discount_Discrepancies.xlsx`;
+    excelBtn.setAttribute('target', '_blank');
   }
+
+  // Ensure all supplier document download links point to GitHub Raw Storage when outside or in app
+  document.querySelectorAll('a[href*="documents/"]').forEach(link => {
+    const rawHref = link.getAttribute('href');
+    if (rawHref && !rawHref.startsWith('http')) {
+      const cleanPath = rawHref.replace(/^\.?\//, '');
+      link.href = `${GITHUB_RAW_BASE}/${cleanPath}`;
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener noreferrer');
+    }
+  });
 }
 
-// Smart Fetch Helper: tries API server first, falls back to bundled ./data/ offline JSON
+// Smart Fetch Helper:
+// Tier 1: Local PC Server (if reachable on Wi-Fi/localhost, with 1200ms quick timeout)
+// Tier 2: GitHub Cloud Storage (live cloud data when outside on 4G/5G mobile data)
+// Tier 3: Bundled Storage (offline fallback when completely disconnected)
 async function smartFetch(apiEndpoint, fallbackFile) {
-  const url = getApiUrl(apiEndpoint);
-  try {
-    const res = await fetch(url);
-    if (res.ok) return await res.json();
-  } catch (err) {
-    // Network or server unreachable
+  const serverHost = getApiBaseUrl();
+
+  // Tier 1: Try Local PC Server if on local Wi-Fi / dev server
+  if (serverHost && !window._serverOffline) {
+    try {
+      const controller = new AbortController();
+      const tid = setTimeout(() => controller.abort(), 1200);
+      const res = await fetch(`${serverHost}${apiEndpoint}`, { signal: controller.signal });
+      clearTimeout(tid);
+      if (res.ok) {
+        state.dataSource = 'server';
+        return await res.json();
+      }
+    } catch (err) {
+      // Local server is not reachable (e.g. user is outside on mobile data)
+      window._serverOffline = true;
+    }
   }
+
+  // Tier 2: Fetch Live from GitHub Cloud Storage (over mobile data anywhere in the world)
+  if (fallbackFile && navigator.onLine) {
+    try {
+      const githubUrl = `${GITHUB_RAW_BASE}/data/${fallbackFile}?v=${Date.now()}`;
+      const res = await fetch(githubUrl, { cache: 'no-cache' });
+      if (res.ok) {
+        state.dataSource = 'github';
+        return await res.json();
+      }
+    } catch (err) {
+      console.warn(`GitHub fetch error for ${fallbackFile}:`, err);
+    }
+  }
+
+  // Tier 3: Offline cached fallback
   if (fallbackFile) {
     try {
       const res = await fetch(`./data/${fallbackFile}`);
-      if (res.ok) return await res.json();
-    } catch (e) {}
+      if (res.ok) {
+        if (!state.dataSource || state.dataSource === 'loading') {
+          state.dataSource = 'local';
+        }
+        return await res.json();
+      }
+    } catch (e) {
+      console.error(`Local file fetch error for ${fallbackFile}:`, e);
+    }
   }
+
   return null;
 }
 
@@ -381,13 +462,31 @@ function updateTopBarInfo() {
 
   const ts = state.status?.stats?.lastSyncTimestamp;
   const lastSyncedText = document.getElementById('lastSyncedText');
-  if (lastSyncedText && ts) {
+  const subtleSync = document.getElementById('subtleSyncTimestamp');
+  const tallyStatusSubtle = document.getElementById('tallyStatusSubtle');
+
+  let timeStr = '15-Oct 19:29';
+  if (ts) {
     const dt = new Date(ts);
     const hours = String(dt.getHours()).padStart(2, '0');
     const mins = String(dt.getMinutes()).padStart(2, '0');
     const day = dt.getDate();
     const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    lastSyncedText.innerText = `Synced: ${day}-${monthNames[dt.getMonth()]} ${hours}:${mins}`;
+    timeStr = `${day}-${monthNames[dt.getMonth()]} ${hours}:${mins}`;
+  }
+
+  if (subtleSync) subtleSync.innerText = timeStr;
+
+  // Visual Source Indicator (shows user whether they are on Live PC Sync or GitHub Cloud Mobile Data)
+  if (state.dataSource === 'github') {
+    if (lastSyncedText) lastSyncedText.innerHTML = `<span style="color: #0284c7; font-weight: 600;">☁️ GitHub Cloud: ${timeStr}</span>`;
+    if (tallyStatusSubtle) tallyStatusSubtle.innerHTML = `<span style="color: #0284c7; font-weight: 600;">☁️ Cloud Live (Mobile Data)</span>`;
+  } else if (state.dataSource === 'server') {
+    if (lastSyncedText) lastSyncedText.innerHTML = `<span style="color: #16a34a; font-weight: 600;">🟢 Live PC Sync: ${timeStr}</span>`;
+    if (tallyStatusSubtle) tallyStatusSubtle.innerHTML = `<span style="color: #16a34a; font-weight: 600;">🟢 Local PC Active</span>`;
+  } else {
+    if (lastSyncedText) lastSyncedText.innerHTML = `<span style="color: #64748b; font-weight: 600;">📦 Storage Cache: ${timeStr}</span>`;
+    if (tallyStatusSubtle) tallyStatusSubtle.innerHTML = `<span style="color: #64748b; font-weight: 600;">📦 Local Storage</span>`;
   }
 }
 
@@ -1811,13 +1910,20 @@ async function loadLedgerBookDropdown() {
   const triggerText = document.getElementById('ledgerTriggerText');
 
   let available = [];
-  try {
-    const resp = await fetch(getApiUrl('/api/ledger/statement'));
-    if (resp.ok) {
-      const data = await resp.json();
-      available = data.availableLedgers || [];
+  if (!window._serverOffline) {
+    try {
+      const controller = new AbortController();
+      const tid = setTimeout(() => controller.abort(), 1000);
+      const resp = await fetch(getApiUrl('/api/ledger/statement'), { signal: controller.signal });
+      clearTimeout(tid);
+      if (resp.ok) {
+        const data = await resp.json();
+        available = data.availableLedgers || [];
+      }
+    } catch (err) {
+      window._serverOffline = true;
     }
-  } catch (err) {}
+  }
 
   // Offline fallback: extract unique ledgers from cached local data
   if (!available || available.length === 0) {
@@ -1928,12 +2034,19 @@ async function loadLedgerBookDropdown() {
 
 async function loadLedgerStatement(ledgerName) {
   let data = null;
-  try {
-    const resp = await fetch(getApiUrl(`/api/ledger/statement?ledger=${encodeURIComponent(ledgerName)}`));
-    if (resp.ok) {
-      data = await resp.json();
+  if (!window._serverOffline) {
+    try {
+      const controller = new AbortController();
+      const tid = setTimeout(() => controller.abort(), 1000);
+      const resp = await fetch(getApiUrl(`/api/ledger/statement?ledger=${encodeURIComponent(ledgerName)}`), { signal: controller.signal });
+      clearTimeout(tid);
+      if (resp.ok) {
+        data = await resp.json();
+      }
+    } catch (err) {
+      window._serverOffline = true;
     }
-  } catch (err) {}
+  }
 
   // Offline fallback: compute statement directly from state.rawVouchers
   if (!data || !data.transactions) {
