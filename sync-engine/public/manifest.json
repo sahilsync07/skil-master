@@ -1,0 +1,19 @@
+{
+  "name": "Sahil's Biz - SKIL Lifestyle LLP",
+  "short_name": "Sahil's Biz",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0F172A",
+  "theme_color": "#0F172A",
+  "orientation": "portrait-primary",
+  "description": "SKIL Lifestyle LLP ERP, Tally Sync & Stint Tracking System",
+  "icons": [
+    {
+      "src": "/assets/skil-logo.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
