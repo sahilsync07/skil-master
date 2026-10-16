@@ -35,8 +35,8 @@
       <div>
         <div class="sidebar-brand-wrap" style="display: flex; align-items: center; justify-content: space-between; padding-right: 6px;">
           <div class="sidebar-brand" id="brandToggleBtn">
-            <div style="background: #FFFFFF; border-radius: 12px; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; padding: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); flex-shrink: 0;">
-              <img src="assets/skil-logo.png" alt="SKIL Logo" style="width: 34px; height: 34px; object-fit: contain;">
+            <div class="brand-squircle-logo">
+              <img src="assets/skil-black-logo.png" alt="SKIL Logo">
             </div>
             <div>
               <div class="brand-title">Sahil's Biz</div>
@@ -55,16 +55,29 @@
               <span>Dashboard</span>
             </a>
           </li>
-          <li class="nav-item" data-tab="sales-metrics">
-            <a class="nav-link">
-              <i data-lucide="pie-chart"></i>
-              <span>Sales Metrics</span>
+          <li class="nav-item" data-tab="supplier-ajanta">
+            <a class="nav-link" style="display: flex; align-items: center; gap: 10px;">
+              <div style="background: #FFFFFF; border-radius: 6px; padding: 2px 4px; display: flex; align-items: center; justify-content: center; height: 24px; min-width: 44px;">
+                <img src="assets/ajanta-logo.png" alt="Ajanta" style="height: 16px; width: auto; object-fit: contain;">
+              </div>
+              <span>Ajanta Shoes</span>
+              <span style="background: #A3E635; color: #0F172A; font-size: 10px; font-weight: 800; padding: 2px 7px; border-radius: 10px; margin-left: auto;">51 Bills</span>
             </a>
           </li>
-          <li class="nav-item" data-tab="parties">
+          <li class="nav-item" data-tab="supplier-xpania">
+            <a class="nav-link" style="display: flex; align-items: center; gap: 10px;">
+              <div style="background: #FFFFFF; border-radius: 6px; padding: 2px 4px; display: flex; align-items: center; justify-content: center; height: 24px; min-width: 44px;">
+                <img src="assets/xpania-logo.png" alt="Xpania" style="height: 16px; width: auto; object-fit: contain;">
+              </div>
+              <span>Xpania Footcare</span>
+              <span style="background: #38BDF8; color: #0F172A; font-size: 10px; font-weight: 800; padding: 2px 7px; border-radius: 10px; margin-left: auto;">6 Bills</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="payment-aging">
             <a class="nav-link">
-              <i data-lucide="users"></i>
-              <span>Parties & Aging</span>
+              <i data-lucide="clock-3"></i>
+              <span>Customer Aging</span>
+              <span class="nav-badge-dot"></span>
             </a>
           </li>
           <li class="nav-item" data-tab="inventory">
@@ -73,47 +86,16 @@
               <span>Inventory</span>
             </a>
           </li>
-          <li class="nav-item" data-tab="bills-vouchers">
+          <li class="nav-item" data-tab="ledger-book">
             <a class="nav-link">
-              <i data-lucide="receipt"></i>
-              <span>Bills & Vouchers</span>
-            </a>
-          </li>
-          <li class="nav-item" data-tab="schemes">
-            <a class="nav-link">
-              <i data-lucide="award"></i>
-              <span>Credit Notes & Schemes</span>
-            </a>
-          </li>
-          <li class="nav-item" data-tab="overdues">
-            <a class="nav-link">
-              <i data-lucide="clock-3"></i>
-              <span>Payment Aging & Overdue</span>
-              <span class="nav-badge-dot"></span>
+              <i data-lucide="book-open"></i>
+              <span>Ledger Book</span>
             </a>
           </li>
           <li class="nav-item" data-tab="audit-reconcile">
             <a class="nav-link">
               <i data-lucide="shield-check"></i>
               <span>Audit & Reconcile</span>
-            </a>
-          </li>
-          <li class="nav-item" data-tab="tally-guide">
-            <a class="nav-link">
-              <i data-lucide="file-check-2"></i>
-              <span>Tally Posting Guide</span>
-            </a>
-          </li>
-          <li class="nav-item" data-tab="lineman">
-            <a class="nav-link">
-              <i data-lucide="map-pin"></i>
-              <span>Lineman Route View</span>
-            </a>
-          </li>
-          <li class="nav-item" data-tab="ledger-book">
-            <a class="nav-link">
-              <i data-lucide="book-open"></i>
-              <span>Ledger Book</span>
             </a>
           </li>
         </ul>
@@ -137,15 +119,37 @@
       <!-- TOP BAR -->
       <header class="top-bar">
         <div class="top-bar-left">
-          <div style="display: flex; align-items: center; gap: 12px;">
-            <button class="mobile-burger-btn" id="btnMobileMenuToggle" aria-label="Open Navigation Menu">
-              <i data-lucide="menu" style="width: 22px; height: 22px;"></i>
-            </button>
-            <div>
-              <h1 class="page-title" id="activePageTitle">Dashboard</h1>
-              <div class="page-date">
-                <span id="currentDateDisplay">15 October 2026</span> • <span style="color: #4D7C0F; font-weight: 700;">SKIL LIFESTYLE LLP</span>
+          <!-- Mobile Header Row: Sahil's Biz on left, Current Page on right -->
+          <div class="mobile-top-header">
+            <div class="mobile-top-left">
+              <button class="mobile-burger-btn" id="btnMobileMenuToggle" aria-label="Open Navigation Menu">
+                <i data-lucide="menu" style="width: 20px; height: 20px;"></i>
+              </button>
+              <div class="mobile-brand-pill">
+                <div class="brand-squircle-logo-sm">
+                  <img src="assets/skil-black-logo.png" alt="SKIL">
+                </div>
+                <span class="mobile-brand-name">Sahil's Biz</span>
               </div>
+            </div>
+
+            <div class="mobile-top-right">
+              <span class="mobile-page-pill" id="mobilePagePill">Dashboard</span>
+              <button class="mobile-icon-btn" id="btnToggleSubtleInfo" title="Toggle Sync Details">
+                <i data-lucide="info" style="width: 15px; height: 15px;"></i>
+              </button>
+              <button class="mobile-icon-btn sync-btn-mobile" id="btnMobileQuickSync" title="Sync Now">
+                <i data-lucide="refresh-cw" style="width: 15px; height: 15px;"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Desktop Title & Breadcrumb -->
+          <div class="desktop-header-title">
+            <div class="desktop-brand-crumb">
+              <span class="brand-dim">Sahil's Biz</span>
+              <span class="crumb-slash">/</span>
+              <h1 class="page-title" id="activePageTitle">Dashboard</h1>
             </div>
           </div>
         </div>
@@ -153,17 +157,16 @@
         <div class="top-bar-center">
           <div class="search-pill-box">
             <i data-lucide="search"></i>
-            <input type="text" id="globalSearchInput" placeholder="Search Ledger, Party, Lineman, Bill #...">
+            <input type="text" id="globalSearchInput" placeholder="Search Bill #, Customer, Supplier, Ledger...">
           </div>
         </div>
 
         <div class="top-bar-right">
-          <div class="company-pill" id="companyPillBtn">
-            <div class="company-avatar" style="background: #FFFFFF; overflow: hidden; padding: 2px; border: 1px solid #E2E8F0;">
-              <img src="assets/skil-logo.png" alt="SKIL" style="width: 100%; height: 100%; object-fit: contain;">
+          <div class="company-pill" id="companyPillBtn" title="Click to view Tally & Company details">
+            <div class="company-avatar-end2end">
+              <img src="assets/skil-black-logo.png" alt="SKIL">
             </div>
             <div class="company-info">
-              <div class="company-name" id="activeCompanyLabel">SKIL LIFESTYLE LLP</div>
               <div class="sync-time-text" id="lastSyncedText">Synced: 15-Oct 19:29</div>
             </div>
             <i data-lucide="check-circle-2" style="width: 14px; height: 14px; color: #16A34A;"></i>
@@ -183,6 +186,22 @@
           </a>
         </div>
       </header>
+
+      <!-- COLLAPSIBLE SUBTLE INFO BAR (Subtle and hidden by default, toggled via info icon) -->
+      <div class="subtle-info-bar" id="subtleInfoBar" style="display: none;">
+        <div class="subtle-info-content">
+          <span>🏢 <strong>SKIL Lifestyle LLP</strong></span>
+          <span class="info-sep">•</span>
+          <span>📅 <span id="currentDateDisplay">16 October 2026</span></span>
+          <span class="info-sep">•</span>
+          <span>🔄 Last Sync: <span id="subtleSyncTimestamp">15-Oct 19:29</span></span>
+          <span class="info-sep">•</span>
+          <span class="tally-badge-subtle" id="tallyStatusSubtle">Tally Active</span>
+        </div>
+        <button class="subtle-info-close" id="btnCloseSubtleInfo">
+          <i data-lucide="x" style="width: 14px; height: 14px;"></i>
+        </button>
+      </div>
 
       <!-- ============================================== -->
       <!-- VIEW 1: DASHBOARD -->
@@ -550,29 +569,104 @@
       </section>
 
       <!-- ============================================== -->
-      <!-- VIEW 5: BILLS & VOUCHERS (STINTS + 27-COL MATRIX + RAW) -->
+      <!-- VIEW 2: SUPPLIER & CONSIGNMENT TRACKING HUB -->
       <!-- ============================================== -->
-      <section class="view-panel" id="view-bills-vouchers">
+      <section class="view-panel" id="view-supplier-tracking">
+        <!-- Supplier Tabs with Official Logos -->
+        <div class="supplier-tabs-bar">
+          <button class="supplier-tab-btn active" data-supplier="all" id="btnSupplierAll">
+            <i data-lucide="layers" style="width: 16px; height: 16px;"></i>
+            <span class="supplier-tab-name">All Suppliers</span>
+            <span class="supplier-count-badge" id="badgeAllSuppliers">57 Bills</span>
+          </button>
+          
+          <button class="supplier-tab-btn" data-supplier="ajanta" id="btnSupplierAjanta">
+            <img src="assets/ajanta-logo.png" alt="Ajanta Shoes" class="supplier-tab-logo">
+            <span class="supplier-tab-name">Ajanta Shoes</span>
+            <span class="supplier-count-badge" id="badgeAjantaSuppliers">54 Bills</span>
+          </button>
+          
+          <button class="supplier-tab-btn" data-supplier="xpania" id="btnSupplierXpania">
+            <img src="assets/xpania-logo.png" alt="Xpania Footcare" class="supplier-tab-logo">
+            <span class="supplier-tab-name">Xpania Footcare</span>
+            <span class="supplier-count-badge" id="badgeXpaniaSuppliers">3 Bills</span>
+          </button>
+
+          <button class="supplier-tab-btn" data-supplier="raw" id="btnSupplierRaw">
+            <i data-lucide="file-text" style="width: 15px; height: 15px;"></i>
+            <span class="supplier-tab-name">Raw Vouchers</span>
+            <span class="supplier-count-badge" id="badgeRawSuppliers">161</span>
+          </button>
+        </div>
+
+        <!-- Supplier KPI Insight Cards -->
+        <div class="stats-grid" style="margin-bottom: 20px;">
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label" id="lblTrackPurchases">Total Supplier Purchases</span>
+              <span class="stat-icon-wrap" style="background: #F1F5F9; color: #0F172A;"><i data-lucide="shopping-cart"></i></span>
+            </div>
+            <div class="stat-value" id="valTrackPurchases">₹31,13,458</div>
+            <div class="stat-subtext" id="subTrackPurchases">57 invoices matched 1:1</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Sold to Customers</span>
+              <span class="stat-icon-wrap" style="background: #DCFCE7; color: #16A34A;"><i data-lucide="check-check"></i></span>
+            </div>
+            <div class="stat-value" id="valTrackSold" style="color: #16A34A;">57 / 57 Sold</div>
+            <div class="stat-subtext" id="subTrackSold">100% Zero-Inventory Fulfillment</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Supplier CD / Rebate</span>
+              <span class="stat-icon-wrap" style="background: #FEF3C7; color: #D97706;"><i data-lucide="tag"></i></span>
+            </div>
+            <div class="stat-value" id="valTrackSuppCd">₹88,956</div>
+            <div class="stat-subtext" id="subTrackSuppCd">₹37,565 Settled • ₹51,391 Pending</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Customer 5% CD</span>
+              <span class="stat-icon-wrap" style="background: #E0F2FE; color: #0284C7;"><i data-lucide="percent"></i></span>
+            </div>
+            <div class="stat-value" id="valTrackCustCd">₹1,48,729</div>
+            <div class="stat-subtext" id="subTrackCustCd">Credit Notes Issued / Pending</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Realized Trade Profit</span>
+              <span class="stat-icon-wrap" style="background: #DCFCE7; color: #15803D;"><i data-lucide="trending-up"></i></span>
+            </div>
+            <div class="stat-value" id="valTrackProfit" style="color: #15803D;">+₹2,08,752</div>
+            <div class="stat-subtext" id="subTrackProfit">6.68% Net Margin</div>
+          </div>
+        </div>
+
         <div class="card-white">
           <div class="section-header-row">
             <div>
-              <h2 class="section-title">Drop-Ship Procurement & Sales Vouchers</h2>
-              <div class="section-subtitle">Consignments, 1:1 drop-ship pairing, and complete audit matrix</div>
+              <h2 class="section-title">Supplier Consignment & Cash Discount Matrix</h2>
+              <div class="section-subtitle">Real-time status: whether each supplier bill is sold to customer, supplier CD received & customer CD given</div>
             </div>
 
             <!-- View Switcher -->
             <div class="segmented-pills">
-              <button class="segment-btn active" id="btnViewStints">
-                <i data-lucide="layers" style="width: 13px; height: 13px; display: inline-block; vertical-align: middle;"></i>
-                <span>Stints (27 Batches)</span>
-              </button>
-              <button class="segment-btn" id="btnViewMasterGrid">
+              <button class="segment-btn active" id="btnViewMasterGrid">
                 <i data-lucide="table" style="width: 13px; height: 13px; display: inline-block; vertical-align: middle;"></i>
-                <span>Master Spreadsheet (27 Cols)</span>
+                <span>Tracking Matrix</span>
+              </button>
+              <button class="segment-btn" id="btnViewStints">
+                <i data-lucide="layers" style="width: 13px; height: 13px; display: inline-block; vertical-align: middle;"></i>
+                <span>Customer Stints</span>
               </button>
               <button class="segment-btn" id="btnViewRawVouchers">
                 <i data-lucide="list" style="width: 13px; height: 13px; display: inline-block; vertical-align: middle;"></i>
-                <span>Raw Vouchers Catalog</span>
+                <span>Raw Tally Vouchers</span>
               </button>
             </div>
           </div>
@@ -707,6 +801,389 @@
       </section>
 
       <!-- ============================================== -->
+      <!-- VIEW: AJANTA SHOES DEDICATED HUB & TARGET SHORTFALL -->
+      <!-- ============================================== -->
+      <section class="view-panel" id="view-supplier-ajanta">
+        <!-- Supplier Hero Header -->
+        <div class="supplier-hero-box">
+          <div class="supplier-hero-left">
+            <button class="supplier-hero-logo-btn" id="btnAjantaHeroLogo" title="Tap to view Dealership Agreement Details">
+              <img src="assets/ajanta-logo.png" alt="Ajanta Shoes">
+            </button>
+            <div class="supplier-hero-meta">
+              <h2>Ajanta Shoes India Pvt. Ltd.</h2>
+              <p>
+                <span>🏢 Authorized Dealer: <strong>93081</strong> (SKIL LIFESTYLE)</span>
+                <span>•</span>
+                <span>📋 GSTIN: <strong>37AFZFS2777J1ZV</strong></span>
+                <span>•</span>
+                <span>📍 Visakhapatnam</span>
+              </p>
+            </div>
+          </div>
+          <div class="supplier-hero-right">
+            <button class="btn-open-agreement" id="btnOpenAjantaAgreement">
+              <i data-lucide="file-text" style="width: 15px; height: 15px;"></i>
+              <span>View Dealership Agreement</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Target & Shortfall Tracker Card -->
+        <div class="target-tracker-card">
+          <div class="target-tracker-header">
+            <div>
+              <h3 style="font-size: 16px; font-weight: 800; color: #0F172A; margin-bottom: 2px;">Monthly Target & Shortfall Tracker</h3>
+              <p style="font-size: 12.5px; color: #64748B;">Official Benchmark: <strong>₹10.00 Lakhs / Month</strong> &bull; Annual Target: <strong>₹1.20 Crore (FY 2026-27)</strong></p>
+            </div>
+            <div class="target-badge-pill">
+              <i data-lucide="target" style="width: 14px; height: 14px;"></i>
+              <span>Q2 Progress: 76.6% (Shortfall: ₹7.01L)</span>
+            </div>
+          </div>
+
+          <!-- Progress Bar to Q2 Target (₹30.00L) -->
+          <div style="margin-bottom: 16px;">
+            <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; color: #475569; margin-bottom: 4px;">
+              <span>Q2 Actual Achieved: ₹22,98,929</span>
+              <span>Q2 Target: ₹30,00,000 (Shortfall: ₹7,01,071)</span>
+            </div>
+            <div class="target-progress-bar-bg">
+              <div class="target-progress-bar-fill" style="width: 76.6%;"></div>
+            </div>
+          </div>
+
+          <!-- Month Breakdown Grid -->
+          <div class="target-card-grid">
+            <!-- August 2026 -->
+            <div class="target-metric-box">
+              <div class="target-metric-label">August 2026</div>
+              <div class="target-metric-val">₹12,51,737</div>
+              <div style="font-size: 11px; color: #64748B;">Target: ₹10,00,000</div>
+              <div class="target-metric-status status-met">
+                <i data-lucide="check-circle" style="width: 13px; height: 13px;"></i>
+                <span>Surplus +₹2.52L &bull; Shortfall ₹0.00</span>
+              </div>
+            </div>
+
+            <!-- September 2026 -->
+            <div class="target-metric-box">
+              <div class="target-metric-label">September 2026</div>
+              <div class="target-metric-val">₹10,47,192</div>
+              <div style="font-size: 11px; color: #64748B;">Target: ₹10,00,000</div>
+              <div class="target-metric-status status-met">
+                <i data-lucide="check-circle" style="width: 13px; height: 13px;"></i>
+                <span>Surplus +₹47,192 &bull; Shortfall ₹0.00</span>
+              </div>
+            </div>
+
+            <!-- October 2026 -->
+            <div class="target-metric-box">
+              <div class="target-metric-label">October 2026 (In Progress)</div>
+              <div class="target-metric-val">₹0.00</div>
+              <div style="font-size: 11px; color: #64748B;">Target: ₹10,00,000</div>
+              <div class="target-metric-status status-shortfall">
+                <i data-lucide="alert-triangle" style="width: 13px; height: 13px;"></i>
+                <span>Shortfall to Target: ₹10,00,000</span>
+              </div>
+            </div>
+
+            <!-- Annual Milestone -->
+            <div class="target-metric-box" style="background: #0F172A; color: #FFFFFF; border-color: #1E293B;">
+              <div class="target-metric-label" style="color: #A3E635;">FY 2026-27 Annual Goal</div>
+              <div class="target-metric-val" style="color: #FFFFFF;">₹22.99L / ₹1.20 Cr</div>
+              <div style="font-size: 11px; color: #94A3B8;">19.2% of Annual Target</div>
+              <div class="target-metric-status" style="color: #FBBF24;">
+                <i data-lucide="clock" style="width: 13px; height: 13px;"></i>
+                <span>Remaining Shortfall: ₹97.01L</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Document Downloads Vault -->
+        <div class="card-white" style="margin-bottom: 20px;">
+          <div class="section-header-row">
+            <div>
+              <h3 class="section-title">Ajanta Document Vault & Statements</h3>
+              <div class="section-subtitle">1-click direct download for official agreement, monthly ledger statements & discount audits</div>
+            </div>
+          </div>
+
+          <div class="doc-vault-grid">
+            <!-- Dealership Agreement -->
+            <div class="doc-vault-item">
+              <div class="doc-vault-info">
+                <div class="doc-vault-icon">
+                  <i data-lucide="file-text"></i>
+                </div>
+                <div>
+                  <div class="doc-vault-title">Dealership Agreement FY 2026-27</div>
+                  <div class="doc-vault-desc">Commercial Terms, 3% CD, 2% QTB, ₹1.20 Cr Target</div>
+                </div>
+              </div>
+              <a href="/api/documents/ajanta/agreement" download="Ajanta - Skil Lifestyle Dealership Agreement FY 2026-27.pdf" class="btn-download-sm">
+                <i data-lucide="download" style="width: 13px; height: 13px;"></i>
+                <span>PDF</span>
+              </a>
+            </div>
+
+            <!-- August Statement -->
+            <div class="doc-vault-item">
+              <div class="doc-vault-info">
+                <div class="doc-vault-icon">
+                  <i data-lucide="file-text"></i>
+                </div>
+                <div>
+                  <div class="doc-vault-title">Statement — August 2026</div>
+                  <div class="doc-vault-desc">Dealer Code 93081 Statement (663 KB)</div>
+                </div>
+              </div>
+              <a href="/api/documents/ajanta/ledger/aug" download="Ajanta Statement - August 2026 - Dealer 93081.pdf" class="btn-download-sm">
+                <i data-lucide="download" style="width: 13px; height: 13px;"></i>
+                <span>PDF</span>
+              </a>
+            </div>
+
+            <!-- September Statement -->
+            <div class="doc-vault-item">
+              <div class="doc-vault-info">
+                <div class="doc-vault-icon">
+                  <i data-lucide="file-text"></i>
+                </div>
+                <div>
+                  <div class="doc-vault-title">Statement — September 2026</div>
+                  <div class="doc-vault-desc">Dealer Code 93081 Statement (132 KB)</div>
+                </div>
+              </div>
+              <a href="/api/documents/ajanta/ledger/sep" download="Ajanta Statement - September 2026 - Dealer 93081.pdf" class="btn-download-sm">
+                <i data-lucide="download" style="width: 13px; height: 13px;"></i>
+                <span>PDF</span>
+              </a>
+            </div>
+
+            <!-- October Statement -->
+            <div class="doc-vault-item">
+              <div class="doc-vault-info">
+                <div class="doc-vault-icon">
+                  <i data-lucide="file-text"></i>
+                </div>
+                <div>
+                  <div class="doc-vault-title">Statement — October 2026</div>
+                  <div class="doc-vault-desc">Dealer Code 93081 Statement (117 KB)</div>
+                </div>
+              </div>
+              <a href="/api/documents/ajanta/ledger/oct" download="Ajanta Statement - October 2026 - Dealer 93081.pdf" class="btn-download-sm">
+                <i data-lucide="download" style="width: 13px; height: 13px;"></i>
+                <span>PDF</span>
+              </a>
+            </div>
+
+            <!-- Discount Discrepancies Excel -->
+            <div class="doc-vault-item">
+              <div class="doc-vault-info">
+                <div class="doc-vault-icon excel">
+                  <i data-lucide="table"></i>
+                </div>
+                <div>
+                  <div class="doc-vault-title">Discount Discrepancies Reconciliation</div>
+                  <div class="doc-vault-desc">Audit & Inbound Rebate Claim Reconciliation</div>
+                </div>
+              </div>
+              <a href="/api/documents/download/ajanta/Ajanta_Discount_Discrepancies.xlsx" download="Ajanta Discount Discrepancies.xlsx" class="btn-download-sm">
+                <i data-lucide="download" style="width: 13px; height: 13px;"></i>
+                <span>Excel</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ajanta Purchase Bills & Drop-Ship Consignments Table -->
+        <div class="card-white">
+          <div class="section-header-row">
+            <div>
+              <h3 class="section-title">Ajanta Purchase Invoices (51 Bills Matched)</h3>
+              <div class="section-subtitle">1:1 fulfillment to retail customers with supplier CD (3%) and customer CD (5%) tracking</div>
+            </div>
+            <input type="text" class="filter-pill-dropdown" id="ajantaInvoiceSearch" placeholder="Filter bill #, customer..." style="width: 220px;">
+          </div>
+
+          <div class="table-responsive">
+            <table class="biz-table" id="ajantaInvoicesTable">
+              <thead>
+                <tr>
+                  <th>VCH #</th>
+                  <th>DATE</th>
+                  <th>SUPPLIER INV</th>
+                  <th>CUSTOMER SOLD TO</th>
+                  <th>CTN / PRS</th>
+                  <th style="text-align: right;">PURCHASE ₹</th>
+                  <th style="text-align: right;">SALES ₹</th>
+                  <th style="text-align: right;">SUPP CD (3%)</th>
+                  <th style="text-align: right;">CUST CD (5%)</th>
+                  <th>STATUS</th>
+                </tr>
+              </thead>
+              <tbody id="ajantaInvoicesTbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW: XPANIA FOOTCARE DEDICATED HUB -->
+      <!-- ============================================== -->
+      <section class="view-panel" id="view-supplier-xpania">
+        <!-- Supplier Hero Header -->
+        <div class="supplier-hero-box">
+          <div class="supplier-hero-left">
+            <div class="supplier-hero-logo-btn" style="background: #FFFFFF;">
+              <img src="assets/xpania-logo.png" alt="Xpania Footcare">
+            </div>
+            <div class="supplier-hero-meta">
+              <h2>Xpania Footcare Private Limited</h2>
+              <p>
+                <span>🏢 Supplier Account &bull; SKIL Lifestyle LLP</span>
+                <span>•</span>
+                <span>📦 6 Invoices Matched 1:1</span>
+                <span>•</span>
+                <span>💰 Total Purchases: ₹8,14,529</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Document Downloads Vault -->
+        <div class="card-white" style="margin-bottom: 20px;">
+          <div class="section-header-row">
+            <div>
+              <h3 class="section-title">Xpania Invoices & Document Vault</h3>
+              <div class="section-subtitle">1-click direct download for all 6 Xpania purchase invoices (standardized naming)</div>
+            </div>
+          </div>
+
+          <div class="doc-vault-grid">
+            <div class="doc-vault-item">
+              <div class="doc-vault-info">
+                <div class="doc-vault-icon"><i data-lucide="file-text"></i></div>
+                <div>
+                  <div class="doc-vault-title">023 - INV-00384 - Sushila JSG</div>
+                  <div class="doc-vault-desc">Dated: 12-08-2026 &bull; ₹1,66,967</div>
+                </div>
+              </div>
+              <a href="/api/documents/download/xpania/023 - XPL-2041-26-27 - Sushila JSG - 09-09-26.pdf" download class="btn-download-sm">
+                <i data-lucide="download" style="width: 13px; height: 13px;"></i>
+                <span>PDF</span>
+              </a>
+            </div>
+
+            <div class="doc-vault-item">
+              <div class="doc-vault-info">
+                <div class="doc-vault-icon"><i data-lucide="file-text"></i></div>
+                <div>
+                  <div class="doc-vault-title">035 - INV-00407 - Mahavir DNKL</div>
+                  <div class="doc-vault-desc">Dated: 19-08-2026 &bull; ₹1,80,000</div>
+                </div>
+              </div>
+              <a href="/api/documents/download/xpania/035 - XPL-2140-26-27 - Mahavir DNKL - 19-09-26.pdf" download class="btn-download-sm">
+                <i data-lucide="download" style="width: 13px; height: 13px;"></i>
+                <span>PDF</span>
+              </a>
+            </div>
+
+            <div class="doc-vault-item">
+              <div class="doc-vault-info">
+                <div class="doc-vault-icon"><i data-lucide="file-text"></i></div>
+                <div>
+                  <div class="doc-vault-title">054 - INV-00438 - Mahavir DNKL</div>
+                  <div class="doc-vault-desc">Dated: 16-09-2026 &bull; ₹2,20,774</div>
+                </div>
+              </div>
+              <a href="/api/documents/download/xpania/054 - XPL-2327-26-27 - Mahavir DNKL - 08-10-26.pdf" download class="btn-download-sm">
+                <i data-lucide="download" style="width: 13px; height: 13px;"></i>
+                <span>PDF</span>
+              </a>
+            </div>
+
+            <div class="doc-vault-item">
+              <div class="doc-vault-info">
+                <div class="doc-vault-icon"><i data-lucide="file-text"></i></div>
+                <div>
+                  <div class="doc-vault-title">055 - INV-00439 - Shree Aditya VZM</div>
+                  <div class="doc-vault-desc">Dated: 16-09-2026 &bull; ₹61,260</div>
+                </div>
+              </div>
+              <a href="/api/documents/download/xpania/055 - XPL-2367-26-27 - Shree Aditya VZM - 10-10-26.pdf" download class="btn-download-sm">
+                <i data-lucide="download" style="width: 13px; height: 13px;"></i>
+                <span>PDF</span>
+              </a>
+            </div>
+
+            <div class="doc-vault-item">
+              <div class="doc-vault-info">
+                <div class="doc-vault-icon"><i data-lucide="file-text"></i></div>
+                <div>
+                  <div class="doc-vault-title">056 - INV-00440 - Rajan Jajpur</div>
+                  <div class="doc-vault-desc">Dated: 16-09-2026 &bull; ₹83,707</div>
+                </div>
+              </div>
+              <a href="/api/documents/download/xpania/056 - XPL-2366-26-27 - Rajan Jajpur - 10-10-26.pdf" download class="btn-download-sm">
+                <i data-lucide="download" style="width: 13px; height: 13px;"></i>
+                <span>PDF</span>
+              </a>
+            </div>
+
+            <div class="doc-vault-item">
+              <div class="doc-vault-info">
+                <div class="doc-vault-icon"><i data-lucide="file-text"></i></div>
+                <div>
+                  <div class="doc-vault-title">057 - INV-00441 - Shree Aditya VZM</div>
+                  <div class="doc-vault-desc">Dated: 17-09-2026 &bull; ₹61,421</div>
+                </div>
+              </div>
+              <a href="/api/documents/download/xpania/057 - XPL-2369-26-27 - Shree Aditya VZM - 12-10-26.pdf" download class="btn-download-sm">
+                <i data-lucide="download" style="width: 13px; height: 13px;"></i>
+                <span>PDF</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Xpania Invoices Table -->
+        <div class="card-white">
+          <div class="section-header-row">
+            <div>
+              <h3 class="section-title">Xpania Drop-Ship Invoices (6 Bills Matched)</h3>
+              <div class="section-subtitle">100% matched to retail customers with zero inventory holding</div>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="biz-table" id="xpaniaInvoicesTable">
+              <thead>
+                <tr>
+                  <th>VCH #</th>
+                  <th>DATE</th>
+                  <th>SUPPLIER INV</th>
+                  <th>CUSTOMER SOLD TO</th>
+                  <th>SALES VCH</th>
+                  <th style="text-align: right;">PURCHASE ₹</th>
+                  <th style="text-align: right;">SALES ₹</th>
+                  <th style="text-align: right;">MARGIN ₹</th>
+                  <th>STATUS</th>
+                </tr>
+              </thead>
+              <tbody id="xpaniaInvoicesTbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
       <!-- VIEW 6: CREDIT NOTES & SCHEMES -->
       <!-- ============================================== -->
       <section class="view-panel" id="view-schemes">
@@ -763,35 +1240,87 @@
       </section>
 
       <!-- ============================================== -->
-      <!-- VIEW 7: PAYMENT AGING & OVERDUES -->
+      <!-- VIEW 3: CUSTOMER PAYMENT AGING & RECEIVABLES -->
       <!-- ============================================== -->
-      <section class="view-panel" id="view-overdues">
+      <section class="view-panel" id="view-payment-aging">
+        <!-- Overview Summary Cards -->
+        <div class="stats-grid" style="margin-bottom: 20px;">
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Total Receivables Outstanding</span>
+              <span class="stat-icon-wrap" style="background: #FEE2E2; color: #DC2626;"><i data-lucide="alert-circle"></i></span>
+            </div>
+            <div class="stat-value" id="valAgingTotalReceivables" style="color: #DC2626;">₹17,62,534</div>
+            <div class="stat-subtext">Across 9 retail customer ledgers</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Parties with Pending Dues</span>
+              <span class="stat-icon-wrap" style="background: #FEF3C7; color: #D97706;"><i data-lucide="users"></i></span>
+            </div>
+            <div class="stat-value" id="valAgingPartiesCount">9 / 11 Parties</div>
+            <div class="stat-subtext">2 parties 100% cleared</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Oldest Unpaid Invoice</span>
+              <span class="stat-icon-wrap" style="background: #FEF2F2; color: #B91C1C;"><i data-lucide="calendar"></i></span>
+            </div>
+            <div class="stat-value" id="valAgingOldestBill">12-Aug-2026</div>
+            <div class="stat-subtext" style="color: #DC2626; font-weight: 700;" id="valAgingOldestDays">65 days overdue</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">5% Prompt CD at Stake</span>
+              <span class="stat-icon-wrap" style="background: #E0F2FE; color: #0284C7;"><i data-lucide="percent"></i></span>
+            </div>
+            <div class="stat-value" id="valAgingCdAtStake">₹88,127</div>
+            <div class="stat-subtext">Available if paid within 30 days</div>
+          </div>
+        </div>
+
         <div class="card-white">
           <div class="section-header-row">
             <div>
-              <h2 class="section-title">Customer Payment Aging & 30-Day Settlement Cycle</h2>
-              <div class="section-subtitle">Real-time status of all retail customer accounts vs 30-day prompt discount term</div>
+              <h2 class="section-title">Customer Ledger Aging Summary</h2>
+              <div class="section-subtitle">Showing parties, total dues & oldest bill due. Tap any party to expand individual bills.</div>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+              <input type="text" class="filter-pill-dropdown" id="agingPartySearchInput" placeholder="Search Party / City..." style="width: 200px;">
+              <div class="segmented-pills">
+                <button class="segment-btn active" data-aging-filter="all" id="btnAgingFilterAll">All Parties (11)</button>
+                <button class="segment-btn" data-aging-filter="due" id="btnAgingFilterDue">Dues Only (9)</button>
+                <button class="segment-btn" data-aging-filter="cleared" id="btnAgingFilterCleared">Cleared (2)</button>
+              </div>
             </div>
           </div>
 
-          <div class="table-responsive">
-            <table class="biz-table">
+          <!-- Desktop Party Table -->
+          <div class="table-responsive party-aging-desktop-wrap">
+            <table class="biz-table party-aging-table">
               <thead>
                 <tr>
-                  <th>CUSTOMER</th>
-                  <th>SALES BILL</th>
-                  <th>BILL DATE</th>
-                  <th>30-DAY DUE DATE</th>
-                  <th>DAYS ELAPSED</th>
-                  <th>BILL AMOUNT (₹)</th>
-                  <th>5% CD ELIGIBLE</th>
-                  <th>STATUS</th>
+                  <th>PARTY / CUSTOMER</th>
+                  <th style="text-align: right;">TOTAL DUE (₹)</th>
+                  <th style="text-align: right;">OLDEST BILL DUE (₹)</th>
+                  <th>OLDEST BILL DATE</th>
+                  <th>INVOICES STATUS</th>
+                  <th style="text-align: center;">DRILLDOWN</th>
                 </tr>
               </thead>
-              <tbody id="paymentAgingTbody">
-                <!-- Dynamically populated -->
+              <tbody id="partyAgingTbody">
+                <!-- Dynamically populated with expandable rows -->
               </tbody>
             </table>
+          </div>
+
+          <!-- Mobile Party Cards -->
+          <div class="payment-aging-mobile-cards" id="partyAgingMobileCards">
+            <!-- Dynamically populated cards for mobile -->
           </div>
         </div>
       </section>
@@ -912,7 +1441,30 @@
               <h2 class="section-title">Ledger Statement Explorer</h2>
               <div class="section-subtitle">Chronological accounting statement and running balance for any Tally ledger</div>
             </div>
-            <select class="ledger-dropdown" id="ledgerBookSelect">
+
+            <!-- Custom Styled Searchable Dropdown -->
+            <div class="custom-dropdown-wrap" id="ledgerCustomDropdown">
+              <button type="button" class="custom-dropdown-trigger" id="ledgerDropdownBtn">
+                <div class="trigger-label-group">
+                  <i data-lucide="book-open" class="trigger-icon" style="width: 16px; height: 16px; color: #0284C7;"></i>
+                  <span class="trigger-text" id="ledgerTriggerText">Select Ledger Account...</span>
+                </div>
+                <i data-lucide="chevron-down" class="chevron-icon" id="ledgerChevron" style="width: 16px; height: 16px; color: #64748B;"></i>
+              </button>
+
+              <div class="custom-dropdown-menu" id="ledgerDropdownMenu">
+                <div class="dropdown-search-box">
+                  <i data-lucide="search" style="width: 14px; height: 14px; color: #94A3B8;"></i>
+                  <input type="text" id="ledgerSearchInput" placeholder="Type to filter ledger..." autocomplete="off">
+                </div>
+                <div class="dropdown-items-list" id="ledgerItemsList">
+                  <!-- Dynamically populated options -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Hidden native select for compatibility -->
+            <select class="ledger-dropdown" id="ledgerBookSelect" style="display: none;">
               <option value="">Select Ledger...</option>
             </select>
           </div>
@@ -967,17 +1519,21 @@
       <i data-lucide="layout-grid"></i>
       <span>Dashboard</span>
     </button>
-    <button class="mobile-nav-btn" data-tab="sales-metrics">
-      <i data-lucide="pie-chart"></i>
-      <span>Sales</span>
+    <button class="mobile-nav-btn" data-tab="supplier-ajanta">
+      <div style="background: #FFFFFF; border-radius: 4px; padding: 2px 4px; display: inline-flex; align-items: center; justify-content: center; height: 18px;">
+        <img src="assets/ajanta-logo.png" alt="Ajanta" style="height: 12px; width: auto; object-fit: contain;">
+      </div>
+      <span>Ajanta</span>
     </button>
-    <button class="mobile-nav-btn" data-tab="bills-vouchers">
-      <i data-lucide="receipt"></i>
-      <span>Bills</span>
+    <button class="mobile-nav-btn" data-tab="supplier-xpania">
+      <div style="background: #FFFFFF; border-radius: 4px; padding: 2px 4px; display: inline-flex; align-items: center; justify-content: center; height: 18px;">
+        <img src="assets/xpania-logo.png" alt="Xpania" style="height: 12px; width: auto; object-fit: contain;">
+      </div>
+      <span>Xpania</span>
     </button>
-    <button class="mobile-nav-btn" data-tab="parties">
-      <i data-lucide="users"></i>
-      <span>Parties</span>
+    <button class="mobile-nav-btn" data-tab="payment-aging">
+      <i data-lucide="clock-3"></i>
+      <span>Aging</span>
     </button>
     <button class="mobile-nav-btn" id="btnBottomMore">
       <i data-lucide="menu"></i>
@@ -1039,6 +1595,81 @@
               <!-- Dynamically populated -->
             </tbody>
           </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AJANTA DEALERSHIP AGREEMENT DETAILS MODAL -->
+  <div class="modal-backdrop" id="ajantaAgreementModal">
+    <div class="modal-box" style="max-width: 680px;">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="background: #FFFFFF; border-radius: 6px; padding: 3px 8px; display: inline-flex;">
+              <img src="assets/ajanta-logo.png" alt="Ajanta" style="height: 18px; width: auto;">
+            </div>
+            <h3 style="font-size: 17px; font-weight: 800; color: #0F172A; margin: 0;">Dealership Business Agreement FY 2026-27</h3>
+          </div>
+          <p style="margin: 4px 0 0 0; font-size: 12.5px; color: #64748B;">Ajanta Shoes India Pvt. Ltd. &bull; Dealer Code: <strong>93081</strong> (SKIL LIFESTYLE)</p>
+        </div>
+        <button class="modal-close-btn" id="btnCloseAgreementModal">
+          <i data-lucide="x" style="width: 18px; height: 18px;"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 14px; margin-bottom: 16px;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; font-size: 13px;">
+            <div><strong>Party Name:</strong> SKIL LIFESTYLE</div>
+            <div><strong>Dealer Code:</strong> 93081</div>
+            <div><strong>GSTIN:</strong> 37AFZFS2777J1ZV</div>
+            <div><strong>Territory:</strong> Visakhapatnam & Coastal AP</div>
+            <div><strong>Agreement Period:</strong> Aug 2026 – Jul 2027</div>
+            <div><strong>Annual Target:</strong> ₹1,20,00,000 (₹1.20 Cr)</div>
+          </div>
+        </div>
+
+        <h4 style="font-size: 14px; font-weight: 800; color: #0F172A; margin-bottom: 10px;">Commercial Terms & Rebate Structure</h4>
+        <div class="table-responsive" style="margin-bottom: 16px;">
+          <table class="biz-table" style="font-size: 12px;">
+            <thead>
+              <tr>
+                <th>INCENTIVE / REBATE</th>
+                <th>RATE</th>
+                <th>CONDITIONS / BENCHMARKS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Cash Discount (CD)</strong></td>
+                <td><span class="badge-pill badge-success">3.00%</span></td>
+                <td>Prompt settlement within agreed credit period</td>
+              </tr>
+              <tr>
+                <td><strong>Quarterly Target Bonus (QTB)</strong></td>
+                <td><span class="badge-pill badge-info">2.00%</span></td>
+                <td>Calculated on Quarterly Basic Turnover</td>
+              </tr>
+              <tr>
+                <td><strong>Retailer Scheme</strong></td>
+                <td><span class="badge-pill badge-neutral">3.78%</span></td>
+                <td>Eligible billing categories under authorized rate card</td>
+              </tr>
+              <tr>
+                <td><strong>Quarterly Target Benchmark</strong></td>
+                <td><span class="badge-pill badge-warning">₹10 Lakhs / Mo</span></td>
+                <td>Quarterly achievement bonus on meeting ₹10L/mo benchmark</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="display: flex; align-items: center; justify-content: flex-end; gap: 10px; margin-top: 14px;">
+          <a href="/api/documents/ajanta/agreement" download="Ajanta - Skil Lifestyle Dealership Agreement FY 2026-27.pdf" class="btn-download-sm" style="padding: 8px 14px; font-size: 13px; background: #0F172A; color: #FFFFFF; border: none;">
+            <i data-lucide="download" style="width: 15px; height: 15px;"></i>
+            <span>Download Official PDF Agreement</span>
+          </a>
         </div>
       </div>
     </div>

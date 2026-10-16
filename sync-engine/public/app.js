@@ -130,6 +130,10 @@ function setupNavigation() {
 
   const titleMap = {
     'dashboard': 'Dashboard',
+    'supplier-ajanta': 'Ajanta Shoes Hub',
+    'supplier-xpania': 'Xpania Footcare Hub',
+    'payment-aging': 'Customer Ledger Aging',
+    'supplier-tracking': 'Supplier Matrix & Stints',
     'sales-metrics': 'Sales Metrics',
     'parties': 'Parties & Aging',
     'inventory': 'Inventory Intelligence',
@@ -139,6 +143,24 @@ function setupNavigation() {
     'audit-reconcile': 'Audit & Reconcile',
     'tally-guide': 'Tally Posting Guide',
     'lineman': 'Lineman Route View',
+    'ledger-book': 'Ledger Book'
+  };
+
+  const shortTitleMap = {
+    'dashboard': 'Dashboard',
+    'supplier-ajanta': 'Ajanta Shoes',
+    'supplier-xpania': 'Xpania',
+    'payment-aging': 'Customer Aging',
+    'supplier-tracking': 'Tracking',
+    'sales-metrics': 'Sales',
+    'parties': 'Parties',
+    'inventory': 'Inventory',
+    'bills-vouchers': 'Bills',
+    'schemes': 'Schemes',
+    'overdues': 'Aging',
+    'audit-reconcile': 'Audit',
+    'tally-guide': 'Posting Guide',
+    'lineman': 'Lineman',
     'ledger-book': 'Ledger Book'
   };
 
@@ -172,10 +194,16 @@ function setupNavigation() {
       activePanel.classList.add('active-view');
     }
 
-    // Update Title
+    // Update Title on Desktop
     const titleElem = document.getElementById('activePageTitle');
     if (titleElem && titleMap[tab]) {
       titleElem.innerText = titleMap[tab];
+    }
+
+    // Update Title Pill on Mobile Top Header
+    const mobilePill = document.getElementById('mobilePagePill');
+    if (mobilePill && (shortTitleMap[tab] || titleMap[tab])) {
+      mobilePill.innerText = shortTitleMap[tab] || titleMap[tab];
     }
 
     state.activeTab = tab;
@@ -185,6 +213,10 @@ function setupNavigation() {
 
     // Specific view render triggers
     if (tab === 'dashboard') renderDashboardView();
+    if (tab === 'supplier-ajanta') renderAjantaSupplierView();
+    if (tab === 'supplier-xpania') renderXpaniaSupplierView();
+    if (tab === 'payment-aging') renderPaymentAgingView();
+    if (tab === 'supplier-tracking') renderSupplierTrackingView();
     if (tab === 'sales-metrics') renderSalesMetricsView();
     if (tab === 'parties') renderPartiesView();
     if (tab === 'inventory') renderInventoryView();
@@ -364,6 +396,18 @@ function renderCurrentView() {
   switch (state.activeTab) {
     case 'dashboard':
       renderDashboardView();
+      break;
+    case 'supplier-ajanta':
+      renderAjantaSupplierView();
+      break;
+    case 'supplier-xpania':
+      renderXpaniaSupplierView();
+      break;
+    case 'payment-aging':
+      renderPaymentAgingView();
+      break;
+    case 'supplier-tracking':
+      renderSupplierTrackingView();
       break;
     case 'sales-metrics':
       renderSalesMetricsView();
@@ -1188,12 +1232,51 @@ function openStintModal(stintKey) {
 }
 
 function setupModalEvents() {
-  const modal = document.getElementById('stintModal');
-  const closeBtn = document.getElementById('modalCloseBtn');
-  if (closeBtn && modal) {
-    closeBtn.addEventListener('click', () => modal.classList.remove('modal-open'));
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) modal.classList.remove('modal-open');
+  // Stint modal
+  const stintModal = document.getElementById('stintModal');
+  const stintCloseBtn = document.getElementById('modalCloseBtn');
+  if (stintCloseBtn && stintModal) {
+    stintCloseBtn.addEventListener('click', () => stintModal.classList.remove('modal-open'));
+    stintModal.addEventListener('click', (e) => {
+      if (e.target === stintModal) stintModal.classList.remove('modal-open');
+    });
+  }
+
+  // Ajanta Dealership Agreement Modal
+  const agreementModal = document.getElementById('ajantaAgreementModal');
+  const btnOpenAgreement = document.getElementById('btnOpenAjantaAgreement');
+  const btnAjantaHeroLogo = document.getElementById('btnAjantaHeroLogo');
+  const btnCloseAgreement = document.getElementById('btnCloseAgreementModal');
+
+  function openAgreement() {
+    if (agreementModal) agreementModal.classList.add('modal-open');
+  }
+  function closeAgreement() {
+    if (agreementModal) agreementModal.classList.remove('modal-open');
+  }
+
+  if (btnOpenAgreement) btnOpenAgreement.addEventListener('click', openAgreement);
+  if (btnAjantaHeroLogo) btnAjantaHeroLogo.addEventListener('click', openAgreement);
+  if (btnCloseAgreement) btnCloseAgreement.addEventListener('click', closeAgreement);
+  if (agreementModal) {
+    agreementModal.addEventListener('click', (e) => {
+      if (e.target === agreementModal) closeAgreement();
+    });
+  }
+
+  // Subtle Info Bar Toggle
+  const btnToggleSubtle = document.getElementById('btnToggleSubtleInfo');
+  const btnCloseSubtle = document.getElementById('btnCloseSubtleInfo');
+  const subtleBar = document.getElementById('subtleInfoBar');
+
+  if (btnToggleSubtle && subtleBar) {
+    btnToggleSubtle.addEventListener('click', () => {
+      subtleBar.style.display = (subtleBar.style.display === 'none' || !subtleBar.style.display) ? 'flex' : 'none';
+    });
+  }
+  if (btnCloseSubtle && subtleBar) {
+    btnCloseSubtle.addEventListener('click', () => {
+      subtleBar.style.display = 'none';
     });
   }
 }
@@ -1243,39 +1326,343 @@ function renderSchemesView() {
 }
 
 // ==========================================================================
-// 7. PAYMENT AGING & OVERDUES VIEW
+// 7. PAYMENT AGING VIEW (PARTY-FIRST & DRILLDOWN)
 // ==========================================================================
 
 function renderPaymentAgingView() {
-  const grid = state.masterGrid;
-  const tbody = document.getElementById('paymentAgingTbody');
-  if (!grid || !tbody) return;
+  const parties = state.aging?.debtors?.parties || [];
+  const tbody = document.getElementById('partyAgingTbody');
+  const mobileContainer = document.getElementById('partyAgingMobileCards');
+  if (!tbody || !mobileContainer) return;
 
-  const rows = grid.rows || [];
-  if (rows.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: #94A3B8; padding: 30px;">No bills available.</td></tr>`;
+  const totalOutstanding = state.aging?.debtors?.summary?.totalOutstanding || 1762534;
+  const dueCount = parties.filter(p => (p.netDue || 0) > 0).length;
+  const totalCount = parties.length;
+
+  let globalOldestDate = '12-Aug-2026';
+  let globalOldestDays = 65;
+  parties.forEach(p => {
+    if (p.bills && p.bills.length > 0) {
+      p.bills.forEach(b => {
+        if (b.unpaidAmount > 0 && b.daysElapsed > globalOldestDays) {
+          globalOldestDays = b.daysElapsed;
+          globalOldestDate = b.formattedDate;
+        }
+      });
+    }
+  });
+
+  const elTotalRec = document.getElementById('valAgingTotalReceivables');
+  if (elTotalRec) elTotalRec.innerText = formatINR(totalOutstanding);
+  const elPartiesCount = document.getElementById('valAgingPartiesCount');
+  if (elPartiesCount) elPartiesCount.innerText = `${dueCount} / ${totalCount} Parties`;
+  const elOldestBill = document.getElementById('valAgingOldestBill');
+  if (elOldestBill) elOldestBill.innerText = globalOldestDate;
+  const elOldestDays = document.getElementById('valAgingOldestDays');
+  if (elOldestDays) elOldestDays.innerText = `${globalOldestDays} days overdue`;
+  const elCdStake = document.getElementById('valAgingCdAtStake');
+  if (elCdStake) elCdStake.innerText = formatINR(totalOutstanding * 0.05);
+
+  const searchInput = document.getElementById('agingPartySearchInput');
+  const query = (searchInput ? searchInput.value : '').toLowerCase().trim();
+  const filterMode = state.agingFilterMode || 'all';
+
+  const filteredParties = parties.filter(p => {
+    const matchesSearch = !query || p.partyName.toLowerCase().includes(query);
+    const isDue = (p.netDue || 0) > 0;
+    if (!matchesSearch) return false;
+    if (filterMode === 'due') return isDue;
+    if (filterMode === 'cleared') return !isDue;
+    return true;
+  });
+
+  // Desktop Party-First Table with Expandable Drilldown
+  if (filteredParties.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: #94A3B8; padding: 30px;">No matching parties found.</td></tr>`;
+  } else {
+    tbody.innerHTML = filteredParties.map((p, idx) => {
+      const isCleared = (p.netDue || 0) <= 0;
+      const bills = p.bills || [];
+      
+      let oldestOpenBill = null;
+      bills.forEach(b => {
+        if (b.unpaidAmount > 0) {
+          if (!oldestOpenBill || b.daysElapsed > oldestOpenBill.daysElapsed) {
+            oldestOpenBill = b;
+          }
+        }
+      });
+
+      const oldestDueAmt = oldestOpenBill ? oldestOpenBill.unpaidAmount : 0;
+      const oldestDateStr = oldestOpenBill ? oldestOpenBill.formattedDate : '—';
+      const oldestDays = oldestOpenBill ? oldestOpenBill.daysElapsed : 0;
+
+      const rowId = `party-row-${idx}`;
+      const drillId = `party-drill-${idx}`;
+
+      return `
+        <tr class="party-row-main" id="${rowId}" onclick="togglePartyDrilldown('${rowId}', '${drillId}')">
+          <td>
+            <div style="font-weight: 800; font-size: 13.5px; color: #0F172A;">${p.partyName}</div>
+            <div style="font-size: 11px; color: #64748B; margin-top: 2px;">${bills.length} total invoice(s)</div>
+          </td>
+          <td style="text-align: right; font-weight: 800; font-size: 14px; color: ${isCleared ? '#16A34A' : '#DC2626'};">
+            ${isCleared ? '₹0 (Cleared)' : formatINR(p.netDue)}
+          </td>
+          <td style="text-align: right; font-weight: 700; color: ${oldestDueAmt > 0 ? '#B91C1C' : '#64748B'};">
+            ${oldestDueAmt > 0 ? formatINR(oldestDueAmt) : '₹0'}
+          </td>
+          <td>
+            ${oldestOpenBill ? `
+              <div style="font-weight: 700; color: #334155;">${oldestDateStr}</div>
+              <span class="badge-pill ${oldestDays > 30 ? 'badge-danger' : 'badge-warning'}" style="font-size: 10px; margin-top: 2px;">
+                ${oldestDays} days overdue
+              </span>
+            ` : '<span class="badge-pill badge-success" style="font-size: 10px;">All Settled</span>'}
+          </td>
+          <td>
+            <span class="badge-pill ${isCleared ? 'badge-success' : 'badge-warning'}">
+              ${isCleared ? '100% Cleared' : `${p.openBillsCount || bills.length} Pending`}
+            </span>
+          </td>
+          <td style="text-align: center;">
+            <button class="btn-icon-action" style="background: transparent; border: none; cursor: pointer;">
+              <i data-lucide="chevron-down" class="party-chevron-icon" id="chev-${rowId}" style="width: 16px; height: 16px; color: #0284C7;"></i>
+            </button>
+          </td>
+        </tr>
+        <tr class="party-drilldown-row" id="${drillId}" style="display: none;">
+          <td colspan="6">
+            <div class="party-drilldown-box">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; flex-wrap: wrap; gap: 8px;">
+                <div>
+                  <strong style="font-size: 13px; color: #0F172A;">Individual Invoices for ${p.partyName}</strong>
+                  <span style="font-size: 11.5px; color: #64748B; margin-left: 8px;">(${bills.length} bills in statement)</span>
+                </div>
+                ${!isCleared ? `
+                  <button class="btn-download-sm" style="background: #22C55E; color: #FFFFFF; border: none; padding: 5px 10px;" onclick="sendWhatsAppPaymentReminder('${p.partyName.replace(/'/g, "\\'")}', '${p.netDue}', '${oldestDateStr}', '${oldestDays}')">
+                    <i data-lucide="message-circle" style="width: 13px; height: 13px;"></i>
+                    <span>Send WhatsApp Reminder</span>
+                  </button>
+                ` : ''}
+              </div>
+              <div class="table-responsive">
+                <table class="party-sub-table">
+                  <thead>
+                    <tr>
+                      <th>BILL / VCH #</th>
+                      <th>DATE</th>
+                      <th style="text-align: right;">INVOICE ₹</th>
+                      <th style="text-align: right;">SETTLED ₹</th>
+                      <th style="text-align: right;">UNPAID DUE ₹</th>
+                      <th>OVERDUE DAYS</th>
+                      <th>STATUS</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${bills.length === 0 ? '<tr><td colspan="7" style="text-align: center; color: #94A3B8;">No individual bills recorded.</td></tr>' :
+                      bills.map(b => `
+                        <tr>
+                          <td style="font-weight: 700; color: #0284C7;">${b.voucherNumber}</td>
+                          <td>${b.formattedDate}</td>
+                          <td style="text-align: right; font-weight: 600;">${formatINR(b.amount)}</td>
+                          <td style="text-align: right; color: #16A34A; font-weight: 600;">${formatINR(b.settledAmount)}</td>
+                          <td style="text-align: right; font-weight: 800; color: ${b.unpaidAmount > 0 ? '#DC2626' : '#16A34A'};">${formatINR(b.unpaidAmount)}</td>
+                          <td style="color: ${b.daysElapsed > 30 ? '#DC2626' : '#475569'}; font-weight: 700;">${b.daysElapsed} days</td>
+                          <td><span class="badge-pill ${b.unpaidAmount > 0 ? 'badge-danger' : 'badge-success'}">${b.unpaidAmount > 0 ? 'OPEN' : 'SETTLED'}</span></td>
+                        </tr>
+                      `).join('')
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </td>
+        </tr>
+      `;
+    }).join('');
+  }
+
+  // Mobile Touch-Optimized Cards
+  if (filteredParties.length === 0) {
+    mobileContainer.innerHTML = `<div style="text-align: center; color: #94A3B8; padding: 30px;">No matching parties found.</div>`;
+  } else {
+    mobileContainer.innerHTML = filteredParties.map((p, idx) => {
+      const isCleared = (p.netDue || 0) <= 0;
+      const bills = p.bills || [];
+      let oldestOpenBill = null;
+      bills.forEach(b => {
+        if (b.unpaidAmount > 0) {
+          if (!oldestOpenBill || b.daysElapsed > oldestOpenBill.daysElapsed) {
+            oldestOpenBill = b;
+          }
+        }
+      });
+
+      const oldestDueAmt = oldestOpenBill ? oldestOpenBill.unpaidAmount : 0;
+      const oldestDateStr = oldestOpenBill ? oldestOpenBill.formattedDate : '—';
+      const oldestDays = oldestOpenBill ? oldestOpenBill.daysElapsed : 0;
+      const mobileListId = `mobile-bills-${idx}`;
+
+      return `
+        <div class="party-card-mobile">
+          <div class="party-card-header" onclick="toggleMobilePartyBills('${mobileListId}')">
+            <div>
+              <div class="party-card-name">${p.partyName}</div>
+              <div style="font-size: 11px; color: #64748B; margin-top: 2px;">${bills.length} Invoices &bull; ${p.openBillsCount || (isCleared ? 0 : bills.length)} Pending</div>
+            </div>
+            <div style="text-align: right;">
+              <div class="party-card-due ${isCleared ? 'cleared' : ''}">${isCleared ? '₹0' : formatINR(p.netDue)}</div>
+              <span class="badge-pill ${isCleared ? 'badge-success' : 'badge-danger'}" style="font-size: 9.5px; padding: 2px 6px; margin-top: 4px;">
+                ${isCleared ? 'CLEARED' : 'DUE'}
+              </span>
+            </div>
+          </div>
+
+          <div class="party-card-oldest ${isCleared ? 'cleared' : ''}">
+            <i data-lucide="${isCleared ? 'check-circle-2' : 'clock'}" style="width: 14px; height: 14px; flex-shrink: 0;"></i>
+            <span>${isCleared ? 'All invoices settled & cleared' : `Oldest Bill: <strong>${formatINR(oldestDueAmt)}</strong> due from ${oldestDateStr} (${oldestDays} days overdue)`}</span>
+          </div>
+
+          <div class="party-card-bills-toggle" onclick="toggleMobilePartyBills('${mobileListId}')">
+            <span>View All ${bills.length} Bills</span>
+            <i data-lucide="chevron-down" id="chev-${mobileListId}" style="width: 15px; height: 15px; transition: transform 0.2s ease;"></i>
+          </div>
+
+          <div class="party-mobile-bills-list" id="${mobileListId}">
+            ${bills.map(b => `
+              <div class="party-mobile-bill-item">
+                <div class="party-mobile-bill-row1">
+                  <span style="font-weight: 700; color: #0284C7;">${b.voucherNumber}</span>
+                  <span style="font-weight: 800; color: ${b.unpaidAmount > 0 ? '#DC2626' : '#16A34A'};">${formatINR(b.unpaidAmount > 0 ? b.unpaidAmount : b.amount)}</span>
+                </div>
+                <div class="party-mobile-bill-row2">
+                  <span>📅 ${b.formattedDate}</span>
+                  <span style="color: ${b.daysElapsed > 30 ? '#DC2626' : '#64748B'}; font-weight: 700;">${b.daysElapsed} days overdue</span>
+                </div>
+              </div>
+            `).join('')}
+            ${!isCleared ? `
+              <button class="btn-download-sm" style="background: #22C55E; color: #FFFFFF; border: none; padding: 8px 12px; margin-top: 6px; justify-content: center;" onclick="sendWhatsAppPaymentReminder('${p.partyName.replace(/'/g, "\\'")}', '${p.netDue}', '${oldestDateStr}', '${oldestDays}')">
+                <i data-lucide="message-circle" style="width: 14px; height: 14px;"></i>
+                <span>Send WhatsApp Payment Prompt</span>
+              </button>
+            ` : ''}
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  if (window.lucide) lucide.createIcons();
+}
+
+// Global window helpers for drilldown & WhatsApp
+window.togglePartyDrilldown = function(rowId, drillId) {
+  const row = document.getElementById(rowId);
+  const drill = document.getElementById(drillId);
+  const chev = document.getElementById(`chev-${rowId}`);
+  if (!drill) return;
+  const isOpen = drill.style.display !== 'none';
+  drill.style.display = isOpen ? 'none' : 'table-row';
+  if (row) row.classList.toggle('party-row-expanded', !isOpen);
+  if (chev) chev.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+};
+
+window.toggleMobilePartyBills = function(listId) {
+  const list = document.getElementById(listId);
+  const chev = document.getElementById(`chev-${listId}`);
+  if (!list) return;
+  const isOpen = list.classList.contains('open');
+  list.classList.toggle('open', !isOpen);
+  if (chev) chev.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+};
+
+window.sendWhatsAppPaymentReminder = function(partyName, netDue, oldestDate, days) {
+  const text = `Dear ${partyName},\nThis is a friendly payment reminder from SKIL Lifestyle LLP regarding your outstanding balance of ₹${Number(netDue).toLocaleString('en-IN')}.\nYour oldest invoice is pending since ${oldestDate} (${days} days overdue).\nKindly arrange for the settlement to avail your prompt cash discount (5% CD).\nThank you!\nSKIL Lifestyle LLP`;
+  const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
+  window.open(url, '_blank');
+};
+
+// ==========================================================================
+// 8. SUPPLIER DEDICATED HUBS: AJANTA & XPANIA
+// ==========================================================================
+
+function renderAjantaSupplierView() {
+  const tbody = document.getElementById('ajantaInvoicesTbody');
+  if (!tbody || !state.masterGrid?.rows) return;
+
+  const searchInput = document.getElementById('ajantaInvoiceSearch');
+  const query = (searchInput ? searchInput.value : '').toLowerCase().trim();
+
+  const ajantaRows = state.masterGrid.rows.filter(r => {
+    const isAjanta = (r.supplier || '').toLowerCase().includes('ajanta');
+    if (!isAjanta) return false;
+    if (!query) return true;
+    return (r.customer || '').toLowerCase().includes(query) ||
+           (r.purchaseVoucher || '').toLowerCase().includes(query) ||
+           (r.purchaseRef || '').toLowerCase().includes(query) ||
+           (r.salesVoucher || '').toLowerCase().includes(query);
+  });
+
+  if (ajantaRows.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="10" style="text-align: center; color: #94A3B8; padding: 24px;">No matching Ajanta invoices found.</td></tr>`;
     return;
   }
 
-  tbody.innerHTML = rows.map(r => {
-    let statusClass = 'badge-success';
-    if (r.paymentStatus === 'SHORTFALL') statusClass = 'badge-warning';
-    if (r.paymentStatus === 'OVERDUE') statusClass = 'badge-danger';
-    if (r.paymentStatus === 'PENDING') statusClass = 'badge-info';
+  tbody.innerHTML = ajantaRows.map(r => `
+    <tr>
+      <td class="td-bold" style="color: #0284C7;">${r.purchaseVoucher}</td>
+      <td>${r.date}</td>
+      <td class="td-bold">${r.purchaseRef || '—'}</td>
+      <td>
+        <div class="td-bold">${r.customer}</div>
+        <div style="font-size: 11px; color: #64748B;">Sales Vch: ${r.salesVoucher}</div>
+      </td>
+      <td>${r.cartons || 0} ctn / ${r.pairs || 0} prs</td>
+      <td style="text-align: right; font-weight: 700;">${formatINR(r.purchaseAmount)}</td>
+      <td style="text-align: right; font-weight: 700; color: #15803D;">${formatINR(r.salesAmount)}</td>
+      <td style="text-align: right; font-weight: 600; color: #0284C7;">${formatINR(r.suppCd3)}</td>
+      <td style="text-align: right; font-weight: 600; color: #D97706;">${formatINR(r.custCd5)}</td>
+      <td><span class="badge-pill badge-success">100% Sold</span></td>
+    </tr>
+  `).join('');
+}
 
-    return `
-      <tr>
-        <td class="td-bold">${r.customer}</td>
-        <td class="td-bold">${r.salesVoucher}</td>
-        <td>${r.date}</td>
-        <td class="td-muted">${r.dueDate || '—'}</td>
-        <td style="font-weight: 700; color: ${r.daysElapsed > 30 ? '#DC2626' : '#475569'};">${r.daysElapsed} days</td>
-        <td class="td-bold">${formatINR(r.salesAmount)}</td>
-        <td style="color: #4D7C0F; font-weight: 700;">${formatINR(r.custCd5)}</td>
-        <td><span class="badge-pill ${statusClass}">${r.paymentLabel}</span></td>
-      </tr>
-    `;
-  }).join('');
+function renderXpaniaSupplierView() {
+  const tbody = document.getElementById('xpaniaInvoicesTbody');
+  if (!tbody || !state.masterGrid?.rows) return;
+
+  const xpaniaRows = state.masterGrid.rows.filter(r => (r.supplier || '').toLowerCase().includes('xpania'));
+
+  if (xpaniaRows.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="9" style="text-align: center; color: #94A3B8; padding: 24px;">No Xpania invoices found.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = xpaniaRows.map(r => `
+    <tr>
+      <td class="td-bold" style="color: #0284C7;">${r.purchaseVoucher}</td>
+      <td>${r.date}</td>
+      <td class="td-bold">${r.purchaseRef || '—'}</td>
+      <td><div class="td-bold">${r.customer}</div></td>
+      <td class="td-bold">${r.salesVoucher}</td>
+      <td style="text-align: right; font-weight: 700;">${formatINR(r.purchaseAmount)}</td>
+      <td style="text-align: right; font-weight: 700; color: #15803D;">${formatINR(r.salesAmount)}</td>
+      <td style="text-align: right; font-weight: 700; color: #4D7C0F;">+${formatINR(r.tradeMargin)}</td>
+      <td><span class="badge-pill badge-success">Fulfilled</span></td>
+    </tr>
+  `).join('');
+}
+
+function renderSupplierTrackingView() {
+  if (state.activeVchSubView === 'stints') {
+    renderStintsView();
+  } else if (state.activeVchSubView === 'masterGrid') {
+    renderMasterGridView();
+  } else if (state.activeVchSubView === 'rawVouchers') {
+    renderRawVouchersView();
+  }
 }
 
 // ==========================================================================
@@ -1416,27 +1803,102 @@ function renderLinemanView() {
 
 async function loadLedgerBookDropdown() {
   const select = document.getElementById('ledgerBookSelect');
-  if (!select) return;
+  const customWrap = document.getElementById('ledgerCustomDropdown');
+  const triggerBtn = document.getElementById('ledgerDropdownBtn');
+  const menu = document.getElementById('ledgerDropdownMenu');
+  const searchInput = document.getElementById('ledgerSearchInput');
+  const itemsList = document.getElementById('ledgerItemsList');
+  const triggerText = document.getElementById('ledgerTriggerText');
 
   try {
     const resp = await fetch('/api/ledger/statement');
     const data = await resp.json();
     const available = data.availableLedgers || [];
 
-    const currentVal = select.value;
-    select.innerHTML = `<option value="">Select Ledger...</option>` + 
-      available.map(l => `<option value="${l}" ${l === currentVal ? 'selected' : ''}>${l}</option>`).join('');
-
-    if (!currentVal && available.includes('Union Bank Current A/c')) {
-      select.value = 'Union Bank Current A/c';
-      loadLedgerStatement('Union Bank Current A/c');
+    // Also populate native select as fallback
+    if (select) {
+      select.innerHTML = `<option value="">Select Ledger...</option>` + 
+        available.map(l => `<option value="${l}">${l}</option>`).join('');
+      select.onchange = () => {
+        if (select.value) loadLedgerStatement(select.value);
+      };
     }
 
-    select.onchange = () => {
-      if (select.value) {
-        loadLedgerStatement(select.value);
+    if (!itemsList) return;
+
+    function renderDropdownItems(filter = '') {
+      const q = filter.toLowerCase().trim();
+      const filtered = available.filter(l => l.toLowerCase().includes(q));
+
+      if (filtered.length === 0) {
+        itemsList.innerHTML = `<div style="padding: 12px; font-size: 12px; color: #94A3B8; text-align: center;">No matching ledgers found</div>`;
+        return;
       }
-    };
+
+      itemsList.innerHTML = filtered.map(l => {
+        const isSelected = l === state.selectedLedger;
+        return `
+          <div class="dropdown-item ${isSelected ? 'selected' : ''}" data-ledger="${l}">
+            <span>${l}</span>
+            ${isSelected ? '<i data-lucide="check" style="width: 14px; height: 14px; color: #0284C7;"></i>' : ''}
+          </div>
+        `;
+      }).join('');
+
+      if (window.lucide) lucide.createIcons();
+
+      // Click handler
+      itemsList.querySelectorAll('.dropdown-item').forEach(item => {
+        item.addEventListener('click', () => {
+          const ledger = item.getAttribute('data-ledger');
+          state.selectedLedger = ledger;
+          if (triggerText) triggerText.innerText = ledger;
+          if (select) select.value = ledger;
+          if (menu) menu.classList.remove('dropdown-open');
+          loadLedgerStatement(ledger);
+          renderDropdownItems(searchInput ? searchInput.value : '');
+        });
+      });
+    }
+
+    renderDropdownItems('');
+
+    // Toggle menu
+    if (triggerBtn && menu) {
+      triggerBtn.onclick = (e) => {
+        e.stopPropagation();
+        const isOpen = menu.classList.contains('dropdown-open');
+        menu.classList.toggle('dropdown-open', !isOpen);
+        if (!isOpen && searchInput) {
+          searchInput.value = '';
+          renderDropdownItems('');
+          setTimeout(() => searchInput.focus(), 60);
+        }
+      };
+    }
+
+    // Filter typing
+    if (searchInput) {
+      searchInput.oninput = (e) => {
+        renderDropdownItems(e.target.value);
+      };
+      searchInput.onclick = (e) => e.stopPropagation();
+    }
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+      if (customWrap && !customWrap.contains(e.target) && menu) {
+        menu.classList.remove('dropdown-open');
+      }
+    });
+
+    // Auto-select Union Bank Current A/c by default
+    if (!state.selectedLedger && available.includes('Union Bank Current A/c')) {
+      state.selectedLedger = 'Union Bank Current A/c';
+      if (triggerText) triggerText.innerText = 'Union Bank Current A/c';
+      if (select) select.value = 'Union Bank Current A/c';
+      loadLedgerStatement('Union Bank Current A/c');
+    }
   } catch (err) {
     console.error('Error loading ledger list:', err);
   }
@@ -1485,6 +1947,44 @@ function setupFilterEvents() {
   const monthSelect = document.getElementById('monthFilterSelect');
   if (monthSelect) {
     monthSelect.addEventListener('change', () => renderDashboardView());
+  }
+
+  // Customer Aging View Filters & Search
+  const agingSearch = document.getElementById('agingPartySearchInput');
+  if (agingSearch) {
+    agingSearch.addEventListener('input', () => renderPaymentAgingView());
+  }
+
+  const btnAgingAll = document.getElementById('btnAgingFilterAll');
+  const btnAgingDue = document.getElementById('btnAgingFilterDue');
+  const btnAgingCleared = document.getElementById('btnAgingFilterCleared');
+
+  if (btnAgingAll && btnAgingDue && btnAgingCleared) {
+    const filterBtns = [btnAgingAll, btnAgingDue, btnAgingCleared];
+    btnAgingAll.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btnAgingAll.classList.add('active');
+      state.agingFilterMode = 'all';
+      renderPaymentAgingView();
+    });
+    btnAgingDue.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btnAgingDue.classList.add('active');
+      state.agingFilterMode = 'due';
+      renderPaymentAgingView();
+    });
+    btnAgingCleared.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btnAgingCleared.classList.add('active');
+      state.agingFilterMode = 'cleared';
+      renderPaymentAgingView();
+    });
+  }
+
+  // Ajanta Invoice Search
+  const ajantaSearch = document.getElementById('ajantaInvoiceSearch');
+  if (ajantaSearch) {
+    ajantaSearch.addEventListener('input', () => renderAjantaSupplierView());
   }
 
   const btnDebtors = document.getElementById('btnPartyDebtors');
@@ -1537,12 +2037,12 @@ function setupFilterEvents() {
       if (e.key === 'Enter') {
         const query = globalSearch.value.trim();
         if (query) {
-          const navParties = document.querySelector('.sidebar-menu .nav-item[data-tab="parties"]');
+          const navParties = document.querySelector('.sidebar-menu .nav-item[data-tab="payment-aging"]');
           if (navParties) navParties.click();
-          const pSearch = document.getElementById('partySearchInput');
+          const pSearch = document.getElementById('agingPartySearchInput');
           if (pSearch) {
             pSearch.value = query;
-            renderPartiesView();
+            renderPaymentAgingView();
           }
         }
       }

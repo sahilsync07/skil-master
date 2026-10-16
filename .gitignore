@@ -20,3 +20,8 @@ npm-debug.log*
 # OS Files
 .DS_Store
 Thumbs.db
+
+# Web APK copies (only root SahilsBiz-SKIL.apk is committed)
+sync-engine/public/*.apk
+sync-engine/public/downloads/
+

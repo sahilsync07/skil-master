@@ -647,6 +647,45 @@ app.get('/download/app.apk', (req, res) => {
   res.download(apkPath, 'SahilsBiz-SKIL.apk');
 });
 
+// 13d. Supplier Documents & Ledgers Download Routes
+app.get('/api/documents/ajanta/agreement', (req, res) => {
+  const file = path.resolve('c:/Projects/SKIL Master/sync-engine/public/documents/ajanta/Ajanta_Dealership_Agreement_FY_2026_27.pdf');
+  if (fs.existsSync(file)) {
+    return res.download(file, 'Ajanta - Skil Lifestyle Dealership Agreement FY 2026-27.pdf');
+  }
+  res.status(404).send('Agreement document not found.');
+});
+
+app.get('/api/documents/ajanta/ledger/:month', (req, res) => {
+  const m = req.params.month.toLowerCase();
+  let filename = '';
+  if (m.includes('aug')) filename = 'Ajanta_Statement_August_2026_93081.pdf';
+  else if (m.includes('sep')) filename = 'Ajanta_Statement_September_2026_93081.pdf';
+  else if (m.includes('oct')) filename = 'Ajanta_Statement_October_2026_93081.pdf';
+
+  if (!filename) {
+    return res.status(404).send('Invalid month specified. Use aug, sep, or oct.');
+  }
+
+  const file = path.resolve(`c:/Projects/SKIL Master/sync-engine/public/documents/ajanta/${filename}`);
+  if (fs.existsSync(file)) {
+    const downloadName = filename.replace(/_/g, ' ');
+    return res.download(file, downloadName);
+  }
+  res.status(404).send('Ledger statement file not found.');
+});
+
+app.get('/api/documents/download/:folder/:filename', (req, res) => {
+  const { folder, filename } = req.params;
+  const safeFolder = folder.replace(/[^a-zA-Z0-9_-]/g, '');
+  const safeFilename = path.basename(filename);
+  const file = path.resolve(`c:/Projects/SKIL Master/sync-engine/public/documents/${safeFolder}/${safeFilename}`);
+  if (fs.existsSync(file)) {
+    return res.download(file, safeFilename);
+  }
+  res.status(404).send('Document not found.');
+});
+
 // 14. Trigger Manual Refresh of Ajanta Discount Excel
 app.post('/api/reconcile/update-discount-excel', (req, res) => {
   const { exec } = require('child_process');
