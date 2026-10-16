@@ -22,10 +22,17 @@ function parseSupplierInvoice(text, fileName) {
                    text.match(/XPL\/[0-9]+\/[0-9\-]+/i);
   if (invMatch) invNo = invMatch[1] ? invMatch[1].trim() : invMatch[0].trim();
 
-  // If regex failed, check filename (e.g., 1900402692 - KGN PVM.pdf)
+  // If regex failed, check filename (supports both '004 - 1900402692 - ...' and '1900402692 - ...')
   if (!invNo) {
-    const fnMatch = fileName.match(/^([A-Za-z0-9\-\/]+)/);
-    if (fnMatch) invNo = fnMatch[1];
+    const parts = fileName.replace(/\.pdf$/i, '').split(' - ');
+    if (parts.length >= 2 && (/^\d{3}$/.test(parts[0]) || parts[0] === 'PENDING')) {
+      invNo = parts[1].trim();
+    } else if (parts.length >= 1) {
+      invNo = parts[0].trim();
+    } else {
+      const fnMatch = fileName.match(/^([A-Za-z0-9\-\/]+)/);
+      if (fnMatch) invNo = fnMatch[1];
+    }
   }
 
   let invDate = null;

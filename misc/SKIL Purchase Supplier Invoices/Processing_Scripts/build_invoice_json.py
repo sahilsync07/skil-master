@@ -16,7 +16,9 @@ def get_purchases_dir():
 
 def parse_ajanta_invoice(full_text, fname):
     inv_m = re.search(r"Inv\.\s*No\.\s*:\s*(\d+)", full_text)
-    inv_no = inv_m.group(1) if inv_m else fname.split(" - ")[0].strip()
+    parts = fname.replace(".pdf", "").split(" - ")
+    fallback_no = parts[1] if (len(parts) > 1 and (parts[0].isdigit() or parts[0] == "PENDING")) else parts[0].strip()
+    inv_no = inv_m.group(1) if inv_m else fallback_no
 
     date_m = re.search(r"Inv\.\s*Date\s*:\s*([\d\.]+)", full_text)
     inv_date = date_m.group(1) if date_m else ""
@@ -160,7 +162,9 @@ def parse_xpania_invoice(doc, fname):
     full_text = "\n".join(pages_text)
 
     inv_m = re.search(r"XPL\/[0-9]+\/[0-9\-]+", full_text)
-    inv_no = inv_m.group(0) if inv_m else fname.split(" - ")[0].strip()
+    parts = fname.replace(".pdf", "").split(" - ")
+    fallback_no = parts[1] if (len(parts) > 1 and (parts[0].isdigit() or parts[0] == "PENDING")) else parts[0].strip()
+    inv_no = inv_m.group(0) if inv_m else fallback_no
 
     date_m = re.search(r"Dated\s*\n+([0-9A-Za-z\-]+)", full_text)
     inv_date = date_m.group(1) if date_m else ""
