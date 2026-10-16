@@ -1762,3 +1762,39 @@ body {
     max-width: 95px;
   }
 }
+
+/* Download Buttons */
+.btn-download-sm {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #F1F5F9;
+  color: #0F172A;
+  border: 1px solid #CBD5E1;
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.btn-download-sm:hover {
+  background: #0284C7;
+  border-color: #0284C7;
+  color: #FFFFFF;
+}
+
+.btn-download-link {
+  display: inline-flex;
+  align-items: center;
+  color: #0284C7;
+  text-decoration: none;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+}
+.btn-download-link:hover {
+  background: #E0F2FE;
+  color: #0369A1;
+}

@@ -569,6 +569,84 @@ app.get('/api/reconcile/discount-excel', (req, res) => {
   res.download(excelPath, 'Ajanta_Discount_Discrepancies.xlsx');
 });
 
+// 13b. Download / View Supplier Invoice PDF
+app.get('/api/invoices/download/:id', (req, res) => {
+  const id = req.params.id.trim();
+  const purchasesDir = folderUpdater.getPurchasesDir();
+  if (!fs.existsSync(purchasesDir)) {
+    return res.status(404).send('Purchases directory not found.');
+  }
+
+  const files = fs.readdirSync(purchasesDir).filter(f => f.toLowerCase().endsWith('.pdf'));
+  const match = files.find(f => {
+    const fLower = f.toLowerCase();
+    const idLower = id.toLowerCase();
+    const parts = f.replace(/\.pdf$/i, '').split(' - ');
+    const vchPadded = parts[0]?.trim();
+    const vchInt = String(parseInt(vchPadded) || '');
+    const invNo = parts[1]?.trim().toLowerCase();
+    return (
+      fLower === idLower ||
+      fLower === idLower + '.pdf' ||
+      vchPadded === id ||
+      vchInt === id ||
+      invNo === idLower ||
+      fLower.includes(idLower)
+    );
+  });
+
+  if (!match) {
+    return res.status(404).send(`Invoice PDF '${id}' not found in Purchases.`);
+  }
+
+  const filePath = path.join(purchasesDir, match);
+  res.download(filePath, match);
+});
+
+app.get('/api/invoices/view/:id', (req, res) => {
+  const id = req.params.id.trim();
+  const purchasesDir = folderUpdater.getPurchasesDir();
+  if (!fs.existsSync(purchasesDir)) {
+    return res.status(404).send('Purchases directory not found.');
+  }
+
+  const files = fs.readdirSync(purchasesDir).filter(f => f.toLowerCase().endsWith('.pdf'));
+  const match = files.find(f => {
+    const fLower = f.toLowerCase();
+    const idLower = id.toLowerCase();
+    const parts = f.replace(/\.pdf$/i, '').split(' - ');
+    const vchPadded = parts[0]?.trim();
+    const vchInt = String(parseInt(vchPadded) || '');
+    const invNo = parts[1]?.trim().toLowerCase();
+    return (
+      fLower === idLower ||
+      fLower === idLower + '.pdf' ||
+      vchPadded === id ||
+      vchInt === id ||
+      invNo === idLower ||
+      fLower.includes(idLower)
+    );
+  });
+
+  if (!match) {
+    return res.status(404).send(`Invoice PDF '${id}' not found in Purchases.`);
+  }
+
+  const filePath = path.join(purchasesDir, match);
+  res.setHeader('Content-Type', 'application/pdf');
+  res.setHeader('Content-Disposition', `inline; filename="${match}"`);
+  res.sendFile(filePath);
+});
+
+// 13c. Download Android APK directly
+app.get('/download/app.apk', (req, res) => {
+  const apkPath = path.resolve('c:/Projects/SKIL Master/SahilsBiz-SKIL.apk');
+  if (!fs.existsSync(apkPath)) {
+    return res.status(404).send('APK file not found.');
+  }
+  res.download(apkPath, 'SahilsBiz-SKIL.apk');
+});
+
 // 14. Trigger Manual Refresh of Ajanta Discount Excel
 app.post('/api/reconcile/update-discount-excel', (req, res) => {
   const { exec } = require('child_process');

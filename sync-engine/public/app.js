@@ -95,6 +95,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     reloadBtn.addEventListener('click', () => refreshAllData());
   }
 
+  // Update static download link URLs for web and mobile
+  updateStaticDownloadLinks();
+
   // Initial Data Load
   await refreshAllData();
 });
@@ -244,10 +247,41 @@ function setupSyncButton() {
   }
 }
 
+// Get API Base URL (handles mobile/Capacitor localhost -> host PC IP)
+function getApiBaseUrl() {
+  const customHost = localStorage.getItem('skil_server_host');
+  if (customHost) return customHost.replace(/\/$/, '');
+  // When running inside Capacitor Android WebView (origin: https://localhost or capacitor://localhost)
+  if (window.location.hostname === 'localhost' && window.location.port !== '9050') {
+    return 'http://192.168.1.14:9050';
+  }
+  return '';
+}
+
+function getApiUrl(endpoint) {
+  const base = getApiBaseUrl();
+  return base ? `${base}${endpoint}` : endpoint;
+}
+
+// Update static download link targets to ensure absolute paths for mobile DownloadManager
+function updateStaticDownloadLinks() {
+  const exportBtn = document.querySelector('a[href*="/api/data/export"]');
+  if (exportBtn) {
+    exportBtn.href = getApiUrl('/api/data/export');
+  }
+  const apkBtn = document.getElementById('btnDownloadApk');
+  if (apkBtn) {
+    apkBtn.href = getApiUrl('/download/app.apk');
+  }
+  const excelBtn = document.querySelector('a[href*="/api/reconcile/discount-excel"]');
+  if (excelBtn) {
+    excelBtn.href = getApiUrl('/api/reconcile/discount-excel');
+  }
+}
+
 // Smart Fetch Helper: tries API server first, falls back to bundled ./data/ offline JSON
 async function smartFetch(apiEndpoint, fallbackFile) {
-  const host = localStorage.getItem('skil_server_host') || '';
-  const url = host ? `${host.replace(/\/$/, '')}${apiEndpoint}` : apiEndpoint;
+  const url = getApiUrl(apiEndpoint);
   try {
     const res = await fetch(url);
     if (res.ok) return await res.json();
@@ -1007,7 +1041,13 @@ function renderMasterGridView() {
         <td class="sticky-c2">${r.date}</td>
         <td class="sticky-c3 td-bold">${r.customer}</td>
         <td>${r.cartons} ctn / ${r.pairs} prs</td>
-        <td class="td-muted">${r.purchaseRef}</td>
+        <td class="td-muted">
+          ${r.purchaseRef ? `
+            <a href="${getApiUrl('/api/invoices/download/' + encodeURIComponent(r.purchaseRef))}" download class="btn-download-link" title="Download Supplier Invoice ${r.purchaseRef}">
+              ${r.purchaseRef} <i data-lucide="download" style="width: 11px; height: 11px; margin-left: 2px;"></i>
+            </a>
+          ` : '—'}
+        </td>
         <td>${r.supplier.includes('Xpania') ? 'Xpania' : 'Ajanta'}</td>
         <td style="text-align: right;">${formatINR(r.purchaseAmount)}</td>
         <td style="font-size: 11px; max-width: 150px; overflow: hidden; text-overflow: ellipsis;">${r.purchaseVoucher}</td>
@@ -1066,21 +1106,32 @@ function renderRawVouchersView() {
   }
 
   if (list.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: #94A3B8; padding: 30px;">No vouchers matched.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: #94A3B8; padding: 30px;">No vouchers matched.</td></tr>`;
     return;
   }
 
-  tbody.innerHTML = list.slice(0, 100).map(v => `
-    <tr>
-      <td>${formatDateStr(v.date)}</td>
-      <td><span class="stint-tag-pill">${v.voucherType}</span></td>
-      <td class="td-bold">${v.voucherNumber || '—'}</td>
-      <td class="td-bold">${v.partyName || '—'}</td>
-      <td class="td-muted">${v.reference || '—'}</td>
-      <td style="text-align: right;" class="td-bold">${formatINR(v.amount)}</td>
-      <td style="font-size: 11.5px; max-width: 240px; color: #64748B;">${v.narration || '—'}</td>
-    </tr>
-  `).join('');
+  tbody.innerHTML = list.slice(0, 100).map(v => {
+    const isPurchase = (v.voucherType || '').toLowerCase() === 'purchase';
+    const docBtn = isPurchase ? `
+      <a href="${getApiUrl('/api/invoices/download/' + encodeURIComponent(v.voucherNumber))}" download class="btn-download-sm" title="Download Invoice PDF">
+        <i data-lucide="download" style="width: 12px; height: 12px;"></i> PDF
+      </a>
+    ` : '<span style="color: #CBD5E1;">—</span>';
+
+    return `
+      <tr>
+        <td>${formatDateStr(v.date)}</td>
+        <td><span class="stint-tag-pill">${v.voucherType}</span></td>
+        <td class="td-bold">${v.voucherNumber || '—'}</td>
+        <td class="td-bold">${v.partyName || '—'}</td>
+        <td class="td-muted">${v.reference || '—'}</td>
+        <td style="text-align: right;" class="td-bold">${formatINR(v.amount)}</td>
+        <td style="font-size: 11.5px; max-width: 240px; color: #64748B;">${v.narration || '—'}</td>
+        <td style="text-align: center;">${docBtn}</td>
+      </tr>
+    `;
+  }).join('');
+  if (window.lucide) lucide.createIcons();
 }
 
 // Open Stint Modal
@@ -1110,7 +1161,13 @@ function openStintModal(stintKey) {
 
       return `
         <tr>
-          <td class="td-muted">${b.purchaseRef || '—'}</td>
+          <td class="td-muted">
+            ${b.purchaseRef ? `
+              <a href="${getApiUrl('/api/invoices/download/' + encodeURIComponent(b.purchaseRef))}" download class="btn-download-link" title="Download Invoice ${b.purchaseRef}">
+                ${b.purchaseRef} <i data-lucide="download" style="width: 11px; height: 11px; margin-left: 2px;"></i>
+              </a>
+            ` : '—'}
+          </td>
           <td class="td-bold">${b.salesVoucher || '—'}</td>
           <td>${b.supplier || '—'}</td>
           <td>${b.cartons || 0}</td>
