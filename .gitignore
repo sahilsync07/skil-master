@@ -25,3 +25,5 @@ Thumbs.db
 sync-engine/public/*.apk
 sync-engine/public/downloads/
 
+# Working folders (ZIP archives are committed)
+CA_September_2026_Supplier_Bills/
