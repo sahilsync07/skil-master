@@ -1173,7 +1173,27 @@
     "voucherType": "Debit Note",
     "date": "20261008",
     "partyName": "Ajanta Shoes India Pvt. Ltd.",
-    "amount": 39584
+    "amount": 39584,
+    "ledgerEntries": [
+      {
+        "ledgerName": "Ajanta Shoes India Pvt. Ltd.",
+        "amount": -39584,
+        "isDeemedPositive": true,
+        "isPartyLedger": true
+      },
+      {
+        "ledgerName": "Incentive Received",
+        "amount": 37699.05,
+        "isDeemedPositive": false,
+        "isPartyLedger": false
+      },
+      {
+        "ledgerName": "Input IGST",
+        "amount": 1884.95,
+        "isDeemedPositive": false,
+        "isPartyLedger": false
+      }
+    ]
   },
   {
     "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000a2",
