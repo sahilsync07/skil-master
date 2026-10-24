@@ -18460,5 +18460,464 @@
       "@_NAME": "XP J 151 BROWN 05/09 MRP389/-",
       "@_RESERVEDNAME": ""
     }
+  },
+  "CB 50291 BLACK 05/09 MRP359/-": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000271",
+    "name": "CB 50291 BLACK 05/09 MRP359/-",
+    "stockGroup": "CUBIX FOOTCARE",
+    "baseUnit": "Pairs",
+    "additionalUnit": "Box",
+    "openingBalance": "",
+    "openingValue": 0,
+    "alterId": 805,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000271",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "CUBIX FOOTCARE",
+        "@_TYPE": "String"
+      },
+      "BASEUNITS": {
+        "#text": "Pairs",
+        "@_TYPE": "String"
+      },
+      "ADDITIONALUNITS": {
+        "#text": "Box",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "805",
+        "@_TYPE": "Number"
+      },
+      "OPENINGBALANCE": {
+        "@_TYPE": "Quantity"
+      },
+      "OPENINGVALUE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "CB 50291 BLACK 05/09 MRP359/-",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "CB 50291 BLACK 05/09 MRP359/-",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "CB 50433 CHIKKU 05/09 MRP349/-": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000273",
+    "name": "CB 50433 CHIKKU 05/09 MRP349/-",
+    "stockGroup": "CUBIX FOOTCARE",
+    "baseUnit": "Pairs",
+    "additionalUnit": "Box",
+    "openingBalance": "",
+    "openingValue": 0,
+    "alterId": 807,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000273",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "CUBIX FOOTCARE",
+        "@_TYPE": "String"
+      },
+      "BASEUNITS": {
+        "#text": "Pairs",
+        "@_TYPE": "String"
+      },
+      "ADDITIONALUNITS": {
+        "#text": "Box",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "807",
+        "@_TYPE": "Number"
+      },
+      "OPENINGBALANCE": {
+        "@_TYPE": "Quantity"
+      },
+      "OPENINGVALUE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "CB 50433 CHIKKU 05/09 MRP349/-",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "CB 50433 CHIKKU 05/09 MRP349/-",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "CB 50433 FOSSIL 05/09 MRP349/-": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000279",
+    "name": "CB 50433 FOSSIL 05/09 MRP349/-",
+    "stockGroup": "CUBIX FOOTCARE",
+    "baseUnit": "Pairs",
+    "additionalUnit": "Box",
+    "openingBalance": "",
+    "openingValue": 0,
+    "alterId": 813,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000279",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "CUBIX FOOTCARE",
+        "@_TYPE": "String"
+      },
+      "BASEUNITS": {
+        "#text": "Pairs",
+        "@_TYPE": "String"
+      },
+      "ADDITIONALUNITS": {
+        "#text": "Box",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "813",
+        "@_TYPE": "Number"
+      },
+      "OPENINGBALANCE": {
+        "@_TYPE": "Quantity"
+      },
+      "OPENINGVALUE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "CB 50433 FOSSIL 05/09 MRP349/-",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "CB 50433 FOSSIL 05/09 MRP349/-",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "CB 69001 BEIGE 05/09 MRP399/-": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000274",
+    "name": "CB 69001 BEIGE 05/09 MRP399/-",
+    "stockGroup": "CUBIX FOOTCARE",
+    "baseUnit": "Pairs",
+    "additionalUnit": "Box",
+    "openingBalance": "",
+    "openingValue": 0,
+    "alterId": 808,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000274",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "CUBIX FOOTCARE",
+        "@_TYPE": "String"
+      },
+      "BASEUNITS": {
+        "#text": "Pairs",
+        "@_TYPE": "String"
+      },
+      "ADDITIONALUNITS": {
+        "#text": "Box",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "808",
+        "@_TYPE": "Number"
+      },
+      "OPENINGBALANCE": {
+        "@_TYPE": "Quantity"
+      },
+      "OPENINGVALUE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "CB 69001 BEIGE 05/09 MRP399/-",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "CB 69001 BEIGE 05/09 MRP399/-",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "CB 69001 BROWN 05/09 MRP399/-": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000272",
+    "name": "CB 69001 BROWN 05/09 MRP399/-",
+    "stockGroup": "CUBIX FOOTCARE",
+    "baseUnit": "Pairs",
+    "additionalUnit": "Box",
+    "openingBalance": "",
+    "openingValue": 0,
+    "alterId": 806,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000272",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "CUBIX FOOTCARE",
+        "@_TYPE": "String"
+      },
+      "BASEUNITS": {
+        "#text": "Pairs",
+        "@_TYPE": "String"
+      },
+      "ADDITIONALUNITS": {
+        "#text": "Box",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "806",
+        "@_TYPE": "Number"
+      },
+      "OPENINGBALANCE": {
+        "@_TYPE": "Quantity"
+      },
+      "OPENINGVALUE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "CB 69001 BROWN 05/09 MRP399/-",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "CB 69001 BROWN 05/09 MRP399/-",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "CB 74003 BEIGE 05/09 MRP359/-": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000276",
+    "name": "CB 74003 BEIGE 05/09 MRP359/-",
+    "stockGroup": "CUBIX FOOTCARE",
+    "baseUnit": "Pairs",
+    "additionalUnit": "Box",
+    "openingBalance": "",
+    "openingValue": 0,
+    "alterId": 810,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000276",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "CUBIX FOOTCARE",
+        "@_TYPE": "String"
+      },
+      "BASEUNITS": {
+        "#text": "Pairs",
+        "@_TYPE": "String"
+      },
+      "ADDITIONALUNITS": {
+        "#text": "Box",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "810",
+        "@_TYPE": "Number"
+      },
+      "OPENINGBALANCE": {
+        "@_TYPE": "Quantity"
+      },
+      "OPENINGVALUE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "CB 74003 BEIGE 05/09 MRP359/-",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "CB 74003 BEIGE 05/09 MRP359/-",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "CB 74008 BEIGE 05/09 MRP379/-": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000277",
+    "name": "CB 74008 BEIGE 05/09 MRP379/-",
+    "stockGroup": "CUBIX FOOTCARE",
+    "baseUnit": "Pairs",
+    "additionalUnit": "Box",
+    "openingBalance": "",
+    "openingValue": 0,
+    "alterId": 811,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000277",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "CUBIX FOOTCARE",
+        "@_TYPE": "String"
+      },
+      "BASEUNITS": {
+        "#text": "Pairs",
+        "@_TYPE": "String"
+      },
+      "ADDITIONALUNITS": {
+        "#text": "Box",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "811",
+        "@_TYPE": "Number"
+      },
+      "OPENINGBALANCE": {
+        "@_TYPE": "Quantity"
+      },
+      "OPENINGVALUE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "CB 74008 BEIGE 05/09 MRP379/-",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "CB 74008 BEIGE 05/09 MRP379/-",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "CB 74008 BLACK 05/09 MRP379/-": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000275",
+    "name": "CB 74008 BLACK 05/09 MRP379/-",
+    "stockGroup": "CUBIX FOOTCARE",
+    "baseUnit": "Pairs",
+    "additionalUnit": "Box",
+    "openingBalance": "",
+    "openingValue": 0,
+    "alterId": 809,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000275",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "CUBIX FOOTCARE",
+        "@_TYPE": "String"
+      },
+      "BASEUNITS": {
+        "#text": "Pairs",
+        "@_TYPE": "String"
+      },
+      "ADDITIONALUNITS": {
+        "#text": "Box",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "809",
+        "@_TYPE": "Number"
+      },
+      "OPENINGBALANCE": {
+        "@_TYPE": "Quantity"
+      },
+      "OPENINGVALUE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "CB 74008 BLACK 05/09 MRP379/-",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "CB 74008 BLACK 05/09 MRP379/-",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "CB 74008 PINK 05/09 MRP379/-": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000278",
+    "name": "CB 74008 PINK 05/09 MRP379/-",
+    "stockGroup": "CUBIX FOOTCARE",
+    "baseUnit": "Pairs",
+    "additionalUnit": "Box",
+    "openingBalance": "",
+    "openingValue": 0,
+    "alterId": 812,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000278",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "CUBIX FOOTCARE",
+        "@_TYPE": "String"
+      },
+      "BASEUNITS": {
+        "#text": "Pairs",
+        "@_TYPE": "String"
+      },
+      "ADDITIONALUNITS": {
+        "#text": "Box",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "812",
+        "@_TYPE": "Number"
+      },
+      "OPENINGBALANCE": {
+        "@_TYPE": "Quantity"
+      },
+      "OPENINGVALUE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "CB 74008 PINK 05/09 MRP379/-",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "CB 74008 PINK 05/09 MRP379/-",
+      "@_RESERVEDNAME": ""
+    }
   }
 }

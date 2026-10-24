@@ -4,7 +4,7 @@
     "name": "Ajanta Shoes India Pvt. Ltd.",
     "parent": "Sundry Creditors",
     "openingBalance": 0,
-    "closingBalance": -3020.57,
+    "closingBalance": -89727.57,
     "gstin": "",
     "state": "",
     "email": "",
@@ -24,7 +24,7 @@
         "@_TYPE": "Number"
       },
       "CLOSINGBALANCE": {
-        "#text": "-3020.57",
+        "#text": "-89727.57",
         "@_TYPE": "Amount"
       },
       "OPENINGBALANCE": {
@@ -141,7 +141,7 @@
     "name": "Eastern Power Electricity Charges",
     "parent": "Indirect Expenses",
     "openingBalance": 0,
-    "closingBalance": -804.9,
+    "closingBalance": -1122.8,
     "gstin": "",
     "state": "",
     "email": "",
@@ -161,7 +161,7 @@
         "@_TYPE": "Number"
       },
       "CLOSINGBALANCE": {
-        "#text": "-804.90",
+        "#text": "-1122.80",
         "@_TYPE": "Amount"
       },
       "OPENINGBALANCE": {
@@ -187,7 +187,7 @@
     "name": "GST Purchase",
     "parent": "Purchase Accounts",
     "openingBalance": 0,
-    "closingBalance": -2606213.24,
+    "closingBalance": -3027126.44,
     "gstin": "",
     "state": "",
     "email": "",
@@ -207,7 +207,7 @@
         "@_TYPE": "Number"
       },
       "CLOSINGBALANCE": {
-        "#text": "-2606213.24",
+        "#text": "-3027126.44",
         "@_TYPE": "Amount"
       },
       "OPENINGBALANCE": {
@@ -233,7 +233,7 @@
     "name": "GST Sales",
     "parent": "Sales Accounts",
     "openingBalance": 0,
-    "closingBalance": 2615355.1,
+    "closingBalance": 3036520.3,
     "gstin": "",
     "state": "",
     "email": "",
@@ -253,7 +253,7 @@
         "@_TYPE": "Number"
       },
       "CLOSINGBALANCE": {
-        "#text": "2615355.10",
+        "#text": "3036520.30",
         "@_TYPE": "Amount"
       },
       "OPENINGBALANCE": {
@@ -279,7 +279,7 @@
     "name": "Input CGST",
     "parent": "Current Assets",
     "openingBalance": 0,
-    "closingBalance": -675,
+    "closingBalance": 873.3,
     "gstin": "",
     "state": "",
     "email": "",
@@ -299,7 +299,7 @@
         "@_TYPE": "Number"
       },
       "CLOSINGBALANCE": {
-        "#text": "-675.00",
+        "#text": "873.30",
         "@_TYPE": "Amount"
       },
       "OPENINGBALANCE": {
@@ -325,7 +325,7 @@
     "name": "Input IGST",
     "parent": "Current Assets",
     "openingBalance": 0,
-    "closingBalance": -124979.72,
+    "closingBalance": -141896.47,
     "gstin": "",
     "state": "",
     "email": "",
@@ -345,7 +345,7 @@
         "@_TYPE": "Number"
       },
       "CLOSINGBALANCE": {
-        "#text": "-124979.72",
+        "#text": "-141896.47",
         "@_TYPE": "Amount"
       },
       "OPENINGBALANCE": {
@@ -466,7 +466,7 @@
     "name": "M/S.SHREE FOOTWEAR",
     "parent": "Sundry Debtors",
     "openingBalance": 0,
-    "closingBalance": -147238,
+    "closingBalance": -110740,
     "gstin": "",
     "state": "",
     "email": "",
@@ -486,7 +486,7 @@
         "@_TYPE": "Number"
       },
       "CLOSINGBALANCE": {
-        "#text": "-147238.00",
+        "#text": "-110740.00",
         "@_TYPE": "Amount"
       },
       "OPENINGBALANCE": {
@@ -512,7 +512,7 @@
     "name": "M/s Sri Brundabana Enterprises, Rayagada",
     "parent": "Sundry Debtors",
     "openingBalance": 0,
-    "closingBalance": 765724,
+    "closingBalance": 770708,
     "gstin": "",
     "state": "",
     "email": "",
@@ -532,7 +532,7 @@
         "@_TYPE": "Number"
       },
       "CLOSINGBALANCE": {
-        "#text": "765724.00",
+        "#text": "770708.00",
         "@_TYPE": "Amount"
       },
       "OPENINGBALANCE": {
@@ -604,7 +604,7 @@
     "name": "Office Rent A/c",
     "parent": "Indirect Expenses",
     "openingBalance": 0,
-    "closingBalance": -15000,
+    "closingBalance": -22500,
     "gstin": "",
     "state": "",
     "email": "",
@@ -624,7 +624,7 @@
         "@_TYPE": "Number"
       },
       "CLOSINGBALANCE": {
-        "#text": "-15000.00",
+        "#text": "-22500.00",
         "@_TYPE": "Amount"
       },
       "OPENINGBALANCE": {
@@ -650,7 +650,7 @@
     "name": "Output CGST",
     "parent": "Duties & Taxes",
     "openingBalance": 0,
-    "closingBalance": 39167.06,
+    "closingBalance": 42145.91,
     "gstin": "",
     "state": "",
     "email": "",
@@ -670,7 +670,7 @@
         "@_TYPE": "Number"
       },
       "CLOSINGBALANCE": {
-        "#text": "39167.06",
+        "#text": "42145.91",
         "@_TYPE": "Amount"
       },
       "OPENINGBALANCE": {
@@ -699,7 +699,7 @@
     "name": "Output IGST",
     "parent": "Duties & Taxes",
     "openingBalance": 0,
-    "closingBalance": 51083.67,
+    "closingBalance": 63087.63,
     "gstin": "",
     "state": "",
     "email": "",
@@ -719,7 +719,7 @@
         "@_TYPE": "Number"
       },
       "CLOSINGBALANCE": {
-        "#text": "51083.67",
+        "#text": "63087.63",
         "@_TYPE": "Amount"
       },
       "OPENINGBALANCE": {
@@ -745,7 +745,7 @@
     "name": "Output SGST",
     "parent": "Duties & Taxes",
     "openingBalance": 0,
-    "closingBalance": 39167.06,
+    "closingBalance": 43694.21,
     "gstin": "",
     "state": "",
     "email": "",
@@ -765,7 +765,7 @@
         "@_TYPE": "Number"
       },
       "CLOSINGBALANCE": {
-        "#text": "39167.06",
+        "#text": "43694.21",
         "@_TYPE": "Amount"
       },
       "OPENINGBALANCE": {
@@ -794,7 +794,7 @@
     "name": "Profit & Loss A/c",
     "parent": "Primary",
     "openingBalance": 0,
-    "closingBalance": 10046.6,
+    "closingBalance": 22001.19,
     "gstin": "",
     "state": "",
     "email": "",
@@ -814,7 +814,7 @@
         "@_TYPE": "Number"
       },
       "CLOSINGBALANCE": {
-        "#text": "10046.60",
+        "#text": "22001.19",
         "@_TYPE": "Amount"
       },
       "OPENINGBALANCE": {
@@ -840,7 +840,7 @@
     "name": "Round Off -(+/-)",
     "parent": "Indirect Expenses",
     "openingBalance": 0,
-    "closingBalance": -2.59,
+    "closingBalance": -3.06,
     "gstin": "",
     "state": "",
     "email": "",
@@ -860,7 +860,7 @@
         "@_TYPE": "Number"
       },
       "CLOSINGBALANCE": {
-        "#text": "-2.59",
+        "#text": "-3.06",
         "@_TYPE": "Amount"
       },
       "OPENINGBALANCE": {
@@ -1070,7 +1070,7 @@
     "name": "Union Bank Current A/c",
     "parent": "Bank Accounts",
     "openingBalance": 0,
-    "closingBalance": -12493.1,
+    "closingBalance": -417093.2,
     "gstin": "",
     "state": "",
     "email": "",
@@ -1090,7 +1090,7 @@
         "@_TYPE": "Number"
       },
       "CLOSINGBALANCE": {
-        "#text": "-12493.10",
+        "#text": "-417093.20",
         "@_TYPE": "Amount"
       },
       "OPENINGBALANCE": {
@@ -1116,7 +1116,7 @@
     "name": "XPANIA FOOTCARE LLP",
     "parent": "Sundry Creditors",
     "openingBalance": 0,
-    "closingBalance": 437598,
+    "closingBalance": 814529,
     "gstin": "",
     "state": "",
     "email": "",
@@ -1136,7 +1136,7 @@
         "@_TYPE": "Number"
       },
       "CLOSINGBALANCE": {
-        "#text": "437598.00",
+        "#text": "814529.00",
         "@_TYPE": "Amount"
       },
       "OPENINGBALANCE": {
@@ -1208,7 +1208,7 @@
     "name": "MAHAVIR SHOE HOUSE",
     "parent": "Sundry Debtors",
     "openingBalance": 0,
-    "closingBalance": -267292,
+    "closingBalance": 0,
     "gstin": "",
     "state": "",
     "email": "",
@@ -1228,7 +1228,7 @@
         "@_TYPE": "Number"
       },
       "CLOSINGBALANCE": {
-        "#text": "-267292.00",
+        "#text": "0.00",
         "@_TYPE": "Amount"
       },
       "OPENINGBALANCE": {
@@ -1300,7 +1300,7 @@
     "name": "Cash Discount",
     "parent": "Indirect Expenses",
     "openingBalance": 0,
-    "closingBalance": -59875.93,
+    "closingBalance": -90833.06,
     "gstin": "",
     "state": "",
     "email": "",
@@ -1320,7 +1320,7 @@
         "@_TYPE": "Number"
       },
       "CLOSINGBALANCE": {
-        "#text": "-59875.93",
+        "#text": "-90833.06",
         "@_TYPE": "Amount"
       },
       "OPENINGBALANCE": {
@@ -1391,7 +1391,7 @@
     "name": "Cash Discount Received",
     "parent": "Direct Incomes",
     "openingBalance": 0,
-    "closingBalance": 106618.16,
+    "closingBalance": 55709.63,
     "gstin": "",
     "state": "",
     "email": "",
@@ -1411,7 +1411,7 @@
         "@_TYPE": "Number"
       },
       "CLOSINGBALANCE": {
-        "#text": "106618.16",
+        "#text": "55709.63",
         "@_TYPE": "Amount"
       },
       "OPENINGBALANCE": {
@@ -1575,7 +1575,7 @@
     "name": "Incentive Received",
     "parent": "Direct Incomes",
     "openingBalance": 0,
-    "closingBalance": 132729.71,
+    "closingBalance": 130844.76,
     "gstin": "",
     "state": "",
     "email": "",
@@ -1595,7 +1595,7 @@
         "@_TYPE": "Number"
       },
       "CLOSINGBALANCE": {
-        "#text": "132729.71",
+        "#text": "130844.76",
         "@_TYPE": "Amount"
       },
       "OPENINGBALANCE": {
@@ -1621,7 +1621,7 @@
     "name": "M/S. RAJAN TRADERS",
     "parent": "Sundry Debtors",
     "openingBalance": 0,
-    "closingBalance": -110382,
+    "closingBalance": -85382,
     "gstin": "",
     "state": "",
     "email": "",
@@ -1641,7 +1641,7 @@
         "@_TYPE": "Number"
       },
       "CLOSINGBALANCE": {
-        "#text": "-110382.00",
+        "#text": "-85382.00",
         "@_TYPE": "Amount"
       },
       "OPENINGBALANCE": {
@@ -1843,6 +1843,98 @@
         }
       },
       "@_NAME": "Nakkina Ravi Kumar Salary A/c",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "Cubix Footcare": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-0000026f",
+    "name": "Cubix Footcare",
+    "parent": "Sundry Creditors",
+    "openingBalance": 0,
+    "closingBalance": 65029,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 803,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-0000026f",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Sundry Creditors",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "803",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "65029.00",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "Cubix Footcare",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "Cubix Footcare",
+      "@_RESERVEDNAME": ""
+    }
+  },
+  "FAMOUS FOOT WEAR": {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-0000027b",
+    "name": "FAMOUS FOOT WEAR",
+    "parent": "Sundry Debtors",
+    "openingBalance": 0,
+    "closingBalance": -65029,
+    "gstin": "",
+    "state": "",
+    "email": "",
+    "mobile": "",
+    "alterId": 815,
+    "raw": {
+      "GUID": {
+        "#text": "582e9795-82b7-4062-9f2f-04b60c3dc54e-0000027b",
+        "@_TYPE": "String"
+      },
+      "PARENT": {
+        "#text": "Sundry Debtors",
+        "@_TYPE": "String"
+      },
+      "ALTERID": {
+        "#text": "815",
+        "@_TYPE": "Number"
+      },
+      "CLOSINGBALANCE": {
+        "#text": "-65029.00",
+        "@_TYPE": "Amount"
+      },
+      "OPENINGBALANCE": {
+        "#text": "0.00",
+        "@_TYPE": "Amount"
+      },
+      "LANGUAGENAME.LIST": {
+        "NAME.LIST": {
+          "NAME": "FAMOUS FOOT WEAR",
+          "@_TYPE": "String"
+        },
+        "LANGUAGEID": {
+          "#text": "1033",
+          "@_TYPE": "Number"
+        }
+      },
+      "@_NAME": "FAMOUS FOOT WEAR",
       "@_RESERVEDNAME": ""
     }
   }

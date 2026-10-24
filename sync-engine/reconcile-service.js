@@ -25,7 +25,7 @@ function parseSupplierInvoice(text, fileName) {
   // If regex failed, check filename (supports both '004 - 1900402692 - ...' and '1900402692 - ...')
   if (!invNo) {
     const parts = fileName.replace(/\.pdf$/i, '').split(' - ');
-    if (parts.length >= 2 && (/^\d{3}$/.test(parts[0]) || parts[0] === 'PENDING')) {
+    if (parts.length >= 2 && (/^\d{3}$/.test(parts[0]) || parts[0] === 'PENDING' || parts[0] === 'CANCELLED')) {
       invNo = parts[1].trim();
     } else if (parts.length >= 1) {
       invNo = parts[0].trim();
@@ -43,6 +43,7 @@ function parseSupplierInvoice(text, fileName) {
   let supplier = 'Unknown Supplier';
   if (text.includes('AJANTA SHOES')) supplier = 'Ajanta Shoes (India) Pvt. Ltd.';
   else if (text.includes('XPANIA FOOTCARE')) supplier = 'Xpania Footcare LLP';
+  else if (text.includes('CUBIX FOOTCARE') || text.includes('CUBIX')) supplier = 'Cubix Footcare';
 
   let consignee = 'Direct / SKIL';
   if (text.includes('K G N FOOTWARE') || text.includes('KGN')) consignee = 'K G N FOOTWARE';
@@ -51,6 +52,7 @@ function parseSupplierInvoice(text, fileName) {
   else if (text.includes('SHREE FOOTWEAR') || text.includes('SF')) consignee = 'M/S. SHREE FOOTWEAR';
   else if (text.includes('SUSHILA BOOT HOUSE') || text.includes('Sushila')) consignee = 'M/S SUSHILA BOOT HOUSE';
   else if (text.includes('MAHAVIR SHOE HOUSE') || text.includes('MAHAVIR') || text.includes('Mahavir')) consignee = 'MAHAVIR SHOE HOUSE';
+  else if (text.includes('FAMOUSE FOOTWEAR') || text.includes('FAMOUS FOOT WEAR') || text.includes('FAMOUS')) consignee = 'FAMOUS FOOT WEAR';
 
   // Extract Total Amount
   let amount = null;
@@ -90,7 +92,11 @@ function parseBankTransactions(text, fileName) {
       amount = parseFloat(amtStr.replace(/,/g, ''));
     }
     
-    if (cleanBlock.includes('/CR/') || cleanBlock.includes('RTGS:SRI') || cleanBlock.includes('NEFT:SHREE') || cleanBlock.includes('RTGS:SHREE') || cleanBlock.includes('NEFT:SALIM') || cleanBlock.includes('NEFT:K G N') || cleanBlock.includes('K G N') || cleanBlock.includes('SISINTI')) {
+    if (cleanBlock.startsWith('NEFTO-') || cleanBlock.startsWith('RTGSO-') || cleanBlock.startsWith('ePAY/') || cleanBlock.startsWith('GST/')) {
+      type = 'Debit';
+    } else if (cleanBlock.startsWith('NEFT:') || cleanBlock.startsWith('RTGS:') || cleanBlock.includes('/CR/') || cleanBlock.startsWith('IMPSAB/')) {
+      type = 'Credit';
+    } else if (cleanBlock.includes('SRI BRUNDABAN') && !cleanBlock.includes('NEFTO-') && !cleanBlock.includes('RTGSO-')) {
       type = 'Credit';
     } else {
       type = 'Debit';
@@ -108,6 +114,10 @@ function parseBankTransactions(text, fileName) {
       category = 'Supplier Payment';
       partyDesc = 'Ajanta Shoes India Pvt. Ltd.';
       description = 'Supplier Payment / Advance against Purchases';
+    } else if (cleanBlock.includes('XPANIA')) {
+      category = 'Supplier Payment';
+      partyDesc = 'Xpania Footcare LLP';
+      description = 'Supplier Payment / Advance against Purchases';
     } else if (cleanBlock.includes('ATOM')) {
       category = 'Electricity / Utility';
       partyDesc = 'Eastern Power Electricity / Atom Tech';
@@ -121,13 +131,25 @@ function parseBankTransactions(text, fileName) {
       partyDesc = 'Salim Khan KGN, Rajam';
       description = type === 'Credit' ? 'Excess/Erroneous Payment Received' : 'Refund of Erroneous Payment';
     } else if (cleanBlock.includes('SAHIL') || cleanBlock.includes('SISINTI')) {
-      category = 'Capital Introduction';
+      category = type === 'Credit' ? 'Capital Introduction' : 'Partner Remuneration / Drawings';
       partyDesc = cleanBlock.includes('SAHIL') ? 'Sahil Kumar (Partner)' : 'Sisinti Lokanatha Patro (Partner)';
-      description = 'Capital Introduced into LLP Union Bank Account';
+      description = type === 'Credit' ? 'Capital Introduced into LLP Union Bank Account' : 'Partner Remuneration / Drawing Paid';
     } else if (cleanBlock.includes('SRI BRUNDABAN')) {
-      category = 'Customer Advance';
+      category = type === 'Credit' ? 'Customer Advance' : 'Customer Advance Refund';
       partyDesc = 'M/s Sri Brundabana Enterprises, Rayagada';
-      description = 'Customer Advance Received by RTGS';
+      description = type === 'Credit' ? 'Customer Advance Received by RTGS/NEFT' : 'Customer Advance Refund Paid by NEFT';
+    } else if (cleanBlock.includes('DELIGHT')) {
+      category = 'Customer Collection';
+      partyDesc = 'DELIGHT FOOT WEAR';
+      description = 'Customer Payment Received by IMPS';
+    } else if (cleanBlock.includes('SUSHILA')) {
+      category = 'Customer Collection';
+      partyDesc = 'M/s Sushila Boot House';
+      description = 'Customer Payment Received by NEFT';
+    } else if (cleanBlock.includes('MAHAVIR')) {
+      category = 'Customer Collection';
+      partyDesc = 'Mahavir Shoe House';
+      description = 'Customer Payment Received by RTGS';
     } else if (cleanBlock.includes('SHREE FOOTWEAR')) {
       category = 'Customer Collection';
       partyDesc = 'M/S. Shree Footwear';
@@ -136,6 +158,10 @@ function parseBankTransactions(text, fileName) {
       category = 'Customer Collection';
       partyDesc = 'K G N FOOTWARE';
       description = 'Customer Payment Received by NEFT';
+    } else if (cleanBlock.includes('26103700185103') || cleanBlock.includes('GST')) {
+      category = 'Statutory Dues';
+      partyDesc = 'GST September 3B Return';
+      description = 'GST Payment (Challan / CPIN 26103700185103)';
     }
 
     transactions.push({
@@ -195,6 +221,10 @@ function parseTextBankStatement(text, fileName) {
         category = 'Supplier Payment';
         partyDesc = 'Ajanta Shoes India Pvt. Ltd.';
         description = 'Supplier Payment / Advance against Purchases';
+      } else if (cleanBlock.includes('XPANIA')) {
+        category = 'Supplier Payment';
+        partyDesc = 'Xpania Footcare LLP';
+        description = 'Supplier Payment / Advance against Purchases';
       } else if (cleanBlock.includes('ATOM')) {
         category = 'Electricity / Utility';
         partyDesc = 'Eastern Power Electricity / Atom Tech';
@@ -214,11 +244,31 @@ function parseTextBankStatement(text, fileName) {
       } else if (cleanBlock.includes('SRI BRUNDABAN')) {
         category = 'Customer Advance';
         partyDesc = 'M/s Sri Brundabana Enterprises, Rayagada';
-        description = 'Customer Advance Received by RTGS';
+        description = 'Customer Advance Received by RTGS/NEFT';
+      } else if (cleanBlock.includes('DELIGHT')) {
+        category = 'Customer Collection';
+        partyDesc = 'DELIGHT FOOT WEAR';
+        description = 'Customer Payment Received by IMPS';
+      } else if (cleanBlock.includes('SUSHILA')) {
+        category = 'Customer Collection';
+        partyDesc = 'M/s Sushila Boot House';
+        description = 'Customer Payment Received by NEFT';
+      } else if (cleanBlock.includes('MAHAVIR')) {
+        category = 'Customer Collection';
+        partyDesc = 'Mahavir Shoe House';
+        description = 'Customer Payment Received by RTGS';
       } else if (cleanBlock.includes('SHREE FOOTWEAR')) {
         category = 'Customer Collection';
         partyDesc = 'M/S. Shree Footwear';
         description = cleanBlock.includes('RTGS') ? 'Customer Payment Received by RTGS' : 'Customer Payment Received by NEFT';
+      } else if (cleanBlock.includes('K G N') || cleanBlock.includes('KGN')) {
+        category = 'Customer Collection';
+        partyDesc = 'K G N FOOTWARE';
+        description = 'Customer Payment Received by NEFT';
+      } else if (cleanBlock.includes('26103700185103') || cleanBlock.includes('GST')) {
+        category = 'Statutory Dues';
+        partyDesc = 'GST September 3B Return';
+        description = 'GST Payment (Challan / CPIN 26103700185103)';
       }
 
       transactions.push({
@@ -257,6 +307,18 @@ class ReconcileService {
         const text = await extractPdfText(path.join(purchasesDir, file));
         const invoice = parseSupplierInvoice(text, file);
 
+        if (file.toUpperCase().startsWith('CANCELLED')) {
+          items.push({
+            ...invoice,
+            isEnteredInTally: false,
+            tallyVoucherNo: null,
+            tallyDate: null,
+            tallyAmount: null,
+            status: 'CANCELLED_BY_SUPPLIER'
+          });
+          continue;
+        }
+
         // Find match in Tally Purchases
         const match = tallyPurchases.find(tp => {
           const inv = String(invoice.invNo || '').toLowerCase();
@@ -265,7 +327,16 @@ class ReconcileService {
           const narr = String(tp.narration || '').toLowerCase();
           const fn = file.toLowerCase();
 
+          const norm = s => String(s || '').toLowerCase().replace(/[\/\-_]/g, '');
+          const invNorm = norm(invoice.invNo);
+          const refNorm = norm(tp.reference);
+          const filePrefix = file.match(/^(\d{3})/);
+          const fileNum = filePrefix ? parseInt(filePrefix[1], 10) : null;
+          const tpNum = parseInt(tp.voucherNumber, 10);
+
           return (
+            (fileNum !== null && fileNum === tpNum) ||
+            (invNorm && refNorm && (invNorm === refNorm || refNorm.includes(invNorm) || invNorm.includes(refNorm))) ||
             (inv !== 'n/a' && (ref.includes(inv) || num.includes(inv) || narr.includes(inv) || inv.includes(ref))) ||
             (ref && ref !== '-' && fn.includes(ref))
           );
@@ -304,6 +375,23 @@ class ReconcileService {
     const tallySales = tallyVouchers.filter(v => (v.voucherType || '').toLowerCase() === 'sales');
 
     return purchaseItems.map(p => {
+      if (p.status === 'CANCELLED_BY_SUPPLIER') {
+        return {
+          purchaseFile: p.fileName,
+          purchaseVoucherNo: null,
+          supplierInvoiceNo: p.invNo,
+          supplierName: p.supplier,
+          purchaseAmount: p.amount,
+          shipToCustomer: p.consignee,
+          purchaseEntered: false,
+          salesIssued: false,
+          salesVoucherNo: 'N/A (CANCELLED)',
+          salesAmount: null,
+          salesDate: null,
+          status: 'CANCELLED_BY_SUPPLIER'
+        };
+      }
+
       // In SKIL Master, Purchase #N directly matches Sales #SKIL-00N (padded to 3 digits)
       const expectedSalesNo = p.tallyVoucherNo ? `SKIL-${String(p.tallyVoucherNo).padStart(3, '0')}` : null;
       let matchSale = expectedSalesNo ? tallySales.find(s => s.voucherNumber === expectedSalesNo) : null;
@@ -417,12 +505,20 @@ class ReconcileService {
         }
 
         // Verify party compatibility if partyDesc is specified
-        if (t.partyDesc && v.partyName) {
+        if (t.partyDesc) {
           const pD = t.partyDesc.toLowerCase();
-          const pV = v.partyName.toLowerCase();
-          if (pD.includes('ajanta') && !pV.includes('ajanta')) return false;
-          if (pD.includes('shree') && !pV.includes('shree')) return false;
-          if ((pD.includes('k g n') || pD.includes('kgn')) && !pV.includes('k g n') && !pV.includes('kgn')) return false;
+          const ledgerNames = (v.ledgerEntries || []).map(l => (l.ledgerName || '').toLowerCase());
+          const allPartyNames = [v.partyName ? v.partyName.toLowerCase() : '', ...ledgerNames, v.narration ? v.narration.toLowerCase() : ''].join(' ');
+
+          if (pD.includes('ajanta') && !allPartyNames.includes('ajanta')) return false;
+          if (pD.includes('xpania') && !allPartyNames.includes('xpania')) return false;
+          if (pD.includes('shree') && !allPartyNames.includes('shree')) return false;
+          if ((pD.includes('k g n') || pD.includes('kgn')) && !allPartyNames.includes('k g n') && !allPartyNames.includes('kgn')) return false;
+          if (pD.includes('brundaban') && !allPartyNames.includes('brundaban')) return false;
+          if (pD.includes('sahil') && !allPartyNames.includes('sahil')) return false;
+          if (pD.includes('delight') && !allPartyNames.includes('delight')) return false;
+          if (pD.includes('sushila') && !allPartyNames.includes('sushila')) return false;
+          if (pD.includes('mahavir') && !allPartyNames.includes('mahavir')) return false;
         }
 
         return true;
@@ -456,11 +552,14 @@ class ReconcileService {
     ]);
 
     const totalPurchases = purchases.length;
+    const cancelledPurchases = purchases.filter(p => p.status === 'CANCELLED_BY_SUPPLIER').length;
+    const activePurchases = totalPurchases - cancelledPurchases;
     const matchedPurchases = purchases.filter(p => p.isEnteredInTally).length;
-    const missingPurchases = totalPurchases - matchedPurchases;
+    const missingPurchases = activePurchases - matchedPurchases;
 
     const totalBillToShip = billToShipTo.length;
     const completedBillToShip = billToShipTo.filter(b => b.status === 'COMPLETED').length;
+    const cancelledBillToShip = billToShipTo.filter(b => b.status === 'CANCELLED_BY_SUPPLIER').length;
 
     const totalBank = bank.length;
     const matchedBank = bank.filter(b => b.isEnteredInTally).length;
@@ -471,10 +570,13 @@ class ReconcileService {
       folders: folderUpdates,
       summary: {
         totalSupplierInvoices: totalPurchases,
+        activeSupplierInvoices: activePurchases,
+        cancelledSupplierInvoices: cancelledPurchases,
         purchasesMatched: matchedPurchases,
         purchasesMissingInTally: missingPurchases,
         totalBillToShipTo: totalBillToShip,
         completedBillToShipTo: completedBillToShip,
+        cancelledBillToShipTo: cancelledBillToShip,
         totalBankTransactions: totalBank,
         matchedBankTransactions: matchedBank,
         unpostedBankEntries: unpostedBank

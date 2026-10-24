@@ -1171,7 +1171,7 @@
     "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000a1",
     "voucherNumber": "5",
     "voucherType": "Debit Note",
-    "date": "20261008",
+    "date": "20260930",
     "partyName": "Ajanta Shoes India Pvt. Ltd.",
     "amount": 39584
   },
@@ -1179,7 +1179,7 @@
     "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000a2",
     "voucherNumber": "6",
     "voucherType": "Debit Note",
-    "date": "20261008",
+    "date": "20260930",
     "partyName": "Ajanta Shoes India Pvt. Ltd.",
     "amount": 26180
   },
@@ -1187,7 +1187,7 @@
     "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000a3",
     "voucherNumber": "7",
     "voucherType": "Debit Note",
-    "date": "20261008",
+    "date": "20260930",
     "partyName": "Ajanta Shoes India Pvt. Ltd.",
     "amount": 20943
   },
@@ -1286,5 +1286,37 @@
     "date": "20261008",
     "partyName": "Union Bank Current A/c",
     "amount": 10000
+  },
+  {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000b0",
+    "voucherNumber": "58",
+    "voucherType": "Purchase",
+    "date": "20261021",
+    "partyName": "Cubix Footcare",
+    "amount": 65029
+  },
+  {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000b1",
+    "voucherNumber": "SKIL-058",
+    "voucherType": "Sales",
+    "date": "20261021",
+    "partyName": "FAMOUS FOOT WEAR",
+    "amount": 65029
+  },
+  {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000b2",
+    "voucherNumber": "14",
+    "voucherType": "Receipt",
+    "date": "20261023",
+    "partyName": "MAHAVIR SHOE HOUSE",
+    "amount": 389518
+  },
+  {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000b3",
+    "voucherNumber": "7",
+    "voucherType": "Credit Note",
+    "date": "20261023",
+    "partyName": "MAHAVIR SHOE HOUSE",
+    "amount": 19475
   }
 ]

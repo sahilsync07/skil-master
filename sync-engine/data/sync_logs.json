@@ -1,5 +1,23 @@
 [
   {
+    "id": "1792850513376",
+    "timestamp": "2026-10-24T14:01:53.376Z",
+    "type": "full",
+    "status": "success",
+    "durationMs": 5485,
+    "company": "SKIL LIFESTYLE LLP",
+    "fetched": {
+      "ledgers": 41,
+      "stockItems": 371,
+      "vouchers": 165
+    },
+    "cursors": {
+      "masterAlterId": 815,
+      "stockAlterId": 813,
+      "voucherAlterId": 288
+    }
+  },
+  {
     "id": "1792072790017",
     "timestamp": "2026-10-15T13:59:50.017Z",
     "type": "incremental",
