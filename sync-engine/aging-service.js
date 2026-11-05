@@ -128,20 +128,118 @@ class AgingService {
       // For creditor: net payable = credits - debits
       const netDue = partyType === 'debtor' ? (totalDebits - totalCredits) : (totalCredits - totalDebits);
 
-      // FIFO Bill Settlement Tracking (First In, First Out against oldest bills)
-      let paymentPool = partyType === 'debtor' ? totalCredits : totalDebits;
+      // Group bills into Sessions (invoices within 4 days of each other)
+      const sessions = [];
       bills.forEach(bill => {
-        const settled = Math.min(bill.amount, Math.max(0, paymentPool));
-        paymentPool -= settled;
-        bill.settledAmount = Math.round(settled * 100) / 100;
-        bill.unpaidAmount = Math.round((bill.amount - settled) * 100) / 100;
-        if (bill.unpaidAmount === 0) {
-          bill.status = 'PAID';
-        } else if (bill.settledAmount > 0) {
-          bill.status = 'PARTIAL';
+        const bDate = this.parseTallyDate(bill.date);
+        let sess = sessions.find(sn => {
+          const diffDays = Math.abs((bDate - sn.latestDate) / 86400000);
+          return diffDays <= 4;
+        });
+
+        if (sess) {
+          sess.bills.push(bill);
+          if (bDate > sess.latestDate) {
+            sess.latestDate = bDate;
+            sess.latestDateStr = bill.date;
+            sess.latestBillNo = bill.voucherNumber;
+          }
         } else {
-          bill.status = 'OPEN';
+          sessions.push({
+            sessionNumber: sessions.length + 1,
+            earliestDate: bDate,
+            latestDate: bDate,
+            latestDateStr: bill.date,
+            latestBillNo: bill.voucherNumber,
+            bills: [bill],
+            creditsApplied: 0,
+            payments: [],
+            creditNotes: []
+          });
         }
+      });
+
+      // Calculate session properties & 5% CD due dates (30 days from latest bill in session)
+      sessions.forEach(sess => {
+        sess.grossAmount = sess.bills.reduce((sum, b) => sum + b.amount, 0);
+        sess.taxableAmount = Math.round(sess.bills.reduce((sum, b) => sum + (b.taxableAmount || (b.amount / 1.05)), 0) * 100) / 100;
+        sess.cdAmount = Math.round(sess.taxableAmount * (partyType === 'debtor' ? 0.05 : 0.03) * 100) / 100;
+        sess.cdDueDate = new Date(sess.latestDate.getTime() + 30 * 86400000);
+        sess.cdDueDateFormatted = this.formatDateObj(sess.cdDueDate);
+        sess.daysElapsed = Math.max(0, Math.floor((asOf - sess.latestDate) / 86400000));
+        sess.daysToDueDate = Math.floor((sess.cdDueDate - asOf) / 86400000);
+        sess.cdEligible = true; // Always allow active session CD in prompt settlement
+      });
+
+      // Allocate credits (Receipts/CNs for debtors; Payments/DNs for creditors)
+      const creditVchs = pVchs.filter(v => 
+        partyType === 'debtor' ? (v.voucherType === 'Receipt' || v.voucherType === 'Credit Note') : (v.voucherType === 'Payment' || v.voucherType === 'Debit Note')
+      ).sort((a, b) => (a.date || '').localeCompare(b.date || ''));
+
+      // Check narration matches first (e.g. "SKIL-004 to SKIL-006")
+      const unallocatedCredits = [];
+      creditVchs.forEach(cr => {
+        let matched = false;
+        const nar = cr.narration || '';
+        sessions.forEach(sess => {
+          const match = sess.bills.some(b => nar.includes(b.voucherNumber) || (b.voucherNumber.startsWith('SKIL-') && nar.includes(b.voucherNumber.replace('SKIL-', ''))));
+          if (match) {
+            sess.creditsApplied += cr.amount;
+            if (cr.voucherType === 'Receipt' || cr.voucherType === 'Payment') {
+              sess.payments.push({ no: cr.voucherNumber, date: cr.date, amount: cr.amount, nar });
+            } else {
+              sess.creditNotes.push({ no: cr.voucherNumber, date: cr.date, amount: cr.amount, nar });
+            }
+            matched = true;
+          }
+        });
+        if (!matched) unallocatedCredits.push(cr);
+      });
+
+      // For unallocated credits, allocate chronologically to active sessions
+      // Exception: If a prior session already had its CD Credit Note issued, its settlement is finalized
+      // leaving any remaining balance as frozen old balance; subsequent payments apply to subsequent sessions!
+      unallocatedCredits.forEach(cr => {
+        let crRemaining = cr.amount;
+        const crDate = this.parseTallyDate(cr.date);
+
+        for (const sess of sessions) {
+          // If this session had a CD credit note issued before this credit, don't overwrite its frozen old balance
+          const hasCdFinalized = sess.creditNotes.some(cn => cn.nar?.toLowerCase().includes('cash discount') || cn.nar?.toLowerCase().includes('cd'));
+          if (hasCdFinalized && crDate && crDate > sess.latestDate) {
+            continue; // Keep old balance frozen as historical prior balance!
+          }
+
+          const sessPending = sess.grossAmount - sess.creditsApplied;
+          if (sessPending > 0) {
+            const alloc = Math.min(crRemaining, sessPending);
+            sess.creditsApplied += alloc;
+            crRemaining -= alloc;
+            if (cr.voucherType === 'Receipt' || cr.voucherType === 'Payment') {
+              sess.payments.push({ no: cr.voucherNumber, date: cr.date, amount: alloc, nar: cr.narration });
+            } else {
+              sess.creditNotes.push({ no: cr.voucherNumber, date: cr.date, amount: alloc, nar: cr.narration });
+            }
+            if (crRemaining <= 0) break;
+          }
+        }
+      });
+
+      // Distribute settled amount to bills within each session
+      sessions.forEach(sess => {
+        sess.unpaidAmount = Math.max(0, Math.round((sess.grossAmount - sess.creditsApplied) * 100) / 100);
+        sess.status = sess.unpaidAmount === 0 ? 'PAID' : (sess.creditsApplied > 0 ? 'PARTIAL' : 'OPEN');
+
+        let pool = sess.creditsApplied;
+        sess.bills.forEach(b => {
+          const settled = Math.min(b.amount, Math.max(0, pool));
+          pool -= settled;
+          b.settledAmount = Math.round(settled * 100) / 100;
+          b.unpaidAmount = Math.round((b.amount - settled) * 100) / 100;
+          b.status = b.unpaidAmount === 0 ? 'PAID' : (b.settledAmount > 0 ? 'PARTIAL' : 'OPEN');
+          b.sessionId = `sess-${sess.sessionNumber}`;
+          b.sessionDueDate = sess.cdDueDateFormatted;
+        });
       });
 
       const openBills = bills.filter(b => b.unpaidAmount > 0);
@@ -214,7 +312,25 @@ class AgingService {
         totalInvoices: bills.length,
         openBillsCount: openBills.length,
         settledBillsCount: settledBills.length,
-        bills
+        bills,
+        sessions: sessions.map(sn => ({
+          sessionNumber: sn.sessionNumber,
+          earliestDate: this.formatDate(sn.latestDateStr),
+          latestDate: this.formatDate(sn.latestDateStr),
+          latestBillNo: sn.latestBillNo,
+          billNumbers: sn.bills.map(b => b.voucherNumber),
+          billsCount: sn.bills.length,
+          totalCartons: sn.bills.reduce((sum, b) => sum + (b.cartons || 1), 0),
+          grossAmount: sn.grossAmount,
+          taxableAmount: sn.taxableAmount,
+          cdAmount: sn.cdAmount,
+          cdDueDate: sn.cdDueDateFormatted,
+          daysElapsed: sn.daysElapsed,
+          daysToDueDate: sn.daysToDueDate,
+          creditsApplied: sn.creditsApplied,
+          unpaidAmount: sn.unpaidAmount,
+          status: sn.status
+        }))
       };
     });
 
@@ -274,7 +390,8 @@ class AgingService {
     const paths = [
       path.join(__dirname, 'data', 'aging.json'),
       path.join(__dirname, 'public', 'data', 'aging.json'),
-      path.join(__dirname, '..', 'android-app', 'www', 'data', 'aging.json')
+      path.join(__dirname, '..', 'android-app', 'www', 'data', 'aging.json'),
+      path.join(__dirname, '..', 'data', 'aging.json')
     ];
     paths.forEach(p => {
       try {

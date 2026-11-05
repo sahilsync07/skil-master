@@ -2353,7 +2353,8 @@ function renderPaymentAgingView() {
       const oldestOpenBill = openBills.length > 0 ? openBills[0] : null;
       const oldestDateStr = oldestOpenBill ? oldestOpenBill.formattedDate : (bills.length > 0 ? bills[0].formattedDate : '—');
       const oldestDays = oldestOpenBill ? oldestOpenBill.daysElapsed : 0;
-      const cdStakeAmt = (p.under30 || 0) * 0.05;
+      const activeSessions = (p.sessions || []).filter(s => s.unpaidAmount > 0);
+      const cdStakeAmt = activeSessions.length > 0 ? activeSessions.reduce((sum, s) => sum + (s.cdAmount || 0), 0) : ((p.under30 || 0) * 0.05);
 
       const rowId = `party-row-${idx}`;
       const drillId = `party-drill-${idx}`;
@@ -2522,7 +2523,7 @@ window.openCustomerSettlementModal = function(partyName) {
   if (!modal) return;
 
   const parties = state.aging?.debtors?.parties || [];
-  const p = parties.find(x => x.partyName === partyName) || { partyName, bills: [], netDue: 0 };
+  const p = parties.find(x => x.partyName === partyName) || { partyName, bills: [], netDue: 0, sessions: [] };
 
   const modalPartyName = document.getElementById('settleModalPartyName');
   if (modalPartyName) modalPartyName.innerText = p.partyName;
@@ -2531,30 +2532,55 @@ window.openCustomerSettlementModal = function(partyName) {
     modalPartyMeta.innerText = `GSTIN: ${p.gstin || 'Unregistered'} • Ledger Balance: ₹${Number(p.netDue || 0).toLocaleString('en-IN')}`;
   }
 
-  // Identify open bills
+  // Identify bills and sessions
   const allBills = p.bills || [];
   const openBills = allBills.filter(b => (b.unpaidAmount || b.amount) > 0);
   const billsToTrack = openBills.length > 0 ? openBills : allBills;
+  const sessions = p.sessions || [];
 
-  // Pre-fill historical old balance if customer has prior month balance (e.g. K G N Footware August balance: 34543)
+  // Pre-fill historical old balance if customer has prior month balance (e.g. K G N Footware August balance: 6113)
   const isKgn = p.partyName.toLowerCase().includes('k g n') || p.partyName.toLowerCase().includes('kgn');
   const initialOldMonth = isKgn ? 'August' : '';
-  const initialOldAmt = isKgn ? 34543 : 0;
+  const initialOldAmt = isKgn ? 6113 : 0;
+  const initialPartPayment = isKgn ? 25000 : 0;
 
   const txtOldMonth = document.getElementById('txtOldBalanceMonth');
   const txtOldAmt = document.getElementById('txtOldBalanceAmt');
+  const txtPartPayment = document.getElementById('txtPartPaymentAmt');
   if (txtOldMonth) txtOldMonth.value = initialOldMonth;
   if (txtOldAmt) txtOldAmt.value = initialOldAmt > 0 ? initialOldAmt : '';
+  if (txtPartPayment) txtPartPayment.value = initialPartPayment > 0 ? initialPartPayment : '';
+
+  // Render session quick-select badges
+  const badgeContainer = document.getElementById('settleSessionBadges');
+  if (badgeContainer) {
+    if (sessions.length > 0) {
+      badgeContainer.innerHTML = sessions.map((sess, sIdx) => {
+        return `
+          <button type="button" class="btn-session-filter" onclick="selectSettlementSession(${sess.sessionNumber})" style="background: #F1F5F9; border: 1px solid #CBD5E1; color: #0F172A; padding: 4px 9px; border-radius: 6px; font-size: 11px; font-weight: 700; cursor: pointer;">
+            Session ${sess.sessionNumber} (${sess.latestDate}) &bull; ₹${Number(sess.unpaidAmount > 0 ? sess.unpaidAmount : sess.grossAmount).toLocaleString('en-IN')}
+          </button>
+        `;
+      }).join('') + `
+        <button type="button" class="btn-session-filter" onclick="selectSettlementSession('all')" style="background: #0F172A; border: 1px solid #0F172A; color: #FFFFFF; padding: 4px 9px; border-radius: 6px; font-size: 11px; font-weight: 700; cursor: pointer;">
+          All Bills
+        </button>
+      `;
+    } else {
+      badgeContainer.innerHTML = '';
+    }
+  }
 
   window.currentSettlement = {
     partyName: p.partyName,
     party: p,
+    sessions,
     bills: billsToTrack.map((b, i) => {
-      // If KGN, the oldest bill #SKIL-027 had an old August balance (34,543), while the remaining October bills are prompt settlement
-      const isOldAugust = isKgn && b.voucherNumber === 'SKIL-027';
+      // For KGN, default to checking September bills (SKIL-027, 028, 029) or prompt session
+      const isSepBill = isKgn ? (b.voucherNumber === 'SKIL-027' || b.voucherNumber === 'SKIL-028' || b.voucherNumber === 'SKIL-029') : true;
       return {
         ...b,
-        checked: !isOldAugust, // Prompt bills checked by default
+        checked: isSepBill,
         gross: b.unpaidAmount > 0 ? b.unpaidAmount : b.amount,
         taxable: b.taxableAmount || Math.round((b.amount / 1.05) * 100) / 100,
         cartons: b.cartons || 1
@@ -2569,6 +2595,21 @@ window.openCustomerSettlementModal = function(partyName) {
   if (window.lucide) lucide.createIcons();
 };
 
+window.selectSettlementSession = function(sessNum) {
+  if (!window.currentSettlement?.bills) return;
+  if (sessNum === 'all') {
+    window.currentSettlement.bills.forEach(b => b.checked = true);
+  } else {
+    const targetSess = (window.currentSettlement.sessions || []).find(s => s.sessionNumber === sessNum);
+    const billNums = targetSess ? targetSess.billNumbers : [];
+    window.currentSettlement.bills.forEach(b => {
+      b.checked = billNums.includes(b.voucherNumber);
+    });
+  }
+  renderSettlementChecklist();
+  recalculateSettlement();
+};
+
 function renderSettlementChecklist() {
   const container = document.getElementById('settleBillsChecklist');
   if (!container || !window.currentSettlement) return;
@@ -2580,7 +2621,6 @@ function renderSettlementChecklist() {
   }
 
   container.innerHTML = bills.map((b, idx) => {
-    const isEligible = (b.daysElapsed || 0) <= 30;
     return `
       <div class="settle-bill-row ${b.checked ? 'checked' : ''}" onclick="toggleSettleBill(${idx})" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; margin-bottom: 4px; cursor: pointer; border: 1px solid ${b.checked ? '#86EFAC' : '#E2E8F0'}; background: ${b.checked ? '#F0FDF4' : '#FFFFFF'};">
         <div style="display: flex; align-items: center; gap: 10px;">
@@ -2596,8 +2636,8 @@ function renderSettlementChecklist() {
         </div>
         <div style="text-align: right;">
           <div style="font-weight: 800; font-size: 13.5px; color: #0F172A;">₹${Number(b.gross).toLocaleString('en-IN')}</div>
-          <span class="badge-pill ${isEligible ? 'badge-success' : 'badge-warning'}" style="font-size: 9.5px; padding: 1px 5px;">
-            ${isEligible ? '5% CD Eligible' : `${b.daysElapsed}d overdue`}
+          <span class="badge-pill badge-success" style="font-size: 9.5px; padding: 1px 5px;">
+            5% CD Applicable
           </span>
         </div>
       </div>
@@ -2620,23 +2660,41 @@ function recalculateSettlement() {
   const applyCd = document.getElementById('chkApply5Cd')?.checked ?? true;
   const oldMonth = document.getElementById('txtOldBalanceMonth')?.value.trim() || '';
   const oldAmt = parseFloat(document.getElementById('txtOldBalanceAmt')?.value) || 0;
+  const partPaymentAmt = parseFloat(document.getElementById('txtPartPaymentAmt')?.value) || 0;
 
   let grossSubtotal = 0;
   let taxableSubtotal = 0;
   let totalCartons = 0;
+  let latestBillTime = 0;
+  let latestBillDateStr = '';
 
   selectedBills.forEach(b => {
     grossSubtotal += b.gross;
     totalCartons += (b.cartons || 1);
-    // 5% CD strictly applies to bills <= 30 days
-    if (applyCd && (b.daysElapsed || 0) <= 30) {
+    if (applyCd) {
       taxableSubtotal += b.taxable;
+    }
+    const bDate = b.date ? (b.date.length === 8 ? new Date(parseInt(b.date.slice(0,4)), parseInt(b.date.slice(4,6))-1, parseInt(b.date.slice(6,8))).getTime() : new Date(b.date).getTime()) : 0;
+    if (bDate > latestBillTime) {
+      latestBillTime = bDate;
+      latestBillDateStr = b.formattedDate || b.date;
     }
   });
 
+  // 30 days from latest bill in selected session
+  let cdDueDateStr = '';
+  if (latestBillTime > 0) {
+    const dDue = new Date(latestBillTime + 30 * 86400000);
+    const day = String(dDue.getDate()).padStart(2, '0');
+    const month = String(dDue.getMonth() + 1).padStart(2, '0');
+    const year = dDue.getFullYear();
+    cdDueDateStr = `${day}-${month}-${year}`;
+  }
+
   const cdDeduction = applyCd ? Math.round(taxableSubtotal * 0.05 * 100) / 100 : 0;
   const netBills = Math.round((grossSubtotal - cdDeduction) * 100) / 100;
-  const finalPayable = Math.round((netBills + oldAmt) * 100) / 100;
+  const netBillsAfterPayment = Math.max(0, Math.round((netBills - partPaymentAmt) * 100) / 100);
+  const finalPayable = Math.round((netBillsAfterPayment + oldAmt) * 100) / 100;
 
   // Update UI Elements
   const elCount = document.getElementById('settleSelectedCount');
@@ -2649,6 +2707,17 @@ function recalculateSettlement() {
   if (elCd) elCd.innerText = `-₹${Number(cdDeduction).toLocaleString('en-IN')}`;
   const elNet = document.getElementById('settleNetBills');
   if (elNet) elNet.innerText = formatINR(netBills);
+
+  const mathPartPaymentRow = document.getElementById('mathPartPaymentRow');
+  const mathPartPaymentAmt = document.getElementById('mathPartPaymentAmt');
+  if (mathPartPaymentRow) {
+    if (partPaymentAmt > 0) {
+      mathPartPaymentRow.style.display = 'flex';
+      if (mathPartPaymentAmt) mathPartPaymentAmt.innerText = `-₹${Number(partPaymentAmt).toLocaleString('en-IN')}`;
+    } else {
+      mathPartPaymentRow.style.display = 'none';
+    }
+  }
 
   const mathOldBalRow = document.getElementById('mathOldBalRow');
   const mathOldBalMonth = document.getElementById('mathOldBalMonth');
@@ -2668,7 +2737,12 @@ function recalculateSettlement() {
 
   // Generate SKIL Master Canonical WhatsApp Text
   let waText = `Dear ${window.currentSettlement.partyName},\n\n`;
-  waText += `Please find the settlement details for your pending bills:\n\n`;
+  waText += `Please find the settlement details for your pending bills:\n`;
+  if (cdDueDateStr) {
+    waText += `*5% CD Due Date: ${cdDueDateStr}*\n\n`;
+  } else {
+    waText += `\n`;
+  }
   waText += `📦 *${selectedBills.length} Invoices (${totalCartons} CTN):*\n`;
 
   selectedBills.forEach(b => {
@@ -2679,6 +2753,11 @@ function recalculateSettlement() {
   waText += `*Total of ${selectedBills.length} Bills: ₹${Number(grossSubtotal).toLocaleString('en-IN')}*\n`;
   waText += `*Less: 5% CD on Taxable (₹${Number(taxableSubtotal).toLocaleString('en-IN')}): -₹${Number(cdDeduction).toLocaleString('en-IN')}*\n`;
   waText += `👉 *Net for ${selectedBills.length} Bills: ₹${Number(netBills).toLocaleString('en-IN')}*\n\n`;
+
+  if (partPaymentAmt > 0) {
+    waText += `➖ *Less: Payment Received: -₹${Number(partPaymentAmt).toLocaleString('en-IN')}*\n`;
+    waText += `👉 *Net Remaining for Bills: ₹${Number(netBillsAfterPayment).toLocaleString('en-IN')}*\n\n`;
+  }
 
   if (oldAmt > 0) {
     waText += `➕ *Add: Old ${oldMonth || 'Prior'} Balance: +₹${Number(oldAmt).toLocaleString('en-IN')}* (Net)\n`;
@@ -2704,9 +2783,12 @@ function recalculateSettlement() {
     totalCartons,
     cdDeduction,
     netBills,
+    partPaymentAmt,
+    netBillsAfterPayment,
     oldMonth,
     oldAmt,
     finalPayable,
+    cdDueDateStr,
     waText
   };
 }
@@ -2729,6 +2811,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const txtOldA = document.getElementById('txtOldBalanceAmt');
   if (txtOldA) txtOldA.addEventListener('input', () => recalculateSettlement());
+
+  const txtPartPay = document.getElementById('txtPartPaymentAmt');
+  if (txtPartPay) txtPartPay.addEventListener('input', () => recalculateSettlement());
 
   const btnToggleAll = document.getElementById('btnToggleAllSettleBills');
   if (btnToggleAll) {

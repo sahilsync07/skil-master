@@ -1,15 +1,15 @@
 {
-  "asOfDate": "2026-11-05T00:00:00.000Z",
+  "asOfDate": "2026-11-05T14:27:36.534Z",
   "debtors": {
     "summary": {
       "totalOutstanding": 2499843,
       "totalAdvance": 366255,
-      "under30": 1527690,
-      "d31to45": 698877,
-      "d46to60": 273276,
-      "over60": 0,
-      "d30to60": 972153,
-      "d60to90": 0,
+      "under30": 1332613,
+      "d31to45": 614768,
+      "d46to60": 240532,
+      "over60": 685620,
+      "d30to60": 855300,
+      "d60to90": 685620,
       "over90": 0,
       "partiesCount": 15,
       "openPartiesCount": 12,
@@ -54,7 +54,9 @@
             "cdAmount": 14379.23,
             "settledAmount": 0,
             "unpaidAmount": 301964,
-            "status": "OPEN"
+            "status": "OPEN",
+            "sessionId": "sess-1",
+            "sessionDueDate": "29-10-2026"
           },
           {
             "voucherType": "Sales",
@@ -72,7 +74,9 @@
             "cdAmount": 2412.15,
             "settledAmount": 0,
             "unpaidAmount": 50655,
-            "status": "OPEN"
+            "status": "OPEN",
+            "sessionId": "sess-1",
+            "sessionDueDate": "29-10-2026"
           },
           {
             "voucherType": "Sales",
@@ -90,7 +94,9 @@
             "cdAmount": 1890.33,
             "settledAmount": 0,
             "unpaidAmount": 39697,
-            "status": "OPEN"
+            "status": "OPEN",
+            "sessionId": "sess-1",
+            "sessionDueDate": "29-10-2026"
           },
           {
             "voucherType": "Sales",
@@ -108,7 +114,9 @@
             "cdAmount": 2085.75,
             "settledAmount": 0,
             "unpaidAmount": 43801,
-            "status": "OPEN"
+            "status": "OPEN",
+            "sessionId": "sess-1",
+            "sessionDueDate": "29-10-2026"
           },
           {
             "voucherType": "Sales",
@@ -125,6 +133,53 @@
             "cdEligible": true,
             "cdAmount": 6919.05,
             "settledAmount": 0,
+            "unpaidAmount": 145300,
+            "status": "OPEN",
+            "sessionId": "sess-2",
+            "sessionDueDate": "30-11-2026"
+          }
+        ],
+        "sessions": [
+          {
+            "sessionNumber": 1,
+            "earliestDate": "29-09-2026",
+            "latestDate": "29-09-2026",
+            "latestBillNo": "SKIL-043",
+            "billNumbers": [
+              "SKIL-040",
+              "SKIL-042",
+              "SKIL-043",
+              "SKIL-047"
+            ],
+            "billsCount": 4,
+            "totalCartons": 94,
+            "grossAmount": 436117,
+            "taxableAmount": 415349.01,
+            "cdAmount": 20767.45,
+            "cdDueDate": "29-10-2026",
+            "daysElapsed": 37,
+            "daysToDueDate": -8,
+            "creditsApplied": 0,
+            "unpaidAmount": 436117,
+            "status": "OPEN"
+          },
+          {
+            "sessionNumber": 2,
+            "earliestDate": "31-10-2026",
+            "latestDate": "31-10-2026",
+            "latestBillNo": "SKIL-072",
+            "billNumbers": [
+              "SKIL-072"
+            ],
+            "billsCount": 1,
+            "totalCartons": 33,
+            "grossAmount": 145300,
+            "taxableAmount": 138381,
+            "cdAmount": 6919.05,
+            "cdDueDate": "30-11-2026",
+            "daysElapsed": 5,
+            "daysToDueDate": 24,
+            "creditsApplied": 0,
             "unpaidAmount": 145300,
             "status": "OPEN"
           }
@@ -168,7 +223,9 @@
             "cdAmount": 3908.54,
             "settledAmount": 0,
             "unpaidAmount": 82079,
-            "status": "OPEN"
+            "status": "OPEN",
+            "sessionId": "sess-1",
+            "sessionDueDate": "29-11-2026"
           },
           {
             "voucherType": "Sales",
@@ -186,7 +243,9 @@
             "cdAmount": 3586.44,
             "settledAmount": 0,
             "unpaidAmount": 75315,
-            "status": "OPEN"
+            "status": "OPEN",
+            "sessionId": "sess-1",
+            "sessionDueDate": "29-11-2026"
           },
           {
             "voucherType": "Sales",
@@ -204,6 +263,32 @@
             "cdAmount": 15033.15,
             "settledAmount": 0,
             "unpaidAmount": 315696,
+            "status": "OPEN",
+            "sessionId": "sess-1",
+            "sessionDueDate": "29-11-2026"
+          }
+        ],
+        "sessions": [
+          {
+            "sessionNumber": 1,
+            "earliestDate": "30-10-2026",
+            "latestDate": "30-10-2026",
+            "latestBillNo": "SKIL-067",
+            "billNumbers": [
+              "SKIL-062",
+              "SKIL-063",
+              "SKIL-067"
+            ],
+            "billsCount": 3,
+            "totalCartons": 100,
+            "grossAmount": 473090,
+            "taxableAmount": 450562.57,
+            "cdAmount": 22528.13,
+            "cdDueDate": "29-11-2026",
+            "daysElapsed": 6,
+            "daysToDueDate": 23,
+            "creditsApplied": 0,
+            "unpaidAmount": 473090,
             "status": "OPEN"
           }
         ]
@@ -246,7 +331,9 @@
             "cdAmount": 1438.76,
             "settledAmount": 30214,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-1",
+            "sessionDueDate": "27-11-2026"
           },
           {
             "voucherType": "Sales",
@@ -264,7 +351,9 @@
             "cdAmount": 583.93,
             "settledAmount": 12262,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-1",
+            "sessionDueDate": "27-11-2026"
           },
           {
             "voucherType": "Sales",
@@ -282,6 +371,32 @@
             "cdAmount": 24727.38,
             "settledAmount": 157524,
             "unpaidAmount": 361751,
+            "status": "PARTIAL",
+            "sessionId": "sess-1",
+            "sessionDueDate": "27-11-2026"
+          }
+        ],
+        "sessions": [
+          {
+            "sessionNumber": 1,
+            "earliestDate": "28-10-2026",
+            "latestDate": "28-10-2026",
+            "latestBillNo": "SKIL-064",
+            "billNumbers": [
+              "SKIL-064",
+              "SKIL-065",
+              "SKIL-066"
+            ],
+            "billsCount": 3,
+            "totalCartons": 116,
+            "grossAmount": 561751,
+            "taxableAmount": 535001.17,
+            "cdAmount": 26750.06,
+            "cdDueDate": "27-11-2026",
+            "daysElapsed": 8,
+            "daysToDueDate": 21,
+            "creditsApplied": 200000,
+            "unpaidAmount": 361751,
             "status": "PARTIAL"
           }
         ]
@@ -295,18 +410,18 @@
         "netDue": 245846,
         "isAdvance": false,
         "advanceAmount": 0,
-        "under30": 135106,
-        "d31to45": 84109,
-        "d46to60": 26631,
-        "over60": 0,
-        "d30to60": 110740,
-        "d60to90": 0,
+        "under30": 0,
+        "d31to45": 0,
+        "d46to60": 0,
+        "over60": 530779,
+        "d30to60": 0,
+        "d60to90": 530779,
         "over90": 0,
-        "oldestBillDays": 50,
-        "oldestBillDate": "16-09-2026",
+        "oldestBillDays": 84,
+        "oldestBillDate": "13-08-2026",
         "totalInvoices": 25,
-        "openBillsCount": 14,
-        "settledBillsCount": 11,
+        "openBillsCount": 10,
+        "settledBillsCount": 15,
         "bills": [
           {
             "voucherType": "Sales",
@@ -322,9 +437,11 @@
             "formattedDueDate": "12-09-2026",
             "cdEligible": false,
             "cdAmount": 3364.76,
-            "settledAmount": 70660,
-            "unpaidAmount": 0,
-            "status": "PAID"
+            "settledAmount": 26539,
+            "unpaidAmount": 44121,
+            "status": "PARTIAL",
+            "sessionId": "sess-1",
+            "sessionDueDate": "20-09-2026"
           },
           {
             "voucherType": "Sales",
@@ -340,9 +457,11 @@
             "formattedDueDate": "12-09-2026",
             "cdEligible": false,
             "cdAmount": 1311.09,
-            "settledAmount": 27533,
-            "unpaidAmount": 0,
-            "status": "PAID"
+            "settledAmount": 0,
+            "unpaidAmount": 27533,
+            "status": "OPEN",
+            "sessionId": "sess-1",
+            "sessionDueDate": "20-09-2026"
           },
           {
             "voucherType": "Sales",
@@ -358,9 +477,11 @@
             "formattedDueDate": "16-09-2026",
             "cdEligible": false,
             "cdAmount": 7428.33,
-            "settledAmount": 155995,
-            "unpaidAmount": 0,
-            "status": "PAID"
+            "settledAmount": 0,
+            "unpaidAmount": 155995,
+            "status": "OPEN",
+            "sessionId": "sess-1",
+            "sessionDueDate": "20-09-2026"
           },
           {
             "voucherType": "Sales",
@@ -376,9 +497,11 @@
             "formattedDueDate": "17-09-2026",
             "cdEligible": false,
             "cdAmount": 3296.76,
-            "settledAmount": 69232,
-            "unpaidAmount": 0,
-            "status": "PAID"
+            "settledAmount": 0,
+            "unpaidAmount": 69232,
+            "status": "OPEN",
+            "sessionId": "sess-1",
+            "sessionDueDate": "20-09-2026"
           },
           {
             "voucherType": "Sales",
@@ -394,9 +517,11 @@
             "formattedDueDate": "18-09-2026",
             "cdEligible": false,
             "cdAmount": 1611.44,
-            "settledAmount": 33840,
-            "unpaidAmount": 0,
-            "status": "PAID"
+            "settledAmount": 0,
+            "unpaidAmount": 33840,
+            "status": "OPEN",
+            "sessionId": "sess-1",
+            "sessionDueDate": "20-09-2026"
           },
           {
             "voucherType": "Sales",
@@ -412,9 +537,11 @@
             "formattedDueDate": "18-09-2026",
             "cdEligible": false,
             "cdAmount": 2557.87,
-            "settledAmount": 53715,
-            "unpaidAmount": 0,
-            "status": "PAID"
+            "settledAmount": 0,
+            "unpaidAmount": 53715,
+            "status": "OPEN",
+            "sessionId": "sess-1",
+            "sessionDueDate": "20-09-2026"
           },
           {
             "voucherType": "Sales",
@@ -430,9 +557,11 @@
             "formattedDueDate": "18-09-2026",
             "cdEligible": false,
             "cdAmount": 1056.8,
-            "settledAmount": 22193,
-            "unpaidAmount": 0,
-            "status": "PAID"
+            "settledAmount": 0,
+            "unpaidAmount": 22193,
+            "status": "OPEN",
+            "sessionId": "sess-1",
+            "sessionDueDate": "20-09-2026"
           },
           {
             "voucherType": "Sales",
@@ -448,9 +577,11 @@
             "formattedDueDate": "19-09-2026",
             "cdEligible": false,
             "cdAmount": 701.78,
-            "settledAmount": 14737,
-            "unpaidAmount": 0,
-            "status": "PAID"
+            "settledAmount": 0,
+            "unpaidAmount": 14737,
+            "status": "OPEN",
+            "sessionId": "sess-1",
+            "sessionDueDate": "20-09-2026"
           },
           {
             "voucherType": "Sales",
@@ -466,9 +597,11 @@
             "formattedDueDate": "20-09-2026",
             "cdEligible": false,
             "cdAmount": 3534.09,
-            "settledAmount": 74216,
-            "unpaidAmount": 0,
-            "status": "PAID"
+            "settledAmount": 0,
+            "unpaidAmount": 74216,
+            "status": "OPEN",
+            "sessionId": "sess-1",
+            "sessionDueDate": "20-09-2026"
           },
           {
             "voucherType": "Sales",
@@ -484,9 +617,11 @@
             "formattedDueDate": "20-09-2026",
             "cdEligible": false,
             "cdAmount": 1676.05,
-            "settledAmount": 35197,
-            "unpaidAmount": 0,
-            "status": "PAID"
+            "settledAmount": 0,
+            "unpaidAmount": 35197,
+            "status": "OPEN",
+            "sessionId": "sess-1",
+            "sessionDueDate": "20-09-2026"
           },
           {
             "voucherType": "Sales",
@@ -504,7 +639,9 @@
             "cdAmount": 1017.86,
             "settledAmount": 21375,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-2",
+            "sessionDueDate": "16-10-2026"
           },
           {
             "voucherType": "Sales",
@@ -520,9 +657,11 @@
             "formattedDueDate": "16-10-2026",
             "cdEligible": false,
             "cdAmount": 596.43,
-            "settledAmount": 4344,
-            "unpaidAmount": 8181,
-            "status": "PARTIAL"
+            "settledAmount": 12525,
+            "unpaidAmount": 0,
+            "status": "PAID",
+            "sessionId": "sess-2",
+            "sessionDueDate": "16-10-2026"
           },
           {
             "voucherType": "Sales",
@@ -538,9 +677,11 @@
             "formattedDueDate": "16-10-2026",
             "cdEligible": false,
             "cdAmount": 593.76,
-            "settledAmount": 0,
-            "unpaidAmount": 12469,
-            "status": "OPEN"
+            "settledAmount": 12469,
+            "unpaidAmount": 0,
+            "status": "PAID",
+            "sessionId": "sess-2",
+            "sessionDueDate": "16-10-2026"
           },
           {
             "voucherType": "Sales",
@@ -556,9 +697,11 @@
             "formattedDueDate": "16-10-2026",
             "cdEligible": false,
             "cdAmount": 284.82,
-            "settledAmount": 0,
-            "unpaidAmount": 5981,
-            "status": "OPEN"
+            "settledAmount": 5981,
+            "unpaidAmount": 0,
+            "status": "PAID",
+            "sessionId": "sess-2",
+            "sessionDueDate": "16-10-2026"
           },
           {
             "voucherType": "Sales",
@@ -574,9 +717,11 @@
             "formattedDueDate": "22-10-2026",
             "cdEligible": false,
             "cdAmount": 619.29,
-            "settledAmount": 0,
-            "unpaidAmount": 13005,
-            "status": "OPEN"
+            "settledAmount": 13005,
+            "unpaidAmount": 0,
+            "status": "PAID",
+            "sessionId": "sess-3",
+            "sessionDueDate": "22-10-2026"
           },
           {
             "voucherType": "Sales",
@@ -592,9 +737,11 @@
             "formattedDueDate": "22-10-2026",
             "cdEligible": false,
             "cdAmount": 1139.29,
-            "settledAmount": 0,
-            "unpaidAmount": 23925,
-            "status": "OPEN"
+            "settledAmount": 23925,
+            "unpaidAmount": 0,
+            "status": "PAID",
+            "sessionId": "sess-3",
+            "sessionDueDate": "22-10-2026"
           },
           {
             "voucherType": "Sales",
@@ -610,9 +757,11 @@
             "formattedDueDate": "30-10-2026",
             "cdEligible": false,
             "cdAmount": 420.71,
-            "settledAmount": 0,
-            "unpaidAmount": 8835,
-            "status": "OPEN"
+            "settledAmount": 8835,
+            "unpaidAmount": 0,
+            "status": "PAID",
+            "sessionId": "sess-4",
+            "sessionDueDate": "30-10-2026"
           },
           {
             "voucherType": "Sales",
@@ -628,9 +777,11 @@
             "formattedDueDate": "30-10-2026",
             "cdEligible": false,
             "cdAmount": 743.75,
-            "settledAmount": 0,
-            "unpaidAmount": 15619,
-            "status": "OPEN"
+            "settledAmount": 15619,
+            "unpaidAmount": 0,
+            "status": "PAID",
+            "sessionId": "sess-4",
+            "sessionDueDate": "30-10-2026"
           },
           {
             "voucherType": "Sales",
@@ -646,9 +797,11 @@
             "formattedDueDate": "30-10-2026",
             "cdEligible": false,
             "cdAmount": 1082.16,
-            "settledAmount": 0,
-            "unpaidAmount": 22725,
-            "status": "OPEN"
+            "settledAmount": 22725,
+            "unpaidAmount": 0,
+            "status": "PAID",
+            "sessionId": "sess-4",
+            "sessionDueDate": "30-10-2026"
           },
           {
             "voucherType": "Sales",
@@ -664,9 +817,11 @@
             "formattedDueDate": "30-11-2026",
             "cdEligible": true,
             "cdAmount": 227.86,
-            "settledAmount": 0,
-            "unpaidAmount": 4785,
-            "status": "OPEN"
+            "settledAmount": 4785,
+            "unpaidAmount": 0,
+            "status": "PAID",
+            "sessionId": "sess-5",
+            "sessionDueDate": "30-11-2026"
           },
           {
             "voucherType": "Sales",
@@ -682,9 +837,11 @@
             "formattedDueDate": "30-11-2026",
             "cdEligible": true,
             "cdAmount": 1740.75,
-            "settledAmount": 0,
-            "unpaidAmount": 36556,
-            "status": "OPEN"
+            "settledAmount": 36556,
+            "unpaidAmount": 0,
+            "status": "PAID",
+            "sessionId": "sess-5",
+            "sessionDueDate": "30-11-2026"
           },
           {
             "voucherType": "Sales",
@@ -700,9 +857,11 @@
             "formattedDueDate": "30-11-2026",
             "cdEligible": true,
             "cdAmount": 635.01,
-            "settledAmount": 0,
-            "unpaidAmount": 13335,
-            "status": "OPEN"
+            "settledAmount": 13335,
+            "unpaidAmount": 0,
+            "status": "PAID",
+            "sessionId": "sess-5",
+            "sessionDueDate": "30-11-2026"
           },
           {
             "voucherType": "Sales",
@@ -718,9 +877,11 @@
             "formattedDueDate": "30-11-2026",
             "cdEligible": true,
             "cdAmount": 1844.09,
-            "settledAmount": 0,
-            "unpaidAmount": 38726,
-            "status": "OPEN"
+            "settledAmount": 38726,
+            "unpaidAmount": 0,
+            "status": "PAID",
+            "sessionId": "sess-5",
+            "sessionDueDate": "30-11-2026"
           },
           {
             "voucherType": "Sales",
@@ -736,9 +897,11 @@
             "formattedDueDate": "30-11-2026",
             "cdEligible": true,
             "cdAmount": 911.43,
-            "settledAmount": 0,
-            "unpaidAmount": 19140,
-            "status": "OPEN"
+            "settledAmount": 19140,
+            "unpaidAmount": 0,
+            "status": "PAID",
+            "sessionId": "sess-5",
+            "sessionDueDate": "30-11-2026"
           },
           {
             "voucherType": "Sales",
@@ -754,9 +917,133 @@
             "formattedDueDate": "30-11-2026",
             "cdEligible": true,
             "cdAmount": 1074.47,
-            "settledAmount": 0,
-            "unpaidAmount": 22564,
-            "status": "OPEN"
+            "settledAmount": 22564,
+            "unpaidAmount": 0,
+            "status": "PAID",
+            "sessionId": "sess-5",
+            "sessionDueDate": "30-11-2026"
+          }
+        ],
+        "sessions": [
+          {
+            "sessionNumber": 1,
+            "earliestDate": "21-08-2026",
+            "latestDate": "21-08-2026",
+            "latestBillNo": "SKIL-019",
+            "billNumbers": [
+              "SKIL-011",
+              "SKIL-012",
+              "SKIL-013",
+              "SKIL-014",
+              "SKIL-017",
+              "SKIL-015",
+              "SKIL-016",
+              "SKIL-018",
+              "SKIL-019",
+              "SKIL-020"
+            ],
+            "billsCount": 10,
+            "totalCartons": 108,
+            "grossAmount": 557318,
+            "taxableAmount": 530779.33,
+            "cdAmount": 26538.97,
+            "cdDueDate": "20-09-2026",
+            "daysElapsed": 76,
+            "daysToDueDate": -47,
+            "creditsApplied": 26539,
+            "unpaidAmount": 530779,
+            "status": "PARTIAL"
+          },
+          {
+            "sessionNumber": 2,
+            "earliestDate": "16-09-2026",
+            "latestDate": "16-09-2026",
+            "latestBillNo": "SKIL-031",
+            "billNumbers": [
+              "SKIL-031",
+              "SKIL-032",
+              "SKIL-033",
+              "SKIL-034"
+            ],
+            "billsCount": 4,
+            "totalCartons": 9,
+            "grossAmount": 52350,
+            "taxableAmount": 49857.37,
+            "cdAmount": 2492.87,
+            "cdDueDate": "16-10-2026",
+            "daysElapsed": 50,
+            "daysToDueDate": -21,
+            "creditsApplied": 52350,
+            "unpaidAmount": 0,
+            "status": "PAID"
+          },
+          {
+            "sessionNumber": 3,
+            "earliestDate": "22-09-2026",
+            "latestDate": "22-09-2026",
+            "latestBillNo": "SKIL-036",
+            "billNumbers": [
+              "SKIL-036",
+              "SKIL-037"
+            ],
+            "billsCount": 2,
+            "totalCartons": 6,
+            "grossAmount": 36930,
+            "taxableAmount": 35171.54,
+            "cdAmount": 1758.58,
+            "cdDueDate": "22-10-2026",
+            "daysElapsed": 44,
+            "daysToDueDate": -15,
+            "creditsApplied": 36930,
+            "unpaidAmount": 0,
+            "status": "PAID"
+          },
+          {
+            "sessionNumber": 4,
+            "earliestDate": "30-09-2026",
+            "latestDate": "30-09-2026",
+            "latestBillNo": "SKIL-049",
+            "billNumbers": [
+              "SKIL-049",
+              "SKIL-051",
+              "SKIL-053"
+            ],
+            "billsCount": 3,
+            "totalCartons": 9,
+            "grossAmount": 47179,
+            "taxableAmount": 44932.32,
+            "cdAmount": 2246.62,
+            "cdDueDate": "30-10-2026",
+            "daysElapsed": 36,
+            "daysToDueDate": -7,
+            "creditsApplied": 47179,
+            "unpaidAmount": 0,
+            "status": "PAID"
+          },
+          {
+            "sessionNumber": 5,
+            "earliestDate": "31-10-2026",
+            "latestDate": "31-10-2026",
+            "latestBillNo": "SKIL-057",
+            "billNumbers": [
+              "SKIL-057",
+              "SKIL-070",
+              "SKIL-073",
+              "SKIL-074",
+              "SKIL-075",
+              "SKIL-076"
+            ],
+            "billsCount": 6,
+            "totalCartons": 27,
+            "grossAmount": 135106,
+            "taxableAmount": 128672.07,
+            "cdAmount": 6433.6,
+            "cdDueDate": "30-11-2026",
+            "daysElapsed": 5,
+            "daysToDueDate": 24,
+            "creditsApplied": 135106,
+            "unpaidAmount": 0,
+            "status": "PAID"
           }
         ]
       },
@@ -771,16 +1058,16 @@
         "advanceAmount": 0,
         "under30": 91389,
         "d31to45": 0,
-        "d46to60": 125743,
-        "over60": 0,
-        "d30to60": 125743,
-        "d60to90": 0,
+        "d46to60": 119630,
+        "over60": 6113,
+        "d30to60": 119630,
+        "d60to90": 6113,
         "over90": 0,
-        "oldestBillDays": 55,
-        "oldestBillDate": "11-09-2026",
+        "oldestBillDays": 85,
+        "oldestBillDate": "12-08-2026",
         "totalInvoices": 8,
-        "openBillsCount": 5,
-        "settledBillsCount": 3,
+        "openBillsCount": 7,
+        "settledBillsCount": 1,
         "bills": [
           {
             "voucherType": "Sales",
@@ -798,7 +1085,9 @@
             "cdAmount": 2496.77,
             "settledAmount": 52432,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-1",
+            "sessionDueDate": "11-09-2026"
           },
           {
             "voucherType": "Sales",
@@ -814,9 +1103,11 @@
             "formattedDueDate": "11-09-2026",
             "cdEligible": false,
             "cdAmount": 2656.93,
-            "settledAmount": 55796,
-            "unpaidAmount": 0,
-            "status": "PAID"
+            "settledAmount": 55289,
+            "unpaidAmount": 507,
+            "status": "PARTIAL",
+            "sessionId": "sess-1",
+            "sessionDueDate": "11-09-2026"
           },
           {
             "voucherType": "Sales",
@@ -832,9 +1123,11 @@
             "formattedDueDate": "11-09-2026",
             "cdEligible": false,
             "cdAmount": 266.96,
-            "settledAmount": 5606,
-            "unpaidAmount": 0,
-            "status": "PAID"
+            "settledAmount": 0,
+            "unpaidAmount": 5606,
+            "status": "OPEN",
+            "sessionId": "sess-1",
+            "sessionDueDate": "11-09-2026"
           },
           {
             "voucherType": "Sales",
@@ -850,9 +1143,11 @@
             "formattedDueDate": "11-10-2026",
             "cdEligible": false,
             "cdAmount": 2544.3,
-            "settledAmount": 18887,
-            "unpaidAmount": 34543,
-            "status": "PARTIAL"
+            "settledAmount": 25000,
+            "unpaidAmount": 28430,
+            "status": "PARTIAL",
+            "sessionId": "sess-2",
+            "sessionDueDate": "11-10-2026"
           },
           {
             "voucherType": "Sales",
@@ -870,7 +1165,9 @@
             "cdAmount": 2716.98,
             "settledAmount": 0,
             "unpaidAmount": 57056,
-            "status": "OPEN"
+            "status": "OPEN",
+            "sessionId": "sess-2",
+            "sessionDueDate": "11-10-2026"
           },
           {
             "voucherType": "Sales",
@@ -888,7 +1185,9 @@
             "cdAmount": 1625.89,
             "settledAmount": 0,
             "unpaidAmount": 34144,
-            "status": "OPEN"
+            "status": "OPEN",
+            "sessionId": "sess-2",
+            "sessionDueDate": "11-10-2026"
           },
           {
             "voucherType": "Sales",
@@ -906,7 +1205,9 @@
             "cdAmount": 3862.58,
             "settledAmount": 0,
             "unpaidAmount": 81114,
-            "status": "OPEN"
+            "status": "OPEN",
+            "sessionId": "sess-3",
+            "sessionDueDate": "30-11-2026"
           },
           {
             "voucherType": "Sales",
@@ -924,6 +1225,75 @@
             "cdAmount": 489.3,
             "settledAmount": 0,
             "unpaidAmount": 10275,
+            "status": "OPEN",
+            "sessionId": "sess-3",
+            "sessionDueDate": "30-11-2026"
+          }
+        ],
+        "sessions": [
+          {
+            "sessionNumber": 1,
+            "earliestDate": "12-08-2026",
+            "latestDate": "12-08-2026",
+            "latestBillNo": "SKIL-004",
+            "billNumbers": [
+              "SKIL-004",
+              "SKIL-005",
+              "SKIL-006"
+            ],
+            "billsCount": 3,
+            "totalCartons": 22,
+            "grossAmount": 113834,
+            "taxableAmount": 108413.25,
+            "cdAmount": 5420.66,
+            "cdDueDate": "11-09-2026",
+            "daysElapsed": 85,
+            "daysToDueDate": -56,
+            "creditsApplied": 107721,
+            "unpaidAmount": 6113,
+            "status": "PARTIAL"
+          },
+          {
+            "sessionNumber": 2,
+            "earliestDate": "11-09-2026",
+            "latestDate": "11-09-2026",
+            "latestBillNo": "SKIL-027",
+            "billNumbers": [
+              "SKIL-027",
+              "SKIL-028",
+              "SKIL-029"
+            ],
+            "billsCount": 3,
+            "totalCartons": 28,
+            "grossAmount": 144630,
+            "taxableAmount": 137743.28,
+            "cdAmount": 6887.16,
+            "cdDueDate": "11-10-2026",
+            "daysElapsed": 55,
+            "daysToDueDate": -26,
+            "creditsApplied": 25000,
+            "unpaidAmount": 119630,
+            "status": "PARTIAL"
+          },
+          {
+            "sessionNumber": 3,
+            "earliestDate": "31-10-2026",
+            "latestDate": "31-10-2026",
+            "latestBillNo": "SKIL-068",
+            "billNumbers": [
+              "SKIL-068",
+              "SKIL-069"
+            ],
+            "billsCount": 2,
+            "totalCartons": 20,
+            "grossAmount": 91389,
+            "taxableAmount": 87037.5,
+            "cdAmount": 4351.88,
+            "cdDueDate": "30-11-2026",
+            "daysElapsed": 5,
+            "daysToDueDate": 24,
+            "creditsApplied": 0,
+            "unpaidAmount": 91389,
             "status": "OPEN"
           }
         ]
@@ -966,7 +1336,9 @@
             "cdAmount": 1090,
             "settledAmount": 0,
             "unpaidAmount": 22890,
-            "status": "OPEN"
+            "status": "OPEN",
+            "sessionId": "sess-1",
+            "sessionDueDate": "11-10-2026"
           },
           {
             "voucherType": "Sales",
@@ -984,7 +1356,9 @@
             "cdAmount": 897.85,
             "settledAmount": 0,
             "unpaidAmount": 18855,
-            "status": "OPEN"
+            "status": "OPEN",
+            "sessionId": "sess-1",
+            "sessionDueDate": "11-10-2026"
           },
           {
             "voucherType": "Sales",
@@ -1002,7 +1376,9 @@
             "cdAmount": 201.79,
             "settledAmount": 0,
             "unpaidAmount": 4238,
-            "status": "OPEN"
+            "status": "OPEN",
+            "sessionId": "sess-1",
+            "sessionDueDate": "11-10-2026"
           },
           {
             "voucherType": "Sales",
@@ -1020,7 +1396,9 @@
             "cdAmount": 219.65,
             "settledAmount": 0,
             "unpaidAmount": 4613,
-            "status": "OPEN"
+            "status": "OPEN",
+            "sessionId": "sess-1",
+            "sessionDueDate": "11-10-2026"
           },
           {
             "voucherType": "Sales",
@@ -1037,6 +1415,53 @@
             "cdEligible": false,
             "cdAmount": 3726.15,
             "settledAmount": 0,
+            "unpaidAmount": 78249,
+            "status": "OPEN",
+            "sessionId": "sess-2",
+            "sessionDueDate": "28-10-2026"
+          }
+        ],
+        "sessions": [
+          {
+            "sessionNumber": 1,
+            "earliestDate": "11-09-2026",
+            "latestDate": "11-09-2026",
+            "latestBillNo": "SKIL-024",
+            "billNumbers": [
+              "SKIL-024",
+              "SKIL-025",
+              "SKIL-026",
+              "SKIL-030"
+            ],
+            "billsCount": 4,
+            "totalCartons": 11,
+            "grossAmount": 50596,
+            "taxableAmount": 48185.85,
+            "cdAmount": 2409.29,
+            "cdDueDate": "11-10-2026",
+            "daysElapsed": 55,
+            "daysToDueDate": -26,
+            "creditsApplied": 0,
+            "unpaidAmount": 50596,
+            "status": "OPEN"
+          },
+          {
+            "sessionNumber": 2,
+            "earliestDate": "28-09-2026",
+            "latestDate": "28-09-2026",
+            "latestBillNo": "SKIL-041",
+            "billNumbers": [
+              "SKIL-041"
+            ],
+            "billsCount": 1,
+            "totalCartons": 17,
+            "grossAmount": 78249,
+            "taxableAmount": 74523,
+            "cdAmount": 3726.15,
+            "cdDueDate": "28-10-2026",
+            "daysElapsed": 38,
+            "daysToDueDate": -9,
+            "creditsApplied": 0,
             "unpaidAmount": 78249,
             "status": "OPEN"
           }
@@ -1080,6 +1505,30 @@
             "cdAmount": 5270.1,
             "settledAmount": 0,
             "unpaidAmount": 110672,
+            "status": "OPEN",
+            "sessionId": "sess-1",
+            "sessionDueDate": "09-11-2026"
+          }
+        ],
+        "sessions": [
+          {
+            "sessionNumber": 1,
+            "earliestDate": "10-10-2026",
+            "latestDate": "10-10-2026",
+            "latestBillNo": "SKIL-055",
+            "billNumbers": [
+              "SKIL-055"
+            ],
+            "billsCount": 1,
+            "totalCartons": 14,
+            "grossAmount": 110672,
+            "taxableAmount": 105402,
+            "cdAmount": 5270.1,
+            "cdDueDate": "09-11-2026",
+            "daysElapsed": 26,
+            "daysToDueDate": 3,
+            "creditsApplied": 0,
+            "unpaidAmount": 110672,
             "status": "OPEN"
           }
         ]
@@ -1122,7 +1571,9 @@
             "cdAmount": 1375.71,
             "settledAmount": 0,
             "unpaidAmount": 28890,
-            "status": "OPEN"
+            "status": "OPEN",
+            "sessionId": "sess-1",
+            "sessionDueDate": "30-10-2026"
           },
           {
             "voucherType": "Sales",
@@ -1140,7 +1591,9 @@
             "cdAmount": 284.82,
             "settledAmount": 0,
             "unpaidAmount": 5981,
-            "status": "OPEN"
+            "status": "OPEN",
+            "sessionId": "sess-1",
+            "sessionDueDate": "30-10-2026"
           },
           {
             "voucherType": "Sales",
@@ -1158,6 +1611,32 @@
             "cdAmount": 3120.53,
             "settledAmount": 0,
             "unpaidAmount": 65531,
+            "status": "OPEN",
+            "sessionId": "sess-1",
+            "sessionDueDate": "30-10-2026"
+          }
+        ],
+        "sessions": [
+          {
+            "sessionNumber": 1,
+            "earliestDate": "30-09-2026",
+            "latestDate": "30-09-2026",
+            "latestBillNo": "SKIL-048",
+            "billNumbers": [
+              "SKIL-048",
+              "SKIL-050",
+              "SKIL-052"
+            ],
+            "billsCount": 3,
+            "totalCartons": 20,
+            "grossAmount": 100402,
+            "taxableAmount": 95621.23,
+            "cdAmount": 4781.06,
+            "cdDueDate": "30-10-2026",
+            "daysElapsed": 36,
+            "daysToDueDate": -7,
+            "creditsApplied": 0,
+            "unpaidAmount": 100402,
             "status": "OPEN"
           }
         ]
@@ -1199,6 +1678,30 @@
             "cdEligible": true,
             "cdAmount": 5256.3,
             "settledAmount": 25000,
+            "unpaidAmount": 85382,
+            "status": "PARTIAL",
+            "sessionId": "sess-1",
+            "sessionDueDate": "09-11-2026"
+          }
+        ],
+        "sessions": [
+          {
+            "sessionNumber": 1,
+            "earliestDate": "10-10-2026",
+            "latestDate": "10-10-2026",
+            "latestBillNo": "SKIL-056",
+            "billNumbers": [
+              "SKIL-056"
+            ],
+            "billsCount": 1,
+            "totalCartons": 13,
+            "grossAmount": 110382,
+            "taxableAmount": 105126,
+            "cdAmount": 5256.3,
+            "cdDueDate": "09-11-2026",
+            "daysElapsed": 26,
+            "daysToDueDate": 3,
+            "creditsApplied": 25000,
             "unpaidAmount": 85382,
             "status": "PARTIAL"
           }
@@ -1242,6 +1745,30 @@
             "cdAmount": 8109.82,
             "settledAmount": 100000,
             "unpaidAmount": 70306,
+            "status": "PARTIAL",
+            "sessionId": "sess-1",
+            "sessionDueDate": "09-10-2026"
+          }
+        ],
+        "sessions": [
+          {
+            "sessionNumber": 1,
+            "earliestDate": "09-09-2026",
+            "latestDate": "09-09-2026",
+            "latestBillNo": "SKIL-023",
+            "billNumbers": [
+              "SKIL-023"
+            ],
+            "billsCount": 1,
+            "totalCartons": 20,
+            "grossAmount": 170306,
+            "taxableAmount": 162196.34,
+            "cdAmount": 8109.82,
+            "cdDueDate": "09-10-2026",
+            "daysElapsed": 57,
+            "daysToDueDate": -28,
+            "creditsApplied": 100000,
+            "unpaidAmount": 70306,
             "status": "PARTIAL"
           }
         ]
@@ -1284,6 +1811,30 @@
             "cdAmount": 3096.6,
             "settledAmount": 0,
             "unpaidAmount": 65029,
+            "status": "OPEN",
+            "sessionId": "sess-1",
+            "sessionDueDate": "20-11-2026"
+          }
+        ],
+        "sessions": [
+          {
+            "sessionNumber": 1,
+            "earliestDate": "21-10-2026",
+            "latestDate": "21-10-2026",
+            "latestBillNo": "SKIL-058",
+            "billNumbers": [
+              "SKIL-058"
+            ],
+            "billsCount": 1,
+            "totalCartons": 9,
+            "grossAmount": 65029,
+            "taxableAmount": 61932,
+            "cdAmount": 3096.6,
+            "cdDueDate": "20-11-2026",
+            "daysElapsed": 15,
+            "daysToDueDate": 14,
+            "creditsApplied": 0,
+            "unpaidAmount": 65029,
             "status": "OPEN"
           }
         ]
@@ -1297,15 +1848,15 @@
         "netDue": 59971,
         "isAdvance": false,
         "advanceAmount": 0,
-        "under30": 59971,
+        "under30": 0,
         "d31to45": 0,
         "d46to60": 0,
-        "over60": 0,
+        "over60": 148728,
         "d30to60": 0,
-        "d60to90": 0,
+        "d60to90": 148728,
         "over90": 0,
-        "oldestBillDays": 5,
-        "oldestBillDate": "31-10-2026",
+        "oldestBillDays": 85,
+        "oldestBillDate": "12-08-2026",
         "totalInvoices": 2,
         "openBillsCount": 1,
         "settledBillsCount": 1,
@@ -1324,9 +1875,11 @@
             "formattedDueDate": "11-09-2026",
             "cdEligible": false,
             "cdAmount": 7436.39,
-            "settledAmount": 156164,
-            "unpaidAmount": 0,
-            "status": "PAID"
+            "settledAmount": 7436,
+            "unpaidAmount": 148728,
+            "status": "PARTIAL",
+            "sessionId": "sess-1",
+            "sessionDueDate": "11-09-2026"
           },
           {
             "voucherType": "Sales",
@@ -1342,9 +1895,53 @@
             "formattedDueDate": "30-11-2026",
             "cdEligible": true,
             "cdAmount": 2855.78,
-            "settledAmount": 0,
-            "unpaidAmount": 59971,
-            "status": "OPEN"
+            "settledAmount": 59971,
+            "unpaidAmount": 0,
+            "status": "PAID",
+            "sessionId": "sess-2",
+            "sessionDueDate": "30-11-2026"
+          }
+        ],
+        "sessions": [
+          {
+            "sessionNumber": 1,
+            "earliestDate": "12-08-2026",
+            "latestDate": "12-08-2026",
+            "latestBillNo": "SKIL-002",
+            "billNumbers": [
+              "SKIL-002"
+            ],
+            "billsCount": 1,
+            "totalCartons": 30,
+            "grossAmount": 156164,
+            "taxableAmount": 148727.81,
+            "cdAmount": 7436.39,
+            "cdDueDate": "11-09-2026",
+            "daysElapsed": 85,
+            "daysToDueDate": -56,
+            "creditsApplied": 7436,
+            "unpaidAmount": 148728,
+            "status": "PARTIAL"
+          },
+          {
+            "sessionNumber": 2,
+            "earliestDate": "31-10-2026",
+            "latestDate": "31-10-2026",
+            "latestBillNo": "SKIL-071",
+            "billNumbers": [
+              "SKIL-071"
+            ],
+            "billsCount": 1,
+            "totalCartons": 13,
+            "grossAmount": 59971,
+            "taxableAmount": 57115.5,
+            "cdAmount": 2855.78,
+            "cdDueDate": "30-11-2026",
+            "daysElapsed": 5,
+            "daysToDueDate": 24,
+            "creditsApplied": 59971,
+            "unpaidAmount": 0,
+            "status": "PAID"
           }
         ]
       },
@@ -1367,8 +1964,8 @@
         "oldestBillDays": 47,
         "oldestBillDate": "19-09-2026",
         "totalInvoices": 2,
-        "openBillsCount": 0,
-        "settledBillsCount": 2,
+        "openBillsCount": 2,
+        "settledBillsCount": 0,
         "bills": [
           {
             "voucherType": "Sales",
@@ -1384,9 +1981,11 @@
             "formattedDueDate": "19-10-2026",
             "cdEligible": false,
             "cdAmount": 12728.19,
-            "settledAmount": 267292,
-            "unpaidAmount": 0,
-            "status": "PAID"
+            "settledAmount": 19475,
+            "unpaidAmount": 247817,
+            "status": "PARTIAL",
+            "sessionId": "sess-1",
+            "sessionDueDate": "19-10-2026"
           },
           {
             "voucherType": "Sales",
@@ -1402,9 +2001,53 @@
             "formattedDueDate": "07-11-2026",
             "cdEligible": true,
             "cdAmount": 6747.66,
-            "settledAmount": 141701,
-            "unpaidAmount": 0,
-            "status": "PAID"
+            "settledAmount": 19475,
+            "unpaidAmount": 122226,
+            "status": "PARTIAL",
+            "sessionId": "sess-2",
+            "sessionDueDate": "07-11-2026"
+          }
+        ],
+        "sessions": [
+          {
+            "sessionNumber": 1,
+            "earliestDate": "19-09-2026",
+            "latestDate": "19-09-2026",
+            "latestBillNo": "SKIL-035",
+            "billNumbers": [
+              "SKIL-035"
+            ],
+            "billsCount": 1,
+            "totalCartons": 31,
+            "grossAmount": 267292,
+            "taxableAmount": 254563.8,
+            "cdAmount": 12728.19,
+            "cdDueDate": "19-10-2026",
+            "daysElapsed": 47,
+            "daysToDueDate": -18,
+            "creditsApplied": 19475,
+            "unpaidAmount": 247817,
+            "status": "PARTIAL"
+          },
+          {
+            "sessionNumber": 2,
+            "earliestDate": "08-10-2026",
+            "latestDate": "08-10-2026",
+            "latestBillNo": "SKIL-054",
+            "billNumbers": [
+              "SKIL-054"
+            ],
+            "billsCount": 1,
+            "totalCartons": 17,
+            "grossAmount": 141701,
+            "taxableAmount": 134953.2,
+            "cdAmount": 6747.66,
+            "cdDueDate": "07-11-2026",
+            "daysElapsed": 28,
+            "daysToDueDate": 1,
+            "creditsApplied": 19475,
+            "unpaidAmount": 122226,
+            "status": "PARTIAL"
           }
         ]
       },
@@ -1429,7 +2072,8 @@
         "totalInvoices": 0,
         "openBillsCount": 0,
         "settledBillsCount": 0,
-        "bills": []
+        "bills": [],
+        "sessions": []
       },
       {
         "partyName": "M/s Sri Brundabana Enterprises, Rayagada",
@@ -1469,7 +2113,9 @@
             "cdAmount": 2118.58,
             "settledAmount": 44490,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-1",
+            "sessionDueDate": "11-09-2026"
           },
           {
             "voucherType": "Sales",
@@ -1487,7 +2133,9 @@
             "cdAmount": 3023.22,
             "settledAmount": 63488,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-1",
+            "sessionDueDate": "11-09-2026"
           },
           {
             "voucherType": "Sales",
@@ -1505,7 +2153,9 @@
             "cdAmount": 4002.44,
             "settledAmount": 84051,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-1",
+            "sessionDueDate": "11-09-2026"
           },
           {
             "voucherType": "Sales",
@@ -1523,7 +2173,9 @@
             "cdAmount": 302.68,
             "settledAmount": 6356,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-1",
+            "sessionDueDate": "11-09-2026"
           },
           {
             "voucherType": "Sales",
@@ -1541,7 +2193,9 @@
             "cdAmount": 800.89,
             "settledAmount": 16819,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-1",
+            "sessionDueDate": "11-09-2026"
           },
           {
             "voucherType": "Sales",
@@ -1559,7 +2213,9 @@
             "cdAmount": 1922.33,
             "settledAmount": 40369,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-1",
+            "sessionDueDate": "11-09-2026"
           },
           {
             "voucherType": "Sales",
@@ -1577,7 +2233,9 @@
             "cdAmount": 7569.24,
             "settledAmount": 158954,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-2",
+            "sessionDueDate": "30-09-2026"
           },
           {
             "voucherType": "Sales",
@@ -1595,7 +2253,9 @@
             "cdAmount": 741.08,
             "settledAmount": 15563,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-2",
+            "sessionDueDate": "30-09-2026"
           },
           {
             "voucherType": "Sales",
@@ -1613,7 +2273,9 @@
             "cdAmount": 512.85,
             "settledAmount": 10770,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-3",
+            "sessionDueDate": "29-10-2026"
           },
           {
             "voucherType": "Sales",
@@ -1631,7 +2293,9 @@
             "cdAmount": 266.96,
             "settledAmount": 5606,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-3",
+            "sessionDueDate": "29-10-2026"
           },
           {
             "voucherType": "Sales",
@@ -1649,7 +2313,9 @@
             "cdAmount": 1865.72,
             "settledAmount": 39180,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-3",
+            "sessionDueDate": "29-10-2026"
           },
           {
             "voucherType": "Sales",
@@ -1667,7 +2333,9 @@
             "cdAmount": 1175.01,
             "settledAmount": 24675,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-3",
+            "sessionDueDate": "29-10-2026"
           },
           {
             "voucherType": "Sales",
@@ -1685,7 +2353,9 @@
             "cdAmount": 1163.57,
             "settledAmount": 24435,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-3",
+            "sessionDueDate": "29-10-2026"
           },
           {
             "voucherType": "Sales",
@@ -1703,7 +2373,9 @@
             "cdAmount": 911.43,
             "settledAmount": 19140,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-4",
+            "sessionDueDate": "25-11-2026"
           },
           {
             "voucherType": "Sales",
@@ -1721,7 +2393,9 @@
             "cdAmount": 2032.5,
             "settledAmount": 42683,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-4",
+            "sessionDueDate": "25-11-2026"
           },
           {
             "voucherType": "Sales",
@@ -1739,6 +2413,102 @@
             "cdAmount": 2030.01,
             "settledAmount": 42630,
             "unpaidAmount": 0,
+            "status": "PAID",
+            "sessionId": "sess-4",
+            "sessionDueDate": "25-11-2026"
+          }
+        ],
+        "sessions": [
+          {
+            "sessionNumber": 1,
+            "earliestDate": "12-08-2026",
+            "latestDate": "12-08-2026",
+            "latestBillNo": "SKIL-001",
+            "billNumbers": [
+              "SKIL-001",
+              "SKIL-003",
+              "SKIL-007",
+              "SKIL-008",
+              "SKIL-009",
+              "SKIL-010"
+            ],
+            "billsCount": 6,
+            "totalCartons": 48,
+            "grossAmount": 255573,
+            "taxableAmount": 243402.52,
+            "cdAmount": 12170.13,
+            "cdDueDate": "11-09-2026",
+            "daysElapsed": 85,
+            "daysToDueDate": -56,
+            "creditsApplied": 255573,
+            "unpaidAmount": 0,
+            "status": "PAID"
+          },
+          {
+            "sessionNumber": 2,
+            "earliestDate": "31-08-2026",
+            "latestDate": "31-08-2026",
+            "latestBillNo": "SKIL-021",
+            "billNumbers": [
+              "SKIL-021",
+              "SKIL-022"
+            ],
+            "billsCount": 2,
+            "totalCartons": 33,
+            "grossAmount": 174517,
+            "taxableAmount": 166206.37,
+            "cdAmount": 8310.32,
+            "cdDueDate": "30-09-2026",
+            "daysElapsed": 66,
+            "daysToDueDate": -37,
+            "creditsApplied": 174517,
+            "unpaidAmount": 0,
+            "status": "PAID"
+          },
+          {
+            "sessionNumber": 3,
+            "earliestDate": "29-09-2026",
+            "latestDate": "29-09-2026",
+            "latestBillNo": "SKIL-044",
+            "billNumbers": [
+              "SKIL-038",
+              "SKIL-039",
+              "SKIL-044",
+              "SKIL-045",
+              "SKIL-046"
+            ],
+            "billsCount": 5,
+            "totalCartons": 19,
+            "grossAmount": 104666,
+            "taxableAmount": 99682.08,
+            "cdAmount": 4984.1,
+            "cdDueDate": "29-10-2026",
+            "daysElapsed": 37,
+            "daysToDueDate": -8,
+            "creditsApplied": 104666,
+            "unpaidAmount": 0,
+            "status": "PAID"
+          },
+          {
+            "sessionNumber": 4,
+            "earliestDate": "26-10-2026",
+            "latestDate": "26-10-2026",
+            "latestBillNo": "SKIL-059",
+            "billNumbers": [
+              "SKIL-059",
+              "SKIL-060",
+              "SKIL-061"
+            ],
+            "billsCount": 3,
+            "totalCartons": 17,
+            "grossAmount": 104453,
+            "taxableAmount": 99478.78,
+            "cdAmount": 4973.94,
+            "cdDueDate": "25-11-2026",
+            "daysElapsed": 10,
+            "daysToDueDate": 19,
+            "creditsApplied": 104453,
+            "unpaidAmount": 0,
             "status": "PAID"
           }
         ]
@@ -1749,7 +2519,7 @@
     "summary": {
       "totalOutstanding": 1888224.77,
       "totalAdvance": 0,
-      "under30": 1650626.77,
+      "under30": 427520,
       "d31to45": 0,
       "d46to60": 237598,
       "over60": 0,
@@ -1770,18 +2540,18 @@
         "netDue": 1223106.77,
         "isAdvance": false,
         "advanceAmount": 0,
-        "under30": 1223106.77,
+        "under30": 0,
         "d31to45": 0,
         "d46to60": 0,
         "over60": 0,
         "d30to60": 0,
         "d60to90": 0,
         "over90": 0,
-        "oldestBillDays": 8,
-        "oldestBillDate": "28-10-2026",
+        "oldestBillDays": 86,
+        "oldestBillDate": "11-08-2026",
         "totalInvoices": 70,
-        "openBillsCount": 14,
-        "settledBillsCount": 56,
+        "openBillsCount": 0,
+        "settledBillsCount": 70,
         "bills": [
           {
             "voucherType": "Purchase",
@@ -1798,7 +2568,9 @@
             "cdAmount": -992.95,
             "settledAmount": 34753,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-1",
+            "sessionDueDate": "20-09-2026"
           },
           {
             "voucherType": "Purchase",
@@ -1815,7 +2587,9 @@
             "cdAmount": -1153.44,
             "settledAmount": 40370,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-1",
+            "sessionDueDate": "20-09-2026"
           },
           {
             "voucherType": "Purchase",
@@ -1832,7 +2606,9 @@
             "cdAmount": -480.55,
             "settledAmount": 16819,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-1",
+            "sessionDueDate": "20-09-2026"
           },
           {
             "voucherType": "Purchase",
@@ -1849,7 +2625,9 @@
             "cdAmount": -181.61,
             "settledAmount": 6356,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-1",
+            "sessionDueDate": "20-09-2026"
           },
           {
             "voucherType": "Purchase",
@@ -1866,7 +2644,9 @@
             "cdAmount": -2407.7,
             "settledAmount": 84269,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-1",
+            "sessionDueDate": "20-09-2026"
           },
           {
             "voucherType": "Purchase",
@@ -1883,7 +2663,9 @@
             "cdAmount": -160.18,
             "settledAmount": 5606,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-1",
+            "sessionDueDate": "20-09-2026"
           },
           {
             "voucherType": "Purchase",
@@ -1900,7 +2682,9 @@
             "cdAmount": -1601.29,
             "settledAmount": 56045,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-1",
+            "sessionDueDate": "20-09-2026"
           },
           {
             "voucherType": "Purchase",
@@ -1917,7 +2701,9 @@
             "cdAmount": -1498.31,
             "settledAmount": 52441,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-1",
+            "sessionDueDate": "20-09-2026"
           },
           {
             "voucherType": "Purchase",
@@ -1934,7 +2720,9 @@
             "cdAmount": -1772.34,
             "settledAmount": 62032,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-1",
+            "sessionDueDate": "20-09-2026"
           },
           {
             "voucherType": "Purchase",
@@ -1951,7 +2739,9 @@
             "cdAmount": -4361.53,
             "settledAmount": 152653.5,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-1",
+            "sessionDueDate": "20-09-2026"
           },
           {
             "voucherType": "Purchase",
@@ -1968,7 +2758,9 @@
             "cdAmount": -1239.98,
             "settledAmount": 43399,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-1",
+            "sessionDueDate": "20-09-2026"
           },
           {
             "voucherType": "Purchase",
@@ -1985,7 +2777,9 @@
             "cdAmount": -786.68,
             "settledAmount": 27534,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-1",
+            "sessionDueDate": "20-09-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2002,7 +2796,9 @@
             "cdAmount": -2028.46,
             "settledAmount": 70996,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-1",
+            "sessionDueDate": "20-09-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2019,7 +2815,9 @@
             "cdAmount": -4457.82,
             "settledAmount": 156024,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-1",
+            "sessionDueDate": "20-09-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2036,7 +2834,9 @@
             "cdAmount": -1976.88,
             "settledAmount": 69191,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-1",
+            "sessionDueDate": "20-09-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2053,7 +2853,9 @@
             "cdAmount": -969.2,
             "settledAmount": 33922,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-1",
+            "sessionDueDate": "20-09-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2070,7 +2872,9 @@
             "cdAmount": -634.1,
             "settledAmount": 22194,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-1",
+            "sessionDueDate": "20-09-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2087,7 +2891,9 @@
             "cdAmount": -1534.76,
             "settledAmount": 53717,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-1",
+            "sessionDueDate": "20-09-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2104,7 +2910,9 @@
             "cdAmount": -421.2,
             "settledAmount": 14742,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-1",
+            "sessionDueDate": "20-09-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2121,7 +2929,9 @@
             "cdAmount": -2159.11,
             "settledAmount": 75569,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-1",
+            "sessionDueDate": "20-09-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2138,7 +2948,9 @@
             "cdAmount": -444.65,
             "settledAmount": 15563,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-2",
+            "sessionDueDate": "30-09-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2155,7 +2967,9 @@
             "cdAmount": -4501.17,
             "settledAmount": 157541,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-2",
+            "sessionDueDate": "30-09-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2172,7 +2986,9 @@
             "cdAmount": -131.8,
             "settledAmount": 4613,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-3",
+            "sessionDueDate": "11-10-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2189,7 +3005,9 @@
             "cdAmount": -975.59,
             "settledAmount": 34146,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-3",
+            "sessionDueDate": "11-10-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2206,7 +3024,9 @@
             "cdAmount": -1622.37,
             "settledAmount": 56783,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-3",
+            "sessionDueDate": "11-10-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2223,7 +3043,9 @@
             "cdAmount": -1526.8,
             "settledAmount": 53438,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-3",
+            "sessionDueDate": "11-10-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2240,7 +3062,9 @@
             "cdAmount": -121.09,
             "settledAmount": 4238,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-3",
+            "sessionDueDate": "11-10-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2257,7 +3081,9 @@
             "cdAmount": -538.77,
             "settledAmount": 18857,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-3",
+            "sessionDueDate": "11-10-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2274,7 +3100,9 @@
             "cdAmount": -654.11,
             "settledAmount": 22894,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-3",
+            "sessionDueDate": "11-10-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2291,7 +3119,9 @@
             "cdAmount": -170.9,
             "settledAmount": 5982,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-4",
+            "sessionDueDate": "16-10-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2308,7 +3138,9 @@
             "cdAmount": -356.28,
             "settledAmount": 12470,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-4",
+            "sessionDueDate": "16-10-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2325,7 +3157,9 @@
             "cdAmount": -357.87,
             "settledAmount": 12525,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-4",
+            "sessionDueDate": "16-10-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2342,7 +3176,9 @@
             "cdAmount": -599.67,
             "settledAmount": 20988,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-4",
+            "sessionDueDate": "16-10-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2359,7 +3195,9 @@
             "cdAmount": -683.59,
             "settledAmount": 23926,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-5",
+            "sessionDueDate": "22-10-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2376,7 +3214,9 @@
             "cdAmount": -371.58,
             "settledAmount": 13005,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-5",
+            "sessionDueDate": "22-10-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2393,7 +3233,9 @@
             "cdAmount": -160.18,
             "settledAmount": 5606,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-6",
+            "sessionDueDate": "30-10-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2410,7 +3252,9 @@
             "cdAmount": -298.79,
             "settledAmount": 10458,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-6",
+            "sessionDueDate": "30-10-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2427,7 +3271,9 @@
             "cdAmount": -1436.64,
             "settledAmount": 50283,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-6",
+            "sessionDueDate": "30-10-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2444,7 +3290,9 @@
             "cdAmount": -2236.11,
             "settledAmount": 78264,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-6",
+            "sessionDueDate": "30-10-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2461,7 +3309,9 @@
             "cdAmount": -8629.12,
             "settledAmount": 302019,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-6",
+            "sessionDueDate": "30-10-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2478,7 +3328,9 @@
             "cdAmount": -1251.65,
             "settledAmount": 43808,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-6",
+            "sessionDueDate": "30-10-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2495,7 +3347,9 @@
             "cdAmount": -694.18,
             "settledAmount": 24296,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-6",
+            "sessionDueDate": "30-10-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2512,7 +3366,9 @@
             "cdAmount": -705.01,
             "settledAmount": 24675,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-6",
+            "sessionDueDate": "30-10-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2529,7 +3385,9 @@
             "cdAmount": -1095.77,
             "settledAmount": 38352,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-6",
+            "sessionDueDate": "30-10-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2546,7 +3404,9 @@
             "cdAmount": -1131.65,
             "settledAmount": 39608,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-6",
+            "sessionDueDate": "30-10-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2563,7 +3423,9 @@
             "cdAmount": -646.1,
             "settledAmount": 22614,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-6",
+            "sessionDueDate": "30-10-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2580,7 +3442,9 @@
             "cdAmount": -1856.9,
             "settledAmount": 64992,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-6",
+            "sessionDueDate": "30-10-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2597,7 +3461,9 @@
             "cdAmount": -446.27,
             "settledAmount": 15620,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-6",
+            "sessionDueDate": "30-10-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2614,7 +3480,9 @@
             "cdAmount": -170.9,
             "settledAmount": 5982,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-6",
+            "sessionDueDate": "30-10-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2631,7 +3499,9 @@
             "cdAmount": -248.49,
             "settledAmount": 8697,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-6",
+            "sessionDueDate": "30-10-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2648,7 +3518,9 @@
             "cdAmount": -801.5,
             "settledAmount": 28053,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-6",
+            "sessionDueDate": "30-10-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2665,7 +3537,9 @@
             "cdAmount": -1210.57,
             "settledAmount": 42370,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-7",
+            "sessionDueDate": "30-11-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2682,7 +3556,9 @@
             "cdAmount": -1219.53,
             "settledAmount": 42684,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-7",
+            "sessionDueDate": "30-11-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2699,7 +3575,9 @@
             "cdAmount": -530.99,
             "settledAmount": 18584,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-7",
+            "sessionDueDate": "30-11-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2716,7 +3594,9 @@
             "cdAmount": -2132.14,
             "settledAmount": 74625,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-7",
+            "sessionDueDate": "30-11-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2733,7 +3613,9 @@
             "cdAmount": -2265.57,
             "settledAmount": 79295,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-7",
+            "sessionDueDate": "30-11-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2748,9 +3630,11 @@
             "formattedDueDate": "27-11-2026",
             "cdEligible": true,
             "cdAmount": -14814.51,
-            "settledAmount": 83714.23,
-            "unpaidAmount": 434793.77,
-            "status": "PARTIAL"
+            "settledAmount": 518508,
+            "unpaidAmount": 0,
+            "status": "PAID",
+            "sessionId": "sess-7",
+            "sessionDueDate": "30-11-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2765,9 +3649,11 @@
             "formattedDueDate": "27-11-2026",
             "cdEligible": true,
             "cdAmount": -350.37,
-            "settledAmount": 0,
-            "unpaidAmount": 12263,
-            "status": "OPEN"
+            "settledAmount": 12263,
+            "unpaidAmount": 0,
+            "status": "PAID",
+            "sessionId": "sess-7",
+            "sessionDueDate": "30-11-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2782,9 +3668,11 @@
             "formattedDueDate": "27-11-2026",
             "cdEligible": true,
             "cdAmount": -851.36,
-            "settledAmount": 0,
-            "unpaidAmount": 29798,
-            "status": "OPEN"
+            "settledAmount": 29798,
+            "unpaidAmount": 0,
+            "status": "PAID",
+            "sessionId": "sess-7",
+            "sessionDueDate": "30-11-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2799,9 +3687,11 @@
             "formattedDueDate": "29-11-2026",
             "cdEligible": true,
             "cdAmount": -9021.47,
-            "settledAmount": 0,
-            "unpaidAmount": 315751,
-            "status": "OPEN"
+            "settledAmount": 315751,
+            "unpaidAmount": 0,
+            "status": "PAID",
+            "sessionId": "sess-7",
+            "sessionDueDate": "30-11-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2816,9 +3706,11 @@
             "formattedDueDate": "30-11-2026",
             "cdEligible": true,
             "cdAmount": -629.54,
-            "settledAmount": 0,
-            "unpaidAmount": 22034,
-            "status": "OPEN"
+            "settledAmount": 22034,
+            "unpaidAmount": 0,
+            "status": "PAID",
+            "sessionId": "sess-7",
+            "sessionDueDate": "30-11-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2833,9 +3725,11 @@
             "formattedDueDate": "30-11-2026",
             "cdEligible": true,
             "cdAmount": -530.99,
-            "settledAmount": 0,
-            "unpaidAmount": 18584,
-            "status": "OPEN"
+            "settledAmount": 18584,
+            "unpaidAmount": 0,
+            "status": "PAID",
+            "sessionId": "sess-7",
+            "sessionDueDate": "30-11-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2850,9 +3744,11 @@
             "formattedDueDate": "30-11-2026",
             "cdEligible": true,
             "cdAmount": -1106.47,
-            "settledAmount": 0,
-            "unpaidAmount": 38727,
-            "status": "OPEN"
+            "settledAmount": 38727,
+            "unpaidAmount": 0,
+            "status": "PAID",
+            "sessionId": "sess-7",
+            "sessionDueDate": "30-11-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2867,9 +3763,11 @@
             "formattedDueDate": "30-11-2026",
             "cdEligible": true,
             "cdAmount": -378.18,
-            "settledAmount": 0,
-            "unpaidAmount": 13236,
-            "status": "OPEN"
+            "settledAmount": 13236,
+            "unpaidAmount": 0,
+            "status": "PAID",
+            "sessionId": "sess-7",
+            "sessionDueDate": "30-11-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2884,9 +3782,11 @@
             "formattedDueDate": "30-11-2026",
             "cdEligible": true,
             "cdAmount": -4152.1,
-            "settledAmount": 0,
-            "unpaidAmount": 145323,
-            "status": "OPEN"
+            "settledAmount": 145323,
+            "unpaidAmount": 0,
+            "status": "PAID",
+            "sessionId": "sess-7",
+            "sessionDueDate": "30-11-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2901,9 +3801,11 @@
             "formattedDueDate": "30-11-2026",
             "cdEligible": true,
             "cdAmount": -1713.79,
-            "settledAmount": 0,
-            "unpaidAmount": 59983,
-            "status": "OPEN"
+            "settledAmount": 59983,
+            "unpaidAmount": 0,
+            "status": "PAID",
+            "sessionId": "sess-7",
+            "sessionDueDate": "30-11-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2918,9 +3820,11 @@
             "formattedDueDate": "30-11-2026",
             "cdEligible": true,
             "cdAmount": -1044.64,
-            "settledAmount": 0,
-            "unpaidAmount": 36562,
-            "status": "OPEN"
+            "settledAmount": 36562,
+            "unpaidAmount": 0,
+            "status": "PAID",
+            "sessionId": "sess-7",
+            "sessionDueDate": "30-11-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2935,9 +3839,11 @@
             "formattedDueDate": "30-11-2026",
             "cdEligible": true,
             "cdAmount": -293.65,
-            "settledAmount": 0,
-            "unpaidAmount": 10278,
-            "status": "OPEN"
+            "settledAmount": 10278,
+            "unpaidAmount": 0,
+            "status": "PAID",
+            "sessionId": "sess-7",
+            "sessionDueDate": "30-11-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2952,9 +3858,11 @@
             "formattedDueDate": "30-11-2026",
             "cdEligible": true,
             "cdAmount": -2317.95,
-            "settledAmount": 0,
-            "unpaidAmount": 81128,
-            "status": "OPEN"
+            "settledAmount": 81128,
+            "unpaidAmount": 0,
+            "status": "PAID",
+            "sessionId": "sess-7",
+            "sessionDueDate": "30-11-2026"
           },
           {
             "voucherType": "Purchase",
@@ -2969,9 +3877,216 @@
             "formattedDueDate": "30-11-2026",
             "cdEligible": true,
             "cdAmount": -132.75,
-            "settledAmount": 0,
-            "unpaidAmount": 4646,
-            "status": "OPEN"
+            "settledAmount": 4646,
+            "unpaidAmount": 0,
+            "status": "PAID",
+            "sessionId": "sess-7",
+            "sessionDueDate": "30-11-2026"
+          }
+        ],
+        "sessions": [
+          {
+            "sessionNumber": 1,
+            "earliestDate": "21-08-2026",
+            "latestDate": "21-08-2026",
+            "latestBillNo": "19",
+            "billNumbers": [
+              "20",
+              "10",
+              "9",
+              "8",
+              "7",
+              "6",
+              "5",
+              "4",
+              "3",
+              "2",
+              "1",
+              "12",
+              "11",
+              "13",
+              "14",
+              "17",
+              "16",
+              "15",
+              "18",
+              "19"
+            ],
+            "billsCount": 20,
+            "totalCartons": 20,
+            "grossAmount": 1078632.5,
+            "taxableAmount": -1027269.66,
+            "cdAmount": -30818.09,
+            "cdDueDate": "20-09-2026",
+            "daysElapsed": 76,
+            "daysToDueDate": -47,
+            "creditsApplied": 1350200.73,
+            "unpaidAmount": 0,
+            "status": "PAID"
+          },
+          {
+            "sessionNumber": 2,
+            "earliestDate": "31-08-2026",
+            "latestDate": "31-08-2026",
+            "latestBillNo": "22",
+            "billNumbers": [
+              "22",
+              "21"
+            ],
+            "billsCount": 2,
+            "totalCartons": 2,
+            "grossAmount": 173104,
+            "taxableAmount": -164860.68,
+            "cdAmount": -4945.82,
+            "cdDueDate": "30-09-2026",
+            "daysElapsed": 66,
+            "daysToDueDate": -37,
+            "creditsApplied": 1000000,
+            "unpaidAmount": 0,
+            "status": "PAID"
+          },
+          {
+            "sessionNumber": 3,
+            "earliestDate": "11-09-2026",
+            "latestDate": "11-09-2026",
+            "latestBillNo": "30",
+            "billNumbers": [
+              "30",
+              "29",
+              "28",
+              "27",
+              "26",
+              "25",
+              "24"
+            ],
+            "billsCount": 7,
+            "totalCartons": 7,
+            "grossAmount": 194969,
+            "taxableAmount": -185684.22,
+            "cdAmount": -5570.53,
+            "cdDueDate": "11-10-2026",
+            "daysElapsed": 55,
+            "daysToDueDate": -26,
+            "creditsApplied": 1250200.73,
+            "unpaidAmount": 0,
+            "status": "PAID"
+          },
+          {
+            "sessionNumber": 4,
+            "earliestDate": "16-09-2026",
+            "latestDate": "16-09-2026",
+            "latestBillNo": "34",
+            "billNumbers": [
+              "34",
+              "33",
+              "32",
+              "31"
+            ],
+            "billsCount": 4,
+            "totalCartons": 4,
+            "grossAmount": 51965,
+            "taxableAmount": -49490.7,
+            "cdAmount": -1484.72,
+            "cdDueDate": "16-10-2026",
+            "daysElapsed": 50,
+            "daysToDueDate": -21,
+            "creditsApplied": 1000000,
+            "unpaidAmount": 0,
+            "status": "PAID"
+          },
+          {
+            "sessionNumber": 5,
+            "earliestDate": "22-09-2026",
+            "latestDate": "22-09-2026",
+            "latestBillNo": "37",
+            "billNumbers": [
+              "37",
+              "36"
+            ],
+            "billsCount": 2,
+            "totalCartons": 2,
+            "grossAmount": 36931,
+            "taxableAmount": -35172.36,
+            "cdAmount": -1055.17,
+            "cdDueDate": "22-10-2026",
+            "daysElapsed": 44,
+            "daysToDueDate": -15,
+            "creditsApplied": 36931,
+            "unpaidAmount": 0,
+            "status": "PAID"
+          },
+          {
+            "sessionNumber": 6,
+            "earliestDate": "30-09-2026",
+            "latestDate": "30-09-2026",
+            "latestBillNo": "53",
+            "billNumbers": [
+              "39",
+              "38",
+              "42",
+              "41",
+              "40",
+              "47",
+              "46",
+              "45",
+              "44",
+              "43",
+              "53",
+              "52",
+              "51",
+              "50",
+              "49",
+              "48"
+            ],
+            "billsCount": 16,
+            "totalCartons": 16,
+            "grossAmount": 763327,
+            "taxableAmount": -726975.48,
+            "cdAmount": -21809.26,
+            "cdDueDate": "30-10-2026",
+            "daysElapsed": 36,
+            "daysToDueDate": -7,
+            "creditsApplied": 1132078.07,
+            "unpaidAmount": 0,
+            "status": "PAID"
+          },
+          {
+            "sessionNumber": 7,
+            "earliestDate": "31-10-2026",
+            "latestDate": "31-10-2026",
+            "latestBillNo": "76",
+            "billNumbers": [
+              "61",
+              "60",
+              "59",
+              "63",
+              "62",
+              "66",
+              "65",
+              "64",
+              "67",
+              "76",
+              "75",
+              "74",
+              "73",
+              "72",
+              "71",
+              "70",
+              "69",
+              "68",
+              "57"
+            ],
+            "billsCount": 19,
+            "totalCartons": 19,
+            "grossAmount": 1564379,
+            "taxableAmount": -1489885.92,
+            "cdAmount": -44696.58,
+            "cdDueDate": "30-11-2026",
+            "daysElapsed": 5,
+            "daysToDueDate": 24,
+            "creditsApplied": 1564379,
+            "unpaidAmount": 0,
+            "status": "PAID"
           }
         ]
       },
@@ -3012,7 +4127,9 @@
             "cdAmount": -4865.89,
             "settledAmount": 170306,
             "unpaidAmount": 0,
-            "status": "PAID"
+            "status": "PAID",
+            "sessionId": "sess-1",
+            "sessionDueDate": "09-10-2026"
           },
           {
             "voucherType": "Purchase",
@@ -3029,7 +4146,9 @@
             "cdAmount": -7636.91,
             "settledAmount": 29694,
             "unpaidAmount": 237598,
-            "status": "PARTIAL"
+            "status": "PARTIAL",
+            "sessionId": "sess-2",
+            "sessionDueDate": "19-10-2026"
           },
           {
             "voucherType": "Purchase",
@@ -3046,7 +4165,9 @@
             "cdAmount": -4048.6,
             "settledAmount": 0,
             "unpaidAmount": 141701,
-            "status": "OPEN"
+            "status": "OPEN",
+            "sessionId": "sess-3",
+            "sessionDueDate": "09-11-2026"
           },
           {
             "voucherType": "Purchase",
@@ -3063,7 +4184,9 @@
             "cdAmount": -3146.22,
             "settledAmount": 0,
             "unpaidAmount": 110118,
-            "status": "OPEN"
+            "status": "OPEN",
+            "sessionId": "sess-3",
+            "sessionDueDate": "09-11-2026"
           },
           {
             "voucherType": "Purchase",
@@ -3080,6 +4203,72 @@
             "cdAmount": -3162.06,
             "settledAmount": 0,
             "unpaidAmount": 110672,
+            "status": "OPEN",
+            "sessionId": "sess-3",
+            "sessionDueDate": "09-11-2026"
+          }
+        ],
+        "sessions": [
+          {
+            "sessionNumber": 1,
+            "earliestDate": "09-09-2026",
+            "latestDate": "09-09-2026",
+            "latestBillNo": "23",
+            "billNumbers": [
+              "23"
+            ],
+            "billsCount": 1,
+            "totalCartons": 1,
+            "grossAmount": 170306,
+            "taxableAmount": -162196.34,
+            "cdAmount": -4865.89,
+            "cdDueDate": "09-10-2026",
+            "daysElapsed": 57,
+            "daysToDueDate": -28,
+            "creditsApplied": 170306,
+            "unpaidAmount": 0,
+            "status": "PAID"
+          },
+          {
+            "sessionNumber": 2,
+            "earliestDate": "19-09-2026",
+            "latestDate": "19-09-2026",
+            "latestBillNo": "35",
+            "billNumbers": [
+              "35"
+            ],
+            "billsCount": 1,
+            "totalCartons": 1,
+            "grossAmount": 267292,
+            "taxableAmount": -254563.8,
+            "cdAmount": -7636.91,
+            "cdDueDate": "19-10-2026",
+            "daysElapsed": 47,
+            "daysToDueDate": -18,
+            "creditsApplied": 29694,
+            "unpaidAmount": 237598,
+            "status": "PARTIAL"
+          },
+          {
+            "sessionNumber": 3,
+            "earliestDate": "10-10-2026",
+            "latestDate": "10-10-2026",
+            "latestBillNo": "56",
+            "billNumbers": [
+              "54",
+              "56",
+              "55"
+            ],
+            "billsCount": 3,
+            "totalCartons": 3,
+            "grossAmount": 362491,
+            "taxableAmount": -345229.2,
+            "cdAmount": -10356.88,
+            "cdDueDate": "09-11-2026",
+            "daysElapsed": 26,
+            "daysToDueDate": 3,
+            "creditsApplied": 0,
+            "unpaidAmount": 362491,
             "status": "OPEN"
           }
         ]
@@ -3120,6 +4309,30 @@
             "cdEligible": true,
             "cdAmount": -1857.96,
             "settledAmount": 0,
+            "unpaidAmount": 65029,
+            "status": "OPEN",
+            "sessionId": "sess-1",
+            "sessionDueDate": "20-11-2026"
+          }
+        ],
+        "sessions": [
+          {
+            "sessionNumber": 1,
+            "earliestDate": "21-10-2026",
+            "latestDate": "21-10-2026",
+            "latestBillNo": "58",
+            "billNumbers": [
+              "58"
+            ],
+            "billsCount": 1,
+            "totalCartons": 1,
+            "grossAmount": 65029,
+            "taxableAmount": -61932,
+            "cdAmount": -1857.96,
+            "cdDueDate": "20-11-2026",
+            "daysElapsed": 15,
+            "daysToDueDate": 14,
+            "creditsApplied": 0,
             "unpaidAmount": 65029,
             "status": "OPEN"
           }

@@ -1973,6 +1973,7 @@
               </div>
 
               <!-- Bills Checklist Container -->
+              <div id="settleSessionBadges" style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px;"></div>
               <div class="settlement-bills-checklist" id="settleBillsChecklist" style="max-height: 220px; overflow-y: auto; border: 1px solid #E2E8F0; border-radius: 10px; padding: 8px; margin-bottom: 12px;">
                 <!-- Populated dynamically -->
               </div>
@@ -1981,12 +1982,25 @@
               <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 12px; margin-bottom: 14px;">
                 <label style="display: flex; align-items: flex-start; gap: 8px; font-size: 12.5px; color: #1E293B; cursor: pointer; margin-bottom: 10px;">
                   <input type="checkbox" id="chkApply5Cd" checked style="margin-top: 3px; accent-color: #16A34A;">
-                  <span>Apply <strong>5% Cash Discount (CD)</strong> strictly on Taxable Value for qualifying bills (&le; 30 days)</span>
+                  <span>Apply <strong>5% Cash Discount (CD)</strong> strictly on Taxable Value for selected session bills</span>
                 </label>
 
+                <!-- Part Payment Deduction Row -->
+                <div style="border-top: 1px dashed #CBD5E1; padding-top: 8px; margin-top: 6px;">
+                  <label style="font-size: 11.5px; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">
+                    ➖ Less: Part Payment Received on this Session:
+                  </label>
+                  <div style="display: flex; gap: 8px; align-items: center;">
+                    <div style="display: flex; align-items: center; background: #FFFFFF; border: 1px solid #CBD5E1; border-radius: 6px; padding: 0 8px;">
+                      <span style="font-size: 12px; font-weight: 700; color: #64748B;">-₹</span>
+                      <input type="number" id="txtPartPaymentAmt" placeholder="0" style="border: none; outline: none; padding: 6px 4px; font-weight: 700; font-size: 12.5px; width: 140px;">
+                    </div>
+                  </div>
+                </div>
+
                 <!-- Old Balance Row -->
-                <div style="border-top: 1px dashed #CBD5E1; padding-top: 10px; margin-top: 6px;">
-                  <label style="font-size: 11.5px; font-weight: 700; color: #475569; display: block; margin-bottom: 6px;">
+                <div style="border-top: 1px dashed #CBD5E1; padding-top: 8px; margin-top: 6px;">
+                  <label style="font-size: 11.5px; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">
                     ➕ Add: Old Historical Balance (Net Addition — 0% CD):
                   </label>
                   <div style="display: flex; gap: 8px; align-items: center;">
@@ -2013,6 +2027,10 @@
               <div style="display: flex; justify-content: space-between; font-size: 13px; font-weight: 800; color: #0284C7; margin-bottom: 6px; border-top: 1px solid #CBD5E1; padding-top: 6px;">
                 <span>👉 Net for Selected Bills:</span>
                 <span id="settleNetBills">₹0</span>
+              </div>
+              <div id="mathPartPaymentRow" style="display: none; justify-content: space-between; font-size: 12.5px; color: #059669; margin-bottom: 6px;">
+                <span>➖ Less: Payment Received:</span>
+                <span style="font-weight: 800;" id="mathPartPaymentAmt">-₹0</span>
               </div>
               <div id="mathOldBalRow" style="display: none; justify-content: space-between; font-size: 12.5px; color: #D97706; margin-bottom: 6px;">
                 <span>➕ Add: Old <span id="mathOldBalMonth">Prior</span> Balance (Net):</span>
