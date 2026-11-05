@@ -1,0 +1,2074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sahil's Biz — SKIL Lifestyle LLP Intelligence Platform</title>
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css?v=2.1.0">
+  <!-- PWA & Mobile Web App Meta -->
+  <meta name="theme-color" content="#0F172A">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Sahil's Biz">
+  <link rel="icon" type="image/png" href="assets/skil-black-logo.png">
+  <link rel="apple-touch-icon" href="assets/skil-black-logo.png">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+
+  <!-- Mobile Backdrop Overlay -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-wrapper">
+    <!-- LEFT SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <div>
+        <div class="sidebar-brand-wrap" style="display: flex; align-items: center; justify-content: space-between; padding-right: 6px;">
+          <div class="sidebar-brand" id="brandToggleBtn">
+            <div class="brand-squircle-logo">
+              <img src="assets/skil-black-logo.png" alt="SKIL Logo">
+            </div>
+            <div>
+              <div class="brand-title">Sahil's Biz</div>
+              <div style="font-size: 11px; font-weight: 700; color: #A3E635; letter-spacing: 0.05em; margin-top: 2px;">SKIL LIFESTYLE LLP</div>
+            </div>
+          </div>
+          <button class="sidebar-close-btn" id="btnSidebarClose" aria-label="Close Navigation Menu">
+            <i data-lucide="x" style="width: 20px; height: 20px;"></i>
+          </button>
+        </div>
+
+        <ul class="sidebar-menu">
+          <li class="nav-item active" data-tab="dashboard">
+            <a class="nav-link">
+              <i data-lucide="layout-grid"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="supplier-ajanta">
+            <a class="nav-link" style="display: flex; align-items: center; gap: 10px;">
+              <div style="background: #FFFFFF; border-radius: 6px; padding: 2px 4px; display: flex; align-items: center; justify-content: center; height: 24px; min-width: 44px;">
+                <img src="assets/ajanta-logo.png" alt="Ajanta" style="height: 16px; width: auto; object-fit: contain;">
+              </div>
+              <span>Ajanta Shoes</span>
+              <span style="background: #A3E635; color: #0F172A; font-size: 10px; font-weight: 800; padding: 2px 7px; border-radius: 10px; margin-left: auto;">51 Bills</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="supplier-xpania">
+            <a class="nav-link" style="display: flex; align-items: center; gap: 10px;">
+              <div style="background: #FFFFFF; border-radius: 6px; padding: 2px 4px; display: flex; align-items: center; justify-content: center; height: 24px; min-width: 44px;">
+                <img src="assets/xpania-logo.png" alt="Xpania" style="height: 16px; width: auto; object-fit: contain;">
+              </div>
+              <span>Xpania Footcare</span>
+              <span style="background: #38BDF8; color: #0F172A; font-size: 10px; font-weight: 800; padding: 2px 7px; border-radius: 10px; margin-left: auto;">6 Bills</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="payment-aging">
+            <a class="nav-link">
+              <i data-lucide="clock-3"></i>
+              <span>Aging & Settlement</span>
+              <span class="nav-badge-dot"></span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="gst-compliance">
+            <a class="nav-link" style="display: flex; align-items: center; justify-content: space-between;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <i data-lucide="receipt"></i>
+                <span>GST Compliance</span>
+              </div>
+              <span class="badge-pill badge-warning" style="font-size: 9.5px; padding: 2px 6px;">Due 11th</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="inventory">
+            <a class="nav-link">
+              <i data-lucide="box"></i>
+              <span>Inventory</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="ledger-book">
+            <a class="nav-link">
+              <i data-lucide="book-open"></i>
+              <span>Ledger Book</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="audit-reconcile">
+            <a class="nav-link">
+              <i data-lucide="shield-check"></i>
+              <span>Audit & Reconcile</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="cloud-vault">
+            <a class="nav-link" style="display: flex; align-items: center; justify-content: space-between;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <i data-lucide="lock"></i>
+                <span>Cloud Vault</span>
+              </div>
+              <span class="badge-pill badge-success" style="font-size: 9.5px; padding: 2px 6px;">AES-256</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Bottom Profile Card -->
+      <div class="sidebar-profile">
+        <div class="profile-avatar">SK</div>
+        <div class="profile-info">
+          <div class="profile-name">Sahil Kumar</div>
+          <div class="profile-role">Managing Partner • SKIL</div>
+        </div>
+        <div class="profile-action" id="btnRefreshApp" title="Reload Dashboard">
+          <i data-lucide="rotate-cw" style="width: 16px; height: 16px;"></i>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN APP CANVAS -->
+    <main class="app-main">
+      <!-- TOP BAR -->
+      <header class="top-bar">
+        <div class="top-bar-left">
+          <!-- Mobile Header Row: Sahil's Biz on left, Current Page on right -->
+          <div class="mobile-top-header">
+            <div class="mobile-top-left">
+              <button class="mobile-burger-btn" id="btnMobileMenuToggle" aria-label="Open Navigation Menu">
+                <i data-lucide="menu" style="width: 20px; height: 20px;"></i>
+              </button>
+              <div class="mobile-brand-pill">
+                <div class="brand-squircle-logo-sm">
+                  <img src="assets/skil-black-logo.png" alt="SKIL">
+                </div>
+                <span class="mobile-brand-name">Sahil's Biz</span>
+              </div>
+            </div>
+
+            <div class="mobile-top-right">
+              <span class="mobile-page-pill" id="mobilePagePill">Dashboard</span>
+              <button class="mobile-icon-btn" id="btnToggleSubtleInfo" title="Toggle Sync Details">
+                <i data-lucide="info" style="width: 15px; height: 15px;"></i>
+              </button>
+              <button class="mobile-icon-btn sync-btn-mobile" id="btnMobileQuickSync" title="Sync Now">
+                <i data-lucide="refresh-cw" style="width: 15px; height: 15px;"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Desktop Title & Breadcrumb -->
+          <div class="desktop-header-title">
+            <div class="desktop-brand-crumb">
+              <span class="brand-dim">Sahil's Biz</span>
+              <span class="crumb-slash">/</span>
+              <h1 class="page-title" id="activePageTitle">Dashboard</h1>
+            </div>
+          </div>
+        </div>
+
+        <div class="top-bar-center">
+          <div class="search-pill-box">
+            <i data-lucide="search"></i>
+            <input type="text" id="globalSearchInput" placeholder="Search Bill #, Customer, Supplier, Ledger...">
+          </div>
+        </div>
+
+        <div class="top-bar-right">
+          <div class="company-pill" id="companyPillBtn" title="Click to view Tally & Company details">
+            <div class="company-avatar-end2end">
+              <img src="assets/skil-black-logo.png" alt="SKIL">
+            </div>
+            <div class="company-info">
+              <div class="sync-time-text" id="lastSyncedText">Synced: 15-Oct 19:29</div>
+            </div>
+            <i data-lucide="check-circle-2" style="width: 14px; height: 14px; color: #16A34A;"></i>
+          </div>
+
+          <button class="sync-now-btn" id="syncNowBtn">
+            <i data-lucide="refresh-cw" style="width: 15px; height: 15px;"></i>
+            <span>Sync Now</span>
+          </button>
+
+          <a href="/api/data/export" download class="btn-icon-action" title="Export Full Tally JSON" style="text-decoration: none;">
+            <i data-lucide="download"></i>
+          </a>
+
+          <a href="/download/app.apk" download class="btn-icon-action" title="Download Android App (.apk)" style="text-decoration: none; color: #16A34A;" id="btnDownloadApk">
+            <i data-lucide="smartphone"></i>
+          </a>
+        </div>
+      </header>
+
+      <!-- COLLAPSIBLE SUBTLE INFO BAR (Subtle and hidden by default, toggled via info icon) -->
+      <div class="subtle-info-bar" id="subtleInfoBar" style="display: none;">
+        <div class="subtle-info-content">
+          <span>🏢 <strong>SKIL Lifestyle LLP</strong></span>
+          <span class="info-sep">•</span>
+          <span>📅 <span id="currentDateDisplay">16 October 2026</span></span>
+          <span class="info-sep">•</span>
+          <span>🔄 Last Sync: <span id="subtleSyncTimestamp">15-Oct 19:29</span></span>
+          <span class="info-sep">•</span>
+          <span class="tally-badge-subtle" id="tallyStatusSubtle">Tally Active</span>
+        </div>
+        <button class="subtle-info-close" id="btnCloseSubtleInfo">
+          <i data-lucide="x" style="width: 14px; height: 14px;"></i>
+        </button>
+      </div>
+
+      <!-- ============================================== -->
+      <!-- VIEW 1: DASHBOARD -->
+      <!-- ============================================== -->
+      <section class="view-panel active-view" id="view-dashboard">
+        <div class="section-header-row">
+          <div>
+            <h2 class="section-title">Financial Overview</h2>
+            <div class="section-subtitle" id="dashboardSnapshotSubtitle">Real Tally Intelligence for All Months</div>
+          </div>
+
+          <select class="filter-pill-dropdown" id="monthFilterSelect">
+            <option value="all">All Months</option>
+            <option value="2026-10">October 26</option>
+            <option value="2026-09">September 26</option>
+            <option value="2026-08">August 26</option>
+          </select>
+        </div>
+
+        <!-- 4 KPI Stat Cards (Real Tally Numbers) -->
+        <div class="kpi-grid-4">
+          <!-- Total Sales -->
+          <div class="stat-card stat-lime">
+            <div class="stat-card-top">
+              <div class="stat-icon-square">
+                <i data-lucide="arrow-up-right"></i>
+              </div>
+              <span class="stat-badge-pill">Selected Month</span>
+            </div>
+            <div>
+              <div class="stat-label">Total Sales (B2B Retail)</div>
+              <div class="stat-value" id="kpiTotalSales">₹31,23,318</div>
+            </div>
+          </div>
+
+          <!-- Total Purchase -->
+          <div class="stat-card stat-purple">
+            <div class="stat-card-top">
+              <div class="stat-icon-square">
+                <i data-lucide="activity"></i>
+              </div>
+              <span class="stat-badge-pill">Selected Month</span>
+            </div>
+            <div>
+              <div class="stat-label">Total Purchase (COGS)</div>
+              <div class="stat-value" id="kpiTotalPurchase">₹31,13,458</div>
+            </div>
+          </div>
+
+          <!-- Gross Profit / Trading Margin + Schemes -->
+          <div class="stat-card stat-blue">
+            <div class="stat-card-top">
+              <div class="stat-icon-square">
+                <i data-lucide="wallet"></i>
+              </div>
+              <span class="stat-badge-pill">Selected Month</span>
+            </div>
+            <div>
+              <div class="stat-label">Gross Margin + Claims</div>
+              <div class="stat-value" id="kpiGrossProfit">₹2,08,752</div>
+            </div>
+          </div>
+
+          <!-- Net Realized Profit -->
+          <div class="stat-card stat-red">
+            <div class="stat-card-top">
+              <div class="stat-icon-square">
+                <i data-lucide="credit-card"></i>
+              </div>
+              <span class="stat-badge-pill">Selected Month</span>
+            </div>
+            <div>
+              <div class="stat-label">Net Realized Profit</div>
+              <div class="stat-value" id="kpiNetProfit">₹77,986</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Middle Split: Spline Line Chart + Dark Liability Ratio Card -->
+        <div class="dashboard-middle-split">
+          <!-- Left: Income vs Expense -->
+          <div class="card-white">
+            <div class="chart-card-header">
+              <div>
+                <h3 class="section-title">Income vs Expense</h3>
+                <div class="section-subtitle">Real monthly turnover & procurement trajectory (Tally Verified)</div>
+              </div>
+              <div class="chart-legend-pills">
+                <div class="legend-pill sales-legend">
+                  <span class="legend-dot"></span>
+                  <span>Sales</span>
+                </div>
+                <div class="legend-pill purchase-legend">
+                  <span class="legend-dot"></span>
+                  <span>Purchase</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="chart-container-box">
+              <canvas id="incomeExpenseChart"></canvas>
+            </div>
+          </div>
+
+          <!-- Right: Dark Liability Ratio Card -->
+          <div class="dark-liability-card">
+            <div>
+              <div class="dark-card-title">Liability Ratio</div>
+              <div class="dark-card-subtitle">Receivables (Debtors) vs Payables (Creditors)</div>
+            </div>
+
+            <div class="donut-gauge-wrap">
+              <canvas id="liabilityDonutChart"></canvas>
+            </div>
+
+            <div class="dark-legend-row">
+              <div class="dark-legend-item dark-legend-creditors">
+                <span class="legend-dot"></span>
+                <span>Creditors (Payables)</span>
+              </div>
+              <div class="dark-legend-item dark-legend-debtors">
+                <span class="legend-dot"></span>
+                <span>Debtors (Receivables)</span>
+              </div>
+            </div>
+
+            <div class="dark-split-pills">
+              <div class="dark-pill-box">
+                <span class="dark-pill-label">RECEIVABLES (12 DEBTORS)</span>
+                <span class="dark-pill-val-lime" id="receivablesValue">₹17,62,534</span>
+              </div>
+              <div class="dark-pill-box">
+                <span class="dark-pill-label">PAYABLES (CREDITORS)</span>
+                <span class="dark-pill-val-lavender" id="payablesValue">₹9,23,458</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW 2: SALES METRICS -->
+      <!-- ============================================== -->
+      <section class="view-panel" id="view-sales-metrics">
+        <div class="card-white">
+          <div class="section-header-row">
+            <div>
+              <h2 class="section-title">Monthly Volume Analysis</h2>
+              <div class="section-subtitle">Turnover and net operating margin velocity across active months</div>
+            </div>
+            <div class="chart-legend-pills">
+              <div class="legend-pill purchase-legend">
+                <span class="legend-dot"></span>
+                <span>Purchase</span>
+              </div>
+              <div class="legend-pill sales-legend">
+                <span class="legend-dot"></span>
+                <span>Sales</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="chart-container-box" style="height: 320px;">
+            <canvas id="monthlyVolumeBarChart"></canvas>
+          </div>
+        </div>
+
+        <div class="card-white">
+          <div class="table-responsive">
+            <table class="biz-table" id="salesMetricsTable">
+              <thead>
+                <tr>
+                  <th>MONTH</th>
+                  <th>TOTAL SALES</th>
+                  <th>TOTAL PURCHASE</th>
+                  <th>NET PROFIT/LOSS</th>
+                </tr>
+              </thead>
+              <tbody id="salesMetricsTbody">
+                <!-- Dynamically populated from Tally vouchers -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW 3: PARTIES & AGING -->
+      <!-- ============================================== -->
+      <section class="view-panel" id="view-parties">
+        <div class="parties-kpi-grid">
+          <div class="card-white">
+            <div class="stat-label">Total Outstanding Balance</div>
+            <div class="stat-value" id="partiesTotalBalance">₹17,62,534</div>
+          </div>
+
+          <div class="card-white">
+            <div class="stat-label">Total Active Parties</div>
+            <div class="stat-value" id="partiesTotalCount">12</div>
+          </div>
+
+          <div class="card-white parties-risk-card">
+            <div class="pulse-icon-watermark">
+              <i data-lucide="activity"></i>
+            </div>
+            <div class="stat-label">High Risk (>90 Days)</div>
+            <div class="risk-val-row">
+              <span class="risk-val-red" id="partiesHighRiskCount">0</span>
+              <span class="risk-val-suffix">parties</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-white">
+          <div class="section-header-row">
+            <div style="display: flex; align-items: center; gap: 14px;">
+              <h2 class="section-title" id="partyListHeading">Debtors List</h2>
+              <div class="segmented-pills">
+                <button class="segment-btn active" id="btnPartyDebtors">Debtors (Receivables)</button>
+                <button class="segment-btn" id="btnPartyCreditors">Creditors (Payables)</button>
+              </div>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <input type="text" class="filter-pill-dropdown" id="partySearchInput" placeholder="Filter party name..." style="width: 200px;">
+              <span class="badge-pill badge-neutral">Sorted by Balance</span>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="biz-table">
+              <thead>
+                <tr>
+                  <th>PARTY NAME</th>
+                  <th>BALANCE</th>
+                  <th>&lt; 30 DAYS</th>
+                  <th>30-90 DAYS</th>
+                  <th>&gt; 90 DAYS</th>
+                </tr>
+              </thead>
+              <tbody id="partiesTbody">
+                <!-- Dynamically populated from live aging report -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW 4: INVENTORY -->
+      <!-- ============================================== -->
+      <section class="view-panel" id="view-inventory">
+        <div class="inventory-kpi-grid">
+          <div class="stat-card stat-lime">
+            <div class="stat-card-top">
+              <div class="stat-icon-square">
+                <i data-lucide="box"></i>
+              </div>
+              <span class="stat-badge-pill" style="background: #F1F5F9; color: #475569;">Tracked Items</span>
+            </div>
+            <div>
+              <div class="stat-label">Total Stock Items in Tally</div>
+              <div class="stat-value" id="invTotalValuation">362 Items</div>
+            </div>
+          </div>
+
+          <div class="stat-card stat-red">
+            <div class="stat-card-top">
+              <div class="stat-icon-square">
+                <i data-lucide="activity"></i>
+              </div>
+              <span class="stat-badge-pill">Model</span>
+            </div>
+            <div>
+              <div class="stat-label">Business Model</div>
+              <div class="stat-value" style="font-size: 20px; color: #0284C7;">Zero-Inventory Drop-Ship</div>
+            </div>
+          </div>
+
+          <div class="dark-revenue-card">
+            <div class="dark-revenue-label">Top Revenue Generator in Tally</div>
+            <div class="dark-revenue-title" id="invTopRevenueItemName">AJ CUSHION 024 06/09 MRP146/-</div>
+            <div class="dark-revenue-val" id="invTopRevenueAmount">₹1,62,689</div>
+          </div>
+        </div>
+
+        <div class="inventory-middle-grid">
+          <div class="card-white">
+            <div class="section-header-row">
+              <div>
+                <h3 class="section-title">Stock Movement</h3>
+                <div class="section-subtitle">Velocity ratio of tracked footwear items</div>
+              </div>
+            </div>
+            <div class="donut-gauge-wrap" style="height: 190px;">
+              <canvas id="stockMovementDonutChart"></canvas>
+            </div>
+            <div class="dark-legend-row" style="color: #64748B;">
+              <div class="dark-legend-item"><span class="legend-dot" style="background: #A3E635;"></span><span>Active / Moving</span></div>
+              <div class="dark-legend-item"><span class="legend-dot" style="background: #FB7185;"></span><span>Non-Moving</span></div>
+              <div class="dark-legend-item"><span class="legend-dot" style="background: #A78BFA;"></span><span>Slow</span></div>
+            </div>
+          </div>
+
+          <div class="card-white">
+            <h3 class="section-title">Quick Stats</h3>
+            <div class="quick-stats-list">
+              <div class="quick-stat-pill-row">
+                <div class="quick-stat-left">
+                  <span class="legend-dot" style="background: #A3E635;"></span>
+                  <span>Active Moving Items</span>
+                </div>
+                <span class="quick-stat-val" id="statFastCount">362</span>
+              </div>
+              <div class="quick-stat-pill-row">
+                <div class="quick-stat-left">
+                  <span class="legend-dot" style="background: #A78BFA;"></span>
+                  <span>Slow Items</span>
+                </div>
+                <span class="quick-stat-val" id="statSlowCount">0</span>
+              </div>
+              <div class="quick-stat-pill-row">
+                <div class="quick-stat-left">
+                  <span class="legend-dot" style="background: #FB7185;"></span>
+                  <span>Non-Moving Items</span>
+                </div>
+                <span class="quick-stat-val" id="statNonMovingCount">0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-white">
+          <div class="section-header-row">
+            <h2 class="section-title">Detailed Stock Report</h2>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <input type="text" class="filter-pill-dropdown" id="stockSearchInput" placeholder="Search Item..." style="width: 220px;">
+              <div class="segmented-pills">
+                <button class="segment-btn active" data-filter="All">All</button>
+                <button class="segment-btn" data-filter="Fast">Active</button>
+                <button class="segment-btn" data-filter="Slow">Slow</button>
+                <button class="segment-btn" data-filter="Non-Moving">Non-Moving</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="biz-table">
+              <thead>
+                <tr>
+                  <th>ITEM NAME</th>
+                  <th>IN (PAIRS)</th>
+                  <th>OUT (PAIRS)</th>
+                  <th>CLOSING</th>
+                  <th>VALUATION</th>
+                  <th>STATUS</th>
+                </tr>
+              </thead>
+              <tbody id="inventoryTbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW 2: SUPPLIER & CONSIGNMENT TRACKING HUB -->
+      <!-- ============================================== -->
+      <section class="view-panel" id="view-supplier-tracking">
+        <!-- Supplier Tabs with Official Logos -->
+        <div class="supplier-tabs-bar">
+          <button class="supplier-tab-btn active" data-supplier="all" id="btnSupplierAll">
+            <i data-lucide="layers" style="width: 16px; height: 16px;"></i>
+            <span class="supplier-tab-name">All Suppliers</span>
+            <span class="supplier-count-badge" id="badgeAllSuppliers">57 Bills</span>
+          </button>
+          
+          <button class="supplier-tab-btn" data-supplier="ajanta" id="btnSupplierAjanta">
+            <img src="assets/ajanta-logo.png" alt="Ajanta Shoes" class="supplier-tab-logo">
+            <span class="supplier-tab-name">Ajanta Shoes</span>
+            <span class="supplier-count-badge" id="badgeAjantaSuppliers">54 Bills</span>
+          </button>
+          
+          <button class="supplier-tab-btn" data-supplier="xpania" id="btnSupplierXpania">
+            <img src="assets/xpania-logo.png" alt="Xpania Footcare" class="supplier-tab-logo">
+            <span class="supplier-tab-name">Xpania Footcare</span>
+            <span class="supplier-count-badge" id="badgeXpaniaSuppliers">3 Bills</span>
+          </button>
+
+          <button class="supplier-tab-btn" data-supplier="raw" id="btnSupplierRaw">
+            <i data-lucide="file-text" style="width: 15px; height: 15px;"></i>
+            <span class="supplier-tab-name">Raw Vouchers</span>
+            <span class="supplier-count-badge" id="badgeRawSuppliers">161</span>
+          </button>
+        </div>
+
+        <!-- Supplier KPI Insight Cards -->
+        <div class="stats-grid" style="margin-bottom: 20px;">
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label" id="lblTrackPurchases">Total Supplier Purchases</span>
+              <span class="stat-icon-wrap" style="background: #F1F5F9; color: #0F172A;"><i data-lucide="shopping-cart"></i></span>
+            </div>
+            <div class="stat-value" id="valTrackPurchases">₹31,13,458</div>
+            <div class="stat-subtext" id="subTrackPurchases">57 invoices matched 1:1</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Sold to Customers</span>
+              <span class="stat-icon-wrap" style="background: #DCFCE7; color: #16A34A;"><i data-lucide="check-check"></i></span>
+            </div>
+            <div class="stat-value" id="valTrackSold" style="color: #16A34A;">57 / 57 Sold</div>
+            <div class="stat-subtext" id="subTrackSold">100% Zero-Inventory Fulfillment</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Supplier CD / Rebate</span>
+              <span class="stat-icon-wrap" style="background: #FEF3C7; color: #D97706;"><i data-lucide="tag"></i></span>
+            </div>
+            <div class="stat-value" id="valTrackSuppCd">₹88,956</div>
+            <div class="stat-subtext" id="subTrackSuppCd">₹37,565 Settled • ₹51,391 Pending</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Customer 5% CD</span>
+              <span class="stat-icon-wrap" style="background: #E0F2FE; color: #0284C7;"><i data-lucide="percent"></i></span>
+            </div>
+            <div class="stat-value" id="valTrackCustCd">₹1,48,729</div>
+            <div class="stat-subtext" id="subTrackCustCd">Credit Notes Issued / Pending</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Realized Trade Profit</span>
+              <span class="stat-icon-wrap" style="background: #DCFCE7; color: #15803D;"><i data-lucide="trending-up"></i></span>
+            </div>
+            <div class="stat-value" id="valTrackProfit" style="color: #15803D;">+₹2,08,752</div>
+            <div class="stat-subtext" id="subTrackProfit">6.68% Net Margin</div>
+          </div>
+        </div>
+
+        <div class="card-white">
+          <div class="section-header-row">
+            <div>
+              <h2 class="section-title">Supplier Consignment & Cash Discount Matrix</h2>
+              <div class="section-subtitle">Real-time status: whether each supplier bill is sold to customer, supplier CD received & customer CD given</div>
+            </div>
+
+            <!-- View Switcher -->
+            <div class="segmented-pills">
+              <button class="segment-btn active" id="btnViewMasterGrid">
+                <i data-lucide="table" style="width: 13px; height: 13px; display: inline-block; vertical-align: middle;"></i>
+                <span>Tracking Matrix</span>
+              </button>
+              <button class="segment-btn" id="btnViewStints">
+                <i data-lucide="layers" style="width: 13px; height: 13px; display: inline-block; vertical-align: middle;"></i>
+                <span>Customer Stints</span>
+              </button>
+              <button class="segment-btn" id="btnViewRawVouchers">
+                <i data-lucide="list" style="width: 13px; height: 13px; display: inline-block; vertical-align: middle;"></i>
+                <span>Raw Tally Vouchers</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- SUB-VIEW 5A: STINTS VIEW -->
+          <div id="subview-stints">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; gap: 10px;">
+              <input type="text" class="filter-pill-dropdown" id="stintSearchInput" placeholder="Search customer, vch #, ref..." style="width: 250px;">
+              <select class="filter-pill-dropdown" id="stintMonthSelect">
+                <option value="all">All Stints (27)</option>
+                <option value="2026-10">October 26</option>
+                <option value="2026-09">September 26</option>
+                <option value="2026-08">August 26</option>
+              </select>
+            </div>
+
+            <div class="table-responsive">
+              <table class="biz-table" id="stintsTable">
+                <thead>
+                  <tr>
+                    <th>STINT #</th>
+                    <th>DATE</th>
+                    <th>CUSTOMER</th>
+                    <th>BILLS</th>
+                    <th>PURCHASE (REF)</th>
+                    <th>SALES (VCH)</th>
+                    <th>CTN / PAIRS</th>
+                    <th>PURCHASE ₹</th>
+                    <th>SALES ₹</th>
+                    <th>TRADE MARGIN</th>
+                    <th>STATUS</th>
+                    <th>INSPECT</th>
+                  </tr>
+                </thead>
+                <tbody id="stintsTbody">
+                  <!-- Dynamically populated -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- SUB-VIEW 5B: MASTER 27-COLUMN SPREADSHEET GRID -->
+          <div id="subview-master-grid" style="display: none;">
+            <div class="master-grid-box">
+              <table class="master-grid-table">
+                <thead>
+                  <tr>
+                    <th colspan="4" class="super-header-id">📦 Drop-Ship Consignment</th>
+                    <th colspan="4" class="super-header-purch">🔷 Purchase (Supplier)</th>
+                    <th colspan="4" class="super-header-sales">🔶 Sales (Retailer B2B)</th>
+                    <th colspan="4" class="super-header-supp-rebates">🟣 Supplier Rebates (Inbound)</th>
+                    <th colspan="4" class="super-header-cust-cd">🟠 Customer 5% CD (Outbound)</th>
+                    <th colspan="3" class="super-header-aging">🟡 Collection & Aging</th>
+                    <th colspan="2" class="super-header-profit">🟢 Net Profit</th>
+                    <th colspan="2" class="super-header-action">⚡ Actions</th>
+                  </tr>
+                  <tr>
+                    <th class="sticky-c1" style="width: 45px;">#</th>
+                    <th class="sticky-c2" style="width: 90px;">Date</th>
+                    <th class="sticky-c3" style="min-width: 180px;">Customer</th>
+                    <th>CTN / Prs</th>
+                    <th>Supplier Inv</th>
+                    <th>Supplier</th>
+                    <th style="text-align: right;">Buy ₹</th>
+                    <th>Narration</th>
+                    <th>Sales Vch</th>
+                    <th style="text-align: right;">Sell ₹</th>
+                    <th style="text-align: right;">Spread ₹</th>
+                    <th>Spread %</th>
+                    <th style="text-align: right;">3% CD ₹</th>
+                    <th style="text-align: right;">3.78% Scheme</th>
+                    <th style="text-align: right;">Total Claim</th>
+                    <th>Claim Status</th>
+                    <th style="text-align: right;">Taxable ₹</th>
+                    <th style="text-align: right;">5% CD ₹</th>
+                    <th style="text-align: right;">Net Due ₹</th>
+                    <th>CN Status</th>
+                    <th>Due Date</th>
+                    <th>Days</th>
+                    <th>Aging Status</th>
+                    <th style="text-align: right; color: #15803D;">Net Profit ₹</th>
+                    <th style="color: #15803D;">Margin %</th>
+                    <th>WhatsApp</th>
+                    <th>Copy</th>
+                  </tr>
+                </thead>
+                <tbody id="masterGridTbody">
+                  <!-- Dynamically populated from masterGrid.rows -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- SUB-VIEW 5C: RAW VOUCHERS CATALOG -->
+          <div id="subview-raw-vouchers" style="display: none;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
+              <div class="segmented-pills">
+                <button class="segment-btn active" data-vch-type="">All (161)</button>
+                <button class="segment-btn" data-vch-type="Sales">Sales (57)</button>
+                <button class="segment-btn" data-vch-type="Purchase">Purchase (57)</button>
+                <button class="segment-btn" data-vch-type="Payment">Payment (21)</button>
+                <button class="segment-btn" data-vch-type="Receipt">Receipt (13)</button>
+                <button class="segment-btn" data-vch-type="Debit Note">Debit Note (7)</button>
+                <button class="segment-btn" data-vch-type="Credit Note">Credit Note (6)</button>
+              </div>
+
+              <input type="text" class="filter-pill-dropdown" id="rawVchSearchInput" placeholder="Filter vouchers..." style="width: 220px;">
+            </div>
+
+            <div class="table-responsive">
+              <table class="biz-table">
+                <thead>
+                  <tr>
+                    <th>DATE</th>
+                    <th>TYPE</th>
+                    <th>VOUCHER #</th>
+                    <th>PARTY / LEDGER</th>
+                    <th>REFERENCE</th>
+                    <th style="text-align: right;">AMOUNT (₹)</th>
+                    <th>NARRATION</th>
+                    <th style="text-align: center;">DOC</th>
+                  </tr>
+                </thead>
+                <tbody id="rawVouchersTbody">
+                  <!-- Dynamically populated -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW: AJANTA SHOES DEDICATED HUB & TARGET SHORTFALL -->
+      <!-- ============================================== -->
+      <section class="view-panel" id="view-supplier-ajanta">
+        <!-- Supplier Hero Header -->
+        <div class="supplier-hero-box">
+          <div class="supplier-hero-left">
+            <button class="supplier-hero-logo-btn" id="btnAjantaHeroLogo" title="Tap to view Dealership Agreement Details">
+              <img src="assets/ajanta-logo.png" alt="Ajanta Shoes">
+            </button>
+            <div class="supplier-hero-meta">
+              <h2>Ajanta Shoes India Pvt. Ltd.</h2>
+              <p>
+                <span>🏢 Authorized Dealer: <strong>93081</strong> (SKIL LIFESTYLE)</span>
+                <span>•</span>
+                <span>📋 GSTIN: <strong>37AFZFS2777J1ZV</strong></span>
+                <span>•</span>
+                <span>📍 Visakhapatnam</span>
+              </p>
+            </div>
+          </div>
+          <div class="supplier-hero-right">
+            <button class="btn-open-agreement" id="btnOpenAjantaAgreement">
+              <i data-lucide="file-text" style="width: 15px; height: 15px;"></i>
+              <span>View Dealership Agreement</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Target & Shortfall Tracker Card -->
+        <div class="target-tracker-card">
+          <div class="target-tracker-header">
+            <div>
+              <h3 style="font-size: 16px; font-weight: 800; color: #0F172A; margin-bottom: 2px;">Monthly Target & Shortfall Tracker</h3>
+              <p style="font-size: 12.5px; color: #64748B;">Official Benchmark: <strong>₹10.00 Lakhs / Month</strong> &bull; Annual Target: <strong>₹1.20 Crore (FY 2026-27)</strong></p>
+            </div>
+            <div class="target-badge-pill">
+              <i data-lucide="target" style="width: 14px; height: 14px;"></i>
+              <span>Q2 Progress: 76.6% (Shortfall: ₹7.01L)</span>
+            </div>
+          </div>
+
+          <!-- Progress Bar to Q2 Target (₹30.00L) -->
+          <div style="margin-bottom: 16px;">
+            <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; color: #475569; margin-bottom: 4px;">
+              <span>Q2 Actual Achieved: ₹22,98,929</span>
+              <span>Q2 Target: ₹30,00,000 (Shortfall: ₹7,01,071)</span>
+            </div>
+            <div class="target-progress-bar-bg">
+              <div class="target-progress-bar-fill" style="width: 76.6%;"></div>
+            </div>
+          </div>
+
+          <!-- Month Breakdown Grid -->
+          <div class="target-card-grid">
+            <!-- August 2026 -->
+            <div class="target-metric-box">
+              <div class="target-metric-label">August 2026</div>
+              <div class="target-metric-val">₹12,51,737</div>
+              <div style="font-size: 11px; color: #64748B;">Target: ₹10,00,000</div>
+              <div class="target-metric-status status-met">
+                <i data-lucide="check-circle" style="width: 13px; height: 13px;"></i>
+                <span>Surplus +₹2.52L &bull; Shortfall ₹0.00</span>
+              </div>
+            </div>
+
+            <!-- September 2026 -->
+            <div class="target-metric-box">
+              <div class="target-metric-label">September 2026</div>
+              <div class="target-metric-val">₹10,47,192</div>
+              <div style="font-size: 11px; color: #64748B;">Target: ₹10,00,000</div>
+              <div class="target-metric-status status-met">
+                <i data-lucide="check-circle" style="width: 13px; height: 13px;"></i>
+                <span>Surplus +₹47,192 &bull; Shortfall ₹0.00</span>
+              </div>
+            </div>
+
+            <!-- October 2026 -->
+            <div class="target-metric-box">
+              <div class="target-metric-label">October 2026 (In Progress)</div>
+              <div class="target-metric-val">₹0.00</div>
+              <div style="font-size: 11px; color: #64748B;">Target: ₹10,00,000</div>
+              <div class="target-metric-status status-shortfall">
+                <i data-lucide="alert-triangle" style="width: 13px; height: 13px;"></i>
+                <span>Shortfall to Target: ₹10,00,000</span>
+              </div>
+            </div>
+
+            <!-- Annual Milestone -->
+            <div class="target-metric-box" style="background: #0F172A; color: #FFFFFF; border-color: #1E293B;">
+              <div class="target-metric-label" style="color: #A3E635;">FY 2026-27 Annual Goal</div>
+              <div class="target-metric-val" style="color: #FFFFFF;">₹22.99L / ₹1.20 Cr</div>
+              <div style="font-size: 11px; color: #94A3B8;">19.2% of Annual Target</div>
+              <div class="target-metric-status" style="color: #FBBF24;">
+                <i data-lucide="clock" style="width: 13px; height: 13px;"></i>
+                <span>Remaining Shortfall: ₹97.01L</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Document Downloads Vault -->
+        <div class="card-white" style="margin-bottom: 20px;">
+          <div class="section-header-row">
+            <div>
+              <h3 class="section-title">Ajanta Document Vault & Statements</h3>
+              <div class="section-subtitle">1-click direct download for official agreement, monthly ledger statements & discount audits</div>
+            </div>
+          </div>
+
+          <div class="doc-vault-grid">
+            <!-- Dealership Agreement -->
+            <div class="doc-vault-item">
+              <div class="doc-vault-info">
+                <div class="doc-vault-icon">
+                  <i data-lucide="file-text"></i>
+                </div>
+                <div>
+                  <div class="doc-vault-title">Dealership Agreement FY 2026-27</div>
+                  <div class="doc-vault-desc">Commercial Terms, 3% CD, 2% QTB, ₹1.20 Cr Target</div>
+                </div>
+              </div>
+              <a href="documents/ajanta/Ajanta_Dealership_Agreement_FY_2026_27.pdf" download="Ajanta - Skil Lifestyle Dealership Agreement FY 2026-27.pdf" class="btn-download-sm">
+                <i data-lucide="download" style="width: 13px; height: 13px;"></i>
+                <span>PDF</span>
+              </a>
+            </div>
+
+            <!-- August Statement -->
+            <div class="doc-vault-item">
+              <div class="doc-vault-info">
+                <div class="doc-vault-icon">
+                  <i data-lucide="file-text"></i>
+                </div>
+                <div>
+                  <div class="doc-vault-title">Statement — August 2026</div>
+                  <div class="doc-vault-desc">Dealer Code 93081 Statement (663 KB)</div>
+                </div>
+              </div>
+              <a href="documents/ajanta/Ajanta_Statement_August_2026_93081.pdf" download="Ajanta Statement - August 2026 - Dealer 93081.pdf" class="btn-download-sm">
+                <i data-lucide="download" style="width: 13px; height: 13px;"></i>
+                <span>PDF</span>
+              </a>
+            </div>
+
+            <!-- September Statement -->
+            <div class="doc-vault-item">
+              <div class="doc-vault-info">
+                <div class="doc-vault-icon">
+                  <i data-lucide="file-text"></i>
+                </div>
+                <div>
+                  <div class="doc-vault-title">Statement — September 2026</div>
+                  <div class="doc-vault-desc">Dealer Code 93081 Statement (132 KB)</div>
+                </div>
+              </div>
+              <a href="documents/ajanta/Ajanta_Statement_September_2026_93081.pdf" download="Ajanta Statement - September 2026 - Dealer 93081.pdf" class="btn-download-sm">
+                <i data-lucide="download" style="width: 13px; height: 13px;"></i>
+                <span>PDF</span>
+              </a>
+            </div>
+
+            <!-- October Statement -->
+            <div class="doc-vault-item">
+              <div class="doc-vault-info">
+                <div class="doc-vault-icon">
+                  <i data-lucide="file-text"></i>
+                </div>
+                <div>
+                  <div class="doc-vault-title">Statement — October 2026</div>
+                  <div class="doc-vault-desc">Dealer Code 93081 Statement (117 KB)</div>
+                </div>
+              </div>
+              <a href="documents/ajanta/Ajanta_Statement_October_2026_93081.pdf" download="Ajanta Statement - October 2026 - Dealer 93081.pdf" class="btn-download-sm">
+                <i data-lucide="download" style="width: 13px; height: 13px;"></i>
+                <span>PDF</span>
+              </a>
+            </div>
+
+            <!-- Discount Discrepancies Excel -->
+            <div class="doc-vault-item">
+              <div class="doc-vault-info">
+                <div class="doc-vault-icon excel">
+                  <i data-lucide="table"></i>
+                </div>
+                <div>
+                  <div class="doc-vault-title">Discount Discrepancies Reconciliation</div>
+                  <div class="doc-vault-desc">Audit & Inbound Rebate Claim Reconciliation</div>
+                </div>
+              </div>
+              <a href="documents/ajanta/Ajanta_Discount_Discrepancies.xlsx" download="Ajanta Discount Discrepancies.xlsx" class="btn-download-sm">
+                <i data-lucide="download" style="width: 13px; height: 13px;"></i>
+                <span>Excel</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ajanta Purchase Bills & Drop-Ship Consignments Table -->
+        <div class="card-white">
+          <div class="section-header-row">
+            <div>
+              <h3 class="section-title">Ajanta Purchase Invoices (51 Bills Matched)</h3>
+              <div class="section-subtitle">1:1 fulfillment to retail customers with supplier CD (3%) and customer CD (5%) tracking</div>
+            </div>
+            <input type="text" class="filter-pill-dropdown" id="ajantaInvoiceSearch" placeholder="Filter bill #, customer..." style="width: 220px;">
+          </div>
+
+          <div class="table-responsive">
+            <table class="biz-table" id="ajantaInvoicesTable">
+              <thead>
+                <tr>
+                  <th>VCH #</th>
+                  <th>DATE</th>
+                  <th>SUPPLIER INV</th>
+                  <th>CUSTOMER SOLD TO</th>
+                  <th>CTN / PRS</th>
+                  <th style="text-align: right;">PURCHASE ₹</th>
+                  <th style="text-align: right;">SALES ₹</th>
+                  <th style="text-align: right;">SUPP CD (3%)</th>
+                  <th style="text-align: right;">CUST CD (5%)</th>
+                  <th>STATUS</th>
+                </tr>
+              </thead>
+              <tbody id="ajantaInvoicesTbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW: XPANIA FOOTCARE DEDICATED HUB -->
+      <!-- ============================================== -->
+      <section class="view-panel" id="view-supplier-xpania">
+        <!-- Supplier Hero Header -->
+        <div class="supplier-hero-box">
+          <div class="supplier-hero-left">
+            <div class="supplier-hero-logo-btn" style="background: #FFFFFF;">
+              <img src="assets/xpania-logo.png" alt="Xpania Footcare">
+            </div>
+            <div class="supplier-hero-meta">
+              <h2>Xpania Footcare Private Limited</h2>
+              <p>
+                <span>🏢 Supplier Account &bull; SKIL Lifestyle LLP</span>
+                <span>•</span>
+                <span>📦 6 Invoices Matched 1:1</span>
+                <span>•</span>
+                <span>💰 Total Purchases: ₹8,14,529</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Document Downloads Vault -->
+        <div class="card-white" style="margin-bottom: 20px;">
+          <div class="section-header-row">
+            <div>
+              <h3 class="section-title">Xpania Invoices & Document Vault</h3>
+              <div class="section-subtitle">1-click direct download for all 6 Xpania purchase invoices (standardized naming)</div>
+            </div>
+          </div>
+
+          <div class="doc-vault-grid">
+            <div class="doc-vault-item">
+              <div class="doc-vault-info">
+                <div class="doc-vault-icon"><i data-lucide="file-text"></i></div>
+                <div>
+                  <div class="doc-vault-title">023 - INV-00384 - Sushila JSG</div>
+                  <div class="doc-vault-desc">Dated: 12-08-2026 &bull; ₹1,66,967</div>
+                </div>
+              </div>
+              <a href="documents/xpania/023 - XPL-2041-26-27 - Sushila JSG - 09-09-26.pdf" download class="btn-download-sm">
+                <i data-lucide="download" style="width: 13px; height: 13px;"></i>
+                <span>PDF</span>
+              </a>
+            </div>
+
+            <div class="doc-vault-item">
+              <div class="doc-vault-info">
+                <div class="doc-vault-icon"><i data-lucide="file-text"></i></div>
+                <div>
+                  <div class="doc-vault-title">035 - INV-00407 - Mahavir DNKL</div>
+                  <div class="doc-vault-desc">Dated: 19-08-2026 &bull; ₹1,80,000</div>
+                </div>
+              </div>
+              <a href="documents/xpania/035 - XPL-2140-26-27 - Mahavir DNKL - 19-09-26.pdf" download class="btn-download-sm">
+                <i data-lucide="download" style="width: 13px; height: 13px;"></i>
+                <span>PDF</span>
+              </a>
+            </div>
+
+            <div class="doc-vault-item">
+              <div class="doc-vault-info">
+                <div class="doc-vault-icon"><i data-lucide="file-text"></i></div>
+                <div>
+                  <div class="doc-vault-title">054 - INV-00438 - Mahavir DNKL</div>
+                  <div class="doc-vault-desc">Dated: 16-09-2026 &bull; ₹2,20,774</div>
+                </div>
+              </div>
+              <a href="documents/xpania/054 - XPL-2327-26-27 - Mahavir DNKL - 08-10-26.pdf" download class="btn-download-sm">
+                <i data-lucide="download" style="width: 13px; height: 13px;"></i>
+                <span>PDF</span>
+              </a>
+            </div>
+
+            <div class="doc-vault-item">
+              <div class="doc-vault-info">
+                <div class="doc-vault-icon"><i data-lucide="file-text"></i></div>
+                <div>
+                  <div class="doc-vault-title">055 - INV-00439 - Shree Aditya VZM</div>
+                  <div class="doc-vault-desc">Dated: 16-09-2026 &bull; ₹61,260</div>
+                </div>
+              </div>
+              <a href="documents/xpania/055 - XPL-2367-26-27 - Shree Aditya VZM - 10-10-26.pdf" download class="btn-download-sm">
+                <i data-lucide="download" style="width: 13px; height: 13px;"></i>
+                <span>PDF</span>
+              </a>
+            </div>
+
+            <div class="doc-vault-item">
+              <div class="doc-vault-info">
+                <div class="doc-vault-icon"><i data-lucide="file-text"></i></div>
+                <div>
+                  <div class="doc-vault-title">056 - INV-00440 - Rajan Jajpur</div>
+                  <div class="doc-vault-desc">Dated: 16-09-2026 &bull; ₹83,707</div>
+                </div>
+              </div>
+              <a href="documents/xpania/056 - XPL-2366-26-27 - Rajan Jajpur - 10-10-26.pdf" download class="btn-download-sm">
+                <i data-lucide="download" style="width: 13px; height: 13px;"></i>
+                <span>PDF</span>
+              </a>
+            </div>
+
+            <div class="doc-vault-item">
+              <div class="doc-vault-info">
+                <div class="doc-vault-icon"><i data-lucide="file-text"></i></div>
+                <div>
+                  <div class="doc-vault-title">057 - INV-00441 - Shree Aditya VZM</div>
+                  <div class="doc-vault-desc">Dated: 17-09-2026 &bull; ₹61,421</div>
+                </div>
+              </div>
+              <a href="documents/xpania/057 - XPL-2369-26-27 - Shree Aditya VZM - 12-10-26.pdf" download class="btn-download-sm">
+                <i data-lucide="download" style="width: 13px; height: 13px;"></i>
+                <span>PDF</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Xpania Invoices Table -->
+        <div class="card-white">
+          <div class="section-header-row">
+            <div>
+              <h3 class="section-title">Xpania Drop-Ship Invoices (6 Bills Matched)</h3>
+              <div class="section-subtitle">100% matched to retail customers with zero inventory holding</div>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="biz-table" id="xpaniaInvoicesTable">
+              <thead>
+                <tr>
+                  <th>VCH #</th>
+                  <th>DATE</th>
+                  <th>SUPPLIER INV</th>
+                  <th>CUSTOMER SOLD TO</th>
+                  <th>SALES VCH</th>
+                  <th style="text-align: right;">PURCHASE ₹</th>
+                  <th style="text-align: right;">SALES ₹</th>
+                  <th style="text-align: right;">MARGIN ₹</th>
+                  <th>STATUS</th>
+                </tr>
+              </thead>
+              <tbody id="xpaniaInvoicesTbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW 6: CREDIT NOTES & SCHEMES -->
+      <!-- ============================================== -->
+      <section class="view-panel" id="view-schemes">
+        <div class="card-white" style="margin-bottom: 16px;">
+          <div class="section-header-row">
+            <div>
+              <h2 class="section-title">2-Way Credit Notes & Rebate Claims</h2>
+              <div class="section-subtitle">Inbound Ajanta Manufacturer Claims & Outbound Customer 5% Cash Discounts</div>
+            </div>
+          </div>
+
+          <div class="schemes-card-grid">
+            <div class="indicator-card">
+              <div>
+                <div class="indicator-header">
+                  <div class="indicator-title">Inbound Supplier Claims (Ajanta)</div>
+                  <span class="badge-pill badge-success">₹1,98,891 Realized</span>
+                </div>
+                <div class="indicator-clause">Settled via Debit Notes 1–7 in Tally</div>
+              </div>
+              <div style="font-size: 13px; color: #475569;">
+                <div>• August 2026: ₹1,11,949.07 (DN 1–4 Settled)</div>
+                <div>• September 2026: ₹86,942.20 (DN 5–7 Settled)</div>
+                <div>• 3% Cash Discount + 3.78% Retail Scheme + Scratch Coupon + Rate Diff</div>
+              </div>
+              <div class="progress-track"><div class="progress-fill" style="width: 100%;"></div></div>
+            </div>
+
+            <div class="indicator-card">
+              <div>
+                <div class="indicator-header">
+                  <div class="indicator-title">Outbound Customer 5% Cash Discounts</div>
+                  <span class="badge-pill badge-info">₹1,30,766 Issued</span>
+                </div>
+                <div class="indicator-clause">Issued via Credit Notes 1–6 to Customers</div>
+              </div>
+              <div style="font-size: 13px; color: #475569;">
+                <div>• August 2026: ₹59,876.00 (CN 1–4 Issued)</div>
+                <div>• September 2026: ₹70,890.00 (CN 5–6 Issued)</div>
+                <div>• Calculated on taxable value for prompt 30-day payment settlements</div>
+              </div>
+              <div class="progress-track"><div class="progress-fill" style="width: 100%; background: #38BDF8;"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contract Incentive Indicators -->
+        <div class="card-white">
+          <h2 class="section-title" style="margin-bottom: 14px;">Contract Incentives & Quarterly Bonus Milestones</h2>
+          <div class="schemes-card-grid" id="contractIndicatorsGrid">
+            <!-- Dynamically populated from /api/schemes/indicators -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW 3: CUSTOMER PAYMENT AGING & RECEIVABLES -->
+      <!-- ============================================== -->
+      <section class="view-panel" id="view-payment-aging">
+        <!-- Overview Summary Header -->
+        <div class="aging-hero-banner" style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); border-radius: 16px; padding: 22px 24px; color: #FFFFFF; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; box-shadow: 0 4px 20px rgba(15, 23, 42, 0.12);">
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+              <span class="badge-pill" style="background: #A3E635; color: #0F172A; font-weight: 800; font-size: 11px;">TALLY AUDITED AGING</span>
+              <span style="font-size: 12px; color: #94A3B8;">As of 05-Nov-2026</span>
+            </div>
+            <div style="font-size: 28px; font-weight: 800; color: #FFFFFF; letter-spacing: -0.02em;" id="valAgingTotalReceivables">₹24,99,843</div>
+            <div style="font-size: 13px; color: #CBD5E1; margin-top: 4px;">
+              Total Customer Receivables across <strong id="valAgingPartiesCount">12 / 15</strong> Retail Ledgers (3 100% Cleared)
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+            <div style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 12px; padding: 10px 16px;">
+              <div style="font-size: 11px; color: #94A3B8; text-transform: uppercase; font-weight: 700;">5% Prompt CD Available</div>
+              <div style="font-size: 18px; font-weight: 800; color: #38BDF8;" id="valAgingCdAtStake">₹76,385</div>
+              <div style="font-size: 10.5px; color: #CBD5E1;">On bills &le; 30 days</div>
+            </div>
+
+            <div style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 12px; padding: 10px 16px;">
+              <div style="font-size: 11px; color: #94A3B8; text-transform: uppercase; font-weight: 700;">Oldest Unpaid Invoice</div>
+              <div style="font-size: 18px; font-weight: 800; color: #F87171;" id="valAgingOldestBill">10-Sep-2026</div>
+              <div style="font-size: 10.5px; color: #FCA5A5; font-weight: 700;" id="valAgingOldestDays">57 days elapsed</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 Interactive Aging Bucket Cards (30d, 45d, 60d, >60d) -->
+        <div class="aging-buckets-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-bottom: 20px;">
+          <!-- Bucket 1: 0-30 Days -->
+          <div class="bucket-kpi-card bucket-active" id="cardBucketUnder30" onclick="filterAgingByBucket('under30')">
+            <div class="bucket-header">
+              <span class="bucket-label">0 – 30 Days</span>
+              <span class="bucket-pill pill-emerald">5% CD Eligible</span>
+            </div>
+            <div class="bucket-value" id="valBucketUnder30" style="color: #059669;">₹15,27,690</div>
+            <div class="bucket-subtext" id="subBucketUnder30">13 Open Bills &bull; Prompt Window</div>
+          </div>
+
+          <!-- Bucket 2: 31-45 Days -->
+          <div class="bucket-kpi-card" id="cardBucket31to45" onclick="filterAgingByBucket('31to45')">
+            <div class="bucket-header">
+              <span class="bucket-label">31 – 45 Days</span>
+              <span class="bucket-pill pill-amber">Normal Due</span>
+            </div>
+            <div class="bucket-value" id="valBucket31to45" style="color: #D97706;">₹6,98,877</div>
+            <div class="bucket-subtext" id="subBucket31to45">16 Open Bills &bull; Regular Follow-up</div>
+          </div>
+
+          <!-- Bucket 3: 46-60 Days -->
+          <div class="bucket-kpi-card" id="cardBucket46to60" onclick="filterAgingByBucket('46to60')">
+            <div class="bucket-header">
+              <span class="bucket-label">46 – 60 Days</span>
+              <span class="bucket-pill pill-orange">Attention Needed</span>
+            </div>
+            <div class="bucket-value" id="valBucket46to60" style="color: #EA580C;">₹2,73,276</div>
+            <div class="bucket-subtext" id="subBucket46to60">9 Open Bills &bull; Overdue Notice</div>
+          </div>
+
+          <!-- Bucket 4: >60 Days -->
+          <div class="bucket-kpi-card" id="cardBucketOver60" onclick="filterAgingByBucket('over60')">
+            <div class="bucket-header">
+              <span class="bucket-label">&gt; 60 Days</span>
+              <span class="bucket-pill pill-slate">Overdue / Critical</span>
+            </div>
+            <div class="bucket-value" id="valBucketOver60" style="color: #64748B;">₹0</div>
+            <div class="bucket-subtext" id="subBucketOver60">0 Open Bills &bull; Clean Ledger</div>
+          </div>
+        </div>
+
+        <div class="card-white">
+          <div class="section-header-row">
+            <div>
+              <h2 class="section-title">Customer Ledger Aging & WhatsApp Settlement Hub</h2>
+              <div class="section-subtitle">Showing parties, category breakdown, & oldest bill. Tap <strong>WhatsApp & Statement PDF</strong> for instant canonical dispatch.</div>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+              <input type="text" class="filter-pill-dropdown" id="agingPartySearchInput" placeholder="Search Party / City..." style="width: 220px;">
+              <div class="segmented-pills">
+                <button class="segment-btn active" data-aging-filter="all" id="btnAgingFilterAll">All (15)</button>
+                <button class="segment-btn" data-aging-filter="due" id="btnAgingFilterDue">Dues Only (12)</button>
+                <button class="segment-btn" data-aging-filter="under30" id="btnAgingFilterUnder30">0-30d (CD)</button>
+                <button class="segment-btn" data-aging-filter="31to45" id="btnAgingFilter31to45">31-45d</button>
+                <button class="segment-btn" data-aging-filter="46to60" id="btnAgingFilter46to60">46-60d</button>
+                <button class="segment-btn" data-aging-filter="cleared" id="btnAgingFilterCleared">Cleared (3)</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Desktop & Unfolded Foldable Party Table -->
+          <div class="table-responsive party-aging-desktop-wrap">
+            <table class="biz-table party-aging-table">
+              <thead>
+                <tr>
+                  <th>PARTY / CUSTOMER</th>
+                  <th style="text-align: right;">TOTAL DUE (₹)</th>
+                  <th style="text-align: right;">0–30d (₹)</th>
+                  <th style="text-align: right;">31–45d (₹)</th>
+                  <th style="text-align: right;">46–60d (₹)</th>
+                  <th style="text-align: right;">&gt;60d (₹)</th>
+                  <th>OLDEST BILL</th>
+                  <th style="text-align: center;">5% CD STAKE</th>
+                  <th style="text-align: center;">SETTLEMENT ACTION</th>
+                </tr>
+              </thead>
+              <tbody id="partyAgingTbody">
+                <!-- Dynamically populated with expandable rows -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Mobile & Compact Foldable Party Cards -->
+          <div class="payment-aging-mobile-cards" id="partyAgingMobileCards">
+            <!-- Dynamically populated cards for mobile -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW: GST COMPLIANCE & FILING DEADLINES -->
+      <!-- ============================================== -->
+      <section class="view-panel" id="view-gst">
+        <!-- GST Compliance Deadlines Banner -->
+        <div class="gst-deadlines-banner" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-bottom: 20px;">
+          <div class="deadline-card urgent-deadline" style="background: linear-gradient(135deg, #FEF2F2 0%, #FEE2E2 100%); border: 1.5px solid #F87171; border-radius: 14px; padding: 18px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <span class="badge-pill badge-danger" style="font-size: 10px; font-weight: 800;">CRITICAL DEADLINE</span>
+              <span style="font-size: 11px; font-weight: 700; color: #991B1B;">10th / 11th NOV</span>
+            </div>
+            <div style="font-size: 16px; font-weight: 800; color: #991B1B;">GSTR-1 Outward Return</div>
+            <div style="font-size: 22px; font-weight: 800; color: #DC2626; margin: 4px 0;" id="gstCountDownGstr1">⏳ 6 Days Remaining</div>
+            <div style="font-size: 11.5px; color: #7F1D1D;">Mandatory outward B2B sales invoices filing for October 2026.</div>
+          </div>
+
+          <div class="deadline-card" style="background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%); border: 1.5px solid #4ADE80; border-radius: 14px; padding: 18px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <span class="badge-pill badge-success" style="font-size: 10px; font-weight: 800;">AUTO-DRAFT</span>
+              <span style="font-size: 11px; font-weight: 700; color: #166534;">14th NOV</span>
+            </div>
+            <div style="font-size: 16px; font-weight: 800; color: #166534;">GSTR-2B Inward ITC</div>
+            <div style="font-size: 22px; font-weight: 800; color: #15803D; margin: 4px 0;" id="gstCountDownGstr2b">⏳ 9 Days Remaining</div>
+            <div style="font-size: 11.5px; color: #14532D;">Supplier upload cutoff & eligible input tax credit auto-drafting.</div>
+          </div>
+
+          <div class="deadline-card" style="background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%); border: 1.5px solid #60A5FA; border-radius: 14px; padding: 18px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <span class="badge-pill badge-info" style="font-size: 10px; font-weight: 800;">TAX SETTLEMENT</span>
+              <span style="font-size: 11px; font-weight: 700; color: #1E40AF;">20th NOV</span>
+            </div>
+            <div style="font-size: 16px; font-weight: 800; color: #1E40AF;">GSTR-3B Monthly Return</div>
+            <div style="font-size: 22px; font-weight: 800; color: #2563EB; margin: 4px 0;" id="gstCountDownGstr3b">⏳ 15 Days Remaining</div>
+            <div style="font-size: 11.5px; color: #1E3A8A;">Summary return filing & tax liability settlement via input credit.</div>
+          </div>
+        </div>
+
+        <!-- 4-Column GST Summary Cards -->
+        <div class="stats-grid" style="margin-bottom: 20px;">
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">GSTR-1 Outward Turnover</span>
+              <span class="stat-icon-wrap" style="background: #ECFDF5; color: #059669;"><i data-lucide="trending-up"></i></span>
+            </div>
+            <div class="stat-value" id="valGstr1Gross">₹47,44,967</div>
+            <div class="stat-subtext">Taxable: <strong>₹45,19,017</strong> &bull; Output IGST: <strong>₹2,25,950</strong></div>
+            <div style="font-size: 11px; color: #64748B; margin-top: 6px;">76 Sales Invoices &bull; 7 CD Credit Notes (₹90,833)</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">GSTR-2B Inward Purchases</span>
+              <span class="stat-icon-wrap" style="background: #EFF6FF; color: #2563EB;"><i data-lucide="shopping-cart"></i></span>
+            </div>
+            <div class="stat-value" id="valGstr2bPurchases">₹47,28,426</div>
+            <div class="stat-subtext">Taxable: <strong>₹45,03,260</strong> &bull; Input IGST: <strong>₹2,25,163</strong></div>
+            <div style="font-size: 11px; color: #64748B; margin-top: 6px;">76 Inward Bills &bull; 9 Debit Notes (₹2,50,201)</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Net Eligible Inward ITC</span>
+              <span class="stat-icon-wrap" style="background: #FEF3C7; color: #D97706;"><i data-lucide="receipt"></i></span>
+            </div>
+            <div class="stat-value" id="valGstr2bNetItc" style="color: #059669;">₹2,13,249</div>
+            <div class="stat-subtext">After 9 Debit Notes IGST Reversal (₹11,914)</div>
+            <div style="font-size: 11px; color: #16A34A; margin-top: 6px; font-weight: 700;">100% Reconciled with Tally Input Credit</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">GSTR-3B Tax Liability Status</span>
+              <span class="stat-icon-wrap" style="background: #F1F5F9; color: #0F172A;"><i data-lucide="shield-check"></i></span>
+            </div>
+            <div class="stat-value" style="color: #16A34A;">₹0 Cash Outflow</div>
+            <div class="stat-subtext">Output Tax ₹2,25,950 offset against ITC ₹2,13,249</div>
+            <div style="font-size: 11px; color: #64748B; margin-top: 6px;">Net balance settled via inward credit & ledger adjustments</div>
+          </div>
+        </div>
+
+        <!-- Debit Notes Audit Table -->
+        <div class="card-white" style="margin-bottom: 20px;">
+          <div class="section-header-row">
+            <div>
+              <h2 class="section-title">Supplier Debit Notes & 5% IGST Reversal Audit</h2>
+              <div class="section-subtitle">Official Debit Notes issued to suppliers with 5% Input IGST credit reversal</div>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="biz-table">
+              <thead>
+                <tr>
+                  <th>DEBIT NOTE #</th>
+                  <th>DATE</th>
+                  <th>SUPPLIER</th>
+                  <th>PARTICULARS</th>
+                  <th style="text-align: right;">BASE AMOUNT (₹)</th>
+                  <th style="text-align: right;">INPUT IGST 5% (₹)</th>
+                  <th style="text-align: right;">TOTAL DEBIT NOTE (₹)</th>
+                  <th>STATUS</th>
+                </tr>
+              </thead>
+              <tbody id="gstDebitNotesTbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Customer Credit Notes Audit Table -->
+        <div class="card-white">
+          <div class="section-header-row">
+            <div>
+              <h2 class="section-title">Customer Credit Notes & 5% Cash Discount Audit</h2>
+              <div class="section-subtitle">Official Credit Notes issued to retail customers towards 5% prompt CD</div>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="biz-table">
+              <thead>
+                <tr>
+                  <th>CREDIT NOTE #</th>
+                  <th>DATE</th>
+                  <th>CUSTOMER</th>
+                  <th>PARTICULARS / INVOICES</th>
+                  <th style="text-align: right;">TOTAL CREDIT NOTE (₹)</th>
+                  <th>STATUS</th>
+                </tr>
+              </thead>
+              <tbody id="gstCreditNotesTbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW: SECURE ENCRYPTED CLOUD VAULT -->
+      <!-- ============================================== -->
+      <section class="view-panel" id="view-cloud-vault">
+        <div class="vault-hero-card" style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); border-radius: 16px; padding: 24px; color: #FFFFFF; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; box-shadow: 0 8px 24px rgba(15, 23, 42, 0.2);">
+          <div style="display: flex; align-items: center; gap: 18px;">
+            <div style="background: rgba(163, 230, 53, 0.15); border: 1px solid rgba(163, 230, 53, 0.3); border-radius: 14px; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <i data-lucide="shield-check" style="width: 30px; height: 30px; color: #A3E635;"></i>
+            </div>
+            <div>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <h2 style="font-size: 20px; font-weight: 800; color: #FFFFFF; margin: 0;">AES-256-GCM Encrypted Cloud Vault</h2>
+                <span class="badge-pill badge-success" style="font-size: 10px;">Authenticated</span>
+              </div>
+              <p style="color: #94A3B8; font-size: 13px; margin: 6px 0 0 0;">
+                All 218 Tally vouchers, ledgers, customer aging & master grids are encrypted with your key password (<code>SKIL@123</code>).
+              </p>
+            </div>
+          </div>
+          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <button class="sync-now-btn" id="btnSyncVaultNow" style="background: #A3E635; color: #0F172A; font-weight: 800; border: none; padding: 10px 18px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+              <i data-lucide="lock" style="width: 15px; height: 15px;"></i>
+              <span>Encrypt & Sync to Cloud</span>
+            </button>
+            <button id="btnDecryptVaultModal" style="background: rgba(255,255,255,0.1); color: #FFFFFF; border: 1px solid rgba(255,255,255,0.2); padding: 10px 16px; border-radius: 8px; font-weight: 700; font-size: 13px; display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
+              <i data-lucide="key" style="width: 15px; height: 15px;"></i>
+              <span>Decrypt & Inspect</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="stats-grid" style="margin-bottom: 20px;">
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">GitHub Sync Repository</span>
+              <span class="stat-icon-wrap" style="background: #F1F5F9; color: #0F172A;"><i data-lucide="git-branch"></i></span>
+            </div>
+            <div class="stat-value" style="font-size: 16px; font-family: monospace;">skillifestyle/master</div>
+            <div class="stat-subtext" style="color: #16A34A; font-weight: 700;">✅ Connected & Pushed to main</div>
+            <div style="font-size: 11px; color: #64748B; margin-top: 6px;">Encrypted file: <code>vault/skil_vault_encrypted.enc</code></div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Supabase Cloud Database</span>
+              <span class="stat-icon-wrap" style="background: #ECFDF5; color: #059669;"><i data-lucide="database"></i></span>
+            </div>
+            <div class="stat-value" style="font-size: 16px; font-family: monospace;">psykhsowmqtdffqcsbxf</div>
+            <div class="stat-subtext" style="color: #059669; font-weight: 700;">✅ Project linked & client active</div>
+            <div style="font-size: 11px; color: #64748B; margin-top: 6px;">URL: <code>https://psykhsowmqtdffqcsbxf.supabase.co</code></div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Encryption Standard</span>
+              <span class="stat-icon-wrap" style="background: #FEF3C7; color: #D97706;"><i data-lucide="lock"></i></span>
+            </div>
+            <div class="stat-value" style="font-size: 16px;">AES-256-GCM</div>
+            <div class="stat-subtext">PBKDF2-SHA256 &bull; 100,000 Iterations</div>
+            <div style="font-size: 11px; color: #64748B; margin-top: 6px;">Key password: <code>SKIL@123</code></div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Encrypted Records</span>
+              <span class="stat-icon-wrap" style="background: #EFF6FF; color: #2563EB;"><i data-lucide="file-check"></i></span>
+            </div>
+            <div class="stat-value">218 Vouchers</div>
+            <div class="stat-subtext">45 Ledgers &bull; 76 Purchase/Sales Pairs</div>
+            <div style="font-size: 11px; color: #16A34A; font-weight: 700; margin-top: 6px;">100% Data Integrity Verified</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW 8: AUDIT & RECONCILE -->
+      <!-- ============================================== -->
+      <section class="view-panel" id="view-audit-reconcile">
+        <div class="card-white" style="margin-bottom: 16px;">
+          <div class="section-header-row">
+            <div>
+              <h2 class="section-title">Accounting Reconciliation & Discrepancy Auditor</h2>
+              <div class="section-subtitle">Physical PDF vs Tally Vouchers cross-verification engine</div>
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <a href="/api/reconcile/discount-excel" download class="sync-now-btn" style="text-decoration: none;">
+                <i data-lucide="file-spreadsheet" style="width: 14px; height: 14px;"></i>
+                <span>Download Audit Excel</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="schemes-card-grid">
+            <div class="indicator-card">
+              <div class="indicator-header">
+                <div class="indicator-title">Missing in Tally</div>
+                <span class="badge-pill badge-success" id="auditMissingTallyCount">0 Missing</span>
+              </div>
+              <p style="font-size: 13px; color: #64748B;">All 57 supplier invoices are 100% entered in Tally.</p>
+            </div>
+
+            <div class="indicator-card">
+              <div class="indicator-header">
+                <div class="indicator-title">Bank Reconciliation Variance</div>
+                <span class="badge-pill badge-success">₹0.00 Variance</span>
+              </div>
+              <p style="font-size: 13px; color: #64748B;">Union Bank Current A/c is ₹27,575.20 Dr, matching bank statement to exact paisa.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Folder Timestamps Manager -->
+        <div class="card-white">
+          <div class="section-header-row">
+            <div>
+              <h2 class="section-title">Folder Timestamps Manager</h2>
+              <div class="section-subtitle">Live last-updated timestamps for organized accounting directories</div>
+            </div>
+            <button class="sync-now-btn" id="btnRefreshFolders">
+              <i data-lucide="refresh-cw" style="width: 14px; height: 14px;"></i>
+              <span>Refresh Timestamps</span>
+            </button>
+          </div>
+
+          <div class="folder-list-grid" id="folderTimestampsList">
+            <!-- Dynamically populated from /api/folders/status -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW 9: TALLY POSTING GUIDE -->
+      <!-- ============================================== -->
+      <section class="view-panel" id="view-tally-guide">
+        <div class="card-white">
+          <div class="section-header-row">
+            <div>
+              <h2 class="section-title">Tally Prime Voucher Posting Assistant</h2>
+              <div class="section-subtitle">Step-by-step voucher guide with shortcuts, accounts, and 1-click copy narrations</div>
+            </div>
+          </div>
+
+          <div class="guide-card-list" id="tallyGuideList">
+            <!-- Dynamically populated from /api/tally-guide/entries -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW 10: LINEMAN ROUTE VIEW -->
+      <!-- ============================================== -->
+      <section class="view-panel" id="view-lineman">
+        <div class="card-white">
+          <div class="section-header-row">
+            <div>
+              <h2 class="section-title">Lineman Delivery & Route View</h2>
+              <div class="section-subtitle">Dispatches and pending collections organized by destination route</div>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="biz-table">
+              <thead>
+                <tr>
+                  <th>ROUTE / AREA</th>
+                  <th>CONSIGNEE PARTY</th>
+                  <th>DISPATCH DATE</th>
+                  <th>CARTONS</th>
+                  <th>COLLECTION ₹</th>
+                  <th>STATUS</th>
+                </tr>
+              </thead>
+              <tbody id="linemanTbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW 11: LEDGER BOOK -->
+      <!-- ============================================== -->
+      <section class="view-panel" id="view-ledger-book">
+        <div class="card-white">
+          <div class="section-header-row">
+            <div>
+              <h2 class="section-title">Ledger Statement Explorer</h2>
+              <div class="section-subtitle">Chronological accounting statement and running balance for any Tally ledger</div>
+            </div>
+
+            <!-- Custom Styled Searchable Dropdown -->
+            <div class="custom-dropdown-wrap" id="ledgerCustomDropdown">
+              <button type="button" class="custom-dropdown-trigger" id="ledgerDropdownBtn">
+                <div class="trigger-label-group">
+                  <i data-lucide="book-open" class="trigger-icon" style="width: 16px; height: 16px; color: #0284C7;"></i>
+                  <span class="trigger-text" id="ledgerTriggerText">Select Ledger Account...</span>
+                </div>
+                <i data-lucide="chevron-down" class="chevron-icon" id="ledgerChevron" style="width: 16px; height: 16px; color: #64748B;"></i>
+              </button>
+
+              <div class="custom-dropdown-menu" id="ledgerDropdownMenu">
+                <div class="dropdown-search-box">
+                  <i data-lucide="search" style="width: 14px; height: 14px; color: #94A3B8;"></i>
+                  <input type="text" id="ledgerSearchInput" placeholder="Type to filter ledger..." autocomplete="off">
+                </div>
+                <div class="dropdown-items-list" id="ledgerItemsList">
+                  <!-- Dynamically populated options -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Hidden native select for compatibility -->
+            <select class="ledger-dropdown" id="ledgerBookSelect" style="display: none;">
+              <option value="">Select Ledger...</option>
+            </select>
+          </div>
+
+          <div class="modal-stint-summary-cards" style="margin-bottom: 20px;">
+            <div class="modal-mini-card">
+              <div class="modal-mini-label">Total Debits</div>
+              <div class="modal-mini-val" id="ledgerTotalDebits">₹0.00</div>
+            </div>
+            <div class="modal-mini-card">
+              <div class="modal-mini-label">Total Credits</div>
+              <div class="modal-mini-val" id="ledgerTotalCredits">₹0.00</div>
+            </div>
+            <div class="modal-mini-card">
+              <div class="modal-mini-label">Closing Balance</div>
+              <div class="modal-mini-val" id="ledgerClosingBalance">₹0.00</div>
+            </div>
+            <div class="modal-mini-card">
+              <div class="modal-mini-label">Total Vouchers</div>
+              <div class="modal-mini-val" id="ledgerVoucherCount">0</div>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="biz-table">
+              <thead>
+                <tr>
+                  <th>DATE</th>
+                  <th>VOUCHER TYPE</th>
+                  <th>VCH NO</th>
+                  <th>REFERENCE</th>
+                  <th>NARRATION</th>
+                  <th>DEBIT (₹)</th>
+                  <th>CREDIT (₹)</th>
+                  <th>BALANCE (₹)</th>
+                </tr>
+              </thead>
+              <tbody id="ledgerStatementTbody">
+                <tr><td colspan="8" style="text-align: center; color: #94A3B8; padding: 30px;">Please select a ledger above to view its statement.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- MOBILE BOTTOM NAVIGATION DOCK -->
+  <nav class="mobile-bottom-nav" id="mobileBottomNav">
+    <button class="mobile-nav-btn active" data-tab="dashboard">
+      <i data-lucide="layout-grid"></i>
+      <span>Dashboard</span>
+    </button>
+    <button class="mobile-nav-btn" data-tab="supplier-ajanta">
+      <div style="background: #FFFFFF; border-radius: 4px; padding: 2px 4px; display: inline-flex; align-items: center; justify-content: center; height: 18px;">
+        <img src="assets/ajanta-logo.png" alt="Ajanta" style="height: 12px; width: auto; object-fit: contain;">
+      </div>
+      <span>Ajanta</span>
+    </button>
+    <button class="mobile-nav-btn" data-tab="supplier-xpania">
+      <div style="background: #FFFFFF; border-radius: 4px; padding: 2px 4px; display: inline-flex; align-items: center; justify-content: center; height: 18px;">
+        <img src="assets/xpania-logo.png" alt="Xpania" style="height: 12px; width: auto; object-fit: contain;">
+      </div>
+      <span>Xpania</span>
+    </button>
+    <button class="mobile-nav-btn" data-tab="payment-aging">
+      <i data-lucide="clock-3"></i>
+      <span>Aging</span>
+    </button>
+    <button class="mobile-nav-btn" id="btnBottomMore">
+      <i data-lucide="menu"></i>
+      <span>More</span>
+    </button>
+  </nav>
+
+  <!-- STINT INSPECTION MODAL (👁 EYE BUTTON) -->
+  <div class="modal-backdrop" id="stintModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <h3 id="modalCustomerTitle">Customer Consignment</h3>
+          <p id="modalStintSubtitle">Stint # — Date</p>
+        </div>
+        <button class="modal-close-btn" id="modalCloseBtn">
+          <i data-lucide="x" style="width: 18px; height: 18px;"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-stint-summary-cards">
+          <div class="modal-mini-card">
+            <div class="modal-mini-label">Total Bills</div>
+            <div class="modal-mini-val" id="modalTotalBills">2</div>
+          </div>
+          <div class="modal-mini-card">
+            <div class="modal-mini-label">Total Sales</div>
+            <div class="modal-mini-val" id="modalTotalSales">₹0.00</div>
+          </div>
+          <div class="modal-mini-card">
+            <div class="modal-mini-label">Trade Margin</div>
+            <div class="modal-mini-val" id="modalTotalMargin" style="color: #4D7C0F;">₹0.00</div>
+          </div>
+          <div class="modal-mini-card">
+            <div class="modal-mini-label">5% CD Status</div>
+            <div class="modal-mini-val" id="modalCdStatus" style="font-size: 13.5px;">₹0.00</div>
+          </div>
+        </div>
+
+        <h4 style="font-size: 15px; font-weight: 800; color: #0F172A; margin-top: 8px;">Individual Invoices in this Consignment</h4>
+        <div class="table-responsive">
+          <table class="biz-table">
+            <thead>
+              <tr>
+                <th>INVOICE REF</th>
+                <th>SALES VCH</th>
+                <th>SUPPLIER</th>
+                <th>CTN</th>
+                <th>PAIRS</th>
+                <th>PURCHASE ₹</th>
+                <th>SALES ₹</th>
+                <th>MARGIN</th>
+                <th>DUE DATE</th>
+                <th>PAYMENT</th>
+              </tr>
+            </thead>
+            <tbody id="modalBillsTbody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AJANTA DEALERSHIP AGREEMENT DETAILS MODAL -->
+  <div class="modal-backdrop" id="ajantaAgreementModal">
+    <div class="modal-box" style="max-width: 680px;">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="background: #FFFFFF; border-radius: 6px; padding: 3px 8px; display: inline-flex;">
+              <img src="assets/ajanta-logo.png" alt="Ajanta" style="height: 18px; width: auto;">
+            </div>
+            <h3 style="font-size: 17px; font-weight: 800; color: #0F172A; margin: 0;">Dealership Business Agreement FY 2026-27</h3>
+          </div>
+          <p style="margin: 4px 0 0 0; font-size: 12.5px; color: #64748B;">Ajanta Shoes India Pvt. Ltd. &bull; Dealer Code: <strong>93081</strong> (SKIL LIFESTYLE)</p>
+        </div>
+        <button class="modal-close-btn" id="btnCloseAgreementModal">
+          <i data-lucide="x" style="width: 18px; height: 18px;"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 14px; margin-bottom: 16px;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; font-size: 13px;">
+            <div><strong>Party Name:</strong> SKIL LIFESTYLE</div>
+            <div><strong>Dealer Code:</strong> 93081</div>
+            <div><strong>GSTIN:</strong> 37AFZFS2777J1ZV</div>
+            <div><strong>Territory:</strong> Visakhapatnam & Coastal AP</div>
+            <div><strong>Agreement Period:</strong> Aug 2026 – Jul 2027</div>
+            <div><strong>Annual Target:</strong> ₹1,20,00,000 (₹1.20 Cr)</div>
+          </div>
+        </div>
+
+        <h4 style="font-size: 14px; font-weight: 800; color: #0F172A; margin-bottom: 10px;">Commercial Terms & Rebate Structure</h4>
+        <div class="table-responsive" style="margin-bottom: 16px;">
+          <table class="biz-table" style="font-size: 12px;">
+            <thead>
+              <tr>
+                <th>INCENTIVE / REBATE</th>
+                <th>RATE</th>
+                <th>CONDITIONS / BENCHMARKS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Cash Discount (CD)</strong></td>
+                <td><span class="badge-pill badge-success">3.00%</span></td>
+                <td>Prompt settlement within agreed credit period</td>
+              </tr>
+              <tr>
+                <td><strong>Quarterly Target Bonus (QTB)</strong></td>
+                <td><span class="badge-pill badge-info">2.00%</span></td>
+                <td>Calculated on Quarterly Basic Turnover</td>
+              </tr>
+              <tr>
+                <td><strong>Retailer Scheme</strong></td>
+                <td><span class="badge-pill badge-neutral">3.78%</span></td>
+                <td>Eligible billing categories under authorized rate card</td>
+              </tr>
+              <tr>
+                <td><strong>Quarterly Target Benchmark</strong></td>
+                <td><span class="badge-pill badge-warning">₹10 Lakhs / Mo</span></td>
+                <td>Quarterly achievement bonus on meeting ₹10L/mo benchmark</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="display: flex; align-items: center; justify-content: flex-end; gap: 10px; margin-top: 14px;">
+          <a href="documents/ajanta/Ajanta_Dealership_Agreement_FY_2026_27.pdf" download="Ajanta - Skil Lifestyle Dealership Agreement FY 2026-27.pdf" class="btn-download-sm" style="padding: 8px 14px; font-size: 13px; background: #0F172A; color: #FFFFFF; border: none;">
+            <i data-lucide="download" style="width: 15px; height: 15px;"></i>
+            <span>Download Official PDF Agreement</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- CUSTOMER SETTLEMENT & WHATSAPP + PDF DISPATCH MODAL -->
+  <!-- ======================================================== -->
+  <div class="modal-backdrop" id="customerSettlementModal" style="display: none;">
+    <div class="modal-box settlement-modal-box" style="max-width: 920px; width: 95%;">
+      <div class="modal-header" style="background: #0F172A; color: #FFFFFF; border-radius: 14px 14px 0 0; padding: 18px 24px;">
+        <div class="modal-title-wrap">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span class="badge-pill" style="background: #22C55E; color: #FFFFFF; font-weight: 800; font-size: 10.5px;">WHATSAPP & PDF DISPATCH</span>
+            <h3 style="font-size: 18px; font-weight: 800; color: #FFFFFF; margin: 0;" id="settleModalPartyName">Party Settlement</h3>
+          </div>
+          <p style="margin: 4px 0 0 0; font-size: 12px; color: #94A3B8;" id="settleModalPartyMeta">
+            GSTIN: — &bull; Ledger Balance: ₹0
+          </p>
+        </div>
+        <button class="modal-close-btn" id="btnCloseSettlementModal" style="color: #CBD5E1;">
+          <i data-lucide="x" style="width: 20px; height: 20px;"></i>
+        </button>
+      </div>
+
+      <div class="modal-body settlement-modal-body" style="padding: 20px;">
+        <div class="settlement-dual-grid">
+          <!-- Left Column: Bill Checkboxes & Math Breakdown -->
+          <div class="settlement-col-left">
+            <div class="settlement-config-box">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+                <label style="font-size: 13px; font-weight: 800; color: #0F172A;">Select Bills to Include in Settlement</label>
+                <button type="button" class="btn-text-action" id="btnToggleAllSettleBills" style="background: none; border: none; font-size: 12px; font-weight: 700; color: #0284C7; cursor: pointer;">Toggle All</button>
+              </div>
+
+              <!-- Bills Checklist Container -->
+              <div class="settlement-bills-checklist" id="settleBillsChecklist" style="max-height: 220px; overflow-y: auto; border: 1px solid #E2E8F0; border-radius: 10px; padding: 8px; margin-bottom: 12px;">
+                <!-- Populated dynamically -->
+              </div>
+
+              <!-- Discount & Historical Balances Configuration -->
+              <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 12px; margin-bottom: 14px;">
+                <label style="display: flex; align-items: flex-start; gap: 8px; font-size: 12.5px; color: #1E293B; cursor: pointer; margin-bottom: 10px;">
+                  <input type="checkbox" id="chkApply5Cd" checked style="margin-top: 3px; accent-color: #16A34A;">
+                  <span>Apply <strong>5% Cash Discount (CD)</strong> strictly on Taxable Value for qualifying bills (&le; 30 days)</span>
+                </label>
+
+                <!-- Old Balance Row -->
+                <div style="border-top: 1px dashed #CBD5E1; padding-top: 10px; margin-top: 6px;">
+                  <label style="font-size: 11.5px; font-weight: 700; color: #475569; display: block; margin-bottom: 6px;">
+                    ➕ Add: Old Historical Balance (Net Addition — 0% CD):
+                  </label>
+                  <div style="display: flex; gap: 8px; align-items: center;">
+                    <input type="text" id="txtOldBalanceMonth" placeholder="e.g. August" style="width: 110px; padding: 6px 10px; font-size: 12px; border: 1px solid #CBD5E1; border-radius: 6px;">
+                    <div style="display: flex; align-items: center; background: #FFFFFF; border: 1px solid #CBD5E1; border-radius: 6px; padding: 0 8px;">
+                      <span style="font-size: 12px; font-weight: 700; color: #64748B;">+₹</span>
+                      <input type="number" id="txtOldBalanceAmt" placeholder="0" style="border: none; outline: none; padding: 6px 4px; font-weight: 700; font-size: 12.5px; width: 110px;">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mathematical Summary Card -->
+            <div class="settlement-math-box" style="background: #F1F5F9; border-radius: 12px; padding: 14px; border: 1px solid #CBD5E1;">
+              <div style="display: flex; justify-content: space-between; font-size: 12.5px; color: #475569; margin-bottom: 6px;">
+                <span>Total of <strong id="settleSelectedCount">0</strong> Bills (Gross):</span>
+                <span style="font-weight: 700; color: #0F172A;" id="settleGrossSubtotal">₹0</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 12.5px; color: #16A34A; margin-bottom: 6px;">
+                <span>Less: 5% CD on Taxable (<span id="settleTaxableSubtotal">₹0</span>):</span>
+                <span style="font-weight: 800;" id="settleCdDeduction">-₹0</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 13px; font-weight: 800; color: #0284C7; margin-bottom: 6px; border-top: 1px solid #CBD5E1; padding-top: 6px;">
+                <span>👉 Net for Selected Bills:</span>
+                <span id="settleNetBills">₹0</span>
+              </div>
+              <div id="mathOldBalRow" style="display: none; justify-content: space-between; font-size: 12.5px; color: #D97706; margin-bottom: 6px;">
+                <span>➕ Add: Old <span id="mathOldBalMonth">Prior</span> Balance (Net):</span>
+                <span style="font-weight: 800;" id="mathOldBalAmt">+₹0</span>
+              </div>
+              <div style="border-top: 2px solid #0F172A; margin: 8px 0 6px 0;"></div>
+              <div style="display: flex; justify-content: space-between; font-size: 15px; font-weight: 800; color: #0F172A;">
+                <span>👉 TOTAL TO TRANSFER:</span>
+                <span style="color: #DC2626; font-size: 18px;" id="settleFinalPayable">₹0</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Live WhatsApp Markdown Preview & Actions -->
+          <div class="settlement-col-right">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <span style="font-size: 12.5px; font-weight: 800; color: #15803D; display: flex; align-items: center; gap: 6px;">
+                <i data-lucide="message-circle" style="width: 15px; height: 15px;"></i> WhatsApp Markdown Preview
+              </span>
+              <span class="badge-pill badge-neutral" style="font-size: 10px;">SKIL Canonical Standard</span>
+            </div>
+
+            <textarea class="whatsapp-preview-textarea" id="txtWhatsAppPreview" readonly style="width: 100%; height: 260px; font-family: monospace; font-size: 11.5px; background: #0F172A; color: #F8FAFC; border: 1px solid #334155; border-radius: 10px; padding: 12px; resize: none; line-height: 1.5;"></textarea>
+
+            <!-- Action Buttons Grid -->
+            <div class="settlement-actions-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px;">
+              <button class="btn-settle-action" id="btnCopyWhatsAppText" style="background: #22C55E; color: #FFFFFF; font-weight: 800; border: none; padding: 12px 14px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 13px;">
+                <i data-lucide="copy" style="width: 16px; height: 16px;"></i>
+                <span>Copy WhatsApp Text</span>
+              </button>
+
+              <button class="btn-settle-action" id="btnOpenWhatsAppDirect" style="background: #15803D; color: #FFFFFF; font-weight: 800; border: none; padding: 12px 14px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 13px;">
+                <i data-lucide="send" style="width: 16px; height: 16px;"></i>
+                <span>Open in WhatsApp</span>
+              </button>
+
+              <button class="btn-settle-action" id="btnPrintStatementPdf" style="grid-column: span 2; background: #0F172A; color: #FFFFFF; font-weight: 800; border: 1px solid #334155; padding: 12px 14px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 13px;">
+                <i data-lucide="printer" style="width: 16px; height: 16px;"></i>
+                <span>Download / Print Customer Statement PDF</span>
+              </button>
+            </div>
+
+            <!-- Floating Feedback Toast -->
+            <div class="copy-toast" id="copyToast" style="display: none; background: #0F172A; color: #A3E635; padding: 8px 14px; border-radius: 6px; font-size: 12px; font-weight: 700; text-align: center; margin-top: 8px;">
+              ✅ Copied WhatsApp settlement text to clipboard!
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRINT-READY CUSTOMER STATEMENT CONTAINER (PRINT ONLY) -->
+  <div id="printStatementContainer" class="print-statement-area"></div>
+
+  <!-- Application Logic -->
+  <script src="app.js?v=2.1.0"></script>
+</body>
+</html>

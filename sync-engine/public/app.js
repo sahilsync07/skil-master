@@ -256,7 +256,7 @@ function setupNavigation() {
 }
 
 // GitHub Cloud Storage Raw Base Configuration
-const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/sahilsync07/skil-master/main/sync-engine/public';
+const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/skillifestyle/master/main';
 
 // Setup Sync Button & Data Refresh (Works for both Desktop Topbar and Mobile Quick Sync)
 function setupSyncButton() {
@@ -361,6 +361,19 @@ function updateStaticDownloadLinks() {
 // Tier 2: GitHub Cloud Storage (live cloud data when outside on 4G/5G mobile data)
 // Tier 3: Bundled Storage (offline fallback when completely disconnected)
 async function smartFetch(apiEndpoint, fallbackFile) {
+  // If running on GitHub Pages or HTTPS static host, fetch relative ./data/ directly (same origin, zero CORS)
+  if (window.location.hostname.includes('github.io') || window.location.protocol === 'https:') {
+    try {
+      const res = await fetch(`./data/${fallbackFile}?v=${Date.now()}`);
+      if (res.ok) {
+        state.dataSource = 'github-pages';
+        return await res.json();
+      }
+    } catch (e) {
+      // Continue to next tiers
+    }
+  }
+
   const serverHost = getApiBaseUrl();
 
   // Tier 1: Try Local PC Server if on local Wi-Fi / dev server
