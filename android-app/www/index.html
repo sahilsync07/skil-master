@@ -76,8 +76,17 @@
           <li class="nav-item" data-tab="payment-aging">
             <a class="nav-link">
               <i data-lucide="clock-3"></i>
-              <span>Customer Aging</span>
+              <span>Aging & Settlement</span>
               <span class="nav-badge-dot"></span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="gst-compliance">
+            <a class="nav-link" style="display: flex; align-items: center; justify-content: space-between;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <i data-lucide="receipt"></i>
+                <span>GST Compliance</span>
+              </div>
+              <span class="badge-pill badge-warning" style="font-size: 9.5px; padding: 2px 6px;">Due 11th</span>
             </a>
           </li>
           <li class="nav-item" data-tab="inventory">
@@ -96,6 +105,15 @@
             <a class="nav-link">
               <i data-lucide="shield-check"></i>
               <span>Audit & Reconcile</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="cloud-vault">
+            <a class="nav-link" style="display: flex; align-items: center; justify-content: space-between;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <i data-lucide="lock"></i>
+                <span>Cloud Vault</span>
+              </div>
+              <span class="badge-pill badge-success" style="font-size: 9.5px; padding: 2px 6px;">AES-256</span>
             </a>
           </li>
         </ul>
@@ -1243,73 +1261,111 @@
       <!-- VIEW 3: CUSTOMER PAYMENT AGING & RECEIVABLES -->
       <!-- ============================================== -->
       <section class="view-panel" id="view-payment-aging">
-        <!-- Overview Summary Cards -->
-        <div class="stats-grid" style="margin-bottom: 20px;">
-          <div class="stat-card">
-            <div class="stat-header">
-              <span class="stat-label">Total Receivables Outstanding</span>
-              <span class="stat-icon-wrap" style="background: #FEE2E2; color: #DC2626;"><i data-lucide="alert-circle"></i></span>
+        <!-- Overview Summary Header -->
+        <div class="aging-hero-banner" style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); border-radius: 16px; padding: 22px 24px; color: #FFFFFF; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; box-shadow: 0 4px 20px rgba(15, 23, 42, 0.12);">
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+              <span class="badge-pill" style="background: #A3E635; color: #0F172A; font-weight: 800; font-size: 11px;">TALLY AUDITED AGING</span>
+              <span style="font-size: 12px; color: #94A3B8;">As of 05-Nov-2026</span>
             </div>
-            <div class="stat-value" id="valAgingTotalReceivables" style="color: #DC2626;">₹17,62,534</div>
-            <div class="stat-subtext">Across 9 retail customer ledgers</div>
+            <div style="font-size: 28px; font-weight: 800; color: #FFFFFF; letter-spacing: -0.02em;" id="valAgingTotalReceivables">₹24,99,843</div>
+            <div style="font-size: 13px; color: #CBD5E1; margin-top: 4px;">
+              Total Customer Receivables across <strong id="valAgingPartiesCount">12 / 15</strong> Retail Ledgers (3 100% Cleared)
+            </div>
           </div>
 
-          <div class="stat-card">
-            <div class="stat-header">
-              <span class="stat-label">Parties with Pending Dues</span>
-              <span class="stat-icon-wrap" style="background: #FEF3C7; color: #D97706;"><i data-lucide="users"></i></span>
+          <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+            <div style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 12px; padding: 10px 16px;">
+              <div style="font-size: 11px; color: #94A3B8; text-transform: uppercase; font-weight: 700;">5% Prompt CD Available</div>
+              <div style="font-size: 18px; font-weight: 800; color: #38BDF8;" id="valAgingCdAtStake">₹76,385</div>
+              <div style="font-size: 10.5px; color: #CBD5E1;">On bills &le; 30 days</div>
             </div>
-            <div class="stat-value" id="valAgingPartiesCount">9 / 11 Parties</div>
-            <div class="stat-subtext">2 parties 100% cleared</div>
+
+            <div style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 12px; padding: 10px 16px;">
+              <div style="font-size: 11px; color: #94A3B8; text-transform: uppercase; font-weight: 700;">Oldest Unpaid Invoice</div>
+              <div style="font-size: 18px; font-weight: 800; color: #F87171;" id="valAgingOldestBill">10-Sep-2026</div>
+              <div style="font-size: 10.5px; color: #FCA5A5; font-weight: 700;" id="valAgingOldestDays">57 days elapsed</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 Interactive Aging Bucket Cards (30d, 45d, 60d, >60d) -->
+        <div class="aging-buckets-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-bottom: 20px;">
+          <!-- Bucket 1: 0-30 Days -->
+          <div class="bucket-kpi-card bucket-active" id="cardBucketUnder30" onclick="filterAgingByBucket('under30')">
+            <div class="bucket-header">
+              <span class="bucket-label">0 – 30 Days</span>
+              <span class="bucket-pill pill-emerald">5% CD Eligible</span>
+            </div>
+            <div class="bucket-value" id="valBucketUnder30" style="color: #059669;">₹15,27,690</div>
+            <div class="bucket-subtext" id="subBucketUnder30">13 Open Bills &bull; Prompt Window</div>
           </div>
 
-          <div class="stat-card">
-            <div class="stat-header">
-              <span class="stat-label">Oldest Unpaid Invoice</span>
-              <span class="stat-icon-wrap" style="background: #FEF2F2; color: #B91C1C;"><i data-lucide="calendar"></i></span>
+          <!-- Bucket 2: 31-45 Days -->
+          <div class="bucket-kpi-card" id="cardBucket31to45" onclick="filterAgingByBucket('31to45')">
+            <div class="bucket-header">
+              <span class="bucket-label">31 – 45 Days</span>
+              <span class="bucket-pill pill-amber">Normal Due</span>
             </div>
-            <div class="stat-value" id="valAgingOldestBill">12-Aug-2026</div>
-            <div class="stat-subtext" style="color: #DC2626; font-weight: 700;" id="valAgingOldestDays">65 days overdue</div>
+            <div class="bucket-value" id="valBucket31to45" style="color: #D97706;">₹6,98,877</div>
+            <div class="bucket-subtext" id="subBucket31to45">16 Open Bills &bull; Regular Follow-up</div>
           </div>
 
-          <div class="stat-card">
-            <div class="stat-header">
-              <span class="stat-label">5% Prompt CD at Stake</span>
-              <span class="stat-icon-wrap" style="background: #E0F2FE; color: #0284C7;"><i data-lucide="percent"></i></span>
+          <!-- Bucket 3: 46-60 Days -->
+          <div class="bucket-kpi-card" id="cardBucket46to60" onclick="filterAgingByBucket('46to60')">
+            <div class="bucket-header">
+              <span class="bucket-label">46 – 60 Days</span>
+              <span class="bucket-pill pill-orange">Attention Needed</span>
             </div>
-            <div class="stat-value" id="valAgingCdAtStake">₹88,127</div>
-            <div class="stat-subtext">Available if paid within 30 days</div>
+            <div class="bucket-value" id="valBucket46to60" style="color: #EA580C;">₹2,73,276</div>
+            <div class="bucket-subtext" id="subBucket46to60">9 Open Bills &bull; Overdue Notice</div>
+          </div>
+
+          <!-- Bucket 4: >60 Days -->
+          <div class="bucket-kpi-card" id="cardBucketOver60" onclick="filterAgingByBucket('over60')">
+            <div class="bucket-header">
+              <span class="bucket-label">&gt; 60 Days</span>
+              <span class="bucket-pill pill-slate">Overdue / Critical</span>
+            </div>
+            <div class="bucket-value" id="valBucketOver60" style="color: #64748B;">₹0</div>
+            <div class="bucket-subtext" id="subBucketOver60">0 Open Bills &bull; Clean Ledger</div>
           </div>
         </div>
 
         <div class="card-white">
           <div class="section-header-row">
             <div>
-              <h2 class="section-title">Customer Ledger Aging Summary</h2>
-              <div class="section-subtitle">Showing parties, total dues & oldest bill due. Tap any party to expand individual bills.</div>
+              <h2 class="section-title">Customer Ledger Aging & WhatsApp Settlement Hub</h2>
+              <div class="section-subtitle">Showing parties, category breakdown, & oldest bill. Tap <strong>WhatsApp & Statement PDF</strong> for instant canonical dispatch.</div>
             </div>
 
             <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
-              <input type="text" class="filter-pill-dropdown" id="agingPartySearchInput" placeholder="Search Party / City..." style="width: 200px;">
+              <input type="text" class="filter-pill-dropdown" id="agingPartySearchInput" placeholder="Search Party / City..." style="width: 220px;">
               <div class="segmented-pills">
-                <button class="segment-btn active" data-aging-filter="all" id="btnAgingFilterAll">All Parties (11)</button>
-                <button class="segment-btn" data-aging-filter="due" id="btnAgingFilterDue">Dues Only (9)</button>
-                <button class="segment-btn" data-aging-filter="cleared" id="btnAgingFilterCleared">Cleared (2)</button>
+                <button class="segment-btn active" data-aging-filter="all" id="btnAgingFilterAll">All (15)</button>
+                <button class="segment-btn" data-aging-filter="due" id="btnAgingFilterDue">Dues Only (12)</button>
+                <button class="segment-btn" data-aging-filter="under30" id="btnAgingFilterUnder30">0-30d (CD)</button>
+                <button class="segment-btn" data-aging-filter="31to45" id="btnAgingFilter31to45">31-45d</button>
+                <button class="segment-btn" data-aging-filter="46to60" id="btnAgingFilter46to60">46-60d</button>
+                <button class="segment-btn" data-aging-filter="cleared" id="btnAgingFilterCleared">Cleared (3)</button>
               </div>
             </div>
           </div>
 
-          <!-- Desktop Party Table -->
+          <!-- Desktop & Unfolded Foldable Party Table -->
           <div class="table-responsive party-aging-desktop-wrap">
             <table class="biz-table party-aging-table">
               <thead>
                 <tr>
                   <th>PARTY / CUSTOMER</th>
                   <th style="text-align: right;">TOTAL DUE (₹)</th>
-                  <th style="text-align: right;">OLDEST BILL DUE (₹)</th>
-                  <th>OLDEST BILL DATE</th>
-                  <th>INVOICES STATUS</th>
-                  <th style="text-align: center;">DRILLDOWN</th>
+                  <th style="text-align: right;">0–30d (₹)</th>
+                  <th style="text-align: right;">31–45d (₹)</th>
+                  <th style="text-align: right;">46–60d (₹)</th>
+                  <th style="text-align: right;">&gt;60d (₹)</th>
+                  <th>OLDEST BILL</th>
+                  <th style="text-align: center;">5% CD STAKE</th>
+                  <th style="text-align: center;">SETTLEMENT ACTION</th>
                 </tr>
               </thead>
               <tbody id="partyAgingTbody">
@@ -1318,9 +1374,220 @@
             </table>
           </div>
 
-          <!-- Mobile Party Cards -->
+          <!-- Mobile & Compact Foldable Party Cards -->
           <div class="payment-aging-mobile-cards" id="partyAgingMobileCards">
             <!-- Dynamically populated cards for mobile -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW: GST COMPLIANCE & FILING DEADLINES -->
+      <!-- ============================================== -->
+      <section class="view-panel" id="view-gst">
+        <!-- GST Compliance Deadlines Banner -->
+        <div class="gst-deadlines-banner" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-bottom: 20px;">
+          <div class="deadline-card urgent-deadline" style="background: linear-gradient(135deg, #FEF2F2 0%, #FEE2E2 100%); border: 1.5px solid #F87171; border-radius: 14px; padding: 18px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <span class="badge-pill badge-danger" style="font-size: 10px; font-weight: 800;">CRITICAL DEADLINE</span>
+              <span style="font-size: 11px; font-weight: 700; color: #991B1B;">10th / 11th NOV</span>
+            </div>
+            <div style="font-size: 16px; font-weight: 800; color: #991B1B;">GSTR-1 Outward Return</div>
+            <div style="font-size: 22px; font-weight: 800; color: #DC2626; margin: 4px 0;" id="gstCountDownGstr1">⏳ 6 Days Remaining</div>
+            <div style="font-size: 11.5px; color: #7F1D1D;">Mandatory outward B2B sales invoices filing for October 2026.</div>
+          </div>
+
+          <div class="deadline-card" style="background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%); border: 1.5px solid #4ADE80; border-radius: 14px; padding: 18px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <span class="badge-pill badge-success" style="font-size: 10px; font-weight: 800;">AUTO-DRAFT</span>
+              <span style="font-size: 11px; font-weight: 700; color: #166534;">14th NOV</span>
+            </div>
+            <div style="font-size: 16px; font-weight: 800; color: #166534;">GSTR-2B Inward ITC</div>
+            <div style="font-size: 22px; font-weight: 800; color: #15803D; margin: 4px 0;" id="gstCountDownGstr2b">⏳ 9 Days Remaining</div>
+            <div style="font-size: 11.5px; color: #14532D;">Supplier upload cutoff & eligible input tax credit auto-drafting.</div>
+          </div>
+
+          <div class="deadline-card" style="background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%); border: 1.5px solid #60A5FA; border-radius: 14px; padding: 18px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <span class="badge-pill badge-info" style="font-size: 10px; font-weight: 800;">TAX SETTLEMENT</span>
+              <span style="font-size: 11px; font-weight: 700; color: #1E40AF;">20th NOV</span>
+            </div>
+            <div style="font-size: 16px; font-weight: 800; color: #1E40AF;">GSTR-3B Monthly Return</div>
+            <div style="font-size: 22px; font-weight: 800; color: #2563EB; margin: 4px 0;" id="gstCountDownGstr3b">⏳ 15 Days Remaining</div>
+            <div style="font-size: 11.5px; color: #1E3A8A;">Summary return filing & tax liability settlement via input credit.</div>
+          </div>
+        </div>
+
+        <!-- 4-Column GST Summary Cards -->
+        <div class="stats-grid" style="margin-bottom: 20px;">
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">GSTR-1 Outward Turnover</span>
+              <span class="stat-icon-wrap" style="background: #ECFDF5; color: #059669;"><i data-lucide="trending-up"></i></span>
+            </div>
+            <div class="stat-value" id="valGstr1Gross">₹47,44,967</div>
+            <div class="stat-subtext">Taxable: <strong>₹45,19,017</strong> &bull; Output IGST: <strong>₹2,25,950</strong></div>
+            <div style="font-size: 11px; color: #64748B; margin-top: 6px;">76 Sales Invoices &bull; 7 CD Credit Notes (₹90,833)</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">GSTR-2B Inward Purchases</span>
+              <span class="stat-icon-wrap" style="background: #EFF6FF; color: #2563EB;"><i data-lucide="shopping-cart"></i></span>
+            </div>
+            <div class="stat-value" id="valGstr2bPurchases">₹47,28,426</div>
+            <div class="stat-subtext">Taxable: <strong>₹45,03,260</strong> &bull; Input IGST: <strong>₹2,25,163</strong></div>
+            <div style="font-size: 11px; color: #64748B; margin-top: 6px;">76 Inward Bills &bull; 9 Debit Notes (₹2,50,201)</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Net Eligible Inward ITC</span>
+              <span class="stat-icon-wrap" style="background: #FEF3C7; color: #D97706;"><i data-lucide="receipt"></i></span>
+            </div>
+            <div class="stat-value" id="valGstr2bNetItc" style="color: #059669;">₹2,13,249</div>
+            <div class="stat-subtext">After 9 Debit Notes IGST Reversal (₹11,914)</div>
+            <div style="font-size: 11px; color: #16A34A; margin-top: 6px; font-weight: 700;">100% Reconciled with Tally Input Credit</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">GSTR-3B Tax Liability Status</span>
+              <span class="stat-icon-wrap" style="background: #F1F5F9; color: #0F172A;"><i data-lucide="shield-check"></i></span>
+            </div>
+            <div class="stat-value" style="color: #16A34A;">₹0 Cash Outflow</div>
+            <div class="stat-subtext">Output Tax ₹2,25,950 offset against ITC ₹2,13,249</div>
+            <div style="font-size: 11px; color: #64748B; margin-top: 6px;">Net balance settled via inward credit & ledger adjustments</div>
+          </div>
+        </div>
+
+        <!-- Debit Notes Audit Table -->
+        <div class="card-white" style="margin-bottom: 20px;">
+          <div class="section-header-row">
+            <div>
+              <h2 class="section-title">Supplier Debit Notes & 5% IGST Reversal Audit</h2>
+              <div class="section-subtitle">Official Debit Notes issued to suppliers with 5% Input IGST credit reversal</div>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="biz-table">
+              <thead>
+                <tr>
+                  <th>DEBIT NOTE #</th>
+                  <th>DATE</th>
+                  <th>SUPPLIER</th>
+                  <th>PARTICULARS</th>
+                  <th style="text-align: right;">BASE AMOUNT (₹)</th>
+                  <th style="text-align: right;">INPUT IGST 5% (₹)</th>
+                  <th style="text-align: right;">TOTAL DEBIT NOTE (₹)</th>
+                  <th>STATUS</th>
+                </tr>
+              </thead>
+              <tbody id="gstDebitNotesTbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Customer Credit Notes Audit Table -->
+        <div class="card-white">
+          <div class="section-header-row">
+            <div>
+              <h2 class="section-title">Customer Credit Notes & 5% Cash Discount Audit</h2>
+              <div class="section-subtitle">Official Credit Notes issued to retail customers towards 5% prompt CD</div>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="biz-table">
+              <thead>
+                <tr>
+                  <th>CREDIT NOTE #</th>
+                  <th>DATE</th>
+                  <th>CUSTOMER</th>
+                  <th>PARTICULARS / INVOICES</th>
+                  <th style="text-align: right;">TOTAL CREDIT NOTE (₹)</th>
+                  <th>STATUS</th>
+                </tr>
+              </thead>
+              <tbody id="gstCreditNotesTbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW: SECURE ENCRYPTED CLOUD VAULT -->
+      <!-- ============================================== -->
+      <section class="view-panel" id="view-cloud-vault">
+        <div class="vault-hero-card" style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); border-radius: 16px; padding: 24px; color: #FFFFFF; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; box-shadow: 0 8px 24px rgba(15, 23, 42, 0.2);">
+          <div style="display: flex; align-items: center; gap: 18px;">
+            <div style="background: rgba(163, 230, 53, 0.15); border: 1px solid rgba(163, 230, 53, 0.3); border-radius: 14px; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <i data-lucide="shield-check" style="width: 30px; height: 30px; color: #A3E635;"></i>
+            </div>
+            <div>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <h2 style="font-size: 20px; font-weight: 800; color: #FFFFFF; margin: 0;">AES-256-GCM Encrypted Cloud Vault</h2>
+                <span class="badge-pill badge-success" style="font-size: 10px;">Authenticated</span>
+              </div>
+              <p style="color: #94A3B8; font-size: 13px; margin: 6px 0 0 0;">
+                All 218 Tally vouchers, ledgers, customer aging & master grids are encrypted with your key password (<code>SKIL@123</code>).
+              </p>
+            </div>
+          </div>
+          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <button class="sync-now-btn" id="btnSyncVaultNow" style="background: #A3E635; color: #0F172A; font-weight: 800; border: none; padding: 10px 18px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+              <i data-lucide="lock" style="width: 15px; height: 15px;"></i>
+              <span>Encrypt & Sync to Cloud</span>
+            </button>
+            <button id="btnDecryptVaultModal" style="background: rgba(255,255,255,0.1); color: #FFFFFF; border: 1px solid rgba(255,255,255,0.2); padding: 10px 16px; border-radius: 8px; font-weight: 700; font-size: 13px; display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
+              <i data-lucide="key" style="width: 15px; height: 15px;"></i>
+              <span>Decrypt & Inspect</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="stats-grid" style="margin-bottom: 20px;">
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">GitHub Sync Repository</span>
+              <span class="stat-icon-wrap" style="background: #F1F5F9; color: #0F172A;"><i data-lucide="git-branch"></i></span>
+            </div>
+            <div class="stat-value" style="font-size: 16px; font-family: monospace;">skillifestyle/master</div>
+            <div class="stat-subtext" style="color: #16A34A; font-weight: 700;">✅ Connected & Pushed to main</div>
+            <div style="font-size: 11px; color: #64748B; margin-top: 6px;">Encrypted file: <code>vault/skil_vault_encrypted.enc</code></div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Supabase Cloud Database</span>
+              <span class="stat-icon-wrap" style="background: #ECFDF5; color: #059669;"><i data-lucide="database"></i></span>
+            </div>
+            <div class="stat-value" style="font-size: 16px; font-family: monospace;">psykhsowmqtdffqcsbxf</div>
+            <div class="stat-subtext" style="color: #059669; font-weight: 700;">✅ Project linked & client active</div>
+            <div style="font-size: 11px; color: #64748B; margin-top: 6px;">URL: <code>https://psykhsowmqtdffqcsbxf.supabase.co</code></div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Encryption Standard</span>
+              <span class="stat-icon-wrap" style="background: #FEF3C7; color: #D97706;"><i data-lucide="lock"></i></span>
+            </div>
+            <div class="stat-value" style="font-size: 16px;">AES-256-GCM</div>
+            <div class="stat-subtext">PBKDF2-SHA256 &bull; 100,000 Iterations</div>
+            <div style="font-size: 11px; color: #64748B; margin-top: 6px;">Key password: <code>SKIL@123</code></div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Encrypted Records</span>
+              <span class="stat-icon-wrap" style="background: #EFF6FF; color: #2563EB;"><i data-lucide="file-check"></i></span>
+            </div>
+            <div class="stat-value">218 Vouchers</div>
+            <div class="stat-subtext">45 Ledgers &bull; 76 Purchase/Sales Pairs</div>
+            <div style="font-size: 11px; color: #16A34A; font-weight: 700; margin-top: 6px;">100% Data Integrity Verified</div>
           </div>
         </div>
       </section>
@@ -1674,6 +1941,132 @@
       </div>
     </div>
   </div>
+
+  <!-- ======================================================== -->
+  <!-- CUSTOMER SETTLEMENT & WHATSAPP + PDF DISPATCH MODAL -->
+  <!-- ======================================================== -->
+  <div class="modal-backdrop" id="customerSettlementModal" style="display: none;">
+    <div class="modal-box settlement-modal-box" style="max-width: 920px; width: 95%;">
+      <div class="modal-header" style="background: #0F172A; color: #FFFFFF; border-radius: 14px 14px 0 0; padding: 18px 24px;">
+        <div class="modal-title-wrap">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span class="badge-pill" style="background: #22C55E; color: #FFFFFF; font-weight: 800; font-size: 10.5px;">WHATSAPP & PDF DISPATCH</span>
+            <h3 style="font-size: 18px; font-weight: 800; color: #FFFFFF; margin: 0;" id="settleModalPartyName">Party Settlement</h3>
+          </div>
+          <p style="margin: 4px 0 0 0; font-size: 12px; color: #94A3B8;" id="settleModalPartyMeta">
+            GSTIN: — &bull; Ledger Balance: ₹0
+          </p>
+        </div>
+        <button class="modal-close-btn" id="btnCloseSettlementModal" style="color: #CBD5E1;">
+          <i data-lucide="x" style="width: 20px; height: 20px;"></i>
+        </button>
+      </div>
+
+      <div class="modal-body settlement-modal-body" style="padding: 20px;">
+        <div class="settlement-dual-grid">
+          <!-- Left Column: Bill Checkboxes & Math Breakdown -->
+          <div class="settlement-col-left">
+            <div class="settlement-config-box">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+                <label style="font-size: 13px; font-weight: 800; color: #0F172A;">Select Bills to Include in Settlement</label>
+                <button type="button" class="btn-text-action" id="btnToggleAllSettleBills" style="background: none; border: none; font-size: 12px; font-weight: 700; color: #0284C7; cursor: pointer;">Toggle All</button>
+              </div>
+
+              <!-- Bills Checklist Container -->
+              <div class="settlement-bills-checklist" id="settleBillsChecklist" style="max-height: 220px; overflow-y: auto; border: 1px solid #E2E8F0; border-radius: 10px; padding: 8px; margin-bottom: 12px;">
+                <!-- Populated dynamically -->
+              </div>
+
+              <!-- Discount & Historical Balances Configuration -->
+              <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 12px; margin-bottom: 14px;">
+                <label style="display: flex; align-items: flex-start; gap: 8px; font-size: 12.5px; color: #1E293B; cursor: pointer; margin-bottom: 10px;">
+                  <input type="checkbox" id="chkApply5Cd" checked style="margin-top: 3px; accent-color: #16A34A;">
+                  <span>Apply <strong>5% Cash Discount (CD)</strong> strictly on Taxable Value for qualifying bills (&le; 30 days)</span>
+                </label>
+
+                <!-- Old Balance Row -->
+                <div style="border-top: 1px dashed #CBD5E1; padding-top: 10px; margin-top: 6px;">
+                  <label style="font-size: 11.5px; font-weight: 700; color: #475569; display: block; margin-bottom: 6px;">
+                    ➕ Add: Old Historical Balance (Net Addition — 0% CD):
+                  </label>
+                  <div style="display: flex; gap: 8px; align-items: center;">
+                    <input type="text" id="txtOldBalanceMonth" placeholder="e.g. August" style="width: 110px; padding: 6px 10px; font-size: 12px; border: 1px solid #CBD5E1; border-radius: 6px;">
+                    <div style="display: flex; align-items: center; background: #FFFFFF; border: 1px solid #CBD5E1; border-radius: 6px; padding: 0 8px;">
+                      <span style="font-size: 12px; font-weight: 700; color: #64748B;">+₹</span>
+                      <input type="number" id="txtOldBalanceAmt" placeholder="0" style="border: none; outline: none; padding: 6px 4px; font-weight: 700; font-size: 12.5px; width: 110px;">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mathematical Summary Card -->
+            <div class="settlement-math-box" style="background: #F1F5F9; border-radius: 12px; padding: 14px; border: 1px solid #CBD5E1;">
+              <div style="display: flex; justify-content: space-between; font-size: 12.5px; color: #475569; margin-bottom: 6px;">
+                <span>Total of <strong id="settleSelectedCount">0</strong> Bills (Gross):</span>
+                <span style="font-weight: 700; color: #0F172A;" id="settleGrossSubtotal">₹0</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 12.5px; color: #16A34A; margin-bottom: 6px;">
+                <span>Less: 5% CD on Taxable (<span id="settleTaxableSubtotal">₹0</span>):</span>
+                <span style="font-weight: 800;" id="settleCdDeduction">-₹0</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 13px; font-weight: 800; color: #0284C7; margin-bottom: 6px; border-top: 1px solid #CBD5E1; padding-top: 6px;">
+                <span>👉 Net for Selected Bills:</span>
+                <span id="settleNetBills">₹0</span>
+              </div>
+              <div id="mathOldBalRow" style="display: none; justify-content: space-between; font-size: 12.5px; color: #D97706; margin-bottom: 6px;">
+                <span>➕ Add: Old <span id="mathOldBalMonth">Prior</span> Balance (Net):</span>
+                <span style="font-weight: 800;" id="mathOldBalAmt">+₹0</span>
+              </div>
+              <div style="border-top: 2px solid #0F172A; margin: 8px 0 6px 0;"></div>
+              <div style="display: flex; justify-content: space-between; font-size: 15px; font-weight: 800; color: #0F172A;">
+                <span>👉 TOTAL TO TRANSFER:</span>
+                <span style="color: #DC2626; font-size: 18px;" id="settleFinalPayable">₹0</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Live WhatsApp Markdown Preview & Actions -->
+          <div class="settlement-col-right">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <span style="font-size: 12.5px; font-weight: 800; color: #15803D; display: flex; align-items: center; gap: 6px;">
+                <i data-lucide="message-circle" style="width: 15px; height: 15px;"></i> WhatsApp Markdown Preview
+              </span>
+              <span class="badge-pill badge-neutral" style="font-size: 10px;">SKIL Canonical Standard</span>
+            </div>
+
+            <textarea class="whatsapp-preview-textarea" id="txtWhatsAppPreview" readonly style="width: 100%; height: 260px; font-family: monospace; font-size: 11.5px; background: #0F172A; color: #F8FAFC; border: 1px solid #334155; border-radius: 10px; padding: 12px; resize: none; line-height: 1.5;"></textarea>
+
+            <!-- Action Buttons Grid -->
+            <div class="settlement-actions-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px;">
+              <button class="btn-settle-action" id="btnCopyWhatsAppText" style="background: #22C55E; color: #FFFFFF; font-weight: 800; border: none; padding: 12px 14px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 13px;">
+                <i data-lucide="copy" style="width: 16px; height: 16px;"></i>
+                <span>Copy WhatsApp Text</span>
+              </button>
+
+              <button class="btn-settle-action" id="btnOpenWhatsAppDirect" style="background: #15803D; color: #FFFFFF; font-weight: 800; border: none; padding: 12px 14px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 13px;">
+                <i data-lucide="send" style="width: 16px; height: 16px;"></i>
+                <span>Open in WhatsApp</span>
+              </button>
+
+              <button class="btn-settle-action" id="btnPrintStatementPdf" style="grid-column: span 2; background: #0F172A; color: #FFFFFF; font-weight: 800; border: 1px solid #334155; padding: 12px 14px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 13px;">
+                <i data-lucide="printer" style="width: 16px; height: 16px;"></i>
+                <span>Download / Print Customer Statement PDF</span>
+              </button>
+            </div>
+
+            <!-- Floating Feedback Toast -->
+            <div class="copy-toast" id="copyToast" style="display: none; background: #0F172A; color: #A3E635; padding: 8px 14px; border-radius: 6px; font-size: 12px; font-weight: 700; text-align: center; margin-top: 8px;">
+              ✅ Copied WhatsApp settlement text to clipboard!
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRINT-READY CUSTOMER STATEMENT CONTAINER (PRINT ONLY) -->
+  <div id="printStatementContainer" class="print-statement-area"></div>
 
   <!-- Application Logic -->
   <script src="app.js?v=2.1.0"></script>

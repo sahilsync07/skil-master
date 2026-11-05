@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require('path');
 const db = require('./database');
 
 class AgingService {
@@ -26,6 +28,9 @@ class AgingService {
   processPartiesAging(parties, vouchers, partyType, asOf) {
     let totalOutstanding = 0;
     let totalBucketUnder30 = 0;
+    let totalBucket31To45 = 0;
+    let totalBucket46To60 = 0;
+    let totalBucketOver60 = 0;
     let totalBucket30To60 = 0;
     let totalBucket60To90 = 0;
     let totalBucketOver90 = 0;
@@ -58,21 +63,32 @@ class AgingService {
         });
 
         // In Tally:
-        // For Debtors: Sales debits the customer (receivable), Receipt credits the customer.
-        // For Creditors: Purchase credits supplier (payable), Payment debits supplier.
+        // For Debtors: Sales debits customer, Receipt credits customer, Credit Note credits customer, Payment (refund) debits customer.
+        // For Creditors: Purchase credits supplier, Payment debits supplier, Debit Note debits supplier, Receipt (refund) credits supplier.
         if (partyType === 'debtor') {
           if (v.voucherType === 'Sales') {
+            const taxable = v.ledgerEntries?.find(l => l.ledgerName && l.ledgerName.includes('Sales'))?.amount || (v.amount / 1.05);
+            const ctnM = (v.narration || '').match(/(\d+)\s*(?:CTN|BOX|CS|CARTON)/i);
+            const ctns = ctnM ? parseInt(ctnM[1], 10) : (v.inventoryEntries?.length || 1);
+            const dueDateObj = vDate ? new Date(vDate.getTime() + 30 * 86400000) : null;
+
             bills.push({
               voucherType: v.voucherType,
               voucherNumber: v.voucherNumber,
               date: v.date,
               formattedDate: this.formatDate(v.date),
               amount: v.amount,
+              taxableAmount: Math.round(taxable * 100) / 100,
+              cartons: ctns,
               daysElapsed,
-              bucket: this.getBucket(daysElapsed)
+              bucket: this.getBucket(daysElapsed),
+              dueDate: dueDateObj ? dueDateObj.toISOString().slice(0, 10) : '',
+              formattedDueDate: dueDateObj ? this.formatDateObj(dueDateObj) : '',
+              cdEligible: daysElapsed <= 30,
+              cdAmount: Math.round(taxable * 0.05 * 100) / 100
             });
             totalDebits += v.amount;
-          } else if (v.voucherType === 'Receipt') {
+          } else if (v.voucherType === 'Receipt' || v.voucherType === 'Credit Note') {
             totalCredits += v.amount;
           } else if (v.voucherType === 'Payment') {
             // Customer refund (e.g. Salim Khan) debits customer account
@@ -81,17 +97,24 @@ class AgingService {
         } else {
           // Creditor
           if (v.voucherType === 'Purchase') {
+            const taxable = v.ledgerEntries?.find(l => l.ledgerName && l.ledgerName.includes('Purchase'))?.amount || (v.amount / 1.05);
+            const dueDateObj = vDate ? new Date(vDate.getTime() + 30 * 86400000) : null;
             bills.push({
               voucherType: v.voucherType,
               voucherNumber: v.voucherNumber,
               date: v.date,
               formattedDate: this.formatDate(v.date),
               amount: v.amount,
+              taxableAmount: Math.round(taxable * 100) / 100,
               daysElapsed,
-              bucket: this.getBucket(daysElapsed)
+              bucket: this.getBucket(daysElapsed),
+              dueDate: dueDateObj ? dueDateObj.toISOString().slice(0, 10) : '',
+              formattedDueDate: dueDateObj ? this.formatDateObj(dueDateObj) : '',
+              cdEligible: daysElapsed <= 30,
+              cdAmount: Math.round(taxable * 0.03 * 100) / 100
             });
             totalCredits += v.amount;
-          } else if (v.voucherType === 'Payment') {
+          } else if (v.voucherType === 'Payment' || v.voucherType === 'Debit Note') {
             totalDebits += v.amount;
           } else if (v.voucherType === 'Receipt') {
             // Supplier refund credits supplier account
@@ -125,6 +148,10 @@ class AgingService {
       const settledBills = bills.filter(b => b.status === 'PAID');
 
       let under30 = 0;
+      let d31to45 = 0;
+      let d46to60 = 0;
+      let over60 = 0;
+
       let d30to60 = 0;
       let d60to90 = 0;
       let over90 = 0;
@@ -134,7 +161,14 @@ class AgingService {
         // Bucket the open unpaid portion of each bill
         openBills.forEach(bill => {
           const amt = bill.unpaidAmount;
-          if (bill.daysElapsed < 30) under30 += amt;
+          // 4-category analysis (user standard: 30 days, 45 days, 60 days, >60 days)
+          if (bill.daysElapsed <= 30) under30 += amt;
+          else if (bill.daysElapsed <= 45) d31to45 += amt;
+          else if (bill.daysElapsed <= 60) d46to60 += amt;
+          else over60 += amt;
+
+          // Legacy 30/60/90 compatibility
+          if (bill.daysElapsed < 30) {}
           else if (bill.daysElapsed < 60) d30to60 += amt;
           else if (bill.daysElapsed < 90) d60to90 += amt;
           else over90 += amt;
@@ -142,6 +176,10 @@ class AgingService {
 
         totalOutstanding += netDue;
         totalBucketUnder30 += under30;
+        totalBucket31To45 += d31to45;
+        totalBucket46To60 += d46to60;
+        totalBucketOver60 += over60;
+
         totalBucket30To60 += d30to60;
         totalBucket60To90 += d60to90;
         totalBucketOver90 += over90;
@@ -150,7 +188,7 @@ class AgingService {
         totalAdvance += Math.abs(netDue);
       }
 
-      // Oldest bill
+      // Oldest open bill
       const oldestBill = openBills.length > 0 ? openBills[0] : (bills.length > 0 ? bills[0] : null);
 
       return {
@@ -162,11 +200,17 @@ class AgingService {
         netDue: Math.round(netDue * 100) / 100,
         isAdvance,
         advanceAmount: isAdvance ? Math.abs(Math.round(netDue * 100) / 100) : 0,
+        // Standard 4 buckets (0-30d, 31-45d, 46-60d, >60d)
         under30: Math.round(under30 * 100) / 100,
+        d31to45: Math.round(d31to45 * 100) / 100,
+        d46to60: Math.round(d46to60 * 100) / 100,
+        over60: Math.round(over60 * 100) / 100,
+        // Legacy buckets
         d30to60: Math.round(d30to60 * 100) / 100,
         d60to90: Math.round(d60to90 * 100) / 100,
         over90: Math.round(over90 * 100) / 100,
         oldestBillDays: oldestBill ? oldestBill.daysElapsed : 0,
+        oldestBillDate: oldestBill ? oldestBill.formattedDate : '—',
         totalInvoices: bills.length,
         openBillsCount: openBills.length,
         settledBillsCount: settledBills.length,
@@ -182,20 +226,25 @@ class AgingService {
         totalOutstanding: Math.round(totalOutstanding * 100) / 100,
         totalAdvance: Math.round(totalAdvance * 100) / 100,
         under30: Math.round(totalBucketUnder30 * 100) / 100,
+        d31to45: Math.round(totalBucket31To45 * 100) / 100,
+        d46to60: Math.round(totalBucket46To60 * 100) / 100,
+        over60: Math.round(totalBucketOver60 * 100) / 100,
         d30to60: Math.round(totalBucket30To60 * 100) / 100,
         d60to90: Math.round(totalBucket60To90 * 100) / 100,
         over90: Math.round(totalBucketOver90 * 100) / 100,
-        partiesCount: parties.length
+        partiesCount: parties.length,
+        openPartiesCount: items.filter(i => i.netDue > 0).length,
+        clearedPartiesCount: items.filter(i => i.netDue <= 0).length
       },
       parties: items
     };
   }
 
   getBucket(days) {
-    if (days < 30) return '<30';
-    if (days < 60) return '30-60';
-    if (days < 90) return '60-90';
-    return '90+';
+    if (days <= 30) return '<30';
+    if (days <= 45) return '31-45';
+    if (days <= 60) return '46-60';
+    return '>60';
   }
 
   parseTallyDate(dStr) {
@@ -209,6 +258,34 @@ class AgingService {
   formatDate(dStr) {
     if (!dStr || dStr.length !== 8) return dStr || '-';
     return `${dStr.slice(6, 8)}-${dStr.slice(4, 6)}-${dStr.slice(0, 4)}`;
+  }
+
+  formatDateObj(d) {
+    if (!d) return '—';
+    const day = String(d.getUTCDate()).padStart(2, '0');
+    const month = String(d.getUTCMonth() + 1).padStart(2, '0');
+    const year = d.getUTCFullYear();
+    return `${day}-${month}-${year}`;
+  }
+
+  saveAgingFiles(asOfParam = null) {
+    const data = this.calculateAging(asOfParam);
+    const jsonStr = JSON.stringify(data, null, 2);
+    const paths = [
+      path.join(__dirname, 'data', 'aging.json'),
+      path.join(__dirname, 'public', 'data', 'aging.json'),
+      path.join(__dirname, '..', 'android-app', 'www', 'data', 'aging.json')
+    ];
+    paths.forEach(p => {
+      try {
+        const dir = path.dirname(p);
+        if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+        fs.writeFileSync(p, jsonStr, 'utf8');
+      } catch (e) {
+        console.error('Error writing aging file:', p, e.message);
+      }
+    });
+    return data;
   }
 }
 
