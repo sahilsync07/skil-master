@@ -39,9 +39,6 @@ jobs:
           java-version: 17
           cache: 'gradle'
 
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
-
       - name: Configure Dynamic Versioning
         run: |
           # Calculate strictly increasing version code based on GitHub Run Number
