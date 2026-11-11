@@ -1,0 +1,3199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SKIL Lifestyle LLP — Weekly Receivables & Settlement Summary</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    :root {
+      --bg-main: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --border-color: #e2e8f0;
+      --brand-dark: #1e293b;
+      --brand-slate: #334155;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+    }
+    @media print {
+      body { background: white !important; font-size: 11pt; }
+      .no-print { display: none !important; }
+      .page-break { page-break-before: always; }
+      .card-shadow { box-shadow: none !important; border: 1px solid #cbd5e1 !important; }
+    }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+  </style>
+</head>
+<body class="p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto">
+
+  <!-- TOP HEADER / BRAND BAR -->
+  <header class="bg-slate-900 text-white rounded-2xl p-6 sm:p-8 mb-8 shadow-md">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <div>
+        <div class="flex items-center gap-3 mb-2">
+          <span class="px-3 py-1 bg-slate-800 text-emerald-400 text-xs font-semibold uppercase tracking-wider rounded-full border border-slate-700">
+            Official Audit & Settlement Register
+          </span>
+          <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs font-medium rounded-full border border-slate-700">
+            FY 2026-27 | Port 9000 Verified
+          </span>
+        </div>
+        <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">SKIL LIFESTYLE LLP</h1>
+        <p class="text-slate-300 text-sm mt-1">Rayagada, Odisha | Dealership Distribution: Ajanta Shoes • Xpania Footcare • Cubix</p>
+      </div>
+      <div class="md:text-right border-t md:border-t-0 pt-4 md:pt-0 border-slate-800 w-full md:w-auto">
+        <div class="text-xs uppercase tracking-wider text-slate-400 font-medium">Designated Partner</div>
+        <div class="text-lg font-bold text-white">S Lokanatha Patro</div>
+        <div class="text-xs text-slate-400 mt-1">Report Generated: <span class="font-semibold text-slate-200">Wednesday, 11-Nov-2026</span></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- EXECUTIVE KPI HERO CARDS -->
+  <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+    <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+      <div class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Total Outstanding Debtors</div>
+      <div class="text-2xl sm:text-3xl font-extrabold text-slate-900 mono">₹25,05,563</div>
+      <div class="text-xs text-slate-500 mt-2 flex items-center justify-between">
+        <span>12 Active Accounts</span>
+        <span class="font-medium text-slate-700">59 Open Bills</span>
+      </div>
+    </div>
+
+    <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+      <div class="text-xs font-bold text-amber-700 uppercase tracking-wider mb-1">Overdue (>30 Days)</div>
+      <div class="text-2xl sm:text-3xl font-extrabold text-amber-900 mono">₹11,63,989</div>
+      <div class="text-xs text-amber-700 mt-2 flex items-center justify-between">
+        <span>High-Priority Follow Up</span>
+        <span class="font-semibold">46% of Portfolio</span>
+      </div>
+    </div>
+
+    <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+      <div class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Eligible Cash Discount (CD)</div>
+      <div class="text-2xl sm:text-3xl font-extrabold text-indigo-900 mono">-₹1,33,625</div>
+      <div class="text-xs text-slate-500 mt-2 flex items-center justify-between">
+        <span>5% on Taxable (3% Rajan)</span>
+        <span class="font-medium text-indigo-700">Upon Settlement</span>
+      </div>
+    </div>
+
+    <div class="bg-white border-2 border-emerald-600 bg-emerald-50/40 rounded-xl p-5 shadow-sm">
+      <div class="text-xs font-bold text-emerald-800 uppercase tracking-wider mb-1">Net Realizable Inflow</div>
+      <div class="text-2xl sm:text-3xl font-extrabold text-emerald-950 mono">₹23,71,938</div>
+      <div class="text-xs text-emerald-800 mt-2 flex items-center justify-between font-medium">
+        <span>Total Net Cash Expected</span>
+        <span class="font-bold text-emerald-900">100% Verified</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK ACTION / FILTER TOOLBAR -->
+  <div class="no-print bg-white border border-slate-200 rounded-xl p-4 mb-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
+    <div class="flex flex-wrap items-center gap-2 w-full md:w-auto">
+      <button onclick="filterTable('all')" class="filter-btn px-4 py-2 rounded-lg text-xs font-semibold bg-slate-900 text-white shadow-sm" data-filter="all">All Parties (12)</button>
+      <button onclick="filterTable('overdue')" class="filter-btn px-4 py-2 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200" data-filter="overdue">Overdue >30d</button>
+      <button onclick="filterTable('current')" class="filter-btn px-4 py-2 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200" data-filter="current">Current &lt;30d</button>
+      <button onclick="filterTable('odisha')" class="filter-btn px-4 py-2 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200" data-filter="odisha">Odisha</button>
+      <button onclick="filterTable('ap')" class="filter-btn px-4 py-2 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200" data-filter="ap">Andhra Pradesh</button>
+    </div>
+    <div class="flex items-center gap-3 w-full md:w-auto">
+      <input type="text" id="searchInput" onkeyup="searchParties()" placeholder="Search party, invoice, GSTIN..." class="w-full md:w-64 px-3 py-2 text-xs border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-900">
+      <button onclick="window.print()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold rounded-lg border border-slate-300 whitespace-nowrap">🖨️ Print / PDF</button>
+    </div>
+  </div>
+
+  <!-- GRAND MASTER EXECUTIVE SUMMARY TABLE -->
+  <section class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm mb-12">
+    <div class="px-6 py-4 bg-slate-50 border-b border-slate-200 flex justify-between items-center">
+      <div>
+        <h2 class="text-base font-bold text-slate-900">Party-Wise Receivables & Cash Discount Summary</h2>
+        <p class="text-xs text-slate-500">Ranked by Outstanding Ledger Balance in TallyPrime</p>
+      </div>
+      <span class="text-xs font-semibold bg-slate-200 text-slate-700 px-3 py-1 rounded-full">12 Debtors Active</span>
+    </div>
+    
+    <div class="overflow-x-auto">
+      <table class="w-full text-left text-xs border-collapse">
+        <thead>
+          <tr class="bg-slate-100 text-slate-700 border-b border-slate-200 font-semibold uppercase tracking-wider text-[11px]">
+            <th class="p-3">#</th>
+            <th class="p-3">Party Name</th>
+            <th class="p-3">State / City</th>
+            <th class="p-3 text-right">Ledger Outstanding</th>
+            <th class="p-3 text-center">CD Rate</th>
+            <th class="p-3 text-right">Eligible CD</th>
+            <th class="p-3 text-right font-bold text-emerald-900">Net To Settle</th>
+            <th class="p-3 text-center">Ageing Status</th>
+            <th class="p-3 text-center no-print">Action</th>
+          </tr>
+        </thead>
+        <tbody id="summaryTableBody" class="divide-y divide-slate-200">
+          
+          <tr class="hover:bg-slate-50 transition-colors party-row" data-name="sri sharvani traders" data-state="andhra pradesh" data-overdue="true">
+            <td class="p-3 text-slate-400 font-mono">1</td>
+            <td class="p-3">
+              <a href="#party-1" class="font-bold text-slate-900 hover:text-indigo-600 block">SRI SHARVANI TRADERS</a>
+              <span class="text-[11px] text-slate-500 font-mono">37ARWPY2407N1ZR</span>
+            </td>
+            <td class="p-3 text-slate-600 font-medium">Andhra Pradesh</td>
+            <td class="p-3 text-right font-bold text-slate-900 mono">₹5,81,417</td>
+            <td class="p-3 text-center">
+              <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-blue-100 text-blue-800">5%</span>
+            </td>
+            <td class="p-3 text-right text-indigo-700 font-semibold mono">₹27,686</td>
+            <td class="p-3 text-right font-extrabold text-emerald-950 mono bg-emerald-50/50">₹5,53,731</td>
+            <td class="p-3 text-center">
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-200">OVERDUE >30d</span>
+            </td>
+            <td class="p-3 text-center no-print">
+              <a href="#party-1" class="px-2.5 py-1 text-[11px] bg-slate-100 hover:bg-slate-200 text-slate-800 rounded font-medium border border-slate-300">View Bills ↓</a>
+            </td>
+          </tr>
+          
+          <tr class="hover:bg-slate-50 transition-colors party-row" data-name="sri lakshmi gayatri chappels" data-state="andhra pradesh" data-overdue="false">
+            <td class="p-3 text-slate-400 font-mono">2</td>
+            <td class="p-3">
+              <a href="#party-2" class="font-bold text-slate-900 hover:text-indigo-600 block">SRI LAKSHMI GAYATRI CHAPPELS</a>
+              <span class="text-[11px] text-slate-500 font-mono">37AFGFS9974J1Z1</span>
+            </td>
+            <td class="p-3 text-slate-600 font-medium">Andhra Pradesh</td>
+            <td class="p-3 text-right font-bold text-slate-900 mono">₹4,73,090</td>
+            <td class="p-3 text-center">
+              <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-blue-100 text-blue-800">5%</span>
+            </td>
+            <td class="p-3 text-right text-indigo-700 font-semibold mono">₹22,528</td>
+            <td class="p-3 text-right font-extrabold text-emerald-950 mono bg-emerald-50/50">₹4,50,562</td>
+            <td class="p-3 text-center">
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">CURRENT &lt;30d</span>
+            </td>
+            <td class="p-3 text-center no-print">
+              <a href="#party-2" class="px-2.5 py-1 text-[11px] bg-slate-100 hover:bg-slate-200 text-slate-800 rounded font-medium border border-slate-300">View Bills ↓</a>
+            </td>
+          </tr>
+          
+          <tr class="hover:bg-slate-50 transition-colors party-row" data-name="alaka shoes" data-state="odisha" data-overdue="false">
+            <td class="p-3 text-slate-400 font-mono">3</td>
+            <td class="p-3">
+              <a href="#party-3" class="font-bold text-slate-900 hover:text-indigo-600 block">ALAKA SHOES</a>
+              <span class="text-[11px] text-slate-500 font-mono">21IMKPS3071K1ZO</span>
+            </td>
+            <td class="p-3 text-slate-600 font-medium">Odisha</td>
+            <td class="p-3 text-right font-bold text-slate-900 mono">₹3,61,751</td>
+            <td class="p-3 text-center">
+              <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-blue-100 text-blue-800">5%</span>
+            </td>
+            <td class="p-3 text-right text-indigo-700 font-semibold mono">₹26,750</td>
+            <td class="p-3 text-right font-extrabold text-emerald-950 mono bg-emerald-50/50">₹3,35,001</td>
+            <td class="p-3 text-center">
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">CURRENT &lt;30d</span>
+            </td>
+            <td class="p-3 text-center no-print">
+              <a href="#party-3" class="px-2.5 py-1 text-[11px] bg-slate-100 hover:bg-slate-200 text-slate-800 rounded font-medium border border-slate-300">View Bills ↓</a>
+            </td>
+          </tr>
+          
+          <tr class="hover:bg-slate-50 transition-colors party-row" data-name="m/s.shree footwear" data-state="andhra pradesh" data-overdue="false">
+            <td class="p-3 text-slate-400 font-mono">4</td>
+            <td class="p-3">
+              <a href="#party-4" class="font-bold text-slate-900 hover:text-indigo-600 block">M/S.SHREE FOOTWEAR</a>
+              <span class="text-[11px] text-slate-500 font-mono">37AEBPP0086L1Z9</span>
+            </td>
+            <td class="p-3 text-slate-600 font-medium">Andhra Pradesh</td>
+            <td class="p-3 text-right font-bold text-slate-900 mono">₹3,51,566</td>
+            <td class="p-3 text-center">
+              <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-blue-100 text-blue-800">5%</span>
+            </td>
+            <td class="p-3 text-right text-indigo-700 font-semibold mono">₹11,468</td>
+            <td class="p-3 text-right font-extrabold text-emerald-950 mono bg-emerald-50/50">₹3,40,098</td>
+            <td class="p-3 text-center">
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">CURRENT &lt;30d</span>
+            </td>
+            <td class="p-3 text-center no-print">
+              <a href="#party-4" class="px-2.5 py-1 text-[11px] bg-slate-100 hover:bg-slate-200 text-slate-800 rounded font-medium border border-slate-300">View Bills ↓</a>
+            </td>
+          </tr>
+          
+          <tr class="hover:bg-slate-50 transition-colors party-row" data-name="k g n footware" data-state="andhra pradesh" data-overdue="false">
+            <td class="p-3 text-slate-400 font-mono">5</td>
+            <td class="p-3">
+              <a href="#party-5" class="font-bold text-slate-900 hover:text-indigo-600 block">K G N FOOTWARE</a>
+              <span class="text-[11px] text-slate-500 font-mono">37CPZPK0089M1ZW</span>
+            </td>
+            <td class="p-3 text-slate-600 font-medium">Andhra Pradesh</td>
+            <td class="p-3 text-right font-bold text-slate-900 mono">₹1,42,132</td>
+            <td class="p-3 text-center">
+              <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-blue-100 text-blue-800">5%</span>
+            </td>
+            <td class="p-3 text-right text-indigo-700 font-semibold mono">₹4,352</td>
+            <td class="p-3 text-right font-extrabold text-emerald-950 mono bg-emerald-50/50">₹1,37,780</td>
+            <td class="p-3 text-center">
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">CURRENT &lt;30d</span>
+            </td>
+            <td class="p-3 text-center no-print">
+              <a href="#party-5" class="px-2.5 py-1 text-[11px] bg-slate-100 hover:bg-slate-200 text-slate-800 rounded font-medium border border-slate-300">View Bills ↓</a>
+            </td>
+          </tr>
+          
+          <tr class="hover:bg-slate-50 transition-colors party-row" data-name="jyothi foot wear" data-state="andhra pradesh" data-overdue="true">
+            <td class="p-3 text-slate-400 font-mono">6</td>
+            <td class="p-3">
+              <a href="#party-6" class="font-bold text-slate-900 hover:text-indigo-600 block">JYOTHI FOOT WEAR</a>
+              <span class="text-[11px] text-slate-500 font-mono">37AUQPP0952Q1ZO</span>
+            </td>
+            <td class="p-3 text-slate-600 font-medium">Andhra Pradesh</td>
+            <td class="p-3 text-right font-bold text-slate-900 mono">₹1,28,845</td>
+            <td class="p-3 text-center">
+              <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-blue-100 text-blue-800">5%</span>
+            </td>
+            <td class="p-3 text-right text-indigo-700 font-semibold mono">₹6,136</td>
+            <td class="p-3 text-right font-extrabold text-emerald-950 mono bg-emerald-50/50">₹1,22,709</td>
+            <td class="p-3 text-center">
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-200">OVERDUE >30d</span>
+            </td>
+            <td class="p-3 text-center no-print">
+              <a href="#party-6" class="px-2.5 py-1 text-[11px] bg-slate-100 hover:bg-slate-200 text-slate-800 rounded font-medium border border-slate-300">View Bills ↓</a>
+            </td>
+          </tr>
+          
+          <tr class="hover:bg-slate-50 transition-colors party-row" data-name="shree aditya foot fashion" data-state="andhra pradesh" data-overdue="true">
+            <td class="p-3 text-slate-400 font-mono">7</td>
+            <td class="p-3">
+              <a href="#party-7" class="font-bold text-slate-900 hover:text-indigo-600 block">SHREE ADITYA FOOT FASHION</a>
+              <span class="text-[11px] text-slate-500 font-mono">37CSMPS5108M1Z1</span>
+            </td>
+            <td class="p-3 text-slate-600 font-medium">Andhra Pradesh</td>
+            <td class="p-3 text-right font-bold text-slate-900 mono">₹1,10,672</td>
+            <td class="p-3 text-center">
+              <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-blue-100 text-blue-800">5%</span>
+            </td>
+            <td class="p-3 text-right text-indigo-700 font-semibold mono">₹5,270</td>
+            <td class="p-3 text-right font-extrabold text-emerald-950 mono bg-emerald-50/50">₹1,05,402</td>
+            <td class="p-3 text-center">
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-200">OVERDUE >30d</span>
+            </td>
+            <td class="p-3 text-center no-print">
+              <a href="#party-7" class="px-2.5 py-1 text-[11px] bg-slate-100 hover:bg-slate-200 text-slate-800 rounded font-medium border border-slate-300">View Bills ↓</a>
+            </td>
+          </tr>
+          
+          <tr class="hover:bg-slate-50 transition-colors party-row" data-name="m/s sri brundaban enterprises, malkangiri" data-state="odisha" data-overdue="true">
+            <td class="p-3 text-slate-400 font-mono">8</td>
+            <td class="p-3">
+              <a href="#party-8" class="font-bold text-slate-900 hover:text-indigo-600 block">M/S SRI BRUNDABAN ENTERPRISES, MALKANGIRI</a>
+              <span class="text-[11px] text-slate-500 font-mono">21ADKPC5405A1ZI</span>
+            </td>
+            <td class="p-3 text-slate-600 font-medium">Odisha</td>
+            <td class="p-3 text-right font-bold text-slate-900 mono">₹1,00,402</td>
+            <td class="p-3 text-center">
+              <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-blue-100 text-blue-800">5%</span>
+            </td>
+            <td class="p-3 text-right text-indigo-700 font-semibold mono">₹4,782</td>
+            <td class="p-3 text-right font-extrabold text-emerald-950 mono bg-emerald-50/50">₹95,620</td>
+            <td class="p-3 text-center">
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-200">OVERDUE >30d</span>
+            </td>
+            <td class="p-3 text-center no-print">
+              <a href="#party-8" class="px-2.5 py-1 text-[11px] bg-slate-100 hover:bg-slate-200 text-slate-800 rounded font-medium border border-slate-300">View Bills ↓</a>
+            </td>
+          </tr>
+          
+          <tr class="hover:bg-slate-50 transition-colors party-row" data-name="m/s sushila boot house" data-state="odisha" data-overdue="true">
+            <td class="p-3 text-slate-400 font-mono">9</td>
+            <td class="p-3">
+              <a href="#party-9" class="font-bold text-slate-900 hover:text-indigo-600 block">M/S SUSHILA BOOT HOUSE</a>
+              <span class="text-[11px] text-slate-500 font-mono">21AZKPP2729C1ZN</span>
+            </td>
+            <td class="p-3 text-slate-600 font-medium">Odisha</td>
+            <td class="p-3 text-right font-bold text-slate-900 mono">₹70,306</td>
+            <td class="p-3 text-center">
+              <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-blue-100 text-blue-800">5%</span>
+            </td>
+            <td class="p-3 text-right text-indigo-700 font-semibold mono">₹8,110</td>
+            <td class="p-3 text-right font-extrabold text-emerald-950 mono bg-emerald-50/50">₹62,196</td>
+            <td class="p-3 text-center">
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-200">OVERDUE >30d</span>
+            </td>
+            <td class="p-3 text-center no-print">
+              <a href="#party-9" class="px-2.5 py-1 text-[11px] bg-slate-100 hover:bg-slate-200 text-slate-800 rounded font-medium border border-slate-300">View Bills ↓</a>
+            </td>
+          </tr>
+          
+          <tr class="hover:bg-slate-50 transition-colors party-row" data-name="famous foot wear" data-state="andhra pradesh" data-overdue="false">
+            <td class="p-3 text-slate-400 font-mono">10</td>
+            <td class="p-3">
+              <a href="#party-10" class="font-bold text-slate-900 hover:text-indigo-600 block">FAMOUS FOOT WEAR</a>
+              <span class="text-[11px] text-slate-500 font-mono">37BKVPC0433M1ZV</span>
+            </td>
+            <td class="p-3 text-slate-600 font-medium">Andhra Pradesh</td>
+            <td class="p-3 text-right font-bold text-slate-900 mono">₹65,029</td>
+            <td class="p-3 text-center">
+              <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-blue-100 text-blue-800">5%</span>
+            </td>
+            <td class="p-3 text-right text-indigo-700 font-semibold mono">₹3,097</td>
+            <td class="p-3 text-right font-extrabold text-emerald-950 mono bg-emerald-50/50">₹61,932</td>
+            <td class="p-3 text-center">
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">CURRENT &lt;30d</span>
+            </td>
+            <td class="p-3 text-center no-print">
+              <a href="#party-10" class="px-2.5 py-1 text-[11px] bg-slate-100 hover:bg-slate-200 text-slate-800 rounded font-medium border border-slate-300">View Bills ↓</a>
+            </td>
+          </tr>
+          
+          <tr class="hover:bg-slate-50 transition-colors party-row" data-name="m/s. rajan traders" data-state="odisha" data-overdue="false">
+            <td class="p-3 text-slate-400 font-mono">11</td>
+            <td class="p-3">
+              <a href="#party-11" class="font-bold text-slate-900 hover:text-indigo-600 block">M/S. RAJAN TRADERS</a>
+              <span class="text-[11px] text-slate-500 font-mono">21DEPPJ6401A1Z3</span>
+            </td>
+            <td class="p-3 text-slate-600 font-medium">Odisha</td>
+            <td class="p-3 text-right font-bold text-slate-900 mono">₹60,382</td>
+            <td class="p-3 text-center">
+              <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-amber-100 text-amber-800">3%</span>
+            </td>
+            <td class="p-3 text-right text-indigo-700 font-semibold mono">₹3,154</td>
+            <td class="p-3 text-right font-extrabold text-emerald-950 mono bg-emerald-50/50">₹57,228</td>
+            <td class="p-3 text-center">
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">CURRENT &lt;30d</span>
+            </td>
+            <td class="p-3 text-center no-print">
+              <a href="#party-11" class="px-2.5 py-1 text-[11px] bg-slate-100 hover:bg-slate-200 text-slate-800 rounded font-medium border border-slate-300">View Bills ↓</a>
+            </td>
+          </tr>
+          
+          <tr class="hover:bg-slate-50 transition-colors party-row" data-name="delight foot wear" data-state="andhra pradesh" data-overdue="true">
+            <td class="p-3 text-slate-400 font-mono">12</td>
+            <td class="p-3">
+              <a href="#party-12" class="font-bold text-slate-900 hover:text-indigo-600 block">DELIGHT FOOT WEAR</a>
+              <span class="text-[11px] text-slate-500 font-mono">37AVCPK2090B1ZZ</span>
+            </td>
+            <td class="p-3 text-slate-600 font-medium">Andhra Pradesh</td>
+            <td class="p-3 text-right font-bold text-slate-900 mono">₹59,971</td>
+            <td class="p-3 text-center">
+              <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-blue-100 text-blue-800">5%</span>
+            </td>
+            <td class="p-3 text-right text-indigo-700 font-semibold mono">₹10,292</td>
+            <td class="p-3 text-right font-extrabold text-emerald-950 mono bg-emerald-50/50">₹49,679</td>
+            <td class="p-3 text-center">
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-200">OVERDUE >30d</span>
+            </td>
+            <td class="p-3 text-center no-print">
+              <a href="#party-12" class="px-2.5 py-1 text-[11px] bg-slate-100 hover:bg-slate-200 text-slate-800 rounded font-medium border border-slate-300">View Bills ↓</a>
+            </td>
+          </tr>
+          
+        </tbody>
+        <tfoot>
+          <tr class="bg-slate-900 text-white font-bold text-xs">
+            <td class="p-3" colspan="3">PORTFOLIO GRAND TOTALS (12 Sundry Debtors)</td>
+            <td class="p-3 text-right mono text-white">₹25,05,563</td>
+            <td class="p-3 text-center text-slate-300">Avg ~5%</td>
+            <td class="p-3 text-right mono text-indigo-300">-₹1,33,625</td>
+            <td class="p-3 text-right mono text-emerald-300 text-sm">₹23,71,938</td>
+            <td class="p-3 text-center text-slate-300">46% Overdue</td>
+            <td class="p-3 no-print"></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </section>
+
+  <!-- PARTY BY PARTY DETAILED AUDIT SECTION -->
+  <section class="space-y-8 mb-12">
+    <div class="border-b border-slate-300 pb-3 mb-6">
+      <h2 class="text-xl font-bold text-slate-900">Detailed Bill-by-Bill Breakdown & WhatsApp Reminders</h2>
+      <p class="text-xs text-slate-500">Complete invoice specifications, inward brand references, tax breakdowns, and ready-to-dispatch collection messages.</p>
+    </div>
+
+    
+    <div id="party-1" class="party-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm scroll-mt-6" data-name="sri sharvani traders" data-state="andhra pradesh" data-overdue="true">
+      
+      <!-- Party Header -->
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-4 border-b border-slate-200">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="w-6 h-6 rounded-full bg-slate-900 text-white text-xs font-bold flex items-center justify-center">1</span>
+            <h3 class="text-lg font-bold text-slate-900">SRI SHARVANI TRADERS</h3>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-200">OVERDUE >30 DAYS</span>
+          </div>
+          <div class="text-xs text-slate-500 flex flex-wrap gap-x-4 gap-y-1">
+            <span>📍 Andhra Pradesh • Floor No.: Three floors Building, Building No...</span>
+            <span>📄 GSTIN: <strong class="mono text-slate-700">37ARWPY2407N1ZR</strong></span>
+            <span>📞 Mobile: <strong class="text-slate-700">8309456062</strong></span>
+          </div>
+        </div>
+
+        <div class="md:text-right bg-slate-50 p-3 rounded-xl border border-slate-200 w-full md:w-auto flex md:flex-col justify-between items-center md:items-end">
+          <div class="text-[11px] text-slate-500 uppercase font-semibold">Tally Ledger Outstanding</div>
+          <div class="text-xl font-extrabold text-slate-900 mono">₹5,81,417</div>
+          <div class="text-[11px] text-emerald-700 font-bold mt-0.5">Net to Settle: ₹5,53,731</div>
+        </div>
+      </div>
+
+      <!-- Inward/Outward Sales Bills Table -->
+      <div class="mt-5">
+        <h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider mb-2 flex items-center gap-2">
+          <span>📦 Sales Invoices (5 Bills)</span>
+        </h4>
+        <div class="overflow-x-auto border border-slate-200 rounded-xl">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr class="bg-slate-50 text-slate-600 border-b border-slate-200 font-semibold text-[11px]">
+                <th class="p-2.5">Invoice #</th>
+                <th class="p-2.5">Date</th>
+                <th class="p-2.5">Brand / Ref</th>
+                <th class="p-2.5 text-center">CTN / Pairs</th>
+                <th class="p-2.5 text-right">Taxable (₹)</th>
+                <th class="p-2.5 text-right">GST 5% (₹)</th>
+                <th class="p-2.5 text-right font-semibold">Gross (₹)</th>
+                <th class="p-2.5 text-right text-indigo-700">5% CD (₹)</th>
+                <th class="p-2.5 text-right font-bold text-emerald-950">Net Bill (₹)</th>
+                <th class="p-2.5 text-center">Aging</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-040</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-09-28</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900416575</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">8 CTN <span class="text-slate-400">(3372 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹2,87,584.5</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹14,379.24</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹3,01,964</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹14,379</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹2,87,585</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    44d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-042</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-09-28</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900416622</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">10 CTN <span class="text-slate-400">(456 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹48,242.92</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹2,412.14</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹50,655</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹2,412</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹48,243</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    44d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-043</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-09-29</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900416634</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">7 CTN <span class="text-slate-400">(396 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹37,806.59</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹1,890.34</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹39,697</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹1,890</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹37,807</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    43d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-047</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-09-29</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900417275</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">2 CTN <span class="text-slate-400">(480 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹41,715</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹2,085.76</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹43,801</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹2,086</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹41,715</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    43d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-072</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-10-31</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900424102</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">6 CTN <span class="text-slate-400">(1596 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹1,38,381</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹6,919.1</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹1,45,300</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹6,919</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹1,38,381</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-600">
+                    11d
+                  </span>
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Receipts & Adjustments if any -->
+      
+
+      <!-- Settlement Math & WhatsApp Template -->
+      <div class="mt-5 grid grid-cols-1 lg:grid-cols-2 gap-4 pt-4 border-t border-slate-200 bg-slate-50 p-4 rounded-xl">
+        <!-- Settlement Math -->
+        <div>
+          <h5 class="text-xs font-bold text-slate-900 uppercase tracking-wider mb-2">🧮 Settlement Calculation Standard</h5>
+          <div class="text-xs space-y-1.5 text-slate-700">
+            <div class="flex justify-between">
+              <span>Gross Outstanding Ledger:</span>
+              <span class="mono font-semibold">₹5,81,417</span>
+            </div>
+            <div class="flex justify-between text-indigo-700 font-medium">
+              <span>Less: Cash Discount (5% on Taxable):</span>
+              <span class="mono">-₹27,686</span>
+            </div>
+            <div class="border-t border-slate-300 pt-1.5 flex justify-between text-sm font-bold text-emerald-950">
+              <span>Final Net Amount To Transfer:</span>
+              <span class="mono text-base font-extrabold text-emerald-900">₹5,53,731</span>
+            </div>
+            <p class="text-[11px] text-slate-500 pt-1 italic">*CD credit note will be issued in Tally upon receipt of bank payment screenshot.</p>
+          </div>
+        </div>
+
+        <!-- Copyable WhatsApp Message -->
+        <div class="relative">
+          <div class="flex justify-between items-center mb-1">
+            <span class="text-xs font-bold text-slate-900 uppercase tracking-wider">📲 WhatsApp Reminder Template</span>
+            <button onclick="copyToClipboard('wa-msg-1')" class="no-print text-[11px] bg-slate-900 hover:bg-slate-800 text-white font-semibold px-2.5 py-1 rounded shadow-sm">
+              📋 Copy Message
+            </button>
+          </div>
+          <textarea id="wa-msg-1" readonly class="w-full h-28 p-2.5 text-[11px] font-mono bg-white border border-slate-300 rounded-lg text-slate-800 resize-none focus:outline-none">Dear SRI SHARVANI TRADERS,
+
+Please find the settlement details for your pending bills:
+
+📦 *5 Invoices (33 CTN):*
+• #SKIL-040 (8 CTN): *₹3,01,964*
+• #SKIL-042 (10 CTN): *₹50,655*
+• #SKIL-043 (7 CTN): *₹39,697*
+• #SKIL-047 (2 CTN): *₹43,801*
+• #SKIL-072 (6 CTN): *₹1,45,300*
+────────────────────────
+*Total of 5 Bills: ₹5,81,417*
+*Less: 5% CD on Taxable (₹5,53,730.01): -₹27,687*
+👉 *Net for 5 Bills: ₹5,53,730*
+────────────────────────
+*👉 TOTAL TO TRANSFER: ₹5,53,731*
+────────────────────────
+
+*Bank Details:*
+SKIL LIFESTYLE LLP
+Union Bank of India | Rayagada
+A/c: *348621010000129*
+IFSC: *UBIN0534862*
+
+Please process the transfer and share the screenshot so we can issue your CD credit note. Thank you! 🙏</textarea>
+        </div>
+      </div>
+
+    </div>
+    
+    <div id="party-2" class="party-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm scroll-mt-6" data-name="sri lakshmi gayatri chappels" data-state="andhra pradesh" data-overdue="false">
+      
+      <!-- Party Header -->
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-4 border-b border-slate-200">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="w-6 h-6 rounded-full bg-slate-900 text-white text-xs font-bold flex items-center justify-center">2</span>
+            <h3 class="text-lg font-bold text-slate-900">SRI LAKSHMI GAYATRI CHAPPELS</h3>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">CURRENT &lt;30 DAYS</span>
+          </div>
+          <div class="text-xs text-slate-500 flex flex-wrap gap-x-4 gap-y-1">
+            <span>📍 Andhra Pradesh • Floor No .: first floor two shutter shops & s...</span>
+            <span>📄 GSTIN: <strong class="mono text-slate-700">37AFGFS9974J1Z1</strong></span>
+            <span>📞 Mobile: <strong class="text-slate-700">9490320438</strong></span>
+          </div>
+        </div>
+
+        <div class="md:text-right bg-slate-50 p-3 rounded-xl border border-slate-200 w-full md:w-auto flex md:flex-col justify-between items-center md:items-end">
+          <div class="text-[11px] text-slate-500 uppercase font-semibold">Tally Ledger Outstanding</div>
+          <div class="text-xl font-extrabold text-slate-900 mono">₹4,73,090</div>
+          <div class="text-[11px] text-emerald-700 font-bold mt-0.5">Net to Settle: ₹4,50,562</div>
+        </div>
+      </div>
+
+      <!-- Inward/Outward Sales Bills Table -->
+      <div class="mt-5">
+        <h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider mb-2 flex items-center gap-2">
+          <span>📦 Sales Invoices (3 Bills)</span>
+        </h4>
+        <div class="overflow-x-auto border border-slate-200 rounded-xl">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr class="bg-slate-50 text-slate-600 border-b border-slate-200 font-semibold text-[11px]">
+                <th class="p-2.5">Invoice #</th>
+                <th class="p-2.5">Date</th>
+                <th class="p-2.5">Brand / Ref</th>
+                <th class="p-2.5 text-center">CTN / Pairs</th>
+                <th class="p-2.5 text-right">Taxable (₹)</th>
+                <th class="p-2.5 text-right">GST 5% (₹)</th>
+                <th class="p-2.5 text-right font-semibold">Gross (₹)</th>
+                <th class="p-2.5 text-right text-indigo-700">5% CD (₹)</th>
+                <th class="p-2.5 text-right font-bold text-emerald-950">Net Bill (₹)</th>
+                <th class="p-2.5 text-center">Aging</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-062</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-10-27</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900421995</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">10 CTN <span class="text-slate-400">(528 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹78,170.7</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹3,908.56</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹82,079</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹3,909</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹78,170</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-600">
+                    15d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-063</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-10-27</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900422025</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">10 CTN <span class="text-slate-400">(480 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹71,728.87</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹3,586.46</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹75,315</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹3,586</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹71,729</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-600">
+                    15d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-067</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-10-30</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900423284</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">6 CTN <span class="text-slate-400">(3504 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹3,00,663</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹15,033.16</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹3,15,696</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹15,033</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹3,00,663</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-600">
+                    12d
+                  </span>
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Receipts & Adjustments if any -->
+      
+
+      <!-- Settlement Math & WhatsApp Template -->
+      <div class="mt-5 grid grid-cols-1 lg:grid-cols-2 gap-4 pt-4 border-t border-slate-200 bg-slate-50 p-4 rounded-xl">
+        <!-- Settlement Math -->
+        <div>
+          <h5 class="text-xs font-bold text-slate-900 uppercase tracking-wider mb-2">🧮 Settlement Calculation Standard</h5>
+          <div class="text-xs space-y-1.5 text-slate-700">
+            <div class="flex justify-between">
+              <span>Gross Outstanding Ledger:</span>
+              <span class="mono font-semibold">₹4,73,090</span>
+            </div>
+            <div class="flex justify-between text-indigo-700 font-medium">
+              <span>Less: Cash Discount (5% on Taxable):</span>
+              <span class="mono">-₹22,528</span>
+            </div>
+            <div class="border-t border-slate-300 pt-1.5 flex justify-between text-sm font-bold text-emerald-950">
+              <span>Final Net Amount To Transfer:</span>
+              <span class="mono text-base font-extrabold text-emerald-900">₹4,50,562</span>
+            </div>
+            <p class="text-[11px] text-slate-500 pt-1 italic">*CD credit note will be issued in Tally upon receipt of bank payment screenshot.</p>
+          </div>
+        </div>
+
+        <!-- Copyable WhatsApp Message -->
+        <div class="relative">
+          <div class="flex justify-between items-center mb-1">
+            <span class="text-xs font-bold text-slate-900 uppercase tracking-wider">📲 WhatsApp Reminder Template</span>
+            <button onclick="copyToClipboard('wa-msg-2')" class="no-print text-[11px] bg-slate-900 hover:bg-slate-800 text-white font-semibold px-2.5 py-1 rounded shadow-sm">
+              📋 Copy Message
+            </button>
+          </div>
+          <textarea id="wa-msg-2" readonly class="w-full h-28 p-2.5 text-[11px] font-mono bg-white border border-slate-300 rounded-lg text-slate-800 resize-none focus:outline-none">Dear SRI LAKSHMI GAYATRI CHAPPELS,
+
+Please find the settlement details for your pending bills:
+
+📦 *3 Invoices (26 CTN):*
+• #SKIL-062 (10 CTN): *₹82,079*
+• #SKIL-063 (10 CTN): *₹75,315*
+• #SKIL-067 (6 CTN): *₹3,15,696*
+────────────────────────
+*Total of 3 Bills: ₹4,73,090*
+*Less: 5% CD on Taxable (₹4,50,562.57): -₹22,528*
+👉 *Net for 3 Bills: ₹4,50,562*
+────────────────────────
+*👉 TOTAL TO TRANSFER: ₹4,50,562*
+────────────────────────
+
+*Bank Details:*
+SKIL LIFESTYLE LLP
+Union Bank of India | Rayagada
+A/c: *348621010000129*
+IFSC: *UBIN0534862*
+
+Please process the transfer and share the screenshot so we can issue your CD credit note. Thank you! 🙏</textarea>
+        </div>
+      </div>
+
+    </div>
+    
+    <div id="party-3" class="party-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm scroll-mt-6" data-name="alaka shoes" data-state="odisha" data-overdue="false">
+      
+      <!-- Party Header -->
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-4 border-b border-slate-200">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="w-6 h-6 rounded-full bg-slate-900 text-white text-xs font-bold flex items-center justify-center">3</span>
+            <h3 class="text-lg font-bold text-slate-900">ALAKA SHOES</h3>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">CURRENT &lt;30 DAYS</span>
+          </div>
+          <div class="text-xs text-slate-500 flex flex-wrap gap-x-4 gap-y-1">
+            <span>📍 Odisha • Floor No.: MOUZA-NAYAGARH, Building No./Flat ...</span>
+            <span>📄 GSTIN: <strong class="mono text-slate-700">21IMKPS3071K1ZO</strong></span>
+            <span>📞 Mobile: <strong class="text-slate-700">7848837421</strong></span>
+          </div>
+        </div>
+
+        <div class="md:text-right bg-slate-50 p-3 rounded-xl border border-slate-200 w-full md:w-auto flex md:flex-col justify-between items-center md:items-end">
+          <div class="text-[11px] text-slate-500 uppercase font-semibold">Tally Ledger Outstanding</div>
+          <div class="text-xl font-extrabold text-slate-900 mono">₹3,61,751</div>
+          <div class="text-[11px] text-emerald-700 font-bold mt-0.5">Net to Settle: ₹3,35,001</div>
+        </div>
+      </div>
+
+      <!-- Inward/Outward Sales Bills Table -->
+      <div class="mt-5">
+        <h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider mb-2 flex items-center gap-2">
+          <span>📦 Sales Invoices (3 Bills)</span>
+        </h4>
+        <div class="overflow-x-auto border border-slate-200 rounded-xl">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr class="bg-slate-50 text-slate-600 border-b border-slate-200 font-semibold text-[11px]">
+                <th class="p-2.5">Invoice #</th>
+                <th class="p-2.5">Date</th>
+                <th class="p-2.5">Brand / Ref</th>
+                <th class="p-2.5 text-center">CTN / Pairs</th>
+                <th class="p-2.5 text-right">Taxable (₹)</th>
+                <th class="p-2.5 text-right">GST 5% (₹)</th>
+                <th class="p-2.5 text-right font-semibold">Gross (₹)</th>
+                <th class="p-2.5 text-right text-indigo-700">5% CD (₹)</th>
+                <th class="p-2.5 text-right font-bold text-emerald-950">Net Bill (₹)</th>
+                <th class="p-2.5 text-center">Aging</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-064</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-10-28</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900422267</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">5 CTN <span class="text-slate-400">(138 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹28,775.1</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹1,438.77</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹30,214</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹1,439</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹28,775</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-600">
+                    14d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-065</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-10-28</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900422237</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">2 CTN <span class="text-slate-400">(60 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹11,678.55</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹583.93</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹12,262</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹584</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹11,678</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-600">
+                    14d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-066</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-10-28</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900422215</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">63 CTN <span class="text-slate-400">(6024 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹4,94,547.52</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹24,727.41</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹5,19,275</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹24,727</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹4,94,548</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-600">
+                    14d
+                  </span>
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Receipts & Adjustments if any -->
+      
+      <div class="mt-4 pt-3 border-t border-slate-100">
+        <h4 class="text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">💳 Recorded Payments & Credit Notes in Tally</h4>
+        <div class="flex flex-wrap gap-2 text-xs">
+          
+            <div class="px-3 py-1.5 bg-emerald-50 border border-emerald-200 rounded-lg text-emerald-900 font-medium">
+              ✅ Receipt #undefined (2026-10-28): <strong>₹1,00,000</strong> (Union Bank)
+            </div>
+          
+            <div class="px-3 py-1.5 bg-emerald-50 border border-emerald-200 rounded-lg text-emerald-900 font-medium">
+              ✅ Receipt #undefined (2026-10-30): <strong>₹1,00,000</strong> (Union Bank)
+            </div>
+          
+          
+        </div>
+      </div>
+      
+
+      <!-- Settlement Math & WhatsApp Template -->
+      <div class="mt-5 grid grid-cols-1 lg:grid-cols-2 gap-4 pt-4 border-t border-slate-200 bg-slate-50 p-4 rounded-xl">
+        <!-- Settlement Math -->
+        <div>
+          <h5 class="text-xs font-bold text-slate-900 uppercase tracking-wider mb-2">🧮 Settlement Calculation Standard</h5>
+          <div class="text-xs space-y-1.5 text-slate-700">
+            <div class="flex justify-between">
+              <span>Gross Outstanding Ledger:</span>
+              <span class="mono font-semibold">₹3,61,751</span>
+            </div>
+            <div class="flex justify-between text-indigo-700 font-medium">
+              <span>Less: Cash Discount (5% on Taxable):</span>
+              <span class="mono">-₹26,750</span>
+            </div>
+            <div class="border-t border-slate-300 pt-1.5 flex justify-between text-sm font-bold text-emerald-950">
+              <span>Final Net Amount To Transfer:</span>
+              <span class="mono text-base font-extrabold text-emerald-900">₹3,35,001</span>
+            </div>
+            <p class="text-[11px] text-slate-500 pt-1 italic">*CD credit note will be issued in Tally upon receipt of bank payment screenshot.</p>
+          </div>
+        </div>
+
+        <!-- Copyable WhatsApp Message -->
+        <div class="relative">
+          <div class="flex justify-between items-center mb-1">
+            <span class="text-xs font-bold text-slate-900 uppercase tracking-wider">📲 WhatsApp Reminder Template</span>
+            <button onclick="copyToClipboard('wa-msg-3')" class="no-print text-[11px] bg-slate-900 hover:bg-slate-800 text-white font-semibold px-2.5 py-1 rounded shadow-sm">
+              📋 Copy Message
+            </button>
+          </div>
+          <textarea id="wa-msg-3" readonly class="w-full h-28 p-2.5 text-[11px] font-mono bg-white border border-slate-300 rounded-lg text-slate-800 resize-none focus:outline-none">Dear ALAKA SHOES,
+
+Please find the settlement details for your pending bills:
+
+📦 *3 Invoices (70 CTN):*
+• #SKIL-064 (5 CTN): *₹30,214*
+• #SKIL-065 (2 CTN): *₹12,262*
+• #SKIL-066 (63 CTN): *₹5,19,275*
+────────────────────────
+*Total of 3 Bills: ₹5,61,751*
+*Less: 5% CD on Taxable (₹5,35,001.17): -₹26,750*
+👉 *Net for 3 Bills: ₹5,35,001*
+
+➖ *Less: Payments Received on A/c: -₹2,00,000*
+────────────────────────
+*👉 TOTAL TO TRANSFER: ₹3,35,001*
+────────────────────────
+
+*Bank Details:*
+SKIL LIFESTYLE LLP
+Union Bank of India | Rayagada
+A/c: *348621010000129*
+IFSC: *UBIN0534862*
+
+Please process the transfer and share the screenshot so we can issue your CD credit note. Thank you! 🙏</textarea>
+        </div>
+      </div>
+
+    </div>
+    
+    <div id="party-4" class="party-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm scroll-mt-6" data-name="m/s.shree footwear" data-state="andhra pradesh" data-overdue="false">
+      
+      <!-- Party Header -->
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-4 border-b border-slate-200">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="w-6 h-6 rounded-full bg-slate-900 text-white text-xs font-bold flex items-center justify-center">4</span>
+            <h3 class="text-lg font-bold text-slate-900">M/S.SHREE FOOTWEAR</h3>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">CURRENT &lt;30 DAYS</span>
+          </div>
+          <div class="text-xs text-slate-500 flex flex-wrap gap-x-4 gap-y-1">
+            <span>📍 Andhra Pradesh • SY NO 287/7, 287/8, PEDDAPADU ROAD, PATRUNIVA...</span>
+            <span>📄 GSTIN: <strong class="mono text-slate-700">37AEBPP0086L1Z9</strong></span>
+            <span>📞 Mobile: <strong class="text-slate-700">7989536155</strong></span>
+          </div>
+        </div>
+
+        <div class="md:text-right bg-slate-50 p-3 rounded-xl border border-slate-200 w-full md:w-auto flex md:flex-col justify-between items-center md:items-end">
+          <div class="text-[11px] text-slate-500 uppercase font-semibold">Tally Ledger Outstanding</div>
+          <div class="text-xl font-extrabold text-slate-900 mono">₹3,51,566</div>
+          <div class="text-[11px] text-emerald-700 font-bold mt-0.5">Net to Settle: ₹3,40,098</div>
+        </div>
+      </div>
+
+      <!-- Inward/Outward Sales Bills Table -->
+      <div class="mt-5">
+        <h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider mb-2 flex items-center gap-2">
+          <span>📦 Sales Invoices (26 Bills)</span>
+        </h4>
+        <div class="overflow-x-auto border border-slate-200 rounded-xl">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr class="bg-slate-50 text-slate-600 border-b border-slate-200 font-semibold text-[11px]">
+                <th class="p-2.5">Invoice #</th>
+                <th class="p-2.5">Date</th>
+                <th class="p-2.5">Brand / Ref</th>
+                <th class="p-2.5 text-center">CTN / Pairs</th>
+                <th class="p-2.5 text-right">Taxable (₹)</th>
+                <th class="p-2.5 text-right">GST 5% (₹)</th>
+                <th class="p-2.5 text-right font-semibold">Gross (₹)</th>
+                <th class="p-2.5 text-right text-indigo-700">5% CD (₹)</th>
+                <th class="p-2.5 text-right font-bold text-emerald-950">Net Bill (₹)</th>
+                <th class="p-2.5 text-center">Aging</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-011</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-08-13</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900404091</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">12 CTN <span class="text-slate-400">(372 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹67,295.12</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹3,364.74</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹70,660</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹3,365</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹67,295</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    90d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-012</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-08-13</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900404102</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">4 CTN <span class="text-slate-400">(168 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹26,221.76</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹1,311.08</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹27,533</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹1,311</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹26,222</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    90d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-013</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-08-17</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900404784</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">9 CTN <span class="text-slate-400">(1728 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹1,48,566.67</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹7,428.36</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹1,55,995</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹7,428</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹1,48,567</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    86d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-014</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-08-18</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900404927</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">15 CTN <span class="text-slate-400">(756 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹65,935.19</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹3,296.78</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹69,232</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹3,297</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹65,935</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    85d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-017</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-08-19</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900405158</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">4 CTN <span class="text-slate-400">(408 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹32,228.84</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹1,611.46</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹33,840</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹1,611</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹32,229</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    84d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-015</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-08-19</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900405148</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">7 CTN <span class="text-slate-400">(270 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹51,157.46</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹2,557.86</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹53,715</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹2,558</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹51,157</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    84d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-016</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-08-19</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900405157</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">4 CTN <span class="text-slate-400">(132 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹21,135.94</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹1,056.78</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹22,193</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹1,057</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹21,136</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    84d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-018</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-08-20</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900405361</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">2 CTN <span class="text-slate-400">(180 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹14,035.5</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹701.78</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹14,737</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹702</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹14,035</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    83d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-019</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-08-21</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900405893</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">10 CTN <span class="text-slate-400">(354 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹70,681.83</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹3,534.06</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹74,216</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹3,534</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹70,682</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    82d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-020</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-08-21</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900403625</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">7 CTN <span class="text-slate-400">(432 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹33,521.02</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹1,676.06</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹35,197</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹1,676</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹33,521</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    82d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-031</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-09-16</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900412399</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">4 CTN <span class="text-slate-400">(240 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹20,357.25</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹1,017.88</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹21,375</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹1,018</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹20,357</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    56d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-032</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-09-16</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900412471</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">2 CTN <span class="text-slate-400">(60 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹11,928.56</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹596.42</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹12,525</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹596</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹11,929</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    56d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-033</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-09-16</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900412530</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">2 CTN <span class="text-slate-400">(90 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹11,875.12</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹593.76</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹12,469</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹594</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹11,875</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    56d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-034</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-09-16</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900412536</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">1 CTN <span class="text-slate-400">(30 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹5,696.44</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹284.82</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹5,981</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹285</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹5,696</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    56d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-036</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-09-22</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900413999</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">2 CTN <span class="text-slate-400">(72 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹12,385.8</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹619.28</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹13,005</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹619</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹12,386</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    50d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-037</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-09-22</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900414047</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">4 CTN <span class="text-slate-400">(120 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹22,785.74</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹1,139.28</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹23,925</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹1,139</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹22,786</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    50d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-049</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-09-30</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900417853</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">2 CTN <span class="text-slate-400">(72 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹8,414.25</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹420.72</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹8,835</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹421</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹8,414</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    42d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-051</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-09-30</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900417889</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">3 CTN <span class="text-slate-400">(90 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹14,874.94</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹743.74</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹15,619</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹744</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹14,875</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    42d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-053</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-09-30</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900417926</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">4 CTN <span class="text-slate-400">(120 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹21,643.13</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹1,082.16</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹22,725</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹1,082</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹21,643</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    42d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-057</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-10-31</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900424350</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">1 CTN <span class="text-slate-400">(24 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹4,557.15</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹227.86</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹4,785</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹228</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹4,557</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-600">
+                    11d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-070</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-10-31</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900423667</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">2 CTN <span class="text-slate-400">(408 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹34,815</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹1,740.76</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹36,556</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹1,741</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹34,815</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-600">
+                    11d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-073</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-10-31</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900424231</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">3 CTN <span class="text-slate-400">(132 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹12,700.12</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹635.02</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹13,335</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹635</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹12,700</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-600">
+                    11d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-074</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-10-31</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900424235</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">6 CTN <span class="text-slate-400">(198 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹36,881.83</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹1,844.12</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹38,726</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹1,844</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹36,882</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-600">
+                    11d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-075</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-10-31</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900424392</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">4 CTN <span class="text-slate-400">(96 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹18,228.6</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹911.44</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹19,140</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹911</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹18,229</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-600">
+                    11d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-076</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-10-31</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900424427</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">5 CTN <span class="text-slate-400">(126 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹21,489.37</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹1,074.46</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹22,564</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹1,074</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹21,490</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-600">
+                    11d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-077</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-11-09</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Cubix Footwear</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">2026-27/2383</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">9 CTN <span class="text-slate-400">(544 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹1,00,686</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹5,034.3</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹1,05,720</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹5,034</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹1,00,686</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-600">
+                    2d
+                  </span>
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Receipts & Adjustments if any -->
+      
+      <div class="mt-4 pt-3 border-t border-slate-100">
+        <h4 class="text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">💳 Recorded Payments & Credit Notes in Tally</h4>
+        <div class="flex flex-wrap gap-2 text-xs">
+          
+            <div class="px-3 py-1.5 bg-emerald-50 border border-emerald-200 rounded-lg text-emerald-900 font-medium">
+              ✅ Receipt #undefined (2026-08-30): <strong>₹1,70,000</strong> (Union Bank)
+            </div>
+          
+            <div class="px-3 py-1.5 bg-emerald-50 border border-emerald-200 rounded-lg text-emerald-900 font-medium">
+              ✅ Receipt #undefined (2026-09-10): <strong>₹2,00,000</strong> (Union Bank)
+            </div>
+          
+            <div class="px-3 py-1.5 bg-emerald-50 border border-emerald-200 rounded-lg text-emerald-900 font-medium">
+              ✅ Receipt #undefined (2026-09-23): <strong>₹1,50,000</strong> (Union Bank)
+            </div>
+          
+            <div class="px-3 py-1.5 bg-emerald-50 border border-emerald-200 rounded-lg text-emerald-900 font-medium">
+              ✅ Receipt #undefined (2026-10-08): <strong>₹30,000</strong> (Union Bank)
+            </div>
+          
+          
+            <div class="px-3 py-1.5 bg-indigo-50 border border-indigo-200 rounded-lg text-indigo-900 font-medium">
+              🏷️ Credit Note #undefined (2026-09-22): <strong>₹26,539</strong>
+            </div>
+          
+            <div class="px-3 py-1.5 bg-indigo-50 border border-indigo-200 rounded-lg text-indigo-900 font-medium">
+              🏷️ Credit Note #undefined (2026-10-01): <strong>₹6,498</strong>
+            </div>
+          
+        </div>
+      </div>
+      
+
+      <!-- Settlement Math & WhatsApp Template -->
+      <div class="mt-5 grid grid-cols-1 lg:grid-cols-2 gap-4 pt-4 border-t border-slate-200 bg-slate-50 p-4 rounded-xl">
+        <!-- Settlement Math -->
+        <div>
+          <h5 class="text-xs font-bold text-slate-900 uppercase tracking-wider mb-2">🧮 Settlement Calculation Standard</h5>
+          <div class="text-xs space-y-1.5 text-slate-700">
+            <div class="flex justify-between">
+              <span>Gross Outstanding Ledger:</span>
+              <span class="mono font-semibold">₹3,51,566</span>
+            </div>
+            <div class="flex justify-between text-indigo-700 font-medium">
+              <span>Less: Cash Discount (5% on Taxable):</span>
+              <span class="mono">-₹11,468</span>
+            </div>
+            <div class="border-t border-slate-300 pt-1.5 flex justify-between text-sm font-bold text-emerald-950">
+              <span>Final Net Amount To Transfer:</span>
+              <span class="mono text-base font-extrabold text-emerald-900">₹3,40,098</span>
+            </div>
+            <p class="text-[11px] text-slate-500 pt-1 italic">*CD credit note will be issued in Tally upon receipt of bank payment screenshot.</p>
+          </div>
+        </div>
+
+        <!-- Copyable WhatsApp Message -->
+        <div class="relative">
+          <div class="flex justify-between items-center mb-1">
+            <span class="text-xs font-bold text-slate-900 uppercase tracking-wider">📲 WhatsApp Reminder Template</span>
+            <button onclick="copyToClipboard('wa-msg-4')" class="no-print text-[11px] bg-slate-900 hover:bg-slate-800 text-white font-semibold px-2.5 py-1 rounded shadow-sm">
+              📋 Copy Message
+            </button>
+          </div>
+          <textarea id="wa-msg-4" readonly class="w-full h-28 p-2.5 text-[11px] font-mono bg-white border border-slate-300 rounded-lg text-slate-800 resize-none focus:outline-none">Dear M/s. Shree Footwear,
+
+Please find the settlement details for your pending bills:
+
+📦 *7 Invoices (57 CTN):*
+• #SKIL-057 (1 CTN): *₹4,785*
+• #SKIL-070 (10 CTN): *₹36,556*
+• #SKIL-073 (4 CTN): *₹13,335*
+• #SKIL-074 (11 CTN): *₹38,726*
+• #SKIL-075 (6 CTN): *₹19,140*
+• #SKIL-076 (7 CTN): *₹22,564*
+• #SKIL-077 (18 CTN): *₹1,05,720*
+────────────────────────
+*Total of 7 Bills: ₹2,40,826*
+*Less: 5% CD on Taxable (₹2,29,358): -₹11,468*
+👉 *Net for 7 Bills: ₹2,29,358*
+
+➕ *Add: Old September Balance: +₹1,10,740* (Net)
+────────────────────────
+*👉 TOTAL TO TRANSFER: ₹3,40,098*
+────────────────────────
+
+*Bank Details:*
+SKIL LIFESTYLE LLP
+Union Bank of India | Rayagada
+A/c: *348621010000129*
+IFSC: *UBIN0534862*
+
+Please process the transfer and share the screenshot so we can issue your CD credit note. Thank you! 🙏</textarea>
+        </div>
+      </div>
+
+    </div>
+    
+    <div id="party-5" class="party-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm scroll-mt-6" data-name="k g n footware" data-state="andhra pradesh" data-overdue="false">
+      
+      <!-- Party Header -->
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-4 border-b border-slate-200">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="w-6 h-6 rounded-full bg-slate-900 text-white text-xs font-bold flex items-center justify-center">5</span>
+            <h3 class="text-lg font-bold text-slate-900">K G N FOOTWARE</h3>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">CURRENT &lt;30 DAYS</span>
+          </div>
+          <div class="text-xs text-slate-500 flex flex-wrap gap-x-4 gap-y-1">
+            <span>📍 Andhra Pradesh • NEAR MASSED, 22/24, MAIN ROAD, PALAKONDA ROAD...</span>
+            <span>📄 GSTIN: <strong class="mono text-slate-700">37CPZPK0089M1ZW</strong></span>
+            <span>📞 Mobile: <strong class="text-slate-700">9491390786</strong></span>
+          </div>
+        </div>
+
+        <div class="md:text-right bg-slate-50 p-3 rounded-xl border border-slate-200 w-full md:w-auto flex md:flex-col justify-between items-center md:items-end">
+          <div class="text-[11px] text-slate-500 uppercase font-semibold">Tally Ledger Outstanding</div>
+          <div class="text-xl font-extrabold text-slate-900 mono">₹1,42,132</div>
+          <div class="text-[11px] text-emerald-700 font-bold mt-0.5">Net to Settle: ₹1,37,780</div>
+        </div>
+      </div>
+
+      <!-- Inward/Outward Sales Bills Table -->
+      <div class="mt-5">
+        <h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider mb-2 flex items-center gap-2">
+          <span>📦 Sales Invoices (8 Bills)</span>
+        </h4>
+        <div class="overflow-x-auto border border-slate-200 rounded-xl">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr class="bg-slate-50 text-slate-600 border-b border-slate-200 font-semibold text-[11px]">
+                <th class="p-2.5">Invoice #</th>
+                <th class="p-2.5">Date</th>
+                <th class="p-2.5">Brand / Ref</th>
+                <th class="p-2.5 text-center">CTN / Pairs</th>
+                <th class="p-2.5 text-right">Taxable (₹)</th>
+                <th class="p-2.5 text-right">GST 5% (₹)</th>
+                <th class="p-2.5 text-right font-semibold">Gross (₹)</th>
+                <th class="p-2.5 text-right text-indigo-700">5% CD (₹)</th>
+                <th class="p-2.5 text-right font-bold text-emerald-950">Net Bill (₹)</th>
+                <th class="p-2.5 text-center">Aging</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-004</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-08-12</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900402692</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">11 CTN <span class="text-slate-400">(540 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹49,935.37</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹2,496.78</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹52,432</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹2,497</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹49,935</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    91d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-005</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-08-12</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900402693</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">10 CTN <span class="text-slate-400">(300 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹53,138.63</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹2,656.96</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹55,796</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹2,657</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹53,139</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    91d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-006</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-08-12</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900402694</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">1 CTN <span class="text-slate-400">(30 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹5,339.25</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹266.96</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹5,606</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹267</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹5,339</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    91d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-027</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-09-11</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900410890</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">11 CTN <span class="text-slate-400">(528 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹50,886</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹2,544.26</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹53,430</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹2,544</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹50,886</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    61d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-028</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-09-11</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900410929</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">11 CTN <span class="text-slate-400">(390 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹54,339.53</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹2,716.96</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹57,056</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹2,717</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹54,339</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    61d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-029</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-09-11</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900410971</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">6 CTN <span class="text-slate-400">(180 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹32,517.75</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹1,625.88</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹34,144</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹1,626</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹32,518</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    61d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-068</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-10-31</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900423490</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">4 CTN <span class="text-slate-400">(900 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹77,251.5</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹3,862.6</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹81,114</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹3,863</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹77,251</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-600">
+                    11d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-069</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-10-31</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900423507</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">1 CTN <span class="text-slate-400">(120 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹9,786</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹489.3</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹10,275</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹489</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹9,786</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-600">
+                    11d
+                  </span>
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Receipts & Adjustments if any -->
+      
+      <div class="mt-4 pt-3 border-t border-slate-100">
+        <h4 class="text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">💳 Recorded Payments & Credit Notes in Tally</h4>
+        <div class="flex flex-wrap gap-2 text-xs">
+          
+            <div class="px-3 py-1.5 bg-emerald-50 border border-emerald-200 rounded-lg text-emerald-900 font-medium">
+              ✅ Receipt #undefined (2026-09-17): <strong>₹1,02,300</strong> (Union Bank)
+            </div>
+          
+            <div class="px-3 py-1.5 bg-emerald-50 border border-emerald-200 rounded-lg text-emerald-900 font-medium">
+              ✅ Receipt #undefined (2026-11-03): <strong>₹25,000</strong> (Union Bank)
+            </div>
+          
+          
+            <div class="px-3 py-1.5 bg-indigo-50 border border-indigo-200 rounded-lg text-indigo-900 font-medium">
+              🏷️ Credit Note #undefined (2026-09-19): <strong>₹5,421</strong>
+            </div>
+          
+        </div>
+      </div>
+      
+
+      <!-- Settlement Math & WhatsApp Template -->
+      <div class="mt-5 grid grid-cols-1 lg:grid-cols-2 gap-4 pt-4 border-t border-slate-200 bg-slate-50 p-4 rounded-xl">
+        <!-- Settlement Math -->
+        <div>
+          <h5 class="text-xs font-bold text-slate-900 uppercase tracking-wider mb-2">🧮 Settlement Calculation Standard</h5>
+          <div class="text-xs space-y-1.5 text-slate-700">
+            <div class="flex justify-between">
+              <span>Gross Outstanding Ledger:</span>
+              <span class="mono font-semibold">₹1,42,132</span>
+            </div>
+            <div class="flex justify-between text-indigo-700 font-medium">
+              <span>Less: Cash Discount (5% on Taxable):</span>
+              <span class="mono">-₹4,352</span>
+            </div>
+            <div class="border-t border-slate-300 pt-1.5 flex justify-between text-sm font-bold text-emerald-950">
+              <span>Final Net Amount To Transfer:</span>
+              <span class="mono text-base font-extrabold text-emerald-900">₹1,37,780</span>
+            </div>
+            <p class="text-[11px] text-slate-500 pt-1 italic">*CD credit note will be issued in Tally upon receipt of bank payment screenshot.</p>
+          </div>
+        </div>
+
+        <!-- Copyable WhatsApp Message -->
+        <div class="relative">
+          <div class="flex justify-between items-center mb-1">
+            <span class="text-xs font-bold text-slate-900 uppercase tracking-wider">📲 WhatsApp Reminder Template</span>
+            <button onclick="copyToClipboard('wa-msg-5')" class="no-print text-[11px] bg-slate-900 hover:bg-slate-800 text-white font-semibold px-2.5 py-1 rounded shadow-sm">
+              📋 Copy Message
+            </button>
+          </div>
+          <textarea id="wa-msg-5" readonly class="w-full h-28 p-2.5 text-[11px] font-mono bg-white border border-slate-300 rounded-lg text-slate-800 resize-none focus:outline-none">Dear K G N Footware,
+
+Please find the settlement details for your pending bills:
+
+📦 *2 Invoices (18 CTN):*
+• #SKIL-068 (16 CTN): *₹81,114*
+• #SKIL-069 (2 CTN): *₹10,275*
+────────────────────────
+*Total of 2 Bills: ₹91,389*
+*Less: 5% CD on Taxable (₹87,038): -₹4,352*
+👉 *Net for 2 Bills: ₹87,037*
+
+➕ *Add: Old September Balance: +₹50,743* (Net after ₹1,00,000 payment)
+────────────────────────
+*👉 TOTAL TO TRANSFER: ₹1,37,780*
+────────────────────────
+
+*Bank Details:*
+SKIL LIFESTYLE LLP
+Union Bank of India | Rayagada
+A/c: *348621010000129*
+IFSC: *UBIN0534862*
+
+Please process the transfer and share the screenshot so we can issue your CD credit note. Thank you! 🙏</textarea>
+        </div>
+      </div>
+
+    </div>
+    
+    <div id="party-6" class="party-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm scroll-mt-6" data-name="jyothi foot wear" data-state="andhra pradesh" data-overdue="true">
+      
+      <!-- Party Header -->
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-4 border-b border-slate-200">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="w-6 h-6 rounded-full bg-slate-900 text-white text-xs font-bold flex items-center justify-center">6</span>
+            <h3 class="text-lg font-bold text-slate-900">JYOTHI FOOT WEAR</h3>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-200">OVERDUE >30 DAYS</span>
+          </div>
+          <div class="text-xs text-slate-500 flex flex-wrap gap-x-4 gap-y-1">
+            <span>📍 Andhra Pradesh • 12/5/88, BARUVARI STREET, BESIDE RAJA THEATRE...</span>
+            <span>📄 GSTIN: <strong class="mono text-slate-700">37AUQPP0952Q1ZO</strong></span>
+            <span>📞 Mobile: <strong class="text-slate-700">9966653233</strong></span>
+          </div>
+        </div>
+
+        <div class="md:text-right bg-slate-50 p-3 rounded-xl border border-slate-200 w-full md:w-auto flex md:flex-col justify-between items-center md:items-end">
+          <div class="text-[11px] text-slate-500 uppercase font-semibold">Tally Ledger Outstanding</div>
+          <div class="text-xl font-extrabold text-slate-900 mono">₹1,28,845</div>
+          <div class="text-[11px] text-emerald-700 font-bold mt-0.5">Net to Settle: ₹1,22,709</div>
+        </div>
+      </div>
+
+      <!-- Inward/Outward Sales Bills Table -->
+      <div class="mt-5">
+        <h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider mb-2 flex items-center gap-2">
+          <span>📦 Sales Invoices (5 Bills)</span>
+        </h4>
+        <div class="overflow-x-auto border border-slate-200 rounded-xl">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr class="bg-slate-50 text-slate-600 border-b border-slate-200 font-semibold text-[11px]">
+                <th class="p-2.5">Invoice #</th>
+                <th class="p-2.5">Date</th>
+                <th class="p-2.5">Brand / Ref</th>
+                <th class="p-2.5 text-center">CTN / Pairs</th>
+                <th class="p-2.5 text-right">Taxable (₹)</th>
+                <th class="p-2.5 text-right">GST 5% (₹)</th>
+                <th class="p-2.5 text-right font-semibold">Gross (₹)</th>
+                <th class="p-2.5 text-right text-indigo-700">5% CD (₹)</th>
+                <th class="p-2.5 text-right font-bold text-emerald-950">Net Bill (₹)</th>
+                <th class="p-2.5 text-center">Aging</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-024</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-09-11</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900410889</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">5 CTN <span class="text-slate-400">(240 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹21,800.1</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹1,089.98</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹22,890</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹1,090</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹21,800</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    61d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-025</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-09-11</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900410928</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">2 CTN <span class="text-slate-400">(138 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹17,957.06</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹897.84</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹18,855</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹898</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹17,957</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    61d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-026</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-09-11</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900410970</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">1 CTN <span class="text-slate-400">(30 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹4,035.75</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹201.78</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹4,238</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹202</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹4,036</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    61d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-030</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-09-11</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900411104</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">1 CTN <span class="text-slate-400">(30 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹4,392.94</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹219.64</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹4,613</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹220</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹4,393</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    61d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-041</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-09-28</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900416574</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">2 CTN <span class="text-slate-400">(876 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹74,523</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹3,726.16</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹78,249</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹3,726</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹74,523</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    44d
+                  </span>
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Receipts & Adjustments if any -->
+      
+
+      <!-- Settlement Math & WhatsApp Template -->
+      <div class="mt-5 grid grid-cols-1 lg:grid-cols-2 gap-4 pt-4 border-t border-slate-200 bg-slate-50 p-4 rounded-xl">
+        <!-- Settlement Math -->
+        <div>
+          <h5 class="text-xs font-bold text-slate-900 uppercase tracking-wider mb-2">🧮 Settlement Calculation Standard</h5>
+          <div class="text-xs space-y-1.5 text-slate-700">
+            <div class="flex justify-between">
+              <span>Gross Outstanding Ledger:</span>
+              <span class="mono font-semibold">₹1,28,845</span>
+            </div>
+            <div class="flex justify-between text-indigo-700 font-medium">
+              <span>Less: Cash Discount (5% on Taxable):</span>
+              <span class="mono">-₹6,136</span>
+            </div>
+            <div class="border-t border-slate-300 pt-1.5 flex justify-between text-sm font-bold text-emerald-950">
+              <span>Final Net Amount To Transfer:</span>
+              <span class="mono text-base font-extrabold text-emerald-900">₹1,22,709</span>
+            </div>
+            <p class="text-[11px] text-slate-500 pt-1 italic">*CD credit note will be issued in Tally upon receipt of bank payment screenshot.</p>
+          </div>
+        </div>
+
+        <!-- Copyable WhatsApp Message -->
+        <div class="relative">
+          <div class="flex justify-between items-center mb-1">
+            <span class="text-xs font-bold text-slate-900 uppercase tracking-wider">📲 WhatsApp Reminder Template</span>
+            <button onclick="copyToClipboard('wa-msg-6')" class="no-print text-[11px] bg-slate-900 hover:bg-slate-800 text-white font-semibold px-2.5 py-1 rounded shadow-sm">
+              📋 Copy Message
+            </button>
+          </div>
+          <textarea id="wa-msg-6" readonly class="w-full h-28 p-2.5 text-[11px] font-mono bg-white border border-slate-300 rounded-lg text-slate-800 resize-none focus:outline-none">Dear JYOTHI FOOT WEAR,
+
+Please find the settlement details for your pending bills:
+
+📦 *5 Invoices (11 CTN):*
+• #SKIL-024 (5 CTN): *₹22,890*
+• #SKIL-025 (2 CTN): *₹18,855*
+• #SKIL-026 (1 CTN): *₹4,238*
+• #SKIL-030 (1 CTN): *₹4,613*
+• #SKIL-041 (2 CTN): *₹78,249*
+────────────────────────
+*Total of 5 Bills: ₹1,28,845*
+*Less: 5% CD on Taxable (₹1,22,708.85): -₹6,135*
+👉 *Net for 5 Bills: ₹1,22,710*
+────────────────────────
+*👉 TOTAL TO TRANSFER: ₹1,22,709*
+────────────────────────
+
+*Bank Details:*
+SKIL LIFESTYLE LLP
+Union Bank of India | Rayagada
+A/c: *348621010000129*
+IFSC: *UBIN0534862*
+
+Please process the transfer and share the screenshot so we can issue your CD credit note. Thank you! 🙏</textarea>
+        </div>
+      </div>
+
+    </div>
+    
+    <div id="party-7" class="party-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm scroll-mt-6" data-name="shree aditya foot fashion" data-state="andhra pradesh" data-overdue="true">
+      
+      <!-- Party Header -->
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-4 border-b border-slate-200">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="w-6 h-6 rounded-full bg-slate-900 text-white text-xs font-bold flex items-center justify-center">7</span>
+            <h3 class="text-lg font-bold text-slate-900">SHREE ADITYA FOOT FASHION</h3>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-200">OVERDUE >30 DAYS</span>
+          </div>
+          <div class="text-xs text-slate-500 flex flex-wrap gap-x-4 gap-y-1">
+            <span>📍 Andhra Pradesh • Floor No.: ASSEMENT NO 1093018678, Building N...</span>
+            <span>📄 GSTIN: <strong class="mono text-slate-700">37CSMPS5108M1Z1</strong></span>
+            <span>📞 Mobile: <strong class="text-slate-700">08143183837</strong></span>
+          </div>
+        </div>
+
+        <div class="md:text-right bg-slate-50 p-3 rounded-xl border border-slate-200 w-full md:w-auto flex md:flex-col justify-between items-center md:items-end">
+          <div class="text-[11px] text-slate-500 uppercase font-semibold">Tally Ledger Outstanding</div>
+          <div class="text-xl font-extrabold text-slate-900 mono">₹1,10,672</div>
+          <div class="text-[11px] text-emerald-700 font-bold mt-0.5">Net to Settle: ₹1,05,402</div>
+        </div>
+      </div>
+
+      <!-- Inward/Outward Sales Bills Table -->
+      <div class="mt-5">
+        <h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider mb-2 flex items-center gap-2">
+          <span>📦 Sales Invoices (1 Bills)</span>
+        </h4>
+        <div class="overflow-x-auto border border-slate-200 rounded-xl">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr class="bg-slate-50 text-slate-600 border-b border-slate-200 font-semibold text-[11px]">
+                <th class="p-2.5">Invoice #</th>
+                <th class="p-2.5">Date</th>
+                <th class="p-2.5">Brand / Ref</th>
+                <th class="p-2.5 text-center">CTN / Pairs</th>
+                <th class="p-2.5 text-right">Taxable (₹)</th>
+                <th class="p-2.5 text-right">GST 5% (₹)</th>
+                <th class="p-2.5 text-right font-semibold">Gross (₹)</th>
+                <th class="p-2.5 text-right text-indigo-700">5% CD (₹)</th>
+                <th class="p-2.5 text-right font-bold text-emerald-950">Net Bill (₹)</th>
+                <th class="p-2.5 text-center">Aging</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-055</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-10-10</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Xpania Footcare</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">XPL/2367/26-27</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">14 CTN <span class="text-slate-400">(492 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹1,05,402</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹5,270.1</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹1,10,672</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹5,270</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹1,05,402</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    32d
+                  </span>
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Receipts & Adjustments if any -->
+      
+
+      <!-- Settlement Math & WhatsApp Template -->
+      <div class="mt-5 grid grid-cols-1 lg:grid-cols-2 gap-4 pt-4 border-t border-slate-200 bg-slate-50 p-4 rounded-xl">
+        <!-- Settlement Math -->
+        <div>
+          <h5 class="text-xs font-bold text-slate-900 uppercase tracking-wider mb-2">🧮 Settlement Calculation Standard</h5>
+          <div class="text-xs space-y-1.5 text-slate-700">
+            <div class="flex justify-between">
+              <span>Gross Outstanding Ledger:</span>
+              <span class="mono font-semibold">₹1,10,672</span>
+            </div>
+            <div class="flex justify-between text-indigo-700 font-medium">
+              <span>Less: Cash Discount (5% on Taxable):</span>
+              <span class="mono">-₹5,270</span>
+            </div>
+            <div class="border-t border-slate-300 pt-1.5 flex justify-between text-sm font-bold text-emerald-950">
+              <span>Final Net Amount To Transfer:</span>
+              <span class="mono text-base font-extrabold text-emerald-900">₹1,05,402</span>
+            </div>
+            <p class="text-[11px] text-slate-500 pt-1 italic">*CD credit note will be issued in Tally upon receipt of bank payment screenshot.</p>
+          </div>
+        </div>
+
+        <!-- Copyable WhatsApp Message -->
+        <div class="relative">
+          <div class="flex justify-between items-center mb-1">
+            <span class="text-xs font-bold text-slate-900 uppercase tracking-wider">📲 WhatsApp Reminder Template</span>
+            <button onclick="copyToClipboard('wa-msg-7')" class="no-print text-[11px] bg-slate-900 hover:bg-slate-800 text-white font-semibold px-2.5 py-1 rounded shadow-sm">
+              📋 Copy Message
+            </button>
+          </div>
+          <textarea id="wa-msg-7" readonly class="w-full h-28 p-2.5 text-[11px] font-mono bg-white border border-slate-300 rounded-lg text-slate-800 resize-none focus:outline-none">Dear SHREE ADITYA FOOT FASHION,
+
+Please find the settlement details for your pending bill:
+
+📦 *1 Invoice (14 CTN):*
+• #SKIL-055 (14 CTN): *₹1,10,672*
+────────────────────────
+*Total of 1 Bill: ₹1,10,672*
+*Less: 5% CD on Taxable (₹1,05,402): -₹5,270*
+👉 *Net for Bill: ₹1,05,402*
+────────────────────────
+*👉 TOTAL TO TRANSFER: ₹1,05,402*
+────────────────────────
+
+*Bank Details:*
+SKIL LIFESTYLE LLP
+Union Bank of India | Rayagada
+A/c: *348621010000129*
+IFSC: *UBIN0534862*
+
+Please process the transfer and share the screenshot so we can issue your CD credit note. Thank you! 🙏</textarea>
+        </div>
+      </div>
+
+    </div>
+    
+    <div id="party-8" class="party-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm scroll-mt-6" data-name="m/s sri brundaban enterprises, malkangiri" data-state="odisha" data-overdue="true">
+      
+      <!-- Party Header -->
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-4 border-b border-slate-200">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="w-6 h-6 rounded-full bg-slate-900 text-white text-xs font-bold flex items-center justify-center">8</span>
+            <h3 class="text-lg font-bold text-slate-900">M/S SRI BRUNDABAN ENTERPRISES, MALKANGIRI</h3>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-200">OVERDUE >30 DAYS</span>
+          </div>
+          <div class="text-xs text-slate-500 flex flex-wrap gap-x-4 gap-y-1">
+            <span>📍 Odisha • MOUZA MALKANGIRI, KHATA NO.994/4592, PLOT NO....</span>
+            <span>📄 GSTIN: <strong class="mono text-slate-700">21ADKPC5405A1ZI</strong></span>
+            <span>📞 Mobile: <strong class="text-slate-700">9437094667</strong></span>
+          </div>
+        </div>
+
+        <div class="md:text-right bg-slate-50 p-3 rounded-xl border border-slate-200 w-full md:w-auto flex md:flex-col justify-between items-center md:items-end">
+          <div class="text-[11px] text-slate-500 uppercase font-semibold">Tally Ledger Outstanding</div>
+          <div class="text-xl font-extrabold text-slate-900 mono">₹1,00,402</div>
+          <div class="text-[11px] text-emerald-700 font-bold mt-0.5">Net to Settle: ₹95,620</div>
+        </div>
+      </div>
+
+      <!-- Inward/Outward Sales Bills Table -->
+      <div class="mt-5">
+        <h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider mb-2 flex items-center gap-2">
+          <span>📦 Sales Invoices (3 Bills)</span>
+        </h4>
+        <div class="overflow-x-auto border border-slate-200 rounded-xl">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr class="bg-slate-50 text-slate-600 border-b border-slate-200 font-semibold text-[11px]">
+                <th class="p-2.5">Invoice #</th>
+                <th class="p-2.5">Date</th>
+                <th class="p-2.5">Brand / Ref</th>
+                <th class="p-2.5 text-center">CTN / Pairs</th>
+                <th class="p-2.5 text-right">Taxable (₹)</th>
+                <th class="p-2.5 text-right">GST 5% (₹)</th>
+                <th class="p-2.5 text-right font-semibold">Gross (₹)</th>
+                <th class="p-2.5 text-right text-indigo-700">5% CD (₹)</th>
+                <th class="p-2.5 text-right font-bold text-emerald-950">Net Bill (₹)</th>
+                <th class="p-2.5 text-center">Aging</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-048</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-09-30</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900417852</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">6 CTN <span class="text-slate-400">(144 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹27,514.2</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹1,375.72</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹28,890</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹1,376</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹27,514</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    42d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-050</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-09-30</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900417888</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">1 CTN <span class="text-slate-400">(30 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹5,696.44</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹284.82</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹5,981</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹285</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹5,696</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    42d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-052</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-09-30</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900417925</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">13 CTN <span class="text-slate-400">(414 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹62,410.59</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹3,120.54</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹65,531</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹3,121</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹62,410</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    42d
+                  </span>
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Receipts & Adjustments if any -->
+      
+
+      <!-- Settlement Math & WhatsApp Template -->
+      <div class="mt-5 grid grid-cols-1 lg:grid-cols-2 gap-4 pt-4 border-t border-slate-200 bg-slate-50 p-4 rounded-xl">
+        <!-- Settlement Math -->
+        <div>
+          <h5 class="text-xs font-bold text-slate-900 uppercase tracking-wider mb-2">🧮 Settlement Calculation Standard</h5>
+          <div class="text-xs space-y-1.5 text-slate-700">
+            <div class="flex justify-between">
+              <span>Gross Outstanding Ledger:</span>
+              <span class="mono font-semibold">₹1,00,402</span>
+            </div>
+            <div class="flex justify-between text-indigo-700 font-medium">
+              <span>Less: Cash Discount (5% on Taxable):</span>
+              <span class="mono">-₹4,782</span>
+            </div>
+            <div class="border-t border-slate-300 pt-1.5 flex justify-between text-sm font-bold text-emerald-950">
+              <span>Final Net Amount To Transfer:</span>
+              <span class="mono text-base font-extrabold text-emerald-900">₹95,620</span>
+            </div>
+            <p class="text-[11px] text-slate-500 pt-1 italic">*CD credit note will be issued in Tally upon receipt of bank payment screenshot.</p>
+          </div>
+        </div>
+
+        <!-- Copyable WhatsApp Message -->
+        <div class="relative">
+          <div class="flex justify-between items-center mb-1">
+            <span class="text-xs font-bold text-slate-900 uppercase tracking-wider">📲 WhatsApp Reminder Template</span>
+            <button onclick="copyToClipboard('wa-msg-8')" class="no-print text-[11px] bg-slate-900 hover:bg-slate-800 text-white font-semibold px-2.5 py-1 rounded shadow-sm">
+              📋 Copy Message
+            </button>
+          </div>
+          <textarea id="wa-msg-8" readonly class="w-full h-28 p-2.5 text-[11px] font-mono bg-white border border-slate-300 rounded-lg text-slate-800 resize-none focus:outline-none">Dear M/S SRI BRUNDABAN ENTERPRISES, MALKANGIRI,
+
+Please find the settlement details for your pending bills:
+
+📦 *3 Invoices (20 CTN):*
+• #SKIL-048 (6 CTN): *₹28,890*
+• #SKIL-050 (1 CTN): *₹5,981*
+• #SKIL-052 (13 CTN): *₹65,531*
+────────────────────────
+*Total of 3 Bills: ₹1,00,402*
+*Less: 5% CD on Taxable (₹95,621.23): -₹4,781*
+👉 *Net for 3 Bills: ₹95,621*
+────────────────────────
+*👉 TOTAL TO TRANSFER: ₹95,620*
+────────────────────────
+
+*Bank Details:*
+SKIL LIFESTYLE LLP
+Union Bank of India | Rayagada
+A/c: *348621010000129*
+IFSC: *UBIN0534862*
+
+Please process the transfer and share the screenshot so we can issue your CD credit note. Thank you! 🙏</textarea>
+        </div>
+      </div>
+
+    </div>
+    
+    <div id="party-9" class="party-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm scroll-mt-6" data-name="m/s sushila boot house" data-state="odisha" data-overdue="true">
+      
+      <!-- Party Header -->
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-4 border-b border-slate-200">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="w-6 h-6 rounded-full bg-slate-900 text-white text-xs font-bold flex items-center justify-center">9</span>
+            <h3 class="text-lg font-bold text-slate-900">M/S SUSHILA BOOT HOUSE</h3>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-200">OVERDUE >30 DAYS</span>
+          </div>
+          <div class="text-xs text-slate-500 flex flex-wrap gap-x-4 gap-y-1">
+            <span>📍 Odisha • GANDHICHOWK, GANDAGHORA, BRAJRAJNAGAR, JHARSA...</span>
+            <span>📄 GSTIN: <strong class="mono text-slate-700">21AZKPP2729C1ZN</strong></span>
+            
+          </div>
+        </div>
+
+        <div class="md:text-right bg-slate-50 p-3 rounded-xl border border-slate-200 w-full md:w-auto flex md:flex-col justify-between items-center md:items-end">
+          <div class="text-[11px] text-slate-500 uppercase font-semibold">Tally Ledger Outstanding</div>
+          <div class="text-xl font-extrabold text-slate-900 mono">₹70,306</div>
+          <div class="text-[11px] text-emerald-700 font-bold mt-0.5">Net to Settle: ₹62,196</div>
+        </div>
+      </div>
+
+      <!-- Inward/Outward Sales Bills Table -->
+      <div class="mt-5">
+        <h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider mb-2 flex items-center gap-2">
+          <span>📦 Sales Invoices (1 Bills)</span>
+        </h4>
+        <div class="overflow-x-auto border border-slate-200 rounded-xl">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr class="bg-slate-50 text-slate-600 border-b border-slate-200 font-semibold text-[11px]">
+                <th class="p-2.5">Invoice #</th>
+                <th class="p-2.5">Date</th>
+                <th class="p-2.5">Brand / Ref</th>
+                <th class="p-2.5 text-center">CTN / Pairs</th>
+                <th class="p-2.5 text-right">Taxable (₹)</th>
+                <th class="p-2.5 text-right">GST 5% (₹)</th>
+                <th class="p-2.5 text-right font-semibold">Gross (₹)</th>
+                <th class="p-2.5 text-right text-indigo-700">5% CD (₹)</th>
+                <th class="p-2.5 text-right font-bold text-emerald-950">Net Bill (₹)</th>
+                <th class="p-2.5 text-center">Aging</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-023</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-09-09</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Xpania Footcare</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">XPL/2041/26-27</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">20 CTN <span class="text-slate-400">(673 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹1,62,196.34</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹8,109.79</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹1,70,306</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹8,110</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹1,62,196</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    63d
+                  </span>
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Receipts & Adjustments if any -->
+      
+      <div class="mt-4 pt-3 border-t border-slate-100">
+        <h4 class="text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">💳 Recorded Payments & Credit Notes in Tally</h4>
+        <div class="flex flex-wrap gap-2 text-xs">
+          
+            <div class="px-3 py-1.5 bg-emerald-50 border border-emerald-200 rounded-lg text-emerald-900 font-medium">
+              ✅ Receipt #undefined (2026-10-22): <strong>₹1,00,000</strong> (Union Bank)
+            </div>
+          
+          
+        </div>
+      </div>
+      
+
+      <!-- Settlement Math & WhatsApp Template -->
+      <div class="mt-5 grid grid-cols-1 lg:grid-cols-2 gap-4 pt-4 border-t border-slate-200 bg-slate-50 p-4 rounded-xl">
+        <!-- Settlement Math -->
+        <div>
+          <h5 class="text-xs font-bold text-slate-900 uppercase tracking-wider mb-2">🧮 Settlement Calculation Standard</h5>
+          <div class="text-xs space-y-1.5 text-slate-700">
+            <div class="flex justify-between">
+              <span>Gross Outstanding Ledger:</span>
+              <span class="mono font-semibold">₹70,306</span>
+            </div>
+            <div class="flex justify-between text-indigo-700 font-medium">
+              <span>Less: Cash Discount (5% on Taxable):</span>
+              <span class="mono">-₹8,110</span>
+            </div>
+            <div class="border-t border-slate-300 pt-1.5 flex justify-between text-sm font-bold text-emerald-950">
+              <span>Final Net Amount To Transfer:</span>
+              <span class="mono text-base font-extrabold text-emerald-900">₹62,196</span>
+            </div>
+            <p class="text-[11px] text-slate-500 pt-1 italic">*CD credit note will be issued in Tally upon receipt of bank payment screenshot.</p>
+          </div>
+        </div>
+
+        <!-- Copyable WhatsApp Message -->
+        <div class="relative">
+          <div class="flex justify-between items-center mb-1">
+            <span class="text-xs font-bold text-slate-900 uppercase tracking-wider">📲 WhatsApp Reminder Template</span>
+            <button onclick="copyToClipboard('wa-msg-9')" class="no-print text-[11px] bg-slate-900 hover:bg-slate-800 text-white font-semibold px-2.5 py-1 rounded shadow-sm">
+              📋 Copy Message
+            </button>
+          </div>
+          <textarea id="wa-msg-9" readonly class="w-full h-28 p-2.5 text-[11px] font-mono bg-white border border-slate-300 rounded-lg text-slate-800 resize-none focus:outline-none">Dear M/S SUSHILA BOOT HOUSE,
+
+Please find the settlement details for your pending bill:
+
+📦 *1 Invoice (20 CTN):*
+• #SKIL-023 (20 CTN): *₹1,70,306*
+────────────────────────
+*Total of 1 Bill: ₹1,70,306*
+*Less: 5% CD on Taxable (₹1,62,196.34): -₹8,110*
+👉 *Net for Bill: ₹1,62,196*
+────────────────────────
+*👉 TOTAL TO TRANSFER: ₹62,196*
+────────────────────────
+
+*Bank Details:*
+SKIL LIFESTYLE LLP
+Union Bank of India | Rayagada
+A/c: *348621010000129*
+IFSC: *UBIN0534862*
+
+Please process the transfer and share the screenshot so we can issue your CD credit note. Thank you! 🙏</textarea>
+        </div>
+      </div>
+
+    </div>
+    
+    <div id="party-10" class="party-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm scroll-mt-6" data-name="famous foot wear" data-state="andhra pradesh" data-overdue="false">
+      
+      <!-- Party Header -->
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-4 border-b border-slate-200">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="w-6 h-6 rounded-full bg-slate-900 text-white text-xs font-bold flex items-center justify-center">10</span>
+            <h3 class="text-lg font-bold text-slate-900">FAMOUS FOOT WEAR</h3>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">CURRENT &lt;30 DAYS</span>
+          </div>
+          <div class="text-xs text-slate-500 flex flex-wrap gap-x-4 gap-y-1">
+            <span>📍 Andhra Pradesh • 16-2-1, Korada street, Vizianagaram...</span>
+            <span>📄 GSTIN: <strong class="mono text-slate-700">37BKVPC0433M1ZV</strong></span>
+            <span>📞 Mobile: <strong class="text-slate-700">8608709708</strong></span>
+          </div>
+        </div>
+
+        <div class="md:text-right bg-slate-50 p-3 rounded-xl border border-slate-200 w-full md:w-auto flex md:flex-col justify-between items-center md:items-end">
+          <div class="text-[11px] text-slate-500 uppercase font-semibold">Tally Ledger Outstanding</div>
+          <div class="text-xl font-extrabold text-slate-900 mono">₹65,029</div>
+          <div class="text-[11px] text-emerald-700 font-bold mt-0.5">Net to Settle: ₹61,932</div>
+        </div>
+      </div>
+
+      <!-- Inward/Outward Sales Bills Table -->
+      <div class="mt-5">
+        <h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider mb-2 flex items-center gap-2">
+          <span>📦 Sales Invoices (1 Bills)</span>
+        </h4>
+        <div class="overflow-x-auto border border-slate-200 rounded-xl">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr class="bg-slate-50 text-slate-600 border-b border-slate-200 font-semibold text-[11px]">
+                <th class="p-2.5">Invoice #</th>
+                <th class="p-2.5">Date</th>
+                <th class="p-2.5">Brand / Ref</th>
+                <th class="p-2.5 text-center">CTN / Pairs</th>
+                <th class="p-2.5 text-right">Taxable (₹)</th>
+                <th class="p-2.5 text-right">GST 5% (₹)</th>
+                <th class="p-2.5 text-right font-semibold">Gross (₹)</th>
+                <th class="p-2.5 text-right text-indigo-700">5% CD (₹)</th>
+                <th class="p-2.5 text-right font-bold text-emerald-950">Net Bill (₹)</th>
+                <th class="p-2.5 text-center">Aging</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-058</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-10-21</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Cubix Footwear</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">2026-27/2155</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">9 CTN <span class="text-slate-400">(288 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹61,932</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹3,096.6</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹65,029</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹3,097</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹61,932</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-600">
+                    21d
+                  </span>
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Receipts & Adjustments if any -->
+      
+
+      <!-- Settlement Math & WhatsApp Template -->
+      <div class="mt-5 grid grid-cols-1 lg:grid-cols-2 gap-4 pt-4 border-t border-slate-200 bg-slate-50 p-4 rounded-xl">
+        <!-- Settlement Math -->
+        <div>
+          <h5 class="text-xs font-bold text-slate-900 uppercase tracking-wider mb-2">🧮 Settlement Calculation Standard</h5>
+          <div class="text-xs space-y-1.5 text-slate-700">
+            <div class="flex justify-between">
+              <span>Gross Outstanding Ledger:</span>
+              <span class="mono font-semibold">₹65,029</span>
+            </div>
+            <div class="flex justify-between text-indigo-700 font-medium">
+              <span>Less: Cash Discount (5% on Taxable):</span>
+              <span class="mono">-₹3,097</span>
+            </div>
+            <div class="border-t border-slate-300 pt-1.5 flex justify-between text-sm font-bold text-emerald-950">
+              <span>Final Net Amount To Transfer:</span>
+              <span class="mono text-base font-extrabold text-emerald-900">₹61,932</span>
+            </div>
+            <p class="text-[11px] text-slate-500 pt-1 italic">*CD credit note will be issued in Tally upon receipt of bank payment screenshot.</p>
+          </div>
+        </div>
+
+        <!-- Copyable WhatsApp Message -->
+        <div class="relative">
+          <div class="flex justify-between items-center mb-1">
+            <span class="text-xs font-bold text-slate-900 uppercase tracking-wider">📲 WhatsApp Reminder Template</span>
+            <button onclick="copyToClipboard('wa-msg-10')" class="no-print text-[11px] bg-slate-900 hover:bg-slate-800 text-white font-semibold px-2.5 py-1 rounded shadow-sm">
+              📋 Copy Message
+            </button>
+          </div>
+          <textarea id="wa-msg-10" readonly class="w-full h-28 p-2.5 text-[11px] font-mono bg-white border border-slate-300 rounded-lg text-slate-800 resize-none focus:outline-none">Dear FAMOUS FOOT WEAR,
+
+Please find the settlement details for your pending bill:
+
+📦 *1 Invoice (9 CTN):*
+• #SKIL-058 (9 CTN): *₹65,029*
+────────────────────────
+*Total of 1 Bill: ₹65,029*
+*Less: 5% CD on Taxable (₹61,932): -₹3,097*
+👉 *Net for Bill: ₹61,932*
+────────────────────────
+*👉 TOTAL TO TRANSFER: ₹61,932*
+────────────────────────
+
+*Bank Details:*
+SKIL LIFESTYLE LLP
+Union Bank of India | Rayagada
+A/c: *348621010000129*
+IFSC: *UBIN0534862*
+
+Please process the transfer and share the screenshot so we can issue your CD credit note. Thank you! 🙏</textarea>
+        </div>
+      </div>
+
+    </div>
+    
+    <div id="party-11" class="party-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm scroll-mt-6" data-name="m/s. rajan traders" data-state="odisha" data-overdue="false">
+      
+      <!-- Party Header -->
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-4 border-b border-slate-200">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="w-6 h-6 rounded-full bg-slate-900 text-white text-xs font-bold flex items-center justify-center">11</span>
+            <h3 class="text-lg font-bold text-slate-900">M/S. RAJAN TRADERS</h3>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">CURRENT &lt;30 DAYS</span>
+          </div>
+          <div class="text-xs text-slate-500 flex flex-wrap gap-x-4 gap-y-1">
+            <span>📍 Odisha • Floor No.: PO-JAJPUR ROAD, PS-JAJPUR ROAD, Bu...</span>
+            <span>📄 GSTIN: <strong class="mono text-slate-700">21DEPPJ6401A1Z3</strong></span>
+            <span>📞 Mobile: <strong class="text-slate-700">9437468068</strong></span>
+          </div>
+        </div>
+
+        <div class="md:text-right bg-slate-50 p-3 rounded-xl border border-slate-200 w-full md:w-auto flex md:flex-col justify-between items-center md:items-end">
+          <div class="text-[11px] text-slate-500 uppercase font-semibold">Tally Ledger Outstanding</div>
+          <div class="text-xl font-extrabold text-slate-900 mono">₹60,382</div>
+          <div class="text-[11px] text-emerald-700 font-bold mt-0.5">Net to Settle: ₹57,228</div>
+        </div>
+      </div>
+
+      <!-- Inward/Outward Sales Bills Table -->
+      <div class="mt-5">
+        <h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider mb-2 flex items-center gap-2">
+          <span>📦 Sales Invoices (1 Bills)</span>
+        </h4>
+        <div class="overflow-x-auto border border-slate-200 rounded-xl">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr class="bg-slate-50 text-slate-600 border-b border-slate-200 font-semibold text-[11px]">
+                <th class="p-2.5">Invoice #</th>
+                <th class="p-2.5">Date</th>
+                <th class="p-2.5">Brand / Ref</th>
+                <th class="p-2.5 text-center">CTN / Pairs</th>
+                <th class="p-2.5 text-right">Taxable (₹)</th>
+                <th class="p-2.5 text-right">GST 5% (₹)</th>
+                <th class="p-2.5 text-right font-semibold">Gross (₹)</th>
+                <th class="p-2.5 text-right text-indigo-700">3% CD (₹)</th>
+                <th class="p-2.5 text-right font-bold text-emerald-950">Net Bill (₹)</th>
+                <th class="p-2.5 text-center">Aging</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-056</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-10-10</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Xpania Footcare</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">XPL/2366/26-27</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">13 CTN <span class="text-slate-400">(456 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹1,05,126</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹5,256.3</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹1,10,382</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹3,154</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹1,07,228</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    32d
+                  </span>
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Receipts & Adjustments if any -->
+      
+      <div class="mt-4 pt-3 border-t border-slate-100">
+        <h4 class="text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">💳 Recorded Payments & Credit Notes in Tally</h4>
+        <div class="flex flex-wrap gap-2 text-xs">
+          
+            <div class="px-3 py-1.5 bg-emerald-50 border border-emerald-200 rounded-lg text-emerald-900 font-medium">
+              ✅ Receipt #undefined (2026-10-07): <strong>₹25,000</strong> (Union Bank)
+            </div>
+          
+            <div class="px-3 py-1.5 bg-emerald-50 border border-emerald-200 rounded-lg text-emerald-900 font-medium">
+              ✅ Receipt #undefined (2026-11-10): <strong>₹25,000</strong> (Union Bank)
+            </div>
+          
+          
+        </div>
+      </div>
+      
+
+      <!-- Settlement Math & WhatsApp Template -->
+      <div class="mt-5 grid grid-cols-1 lg:grid-cols-2 gap-4 pt-4 border-t border-slate-200 bg-slate-50 p-4 rounded-xl">
+        <!-- Settlement Math -->
+        <div>
+          <h5 class="text-xs font-bold text-slate-900 uppercase tracking-wider mb-2">🧮 Settlement Calculation Standard</h5>
+          <div class="text-xs space-y-1.5 text-slate-700">
+            <div class="flex justify-between">
+              <span>Gross Outstanding Ledger:</span>
+              <span class="mono font-semibold">₹60,382</span>
+            </div>
+            <div class="flex justify-between text-indigo-700 font-medium">
+              <span>Less: Cash Discount (3% on Taxable):</span>
+              <span class="mono">-₹3,154</span>
+            </div>
+            <div class="border-t border-slate-300 pt-1.5 flex justify-between text-sm font-bold text-emerald-950">
+              <span>Final Net Amount To Transfer:</span>
+              <span class="mono text-base font-extrabold text-emerald-900">₹57,228</span>
+            </div>
+            <p class="text-[11px] text-slate-500 pt-1 italic">*CD credit note will be issued in Tally upon receipt of bank payment screenshot.</p>
+          </div>
+        </div>
+
+        <!-- Copyable WhatsApp Message -->
+        <div class="relative">
+          <div class="flex justify-between items-center mb-1">
+            <span class="text-xs font-bold text-slate-900 uppercase tracking-wider">📲 WhatsApp Reminder Template</span>
+            <button onclick="copyToClipboard('wa-msg-11')" class="no-print text-[11px] bg-slate-900 hover:bg-slate-800 text-white font-semibold px-2.5 py-1 rounded shadow-sm">
+              📋 Copy Message
+            </button>
+          </div>
+          <textarea id="wa-msg-11" readonly class="w-full h-28 p-2.5 text-[11px] font-mono bg-white border border-slate-300 rounded-lg text-slate-800 resize-none focus:outline-none">Dear M/s. Rajan Traders,
+
+Please find the settlement details for your pending bill:
+
+📦 *1 Invoice (13 CTN):*
+• #SKIL-056 (13 CTN): *₹1,10,382*
+────────────────────────
+*Total of 1 Bill: ₹1,10,382*
+*Less: 3% CD on Taxable (₹1,05,126): -₹3,154*
+👉 *Net for 1 Bill: ₹1,07,228*
+
+➖ *Less: Payment Received (07-Oct): -₹25,000*
+➖ *Less: Payment Received (10-Nov): -₹25,000*
+────────────────────────
+*👉 TOTAL TO TRANSFER: ₹57,228*
+────────────────────────
+
+*Bank Details:*
+SKIL LIFESTYLE LLP
+Union Bank of India | Rayagada
+A/c: *348621010000129*
+IFSC: *UBIN0534862*
+
+Please process the transfer and share the screenshot so we can issue your CD credit note. Thank you! 🙏</textarea>
+        </div>
+      </div>
+
+    </div>
+    
+    <div id="party-12" class="party-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm scroll-mt-6" data-name="delight foot wear" data-state="andhra pradesh" data-overdue="true">
+      
+      <!-- Party Header -->
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-4 border-b border-slate-200">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="w-6 h-6 rounded-full bg-slate-900 text-white text-xs font-bold flex items-center justify-center">12</span>
+            <h3 class="text-lg font-bold text-slate-900">DELIGHT FOOT WEAR</h3>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-200">OVERDUE >30 DAYS</span>
+          </div>
+          <div class="text-xs text-slate-500 flex flex-wrap gap-x-4 gap-y-1">
+            <span>📍 Andhra Pradesh • 2-11-2, NEAR POLYSTER HOUSE, VULLU VEEDHI, VI...</span>
+            <span>📄 GSTIN: <strong class="mono text-slate-700">37AVCPK2090B1ZZ</strong></span>
+            <span>📞 Mobile: <strong class="text-slate-700">9440548998</strong></span>
+          </div>
+        </div>
+
+        <div class="md:text-right bg-slate-50 p-3 rounded-xl border border-slate-200 w-full md:w-auto flex md:flex-col justify-between items-center md:items-end">
+          <div class="text-[11px] text-slate-500 uppercase font-semibold">Tally Ledger Outstanding</div>
+          <div class="text-xl font-extrabold text-slate-900 mono">₹59,971</div>
+          <div class="text-[11px] text-emerald-700 font-bold mt-0.5">Net to Settle: ₹49,679</div>
+        </div>
+      </div>
+
+      <!-- Inward/Outward Sales Bills Table -->
+      <div class="mt-5">
+        <h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider mb-2 flex items-center gap-2">
+          <span>📦 Sales Invoices (2 Bills)</span>
+        </h4>
+        <div class="overflow-x-auto border border-slate-200 rounded-xl">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr class="bg-slate-50 text-slate-600 border-b border-slate-200 font-semibold text-[11px]">
+                <th class="p-2.5">Invoice #</th>
+                <th class="p-2.5">Date</th>
+                <th class="p-2.5">Brand / Ref</th>
+                <th class="p-2.5 text-center">CTN / Pairs</th>
+                <th class="p-2.5 text-right">Taxable (₹)</th>
+                <th class="p-2.5 text-right">GST 5% (₹)</th>
+                <th class="p-2.5 text-right font-semibold">Gross (₹)</th>
+                <th class="p-2.5 text-right text-indigo-700">5% CD (₹)</th>
+                <th class="p-2.5 text-right font-bold text-emerald-950">Net Bill (₹)</th>
+                <th class="p-2.5 text-center">Aging</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-002</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-08-12</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900402722</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">28 CTN <span class="text-slate-400">(1428 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹1,48,727.81</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹7,436.42</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹1,56,164</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹7,436</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹1,48,728</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                    91d
+                  </span>
+                </td>
+              </tr>
+              
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-2.5 font-bold text-slate-900 mono">#SKIL-071</td>
+                <td class="p-2.5 text-slate-600 whitespace-nowrap">2026-10-31</td>
+                <td class="p-2.5 text-slate-600">
+                  <span class="font-medium text-slate-800">Ajanta Shoes</span>
+                  <span class="block text-[10px] text-slate-400 font-mono">1900423838</span>
+                </td>
+                <td class="p-2.5 text-center font-medium text-slate-700">4 CTN <span class="text-slate-400">(672 prs)</span></td>
+                <td class="p-2.5 text-right mono text-slate-700">₹57,115.5</td>
+                <td class="p-2.5 text-right mono text-slate-500">₹2,855.8</td>
+                <td class="p-2.5 text-right mono font-semibold text-slate-900">₹59,971</td>
+                <td class="p-2.5 text-right mono text-indigo-700 font-medium">-₹2,856</td>
+                <td class="p-2.5 text-right mono font-bold text-emerald-950 bg-emerald-50/30">₹57,115</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-600">
+                    11d
+                  </span>
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Receipts & Adjustments if any -->
+      
+      <div class="mt-4 pt-3 border-t border-slate-100">
+        <h4 class="text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">💳 Recorded Payments & Credit Notes in Tally</h4>
+        <div class="flex flex-wrap gap-2 text-xs">
+          
+            <div class="px-3 py-1.5 bg-emerald-50 border border-emerald-200 rounded-lg text-emerald-900 font-medium">
+              ✅ Receipt #undefined (2026-09-30): <strong>₹1,48,728</strong> (Union Bank)
+            </div>
+          
+          
+            <div class="px-3 py-1.5 bg-indigo-50 border border-indigo-200 rounded-lg text-indigo-900 font-medium">
+              🏷️ Credit Note #undefined (2026-09-30): <strong>₹7,436</strong>
+            </div>
+          
+        </div>
+      </div>
+      
+
+      <!-- Settlement Math & WhatsApp Template -->
+      <div class="mt-5 grid grid-cols-1 lg:grid-cols-2 gap-4 pt-4 border-t border-slate-200 bg-slate-50 p-4 rounded-xl">
+        <!-- Settlement Math -->
+        <div>
+          <h5 class="text-xs font-bold text-slate-900 uppercase tracking-wider mb-2">🧮 Settlement Calculation Standard</h5>
+          <div class="text-xs space-y-1.5 text-slate-700">
+            <div class="flex justify-between">
+              <span>Gross Outstanding Ledger:</span>
+              <span class="mono font-semibold">₹59,971</span>
+            </div>
+            <div class="flex justify-between text-indigo-700 font-medium">
+              <span>Less: Cash Discount (5% on Taxable):</span>
+              <span class="mono">-₹10,292</span>
+            </div>
+            <div class="border-t border-slate-300 pt-1.5 flex justify-between text-sm font-bold text-emerald-950">
+              <span>Final Net Amount To Transfer:</span>
+              <span class="mono text-base font-extrabold text-emerald-900">₹49,679</span>
+            </div>
+            <p class="text-[11px] text-slate-500 pt-1 italic">*CD credit note will be issued in Tally upon receipt of bank payment screenshot.</p>
+          </div>
+        </div>
+
+        <!-- Copyable WhatsApp Message -->
+        <div class="relative">
+          <div class="flex justify-between items-center mb-1">
+            <span class="text-xs font-bold text-slate-900 uppercase tracking-wider">📲 WhatsApp Reminder Template</span>
+            <button onclick="copyToClipboard('wa-msg-12')" class="no-print text-[11px] bg-slate-900 hover:bg-slate-800 text-white font-semibold px-2.5 py-1 rounded shadow-sm">
+              📋 Copy Message
+            </button>
+          </div>
+          <textarea id="wa-msg-12" readonly class="w-full h-28 p-2.5 text-[11px] font-mono bg-white border border-slate-300 rounded-lg text-slate-800 resize-none focus:outline-none">Dear DELIGHT FOOT WEAR,
+
+Please find the settlement details for your pending bills:
+
+📦 *2 Invoices (32 CTN):*
+• #SKIL-002 (28 CTN): *₹1,56,164*
+• #SKIL-071 (4 CTN): *₹59,971*
+────────────────────────
+*Total of 2 Bills: ₹2,16,135*
+*Less: 5% CD on Taxable (₹2,05,843.31): -₹10,292*
+👉 *Net for 2 Bills: ₹2,05,843*
+
+➖ *Less: Payments Received on A/c: -₹1,48,728*
+────────────────────────
+*👉 TOTAL TO TRANSFER: ₹49,679*
+────────────────────────
+
+*Bank Details:*
+SKIL LIFESTYLE LLP
+Union Bank of India | Rayagada
+A/c: *348621010000129*
+IFSC: *UBIN0534862*
+
+Please process the transfer and share the screenshot so we can issue your CD credit note. Thank you! 🙏</textarea>
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+
+  <!-- KIND B: SUPPLIER SCHEMES & INCENTIVES CLAIMABLE SECTION (AJANTA SHOES) -->
+  <section class="bg-slate-900 text-white rounded-2xl p-6 sm:p-8 mb-12 shadow-sm">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 pb-4 border-b border-slate-800">
+      <div>
+        <span class="px-3 py-1 bg-indigo-900/60 text-indigo-300 text-xs font-semibold uppercase tracking-wider rounded-full border border-indigo-700">
+          Kind B: Supplier Entitlements
+        </span>
+        <h3 class="text-xl font-bold text-white mt-2">Ajanta Shoes India Pvt. Ltd. — Scheme & Incentive Claims</h3>
+        <p class="text-xs text-slate-400">Legally binding claims under Dealership Agreement & Monthly Target Structure.</p>
+      </div>
+      <div class="md:text-right">
+        <div class="text-xs text-slate-400 uppercase font-semibold">Total Supplier Receivables</div>
+        <div class="text-2xl font-extrabold text-indigo-300 mono">₹2,17,792.80</div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+      <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700">
+        <div class="text-amber-400 font-bold mb-1">⚠️ August 3% Target Bonus Shortfall</div>
+        <div class="text-lg font-bold text-white mono mb-1">₹37,552.11</div>
+        <p class="text-slate-400 text-[11px]">August basic turnover ₹11,92,130 achieved (119.2% of target). Missing credit note from Ajanta.</p>
+      </div>
+
+      <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700">
+        <div class="text-amber-400 font-bold mb-1">⚠️ Q2 (Aug+Sep) 2% QTB Shortfall</div>
+        <div class="text-lg font-bold text-white mono mb-1">₹25,035.52</div>
+        <p class="text-slate-400 text-[11px]">Total Q2 basic ₹21.89L @ 2% = ₹45,978. Credited only ₹20,943 (September only). Under-credited by ₹25K.</p>
+      </div>
+
+      <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700">
+        <div class="text-indigo-300 font-bold mb-1">⏳ Routine October Incentive Claims</div>
+        <div class="text-lg font-bold text-white mono mb-1">₹1,52,996.39</div>
+        <p class="text-slate-400 text-[11px]">October 3% CD (₹39.6K) + 3.78% Retailer Scheme (₹49.9K) + 3% Target Bonus (₹39.6K) + Price Protection (₹2.2K).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANK DETAILS FOOTER & SIGN-OFF -->
+  <footer class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 text-center text-xs text-slate-600 shadow-sm">
+    <div class="max-w-xl mx-auto mb-6 bg-slate-50 p-4 rounded-xl border border-slate-200">
+      <h4 class="font-bold text-slate-900 uppercase tracking-wider mb-2">Official Bank Details for Collections</h4>
+      <div class="text-slate-700 font-medium space-y-1">
+        <p>Beneficiary: <strong class="text-slate-900">SKIL LIFESTYLE LLP</strong></p>
+        <p>Bank: <strong class="text-slate-900">Union Bank of India</strong> | Branch: <strong class="text-slate-900">Rayagada</strong></p>
+        <p>Current A/c No: <strong class="mono text-slate-900 text-sm">348621010000129</strong></p>
+        <p>IFSC Code: <strong class="mono text-slate-900 text-sm">UBIN0534862</strong></p>
+      </div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-4 border-t border-slate-200 text-slate-500 text-[11px]">
+      <div>
+        Prepared for: <strong>S Lokanatha Patro</strong> (Designated Partner, SKIL Lifestyle LLP)
+      </div>
+      <div>
+        Internal Audit & Collection Schedule • Confidential • Generated 11-Nov-2026
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT FOR FILTERS & COPY -->
+  <script>
+    function copyToClipboard(id) {
+      const textarea = document.getElementById(id);
+      textarea.select();
+      document.execCommand('copy');
+      alert('WhatsApp reminder message copied to clipboard!');
+    }
+
+    function searchParties() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const rows = document.querySelectorAll('.party-row');
+      const cards = document.querySelectorAll('.party-card');
+
+      rows.forEach(r => {
+        const text = r.innerText.toLowerCase();
+        r.style.display = text.includes(input) ? '' : 'none';
+      });
+
+      cards.forEach(c => {
+        const text = c.innerText.toLowerCase();
+        c.style.display = text.includes(input) ? '' : 'none';
+      });
+    }
+
+    function filterTable(filter) {
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('bg-slate-900', 'text-white');
+        btn.classList.add('bg-slate-100', 'text-slate-700');
+        if (btn.getAttribute('data-filter') === filter) {
+          btn.classList.remove('bg-slate-100', 'text-slate-700');
+          btn.classList.add('bg-slate-900', 'text-white');
+        }
+      });
+
+      const rows = document.querySelectorAll('.party-row');
+      const cards = document.querySelectorAll('.party-card');
+
+      rows.forEach(r => {
+        const isOverdue = r.getAttribute('data-overdue') === 'true';
+        const state = r.getAttribute('data-state');
+        let show = true;
+
+        if (filter === 'overdue') show = isOverdue;
+        else if (filter === 'current') show = !isOverdue;
+        else if (filter === 'odisha') show = state.includes('odisha');
+        else if (filter === 'ap') show = state.includes('andhra');
+
+        r.style.display = show ? '' : 'none';
+      });
+
+      cards.forEach(c => {
+        const isOverdue = c.getAttribute('data-overdue') === 'true';
+        const state = c.getAttribute('data-state');
+        let show = true;
+
+        if (filter === 'overdue') show = isOverdue;
+        else if (filter === 'current') show = !isOverdue;
+        else if (filter === 'odisha') show = state.includes('odisha');
+        else if (filter === 'ap') show = state.includes('andhra');
+
+        c.style.display = show ? '' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
