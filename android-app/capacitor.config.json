@@ -1,6 +1,6 @@
 {
-  "appId": "com.skil.sahilsbiz",
-  "appName": "Sahil's Biz",
+  "appId": "com.skillifestyle.master",
+  "appName": "SKIL Master",
   "webDir": "www",
   "server": {
     "cleartext": true,

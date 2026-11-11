@@ -1,14 +1,25 @@
 apply plugin: 'com.android.application'
 
+def versionPropsFile = file('../version.properties')
+def versionProps = new Properties()
+if (versionPropsFile.canRead()) {
+    versionProps.load(new FileInputStream(versionPropsFile))
+}
+
+// In CI (GitHub Actions), GITHUB_RUN_NUMBER provides a strictly increasing integer
+def ciRunNumber = System.getenv("GITHUB_RUN_NUMBER")
+def appVersionCode = ciRunNumber ? (ciRunNumber.toInteger() + 10) : (versionProps['VERSION_CODE'] ? versionProps['VERSION_CODE'].toInteger() : 2)
+def appVersionName = ciRunNumber ? "1.0.${ciRunNumber}" : (versionProps['VERSION_NAME'] ?: "1.0.2")
+
 android {
-    namespace = "com.skil.sahilsbiz"
+    namespace = "com.skillifestyle.master"
     compileSdk = rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "com.skil.sahilsbiz"
+        applicationId "com.skillifestyle.master"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode appVersionCode
+        versionName appVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {
              // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
@@ -16,10 +27,28 @@ android {
             ignoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
         }
     }
+
+    signingConfigs {
+        release {
+            def ksPath = System.getenv("RELEASE_STORE_FILE") ?: (project.hasProperty('RELEASE_STORE_FILE') ? project.property('RELEASE_STORE_FILE') : '../skil-release-key.jks')
+            def ksFile = file(ksPath)
+            if (ksFile.exists()) {
+                storeFile ksFile
+                storePassword System.getenv("RELEASE_STORE_PASSWORD") ?: (project.hasProperty('RELEASE_STORE_PASSWORD') ? project.property('RELEASE_STORE_PASSWORD') : 'SkilMaster@2026')
+                keyAlias System.getenv("RELEASE_KEY_ALIAS") ?: (project.hasProperty('RELEASE_KEY_ALIAS') ? project.property('RELEASE_KEY_ALIAS') : 'skilmaster')
+                keyPassword System.getenv("RELEASE_KEY_PASSWORD") ?: (project.hasProperty('RELEASE_KEY_PASSWORD') ? project.property('RELEASE_KEY_PASSWORD') : 'SkilMaster@2026')
+            }
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.release
         }
     }
 }
@@ -39,7 +68,6 @@ dependencies {
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
-    implementation project(':capacitor-cordova-android-plugins')
 }
 
 apply from: 'capacitor.build.gradle'
@@ -49,6 +77,5 @@ try {
     if (servicesJSON.text) {
         apply plugin: 'com.google.gms.google-services'
     }
-} catch(Exception e) {
-    logger.info("google-services.json not found, google-services plugin not applied. Push Notifications won't work")
+} catch(Exception ignored) {
 }

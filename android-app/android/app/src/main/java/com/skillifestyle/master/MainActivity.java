@@ -1,4 +1,4 @@
-package com.skil.sahilsbiz;
+package com.skillifestyle.master;
 
 import android.app.DownloadManager;
 import android.content.Context;
@@ -30,7 +30,7 @@ public class MainActivity extends BridgeActivity {
                         if (userAgent != null) {
                             request.addRequestHeader("User-Agent", userAgent);
                         }
-                        request.setDescription("Downloading file from Sahil's Biz...");
+                        request.setDescription("Downloading file from SKIL Master...");
                         String filename = URLUtil.guessFileName(url, contentDisposition, mimetype);
                         request.setTitle(filename);
                         request.allowScanningByMediaScanner();
