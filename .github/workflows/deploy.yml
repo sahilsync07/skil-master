@@ -12,6 +12,8 @@ jobs:
   build-and-release:
     name: Build Signed AAB & APK
     runs-on: ubuntu-latest
+    env:
+      PLAY_CONFIGURED: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON != '' }}
 
     steps:
       - name: Checkout Repository
@@ -46,6 +48,8 @@ jobs:
           BUILD_NAME="1.0.${GITHUB_RUN_NUMBER}"
           echo "VERSION_CODE=${BUILD_CODE}" > android-app/android/version.properties
           echo "VERSION_NAME=${BUILD_NAME}" >> android-app/android/version.properties
+          echo "BUILD_CODE=${BUILD_CODE}" >> "$GITHUB_ENV"
+          echo "BUILD_NAME=${BUILD_NAME}" >> "$GITHUB_ENV"
           echo "Dynamic Build Version Code: ${BUILD_CODE}"
           echo "Dynamic Build Version Name: ${BUILD_NAME}"
 
@@ -83,20 +87,20 @@ jobs:
       - name: Publish GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v1.0.${{ github.run_number }}
-          name: "SKIL Master v1.0.${{ github.run_number }} (Release Build ${{ github.run_number }})"
+          tag_name: v${{ env.BUILD_NAME }}
+          name: "SKIL Master v${{ env.BUILD_NAME }} (Build ${{ env.BUILD_CODE }})"
           body: |
             ### 📦 SKIL Master — Automated CI/CD Release
             - **Application**: SKIL Master
             - **Package Identifier**: `com.skillifestyle.master`
-            - **Version Name**: `1.0.${{ github.run_number }}`
-            - **Version Code**: `${{ github.run_number }}`
-            - **Target SDK**: Android 15 (API 35) • Latest Compliance Standard
+            - **Version Name**: `${{ env.BUILD_NAME }}`
+            - **Version Code**: `${{ env.BUILD_CODE }}`
+            - **Target SDK**: Android 16 (API 36) • Latest Compliance Standard
             - **Digital Signing**: Production Key Verified (SHA-256 / RSA-2048)
             
             #### 📥 Download Assets:
-            - **Google Play Store Bundle**: `SKIL_Master-v1.0.${{ github.run_number }}-signed.aab`
-            - **Direct Phone Install (APK)**: `SKIL_Master-v1.0.${{ github.run_number }}-signed.apk`
+            - **Google Play Store Bundle**: `SKIL_Master-v${{ env.BUILD_NAME }}-signed.aab`
+            - **Direct Phone Install (APK)**: `SKIL_Master-v${{ env.BUILD_NAME }}-signed.apk`
           files: |
             artifacts/*.aab
             artifacts/*.apk
@@ -109,8 +113,6 @@ jobs:
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
           packageName: com.skillifestyle.master
-          releaseFiles: artifacts/*.aab
+          releaseFiles: artifacts/SKIL_Master-v${{ env.BUILD_NAME }}-signed.aab
           track: internal
           status: completed
-        env:
-          PLAY_CONFIGURED: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON != '' }}
