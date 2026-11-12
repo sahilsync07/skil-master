@@ -3665,12 +3665,12 @@ function formatStmtOpeningHtml(r, isPrint = false) {
     return `
       <div class="stmt45-stack">
         <div class="stmt45-line">
-          <span class="stmt45-line-left"><span class="stmt45-tag tag-cn">ADV</span> Pre-window credit balance</span>
-          <span class="stmt45-amt" style="color:#059669;">-${formatINR(Math.abs(r.openingBalance))}</span>
+          <span class="stmt45-line-left" style="white-space:normal;"><span class="stmt45-tag tag-cn">ADV</span> <span>Pre-window<br>credit balance</span></span>
+          <span class="stmt45-amt" style="color:#059669;flex-shrink:0;">-${formatINR(Math.abs(r.openingBalance))}</span>
         </div>
         <div class="stmt45-total-line">
-          <span>Opening Bal (Cr Adv)</span>
-          <span class="stmt45-amt" style="color:#059669;">-${formatINR(Math.abs(r.openingBalance))}</span>
+          <span>Opening Bal<br><span style="font-weight:600;font-size:${isPrint ? '6.5pt' : '10px'};color:#64748B;">(Cr Adv)</span></span>
+          <span class="stmt45-amt" style="color:#059669;flex-shrink:0;">-${formatINR(Math.abs(r.openingBalance))}</span>
         </div>
       </div>
     `;
@@ -3798,7 +3798,6 @@ function getFilteredStmt45Data() {
 
 window.render45DayStatementView = function() {
   const { dataset, rows } = getFilteredStmt45Data();
-  const showCashUpi = document.getElementById('chkStmtShowCashUpi')?.checked ?? true;
 
   const periodEl = document.getElementById('stmt45PeriodText');
   if (periodEl) periodEl.innerText = `Period: ${dataset.periodLabel} (Fixed Past 45 Days)`;
@@ -3817,18 +3816,13 @@ window.render45DayStatementView = function() {
   if (elPay) elPay.innerText = formatINR(totPay);
   if (elClose) elClose.innerText = formatINR(totClose);
 
-  // Toggle Cash / UPI column visibility on screen table
-  document.querySelectorAll('#stmt45Table th.stmt45-write-col').forEach(th => {
-    th.style.display = showCashUpi ? '' : 'none';
-  });
-
   const tbody = document.getElementById('stmt45Tbody');
   const tfoot = document.getElementById('stmt45Tfoot');
   const mobileList = document.getElementById('stmt45MobileList');
   if (!tbody || !mobileList) return;
 
   if (rows.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;color:#94A3B8;padding:30px;">No matching parties for current filter.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;color:#94A3B8;padding:30px;">No matching parties for current filter.</td></tr>`;
     if (tfoot) tfoot.innerHTML = '';
     mobileList.innerHTML = `<div class="card-white" style="text-align:center;color:#94A3B8;padding:24px;">No matching parties found.</div>`;
     return;
@@ -3853,7 +3847,6 @@ window.render45DayStatementView = function() {
         <td>${formatStmtBills45dHtml(r, false)}</td>
         <td>${formatStmtPayments45dHtml(r, false)}</td>
         <td class="stmt45-closing-cell" style="color:${closeColor};">${closeLabel}</td>
-        ${showCashUpi ? `<td class="stmt45-write-col" style="background:#FFFFFF;"></td><td class="stmt45-write-col" style="background:#FFFFFF;"></td>` : ''}
       </tr>
     `;
   }).join('');
@@ -3866,7 +3859,6 @@ window.render45DayStatementView = function() {
         <td style="padding:11px 12px; border:1px solid #334155; text-align:right; font-family:monospace;">${formatINR(totBills)}</td>
         <td style="padding:11px 12px; border:1px solid #334155; text-align:right; font-family:monospace; color:#A3E635;">${formatINR(totPay)}</td>
         <td style="padding:11px 12px; border:1px solid #334155; text-align:right; font-family:monospace; color:#FFFFFF; font-size:13.5px;">${formatINR(totClose)}</td>
-        ${showCashUpi ? `<td style="border:1px solid #334155;"></td><td style="border:1px solid #334155;"></td>` : ''}
       </tr>
     `;
   }
@@ -3917,7 +3909,7 @@ function buildPrintable45DaySheetHtml() {
   const totPay = rows.reduce((s, r) => s + r.paymentsTotal45d, 0);
   const totClose = rows.reduce((s, r) => s + r.closingBalance, 0);
   const nowStr = new Date().toLocaleString('en-IN', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true });
-  const groupLabel = dataset.group === 'Sundry Creditors' ? 'SUPPLIERS (CREDITORS)' : 'ALL DEALERS & RETAILERS (DEBTORS)';
+  const groupLabel = dataset.group === 'Sundry Creditors' ? 'SUPPLIERS' : 'DISTRIBUTORS';
 
   return `
     <div class="print-stmt-sheet">
@@ -3934,13 +3926,11 @@ function buildPrintable45DaySheetHtml() {
       <table class="print-stmt-table">
         <thead>
           <tr>
-            <th style="width:15%;">Party Name</th>
-            <th style="width:22.5%;">Old Balance<br><span style="font-weight:500;font-size:6.5pt;color:#CBD5E1;">&gt;45d Bills &rarr; Opening</span></th>
-            <th style="width:22%;">Bills (Dr)<br><span style="font-weight:500;font-size:6.5pt;color:#CBD5E1;">Datewise Past 45d</span></th>
-            <th style="width:22%;">Payments (Cr)<br><span style="font-weight:500;font-size:6.5pt;color:#CBD5E1;">Datewise &amp; [CN]</span></th>
-            <th style="width:9.5%; text-align:right;">Current<br>Bal</th>
-            <th style="width:4.5%; text-align:center;">Cash</th>
-            <th style="width:4.5%; text-align:center;">UPI</th>
+            <th style="width:18%;">Party Name</th>
+            <th style="width:23.5%;">Old Balance<br><span style="font-weight:500;font-size:6.6pt;color:#CBD5E1;">&gt;45d Bills &rarr; Opening</span></th>
+            <th style="width:23.5%;">Bills (Dr)<br><span style="font-weight:500;font-size:6.6pt;color:#CBD5E1;">Datewise Past 45d</span></th>
+            <th style="width:23%;">Payments (Cr)<br><span style="font-weight:500;font-size:6.6pt;color:#CBD5E1;">Datewise &amp; [CN]</span></th>
+            <th style="width:12%; text-align:right;">Current<br>Balance</th>
           </tr>
         </thead>
         <tbody>
@@ -3956,8 +3946,6 @@ function buildPrintable45DaySheetHtml() {
               <td style="text-align:right; font-family:monospace; font-weight:800; font-size:8.8pt; white-space:nowrap;">
                 ${r.closingBalance < 0 ? '-' + formatINR(Math.abs(r.closingBalance)) + '<div style="font-size:7pt;font-weight:600;color:#059669;">(Adv Cr)</div>' : formatINR(r.closingBalance)}
               </td>
-              <td></td>
-              <td></td>
             </tr>
           `).join('')}
         </tbody>
@@ -3968,8 +3956,6 @@ function buildPrintable45DaySheetHtml() {
             <td style="padding:7px; border:1px solid #334155; text-align:right; font-family:monospace;">${formatINR(totBills)}</td>
             <td style="padding:7px; border:1px solid #334155; text-align:right; font-family:monospace;">${formatINR(totPay)}</td>
             <td style="padding:7px; border:1px solid #334155; text-align:right; font-family:monospace; font-size:9pt;">${formatINR(totClose)}</td>
-            <td style="border:1px solid #334155;"></td>
-            <td style="border:1px solid #334155;"></td>
           </tr>
         </tfoot>
       </table>
@@ -4008,16 +3994,17 @@ window.download45DayStatementHtml = function() {
   .toolbar { margin-bottom: 14px; display: flex; justify-content: flex-end; gap: 8px; }
   .btn { background: #0F172A; color: #FFF; border: none; padding: 8px 14px; border-radius: 6px; font-weight: 700; cursor: pointer; }
   @media print { .toolbar { display: none; } body { margin: 0; } }
-  .print-stmt-table { width: 100%; border-collapse: collapse; font-size: 8.5pt; }
+  .print-stmt-table { width: 100%; table-layout: fixed; border-collapse: collapse; font-size: 8.2pt; }
   .print-stmt-table thead { display: table-header-group; }
   .print-stmt-table tr { break-inside: avoid; page-break-inside: avoid; }
-  .print-stmt-table th { background: #1E293B; color: #FFF; padding: 6px 7px; border: 1px solid #334155; font-size: 8pt; text-align: left; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  .print-stmt-table td { padding: 6px 7px; border: 1px solid #94A3B8; vertical-align: top; }
+  .print-stmt-table th { background: #1E293B; color: #FFF; padding: 6px 7px; border: 1px solid #334155; font-size: 7.8pt; text-align: left; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .print-stmt-table td { padding: 6px 7px; border: 1px solid #94A3B8; vertical-align: top; word-wrap: break-word; overflow: hidden; }
   .print-stmt-table tbody tr:nth-child(even) td { background: #F8FAFC; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  .stmt45-stack { display: flex; flex-direction: column; gap: 3px; }
-  .stmt45-line { display: flex; justify-content: space-between; gap: 6px; font-size: 8pt; line-height: 1.3; }
-  .stmt45-amt { font-family: Consolas, monospace; font-weight: 600; white-space: nowrap; }
-  .stmt45-total-line { margin-top: 3px; padding-top: 3px; border-top: 1px solid #64748B; display: flex; justify-content: space-between; font-weight: 800; font-size: 8.2pt; }
+  .stmt45-stack { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .stmt45-line { display: flex; align-items: flex-start; justify-content: space-between; gap: 6px; font-size: 7.8pt; line-height: 1.28; }
+  .stmt45-line-left { flex: 1 1 auto; min-width: 0; white-space: normal; word-break: break-word; }
+  .stmt45-amt { font-family: Consolas, monospace; font-weight: 600; white-space: nowrap; flex-shrink: 0; }
+  .stmt45-total-line { margin-top: 3px; padding-top: 3px; border-top: 1px solid #64748B; display: flex; justify-content: space-between; font-weight: 800; font-size: 8pt; gap: 6px; }
   .stmt45-dash { text-align: center; color: #94A3B8; }
   .stmt45-tag { font-size: 7pt; font-weight: 800; padding: 1px 4px; border-radius: 3px; background: #E2E8F0; }
   .tag-cn { background: #DCFCE7; color: #166534; }

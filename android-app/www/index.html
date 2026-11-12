@@ -2075,16 +2075,12 @@
           <div class="section-header-row" style="margin-bottom: 14px;">
             <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
               <div class="segmented-pills">
-                <button class="segment-btn active" id="btnStmtGroupDebtor" onclick="setStmt45Group('Sundry Debtors')">Customers / Debtors</button>
-                <button class="segment-btn" id="btnStmtGroupCreditor" onclick="setStmt45Group('Sundry Creditors')">Suppliers / Creditors</button>
+                <button class="segment-btn active" id="btnStmtGroupDebtor" onclick="setStmt45Group('Sundry Debtors')">Distributors</button>
+                <button class="segment-btn" id="btnStmtGroupCreditor" onclick="setStmt45Group('Sundry Creditors')">Suppliers</button>
               </div>
               <label style="display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: #475569; cursor: pointer;">
                 <input type="checkbox" id="chkStmtHideZero" checked onchange="render45DayStatementView()" style="accent-color: #0F172A;">
                 <span>Hide Zero-Activity Accounts</span>
-              </label>
-              <label style="display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: #475569; cursor: pointer;">
-                <input type="checkbox" id="chkStmtShowCashUpi" checked onchange="render45DayStatementView()" style="accent-color: #0F172A;">
-                <span>Include Cash / UPI Columns</span>
               </label>
             </div>
             <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
@@ -2096,13 +2092,11 @@
             <table class="stmt45-table" id="stmt45Table">
               <thead>
                 <tr>
-                  <th style="min-width: 190px;">Party Name &amp; Location</th>
-                  <th style="min-width: 215px;">Opening Balance<br><span style="font-weight: 500; font-size: 9.5px; color: #CBD5E1; text-transform: none;">Pre-45d Unpaid Bills &rarr; Opening Total</span></th>
-                  <th style="min-width: 205px;">Bills (Dr) — Past 45d<br><span style="font-weight: 500; font-size: 9.5px; color: #CBD5E1; text-transform: none;">Datewise Invoices &amp; Total</span></th>
-                  <th style="min-width: 205px;">Payments / Credits (Cr)<br><span style="font-weight: 500; font-size: 9.5px; color: #CBD5E1; text-transform: none;">Datewise Receipts, [CN] &amp; Total</span></th>
-                  <th style="text-align: right; min-width: 115px;">Closing<br>Balance</th>
-                  <th class="stmt45-write-col">Cash</th>
-                  <th class="stmt45-write-col">UPI</th>
+                  <th style="min-width: 195px;">Party Name &amp; Location</th>
+                  <th style="min-width: 220px;">Opening Balance<br><span style="font-weight: 500; font-size: 9.5px; color: #CBD5E1; text-transform: none;">Pre-45d Unpaid Bills &rarr; Opening Total</span></th>
+                  <th style="min-width: 215px;">Bills (Dr) — Past 45d<br><span style="font-weight: 500; font-size: 9.5px; color: #CBD5E1; text-transform: none;">Datewise Invoices &amp; Total</span></th>
+                  <th style="min-width: 215px;">Payments / Credits (Cr)<br><span style="font-weight: 500; font-size: 9.5px; color: #CBD5E1; text-transform: none;">Datewise Receipts, [CN] &amp; Total</span></th>
+                  <th style="text-align: right; min-width: 125px;">Closing<br>Balance</th>
                 </tr>
               </thead>
               <tbody id="stmt45Tbody"></tbody>

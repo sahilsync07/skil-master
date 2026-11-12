@@ -3051,20 +3051,32 @@ select.biz-select {
 
 .stmt45-line {
   display: flex;
-  align-items: baseline;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 8px;
   font-size: 11.5px;
-  line-height: 1.35;
+  line-height: 1.32;
   color: #334155;
 }
 
 .stmt45-line-left {
-  display: inline-flex;
-  align-items: center;
+  display: flex;
+  align-items: baseline;
   gap: 4px;
-  flex-wrap: nowrap;
+  flex: 1 1 auto;
+  min-width: 0;
+  flex-wrap: wrap;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.stmt45-amt {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: #0F172A;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .stmt45-tag {
@@ -3090,14 +3102,6 @@ select.biz-select {
 .stmt45-tag.tag-mode {
   background: #EFF6FF;
   color: #1E40AF;
-}
-
-.stmt45-amt {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-variant-numeric: tabular-nums;
-  font-weight: 600;
-  color: #0F172A;
-  white-space: nowrap;
 }
 
 .stmt45-total-line {
@@ -3235,12 +3239,17 @@ select.biz-select {
   }
 
   .print-stmt-table .stmt45-line {
-    font-size: 7.1pt !important;
-    gap: 4px !important;
+    font-size: 7.5pt !important;
+    gap: 6px !important;
+    align-items: flex-start !important;
   }
 
   .print-stmt-table .stmt45-line-left {
-    white-space: nowrap !important;
+    white-space: normal !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    line-height: 1.25 !important;
+    word-break: break-word !important;
   }
 
   .print-stmt-table .stmt45-total-line {
@@ -3279,6 +3288,7 @@ select.biz-select {
     border: 1px solid #94A3B8;
     vertical-align: top;
     word-wrap: break-word;
+    overflow: hidden;
   }
 
   .print-stmt-table tbody tr:nth-child(even) td {
