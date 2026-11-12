@@ -1,1 +1,49 @@
-{"tallyOnline":true,"openCompanies":[{"name":"SKIL LIFESTYLE LLP","isGstOn":false,"numGstTaxUnit":0}],"isCompanyLoaded":true,"error":null,"stats":{"activeCompany":"SKIL LIFESTYLE LLP","companyInfo":{"name":"SKIL LIFESTYLE LLP","startingFrom":"20260401","booksFrom":"20260401","companyNumber":"100000","gstin":"","stateName":"Andhra Pradesh"},"lastSyncTimestamp":"2026-10-15T13:59:50.003Z","totalSyncRuns":20,"cursors":{"masterAlterId":802,"stockAlterId":795,"voucherAlterId":270},"counts":{"ledgers":40,"stockItems":362,"vouchers":161,"units":3,"groups":28},"voucherBreakdown":{"Receipt":13,"Payment":21,"Purchase":57,"Sales":57,"Credit Note":6,"Debit Note":7},"autoSync":{"enabled":false,"intervalSec":30}}}
+{
+  "tallyOnline": false,
+  "openCompanies": [
+    {
+      "name": "SKIL LIFESTYLE LLP",
+      "isGstOn": true,
+      "numGstTaxUnit": 1
+    }
+  ],
+  "isCompanyLoaded": true,
+  "error": null,
+  "stats": {
+    "activeCompany": "SKIL LIFESTYLE LLP",
+    "companyInfo": {
+      "name": "SKIL LIFESTYLE LLP",
+      "startingFrom": "20260401",
+      "booksFrom": "20260401",
+      "gstin": "37AAYFS7178L1Z9",
+      "stateName": "Andhra Pradesh"
+    },
+    "lastSyncTimestamp": "2026-11-11T06:20:12.374Z",
+    "latestVoucherDate": "2026-11-10",
+    "totalSyncRuns": 22,
+    "cursors": {
+      "masterAlterId": 929,
+      "stockAlterId": 795,
+      "voucherAlterId": 393
+    },
+    "counts": {
+      "ledgers": 45,
+      "stockItems": 362,
+      "vouchers": 221,
+      "units": 3,
+      "groups": 28
+    },
+    "voucherBreakdown": {
+      "Receipt": 19,
+      "Payment": 32,
+      "Purchase": 77,
+      "Sales": 77,
+      "Debit Note": 9,
+      "Credit Note": 7
+    },
+    "autoSync": {
+      "enabled": false,
+      "intervalSec": 30
+    }
+  }
+}

@@ -1,0 +1,1337 @@
+{
+  "debtors": {
+    "company": "SKIL LIFESTYLE LLP",
+    "location": "Rayagada, Odisha",
+    "group": "Sundry Debtors",
+    "periodStartIso": "2026-09-28",
+    "periodEndIso": "2026-11-12",
+    "periodLabel": "28/09/2026 to 12/11/2026",
+    "durationDays": 45,
+    "generatedAt": "2026-11-11T19:21:48.417Z",
+    "rows": [
+      {
+        "partyName": "SRI SHARVANI TRADERS",
+        "city": "Visakhapatnam",
+        "state": "Andhra Pradesh",
+        "gstin": "37ARWPY2407N1ZR",
+        "mobile": "8309456062",
+        "openingBalance": 0,
+        "openingBills": [],
+        "openingBillsSum": 0,
+        "bills45d": [
+          {
+            "date": "2026-09-28",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-040",
+            "amount": 301964,
+            "cartons": 66,
+            "narration": "SHARVANI 66CTN"
+          },
+          {
+            "date": "2026-09-28",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-042",
+            "amount": 50655,
+            "cartons": 10,
+            "narration": "SHARVANI 10CTNS"
+          },
+          {
+            "date": "2026-09-29",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-043",
+            "amount": 39697,
+            "cartons": 8,
+            "narration": "SHARVANI 8CTN"
+          },
+          {
+            "date": "2026-09-29",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-047",
+            "amount": 43801,
+            "cartons": 10,
+            "narration": "SHARVANI 10CTN"
+          },
+          {
+            "date": "2026-10-31",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-072",
+            "amount": 145300,
+            "cartons": 33,
+            "narration": "SHARVANI 33CTNS"
+          }
+        ],
+        "billsTotal45d": 581417,
+        "payments45d": [],
+        "paymentsTotal45d": 0,
+        "closingBalance": 581417
+      },
+      {
+        "partyName": "SRI LAKSHMI GAYATRI CHAPPELS",
+        "city": "Rajamahendravaram",
+        "state": "Andhra Pradesh",
+        "gstin": "37AFGFS9974J1Z1",
+        "mobile": "9490320438",
+        "openingBalance": 0,
+        "openingBills": [],
+        "openingBillsSum": 0,
+        "bills45d": [
+          {
+            "date": "2026-10-27",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-062",
+            "amount": 82079,
+            "cartons": 15,
+            "narration": "SLGC RJM 15CTN"
+          },
+          {
+            "date": "2026-10-27",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-063",
+            "amount": 75315,
+            "cartons": 15,
+            "narration": "SLGC RJM 15CTN"
+          },
+          {
+            "date": "2026-10-30",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-067",
+            "amount": 315696,
+            "cartons": 70,
+            "narration": "SLGC RJM 70CTNS"
+          }
+        ],
+        "billsTotal45d": 473090,
+        "payments45d": [],
+        "paymentsTotal45d": 0,
+        "closingBalance": 473090
+      },
+      {
+        "partyName": "ALAKA SHOES",
+        "city": "NAYAGARH",
+        "state": "Odisha",
+        "gstin": "21IMKPS3071K1ZO",
+        "mobile": "7848837421",
+        "openingBalance": 0,
+        "openingBills": [],
+        "openingBillsSum": 0,
+        "bills45d": [
+          {
+            "date": "2026-10-28",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-064",
+            "amount": 30214,
+            "cartons": 5,
+            "narration": "ALAKA 5CTN"
+          },
+          {
+            "date": "2026-10-28",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-065",
+            "amount": 12262,
+            "cartons": 2,
+            "narration": "ALAKA 2CTN"
+          },
+          {
+            "date": "2026-10-28",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-066",
+            "amount": 519275,
+            "cartons": 109,
+            "narration": "ALAKA 109CTN"
+          }
+        ],
+        "billsTotal45d": 561751,
+        "payments45d": [
+          {
+            "date": "2026-10-28",
+            "voucherType": "Receipt",
+            "voucherNumber": "16",
+            "amount": 100000,
+            "modeHint": "Bank",
+            "narration": ""
+          },
+          {
+            "date": "2026-10-30",
+            "voucherType": "Receipt",
+            "voucherNumber": "17",
+            "amount": 100000,
+            "modeHint": "Bank",
+            "narration": ""
+          }
+        ],
+        "paymentsTotal45d": 200000,
+        "closingBalance": 361751
+      },
+      {
+        "partyName": "M/S.SHREE FOOTWEAR",
+        "city": "Srikakulam",
+        "state": "Andhra Pradesh",
+        "gstin": "37AEBPP0086L1Z9",
+        "mobile": "7989536155",
+        "openingBalance": 100059,
+        "openingBills": [
+          {
+            "date": "2026-08-21",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-020",
+            "originalAmount": 35197,
+            "remainingAmount": 10779,
+            "cartons": 8
+          },
+          {
+            "date": "2026-09-16",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-031",
+            "originalAmount": 21375,
+            "remainingAmount": 21375,
+            "cartons": 4
+          },
+          {
+            "date": "2026-09-16",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-032",
+            "originalAmount": 12525,
+            "remainingAmount": 12525,
+            "cartons": 2
+          },
+          {
+            "date": "2026-09-16",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-033",
+            "originalAmount": 12469,
+            "remainingAmount": 12469,
+            "cartons": 2
+          },
+          {
+            "date": "2026-09-16",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-034",
+            "originalAmount": 5981,
+            "remainingAmount": 5981,
+            "cartons": 1
+          },
+          {
+            "date": "2026-09-22",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-036",
+            "originalAmount": 13005,
+            "remainingAmount": 13005,
+            "cartons": 2
+          },
+          {
+            "date": "2026-09-22",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-037",
+            "originalAmount": 23925,
+            "remainingAmount": 23925,
+            "cartons": 4
+          }
+        ],
+        "openingBillsSum": 100059,
+        "bills45d": [
+          {
+            "date": "2026-09-30",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-049",
+            "amount": 8835,
+            "cartons": 2,
+            "narration": "SF 2CTN"
+          },
+          {
+            "date": "2026-09-30",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-051",
+            "amount": 15619,
+            "cartons": 3,
+            "narration": "SF 3CTN"
+          },
+          {
+            "date": "2026-09-30",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-053",
+            "amount": 22725,
+            "cartons": 4,
+            "narration": "SF 4CTN"
+          },
+          {
+            "date": "2026-10-31",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-057",
+            "amount": 4785,
+            "cartons": 1,
+            "narration": "SHREE 1CTN"
+          },
+          {
+            "date": "2026-10-31",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-070",
+            "amount": 36556,
+            "cartons": 8,
+            "narration": "SF 8CTNS"
+          },
+          {
+            "date": "2026-10-31",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-073",
+            "amount": 13335,
+            "cartons": 3,
+            "narration": "SF 3 CTNS"
+          },
+          {
+            "date": "2026-10-31",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-074",
+            "amount": 38726,
+            "cartons": 6,
+            "narration": "SHREE 6CTNS"
+          },
+          {
+            "date": "2026-10-31",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-075",
+            "amount": 19140,
+            "cartons": 4,
+            "narration": "SHREE 4CTNS"
+          },
+          {
+            "date": "2026-10-31",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-076",
+            "amount": 22564,
+            "cartons": 5,
+            "narration": "SHREE 5CTNS"
+          },
+          {
+            "date": "2026-11-09",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-077",
+            "amount": 105720,
+            "cartons": 15,
+            "narration": "SF CUBIX 15 CTN"
+          }
+        ],
+        "billsTotal45d": 288005,
+        "payments45d": [
+          {
+            "date": "2026-10-01",
+            "voucherType": "Credit Note",
+            "voucherNumber": "6",
+            "amount": 6498,
+            "modeHint": "5% CD",
+            "narration": "Being 5% Cash Discount allowed on taxable value of September sales invoices (SKIL-031 to 034, SKIL-036, SKIL-037, SKIL-049, SKIL-051, SKIL-053) dt. 16-09-2026 to 30-09-2026 amounting to Rs. 1,29,961.23."
+          },
+          {
+            "date": "2026-10-08",
+            "voucherType": "Receipt",
+            "voucherNumber": "13",
+            "amount": 30000,
+            "modeHint": "Bank",
+            "narration": ""
+          }
+        ],
+        "paymentsTotal45d": 36498,
+        "closingBalance": 351566
+      },
+      {
+        "partyName": "K G N FOOTWARE",
+        "city": "Parvathipuram",
+        "state": "Andhra Pradesh",
+        "gstin": "37CPZPK0089M1ZW",
+        "mobile": "9491390786",
+        "openingBalance": 150743,
+        "openingBills": [
+          {
+            "date": "2026-08-12",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-005",
+            "originalAmount": 55796,
+            "remainingAmount": 507,
+            "cartons": 10
+          },
+          {
+            "date": "2026-08-12",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-006",
+            "originalAmount": 5606,
+            "remainingAmount": 5606,
+            "cartons": 1
+          },
+          {
+            "date": "2026-09-11",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-027",
+            "originalAmount": 53430,
+            "remainingAmount": 53430,
+            "cartons": 11
+          },
+          {
+            "date": "2026-09-11",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-028",
+            "originalAmount": 57056,
+            "remainingAmount": 57056,
+            "cartons": 11
+          },
+          {
+            "date": "2026-09-11",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-029",
+            "originalAmount": 34144,
+            "remainingAmount": 34144,
+            "cartons": 6
+          }
+        ],
+        "openingBillsSum": 150743,
+        "bills45d": [
+          {
+            "date": "2026-10-31",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-068",
+            "amount": 81114,
+            "cartons": 18,
+            "narration": "KGN 18CTNs"
+          },
+          {
+            "date": "2026-10-31",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-069",
+            "amount": 10275,
+            "cartons": 2,
+            "narration": "KGN 2CTNS"
+          }
+        ],
+        "billsTotal45d": 91389,
+        "payments45d": [
+          {
+            "date": "2026-11-03",
+            "voucherType": "Receipt",
+            "voucherNumber": "18",
+            "amount": 100000,
+            "modeHint": "Bank",
+            "narration": ""
+          }
+        ],
+        "paymentsTotal45d": 100000,
+        "closingBalance": 142132
+      },
+      {
+        "partyName": "JYOTHI FOOT WEAR",
+        "city": "Visakhapatnam",
+        "state": "Andhra Pradesh",
+        "gstin": "37AUQPP0952Q1ZO",
+        "mobile": "9966653233",
+        "openingBalance": 50596,
+        "openingBills": [
+          {
+            "date": "2026-09-11",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-024",
+            "originalAmount": 22890,
+            "remainingAmount": 22890,
+            "cartons": 5
+          },
+          {
+            "date": "2026-09-11",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-025",
+            "originalAmount": 18855,
+            "remainingAmount": 18855,
+            "cartons": 4
+          },
+          {
+            "date": "2026-09-11",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-026",
+            "originalAmount": 4238,
+            "remainingAmount": 4238,
+            "cartons": 1
+          },
+          {
+            "date": "2026-09-11",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-030",
+            "originalAmount": 4613,
+            "remainingAmount": 4613,
+            "cartons": 1
+          }
+        ],
+        "openingBillsSum": 50596,
+        "bills45d": [
+          {
+            "date": "2026-09-28",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-041",
+            "amount": 78249,
+            "cartons": 17,
+            "narration": "JYOTHI 17CTN"
+          }
+        ],
+        "billsTotal45d": 78249,
+        "payments45d": [],
+        "paymentsTotal45d": 0,
+        "closingBalance": 128845
+      },
+      {
+        "partyName": "SHREE ADITYA FOOT FASHION",
+        "city": "Vizianagaram",
+        "state": "Andhra Pradesh",
+        "gstin": "37CSMPS5108M1Z1",
+        "mobile": "08143183837",
+        "openingBalance": 0,
+        "openingBills": [],
+        "openingBillsSum": 0,
+        "bills45d": [
+          {
+            "date": "2026-10-10",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-055",
+            "amount": 110672,
+            "cartons": null,
+            "narration": ""
+          }
+        ],
+        "billsTotal45d": 110672,
+        "payments45d": [],
+        "paymentsTotal45d": 0,
+        "closingBalance": 110672
+      },
+      {
+        "partyName": "M/S SRI BRUNDABAN ENTERPRISES, MALKANGIRI",
+        "city": "Malkangiri",
+        "state": "Odisha",
+        "gstin": "21ADKPC5405A1ZI",
+        "mobile": "9437094667",
+        "openingBalance": 0,
+        "openingBills": [],
+        "openingBillsSum": 0,
+        "bills45d": [
+          {
+            "date": "2026-09-30",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-048",
+            "amount": 28890,
+            "cartons": 6,
+            "narration": "SBEM 6CTN"
+          },
+          {
+            "date": "2026-09-30",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-050",
+            "amount": 5981,
+            "cartons": 1,
+            "narration": "SBEM 1CTN"
+          },
+          {
+            "date": "2026-09-30",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-052",
+            "amount": 65531,
+            "cartons": 13,
+            "narration": "SBEM 13CTN"
+          }
+        ],
+        "billsTotal45d": 100402,
+        "payments45d": [],
+        "paymentsTotal45d": 0,
+        "closingBalance": 100402
+      },
+      {
+        "partyName": "M/S SUSHILA BOOT HOUSE",
+        "city": "Brajrajnagar",
+        "state": "Odisha",
+        "gstin": "21AZKPP2729C1ZN",
+        "mobile": "",
+        "openingBalance": 170306,
+        "openingBills": [
+          {
+            "date": "2026-09-09",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-023",
+            "originalAmount": 170306,
+            "remainingAmount": 170306,
+            "cartons": 20
+          }
+        ],
+        "openingBillsSum": 170306,
+        "bills45d": [],
+        "billsTotal45d": 0,
+        "payments45d": [
+          {
+            "date": "2026-10-22",
+            "voucherType": "Receipt",
+            "voucherNumber": "15",
+            "amount": 100000,
+            "modeHint": "Bank",
+            "narration": ""
+          }
+        ],
+        "paymentsTotal45d": 100000,
+        "closingBalance": 70306
+      },
+      {
+        "partyName": "FAMOUS FOOT WEAR",
+        "city": "Vizianagaram",
+        "state": "Andhra Pradesh",
+        "gstin": "37BKVPC0433M1ZV",
+        "mobile": "8608709708",
+        "openingBalance": 0,
+        "openingBills": [],
+        "openingBillsSum": 0,
+        "bills45d": [
+          {
+            "date": "2026-10-21",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-058",
+            "amount": 65029,
+            "cartons": 9,
+            "narration": "FAMOUS 9CTN"
+          }
+        ],
+        "billsTotal45d": 65029,
+        "payments45d": [],
+        "paymentsTotal45d": 0,
+        "closingBalance": 65029
+      },
+      {
+        "partyName": "M/S. RAJAN TRADERS",
+        "city": "Byasanagar",
+        "state": "Odisha",
+        "gstin": "21DEPPJ6401A1Z3",
+        "mobile": "9437468068",
+        "openingBalance": 0,
+        "openingBills": [],
+        "openingBillsSum": 0,
+        "bills45d": [
+          {
+            "date": "2026-10-10",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-056",
+            "amount": 110382,
+            "cartons": null,
+            "narration": ""
+          }
+        ],
+        "billsTotal45d": 110382,
+        "payments45d": [
+          {
+            "date": "2026-10-07",
+            "voucherType": "Receipt",
+            "voucherNumber": "12",
+            "amount": 25000,
+            "modeHint": "Bank",
+            "narration": ""
+          },
+          {
+            "date": "2026-11-10",
+            "voucherType": "Receipt",
+            "voucherNumber": "19",
+            "amount": 25000,
+            "modeHint": "Bank",
+            "narration": ""
+          }
+        ],
+        "paymentsTotal45d": 50000,
+        "closingBalance": 60382
+      },
+      {
+        "partyName": "DELIGHT FOOT WEAR",
+        "city": "Vizianagaram",
+        "state": "Andhra Pradesh",
+        "gstin": "37AVCPK2090B1ZZ",
+        "mobile": "9440548998",
+        "openingBalance": 156164,
+        "openingBills": [
+          {
+            "date": "2026-08-12",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-002",
+            "originalAmount": 156164,
+            "remainingAmount": 156164,
+            "cartons": 30
+          }
+        ],
+        "openingBillsSum": 156164,
+        "bills45d": [
+          {
+            "date": "2026-10-31",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-071",
+            "amount": 59971,
+            "cartons": 13,
+            "narration": "DELIGHT 13CTNS"
+          }
+        ],
+        "billsTotal45d": 59971,
+        "payments45d": [
+          {
+            "date": "2026-09-30",
+            "voucherType": "Credit Note",
+            "voucherNumber": "3",
+            "amount": 7436,
+            "modeHint": "5% CD",
+            "narration": "Being Commercial Credit Note issued to DELIGHT FOOT WEAR towards 5% Cash Discount on taxable value of August sales invoice #SKIL-002 dt 12.08.2026 as per settlement agreement."
+          },
+          {
+            "date": "2026-09-30",
+            "voucherType": "Receipt",
+            "voucherNumber": "11",
+            "amount": 148728,
+            "modeHint": "Bank",
+            "narration": ""
+          }
+        ],
+        "paymentsTotal45d": 156164,
+        "closingBalance": 59971
+      },
+      {
+        "partyName": "MAHAVIR SHOE HOUSE",
+        "city": "Dhenkanal",
+        "state": "Odisha",
+        "gstin": "21BGYPB6336B1ZO",
+        "mobile": "",
+        "openingBalance": 267292,
+        "openingBills": [
+          {
+            "date": "2026-09-19",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-035",
+            "originalAmount": 267292,
+            "remainingAmount": 267292,
+            "cartons": 31
+          }
+        ],
+        "openingBillsSum": 267292,
+        "bills45d": [
+          {
+            "date": "2026-10-08",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-054",
+            "amount": 141701,
+            "cartons": 17,
+            "narration": "MAHAVIR 17CTN"
+          }
+        ],
+        "billsTotal45d": 141701,
+        "payments45d": [
+          {
+            "date": "2026-10-23",
+            "voucherType": "Receipt",
+            "voucherNumber": "14",
+            "amount": 389518,
+            "modeHint": "Bank",
+            "narration": ""
+          },
+          {
+            "date": "2026-10-23",
+            "voucherType": "Credit Note",
+            "voucherNumber": "7",
+            "amount": 19475,
+            "modeHint": "5% CD",
+            "narration": "Being Credit Note issued to MAHAVIR SHOE HOUSE towards 5% Cash Discount on total value of sales invoices (SKIL-035 dt. 19-09-2026 & SKIL-054 dt. 08-10-2026) amounting to Rs. 4,08,993.00."
+          }
+        ],
+        "paymentsTotal45d": 408993,
+        "closingBalance": 0
+      },
+      {
+        "partyName": "SALIM KHAN KGN, RAJAM",
+        "city": "Rajam",
+        "state": "Andhra Pradesh",
+        "gstin": "",
+        "mobile": "",
+        "openingBalance": 0,
+        "openingBills": [],
+        "openingBillsSum": 0,
+        "bills45d": [],
+        "billsTotal45d": 0,
+        "payments45d": [],
+        "paymentsTotal45d": 0,
+        "closingBalance": 0
+      },
+      {
+        "partyName": "M/s Sri Brundabana Enterprises, Rayagada",
+        "city": "Rayagada",
+        "state": "Odisha",
+        "gstin": "21ADKPC5405A1ZI",
+        "mobile": "9437094667",
+        "openingBalance": -553534,
+        "openingBills": [],
+        "openingBillsSum": 0,
+        "bills45d": [
+          {
+            "date": "2026-09-29",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-044",
+            "amount": 39180,
+            "cartons": 8,
+            "narration": "SBE 8CTN"
+          },
+          {
+            "date": "2026-09-29",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-045",
+            "amount": 24675,
+            "cartons": 4,
+            "narration": "SBE 4CTN"
+          },
+          {
+            "date": "2026-09-29",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-046",
+            "amount": 24435,
+            "cartons": 4,
+            "narration": "SBE 4CTN"
+          },
+          {
+            "date": "2026-10-01",
+            "voucherType": "Payment",
+            "voucherNumber": "16",
+            "amount": 110000,
+            "cartons": null,
+            "narration": ""
+          },
+          {
+            "date": "2026-10-26",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-059",
+            "amount": 19140,
+            "cartons": 4,
+            "narration": "sbe 4CTN"
+          },
+          {
+            "date": "2026-10-26",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-060",
+            "amount": 42683,
+            "cartons": 7,
+            "narration": "SBE RGDA 7CTN"
+          },
+          {
+            "date": "2026-10-26",
+            "voucherType": "Sales",
+            "voucherNumber": "SKIL-061",
+            "amount": 42630,
+            "cartons": 6,
+            "narration": "SBE RGDA 6CTN"
+          },
+          {
+            "date": "2026-10-26",
+            "voucherType": "Payment",
+            "voucherNumber": "24",
+            "amount": 300000,
+            "cartons": null,
+            "narration": ""
+          }
+        ],
+        "billsTotal45d": 602743,
+        "payments45d": [
+          {
+            "date": "2026-09-28",
+            "voucherType": "Receipt",
+            "voucherNumber": "9",
+            "amount": 250000,
+            "modeHint": "Bank",
+            "narration": ""
+          },
+          {
+            "date": "2026-09-30",
+            "voucherType": "Credit Note",
+            "voucherNumber": "4",
+            "amount": 20480,
+            "modeHint": "5% CD",
+            "narration": "Being Credit Note issued to M/s Sri Brundabana Enterprises towards 5% Cash Discount on taxable value of August invoices (SKIL-001, SKIL-003, SKIL-007 to 010, SKIL-021, SKIL-022)."
+          },
+          {
+            "date": "2026-09-30",
+            "voucherType": "Receipt",
+            "voucherNumber": "10",
+            "amount": 140000,
+            "modeHint": "Bank",
+            "narration": ""
+          },
+          {
+            "date": "2026-10-01",
+            "voucherType": "Credit Note",
+            "voucherNumber": "5",
+            "amount": 4984,
+            "modeHint": "5% CD",
+            "narration": "Being 5% Cash Discount allowed on taxable value of September sales invoices (SKIL-038, SKIL-039, SKIL-044 to 046) dt. 27-09-2026 to 29-09-2026 amounting to Rs. 99,682.08."
+          }
+        ],
+        "paymentsTotal45d": 415464,
+        "closingBalance": -366255
+      }
+    ]
+  },
+  "creditors": {
+    "company": "SKIL LIFESTYLE LLP",
+    "location": "Rayagada, Odisha",
+    "group": "Sundry Creditors",
+    "periodStartIso": "2026-09-28",
+    "periodEndIso": "2026-11-12",
+    "periodLabel": "28/09/2026 to 12/11/2026",
+    "durationDays": 45,
+    "generatedAt": "2026-11-11T19:21:48.418Z",
+    "rows": [
+      {
+        "partyName": "Ajanta Shoes India Pvt. Ltd.",
+        "city": "West Bengal",
+        "state": "West Bengal",
+        "gstin": "19AAECB6793N1ZV",
+        "mobile": "",
+        "openingBalance": -330283.57,
+        "openingBills": [],
+        "openingBillsSum": 0,
+        "bills45d": [
+          {
+            "date": "2026-09-28",
+            "voucherType": "Purchase",
+            "voucherNumber": "40",
+            "amount": 302019,
+            "cartons": 66,
+            "narration": "SHARVANI 66CTN"
+          },
+          {
+            "date": "2026-09-28",
+            "voucherType": "Purchase",
+            "voucherNumber": "41",
+            "amount": 78264,
+            "cartons": 17,
+            "narration": "JYOTHI 17CTN"
+          },
+          {
+            "date": "2026-09-28",
+            "voucherType": "Purchase",
+            "voucherNumber": "42",
+            "amount": 50283,
+            "cartons": 10,
+            "narration": "SHARVANI 10CTNS"
+          },
+          {
+            "date": "2026-09-29",
+            "voucherType": "Purchase",
+            "voucherNumber": "43",
+            "amount": 39608,
+            "cartons": 8,
+            "narration": "SHARVANI 8CTN"
+          },
+          {
+            "date": "2026-09-29",
+            "voucherType": "Purchase",
+            "voucherNumber": "45",
+            "amount": 24675,
+            "cartons": 4,
+            "narration": "SBE 4CTN"
+          },
+          {
+            "date": "2026-09-29",
+            "voucherType": "Purchase",
+            "voucherNumber": "46",
+            "amount": 24296,
+            "cartons": 4,
+            "narration": "SBE 4CTN"
+          },
+          {
+            "date": "2026-09-29",
+            "voucherType": "Purchase",
+            "voucherNumber": "44",
+            "amount": 38352,
+            "cartons": 8,
+            "narration": "SBE 8CTN"
+          },
+          {
+            "date": "2026-09-29",
+            "voucherType": "Purchase",
+            "voucherNumber": "47",
+            "amount": 43808,
+            "cartons": 10,
+            "narration": "SHARVANI 10CTN"
+          },
+          {
+            "date": "2026-09-30",
+            "voucherType": "Purchase",
+            "voucherNumber": "48",
+            "amount": 28053,
+            "cartons": 6,
+            "narration": "SBEM 6CTN"
+          },
+          {
+            "date": "2026-09-30",
+            "voucherType": "Purchase",
+            "voucherNumber": "49",
+            "amount": 8697,
+            "cartons": 2,
+            "narration": "SF 2CTN"
+          },
+          {
+            "date": "2026-09-30",
+            "voucherType": "Purchase",
+            "voucherNumber": "50",
+            "amount": 5982,
+            "cartons": 1,
+            "narration": "SBEM 1CTN"
+          },
+          {
+            "date": "2026-09-30",
+            "voucherType": "Purchase",
+            "voucherNumber": "51",
+            "amount": 15620,
+            "cartons": 3,
+            "narration": "SF 3CTN"
+          },
+          {
+            "date": "2026-09-30",
+            "voucherType": "Purchase",
+            "voucherNumber": "52",
+            "amount": 64992,
+            "cartons": 13,
+            "narration": "SBEM 13CTN"
+          },
+          {
+            "date": "2026-09-30",
+            "voucherType": "Purchase",
+            "voucherNumber": "53",
+            "amount": 22614,
+            "cartons": 4,
+            "narration": "SF 4CTN"
+          },
+          {
+            "date": "2026-10-26",
+            "voucherType": "Purchase",
+            "voucherNumber": "59",
+            "amount": 18584,
+            "cartons": 4,
+            "narration": "sbe 4CTN"
+          },
+          {
+            "date": "2026-10-26",
+            "voucherType": "Purchase",
+            "voucherNumber": "60",
+            "amount": 42684,
+            "cartons": 7,
+            "narration": "SBE RGDA 7CTN"
+          },
+          {
+            "date": "2026-10-26",
+            "voucherType": "Purchase",
+            "voucherNumber": "61",
+            "amount": 42370,
+            "cartons": 6,
+            "narration": "SBE RGDA 6CTN"
+          },
+          {
+            "date": "2026-10-27",
+            "voucherType": "Purchase",
+            "voucherNumber": "62",
+            "amount": 79295,
+            "cartons": 15,
+            "narration": "SLGC RJM 15CTN"
+          },
+          {
+            "date": "2026-10-27",
+            "voucherType": "Purchase",
+            "voucherNumber": "63",
+            "amount": 74625,
+            "cartons": 15,
+            "narration": "SLGC RJM 15CTN"
+          },
+          {
+            "date": "2026-10-28",
+            "voucherType": "Purchase",
+            "voucherNumber": "64",
+            "amount": 29798,
+            "cartons": 5,
+            "narration": "ALAKA 5CTN"
+          },
+          {
+            "date": "2026-10-28",
+            "voucherType": "Purchase",
+            "voucherNumber": "65",
+            "amount": 12263,
+            "cartons": 2,
+            "narration": "ALAKA 2CTN"
+          },
+          {
+            "date": "2026-10-28",
+            "voucherType": "Purchase",
+            "voucherNumber": "66",
+            "amount": 518508,
+            "cartons": 109,
+            "narration": "ALAKA 109CTN"
+          },
+          {
+            "date": "2026-10-30",
+            "voucherType": "Purchase",
+            "voucherNumber": "67",
+            "amount": 315751,
+            "cartons": 70,
+            "narration": "SLGC RJM 70CTNS"
+          },
+          {
+            "date": "2026-10-31",
+            "voucherType": "Purchase",
+            "voucherNumber": "68",
+            "amount": 81128,
+            "cartons": 18,
+            "narration": "KGN 18CTNs"
+          },
+          {
+            "date": "2026-10-31",
+            "voucherType": "Purchase",
+            "voucherNumber": "69",
+            "amount": 10278,
+            "cartons": 2,
+            "narration": "KGN 2CTNS"
+          },
+          {
+            "date": "2026-10-31",
+            "voucherType": "Purchase",
+            "voucherNumber": "70",
+            "amount": 36562,
+            "cartons": 8,
+            "narration": "SF 8CTNS"
+          },
+          {
+            "date": "2026-10-31",
+            "voucherType": "Purchase",
+            "voucherNumber": "71",
+            "amount": 59983,
+            "cartons": 13,
+            "narration": "DELIGHT 13CTNS"
+          },
+          {
+            "date": "2026-10-31",
+            "voucherType": "Purchase",
+            "voucherNumber": "72",
+            "amount": 145323,
+            "cartons": 33,
+            "narration": "SHARVANI 33CTNS"
+          },
+          {
+            "date": "2026-10-31",
+            "voucherType": "Purchase",
+            "voucherNumber": "73",
+            "amount": 13236,
+            "cartons": 3,
+            "narration": "SF 3 CTNS"
+          },
+          {
+            "date": "2026-10-31",
+            "voucherType": "Purchase",
+            "voucherNumber": "74",
+            "amount": 38727,
+            "cartons": 6,
+            "narration": "SHREE 6CTNS"
+          },
+          {
+            "date": "2026-10-31",
+            "voucherType": "Purchase",
+            "voucherNumber": "75",
+            "amount": 18584,
+            "cartons": 4,
+            "narration": "SHREE 4CTNS"
+          },
+          {
+            "date": "2026-10-31",
+            "voucherType": "Purchase",
+            "voucherNumber": "76",
+            "amount": 22034,
+            "cartons": 5,
+            "narration": "SHREE 5CTNS"
+          },
+          {
+            "date": "2026-10-31",
+            "voucherType": "Purchase",
+            "voucherNumber": "57",
+            "amount": 4646,
+            "cartons": 1,
+            "narration": "SHREE 1CTN"
+          }
+        ],
+        "billsTotal45d": 2311642,
+        "payments45d": [
+          {
+            "date": "2026-09-28",
+            "voucherType": "Payment",
+            "voucherNumber": "13",
+            "amount": 250000,
+            "modeHint": "Bank",
+            "narration": ""
+          },
+          {
+            "date": "2026-09-29",
+            "voucherType": "Payment",
+            "voucherNumber": "14",
+            "amount": 30000,
+            "modeHint": "Bank",
+            "narration": ""
+          },
+          {
+            "date": "2026-09-30",
+            "voucherType": "Payment",
+            "voucherNumber": "15",
+            "amount": 140000,
+            "modeHint": "Bank",
+            "narration": ""
+          },
+          {
+            "date": "2026-09-30",
+            "voucherType": "Debit Note",
+            "voucherNumber": "5",
+            "amount": 39584,
+            "modeHint": "",
+            "narration": "Being 3.78% Retail Scheme discount received from Ajanta Shoes on September 2026 purchases as per credit note #160005610 dt 30.09.2026."
+          },
+          {
+            "date": "2026-09-30",
+            "voucherType": "Debit Note",
+            "voucherNumber": "6",
+            "amount": 26180,
+            "modeHint": "",
+            "narration": "Being scheme discount received from Ajanta Shoes for September 2026 as per credit note #160005580 dt 30.09.2026."
+          },
+          {
+            "date": "2026-09-30",
+            "voucherType": "Debit Note",
+            "voucherNumber": "7",
+            "amount": 20943,
+            "modeHint": "5% CD",
+            "narration": "Being Cash Discount received from Ajanta Shoes on September 2026 purchases as per credit note #160005562 dt 30.09.2026."
+          },
+          {
+            "date": "2026-10-12",
+            "voucherType": "Debit Note",
+            "voucherNumber": "8",
+            "amount": 20129,
+            "modeHint": "",
+            "narration": "Being slab discount received from Ajanta Shoes for September 2026 (Non-Bengal HW+FTW Slab Scheme) as per Ajanta Credit Note #160006436 dt 12.10.2026."
+          },
+          {
+            "date": "2026-10-16",
+            "voucherType": "Debit Note",
+            "voucherNumber": "9",
+            "amount": 31415.66,
+            "modeHint": "5% CD",
+            "narration": "Being 3% Cash Discount received from Ajanta Shoes on September 2026 purchases as per Ajanta Credit Note #160007004 dt 16.10.2026."
+          },
+          {
+            "date": "2026-10-31",
+            "voucherType": "Payment",
+            "voucherNumber": "25",
+            "amount": 200000,
+            "modeHint": "Bank",
+            "narration": ""
+          }
+        ],
+        "paymentsTotal45d": 758251.66,
+        "closingBalance": 1223106.77
+      },
+      {
+        "partyName": "XPANIA FOOTCARE LLP",
+        "city": "Kozhikode",
+        "state": "Kerala",
+        "gstin": "32AAAFX4582E1ZB",
+        "mobile": "9961388877",
+        "openingBalance": 437598,
+        "openingBills": [
+          {
+            "date": "2026-09-09",
+            "voucherType": "Purchase",
+            "voucherNumber": "23",
+            "originalAmount": 170306,
+            "remainingAmount": 170306,
+            "cartons": 20
+          },
+          {
+            "date": "2026-09-19",
+            "voucherType": "Purchase",
+            "voucherNumber": "35",
+            "originalAmount": 267292,
+            "remainingAmount": 267292,
+            "cartons": 31
+          }
+        ],
+        "openingBillsSum": 437598,
+        "bills45d": [
+          {
+            "date": "2026-10-08",
+            "voucherType": "Purchase",
+            "voucherNumber": "54",
+            "amount": 141701,
+            "cartons": 17,
+            "narration": "MAHAVIR 17CTNS"
+          },
+          {
+            "date": "2026-10-10",
+            "voucherType": "Purchase",
+            "voucherNumber": "55",
+            "amount": 110672,
+            "cartons": 14,
+            "narration": "ADITYA 14CTNS"
+          },
+          {
+            "date": "2026-10-10",
+            "voucherType": "Purchase",
+            "voucherNumber": "56",
+            "amount": 110118,
+            "cartons": 13,
+            "narration": "RANJAN 13CTNS"
+          }
+        ],
+        "billsTotal45d": 362491,
+        "payments45d": [
+          {
+            "date": "2026-10-22",
+            "voucherType": "Payment",
+            "voucherNumber": "22",
+            "amount": 100000,
+            "modeHint": "Bank",
+            "narration": ""
+          },
+          {
+            "date": "2026-11-04",
+            "voucherType": "Payment",
+            "voucherNumber": "32",
+            "amount": 100000,
+            "modeHint": "Bank",
+            "narration": ""
+          }
+        ],
+        "paymentsTotal45d": 200000,
+        "closingBalance": 600089
+      },
+      {
+        "partyName": "Cubix Footcare",
+        "city": "Kozhikode",
+        "state": "Kerala",
+        "gstin": "32AANFC7817J1Z8",
+        "mobile": "9388475777",
+        "openingBalance": 0,
+        "openingBills": [],
+        "openingBillsSum": 0,
+        "bills45d": [
+          {
+            "date": "2026-10-21",
+            "voucherType": "Purchase",
+            "voucherNumber": "58",
+            "amount": 65029,
+            "cartons": 9,
+            "narration": "FAMOUS 9CTN"
+          },
+          {
+            "date": "2026-11-09",
+            "voucherType": "Purchase",
+            "voucherNumber": "77",
+            "amount": 105720,
+            "cartons": 15,
+            "narration": "SF CUBIX 15 CTN"
+          }
+        ],
+        "billsTotal45d": 170749,
+        "payments45d": [],
+        "paymentsTotal45d": 0,
+        "closingBalance": 170749
+      }
+    ]
+  }
+}

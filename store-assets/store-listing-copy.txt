@@ -1,0 +1,40 @@
+========================================================
+GOOGLE PLAY CONSOLE — DEFAULT STORE LISTING COPY
+========================================================
+
+[1] App name (11 / 30 characters):
+SKIL Master
+
+[2] Short description (63 / 80 characters):
+TallyPrime sync, supplier audit & receivables hub for SKIL LLP.
+
+[3] Full description (1,725 / 4,000 characters):
+--------------------------------------------------------
+SKIL Master is the dedicated business intelligence, accounting synchronization, and receivables management application for SKIL Lifestyle LLP (Rayagada, Odisha).
+
+Designed for partners, accounting teams, and authorized field personnel, SKIL Master brings TallyPrime ERP data, supplier scheme tracking, and customer collection workflows together in one mobile workspace.
+
+KEY FEATURES
+
+• Financial Overview Dashboard
+Track monthly and cumulative sales turnover, purchase COGS, gross margin, supplier scheme claims, and net realized profit alongside visual income-versus-expense and liability-ratio analytics.
+
+• Supplier Intelligence Hubs
+Monitor brand-wise procurement, dealership targets, shortfalls, and invoice matching for authorized footwear suppliers including Ajanta Shoes and Xpania Footcare, with instant PDF invoice vault access.
+
+• Customer Ledger Aging & Settlement
+View party-wise outstanding balances across aging brackets (0–30, 31–45, 46–60, and 60+ days), track eligible cash discount (CD) windows, and prepare accurate bill-wise settlement summaries.
+
+• Accounting Reconciliation & Audit
+Verify physical supplier PDFs against Tally vouchers, check bank statement reconciliation variances, and audit supplier scheme credit notes.
+
+• Inventory & Ledger Lookup
+Inspect item-level stock movement and search party ledgers and vouchers across Sales, Purchase, Receipt, Payment, and Credit Note registers.
+
+• Offline-Ready & Encrypted Cloud Sync
+Sync over local Wi-Fi or encrypted cloud snapshots with AES-256 data protection and offline cached availability.
+
+SUPPORT & PRIVACY
+Built and maintained by SKIL Lifestyle LLP, Rayagada, Odisha.
+Privacy Policy: https://skillifestyle.github.io/master/privacy-policy.html
+--------------------------------------------------------

@@ -39,8 +39,8 @@
               <img src="assets/skil-black-logo.png" alt="SKIL Logo">
             </div>
             <div>
-              <div class="brand-title">Sahil's Biz</div>
-              <div style="font-size: 11px; font-weight: 700; color: #A3E635; letter-spacing: 0.05em; margin-top: 2px;">SKIL LIFESTYLE LLP</div>
+              <div class="brand-title">SKIL Master</div>
+              <div style="font-size: 10.5px; font-weight: 700; color: #A3E635; letter-spacing: 0.04em; margin-top: 2px;">SKIL LIFESTYLE LLP</div>
             </div>
           </div>
           <button class="sidebar-close-btn" id="btnSidebarClose" aria-label="Close Navigation Menu">
@@ -49,44 +49,85 @@
         </div>
 
         <ul class="sidebar-menu">
+          <li class="sidebar-section-label">Core &amp; Statements</li>
           <li class="nav-item active" data-tab="dashboard">
             <a class="nav-link">
               <i data-lucide="layout-grid"></i>
-              <span>Dashboard</span>
+              <span>Home &amp; All Menus</span>
             </a>
           </li>
+          <li class="nav-item" data-tab="party-statement-45d">
+            <a class="nav-link" style="justify-content: space-between;">
+              <div style="display: flex; align-items: center; gap: 11px;">
+                <i data-lucide="file-spreadsheet"></i>
+                <span>45-Day Party Sheet</span>
+              </div>
+              <span style="background: #A3E635; color: #0F172A; font-size: 9.5px; font-weight: 800; padding: 2px 7px; border-radius: 10px;">45d PDF</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="weekly-report">
+            <a class="nav-link">
+              <i data-lucide="clipboard-list"></i>
+              <span>Weekly Audit Summary</span>
+            </a>
+          </li>
+
+          <li class="sidebar-section-label">Receivables &amp; Parties</li>
+          <li class="nav-item" data-tab="payment-aging">
+            <a class="nav-link">
+              <i data-lucide="clock-3"></i>
+              <span>Aging &amp; Settlement</span>
+              <span class="nav-badge-dot"></span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="parties">
+            <a class="nav-link">
+              <i data-lucide="users"></i>
+              <span>Parties Directory</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="lineman">
+            <a class="nav-link">
+              <i data-lucide="truck"></i>
+              <span>Lineman Routes</span>
+            </a>
+          </li>
+
+          <li class="sidebar-section-label">Suppliers &amp; Stock</li>
           <li class="nav-item" data-tab="supplier-ajanta">
             <a class="nav-link" style="display: flex; align-items: center; gap: 10px;">
-              <div style="background: #FFFFFF; border-radius: 6px; padding: 2px 4px; display: flex; align-items: center; justify-content: center; height: 24px; min-width: 44px;">
-                <img src="assets/ajanta-logo.png" alt="Ajanta" style="height: 16px; width: auto; object-fit: contain;">
+              <div style="background: #FFFFFF; border-radius: 6px; padding: 2px 4px; display: flex; align-items: center; justify-content: center; height: 22px; min-width: 40px;">
+                <img src="assets/ajanta-logo.png" alt="Ajanta" style="height: 14px; width: auto; object-fit: contain;">
               </div>
               <span>Ajanta Shoes</span>
-              <span style="background: #A3E635; color: #0F172A; font-size: 10px; font-weight: 800; padding: 2px 7px; border-radius: 10px; margin-left: auto;">51 Bills</span>
+              <span style="background: #A3E635; color: #0F172A; font-size: 9.5px; font-weight: 800; padding: 2px 7px; border-radius: 10px; margin-left: auto;">Bills</span>
             </a>
           </li>
           <li class="nav-item" data-tab="supplier-xpania">
             <a class="nav-link" style="display: flex; align-items: center; gap: 10px;">
-              <div style="background: #FFFFFF; border-radius: 6px; padding: 2px 4px; display: flex; align-items: center; justify-content: center; height: 24px; min-width: 44px;">
-                <img src="assets/xpania-logo.png" alt="Xpania" style="height: 16px; width: auto; object-fit: contain;">
+              <div style="background: #FFFFFF; border-radius: 6px; padding: 2px 4px; display: flex; align-items: center; justify-content: center; height: 22px; min-width: 40px;">
+                <img src="assets/xpania-logo.png" alt="Xpania" style="height: 14px; width: auto; object-fit: contain;">
               </div>
               <span>Xpania Footcare</span>
-              <span style="background: #38BDF8; color: #0F172A; font-size: 10px; font-weight: 800; padding: 2px 7px; border-radius: 10px; margin-left: auto;">6 Bills</span>
+              <span style="background: #38BDF8; color: #0F172A; font-size: 9.5px; font-weight: 800; padding: 2px 7px; border-radius: 10px; margin-left: auto;">Bills</span>
             </a>
           </li>
-          <li class="nav-item" data-tab="payment-aging">
+          <li class="nav-item" data-tab="sales-metrics">
             <a class="nav-link">
-              <i data-lucide="clock-3"></i>
-              <span>Aging & Settlement</span>
-              <span class="nav-badge-dot"></span>
+              <i data-lucide="bar-chart-3"></i>
+              <span>Sales Metrics</span>
             </a>
           </li>
-          <li class="nav-item" data-tab="gst-compliance">
-            <a class="nav-link" style="display: flex; align-items: center; justify-content: space-between;">
-              <div style="display: flex; align-items: center; gap: 8px;">
-                <i data-lucide="receipt"></i>
-                <span>GST Compliance</span>
-              </div>
-              <span class="badge-pill badge-warning" style="font-size: 9.5px; padding: 2px 6px;">Due 11th</span>
+          <li class="nav-item" data-tab="supplier-tracking">
+            <a class="nav-link">
+              <i data-lucide="git-compare"></i>
+              <span>Supplier Matrix</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="schemes">
+            <a class="nav-link">
+              <i data-lucide="percent"></i>
+              <span>Schemes &amp; CNs</span>
             </a>
           </li>
           <li class="nav-item" data-tab="inventory">
@@ -95,25 +136,56 @@
               <span>Inventory</span>
             </a>
           </li>
+
+          <li class="sidebar-section-label">Accounting &amp; Khata</li>
           <li class="nav-item" data-tab="ledger-book">
             <a class="nav-link">
               <i data-lucide="book-open"></i>
               <span>Ledger Book</span>
             </a>
           </li>
+          <li class="nav-item" data-tab="manual-khata">
+            <a class="nav-link">
+              <i data-lucide="notebook-pen"></i>
+              <span>Manual Bahi Khata</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="gst-compliance">
+            <a class="nav-link" style="display: flex; align-items: center; justify-content: space-between;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <i data-lucide="receipt"></i>
+                <span>GST Compliance</span>
+              </div>
+              <span class="badge-pill badge-warning" style="font-size: 9px; padding: 2px 6px;">GST</span>
+            </a>
+          </li>
           <li class="nav-item" data-tab="audit-reconcile">
             <a class="nav-link">
               <i data-lucide="shield-check"></i>
-              <span>Audit & Reconcile</span>
+              <span>Audit &amp; Reconcile</span>
             </a>
           </li>
+          <li class="nav-item" data-tab="tally-guide">
+            <a class="nav-link">
+              <i data-lucide="help-circle"></i>
+              <span>Tally Posting Guide</span>
+            </a>
+          </li>
+
+          <li class="sidebar-section-label">Cloud &amp; Policy</li>
           <li class="nav-item" data-tab="cloud-vault">
             <a class="nav-link" style="display: flex; align-items: center; justify-content: space-between;">
               <div style="display: flex; align-items: center; gap: 8px;">
-                <i data-lucide="lock"></i>
-                <span>Cloud Vault</span>
+                <i data-lucide="database"></i>
+                <span>Supabase &amp; Vault</span>
               </div>
-              <span class="badge-pill badge-success" style="font-size: 9.5px; padding: 2px 6px;">AES-256</span>
+              <span class="badge-pill badge-success" style="font-size: 9px; padding: 2px 6px;">Cloud</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="privacy-policy.html" target="_blank" rel="noopener noreferrer">
+              <i data-lucide="file-lock-2"></i>
+              <span>Privacy Policy</span>
             </a>
           </li>
         </ul>
@@ -147,7 +219,7 @@
                 <div class="brand-squircle-logo-sm">
                   <img src="assets/skil-black-logo.png" alt="SKIL">
                 </div>
-                <span class="mobile-brand-name">Sahil's Biz</span>
+                <span class="mobile-brand-name">SKIL Master</span>
               </div>
             </div>
 
@@ -165,7 +237,7 @@
           <!-- Desktop Title & Breadcrumb -->
           <div class="desktop-header-title">
             <div class="desktop-brand-crumb">
-              <span class="brand-dim">Sahil's Biz</span>
+              <span class="brand-dim">SKIL Master</span>
               <span class="crumb-slash">/</span>
               <h1 class="page-title" id="activePageTitle">Dashboard</h1>
             </div>
@@ -225,6 +297,151 @@
       <!-- VIEW 1: DASHBOARD -->
       <!-- ============================================== -->
       <section class="view-panel active-view" id="view-dashboard">
+        <!-- HOME PAGE NAVIGATION HUB: ALL MENUS & REPORTS -->
+        <div class="home-hub-card">
+          <div class="home-hub-header">
+            <div>
+              <h2 class="section-title" style="font-size: 16px;">SKIL Master Navigation Hub — All Menus &amp; Reports</h2>
+              <div class="section-subtitle">Direct 1-tap access to every ledger tool, party statement, supplier hub, Khata, and audit report</div>
+            </div>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <button type="button" class="sync-now-btn" onclick="openAndPrint45DaySheet()" style="background: #0F172A; color: #A3E635; padding: 8px 14px; font-size: 12px;">
+                <i data-lucide="printer" style="width: 14px; height: 14px;"></i>
+                <span>Generate 45-Day Party PDF</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="home-hub-grid" id="homeAllMenusGrid">
+            <button type="button" class="home-hub-tile hub-tile-featured" onclick="navigateToTab('party-statement-45d')">
+              <div class="hub-tile-icon"><i data-lucide="file-spreadsheet" style="width: 17px; height: 17px;"></i></div>
+              <div>
+                <div class="hub-tile-title">45-Day Party Sheet</div>
+                <div class="hub-tile-sub">Opening Bills, 45d Dr/Cr &amp; PDF</div>
+              </div>
+            </button>
+            <button type="button" class="home-hub-tile" onclick="navigateToTab('payment-aging')">
+              <div class="hub-tile-icon" style="background: #FEF3C7; color: #B45309;"><i data-lucide="clock-3" style="width: 17px; height: 17px;"></i></div>
+              <div>
+                <div class="hub-tile-title">Aging &amp; Settlement</div>
+                <div class="hub-tile-sub">Buckets &amp; WhatsApp CD</div>
+              </div>
+            </button>
+            <button type="button" class="home-hub-tile" onclick="navigateToTab('weekly-report')">
+              <div class="hub-tile-icon" style="background: #ECFDF5; color: #059669;"><i data-lucide="clipboard-list" style="width: 17px; height: 17px;"></i></div>
+              <div>
+                <div class="hub-tile-title">Weekly Audit Summary</div>
+                <div class="hub-tile-sub">Partner Sign-Off Register</div>
+              </div>
+            </button>
+            <button type="button" class="home-hub-tile" onclick="navigateToTab('manual-khata')">
+              <div class="hub-tile-icon" style="background: #EFF6FF; color: #1D4ED8;"><i data-lucide="notebook-pen" style="width: 17px; height: 17px;"></i></div>
+              <div>
+                <div class="hub-tile-title">Manual Bahi Khata</div>
+                <div class="hub-tile-sub">Daybook &amp; Cloud Entries</div>
+              </div>
+            </button>
+            <button type="button" class="home-hub-tile" onclick="navigateToTab('supplier-ajanta')">
+              <div class="hub-tile-icon"><i data-lucide="package-check" style="width: 17px; height: 17px;"></i></div>
+              <div>
+                <div class="hub-tile-title">Ajanta Shoes Hub</div>
+                <div class="hub-tile-sub">Targets, Bills &amp; Claims</div>
+              </div>
+            </button>
+            <button type="button" class="home-hub-tile" onclick="navigateToTab('supplier-xpania')">
+              <div class="hub-tile-icon"><i data-lucide="footprints" style="width: 17px; height: 17px;"></i></div>
+              <div>
+                <div class="hub-tile-title">Xpania Footcare Hub</div>
+                <div class="hub-tile-sub">Purchases &amp; PDF Vault</div>
+              </div>
+            </button>
+            <button type="button" class="home-hub-tile" onclick="navigateToTab('parties')">
+              <div class="hub-tile-icon"><i data-lucide="users" style="width: 17px; height: 17px;"></i></div>
+              <div>
+                <div class="hub-tile-title">Parties Directory</div>
+                <div class="hub-tile-sub">15 Debtors &amp; 3 Creditors</div>
+              </div>
+            </button>
+            <button type="button" class="home-hub-tile" onclick="navigateToTab('ledger-book')">
+              <div class="hub-tile-icon"><i data-lucide="book-open" style="width: 17px; height: 17px;"></i></div>
+              <div>
+                <div class="hub-tile-title">Ledger Book</div>
+                <div class="hub-tile-sub">Running Account Explorer</div>
+              </div>
+            </button>
+            <button type="button" class="home-hub-tile" onclick="navigateToTab('gst-compliance')">
+              <div class="hub-tile-icon" style="background: #FEE2E2; color: #B91C1C;"><i data-lucide="receipt" style="width: 17px; height: 17px;"></i></div>
+              <div>
+                <div class="hub-tile-title">GST Compliance</div>
+                <div class="hub-tile-sub">GSTR-1, 2B, 3B, DN &amp; CN</div>
+              </div>
+            </button>
+            <button type="button" class="home-hub-tile" onclick="navigateToTab('sales-metrics')">
+              <div class="hub-tile-icon"><i data-lucide="bar-chart-3" style="width: 17px; height: 17px;"></i></div>
+              <div>
+                <div class="hub-tile-title">Sales Metrics</div>
+                <div class="hub-tile-sub">Monthly Margin Velocity</div>
+              </div>
+            </button>
+            <button type="button" class="home-hub-tile" onclick="navigateToTab('supplier-tracking')">
+              <div class="hub-tile-icon"><i data-lucide="git-compare" style="width: 17px; height: 17px;"></i></div>
+              <div>
+                <div class="hub-tile-title">Supplier Matrix</div>
+                <div class="hub-tile-sub">Drop-Ship Stints &amp; Matching</div>
+              </div>
+            </button>
+            <button type="button" class="home-hub-tile" onclick="navigateToTab('schemes')">
+              <div class="hub-tile-icon"><i data-lucide="percent" style="width: 17px; height: 17px;"></i></div>
+              <div>
+                <div class="hub-tile-title">Schemes &amp; CNs</div>
+                <div class="hub-tile-sub">CD, QTB &amp; Slab Tracking</div>
+              </div>
+            </button>
+            <button type="button" class="home-hub-tile" onclick="navigateToTab('inventory')">
+              <div class="hub-tile-icon"><i data-lucide="box" style="width: 17px; height: 17px;"></i></div>
+              <div>
+                <div class="hub-tile-title">Inventory Stock</div>
+                <div class="hub-tile-sub">362 Footware SKUs</div>
+              </div>
+            </button>
+            <button type="button" class="home-hub-tile" onclick="navigateToTab('audit-reconcile')">
+              <div class="hub-tile-icon"><i data-lucide="shield-check" style="width: 17px; height: 17px;"></i></div>
+              <div>
+                <div class="hub-tile-title">Audit &amp; Reconcile</div>
+                <div class="hub-tile-sub">PDF vs Tally Discrepancies</div>
+              </div>
+            </button>
+            <button type="button" class="home-hub-tile" onclick="navigateToTab('lineman')">
+              <div class="hub-tile-icon"><i data-lucide="truck" style="width: 17px; height: 17px;"></i></div>
+              <div>
+                <div class="hub-tile-title">Lineman Routes</div>
+                <div class="hub-tile-sub">Field Collections by Town</div>
+              </div>
+            </button>
+            <button type="button" class="home-hub-tile" onclick="navigateToTab('tally-guide')">
+              <div class="hub-tile-icon"><i data-lucide="help-circle" style="width: 17px; height: 17px;"></i></div>
+              <div>
+                <div class="hub-tile-title">Tally Posting Guide</div>
+                <div class="hub-tile-sub">Vouchers &amp; Narration Templates</div>
+              </div>
+            </button>
+            <button type="button" class="home-hub-tile" onclick="navigateToTab('cloud-vault')">
+              <div class="hub-tile-icon" style="background: #DCFCE7; color: #166534;"><i data-lucide="database" style="width: 17px; height: 17px;"></i></div>
+              <div>
+                <div class="hub-tile-title">Supabase &amp; Vault</div>
+                <div class="hub-tile-sub">Cloud Sync &amp; AES-256</div>
+              </div>
+            </button>
+            <a class="home-hub-tile" href="privacy-policy.html" target="_blank" rel="noopener noreferrer">
+              <div class="hub-tile-icon"><i data-lucide="file-lock-2" style="width: 17px; height: 17px;"></i></div>
+              <div>
+                <div class="hub-tile-title">Privacy Policy</div>
+                <div class="hub-tile-sub">Play Store Compliance</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
         <div class="section-header-row">
           <div>
             <h2 class="section-title">Financial Overview</h2>
@@ -443,7 +660,11 @@
               </div>
             </div>
 
-            <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+              <button type="button" class="sync-now-btn" onclick="openAndPrint45DaySheet()" style="background: #0F172A; color: #FFFFFF; padding: 8px 13px; font-size: 12px;">
+                <i data-lucide="file-spreadsheet" style="width: 14px; height: 14px;"></i>
+                <span>45-Day Party Sheet</span>
+              </button>
               <input type="text" class="filter-pill-dropdown" id="partySearchInput" placeholder="Filter party name..." style="width: 200px;">
               <span class="badge-pill badge-neutral">Sorted by Balance</span>
             </div>
@@ -1264,13 +1485,23 @@
         <!-- Overview Summary Header -->
         <div class="aging-hero-banner" style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); border-radius: 16px; padding: 22px 24px; color: #FFFFFF; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; box-shadow: 0 4px 20px rgba(15, 23, 42, 0.12);">
           <div>
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px; flex-wrap: wrap;">
               <span class="badge-pill" style="background: #A3E635; color: #0F172A; font-weight: 800; font-size: 11px;">TALLY AUDITED AGING</span>
-              <span style="font-size: 12px; color: #94A3B8;">As of 05-Nov-2026</span>
+              <span style="font-size: 12px; color: #94A3B8;" id="valAgingAsOfDate">As of 12-Nov-2026</span>
             </div>
-            <div style="font-size: 28px; font-weight: 800; color: #FFFFFF; letter-spacing: -0.02em;" id="valAgingTotalReceivables">₹24,99,843</div>
+            <div style="font-size: 28px; font-weight: 800; color: #FFFFFF; letter-spacing: -0.02em;" id="valAgingTotalReceivables">₹25,05,563</div>
             <div style="font-size: 13px; color: #CBD5E1; margin-top: 4px;">
               Total Customer Receivables across <strong id="valAgingPartiesCount">12 / 15</strong> Retail Ledgers (3 100% Cleared)
+            </div>
+            <div style="margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap;">
+              <button type="button" onclick="navigateToTab('party-statement-45d')" style="background: #FFFFFF; color: #0F172A; border: none; padding: 8px 14px; border-radius: 8px; font-size: 12px; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">
+                <i data-lucide="file-spreadsheet" style="width: 14px; height: 14px;"></i>
+                <span>Open 45-Day Party Sheet</span>
+              </button>
+              <button type="button" onclick="openAndPrint45DaySheet()" style="background: rgba(163, 230, 53, 0.18); color: #A3E635; border: 1px solid rgba(163, 230, 53, 0.45); padding: 8px 14px; border-radius: 8px; font-size: 12px; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">
+                <i data-lucide="printer" style="width: 14px; height: 14px;"></i>
+                <span>Print 45-Day PDF Sheet</span>
+              </button>
             </div>
           </div>
 
@@ -1519,55 +1750,61 @@
       </section>
 
       <!-- ============================================== -->
-      <!-- VIEW: SECURE ENCRYPTED CLOUD VAULT -->
+      <!-- VIEW: SUPABASE & ENCRYPTED CLOUD VAULT -->
       <!-- ============================================== -->
       <section class="view-panel" id="view-cloud-vault">
         <div class="vault-hero-card" style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); border-radius: 16px; padding: 24px; color: #FFFFFF; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; box-shadow: 0 8px 24px rgba(15, 23, 42, 0.2);">
           <div style="display: flex; align-items: center; gap: 18px;">
             <div style="background: rgba(163, 230, 53, 0.15); border: 1px solid rgba(163, 230, 53, 0.3); border-radius: 14px; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-              <i data-lucide="shield-check" style="width: 30px; height: 30px; color: #A3E635;"></i>
+              <i data-lucide="database" style="width: 30px; height: 30px; color: #A3E635;"></i>
             </div>
             <div>
-              <div style="display: flex; align-items: center; gap: 8px;">
-                <h2 style="font-size: 20px; font-weight: 800; color: #FFFFFF; margin: 0;">AES-256-GCM Encrypted Cloud Vault</h2>
-                <span class="badge-pill badge-success" style="font-size: 10px;">Authenticated</span>
+              <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                <h2 style="font-size: 20px; font-weight: 800; color: #FFFFFF; margin: 0;">Supabase Cloud &amp; AES-256 Vault</h2>
+                <span class="badge-pill badge-success" style="font-size: 10px;" id="vaultSupaBadge">Live Cloud</span>
               </div>
-              <p style="color: #94A3B8; font-size: 13px; margin: 6px 0 0 0;">
-                All 218 Tally vouchers, ledgers, customer aging & master grids are encrypted with your key password (<code>SKIL@123</code>).
+              <p style="color: #94A3B8; font-size: 13px; margin: 6px 0 0 0;" id="vaultSummarySubtext">
+                221 Tally vouchers, 45 ledgers, 45-day statements, aging &amp; manual Khata synced across Supabase, GitHub &amp; AES-256 vault.
               </p>
             </div>
           </div>
           <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-            <button class="sync-now-btn" id="btnSyncVaultNow" style="background: #A3E635; color: #0F172A; font-weight: 800; border: none; padding: 10px 18px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
-              <i data-lucide="lock" style="width: 15px; height: 15px;"></i>
-              <span>Encrypt & Sync to Cloud</span>
+            <button class="sync-now-btn" id="btnPushSupabaseNow" style="background: #A3E635; color: #0F172A; font-weight: 800; border: none; padding: 10px 18px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+              <i data-lucide="upload-cloud" style="width: 15px; height: 15px;"></i>
+              <span>Push All Data to Supabase</span>
+            </button>
+            <button id="btnCopySupaSql" style="background: rgba(255,255,255,0.1); color: #FFFFFF; border: 1px solid rgba(255,255,255,0.2); padding: 10px 16px; border-radius: 8px; font-weight: 700; font-size: 13px; display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
+              <i data-lucide="copy" style="width: 15px; height: 15px;"></i>
+              <span>Copy Supabase SQL Schema</span>
             </button>
             <button id="btnDecryptVaultModal" style="background: rgba(255,255,255,0.1); color: #FFFFFF; border: 1px solid rgba(255,255,255,0.2); padding: 10px 16px; border-radius: 8px; font-weight: 700; font-size: 13px; display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
               <i data-lucide="key" style="width: 15px; height: 15px;"></i>
-              <span>Decrypt & Inspect</span>
+              <span>Verify Local Vault</span>
             </button>
           </div>
         </div>
 
+        <div id="supabaseLiveBanner" style="display:none; margin-bottom:16px; padding:12px 16px; border-radius:12px; font-size:12.5px; font-weight:600;"></div>
+
         <div class="stats-grid" style="margin-bottom: 20px;">
           <div class="stat-card">
             <div class="stat-header">
-              <span class="stat-label">GitHub Sync Repository</span>
-              <span class="stat-icon-wrap" style="background: #F1F5F9; color: #0F172A;"><i data-lucide="git-branch"></i></span>
+              <span class="stat-label">Supabase Live Project</span>
+              <span class="stat-icon-wrap" style="background: #ECFDF5; color: #059669;"><i data-lucide="database"></i></span>
             </div>
-            <div class="stat-value" style="font-size: 16px; font-family: monospace;">skillifestyle/master</div>
-            <div class="stat-subtext" style="color: #16A34A; font-weight: 700;">✅ Connected & Pushed to main</div>
-            <div style="font-size: 11px; color: #64748B; margin-top: 6px;">Encrypted file: <code>vault/skil_vault_encrypted.enc</code></div>
+            <div class="stat-value" style="font-size: 16px; font-family: monospace;">psykhsowmqtdffqcsbxf</div>
+            <div class="stat-subtext" id="supaTableStatusText" style="color: #0284C7; font-weight: 700;">Checking tables (skil_snapshots, skil_parties, skil_vouchers)...</div>
+            <div style="font-size: 11px; color: #64748B; margin-top: 6px;">Schema file: <code>supabase/schema.sql</code></div>
           </div>
 
           <div class="stat-card">
             <div class="stat-header">
-              <span class="stat-label">Supabase Cloud Database</span>
-              <span class="stat-icon-wrap" style="background: #ECFDF5; color: #059669;"><i data-lucide="database"></i></span>
+              <span class="stat-label">GitHub Pages &amp; Releases</span>
+              <span class="stat-icon-wrap" style="background: #F1F5F9; color: #0F172A;"><i data-lucide="git-branch"></i></span>
             </div>
-            <div class="stat-value" style="font-size: 16px; font-family: monospace;">psykhsowmqtdffqcsbxf</div>
-            <div class="stat-subtext" style="color: #059669; font-weight: 700;">✅ Project linked & client active</div>
-            <div style="font-size: 11px; color: #64748B; margin-top: 6px;">URL: <code>https://psykhsowmqtdffqcsbxf.supabase.co</code></div>
+            <div class="stat-value" style="font-size: 16px; font-family: monospace;">skillifestyle/master</div>
+            <div class="stat-subtext" style="color: #16A34A; font-weight: 700;">Live Web + Automated APK/AAB CI/CD</div>
+            <div style="font-size: 11px; color: #64748B; margin-top: 6px;">Package: <code>com.skillifestyle.master</code></div>
           </div>
 
           <div class="stat-card">
@@ -1577,17 +1814,17 @@
             </div>
             <div class="stat-value" style="font-size: 16px;">AES-256-GCM</div>
             <div class="stat-subtext">PBKDF2-SHA256 &bull; 100,000 Iterations</div>
-            <div style="font-size: 11px; color: #64748B; margin-top: 6px;">Key password: <code>SKIL@123</code></div>
+            <div style="font-size: 11px; color: #64748B; margin-top: 6px;">Passphrase protected locally &amp; in vault binary</div>
           </div>
 
           <div class="stat-card">
             <div class="stat-header">
-              <span class="stat-label">Encrypted Records</span>
+              <span class="stat-label">Synchronized Records</span>
               <span class="stat-icon-wrap" style="background: #EFF6FF; color: #2563EB;"><i data-lucide="file-check"></i></span>
             </div>
-            <div class="stat-value">218 Vouchers</div>
-            <div class="stat-subtext">45 Ledgers &bull; 76 Purchase/Sales Pairs</div>
-            <div style="font-size: 11px; color: #16A34A; font-weight: 700; margin-top: 6px;">100% Data Integrity Verified</div>
+            <div class="stat-value" id="vaultRecordCountVal">221 Vouchers</div>
+            <div class="stat-subtext" id="vaultRecordSubtext">45 Ledgers &bull; 15 Debtors &bull; 3 Creditors</div>
+            <div style="font-size: 11px; color: #16A34A; font-weight: 700; margin-top: 6px;">100% Tally Closing Balance Parity Verified</div>
           </div>
         </div>
       </section>
@@ -1777,6 +2014,231 @@
         </div>
       </section>
 
+      <!-- ============================================== -->
+      <!-- VIEW 12: PAST 45-DAY DETAILED PARTY STATEMENT  -->
+      <!-- ============================================== -->
+      <section class="view-panel" id="view-party-statement-45d">
+        <div class="aging-hero-banner" style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); border-radius: 16px; padding: 22px 24px; color: #FFFFFF; margin-bottom: 18px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; box-shadow: 0 4px 20px rgba(15, 23, 42, 0.14);">
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap;">
+              <span class="badge-pill" style="background: #A3E635; color: #0F172A; font-weight: 800; font-size: 11px;">FIXED 45-DAY WINDOW</span>
+              <span style="font-size: 12px; color: #CBD5E1; font-weight: 600;" id="stmt45PeriodText">Period: 28/09/2026 to 12/11/2026</span>
+            </div>
+            <h2 style="font-size: 22px; font-weight: 800; color: #FFFFFF; margin: 0;">Complete Party Statement Sheet (Opening Bills + 45d Activity)</h2>
+            <div style="font-size: 12.5px; color: #94A3B8; margin-top: 4px;">
+              Pre-45d unpaid bills totaling to Opening Balance, datewise 45-day Bills (Dr), datewise Payments/CNs (Cr) &amp; Closing Balance.
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <button type="button" id="btnPrint45DayPdf" onclick="print45DayStatementPdf()" style="background: #A3E635; color: #0F172A; border: none; padding: 10px 16px; border-radius: 10px; font-weight: 800; font-size: 13px; cursor: pointer; display: inline-flex; align-items: center; gap: 7px;">
+              <i data-lucide="printer" style="width: 15px; height: 15px;"></i>
+              <span>Print / Generate 45-Day PDF</span>
+            </button>
+            <button type="button" id="btnDownload45DayHtml" onclick="download45DayStatementHtml()" style="background: rgba(255,255,255,0.12); color: #FFFFFF; border: 1px solid rgba(255,255,255,0.22); padding: 10px 14px; border-radius: 10px; font-weight: 700; font-size: 12.5px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">
+              <i data-lucide="download" style="width: 15px; height: 15px;"></i>
+              <span>Download HTML Sheet</span>
+            </button>
+            <button type="button" id="btnSync45DaySupa" onclick="pushStatement45ToSupabase()" style="background: rgba(56,189,248,0.16); color: #38BDF8; border: 1px solid rgba(56,189,248,0.35); padding: 10px 14px; border-radius: 10px; font-weight: 700; font-size: 12.5px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">
+              <i data-lucide="database" style="width: 15px; height: 15px;"></i>
+              <span>Save to Supabase</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 4 Summary KPI Cards -->
+        <div class="kpi-grid-4" style="margin-bottom: 18px;">
+          <div class="stat-card" style="background: #FFFFFF; border: 1px solid #E2E8F0;">
+            <div class="stat-label">Opening Balance (&gt;45d Prior)</div>
+            <div class="stat-value" id="stmt45KpiOpen" style="font-size: 22px; color: #334155;">₹0</div>
+            <div class="stat-subtext" id="stmt45KpiOpenSub">Pre-window net bills &amp; advances</div>
+          </div>
+          <div class="stat-card" style="background: #FFFFFF; border: 1px solid #E2E8F0;">
+            <div class="stat-label">Bills Raised (Past 45 Days)</div>
+            <div class="stat-value" id="stmt45KpiBills" style="font-size: 22px; color: #0F172A;">₹0</div>
+            <div class="stat-subtext" id="stmt45KpiBillsSub">Datewise sales / debits</div>
+          </div>
+          <div class="stat-card" style="background: #FFFFFF; border: 1px solid #E2E8F0;">
+            <div class="stat-label">Payments &amp; CNs (Past 45 Days)</div>
+            <div class="stat-value" id="stmt45KpiPayments" style="font-size: 22px; color: #059669;">₹0</div>
+            <div class="stat-subtext" id="stmt45KpiPaymentsSub">Receipts &amp; credit notes</div>
+          </div>
+          <div class="stat-card" style="background: #0F172A; border: 1px solid #1E293B; color: #FFFFFF;">
+            <div class="stat-label" style="color: #94A3B8;">Net Closing Balance</div>
+            <div class="stat-value" id="stmt45KpiClose" style="font-size: 22px; color: #A3E635;">₹0</div>
+            <div class="stat-subtext" id="stmt45KpiCloseSub" style="color: #CBD5E1;">100% Tally Matched</div>
+          </div>
+        </div>
+
+        <!-- Controls + Interactive Detailed Statement Table -->
+        <div class="card-white">
+          <div class="section-header-row" style="margin-bottom: 14px;">
+            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+              <div class="segmented-pills">
+                <button class="segment-btn active" id="btnStmtGroupDebtor" onclick="setStmt45Group('Sundry Debtors')">Customers / Debtors</button>
+                <button class="segment-btn" id="btnStmtGroupCreditor" onclick="setStmt45Group('Sundry Creditors')">Suppliers / Creditors</button>
+              </div>
+              <label style="display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: #475569; cursor: pointer;">
+                <input type="checkbox" id="chkStmtHideZero" checked onchange="render45DayStatementView()" style="accent-color: #0F172A;">
+                <span>Hide Zero-Activity Accounts</span>
+              </label>
+              <label style="display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: #475569; cursor: pointer;">
+                <input type="checkbox" id="chkStmtShowCashUpi" checked onchange="render45DayStatementView()" style="accent-color: #0F172A;">
+                <span>Include Cash / UPI Columns</span>
+              </label>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+              <input type="text" class="filter-pill-dropdown" id="stmt45SearchInput" oninput="render45DayStatementView()" placeholder="Search Party or City..." style="width: 220px;">
+            </div>
+          </div>
+
+          <div class="table-responsive stmt45-desktop-wrap">
+            <table class="stmt45-table" id="stmt45Table">
+              <thead>
+                <tr>
+                  <th style="min-width: 190px;">Party Name &amp; Location</th>
+                  <th style="min-width: 215px;">Opening Balance<br><span style="font-weight: 500; font-size: 9.5px; color: #CBD5E1; text-transform: none;">Pre-45d Unpaid Bills &rarr; Opening Total</span></th>
+                  <th style="min-width: 205px;">Bills (Dr) — Past 45d<br><span style="font-weight: 500; font-size: 9.5px; color: #CBD5E1; text-transform: none;">Datewise Invoices &amp; Total</span></th>
+                  <th style="min-width: 205px;">Payments / Credits (Cr)<br><span style="font-weight: 500; font-size: 9.5px; color: #CBD5E1; text-transform: none;">Datewise Receipts, [CN] &amp; Total</span></th>
+                  <th style="text-align: right; min-width: 115px;">Closing<br>Balance</th>
+                  <th class="stmt45-write-col">Cash</th>
+                  <th class="stmt45-write-col">UPI</th>
+                </tr>
+              </thead>
+              <tbody id="stmt45Tbody"></tbody>
+              <tfoot id="stmt45Tfoot"></tfoot>
+            </table>
+          </div>
+
+          <!-- Spacious Mobile Cards View -->
+          <div class="stmt45-mobile-list" id="stmt45MobileList"></div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW 13: MANUAL BAHI KHATA & DAYBOOK           -->
+      <!-- ============================================== -->
+      <section class="view-panel" id="view-manual-khata">
+        <div class="aging-hero-banner" style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); border-radius: 16px; padding: 22px 24px; color: #FFFFFF; margin-bottom: 18px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;">
+          <div>
+            <span class="badge-pill" style="background: #FEF3C7; color: #92400E; font-weight: 800; font-size: 10.5px;">BAHI KHATA &bull; CLOUD SYNCED</span>
+            <h2 style="font-size: 21px; font-weight: 800; color: #FFFFFF; margin: 6px 0 2px 0;">Manual Bahi Khata &amp; Daily Field Diary</h2>
+            <div style="font-size: 12.5px; color: #CBD5E1;">Log field receipts, manual cash/UPI entries &amp; review business daybook remarks. Syncs directly with Supabase &amp; device cache.</div>
+          </div>
+        </div>
+
+        <div class="dashboard-middle-split" style="margin-bottom: 18px;">
+          <!-- Entry Form -->
+          <div class="card-white">
+            <h3 class="section-title" style="margin-bottom: 12px;">Record Manual Khata Entry</h3>
+            <form id="manualKhataForm" onsubmit="submitManualKhataEntry(event)" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+              <div>
+                <label style="font-size: 11.5px; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">Date</label>
+                <input type="date" id="mkDate" required value="2026-11-12" style="width: 100%; padding: 9px 10px; border: 1px solid #CBD5E1; border-radius: 8px; font-size: 13px;">
+              </div>
+              <div>
+                <label style="font-size: 11.5px; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">Entry Type</label>
+                <select id="mkType" style="width: 100%; padding: 9px 10px; border: 1px solid #CBD5E1; border-radius: 8px; font-size: 13px;">
+                  <option value="Receipt">Receipt (Jama / Cr)</option>
+                  <option value="Payment">Payment (Udhar / Dr)</option>
+                  <option value="Sales">Manual Bill (Dr)</option>
+                  <option value="Note">Diary Note</option>
+                </select>
+              </div>
+              <div style="grid-column: span 2;">
+                <label style="font-size: 11.5px; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">Party Name</label>
+                <input type="text" id="mkParty" list="mkPartyOptions" required placeholder="Select or type party..." style="width: 100%; padding: 9px 10px; border: 1px solid #CBD5E1; border-radius: 8px; font-size: 13px;">
+                <datalist id="mkPartyOptions"></datalist>
+              </div>
+              <div>
+                <label style="font-size: 11.5px; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">Amount (₹)</label>
+                <input type="number" id="mkAmount" min="0" step="0.01" required placeholder="0" style="width: 100%; padding: 9px 10px; border: 1px solid #CBD5E1; border-radius: 8px; font-size: 13px;">
+              </div>
+              <div>
+                <label style="font-size: 11.5px; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">Mode</label>
+                <select id="mkMode" style="width: 100%; padding: 9px 10px; border: 1px solid #CBD5E1; border-radius: 8px; font-size: 13px;">
+                  <option value="UPI">UPI</option>
+                  <option value="Cash">Cash</option>
+                  <option value="NEFT/RTGS">NEFT / RTGS</option>
+                  <option value="Cheque">Cheque</option>
+                </select>
+              </div>
+              <div style="grid-column: span 2;">
+                <label style="font-size: 11.5px; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">Remarks / Narration</label>
+                <input type="text" id="mkNarration" placeholder="e.g. Paid via PhonePe towards SKIL-056" style="width: 100%; padding: 9px 10px; border: 1px solid #CBD5E1; border-radius: 8px; font-size: 13px;">
+              </div>
+              <div style="grid-column: span 2; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                <button type="submit" class="sync-now-btn" style="background: #0F172A; color: #FFFFFF; padding: 10px 18px; border-radius: 8px; font-weight: 800;">
+                  <i data-lucide="plus-circle" style="width: 15px; height: 15px;"></i>
+                  <span>Save Entry (Supabase + Device)</span>
+                </button>
+                <span id="mkSaveFeedback" style="font-size: 12px; font-weight: 700; color: #059669;"></span>
+              </div>
+            </form>
+          </div>
+
+          <!-- Daybook Business Diary -->
+          <div class="card-white">
+            <h3 class="section-title" style="margin-bottom: 10px;">Business Daybook &amp; Diary Archive</h3>
+            <div id="mkDaybookNotesList" style="display: flex; flex-direction: column; gap: 10px; max-height: 360px; overflow-y: auto;"></div>
+          </div>
+        </div>
+
+        <div class="card-white">
+          <div class="section-header-row">
+            <div>
+              <h3 class="section-title">Manual Khata Ledger Log</h3>
+              <div class="section-subtitle">Synced with Supabase `skil_manual_entries` &amp; offline browser storage</div>
+            </div>
+            <button type="button" class="sync-now-btn" onclick="loadManualKhataView()" style="padding: 7px 12px; font-size: 12px;">
+              <i data-lucide="refresh-cw" style="width: 14px; height: 14px;"></i>
+              <span>Refresh Log</span>
+            </button>
+          </div>
+          <div class="table-responsive">
+            <table class="biz-table">
+              <thead>
+                <tr>
+                  <th>DATE</th>
+                  <th>TYPE</th>
+                  <th>PARTY</th>
+                  <th>MODE</th>
+                  <th>NARRATION</th>
+                  <th style="text-align: right;">AMOUNT (₹)</th>
+                  <th>SYNC</th>
+                </tr>
+              </thead>
+              <tbody id="mkEntriesTbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW 14: WEEKLY RECEIVABLES AUDIT REPORT       -->
+      <!-- ============================================== -->
+      <section class="view-panel" id="view-weekly-report">
+        <div class="card-white" style="padding: 16px;">
+          <div class="section-header-row" style="margin-bottom: 12px;">
+            <div>
+              <h2 class="section-title">Weekly Receivables &amp; Settlement Audit Report</h2>
+              <div class="section-subtitle">Designated Partner Summary — S Lokanatha Patro (All 12 Active Debtors)</div>
+            </div>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <a href="weekly_receivables_summary.html" target="_blank" rel="noopener noreferrer" class="sync-now-btn" style="text-decoration: none; background: #0F172A; color: #FFFFFF; padding: 8px 14px; font-size: 12px;">
+                <i data-lucide="external-link" style="width: 14px; height: 14px;"></i>
+                <span>Open Full Page</span>
+              </a>
+              <button type="button" onclick="printWeeklyAuditFrame()" class="sync-now-btn" style="background: #A3E635; color: #0F172A; padding: 8px 14px; font-size: 12px;">
+                <i data-lucide="printer" style="width: 14px; height: 14px;"></i>
+                <span>Print Summary</span>
+              </button>
+            </div>
+          </div>
+          <iframe id="weeklyAuditIframe" src="weekly_receivables_summary.html" style="width: 100%; height: 74vh; min-height: 520px; border: 1px solid #E2E8F0; border-radius: 12px; background: #F8FAFC;" title="Weekly Receivables Summary"></iframe>
+        </div>
+      </section>
+
     </main>
   </div>
 
@@ -1784,7 +2246,15 @@
   <nav class="mobile-bottom-nav" id="mobileBottomNav">
     <button class="mobile-nav-btn active" data-tab="dashboard">
       <i data-lucide="layout-grid"></i>
-      <span>Dashboard</span>
+      <span>Home</span>
+    </button>
+    <button class="mobile-nav-btn" data-tab="party-statement-45d">
+      <i data-lucide="file-spreadsheet"></i>
+      <span>45d Sheet</span>
+    </button>
+    <button class="mobile-nav-btn" data-tab="payment-aging">
+      <i data-lucide="clock-3"></i>
+      <span>Aging</span>
     </button>
     <button class="mobile-nav-btn" data-tab="supplier-ajanta">
       <div style="background: #FFFFFF; border-radius: 4px; padding: 2px 4px; display: inline-flex; align-items: center; justify-content: center; height: 18px;">
@@ -1792,19 +2262,9 @@
       </div>
       <span>Ajanta</span>
     </button>
-    <button class="mobile-nav-btn" data-tab="supplier-xpania">
-      <div style="background: #FFFFFF; border-radius: 4px; padding: 2px 4px; display: inline-flex; align-items: center; justify-content: center; height: 18px;">
-        <img src="assets/xpania-logo.png" alt="Xpania" style="height: 12px; width: auto; object-fit: contain;">
-      </div>
-      <span>Xpania</span>
-    </button>
-    <button class="mobile-nav-btn" data-tab="payment-aging">
-      <i data-lucide="clock-3"></i>
-      <span>Aging</span>
-    </button>
     <button class="mobile-nav-btn" id="btnBottomMore">
       <i data-lucide="menu"></i>
-      <span>More</span>
+      <span>All Menus</span>
     </button>
   </nav>
 

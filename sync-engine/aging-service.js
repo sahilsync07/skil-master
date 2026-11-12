@@ -54,20 +54,21 @@ class AgingService {
       pVchs.forEach(v => {
         const vDate = this.parseTallyDate(v.date);
         const daysElapsed = vDate ? Math.max(0, Math.floor((asOf - vDate) / (1000 * 60 * 60 * 24))) : 0;
-        
-        let partyDrCr = 0;
-        v.ledgerEntries?.forEach(le => {
-          if (le.ledgerName.toLowerCase() === p.name.toLowerCase()) {
-            partyDrCr = le.amount;
-          }
-        });
+
+        // Sum all ledger entries matching the party (handles split receipts like ₹25k x 4 = ₹1,00,000)
+        const matchingEntries = (v.ledgerEntries || []).filter(
+          le => le.ledgerName && le.ledgerName.toLowerCase() === p.name.toLowerCase()
+        );
+        const partyAmount = matchingEntries.length > 0
+          ? matchingEntries.reduce((sum, le) => sum + (Math.abs(Number(le.amount)) || 0), 0)
+          : (Number(v.amount) || 0);
 
         // In Tally:
         // For Debtors: Sales debits customer, Receipt credits customer, Credit Note credits customer, Payment (refund) debits customer.
         // For Creditors: Purchase credits supplier, Payment debits supplier, Debit Note debits supplier, Receipt (refund) credits supplier.
         if (partyType === 'debtor') {
           if (v.voucherType === 'Sales') {
-            const taxable = v.ledgerEntries?.find(l => l.ledgerName && l.ledgerName.includes('Sales'))?.amount || (v.amount / 1.05);
+            const taxable = v.ledgerEntries?.find(l => l.ledgerName && l.ledgerName.includes('Sales'))?.amount || (partyAmount / 1.05);
             const ctnM = (v.narration || '').match(/(\d+)\s*(?:CTN|BOX|CS|CARTON)/i);
             const ctns = ctnM ? parseInt(ctnM[1], 10) : (v.inventoryEntries?.length || 1);
             const dueDateObj = vDate ? new Date(vDate.getTime() + 30 * 86400000) : null;
@@ -77,7 +78,7 @@ class AgingService {
               voucherNumber: v.voucherNumber,
               date: v.date,
               formattedDate: this.formatDate(v.date),
-              amount: v.amount,
+              amount: partyAmount,
               taxableAmount: Math.round(taxable * 100) / 100,
               cartons: ctns,
               daysElapsed,
@@ -87,24 +88,24 @@ class AgingService {
               cdEligible: daysElapsed <= 30,
               cdAmount: Math.round(taxable * 0.05 * 100) / 100
             });
-            totalDebits += v.amount;
+            totalDebits += partyAmount;
           } else if (v.voucherType === 'Receipt' || v.voucherType === 'Credit Note') {
-            totalCredits += v.amount;
-          } else if (v.voucherType === 'Payment') {
-            // Customer refund (e.g. Salim Khan) debits customer account
-            totalDebits += v.amount;
+            totalCredits += partyAmount;
+          } else if (v.voucherType === 'Payment' || v.voucherType === 'Debit Note') {
+            // Customer refund / transfer (e.g. Salim Khan / Brundabana) debits customer account
+            totalDebits += partyAmount;
           }
         } else {
           // Creditor
           if (v.voucherType === 'Purchase') {
-            const taxable = v.ledgerEntries?.find(l => l.ledgerName && l.ledgerName.includes('Purchase'))?.amount || (v.amount / 1.05);
+            const taxable = v.ledgerEntries?.find(l => l.ledgerName && l.ledgerName.includes('Purchase'))?.amount || (partyAmount / 1.05);
             const dueDateObj = vDate ? new Date(vDate.getTime() + 30 * 86400000) : null;
             bills.push({
               voucherType: v.voucherType,
               voucherNumber: v.voucherNumber,
               date: v.date,
               formattedDate: this.formatDate(v.date),
-              amount: v.amount,
+              amount: partyAmount,
               taxableAmount: Math.round(taxable * 100) / 100,
               daysElapsed,
               bucket: this.getBucket(daysElapsed),
@@ -113,12 +114,12 @@ class AgingService {
               cdEligible: daysElapsed <= 30,
               cdAmount: Math.round(taxable * 0.03 * 100) / 100
             });
-            totalCredits += v.amount;
+            totalCredits += partyAmount;
           } else if (v.voucherType === 'Payment' || v.voucherType === 'Debit Note') {
-            totalDebits += v.amount;
-          } else if (v.voucherType === 'Receipt') {
+            totalDebits += partyAmount;
+          } else if (v.voucherType === 'Receipt' || v.voucherType === 'Credit Note') {
             // Supplier refund credits supplier account
-            totalCredits += v.amount;
+            totalCredits += partyAmount;
           }
         }
       });
@@ -172,6 +173,15 @@ class AgingService {
       });
 
       // Allocate credits (Receipts/CNs for debtors; Payments/DNs for creditors)
+      const getCrAmount = (cr) => {
+        const entries = (cr.ledgerEntries || []).filter(
+          le => le.ledgerName && le.ledgerName.toLowerCase() === p.name.toLowerCase()
+        );
+        return entries.length > 0
+          ? entries.reduce((sum, le) => sum + (Math.abs(Number(le.amount)) || 0), 0)
+          : (Number(cr.amount) || 0);
+      };
+
       const creditVchs = pVchs.filter(v => 
         partyType === 'debtor' ? (v.voucherType === 'Receipt' || v.voucherType === 'Credit Note') : (v.voucherType === 'Payment' || v.voucherType === 'Debit Note')
       ).sort((a, b) => (a.date || '').localeCompare(b.date || ''));
@@ -179,28 +189,29 @@ class AgingService {
       // Check narration matches first (e.g. "SKIL-004 to SKIL-006")
       const unallocatedCredits = [];
       creditVchs.forEach(cr => {
+        const crAmount = getCrAmount(cr);
         let matched = false;
         const nar = cr.narration || '';
         sessions.forEach(sess => {
           const match = sess.bills.some(b => nar.includes(b.voucherNumber) || (b.voucherNumber.startsWith('SKIL-') && nar.includes(b.voucherNumber.replace('SKIL-', ''))));
           if (match) {
-            sess.creditsApplied += cr.amount;
+            sess.creditsApplied += crAmount;
             if (cr.voucherType === 'Receipt' || cr.voucherType === 'Payment') {
-              sess.payments.push({ no: cr.voucherNumber, date: cr.date, amount: cr.amount, nar });
+              sess.payments.push({ no: cr.voucherNumber, date: cr.date, amount: crAmount, nar });
             } else {
-              sess.creditNotes.push({ no: cr.voucherNumber, date: cr.date, amount: cr.amount, nar });
+              sess.creditNotes.push({ no: cr.voucherNumber, date: cr.date, amount: crAmount, nar });
             }
             matched = true;
           }
         });
-        if (!matched) unallocatedCredits.push(cr);
+        if (!matched) unallocatedCredits.push({ cr, crAmount });
       });
 
       // For unallocated credits, allocate chronologically to active sessions
       // Exception: If a prior session already had its CD Credit Note issued, its settlement is finalized
       // leaving any remaining balance as frozen old balance; subsequent payments apply to subsequent sessions!
-      unallocatedCredits.forEach(cr => {
-        let crRemaining = cr.amount;
+      unallocatedCredits.forEach(({ cr, crAmount }) => {
+        let crRemaining = crAmount;
         const crDate = this.parseTallyDate(cr.date);
 
         for (const sess of sessions) {

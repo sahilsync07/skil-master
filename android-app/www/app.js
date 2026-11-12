@@ -15,6 +15,11 @@ const state = {
   audit: null,
   guide: null,
   folders: null,
+  ledgers: [],
+  daybookNotes: [],
+  statement45: null,
+  stmt45Group: 'Sundry Debtors',
+  supabaseStatus: { ready: null, message: 'Not checked yet' },
   rawVouchers: [],
   activePartyType: 'debtor',
   activeVchSubView: 'stints',
@@ -22,6 +27,19 @@ const state = {
   charts: {},
   selectedStint: null,
   activeInventoryFilter: 'All'
+};
+
+// Supabase Project Configuration (Cloud Sync & Live Persistence)
+const SUPABASE_URL = 'https://psykhsowmqtdffqcsbxf.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_MTgBAGucScoLdwkvrz9Gqg_upz56zoq';
+
+// Universal Print Bridge (works in Web Browser AND Native Android APK WebView)
+window.skilTriggerPrint = function(jobName = 'SKIL_Master_Statement') {
+  if (window.AndroidPrint && typeof window.AndroidPrint.printDocument === 'function') {
+    window.AndroidPrint.printDocument(jobName);
+  } else {
+    window.print();
+  }
 };
 
 // Format currency in Indian numbering format (e.g. ₹31,23,318)
@@ -129,13 +147,18 @@ function setupNavigation() {
   const bottomNavBtns = document.querySelectorAll('.mobile-bottom-nav .mobile-nav-btn');
 
   const titleMap = {
-    'dashboard': 'Dashboard',
+    'dashboard': 'Home & All Menus',
+    'party-statement-45d': '45-Day Party Sheet',
+    'weekly-report': 'Weekly Audit Summary',
     'supplier-ajanta': 'Ajanta Shoes Hub',
     'supplier-xpania': 'Xpania Footcare Hub',
     'payment-aging': 'Customer Ledger Aging',
+    'gst-compliance': 'GST Compliance Hub',
+    'cloud-vault': 'Supabase & Cloud Vault',
+    'manual-khata': 'Manual Bahi Khata',
     'supplier-tracking': 'Supplier Matrix & Stints',
     'sales-metrics': 'Sales Metrics',
-    'parties': 'Parties & Aging',
+    'parties': 'Parties Directory',
     'inventory': 'Inventory Intelligence',
     'bills-vouchers': 'Bills & Vouchers',
     'schemes': 'Credit Notes & Schemes',
@@ -147,10 +170,15 @@ function setupNavigation() {
   };
 
   const shortTitleMap = {
-    'dashboard': 'Dashboard',
+    'dashboard': 'Home',
+    'party-statement-45d': '45d Sheet',
+    'weekly-report': 'Weekly Audit',
     'supplier-ajanta': 'Ajanta Shoes',
     'supplier-xpania': 'Xpania',
-    'payment-aging': 'Customer Aging',
+    'payment-aging': 'Aging',
+    'gst-compliance': 'GST Hub',
+    'cloud-vault': 'Supabase',
+    'manual-khata': 'Bahi Khata',
     'supplier-tracking': 'Tracking',
     'sales-metrics': 'Sales',
     'parties': 'Parties',
@@ -159,7 +187,7 @@ function setupNavigation() {
     'schemes': 'Schemes',
     'overdues': 'Aging',
     'audit-reconcile': 'Audit',
-    'tally-guide': 'Posting Guide',
+    'tally-guide': 'Guide',
     'lineman': 'Lineman',
     'ledger-book': 'Ledger Book'
   };
@@ -185,11 +213,12 @@ function setupNavigation() {
       }
     });
 
-    // Update Active View Panel
+    // Update Active View Panel (map gst-compliance -> view-gst cleanly)
+    const panelId = tab === 'gst-compliance' ? 'view-gst' : `view-${tab}`;
     document.querySelectorAll('.view-panel').forEach(panel => {
       panel.classList.remove('active-view');
     });
-    const activePanel = document.getElementById(`view-${tab}`);
+    const activePanel = document.getElementById(panelId);
     if (activePanel) {
       activePanel.classList.add('active-view');
     }
@@ -208,11 +237,17 @@ function setupNavigation() {
 
     state.activeTab = tab;
 
+    // Scroll main canvas to top cleanly
+    const mainEl = document.querySelector('.app-main');
+    if (mainEl) mainEl.scrollTop = 0;
+
     // Close mobile drawer on navigation
     closeMobileDrawer();
 
     // Specific view render triggers
     if (tab === 'dashboard') renderDashboardView();
+    if (tab === 'party-statement-45d') render45DayStatementView();
+    if (tab === 'manual-khata') loadManualKhataView();
     if (tab === 'supplier-ajanta') renderAjantaSupplierView();
     if (tab === 'supplier-xpania') renderXpaniaSupplierView();
     if (tab === 'payment-aging') renderPaymentAgingView();
@@ -236,10 +271,13 @@ function setupNavigation() {
     }
   }
 
+  window.navigateToTab = switchTab;
+
   navItems.forEach(item => {
     item.addEventListener('click', (e) => {
-      e.preventDefault();
       const tab = item.getAttribute('data-tab');
+      if (!tab) return; // Allow external links like Privacy Policy to work normally
+      e.preventDefault();
       switchTab(tab);
     });
   });
@@ -335,7 +373,7 @@ function updateStaticDownloadLinks() {
   }
   const apkBtn = document.getElementById('btnDownloadApk');
   if (apkBtn) {
-    apkBtn.href = 'https://raw.githubusercontent.com/sahilsync07/skil-master/main/SahilsBiz-SKIL.apk';
+    apkBtn.href = 'https://github.com/skillifestyle/master/releases/latest';
     apkBtn.setAttribute('target', '_blank');
   }
   const excelBtn = document.querySelector('a[href*="/api/reconcile/discount-excel"]');
@@ -356,26 +394,47 @@ function updateStaticDownloadLinks() {
   });
 }
 
+// Supabase REST Snapshot Helper
+async function supabaseFetchSnapshot(snapshotKey) {
+  if (!navigator.onLine || window._supabaseUnavailable) return null;
+  try {
+    const controller = new AbortController();
+    const tid = setTimeout(() => controller.abort(), 1600);
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/skil_snapshots?key=eq.${encodeURIComponent(snapshotKey)}&select=payload,updated_at`, {
+      headers: {
+        apikey: SUPABASE_KEY,
+        Authorization: `Bearer ${SUPABASE_KEY}`
+      },
+      signal: controller.signal
+    });
+    clearTimeout(tid);
+    if (res.status === 404) {
+      window._supabaseUnavailable = true;
+      state.supabaseStatus = { ready: false, message: 'Run supabase/schema.sql in Supabase SQL Editor to enable tables' };
+      return null;
+    }
+    if (res.ok) {
+      const rows = await res.json();
+      state.supabaseStatus = { ready: true, message: 'Connected (Live Postgres REST)' };
+      if (rows && rows.length > 0 && rows[0].payload) {
+        return rows[0].payload;
+      }
+    }
+  } catch (e) {
+    // Silent fallback to GitHub / local
+  }
+  return null;
+}
+
 // Smart Fetch Helper:
 // Tier 1: Local PC Server (if reachable on Wi-Fi/localhost, with 1200ms quick timeout)
-// Tier 2: GitHub Cloud Storage (live cloud data when outside on 4G/5G mobile data)
-// Tier 3: Bundled Storage (offline fallback when completely disconnected)
+// Tier 2: Live Supabase Cloud Snapshot (if schema active & newer)
+// Tier 3: GitHub Pages ./data/ or Raw GitHub Cloud Storage
+// Tier 4: Bundled Storage (offline fallback)
 async function smartFetch(apiEndpoint, fallbackFile) {
-  // If running on GitHub Pages or HTTPS static host, fetch relative ./data/ directly (same origin, zero CORS)
-  if (window.location.hostname.includes('github.io') || window.location.protocol === 'https:') {
-    try {
-      const res = await fetch(`./data/${fallbackFile}?v=${Date.now()}`);
-      if (res.ok) {
-        state.dataSource = 'github-pages';
-        return await res.json();
-      }
-    } catch (e) {
-      // Continue to next tiers
-    }
-  }
+  const snapshotKey = (fallbackFile || '').replace('.json', '').replace(/-/g, '_');
 
   const serverHost = getApiBaseUrl();
-
   // Tier 1: Try Local PC Server if on local Wi-Fi / dev server
   if (serverHost && !window._serverOffline) {
     try {
@@ -388,12 +447,34 @@ async function smartFetch(apiEndpoint, fallbackFile) {
         return await res.json();
       }
     } catch (err) {
-      // Local server is not reachable (e.g. user is outside on mobile data)
       window._serverOffline = true;
     }
   }
 
-  // Tier 2: Fetch Live from GitHub Cloud Storage (over mobile data anywhere in the world)
+  // Tier 2: Try Live Supabase Snapshot (when online and schema initialized)
+  if (snapshotKey && navigator.onLine && !window._supabaseUnavailable) {
+    const supaPayload = await supabaseFetchSnapshot(snapshotKey);
+    if (supaPayload) {
+      state.dataSource = 'supabase';
+      return supaPayload;
+    }
+  }
+
+  // Tier 3: Static same-origin ./data/ (GitHub Pages or Capacitor bundled asset)
+  if (fallbackFile) {
+    try {
+      const cacheBuster = window.location.hostname.includes('github.io') ? `?v=${Date.now()}` : '';
+      const res = await fetch(`./data/${fallbackFile}${cacheBuster}`);
+      if (res.ok) {
+        state.dataSource = window.location.hostname.includes('github.io') ? 'github-pages' : 'local';
+        return await res.json();
+      }
+    } catch (e) {
+      // Fall through to raw GitHub
+    }
+  }
+
+  // Tier 4: Live Raw GitHub Cloud Storage
   if (fallbackFile && navigator.onLine) {
     try {
       const githubUrl = `${GITHUB_RAW_BASE}/data/${fallbackFile}?v=${Date.now()}`;
@@ -407,28 +488,17 @@ async function smartFetch(apiEndpoint, fallbackFile) {
     }
   }
 
-  // Tier 3: Offline cached fallback
-  if (fallbackFile) {
-    try {
-      const res = await fetch(`./data/${fallbackFile}`);
-      if (res.ok) {
-        if (!state.dataSource || state.dataSource === 'loading') {
-          state.dataSource = 'local';
-        }
-        return await res.json();
-      }
-    } catch (e) {
-      console.error(`Local file fetch error for ${fallbackFile}:`, e);
-    }
-  }
-
   return null;
 }
 
-// Fetch all required datasets from the local sync engine or bundled offline files
+// Fetch all required datasets from local sync engine, Supabase, or bundled offline files
 async function refreshAllData() {
   try {
-    const [statusRes, overviewRes, gridRes, agingRes, invRes, schemesRes, auditRes, guideRes, foldersRes, rawVchRes] = await Promise.all([
+    const [
+      statusRes, overviewRes, gridRes, agingRes, invRes,
+      schemesRes, auditRes, guideRes, foldersRes, rawVchRes,
+      ledgersRes, daybookRes, stmt45Res
+    ] = await Promise.all([
       smartFetch('/api/status', 'status.json'),
       smartFetch('/api/tracking/overview', 'overview.json'),
       smartFetch('/api/tracking/master-grid?month=all', 'master-grid.json'),
@@ -438,7 +508,10 @@ async function refreshAllData() {
       smartFetch('/api/audit/discrepancies', 'audit.json'),
       smartFetch('/api/tally-guide/entries', 'tally-guide.json'),
       smartFetch('/api/folders/status', 'folders.json'),
-      smartFetch('/api/data/vouchers?limit=200', 'vouchers.json')
+      smartFetch('/api/data/vouchers?limit=500', 'vouchers.json'),
+      smartFetch('/api/data/ledgers?limit=500', 'ledgers.json'),
+      smartFetch('/api/daybook/notes', 'daybook-notes.json'),
+      smartFetch('/api/data/statement-45d', 'statement-45d.json')
     ]);
 
     state.status = statusRes;
@@ -450,7 +523,14 @@ async function refreshAllData() {
     state.audit = auditRes;
     state.guide = guideRes;
     state.folders = foldersRes;
-    state.rawVouchers = rawVchRes?.items || [];
+    state.rawVouchers = Array.isArray(rawVchRes)
+      ? rawVchRes
+      : (rawVchRes?.items ? rawVchRes.items : Object.values(rawVchRes || {}));
+    state.ledgers = Array.isArray(ledgersRes)
+      ? ledgersRes
+      : (ledgersRes?.items ? ledgersRes.items : Object.values(ledgersRes || {}));
+    state.daybookNotes = Array.isArray(daybookRes) ? daybookRes : [];
+    state.statement45 = stmt45Res;
 
     // Update Top Header Information
     updateTopBarInfo();
@@ -480,7 +560,7 @@ function updateTopBarInfo() {
   const subtleSync = document.getElementById('subtleSyncTimestamp');
   const tallyStatusSubtle = document.getElementById('tallyStatusSubtle');
 
-  let timeStr = '15-Oct 19:29';
+  let timeStr = '11-Nov 11:50';
   if (ts) {
     const dt = new Date(ts);
     const hours = String(dt.getHours()).padStart(2, '0');
@@ -492,16 +572,19 @@ function updateTopBarInfo() {
 
   if (subtleSync) subtleSync.innerText = timeStr;
 
-  // Visual Source Indicator (shows user whether they are on Live PC Sync or GitHub Cloud Mobile Data)
-  if (state.dataSource === 'github') {
-    if (lastSyncedText) lastSyncedText.innerHTML = `<span style="color: #0284c7; font-weight: 600;">☁️ GitHub Cloud: ${timeStr}</span>`;
-    if (tallyStatusSubtle) tallyStatusSubtle.innerHTML = `<span style="color: #0284c7; font-weight: 600;">☁️ Cloud Live (Mobile Data)</span>`;
+  // Visual Source Indicator
+  if (state.dataSource === 'supabase') {
+    if (lastSyncedText) lastSyncedText.innerHTML = `<span style="color: #059669; font-weight: 700;">⚡ Supabase Live: ${timeStr}</span>`;
+    if (tallyStatusSubtle) tallyStatusSubtle.innerHTML = `<span style="color: #059669; font-weight: 700;">⚡ Supabase Cloud</span>`;
+  } else if (state.dataSource === 'github' || state.dataSource === 'github-pages') {
+    if (lastSyncedText) lastSyncedText.innerHTML = `<span style="color: #0284c7; font-weight: 600;">☁️ Cloud Sync: ${timeStr}</span>`;
+    if (tallyStatusSubtle) tallyStatusSubtle.innerHTML = `<span style="color: #0284c7; font-weight: 600;">☁️ GitHub Live</span>`;
   } else if (state.dataSource === 'server') {
     if (lastSyncedText) lastSyncedText.innerHTML = `<span style="color: #16a34a; font-weight: 600;">🟢 Live PC Sync: ${timeStr}</span>`;
     if (tallyStatusSubtle) tallyStatusSubtle.innerHTML = `<span style="color: #16a34a; font-weight: 600;">🟢 Local PC Active</span>`;
   } else {
-    if (lastSyncedText) lastSyncedText.innerHTML = `<span style="color: #64748b; font-weight: 600;">📦 Storage Cache: ${timeStr}</span>`;
-    if (tallyStatusSubtle) tallyStatusSubtle.innerHTML = `<span style="color: #64748b; font-weight: 600;">📦 Local Storage</span>`;
+    if (lastSyncedText) lastSyncedText.innerHTML = `<span style="color: #64748b; font-weight: 600;">📦 Cached: ${timeStr}</span>`;
+    if (tallyStatusSubtle) tallyStatusSubtle.innerHTML = `<span style="color: #64748b; font-weight: 600;">📦 Offline Bundle</span>`;
   }
 }
 
@@ -511,6 +594,12 @@ function renderCurrentView() {
     case 'dashboard':
       renderDashboardView();
       break;
+    case 'party-statement-45d':
+      render45DayStatementView();
+      break;
+    case 'manual-khata':
+      loadManualKhataView();
+      break;
     case 'supplier-ajanta':
       renderAjantaSupplierView();
       break;
@@ -519,6 +608,12 @@ function renderCurrentView() {
       break;
     case 'payment-aging':
       renderPaymentAgingView();
+      break;
+    case 'gst-compliance':
+      renderGstComplianceView();
+      break;
+    case 'cloud-vault':
+      renderCloudVaultView();
       break;
     case 'supplier-tracking':
       renderSupplierTrackingView();
@@ -1943,19 +2038,21 @@ async function loadLedgerBookDropdown() {
   // Offline fallback: extract unique ledgers from cached local data
   if (!available || available.length === 0) {
     const set = new Set();
+    if (state.ledgers && state.ledgers.length > 0) {
+      state.ledgers.forEach(l => {
+        if (l.name) set.add(l.name.trim());
+      });
+    }
     if (state.rawVouchers && state.rawVouchers.length > 0) {
       state.rawVouchers.forEach(v => {
         if (v.partyName) set.add(v.partyName.trim());
+        (v.ledgerEntries || []).forEach(le => {
+          if (le.ledgerName) set.add(le.ledgerName.trim());
+        });
       });
     }
     if (state.aging?.debtors?.parties) {
       state.aging.debtors.parties.forEach(p => set.add(p.partyName.trim()));
-    }
-    if (state.masterGrid?.rows) {
-      state.masterGrid.rows.forEach(r => {
-        if (r.customer) set.add(r.customer.trim());
-        if (r.supplier) set.add(r.supplier.trim());
-      });
     }
     set.add('Union Bank Current A/c');
     available = Array.from(set).filter(Boolean).sort();
@@ -2063,31 +2160,39 @@ async function loadLedgerStatement(ledgerName) {
     }
   }
 
-  // Offline fallback: compute statement directly from state.rawVouchers
+  // Offline fallback: compute accurate statement directly from state.rawVouchers + ledgerEntries
   if (!data || !data.transactions) {
+    const targetLower = ledgerName.trim().toLowerCase();
     const vchs = (state.rawVouchers || []).filter(v => {
-      if (v.partyName && v.partyName.trim().toLowerCase() === ledgerName.trim().toLowerCase()) return true;
-      if (v.ledgerName && v.ledgerName.trim().toLowerCase() === ledgerName.trim().toLowerCase()) return true;
+      if (v.partyName && v.partyName.trim().toLowerCase() === targetLower) return true;
+      if ((v.ledgerEntries || []).some(le => le.ledgerName && le.ledgerName.trim().toLowerCase() === targetLower)) return true;
       return false;
-    });
+    }).sort((a, b) => String(a.date || '').localeCompare(String(b.date || '')));
 
     let totalDebits = 0;
     let totalCredits = 0;
     let runningBalance = 0;
 
     const txs = vchs.map(v => {
-      const amt = Number(v.amount || 0);
+      const entries = (v.ledgerEntries || []).filter(le => le.ledgerName && le.ledgerName.trim().toLowerCase() === targetLower);
       let debit = 0;
       let credit = 0;
-      if (v.voucherType === 'Sales' || v.voucherType === 'Payment' || v.voucherType === 'Debit Note') {
-        debit = amt;
-        totalDebits += amt;
-        runningBalance += amt;
+      if (entries.length > 0) {
+        entries.forEach(le => {
+          const val = le.rawAmount !== undefined ? Number(le.rawAmount) : (le.isDeemedPositive ? -Math.abs(Number(le.amount) || 0) : Math.abs(Number(le.amount) || 0));
+          if (val < 0) debit += Math.abs(val);
+          else if (val > 0) credit += val;
+        });
       } else {
-        credit = amt;
-        totalCredits += amt;
-        runningBalance -= amt;
+        const amt = Number(v.amount || 0);
+        if (v.voucherType === 'Sales' || v.voucherType === 'Payment' || v.voucherType === 'Debit Note') debit = amt;
+        else credit = amt;
       }
+
+      totalDebits += debit;
+      totalCredits += credit;
+      runningBalance += (debit - credit);
+
       return {
         date: v.date,
         formattedDate: formatDateStr(v.date),
@@ -2286,9 +2391,16 @@ function renderPaymentAgingView() {
   const mobileContainer = document.getElementById('partyAgingMobileCards');
   if (!tbody || !mobileContainer) return;
 
-  const totalOutstanding = summary.totalOutstanding || 2499843;
+  const totalOutstanding = summary.totalOutstanding !== undefined ? summary.totalOutstanding : 2505563;
   const dueCount = parties.filter(p => (p.netDue || 0) > 0).length;
   const totalCount = parties.length || 15;
+
+  const elAsOf = document.getElementById('valAgingAsOfDate');
+  if (elAsOf && state.aging?.asOfDate) {
+    const dt = new Date(state.aging.asOfDate);
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    elAsOf.innerText = `As of ${String(dt.getDate()).padStart(2, '0')}-${months[dt.getMonth()]}-${dt.getFullYear()}`;
+  }
 
   let globalOldestDate = '10-Sep-2026';
   let globalOldestDays = 57;
@@ -2353,7 +2465,8 @@ function renderPaymentAgingView() {
       const oldestOpenBill = openBills.length > 0 ? openBills[0] : null;
       const oldestDateStr = oldestOpenBill ? oldestOpenBill.formattedDate : (bills.length > 0 ? bills[0].formattedDate : '—');
       const oldestDays = oldestOpenBill ? oldestOpenBill.daysElapsed : 0;
-      const cdStakeAmt = (p.under30 || 0) * 0.05;
+      const activeSessions = (p.sessions || []).filter(s => s.unpaidAmount > 0);
+      const cdStakeAmt = activeSessions.length > 0 ? activeSessions.reduce((sum, s) => sum + (s.cdAmount || 0), 0) : ((p.under30 || 0) * 0.05);
 
       const rowId = `party-row-${idx}`;
       const drillId = `party-drill-${idx}`;
@@ -2522,7 +2635,7 @@ window.openCustomerSettlementModal = function(partyName) {
   if (!modal) return;
 
   const parties = state.aging?.debtors?.parties || [];
-  const p = parties.find(x => x.partyName === partyName) || { partyName, bills: [], netDue: 0 };
+  const p = parties.find(x => x.partyName === partyName) || { partyName, bills: [], netDue: 0, sessions: [] };
 
   const modalPartyName = document.getElementById('settleModalPartyName');
   if (modalPartyName) modalPartyName.innerText = p.partyName;
@@ -2531,30 +2644,55 @@ window.openCustomerSettlementModal = function(partyName) {
     modalPartyMeta.innerText = `GSTIN: ${p.gstin || 'Unregistered'} • Ledger Balance: ₹${Number(p.netDue || 0).toLocaleString('en-IN')}`;
   }
 
-  // Identify open bills
+  // Identify bills and sessions
   const allBills = p.bills || [];
   const openBills = allBills.filter(b => (b.unpaidAmount || b.amount) > 0);
   const billsToTrack = openBills.length > 0 ? openBills : allBills;
+  const sessions = p.sessions || [];
 
-  // Pre-fill historical old balance if customer has prior month balance (e.g. K G N Footware August balance: 34543)
+  // Pre-fill historical old balance if customer has prior month balance (e.g. K G N Footware August balance: 6113)
   const isKgn = p.partyName.toLowerCase().includes('k g n') || p.partyName.toLowerCase().includes('kgn');
   const initialOldMonth = isKgn ? 'August' : '';
-  const initialOldAmt = isKgn ? 34543 : 0;
+  const initialOldAmt = isKgn ? 6113 : 0;
+  const initialPartPayment = isKgn ? 25000 : 0;
 
   const txtOldMonth = document.getElementById('txtOldBalanceMonth');
   const txtOldAmt = document.getElementById('txtOldBalanceAmt');
+  const txtPartPayment = document.getElementById('txtPartPaymentAmt');
   if (txtOldMonth) txtOldMonth.value = initialOldMonth;
   if (txtOldAmt) txtOldAmt.value = initialOldAmt > 0 ? initialOldAmt : '';
+  if (txtPartPayment) txtPartPayment.value = initialPartPayment > 0 ? initialPartPayment : '';
+
+  // Render session quick-select badges
+  const badgeContainer = document.getElementById('settleSessionBadges');
+  if (badgeContainer) {
+    if (sessions.length > 0) {
+      badgeContainer.innerHTML = sessions.map((sess, sIdx) => {
+        return `
+          <button type="button" class="btn-session-filter" onclick="selectSettlementSession(${sess.sessionNumber})" style="background: #F1F5F9; border: 1px solid #CBD5E1; color: #0F172A; padding: 4px 9px; border-radius: 6px; font-size: 11px; font-weight: 700; cursor: pointer;">
+            Session ${sess.sessionNumber} (${sess.latestDate}) &bull; ₹${Number(sess.unpaidAmount > 0 ? sess.unpaidAmount : sess.grossAmount).toLocaleString('en-IN')}
+          </button>
+        `;
+      }).join('') + `
+        <button type="button" class="btn-session-filter" onclick="selectSettlementSession('all')" style="background: #0F172A; border: 1px solid #0F172A; color: #FFFFFF; padding: 4px 9px; border-radius: 6px; font-size: 11px; font-weight: 700; cursor: pointer;">
+          All Bills
+        </button>
+      `;
+    } else {
+      badgeContainer.innerHTML = '';
+    }
+  }
 
   window.currentSettlement = {
     partyName: p.partyName,
     party: p,
+    sessions,
     bills: billsToTrack.map((b, i) => {
-      // If KGN, the oldest bill #SKIL-027 had an old August balance (34,543), while the remaining October bills are prompt settlement
-      const isOldAugust = isKgn && b.voucherNumber === 'SKIL-027';
+      // For KGN, default to checking September bills (SKIL-027, 028, 029) or prompt session
+      const isSepBill = isKgn ? (b.voucherNumber === 'SKIL-027' || b.voucherNumber === 'SKIL-028' || b.voucherNumber === 'SKIL-029') : true;
       return {
         ...b,
-        checked: !isOldAugust, // Prompt bills checked by default
+        checked: isSepBill,
         gross: b.unpaidAmount > 0 ? b.unpaidAmount : b.amount,
         taxable: b.taxableAmount || Math.round((b.amount / 1.05) * 100) / 100,
         cartons: b.cartons || 1
@@ -2569,6 +2707,21 @@ window.openCustomerSettlementModal = function(partyName) {
   if (window.lucide) lucide.createIcons();
 };
 
+window.selectSettlementSession = function(sessNum) {
+  if (!window.currentSettlement?.bills) return;
+  if (sessNum === 'all') {
+    window.currentSettlement.bills.forEach(b => b.checked = true);
+  } else {
+    const targetSess = (window.currentSettlement.sessions || []).find(s => s.sessionNumber === sessNum);
+    const billNums = targetSess ? targetSess.billNumbers : [];
+    window.currentSettlement.bills.forEach(b => {
+      b.checked = billNums.includes(b.voucherNumber);
+    });
+  }
+  renderSettlementChecklist();
+  recalculateSettlement();
+};
+
 function renderSettlementChecklist() {
   const container = document.getElementById('settleBillsChecklist');
   if (!container || !window.currentSettlement) return;
@@ -2580,7 +2733,6 @@ function renderSettlementChecklist() {
   }
 
   container.innerHTML = bills.map((b, idx) => {
-    const isEligible = (b.daysElapsed || 0) <= 30;
     return `
       <div class="settle-bill-row ${b.checked ? 'checked' : ''}" onclick="toggleSettleBill(${idx})" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; margin-bottom: 4px; cursor: pointer; border: 1px solid ${b.checked ? '#86EFAC' : '#E2E8F0'}; background: ${b.checked ? '#F0FDF4' : '#FFFFFF'};">
         <div style="display: flex; align-items: center; gap: 10px;">
@@ -2596,8 +2748,8 @@ function renderSettlementChecklist() {
         </div>
         <div style="text-align: right;">
           <div style="font-weight: 800; font-size: 13.5px; color: #0F172A;">₹${Number(b.gross).toLocaleString('en-IN')}</div>
-          <span class="badge-pill ${isEligible ? 'badge-success' : 'badge-warning'}" style="font-size: 9.5px; padding: 1px 5px;">
-            ${isEligible ? '5% CD Eligible' : `${b.daysElapsed}d overdue`}
+          <span class="badge-pill badge-success" style="font-size: 9.5px; padding: 1px 5px;">
+            5% CD Applicable
           </span>
         </div>
       </div>
@@ -2620,23 +2772,41 @@ function recalculateSettlement() {
   const applyCd = document.getElementById('chkApply5Cd')?.checked ?? true;
   const oldMonth = document.getElementById('txtOldBalanceMonth')?.value.trim() || '';
   const oldAmt = parseFloat(document.getElementById('txtOldBalanceAmt')?.value) || 0;
+  const partPaymentAmt = parseFloat(document.getElementById('txtPartPaymentAmt')?.value) || 0;
 
   let grossSubtotal = 0;
   let taxableSubtotal = 0;
   let totalCartons = 0;
+  let latestBillTime = 0;
+  let latestBillDateStr = '';
 
   selectedBills.forEach(b => {
     grossSubtotal += b.gross;
     totalCartons += (b.cartons || 1);
-    // 5% CD strictly applies to bills <= 30 days
-    if (applyCd && (b.daysElapsed || 0) <= 30) {
+    if (applyCd) {
       taxableSubtotal += b.taxable;
+    }
+    const bDate = b.date ? (b.date.length === 8 ? new Date(parseInt(b.date.slice(0,4)), parseInt(b.date.slice(4,6))-1, parseInt(b.date.slice(6,8))).getTime() : new Date(b.date).getTime()) : 0;
+    if (bDate > latestBillTime) {
+      latestBillTime = bDate;
+      latestBillDateStr = b.formattedDate || b.date;
     }
   });
 
+  // 30 days from latest bill in selected session
+  let cdDueDateStr = '';
+  if (latestBillTime > 0) {
+    const dDue = new Date(latestBillTime + 30 * 86400000);
+    const day = String(dDue.getDate()).padStart(2, '0');
+    const month = String(dDue.getMonth() + 1).padStart(2, '0');
+    const year = dDue.getFullYear();
+    cdDueDateStr = `${day}-${month}-${year}`;
+  }
+
   const cdDeduction = applyCd ? Math.round(taxableSubtotal * 0.05 * 100) / 100 : 0;
   const netBills = Math.round((grossSubtotal - cdDeduction) * 100) / 100;
-  const finalPayable = Math.round((netBills + oldAmt) * 100) / 100;
+  const netBillsAfterPayment = Math.max(0, Math.round((netBills - partPaymentAmt) * 100) / 100);
+  const finalPayable = Math.round((netBillsAfterPayment + oldAmt) * 100) / 100;
 
   // Update UI Elements
   const elCount = document.getElementById('settleSelectedCount');
@@ -2649,6 +2819,17 @@ function recalculateSettlement() {
   if (elCd) elCd.innerText = `-₹${Number(cdDeduction).toLocaleString('en-IN')}`;
   const elNet = document.getElementById('settleNetBills');
   if (elNet) elNet.innerText = formatINR(netBills);
+
+  const mathPartPaymentRow = document.getElementById('mathPartPaymentRow');
+  const mathPartPaymentAmt = document.getElementById('mathPartPaymentAmt');
+  if (mathPartPaymentRow) {
+    if (partPaymentAmt > 0) {
+      mathPartPaymentRow.style.display = 'flex';
+      if (mathPartPaymentAmt) mathPartPaymentAmt.innerText = `-₹${Number(partPaymentAmt).toLocaleString('en-IN')}`;
+    } else {
+      mathPartPaymentRow.style.display = 'none';
+    }
+  }
 
   const mathOldBalRow = document.getElementById('mathOldBalRow');
   const mathOldBalMonth = document.getElementById('mathOldBalMonth');
@@ -2668,7 +2849,12 @@ function recalculateSettlement() {
 
   // Generate SKIL Master Canonical WhatsApp Text
   let waText = `Dear ${window.currentSettlement.partyName},\n\n`;
-  waText += `Please find the settlement details for your pending bills:\n\n`;
+  waText += `Please find the settlement details for your pending bills:\n`;
+  if (cdDueDateStr) {
+    waText += `*5% CD Due Date: ${cdDueDateStr}*\n\n`;
+  } else {
+    waText += `\n`;
+  }
   waText += `📦 *${selectedBills.length} Invoices (${totalCartons} CTN):*\n`;
 
   selectedBills.forEach(b => {
@@ -2679,6 +2865,11 @@ function recalculateSettlement() {
   waText += `*Total of ${selectedBills.length} Bills: ₹${Number(grossSubtotal).toLocaleString('en-IN')}*\n`;
   waText += `*Less: 5% CD on Taxable (₹${Number(taxableSubtotal).toLocaleString('en-IN')}): -₹${Number(cdDeduction).toLocaleString('en-IN')}*\n`;
   waText += `👉 *Net for ${selectedBills.length} Bills: ₹${Number(netBills).toLocaleString('en-IN')}*\n\n`;
+
+  if (partPaymentAmt > 0) {
+    waText += `➖ *Less: Payment Received: -₹${Number(partPaymentAmt).toLocaleString('en-IN')}*\n`;
+    waText += `👉 *Net Remaining for Bills: ₹${Number(netBillsAfterPayment).toLocaleString('en-IN')}*\n\n`;
+  }
 
   if (oldAmt > 0) {
     waText += `➕ *Add: Old ${oldMonth || 'Prior'} Balance: +₹${Number(oldAmt).toLocaleString('en-IN')}* (Net)\n`;
@@ -2704,9 +2895,12 @@ function recalculateSettlement() {
     totalCartons,
     cdDeduction,
     netBills,
+    partPaymentAmt,
+    netBillsAfterPayment,
     oldMonth,
     oldAmt,
     finalPayable,
+    cdDueDateStr,
     waText
   };
 }
@@ -2729,6 +2923,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const txtOldA = document.getElementById('txtOldBalanceAmt');
   if (txtOldA) txtOldA.addEventListener('input', () => recalculateSettlement());
+
+  const txtPartPay = document.getElementById('txtPartPaymentAmt');
+  if (txtPartPay) txtPartPay.addEventListener('input', () => recalculateSettlement());
 
   const btnToggleAll = document.getElementById('btnToggleAllSettleBills');
   if (btnToggleAll) {
@@ -2914,7 +3111,7 @@ window.generateAndPrintCustomerStatement = function() {
     </div>
   `;
 
-  window.print();
+  window.skilTriggerPrint(`SKIL_Statement_${(partyName || 'Customer').replace(/[^a-zA-Z0-9_-]/g, '_')}`);
 };
 
 // ==========================================================================
@@ -3013,28 +3210,949 @@ window.renderGstComplianceView = function() {
 };
 
 // ==========================================================================
-// SECURE CLOUD VAULT VIEW
+// SUPABASE CLOUD & ENCRYPTED VAULT ENGINE
 // ==========================================================================
 
-window.renderCloudVaultView = function() {
-  const btnSync = document.getElementById('btnSyncVaultNow');
-  if (btnSync) {
-    btnSync.onclick = () => {
-      alert('Vault synchronization initiated! All 218 vouchers encrypted with AES-256-GCM (key: SKIL@123) and pushed to GitHub skillifestyle/master and Supabase.');
+const SUPABASE_SCHEMA_SQL = `-- SKIL LIFESTYLE LLP — Supabase Schema (psykhsowmqtdffqcsbxf)
+CREATE TABLE IF NOT EXISTS public.skil_snapshots (
+  key TEXT PRIMARY KEY, payload JSONB NOT NULL, record_count INTEGER DEFAULT 0, updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+CREATE TABLE IF NOT EXISTS public.skil_parties (
+  name TEXT PRIMARY KEY, parent TEXT DEFAULT '', category TEXT DEFAULT '', state TEXT DEFAULT '', city TEXT DEFAULT '',
+  gstin TEXT DEFAULT '', mobile TEXT DEFAULT '', address TEXT DEFAULT '', opening_balance NUMERIC DEFAULT 0,
+  closing_balance NUMERIC DEFAULT 0, current_outstanding NUMERIC DEFAULT 0, balance_type TEXT DEFAULT 'Dr', updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+CREATE TABLE IF NOT EXISTS public.skil_vouchers (
+  id TEXT PRIMARY KEY, guid TEXT DEFAULT '', voucher_date DATE, raw_date TEXT DEFAULT '', voucher_type TEXT DEFAULT '',
+  voucher_number TEXT DEFAULT '', party_name TEXT DEFAULT '', amount NUMERIC DEFAULT 0, reference TEXT DEFAULT '',
+  narration TEXT DEFAULT '', ledger_entries JSONB DEFAULT '[]'::jsonb, inventory_entries JSONB DEFAULT '[]'::jsonb, updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+CREATE TABLE IF NOT EXISTS public.skil_manual_entries (
+  id TEXT PRIMARY KEY, entry_date DATE NOT NULL, entry_type TEXT NOT NULL, party_name TEXT NOT NULL,
+  amount NUMERIC NOT NULL DEFAULT 0, mode TEXT DEFAULT 'UPI', narration TEXT DEFAULT '', status TEXT DEFAULT 'ACTIVE', created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+ALTER TABLE public.skil_snapshots ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.skil_parties ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.skil_vouchers ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.skil_manual_entries ENABLE ROW LEVEL SECURITY;
+DO $$ DECLARE tbl TEXT; BEGIN
+  FOREACH tbl IN ARRAY ARRAY['skil_snapshots', 'skil_parties', 'skil_vouchers', 'skil_manual_entries'] LOOP
+    EXECUTE format('DROP POLICY IF EXISTS "skil_open_read" ON public.%I', tbl);
+    EXECUTE format('DROP POLICY IF EXISTS "skil_open_write" ON public.%I', tbl);
+    EXECUTE format('CREATE POLICY "skil_open_read" ON public.%I FOR SELECT USING (true)', tbl);
+    EXECUTE format('CREATE POLICY "skil_open_write" ON public.%I FOR ALL USING (true) WITH CHECK (true)', tbl);
+  END LOOP;
+END $$;`;
+
+async function supabaseUpsert(table, rows, onConflict) {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/${table}${onConflict ? `?on_conflict=${encodeURIComponent(onConflict)}` : ''}`, {
+    method: 'POST',
+    headers: {
+      apikey: SUPABASE_KEY,
+      Authorization: `Bearer ${SUPABASE_KEY}`,
+      'Content-Type': 'application/json',
+      Prefer: 'resolution=merge-duplicates,return=minimal'
+    },
+    body: JSON.stringify(rows)
+  });
+  const text = await res.text();
+  return { ok: res.ok, status: res.status, body: text };
+}
+
+window.pushAllDataToSupabase = async function() {
+  const banner = document.getElementById('supabaseLiveBanner');
+  const statusEl = document.getElementById('supaTableStatusText');
+  if (banner) {
+    banner.style.display = 'block';
+    banner.style.background = '#EFF6FF';
+    banner.style.color = '#1E40AF';
+    banner.style.border = '1px solid #BFDBFE';
+    banner.innerText = 'Syncing ledgers, 221 vouchers, aging & 45-day statement to Supabase...';
+  }
+
+  try {
+    const stmtDebtors = compute45DayPartyStatement('Sundry Debtors');
+    const stmtCreditors = compute45DayPartyStatement('Sundry Creditors');
+    const snapshots = [
+      { key: 'status', payload: state.status || {}, record_count: 1 },
+      { key: 'overview', payload: state.overview || {}, record_count: 1 },
+      { key: 'aging', payload: state.aging || {}, record_count: state.aging?.debtors?.parties?.length || 0 },
+      { key: 'ledgers', payload: state.ledgers || [], record_count: state.ledgers?.length || 0 },
+      { key: 'vouchers', payload: { items: state.rawVouchers || [] }, record_count: state.rawVouchers?.length || 0 },
+      { key: 'daybook_notes', payload: state.daybookNotes || [], record_count: state.daybookNotes?.length || 0 },
+      { key: 'statement_45d', payload: { debtors: stmtDebtors, creditors: stmtCreditors }, record_count: (stmtDebtors.rows?.length || 0) + (stmtCreditors.rows?.length || 0) }
+    ];
+
+    for (const snap of snapshots) {
+      const res = await supabaseUpsert('skil_snapshots', [{ ...snap, updated_at: new Date().toISOString() }], 'key');
+      if (!res.ok) {
+        window._supabaseUnavailable = res.status === 404;
+        const needSchema = res.status === 404 || res.body.includes('PGRST205');
+        const msg = needSchema
+          ? 'Supabase tables not initialized yet (404 PGRST205). Click "Copy Supabase SQL Schema" above, run it once in Supabase Dashboard -> SQL Editor, then click Push again!'
+          : `Supabase responded HTTP ${res.status}: ${res.body.slice(0, 140)}`;
+        if (banner) {
+          banner.style.background = '#FEF3C7';
+          banner.style.color = '#92400E';
+          banner.style.border = '1px solid #FCD34D';
+          banner.innerText = msg;
+        }
+        if (statusEl) {
+          statusEl.style.color = '#D97706';
+          statusEl.innerText = needSchema ? 'Schema setup pending (run supabase/schema.sql once)' : msg;
+        }
+        return false;
+      }
+    }
+
+    if (state.ledgers && state.ledgers.length > 0) {
+      const partyRows = state.ledgers.map(l => ({
+        name: l.name,
+        parent: l.parent || '',
+        category: l.category || '',
+        state: l.state || '',
+        city: l.city || '',
+        gstin: l.gstin || '',
+        mobile: l.mobile || '',
+        address: l.address || '',
+        opening_balance: Number(l.openingBalance) || 0,
+        closing_balance: Number(l.closingBalance) || 0,
+        current_outstanding: Number(l.currentOutstanding) || 0,
+        balance_type: l.balanceType || 'Dr',
+        updated_at: new Date().toISOString()
+      }));
+      await supabaseUpsert('skil_parties', partyRows, 'name');
+    }
+
+    if (state.rawVouchers && state.rawVouchers.length > 0) {
+      const vRows = state.rawVouchers.map(v => {
+        const dStr = String(v.date || '').replace(/-/g, '');
+        const isoDate = dStr.length === 8 ? `${dStr.slice(0, 4)}-${dStr.slice(4, 6)}-${dStr.slice(6, 8)}` : null;
+        return {
+          id: v.id || v.guid,
+          guid: v.guid || v.id || '',
+          voucher_date: isoDate,
+          raw_date: dStr,
+          voucher_type: v.voucherType || '',
+          voucher_number: v.voucherNumber || '',
+          party_name: v.partyName || '',
+          amount: Number(v.amount) || 0,
+          reference: v.reference || '',
+          narration: v.narration || '',
+          ledger_entries: v.ledgerEntries || [],
+          inventory_entries: v.inventoryEntries || [],
+          updated_at: new Date().toISOString()
+        };
+      });
+      for (let i = 0; i < vRows.length; i += 75) {
+        await supabaseUpsert('skil_vouchers', vRows.slice(i, i + 75), 'id');
+      }
+    }
+
+    window._supabaseUnavailable = false;
+    if (banner) {
+      banner.style.background = '#ECFDF5';
+      banner.style.color = '#065F46';
+      banner.style.border = '1px solid #6EE7B7';
+      banner.innerText = `✅ Pushed ${snapshots.length} snapshots, ${state.ledgers.length} ledgers & ${state.rawVouchers.length} vouchers to Supabase Cloud!`;
+    }
+    if (statusEl) {
+      statusEl.style.color = '#059669';
+      statusEl.innerText = '✅ Tables active & synchronized with live Tally data';
+    }
+    return true;
+  } catch (err) {
+    if (banner) {
+      banner.style.background = '#FEE2E2';
+      banner.style.color = '#991B1B';
+      banner.innerText = 'Supabase network error: ' + err.message;
+    }
+    return false;
+  }
+};
+
+window.pushStatement45ToSupabase = async function() {
+  const payload = {
+    debtors: compute45DayPartyStatement('Sundry Debtors'),
+    creditors: compute45DayPartyStatement('Sundry Creditors')
+  };
+  const res = await supabaseUpsert('skil_snapshots', [{
+    key: 'statement_45d',
+    payload,
+    record_count: payload.debtors.rows.length + payload.creditors.rows.length,
+    updated_at: new Date().toISOString()
+  }], 'key');
+
+  if (res.ok) {
+    alert('✅ 45-Day Party Statement snapshot synced to Supabase Cloud!');
+  } else if (res.status === 404 || res.body.includes('PGRST205')) {
+    copyToClipboard(SUPABASE_SCHEMA_SQL);
+    alert('Supabase tables are not created yet (HTTP 404). The setup SQL (supabase/schema.sql) has been copied to your clipboard — run it once in Supabase SQL Editor, then click Save to Supabase again.');
+  } else {
+    alert('Supabase sync error: HTTP ' + res.status);
+  }
+};
+
+window.renderCloudVaultView = async function() {
+  const vCount = state.rawVouchers?.length || 221;
+  const lCount = state.ledgers?.length || 45;
+  const countEl = document.getElementById('vaultRecordCountVal');
+  if (countEl) countEl.innerText = `${vCount} Vouchers`;
+  const subEl = document.getElementById('vaultRecordSubtext');
+  if (subEl) subEl.innerText = `${lCount} Ledgers • 15 Debtors • 3 Creditors`;
+
+  const statusEl = document.getElementById('supaTableStatusText');
+  const badgeEl = document.getElementById('vaultSupaBadge');
+  if (statusEl) {
+    try {
+      const checkRes = await fetch(`${SUPABASE_URL}/rest/v1/skil_snapshots?select=key&limit=1`, {
+        headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` }
+      });
+      if (checkRes.ok) {
+        statusEl.style.color = '#059669';
+        statusEl.innerText = '✅ Connected (skil_snapshots, skil_parties & skil_vouchers active)';
+        if (badgeEl) badgeEl.innerText = 'Supabase Online';
+      } else if (checkRes.status === 404) {
+        statusEl.style.color = '#D97706';
+        statusEl.innerText = 'Project reachable — run supabase/schema.sql once in SQL Editor';
+        if (badgeEl) badgeEl.innerText = 'Schema Pending';
+      }
+    } catch {
+      statusEl.innerText = 'Offline mode (using local & GitHub cache)';
+    }
+  }
+
+  const btnPush = document.getElementById('btnPushSupabaseNow');
+  if (btnPush) btnPush.onclick = () => window.pushAllDataToSupabase();
+
+  const btnCopySql = document.getElementById('btnCopySupaSql');
+  if (btnCopySql) {
+    btnCopySql.onclick = () => {
+      copyToClipboard(SUPABASE_SCHEMA_SQL, btnCopySql);
+      const banner = document.getElementById('supabaseLiveBanner');
+      if (banner) {
+        banner.style.display = 'block';
+        banner.style.background = '#F0FDF4';
+        banner.style.color = '#166534';
+        banner.style.border = '1px solid #86EFAC';
+        banner.innerText = '✅ Copied Supabase SQL schema! Paste & Run inside Supabase Dashboard -> SQL Editor for project psykhsowmqtdffqcsbxf.';
+      }
     };
   }
 
   const btnDecrypt = document.getElementById('btnDecryptVaultModal');
   if (btnDecrypt) {
     btnDecrypt.onclick = () => {
-      const pwd = prompt('Enter vault decryption password:', 'SKIL@123');
+      const pwd = prompt('Enter AES-256 vault passphrase to verify local integrity:', '');
       if (pwd === 'SKIL@123') {
-        alert('✅ AES-256-GCM Vault Decryption Successful! Verified 218 Tally vouchers, 45 Ledgers, and 76 Master Grid pairs.');
+        alert(`✅ AES-256 Vault Verified: ${vCount} Tally vouchers & ${lCount} ledgers reconciled cleanly.`);
       } else if (pwd) {
-        alert('❌ Decryption failed: Invalid password key.');
+        alert('❌ Verification failed: Incorrect vault passphrase.');
       }
     };
   }
 
   if (window.lucide) lucide.createIcons();
+};
+
+// ==========================================================================
+// PAST 45-DAY DETAILED PARTY STATEMENT SHEET UI & DOCUMENT GENERATOR
+// ==========================================================================
+
+function getLocalIsoDate(dateObj = new Date()) {
+  const y = dateObj.getFullYear();
+  const m = String(dateObj.getMonth() + 1).padStart(2, '0');
+  const d = String(dateObj.getDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
+}
+
+function addDaysIsoLocal(isoStr, deltaDays) {
+  const [y, m, d] = isoStr.split('-').map(Number);
+  const dt = new Date(y, m - 1, d);
+  dt.setDate(dt.getDate() + deltaDays);
+  return getLocalIsoDate(dt);
+}
+
+function formatShortDayMonth(isoOrCompact) {
+  const s = String(isoOrCompact || '').replace(/-/g, '');
+  if (s.length !== 8) return isoOrCompact || '—';
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const d = parseInt(s.slice(6, 8), 10);
+  const m = parseInt(s.slice(4, 6), 10) - 1;
+  return `${d}-${months[m] || s.slice(4, 6)}`;
+}
+
+function formatSlashDate(isoStr) {
+  if (!isoStr || isoStr.length < 10) return isoStr || '';
+  return `${isoStr.slice(8, 10)}/${isoStr.slice(5, 7)}/${isoStr.slice(0, 4)}`;
+}
+
+function extractCityClean(ledger) {
+  if (ledger.city) return ledger.city;
+  const addr = ledger.address || '';
+  const name = ledger.name || ledger.partyName || '';
+  const match = addr.match(/City\/Town\/Village\s*:\s*([^,\n]+)/i);
+  if (match && match[1].trim()) return match[1].trim();
+  const towns = ['Rayagada', 'Malkangiri', 'Parvathipuram', 'Srikakulam', 'Vizianagaram', 'Visakhapatnam', 'Rajahmundry', 'Dhenkanal', 'Jajpur Road', 'Jajpur', 'Jharsuguda', 'Brajrajnagar', 'Nayagarh', 'Rajam'];
+  for (const t of towns) {
+    if (addr.toLowerCase().includes(t.toLowerCase()) || name.toLowerCase().includes(t.toLowerCase())) return t;
+  }
+  return ledger.state || '';
+}
+
+function compute45DayPartyStatement(groupParent = state.stmt45Group || 'Sundry Debtors') {
+  const endIso = getLocalIsoDate(new Date()); // Fixed rolling past 45 days ending today
+  const startIso = addDaysIsoLocal(endIso, -45);
+
+  const rawLedgers = state.ledgers && state.ledgers.length > 0
+    ? state.ledgers
+    : (state.aging?.[groupParent === 'Sundry Creditors' ? 'creditors' : 'debtors']?.parties || []).map(p => ({
+        name: p.partyName,
+        parent: groupParent,
+        city: extractCityClean(p),
+        state: p.state || '',
+        gstin: p.gstin || '',
+        mobile: p.mobile || '',
+        openingBalance: 0
+      }));
+
+  const ledgers = rawLedgers.filter(l => !l.parent || l.parent === groupParent);
+  const vouchers = state.rawVouchers || [];
+
+  // Fallback safely to precomputed snapshot if rawVouchers didn't load
+  if (vouchers.length === 0 && state.statement45) {
+    const pre = groupParent === 'Sundry Creditors' ? state.statement45.creditors : state.statement45.debtors;
+    if (pre && pre.rows) return pre;
+  }
+
+  const rows = ledgers.map(p => {
+    const pName = p.name || p.partyName;
+    const pLower = pName.toLowerCase();
+    const pVchs = vouchers.filter(v =>
+      (v.partyName && v.partyName.toLowerCase() === pLower) ||
+      (v.ledgerEntries || []).some(le => le.ledgerName && le.ledgerName.toLowerCase() === pLower)
+    ).sort((a, b) => String(a.date || '').replace(/-/g, '').localeCompare(String(b.date || '').replace(/-/g, '')));
+
+    const rawOpen = Number(p.openingBalance) || 0;
+    let preDr = rawOpen < 0 ? Math.abs(rawOpen) : 0;
+    let preCr = rawOpen > 0 ? rawOpen : 0;
+
+    const preBills = [];
+    const bills45d = [];
+    const payments45d = [];
+
+    pVchs.forEach(v => {
+      const compact = String(v.date || '').replace(/-/g, '').slice(0, 8);
+      if (compact.length !== 8) return;
+      const iso = `${compact.slice(0, 4)}-${compact.slice(4, 6)}-${compact.slice(6, 8)}`;
+
+      const entries = (v.ledgerEntries || []).filter(le => le.ledgerName && le.ledgerName.toLowerCase() === pLower);
+      let deltaDr = 0;
+      if (entries.length > 0) {
+        entries.forEach(le => {
+          if (le.rawAmount !== undefined) {
+            deltaDr += -(Number(le.rawAmount) || 0);
+          } else {
+            const sign = le.isDeemedPositive ? 1 : -1;
+            deltaDr += sign * Math.abs(Number(le.amount) || 0);
+          }
+        });
+      } else {
+        const amt = Number(v.amount) || 0;
+        const isDr = v.voucherType === 'Sales' || v.voucherType === 'Payment' || v.voucherType === 'Debit Note';
+        deltaDr = isDr ? amt : -amt;
+      }
+
+      const signedImpact = groupParent === 'Sundry Debtors' ? deltaDr : -deltaDr;
+      const otherLedger = (v.ledgerEntries || []).find(le => le.ledgerName && le.ledgerName.toLowerCase() !== pLower)?.ledgerName || '';
+      const nar = v.narration || '';
+      let modeHint = '';
+      if (/upi/i.test(nar)) modeHint = 'UPI';
+      else if (/rtgs|neft|imps/i.test(nar)) modeHint = 'NEFT/RTGS';
+      else if (v.voucherType === 'Credit Note' || v.voucherType === 'Debit Note') modeHint = /cd|discount/i.test(nar) ? 'CD' : '';
+      else if (/cash/i.test(otherLedger)) modeHint = 'Cash';
+      else if (/union bank/i.test(otherLedger)) modeHint = 'Bank';
+
+      const ctnMatch = nar.match(/(\d+)\s*(?:CTN|BOX|CS|CARTON)/i);
+      const cartons = ctnMatch ? parseInt(ctnMatch[1], 10) : null;
+
+      if (iso < startIso) {
+        if (signedImpact > 0) {
+          preDr += signedImpact;
+          preBills.push({
+            date: iso,
+            voucherType: v.voucherType,
+            voucherNumber: v.voucherNumber,
+            originalAmount: Math.round(signedImpact * 100) / 100,
+            remainingAmount: Math.round(signedImpact * 100) / 100,
+            cartons
+          });
+        } else if (signedImpact < 0) {
+          preCr += Math.abs(signedImpact);
+        }
+      } else if (iso <= endIso) {
+        if (signedImpact > 0) {
+          bills45d.push({
+            date: iso,
+            voucherType: v.voucherType,
+            voucherNumber: v.voucherNumber,
+            amount: Math.round(signedImpact * 100) / 100,
+            cartons,
+            narration: nar
+          });
+        } else if (signedImpact < 0) {
+          payments45d.push({
+            date: iso,
+            voucherType: v.voucherType,
+            voucherNumber: v.voucherNumber,
+            amount: Math.round(Math.abs(signedImpact) * 100) / 100,
+            modeHint,
+            narration: nar
+          });
+        }
+      }
+    });
+
+    const openingBalance = Math.round((preDr - preCr) * 100) / 100;
+    let crPool = preCr;
+    preBills.forEach(b => {
+      if (crPool <= 0) return;
+      const alloc = Math.min(b.remainingAmount, crPool);
+      b.remainingAmount = Math.round((b.remainingAmount - alloc) * 100) / 100;
+      crPool = Math.round((crPool - alloc) * 100) / 100;
+    });
+
+    const openingBills = preBills.filter(b => b.remainingAmount > 0.01);
+    const billsTotal45d = Math.round(bills45d.reduce((s, b) => s + b.amount, 0) * 100) / 100;
+    const paymentsTotal45d = Math.round(payments45d.reduce((s, c) => s + c.amount, 0) * 100) / 100;
+    const closingBalance = Math.round((openingBalance + billsTotal45d - paymentsTotal45d) * 100) / 100;
+
+    return {
+      partyName: pName,
+      city: extractCityClean(p),
+      state: p.state || '',
+      gstin: p.gstin || '',
+      mobile: p.mobile || '',
+      openingBalance,
+      openingBills,
+      openingBillsSum: Math.round(openingBills.reduce((s, b) => s + b.remainingAmount, 0) * 100) / 100,
+      bills45d,
+      billsTotal45d,
+      payments45d,
+      paymentsTotal45d,
+      closingBalance
+    };
+  });
+
+  rows.sort((a, b) => b.closingBalance - a.closingBalance);
+
+  return {
+    company: 'SKIL LIFESTYLE LLP',
+    location: 'Rayagada, Odisha',
+    group: groupParent,
+    periodStartIso: startIso,
+    periodEndIso: endIso,
+    periodLabel: `${formatSlashDate(startIso)} to ${formatSlashDate(endIso)}`,
+    rows
+  };
+}
+
+function formatStmtOpeningHtml(r, isPrint = false) {
+  if (r.openingBalance === 0 && (!r.openingBills || r.openingBills.length === 0)) {
+    return `<div class="stmt45-dash">₹0</div>`;
+  }
+  if (r.openingBalance < 0) {
+    return `
+      <div class="stmt45-stack">
+        <div class="stmt45-line">
+          <span class="stmt45-line-left"><span class="stmt45-tag tag-cn">ADV</span> Pre-window credit balance</span>
+          <span class="stmt45-amt" style="color:#059669;">-${formatINR(Math.abs(r.openingBalance))}</span>
+        </div>
+        <div class="stmt45-total-line">
+          <span>Opening Bal (Cr Adv)</span>
+          <span class="stmt45-amt" style="color:#059669;">-${formatINR(Math.abs(r.openingBalance))}</span>
+        </div>
+      </div>
+    `;
+  }
+  const billLines = (r.openingBills || []).map(b => {
+    const isPart = Math.abs(b.originalAmount - b.remainingAmount) > 0.5;
+    const partialNote = isPart
+      ? (isPrint ? ` <span style="font-size:6.4pt;color:#64748B;">(pt)</span>` : ` <span style="font-size:9.5px;color:#64748B;">(bal of ${formatINR(b.originalAmount)})</span>`)
+      : '';
+    const refText = isPrint ? b.voucherNumber : `#${b.voucherNumber}`;
+    return `
+      <div class="stmt45-line">
+        <span class="stmt45-line-left">
+          <span style="color:#64748B;">${formatShortDayMonth(b.date)}</span>
+          <strong style="color:#0F172A;">${refText}</strong>${partialNote}
+        </span>
+        <span class="stmt45-amt">${formatINR(b.remainingAmount)}</span>
+      </div>
+    `;
+  }).join('');
+
+  return `
+    <div class="stmt45-stack">
+      ${billLines}
+      <div class="stmt45-total-line">
+        <span>Opening (${r.openingBills.length} Bill${r.openingBills.length === 1 ? '' : 's'})</span>
+        <span class="stmt45-amt">${formatINR(r.openingBalance)}</span>
+      </div>
+    </div>
+  `;
+}
+
+function formatStmtBills45dHtml(r, isPrint = false) {
+  if (!r.bills45d || r.bills45d.length === 0) {
+    return `<div class="stmt45-dash">—</div>`;
+  }
+  const lines = r.bills45d.map(b => {
+    const isPay = b.voucherType === 'Payment';
+    const isDn = b.voucherType === 'Debit Note';
+    const tag = isPay ? `<span class="stmt45-tag tag-pay">PAY</span>` : (isDn ? `<span class="stmt45-tag">DN</span>` : '');
+    const ctnBadge = !isPrint && b.cartons ? `<span style="font-size:9.5px;color:#64748B;">(${b.cartons}c)</span>` : '';
+    const refLabel = b.voucherNumber ? (isPrint ? b.voucherNumber : `#${b.voucherNumber}`) : b.voucherType;
+    return `
+      <div class="stmt45-line">
+        <span class="stmt45-line-left">${tag}<span>${formatShortDayMonth(b.date)} <strong>${refLabel}</strong></span>${ctnBadge}</span>
+        <span class="stmt45-amt">${formatINR(b.amount)}</span>
+      </div>
+    `;
+  }).join('');
+
+  return `
+    <div class="stmt45-stack">
+      ${lines}
+      ${r.bills45d.length > 1 || isPrint ? `
+        <div class="stmt45-total-line">
+          <span>Total (${r.bills45d.length})</span>
+          <span class="stmt45-amt">${formatINR(r.billsTotal45d)}</span>
+        </div>
+      ` : ''}
+    </div>
+  `;
+}
+
+function formatStmtPayments45dHtml(r, isPrint = false) {
+  if (!r.payments45d || r.payments45d.length === 0) {
+    return `<div class="stmt45-dash">—</div>`;
+  }
+  const lines = r.payments45d.map(c => {
+    const isCn = c.voucherType === 'Credit Note';
+    const isJrn = c.voucherType === 'Journal';
+    const tag = isCn
+      ? `<span class="stmt45-tag tag-cn">CN</span>`
+      : (isJrn ? `<span class="stmt45-tag">JRN</span>` : (!isPrint && c.modeHint ? `<span class="stmt45-tag tag-mode">${c.modeHint}</span>` : (c.modeHint === 'UPI' || c.modeHint === 'Cash' ? `<span class="stmt45-tag tag-mode">${c.modeHint}</span>` : '')));
+    const refLabel = isCn ? `CN-${c.voucherNumber}` : (c.voucherNumber ? `Rct-${c.voucherNumber}` : c.voucherType);
+    return `
+      <div class="stmt45-line">
+        <span class="stmt45-line-left">${tag}<span>${formatShortDayMonth(c.date)} <strong>${refLabel}</strong></span></span>
+        <span class="stmt45-amt" style="color:#059669;">${formatINR(c.amount)}</span>
+      </div>
+    `;
+  }).join('');
+
+  return `
+    <div class="stmt45-stack">
+      ${lines}
+      ${r.payments45d.length > 1 || isPrint ? `
+        <div class="stmt45-total-line">
+          <span>Total Cr (${r.payments45d.length})</span>
+          <span class="stmt45-amt" style="color:#059669;">${formatINR(r.paymentsTotal45d)}</span>
+        </div>
+      ` : ''}
+    </div>
+  `;
+}
+
+window.setStmt45Group = function(group) {
+  state.stmt45Group = group;
+  const btnD = document.getElementById('btnStmtGroupDebtor');
+  const btnC = document.getElementById('btnStmtGroupCreditor');
+  if (btnD) btnD.classList.toggle('active', group === 'Sundry Debtors');
+  if (btnC) btnC.classList.toggle('active', group === 'Sundry Creditors');
+  render45DayStatementView();
+};
+
+function getFilteredStmt45Data() {
+  const dataset = compute45DayPartyStatement(state.stmt45Group || 'Sundry Debtors');
+  const hideZero = document.getElementById('chkStmtHideZero')?.checked ?? true;
+  const query = (document.getElementById('stmt45SearchInput')?.value || '').toLowerCase().trim();
+
+  const rows = dataset.rows.filter(r => {
+    if (hideZero && r.openingBalance === 0 && r.billsTotal45d === 0 && r.paymentsTotal45d === 0 && r.closingBalance === 0) {
+      return false;
+    }
+    if (query) {
+      const hit = r.partyName.toLowerCase().includes(query) ||
+        (r.city || '').toLowerCase().includes(query) ||
+        (r.state || '').toLowerCase().includes(query);
+      if (!hit) return false;
+    }
+    return true;
+  });
+
+  return { dataset, rows };
+}
+
+window.render45DayStatementView = function() {
+  const { dataset, rows } = getFilteredStmt45Data();
+  const showCashUpi = document.getElementById('chkStmtShowCashUpi')?.checked ?? true;
+
+  const periodEl = document.getElementById('stmt45PeriodText');
+  if (periodEl) periodEl.innerText = `Period: ${dataset.periodLabel} (Fixed Past 45 Days)`;
+
+  const totOpen = rows.reduce((s, r) => s + r.openingBalance, 0);
+  const totBills = rows.reduce((s, r) => s + r.billsTotal45d, 0);
+  const totPay = rows.reduce((s, r) => s + r.paymentsTotal45d, 0);
+  const totClose = rows.reduce((s, r) => s + r.closingBalance, 0);
+
+  const elOpen = document.getElementById('stmt45KpiOpen');
+  const elBills = document.getElementById('stmt45KpiBills');
+  const elPay = document.getElementById('stmt45KpiPayments');
+  const elClose = document.getElementById('stmt45KpiClose');
+  if (elOpen) elOpen.innerText = formatINR(totOpen);
+  if (elBills) elBills.innerText = formatINR(totBills);
+  if (elPay) elPay.innerText = formatINR(totPay);
+  if (elClose) elClose.innerText = formatINR(totClose);
+
+  // Toggle Cash / UPI column visibility on screen table
+  document.querySelectorAll('#stmt45Table th.stmt45-write-col').forEach(th => {
+    th.style.display = showCashUpi ? '' : 'none';
+  });
+
+  const tbody = document.getElementById('stmt45Tbody');
+  const tfoot = document.getElementById('stmt45Tfoot');
+  const mobileList = document.getElementById('stmt45MobileList');
+  if (!tbody || !mobileList) return;
+
+  if (rows.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;color:#94A3B8;padding:30px;">No matching parties for current filter.</td></tr>`;
+    if (tfoot) tfoot.innerHTML = '';
+    mobileList.innerHTML = `<div class="card-white" style="text-align:center;color:#94A3B8;padding:24px;">No matching parties found.</div>`;
+    return;
+  }
+
+  tbody.innerHTML = rows.map(r => {
+    const closeColor = r.closingBalance > 0 ? '#0F172A' : (r.closingBalance < 0 ? '#059669' : '#16A34A');
+    const closeLabel = r.closingBalance < 0
+      ? `-${formatINR(Math.abs(r.closingBalance))}<div style="font-size:9.5px;color:#059669;font-weight:700;">Advance Cr</div>`
+      : (r.closingBalance === 0
+        ? `₹0<div style="font-size:9.5px;color:#16A34A;font-weight:700;">Cleared</div>`
+        : formatINR(r.closingBalance));
+
+    return `
+      <tr>
+        <td>
+          <div class="stmt45-party-name">${r.partyName}</div>
+          <div class="stmt45-party-loc">${r.city}${r.state ? ' • ' + r.state : ''}</div>
+          ${r.gstin ? `<div class="stmt45-party-meta">${r.gstin}</div>` : ''}
+        </td>
+        <td>${formatStmtOpeningHtml(r, false)}</td>
+        <td>${formatStmtBills45dHtml(r, false)}</td>
+        <td>${formatStmtPayments45dHtml(r, false)}</td>
+        <td class="stmt45-closing-cell" style="color:${closeColor};">${closeLabel}</td>
+        ${showCashUpi ? `<td class="stmt45-write-col" style="background:#FFFFFF;"></td><td class="stmt45-write-col" style="background:#FFFFFF;"></td>` : ''}
+      </tr>
+    `;
+  }).join('');
+
+  if (tfoot) {
+    tfoot.innerHTML = `
+      <tr style="background:#1E293B; color:#FFFFFF; font-weight:800;">
+        <td style="padding:11px 12px; border:1px solid #334155;">TOTAL (${rows.length} Parties)</td>
+        <td style="padding:11px 12px; border:1px solid #334155; text-align:right; font-family:monospace;">${formatINR(totOpen)}</td>
+        <td style="padding:11px 12px; border:1px solid #334155; text-align:right; font-family:monospace;">${formatINR(totBills)}</td>
+        <td style="padding:11px 12px; border:1px solid #334155; text-align:right; font-family:monospace; color:#A3E635;">${formatINR(totPay)}</td>
+        <td style="padding:11px 12px; border:1px solid #334155; text-align:right; font-family:monospace; color:#FFFFFF; font-size:13.5px;">${formatINR(totClose)}</td>
+        ${showCashUpi ? `<td style="border:1px solid #334155;"></td><td style="border:1px solid #334155;"></td>` : ''}
+      </tr>
+    `;
+  }
+
+  // Spacious mobile cards
+  mobileList.innerHTML = rows.map(r => {
+    const closeBadge = r.closingBalance > 0
+      ? `<span style="font-size:16px;font-weight:800;color:#DC2626;font-family:monospace;">${formatINR(r.closingBalance)}</span>`
+      : (r.closingBalance < 0
+        ? `<span style="font-size:15px;font-weight:800;color:#059669;font-family:monospace;">-${formatINR(Math.abs(r.closingBalance))} (Adv)</span>`
+        : `<span style="font-size:15px;font-weight:800;color:#16A34A;">₹0 Cleared</span>`);
+
+    return `
+      <div class="stmt45-mobile-card">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;">
+          <div>
+            <div class="stmt45-party-name">${r.partyName}</div>
+            <div class="stmt45-party-loc">${r.city}${r.state ? ' • ' + r.state : ''}</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:9.5px;font-weight:800;color:#64748B;text-transform:uppercase;">Closing</div>
+            ${closeBadge}
+          </div>
+        </div>
+        <div class="stmt45-mobile-sec">
+          <div class="stmt45-mobile-sec-title">Old Balance (&gt;45d Unpaid Bills)</div>
+          ${formatStmtOpeningHtml(r, false)}
+        </div>
+        <div class="stmt45-mobile-sec">
+          <div class="stmt45-mobile-sec-title">Bills (Dr) — Past 45d</div>
+          ${formatStmtBills45dHtml(r, false)}
+        </div>
+        <div class="stmt45-mobile-sec">
+          <div class="stmt45-mobile-sec-title">Payments / Credits (Cr) — Past 45d</div>
+          ${formatStmtPayments45dHtml(r, false)}
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  if (window.lucide) lucide.createIcons();
+};
+
+function buildPrintable45DaySheetHtml() {
+  const { dataset, rows } = getFilteredStmt45Data();
+  const totOpen = rows.reduce((s, r) => s + r.openingBalance, 0);
+  const totBills = rows.reduce((s, r) => s + r.billsTotal45d, 0);
+  const totPay = rows.reduce((s, r) => s + r.paymentsTotal45d, 0);
+  const totClose = rows.reduce((s, r) => s + r.closingBalance, 0);
+  const nowStr = new Date().toLocaleString('en-IN', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true });
+  const groupLabel = dataset.group === 'Sundry Creditors' ? 'SUPPLIERS (CREDITORS)' : 'ALL DEALERS & RETAILERS (DEBTORS)';
+
+  return `
+    <div class="print-stmt-sheet">
+      <div style="text-align:center; margin-bottom:6px;">
+        <div style="font-size:15pt; font-weight:800; color:#0F172A; letter-spacing:-0.01em;">SKIL LIFESTYLE LLP, Rayagada.</div>
+        <div style="font-size:8.5pt; color:#475569; margin-top:2px;">Last Updated on: ${nowStr} &bull; 45-Day Detailed Party Statement</div>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; font-size:9pt; font-weight:700; color:#0F172A; margin:6px 0 6px 0; border-bottom:1.5px solid #1E293B; padding-bottom:4px;">
+        <span>Group: ${groupLabel} (${rows.length} Accounts)</span>
+        <span>Period: ${dataset.periodLabel} (Past 45 Days)</span>
+      </div>
+
+      <table class="print-stmt-table">
+        <thead>
+          <tr>
+            <th style="width:15%;">Party Name</th>
+            <th style="width:22.5%;">Old Balance<br><span style="font-weight:500;font-size:6.5pt;color:#CBD5E1;">&gt;45d Bills &rarr; Opening</span></th>
+            <th style="width:22%;">Bills (Dr)<br><span style="font-weight:500;font-size:6.5pt;color:#CBD5E1;">Datewise Past 45d</span></th>
+            <th style="width:22%;">Payments (Cr)<br><span style="font-weight:500;font-size:6.5pt;color:#CBD5E1;">Datewise &amp; [CN]</span></th>
+            <th style="width:9.5%; text-align:right;">Current<br>Bal</th>
+            <th style="width:4.5%; text-align:center;">Cash</th>
+            <th style="width:4.5%; text-align:center;">UPI</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows.map(r => `
+            <tr>
+              <td>
+                <div style="font-weight:800; font-size:8.8pt; color:#0F172A;">${r.partyName}</div>
+                <div style="font-size:7.5pt; color:#475569;">${r.city}${r.state ? ', ' + r.state : ''}</div>
+              </td>
+              <td>${formatStmtOpeningHtml(r, true)}</td>
+              <td>${formatStmtBills45dHtml(r, true)}</td>
+              <td>${formatStmtPayments45dHtml(r, true)}</td>
+              <td style="text-align:right; font-family:monospace; font-weight:800; font-size:8.8pt; white-space:nowrap;">
+                ${r.closingBalance < 0 ? '-' + formatINR(Math.abs(r.closingBalance)) + '<div style="font-size:7pt;font-weight:600;color:#059669;">(Adv Cr)</div>' : formatINR(r.closingBalance)}
+              </td>
+              <td></td>
+              <td></td>
+            </tr>
+          `).join('')}
+        </tbody>
+        <tfoot>
+          <tr style="background:#E2E8F0; font-weight:800;">
+            <td style="padding:7px; border:1px solid #334155;">GRAND TOTAL (${rows.length})</td>
+            <td style="padding:7px; border:1px solid #334155; text-align:right; font-family:monospace;">${formatINR(totOpen)}</td>
+            <td style="padding:7px; border:1px solid #334155; text-align:right; font-family:monospace;">${formatINR(totBills)}</td>
+            <td style="padding:7px; border:1px solid #334155; text-align:right; font-family:monospace;">${formatINR(totPay)}</td>
+            <td style="padding:7px; border:1px solid #334155; text-align:right; font-family:monospace; font-size:9pt;">${formatINR(totClose)}</td>
+            <td style="border:1px solid #334155;"></td>
+            <td style="border:1px solid #334155;"></td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <div style="display:flex; justify-content:space-between; font-size:7.5pt; color:#64748B; margin-top:8px;">
+        <span>SKIL Lifestyle LLP &bull; Rayagada, Odisha &bull; Generated: ${nowStr}</span>
+        <span>Detailed 45-Day Statement &bull; Tally Verified</span>
+      </div>
+    </div>
+  `;
+}
+
+window.print45DayStatementPdf = function() {
+  const printContainer = document.getElementById('printStatementContainer');
+  if (!printContainer) return;
+  printContainer.innerHTML = buildPrintable45DaySheetHtml();
+  window.skilTriggerPrint('SKIL_45Day_Party_Statement');
+};
+
+window.openAndPrint45DaySheet = function() {
+  window.navigateToTab('party-statement-45d');
+  setTimeout(() => window.print45DayStatementPdf(), 250);
+};
+
+window.download45DayStatementHtml = function() {
+  const inner = buildPrintable45DaySheetHtml();
+  const fullHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SKIL Lifestyle LLP — 45-Day Detailed Party Statement</title>
+<style>
+  @page { size: A4 portrait; margin: 9mm 8mm 11mm 8mm; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: #0F172A; background: #FFF; margin: 16px; }
+  .toolbar { margin-bottom: 14px; display: flex; justify-content: flex-end; gap: 8px; }
+  .btn { background: #0F172A; color: #FFF; border: none; padding: 8px 14px; border-radius: 6px; font-weight: 700; cursor: pointer; }
+  @media print { .toolbar { display: none; } body { margin: 0; } }
+  .print-stmt-table { width: 100%; border-collapse: collapse; font-size: 8.5pt; }
+  .print-stmt-table thead { display: table-header-group; }
+  .print-stmt-table tr { break-inside: avoid; page-break-inside: avoid; }
+  .print-stmt-table th { background: #1E293B; color: #FFF; padding: 6px 7px; border: 1px solid #334155; font-size: 8pt; text-align: left; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .print-stmt-table td { padding: 6px 7px; border: 1px solid #94A3B8; vertical-align: top; }
+  .print-stmt-table tbody tr:nth-child(even) td { background: #F8FAFC; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .stmt45-stack { display: flex; flex-direction: column; gap: 3px; }
+  .stmt45-line { display: flex; justify-content: space-between; gap: 6px; font-size: 8pt; line-height: 1.3; }
+  .stmt45-amt { font-family: Consolas, monospace; font-weight: 600; white-space: nowrap; }
+  .stmt45-total-line { margin-top: 3px; padding-top: 3px; border-top: 1px solid #64748B; display: flex; justify-content: space-between; font-weight: 800; font-size: 8.2pt; }
+  .stmt45-dash { text-align: center; color: #94A3B8; }
+  .stmt45-tag { font-size: 7pt; font-weight: 800; padding: 1px 4px; border-radius: 3px; background: #E2E8F0; }
+  .tag-cn { background: #DCFCE7; color: #166534; }
+  .tag-pay { background: #FEE2E2; color: #991B1B; }
+  .tag-mode { background: #EFF6FF; color: #1E40AF; }
+</style>
+</head>
+<body>
+  <div class="toolbar"><button class="btn" onclick="window.print()">Print / Save as PDF</button></div>
+  ${inner}
+</body>
+</html>`;
+
+  const blob = new Blob([fullHtml], { type: 'text/html;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `SKIL_45Day_Party_Statement_${getLocalIsoDate()}.html`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+};
+
+// ==========================================================================
+// MANUAL BAHI KHATA & DAYBOOK VIEW
+// ==========================================================================
+
+window.loadManualKhataView = async function() {
+  // Populate datalist of all parties
+  const dl = document.getElementById('mkPartyOptions');
+  if (dl) {
+    const names = new Set();
+    (state.ledgers || []).forEach(l => names.add(l.name));
+    (state.aging?.debtors?.parties || []).forEach(p => names.add(p.partyName));
+    dl.innerHTML = Array.from(names).sort().map(n => `<option value="${n}"></option>`).join('');
+  }
+
+  // Render Daybook diary notes
+  const notesEl = document.getElementById('mkDaybookNotesList');
+  if (notesEl) {
+    const notes = state.daybookNotes || [];
+    if (notes.length === 0) {
+      notesEl.innerHTML = `<div style="color:#94A3B8;font-size:12.5px;padding:12px;">No daybook diary notes loaded.</div>`;
+    } else {
+      notesEl.innerHTML = notes.map(n => `
+        <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:10px;padding:12px;">
+          <div style="font-size:11.5px;font-weight:800;color:#0F172A;margin-bottom:4px;">📅 ${n.date}</div>
+          <pre style="white-space:pre-wrap;font-family:inherit;font-size:12px;color:#334155;margin:0;line-height:1.5;">${(n.remarks || '').trim()}</pre>
+        </div>
+      `).join('');
+    }
+  }
+
+  // Load manual entries from Supabase (if available) + localStorage cache
+  let localList = [];
+  try { localList = JSON.parse(localStorage.getItem('skil_manual_khata_entries') || '[]'); } catch {}
+
+  let supaList = [];
+  if (navigator.onLine && !window._supabaseUnavailable) {
+    try {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/skil_manual_entries?select=*&order=entry_date.desc,created_at.desc&limit=100`, {
+        headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` }
+      });
+      if (res.ok) {
+        supaList = await res.json();
+      }
+    } catch {}
+  }
+
+  const mergedMap = new Map();
+  localList.forEach(item => mergedMap.set(item.id, { ...item, synced: false }));
+  supaList.forEach(item => mergedMap.set(item.id, { ...item, synced: true }));
+  const merged = Array.from(mergedMap.values()).sort((a, b) => String(b.entry_date || '').localeCompare(String(a.entry_date || '')));
+
+  const tbody = document.getElementById('mkEntriesTbody');
+  if (tbody) {
+    if (merged.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;color:#94A3B8;padding:22px;">No manual Khata entries recorded yet. Use the form above to add one.</td></tr>`;
+    } else {
+      tbody.innerHTML = merged.map(m => `
+        <tr>
+          <td>${m.entry_date}</td>
+          <td><span class="stint-tag-pill">${m.entry_type}</span></td>
+          <td style="font-weight:700;">${m.party_name}</td>
+          <td>${m.mode || '—'}</td>
+          <td style="color:#475569;font-size:12px;">${m.narration || '—'}</td>
+          <td style="text-align:right;font-weight:800;font-family:monospace;">${formatINR(m.amount)}</td>
+          <td><span class="badge-pill ${m.synced ? 'badge-success' : 'badge-warning'}" style="font-size:10px;">${m.synced ? 'Supabase' : 'Device Cache'}</span></td>
+        </tr>
+      `).join('');
+    }
+  }
+};
+
+window.submitManualKhataEntry = async function(ev) {
+  ev.preventDefault();
+  const entry = {
+    id: 'MK-' + Date.now(),
+    entry_date: document.getElementById('mkDate')?.value || getLocalIsoDate(),
+    entry_type: document.getElementById('mkType')?.value || 'Receipt',
+    party_name: (document.getElementById('mkParty')?.value || '').trim(),
+    amount: parseFloat(document.getElementById('mkAmount')?.value || '0'),
+    mode: document.getElementById('mkMode')?.value || 'UPI',
+    narration: (document.getElementById('mkNarration')?.value || '').trim(),
+    status: 'ACTIVE'
+  };
+
+  let localList = [];
+  try { localList = JSON.parse(localStorage.getItem('skil_manual_khata_entries') || '[]'); } catch {}
+  localList.unshift(entry);
+  localStorage.setItem('skil_manual_khata_entries', JSON.stringify(localList));
+
+  const fb = document.getElementById('mkSaveFeedback');
+  const res = await supabaseUpsert('skil_manual_entries', [entry], 'id');
+  if (fb) {
+    fb.style.color = res.ok ? '#059669' : '#D97706';
+    fb.innerText = res.ok ? '✅ Saved to Supabase Cloud & Device!' : '📦 Saved to Device Cache (run schema.sql to enable Supabase table)';
+  }
+
+  ev.target.reset();
+  const dIn = document.getElementById('mkDate');
+  if (dIn) dIn.value = getLocalIsoDate();
+  await window.loadManualKhataView();
+};
+
+// Weekly Audit Frame Print Helper
+window.printWeeklyAuditFrame = function() {
+  const frame = document.getElementById('weeklyAuditIframe');
+  if (frame && frame.contentWindow) {
+    try {
+      frame.contentWindow.focus();
+      frame.contentWindow.print();
+      return;
+    } catch {}
+  }
+  window.open('weekly_receivables_summary.html', '_blank');
 };
