@@ -129,11 +129,12 @@ class VaultSync {
     const jsonStr = JSON.stringify(bundle);
     const encryptedVault = this.encrypt(jsonStr, password);
 
-    const vaultDir = path.join(__dirname, '..', 'vault');
+    const vaultDir = path.join(__dirname, 'vault');
     if (!fs.existsSync(vaultDir)) fs.mkdirSync(vaultDir, { recursive: true });
 
     const encPath = path.join(vaultDir, 'skil_vault_encrypted.enc');
     const encJsonPath = path.join(vaultDir, 'skil_vault_encrypted.json');
+    const webEncPath = path.join(__dirname, '..', 'web', 'data', 'skil_vault_encrypted.json');
     const appEncPath = path.join(__dirname, '..', 'android-app', 'www', 'data', 'skil_vault_encrypted.json');
     const syncEncPath = path.join(__dirname, 'public', 'data', 'skil_vault_encrypted.json');
 
@@ -142,7 +143,7 @@ class VaultSync {
     fs.writeFileSync(encJsonPath, vaultString, 'utf8');
 
     // Also mirror to web app data dirs
-    [appEncPath, syncEncPath].forEach(target => {
+    [webEncPath, appEncPath, syncEncPath].forEach(target => {
       try {
         const d = path.dirname(target);
         if (!fs.existsSync(d)) fs.mkdirSync(d, { recursive: true });
@@ -228,7 +229,7 @@ class VaultSync {
       }
 
       // Add vault files and commit
-      execSync('git add vault/', { cwd: rootDir });
+      execSync('git add sync-engine/vault/', { cwd: rootDir });
       try {
         execSync('git commit -m "feat(vault): add AES-256 encrypted business vault and aging analysis"', { cwd: rootDir });
       } catch (e) {
@@ -280,7 +281,7 @@ if (require.main === module) {
   const vault = new VaultSync();
 
   if (action === 'decrypt') {
-    const encPath = path.join(__dirname, '..', 'vault', 'skil_vault_encrypted.enc');
+    const encPath = path.join(__dirname, 'vault', 'skil_vault_encrypted.enc');
     if (!fs.existsSync(encPath)) {
       console.error('Vault file not found at:', encPath);
       process.exit(1);

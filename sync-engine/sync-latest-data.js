@@ -4,11 +4,11 @@ const agingService = require('./aging-service');
 const { pushAllToSupabase } = require('./supabase-sync');
 
 const ROOT = path.resolve(__dirname, '..');
-const MK_TALLY = path.join(ROOT, 'Manual Khata', 'tally-data');
-const MK_DAYBOOK = path.join(ROOT, 'Manual Khata', 'daybook');
+const MK_TALLY = path.join(__dirname, 'manual-khata', 'tally-data');
+const MK_DAYBOOK = path.join(__dirname, 'manual-khata', 'daybook');
 
 const CLIENT_DATA_DIRS = [
-  path.join(ROOT, 'data'),
+  path.join(ROOT, 'web', 'data'),
   path.join(ROOT, 'android-app', 'www', 'data'),
   path.join(__dirname, 'public', 'data')
 ];
@@ -392,7 +392,7 @@ async function main() {
 
   // Attempt Supabase Push
   console.log('\n=== Attempting Supabase Cloud Push ===');
-  const supaRes = await pushAllToSupabase(path.join(ROOT, 'data'));
+  const supaRes = await pushAllToSupabase(path.join(ROOT, 'web', 'data'));
   console.log('Supabase result:', JSON.stringify(supaRes, null, 2));
 }
 

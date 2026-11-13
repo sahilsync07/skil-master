@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const rootDir = path.join(__dirname, '..');
+const webDir = path.join(rootDir, 'web');
 const targets = [
   path.join(rootDir, 'android-app', 'www'),
   path.join(__dirname, 'public')
@@ -35,19 +36,19 @@ function copyDirRecursive(src, dest) {
 targets.forEach(destDir => {
   if (!fs.existsSync(destDir)) fs.mkdirSync(destDir, { recursive: true });
   files.forEach(f => {
-    const src = path.join(rootDir, f);
+    const src = path.join(webDir, f);
     const dest = path.join(destDir, f);
     if (fs.existsSync(src)) {
       fs.copyFileSync(src, dest);
     }
   });
   ['assets', 'data'].forEach(folder => {
-    const srcFolder = path.join(rootDir, folder);
+    const srcFolder = path.join(webDir, folder);
     if (fs.existsSync(srcFolder)) {
       copyDirRecursive(srcFolder, path.join(destDir, folder));
     }
   });
-  console.log(`Synced Root -> ${destDir}`);
+  console.log(`Synced Web -> ${destDir}`);
 });
 
-fs.writeFileSync(path.join(rootDir, '.nojekyll'), '', 'utf8');
+fs.writeFileSync(path.join(webDir, '.nojekyll'), '', 'utf8');

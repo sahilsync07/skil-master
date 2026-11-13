@@ -410,7 +410,7 @@ async function supabaseFetchSnapshot(snapshotKey) {
     clearTimeout(tid);
     if (res.status === 404) {
       window._supabaseUnavailable = true;
-      state.supabaseStatus = { ready: false, message: 'Run supabase/schema.sql in Supabase SQL Editor to enable tables' };
+      state.supabaseStatus = { ready: false, message: 'Run sync-engine/supabase/schema.sql in Supabase SQL Editor to enable tables' };
       return null;
     }
     if (res.ok) {
@@ -3299,7 +3299,7 @@ window.pushAllDataToSupabase = async function() {
         }
         if (statusEl) {
           statusEl.style.color = '#D97706';
-          statusEl.innerText = needSchema ? 'Schema setup pending (run supabase/schema.sql once)' : msg;
+          statusEl.innerText = needSchema ? 'Schema setup pending (run sync-engine/supabase/schema.sql once)' : msg;
         }
         return false;
       }
@@ -3387,7 +3387,7 @@ window.pushStatement45ToSupabase = async function() {
     alert('✅ 45-Day Party Statement snapshot synced to Supabase Cloud!');
   } else if (res.status === 404 || res.body.includes('PGRST205')) {
     copyToClipboard(SUPABASE_SCHEMA_SQL);
-    alert('Supabase tables are not created yet (HTTP 404). The setup SQL (supabase/schema.sql) has been copied to your clipboard — run it once in Supabase SQL Editor, then click Save to Supabase again.');
+    alert('Supabase tables are not created yet (HTTP 404). The setup SQL (sync-engine/supabase/schema.sql) has been copied to your clipboard — run it once in Supabase SQL Editor, then click Save to Supabase again.');
   } else {
     alert('Supabase sync error: HTTP ' + res.status);
   }
@@ -3414,7 +3414,7 @@ window.renderCloudVaultView = async function() {
         if (badgeEl) badgeEl.innerText = 'Supabase Online';
       } else if (checkRes.status === 404) {
         statusEl.style.color = '#D97706';
-        statusEl.innerText = 'Project reachable — run supabase/schema.sql once in SQL Editor';
+        statusEl.innerText = 'Project reachable — run sync-engine/supabase/schema.sql once in SQL Editor';
         if (badgeEl) badgeEl.innerText = 'Schema Pending';
       }
     } catch {
