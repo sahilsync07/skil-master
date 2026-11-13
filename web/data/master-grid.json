@@ -9,7 +9,7 @@
     "totalCustDiscounts": 225950.92,
     "totalNetProfit": 51319.93,
     "totalCartons": 884,
-    "totalPairs": 38660
+    "totalPairs": 38724
   },
   "stints": [
     {
@@ -6405,7 +6405,7 @@
       "purchaseVoucher": "77",
       "purchaseAmount": 105720,
       "cartons": 15,
-      "pairs": 480,
+      "pairs": 544,
       "salesVoucher": "SKIL-077",
       "customer": "M/S.SHREE FOOTWEAR",
       "salesAmount": 105720,
