@@ -2,6 +2,7 @@ package com.skillifestyle.master;
 
 import android.app.DownloadManager;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -43,6 +44,33 @@ public class MainActivity extends BridgeActivity {
         }
     }
 
+    public class AndroidPdfBridge {
+        @JavascriptInterface
+        public void openPdf(final String url) {
+            runOnUiThread(() -> {
+                try {
+                    if (url == null || url.trim().isEmpty()) return;
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setDataAndType(Uri.parse(url), "application/pdf");
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    Intent chooser = Intent.createChooser(intent, "Open PDF with...");
+                    chooser.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(chooser);
+                } catch (Exception e) {
+                    // Fallback to Google Drive Viewer in external browser
+                    try {
+                        String gDriveUrl = "https://docs.google.com/viewer?url=" + Uri.encode(url);
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(gDriveUrl));
+                        browserIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(browserIntent);
+                    } catch (Exception ex) {
+                        Toast.makeText(getApplicationContext(), "Unable to open PDF: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +79,7 @@ public class MainActivity extends BridgeActivity {
             WebView webView = this.getBridge().getWebView();
             if (webView != null) {
                 webView.addJavascriptInterface(new AndroidPrintBridge(webView), "AndroidPrint");
+                webView.addJavascriptInterface(new AndroidPdfBridge(), "AndroidPdf");
 
                 webView.setDownloadListener((url, userAgent, contentDisposition, mimetype, contentLength) -> {
                     try {

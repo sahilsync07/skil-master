@@ -42,6 +42,75 @@ window.skilTriggerPrint = function(jobName = 'SKIL_Master_Statement') {
   }
 };
 
+// Current Installed Application Version
+const CURRENT_APP_VERSION = '2.2.0';
+
+// Universal Smart PDF Opener (Direct Android Chooser / Google Drive App / Drive Web Viewer)
+window.openPdfDocument = function(filePath, title = 'Document') {
+  if (!filePath) return;
+  const cleanPath = filePath.replace(/^\.?\//, '');
+  const webUrl = `${GITHUB_RAW_BASE}/${cleanPath}`;
+
+  // If inside Android native wrapper with native PDF bridge
+  if (window.AndroidPdf && typeof window.AndroidPdf.openPdf === 'function') {
+    window.AndroidPdf.openPdf(webUrl);
+    return;
+  }
+
+  // Mobile / Web Browser: Use Google Drive Document Viewer (native Drive app or in-browser preview)
+  const gdriveViewerUrl = `https://docs.google.com/viewer?url=${encodeURIComponent(webUrl)}&embedded=false`;
+  window.open(gdriveViewerUrl, '_blank');
+};
+
+// Mapped Supplier Invoices Manifest (Direct 1-Click Access)
+const INVOICE_PDF_MAP = {
+  ajanta_57: 'documents/ajanta/057 - 1900424350 - SF SKLM - 31-10-26.pdf',
+  ajanta_59: 'documents/ajanta/059 - 1900421530 - SBE RGDA - 26-10-26.pdf',
+  ajanta_60: 'documents/ajanta/060 - 1900421549 - SBE RGDA - 26-10-26.pdf',
+  ajanta_61: 'documents/ajanta/061 - 1900421566 - SBE RGDA - 26-10-26.pdf',
+  ajanta_62: 'documents/ajanta/062 - 1900421995 - SLGC RJM - 27-10-26.pdf',
+  ajanta_63: 'documents/ajanta/063 - 1900422025 - SLGC RJM - 27-10-26.pdf',
+  ajanta_64: 'documents/ajanta/064 - 1900422267 - Alaka Nayagarh - 28-10-26.pdf',
+  ajanta_65: 'documents/ajanta/065 - 1900422237 - Alaka Nayagarh - 28-10-26.pdf',
+  ajanta_66: 'documents/ajanta/066 - 1900422215 - Alaka Nayagarh - 28-10-26.pdf',
+  ajanta_67: 'documents/ajanta/067 - 1900423284 - SLGC RJM - 30-10-26.pdf',
+  ajanta_68: 'documents/ajanta/068 - 1900423490 - KGN PVM - 31-10-26.pdf',
+  ajanta_69: 'documents/ajanta/069 - 1900423507 - KGN PVM - 31-10-26.pdf',
+  ajanta_70: 'documents/ajanta/070 - 1900423667 - SF SKLM - 31-10-26.pdf',
+  ajanta_71: 'documents/ajanta/071 - 1900423838 - Delight VZM - 31-10-26.pdf',
+  ajanta_72: 'documents/ajanta/072 - 1900424102 - Sharvani SKLM - 31-10-26.pdf',
+  ajanta_73: 'documents/ajanta/073 - 1900424231 - SF SKLM - 31-10-26.pdf',
+  ajanta_74: 'documents/ajanta/074 - 1900424235 - SF SKLM - 31-10-26.pdf',
+  ajanta_75: 'documents/ajanta/075 - 1900424392 - SF SKLM - 31-10-26.pdf',
+  ajanta_76: 'documents/ajanta/076 - 1900424427 - SF SKLM - 31-10-26.pdf',
+  ajanta_78: 'documents/ajanta/078 - 1900426119 - Jyothi Anakapalli - 12-11-26.pdf',
+  ajanta_79: 'documents/ajanta/079 - 1900426120 - SF SKLM - 12-11-26.pdf',
+  ajanta_80: 'documents/ajanta/080 - 1900426153 - Sri Laxmi Narasimha Nellore - 12-11-26.pdf',
+  ajanta_81: 'documents/ajanta/081 - 1900426275 - Sri Laxmi Narasimha Nellore - 13-11-26.pdf',
+  ajanta_82: 'documents/ajanta/082 - 1900426475 - Sharvani SKLM - 13-11-26.pdf',
+  xpania_23: 'documents/xpania/023 - XPL-2041-26-27 - Sushila JSG - 09-09-26.pdf',
+  xpania_35: 'documents/xpania/035 - XPL-2140-26-27 - Mahavir DNKL - 19-09-26.pdf',
+  xpania_54: 'documents/xpania/054 - XPL-2327-26-27 - Mahavir DNKL - 08-10-26.pdf',
+  xpania_55: 'documents/xpania/055 - XPL-2367-26-27 - Shree Aditya VZM - 10-10-26.pdf',
+  xpania_56: 'documents/xpania/056 - XPL-2366-26-27 - Rajan Jajpur - 10-10-26.pdf',
+  xpania_57: 'documents/xpania/057 - XPL-2369-26-27 - Shree Aditya VZM - 12-10-26.pdf',
+  cubix_58: 'documents/cubix/058 - 2026-27-2155 - Famous VZM - 21-10-26.pdf',
+  cubix_77: 'documents/cubix/077 - 2026-27-2383 - SF SKLM - 09-11-26.pdf'
+};
+
+window.openInvoicePdf = function(vchNo, supplier = '') {
+  const sKey = (supplier || '').toLowerCase().includes('cubix') ? 'cubix' : (
+    (supplier || '').toLowerCase().includes('xpania') ? 'xpania' : 'ajanta'
+  );
+  const num = parseInt(String(vchNo).replace(/\D/g, ''), 10);
+  const path = INVOICE_PDF_MAP[`${sKey}_${num}`];
+  if (path) {
+    window.openPdfDocument(path, `${supplier} Bill #${vchNo}`);
+  } else {
+    alert(`Scanned PDF for ${supplier} voucher #${vchNo} is pending upload or archived in manual khata.`);
+  }
+};
+
 // Format currency in Indian numbering format (e.g. ₹31,23,318)
 function formatINR(val, includePaisa = false) {
   if (val === undefined || val === null || isNaN(val)) return '₹0';
@@ -116,9 +185,65 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Update static download link URLs for web and mobile
   updateStaticDownloadLinks();
 
+  // Setup App Update Banner & Check
+  setupAppUpdateBanner();
+  await checkForAppUpdate();
+
   // Initial Data Load
   await refreshAllData();
 });
+
+// App Update Alert Banner Handlers
+function setupAppUpdateBanner() {
+  const btnDismiss = document.getElementById('btnDismissUpdate');
+  if (btnDismiss) {
+    btnDismiss.addEventListener('click', () => {
+      const banner = document.getElementById('appUpdateBanner');
+      if (banner) banner.style.display = 'none';
+    });
+  }
+}
+
+async function checkForAppUpdate() {
+  try {
+    const res = await smartFetch('/api/version', 'app-version.json');
+    if (res && res.version) {
+      const elInstalled = document.getElementById('appInstalledVersion');
+      if (elInstalled) elInstalled.innerText = CURRENT_APP_VERSION;
+
+      if (isNewerVersion(res.version, CURRENT_APP_VERSION)) {
+        const banner = document.getElementById('appUpdateBanner');
+        const vName = document.getElementById('appUpdateVersionName');
+        const vNotes = document.getElementById('appUpdateNotes');
+        const btnPlay = document.getElementById('btnPlayStoreUpdate');
+        if (banner) {
+          if (vName) vName.innerText = `v${res.version}`;
+          if (vNotes && res.updateNotes) vNotes.innerText = res.updateNotes;
+          if (btnPlay) {
+            btnPlay.href = res.playStoreUrl || res.apkUrl || 'https://github.com/skillifestyle/master/releases/latest';
+          }
+          banner.style.display = 'flex';
+          if (window.lucide) lucide.createIcons();
+        }
+      }
+    }
+  } catch (err) {
+    console.warn('Version check skipped:', err);
+  }
+}
+
+function isNewerVersion(remote, current) {
+  if (!remote || !current) return false;
+  const rParts = remote.replace(/^v/, '').split('.').map(n => parseInt(n, 10) || 0);
+  const cParts = current.replace(/^v/, '').split('.').map(n => parseInt(n, 10) || 0);
+  for (let i = 0; i < Math.max(rParts.length, cParts.length); i++) {
+    const r = rParts[i] || 0;
+    const c = cParts[i] || 0;
+    if (r > c) return true;
+    if (r < c) return false;
+  }
+  return false;
+}
 
 // Setup Navigation Tabs & Mobile Drawer
 function setupNavigation() {
@@ -152,6 +277,7 @@ function setupNavigation() {
     'weekly-report': 'Weekly Audit Summary',
     'supplier-ajanta': 'Ajanta Shoes Hub',
     'supplier-xpania': 'Xpania Footcare Hub',
+    'supplier-cubix': 'Cubix Footwear Hub',
     'payment-aging': 'Customer Ledger Aging',
     'gst-compliance': 'GST Compliance Hub',
     'cloud-vault': 'Supabase & Cloud Vault',
@@ -175,6 +301,7 @@ function setupNavigation() {
     'weekly-report': 'Weekly Audit',
     'supplier-ajanta': 'Ajanta Shoes',
     'supplier-xpania': 'Xpania',
+    'supplier-cubix': 'Cubix',
     'payment-aging': 'Aging',
     'gst-compliance': 'GST Hub',
     'cloud-vault': 'Supabase',
@@ -250,6 +377,7 @@ function setupNavigation() {
     if (tab === 'manual-khata') loadManualKhataView();
     if (tab === 'supplier-ajanta') renderAjantaSupplierView();
     if (tab === 'supplier-xpania') renderXpaniaSupplierView();
+    if (tab === 'supplier-cubix') renderCubixSupplierView();
     if (tab === 'payment-aging') renderPaymentAgingView();
     if (tab === 'gst-compliance') renderGstComplianceView();
     if (tab === 'cloud-vault') renderCloudVaultView();
@@ -606,6 +734,9 @@ function renderCurrentView() {
     case 'supplier-xpania':
       renderXpaniaSupplierView();
       break;
+    case 'supplier-cubix':
+      renderCubixSupplierView();
+      break;
     case 'payment-aging':
       renderPaymentAgingView();
       break;
@@ -677,6 +808,7 @@ function renderDashboardView() {
         if (selectedMonth === '2026-08') return m.month.includes('August');
         if (selectedMonth === '2026-09') return m.month.includes('September');
         if (selectedMonth === '2026-10') return m.month.includes('October');
+        if (selectedMonth === '2026-11') return m.month.includes('November');
         return false;
       });
       if (mMatch) {
@@ -699,10 +831,30 @@ function renderDashboardView() {
   if (elemGross) elemGross.innerText = formatINR(grossProfit);
   if (elemNet) elemNet.innerText = formatINR(netProfit);
 
+  // Dynamic Month Badge on Stat Cards (replaces static red badge)
+  const monthLabels = {
+    'all': 'All Months',
+    '2026-11': 'Nov 2026',
+    '2026-10': 'Oct 2026',
+    '2026-09': 'Sep 2026',
+    '2026-08': 'Aug 2026'
+  };
+  const activeLabel = monthLabels[selectedMonth] || 'All Months';
+  ['kpiBadgeSales', 'kpiBadgePurchase', 'kpiBadgeGross', 'kpiBadgeNet'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.innerText = activeLabel;
+  });
+
   // Subtitle update
   const subtitle = document.getElementById('dashboardSnapshotSubtitle');
   if (subtitle) {
-    const names = { 'all': 'Real Tally Intelligence for All Months', '2026-10': 'Real Tally Intelligence for October 26', '2026-09': 'Real Tally Intelligence for September 26', '2026-08': 'Real Tally Intelligence for August 26' };
+    const names = {
+      'all': 'Real Tally Intelligence for All Months',
+      '2026-11': 'Real Tally Intelligence for November 26',
+      '2026-10': 'Real Tally Intelligence for October 26',
+      '2026-09': 'Real Tally Intelligence for September 26',
+      '2026-08': 'Real Tally Intelligence for August 26'
+    };
     subtitle.innerText = names[selectedMonth] || 'Selected Period';
   }
 
@@ -1794,7 +1946,7 @@ window.sendWhatsAppPaymentReminder = function(partyName, netDue, oldestDate, day
 };
 
 // ==========================================================================
-// 8. SUPPLIER DEDICATED HUBS: AJANTA & XPANIA
+// 8. SUPPLIER DEDICATED HUBS: AJANTA, XPANIA & CUBIX
 // ==========================================================================
 
 function renderAjantaSupplierView() {
@@ -1819,7 +1971,10 @@ function renderAjantaSupplierView() {
     return;
   }
 
-  tbody.innerHTML = ajantaRows.map(r => `
+  tbody.innerHTML = ajantaRows.map(r => {
+    const vchInt = parseInt(r.purchaseVoucher, 10);
+    const hasPdf = !!INVOICE_PDF_MAP[`ajanta_${vchInt}`];
+    return `
     <tr>
       <td class="td-bold" style="color: #0284C7;">${r.purchaseVoucher}</td>
       <td>${r.date}</td>
@@ -1833,9 +1988,20 @@ function renderAjantaSupplierView() {
       <td style="text-align: right; font-weight: 700; color: #15803D;">${formatINR(r.salesAmount)}</td>
       <td style="text-align: right; font-weight: 600; color: #0284C7;">${formatINR(r.suppCd3)}</td>
       <td style="text-align: right; font-weight: 600; color: #D97706;">${formatINR(r.custCd5)}</td>
-      <td><span class="badge-pill badge-success">100% Sold</span></td>
+      <td>
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span class="badge-pill badge-success">100% Sold</span>
+          ${hasPdf ? `
+            <button type="button" class="btn-download-sm" onclick="openInvoicePdf('${r.purchaseVoucher}', 'Ajanta Shoes')" style="background: #0F172A; color: #FFFFFF; border: none; padding: 3px 8px; font-size: 10.5px; border-radius: 6px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;" title="View Purchase Bill PDF">
+              <i data-lucide="eye" style="width: 11px; height: 11px;"></i> PDF
+            </button>
+          ` : ''}
+        </div>
+      </td>
     </tr>
-  `).join('');
+  `;}).join('');
+
+  if (window.lucide) lucide.createIcons();
 }
 
 function renderXpaniaSupplierView() {
@@ -1849,7 +2015,10 @@ function renderXpaniaSupplierView() {
     return;
   }
 
-  tbody.innerHTML = xpaniaRows.map(r => `
+  tbody.innerHTML = xpaniaRows.map(r => {
+    const vchInt = parseInt(r.purchaseVoucher, 10);
+    const hasPdf = !!INVOICE_PDF_MAP[`xpania_${vchInt}`];
+    return `
     <tr>
       <td class="td-bold" style="color: #0284C7;">${r.purchaseVoucher}</td>
       <td>${r.date}</td>
@@ -1859,9 +2028,60 @@ function renderXpaniaSupplierView() {
       <td style="text-align: right; font-weight: 700;">${formatINR(r.purchaseAmount)}</td>
       <td style="text-align: right; font-weight: 700; color: #15803D;">${formatINR(r.salesAmount)}</td>
       <td style="text-align: right; font-weight: 700; color: #4D7C0F;">+${formatINR(r.tradeMargin)}</td>
-      <td><span class="badge-pill badge-success">Fulfilled</span></td>
+      <td>
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span class="badge-pill badge-success">Fulfilled</span>
+          ${hasPdf ? `
+            <button type="button" class="btn-download-sm" onclick="openInvoicePdf('${r.purchaseVoucher}', 'Xpania Footcare')" style="background: #0F172A; color: #FFFFFF; border: none; padding: 3px 8px; font-size: 10.5px; border-radius: 6px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;" title="View Purchase Bill PDF">
+              <i data-lucide="eye" style="width: 11px; height: 11px;"></i> PDF
+            </button>
+          ` : ''}
+        </div>
+      </td>
     </tr>
-  `).join('');
+  `;}).join('');
+
+  if (window.lucide) lucide.createIcons();
+}
+
+function renderCubixSupplierView() {
+  const tbody = document.getElementById('cubixInvoicesTbody');
+  if (!tbody || !state.masterGrid?.rows) return;
+
+  const cubixRows = state.masterGrid.rows.filter(r => (r.supplier || '').toLowerCase().includes('cubix'));
+
+  if (cubixRows.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="9" style="text-align: center; color: #94A3B8; padding: 24px;">No Cubix invoices found.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = cubixRows.map(r => {
+    const vchInt = parseInt(r.purchaseVoucher, 10);
+    const hasPdf = !!INVOICE_PDF_MAP[`cubix_${vchInt}`];
+    return `
+    <tr>
+      <td class="td-bold" style="color: #0284C7;">${r.purchaseVoucher}</td>
+      <td>${r.date}</td>
+      <td class="td-bold">${r.purchaseRef || '—'}</td>
+      <td><div class="td-bold">${r.customer}</div></td>
+      <td class="td-bold">${r.salesVoucher}</td>
+      <td style="text-align: right; font-weight: 700;">${formatINR(r.purchaseAmount)}</td>
+      <td style="text-align: right; font-weight: 700; color: #15803D;">${formatINR(r.salesAmount)}</td>
+      <td style="text-align: right; font-weight: 700; color: #4D7C0F;">+${formatINR(r.tradeMargin)}</td>
+      <td>
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span class="badge-pill badge-info">100% Sold</span>
+          ${hasPdf ? `
+            <button type="button" class="btn-download-sm" onclick="openInvoicePdf('${r.purchaseVoucher}', 'Cubix Footcare')" style="background: #0F172A; color: #FFFFFF; border: none; padding: 3px 8px; font-size: 10.5px; border-radius: 6px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;" title="View Purchase Bill PDF">
+              <i data-lucide="eye" style="width: 11px; height: 11px;"></i> PDF
+            </button>
+          ` : ''}
+        </div>
+      </td>
+    </tr>
+  `;}).join('');
+
+  if (window.lucide) lucide.createIcons();
 }
 
 function renderSupplierTrackingView() {

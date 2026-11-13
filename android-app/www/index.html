@@ -36,7 +36,7 @@
         <div class="sidebar-brand-wrap" style="display: flex; align-items: center; justify-content: space-between; padding-right: 6px;">
           <div class="sidebar-brand" id="brandToggleBtn">
             <div class="brand-squircle-logo">
-              <img src="assets/skil-black-logo.png" alt="SKIL Logo">
+              <img src="assets/skil-lifestyle-black-transparent.png" alt="SKIL Logo">
             </div>
             <div>
               <div class="brand-title">SKIL Master</div>
@@ -95,21 +95,30 @@
 
           <li class="sidebar-section-label">Suppliers &amp; Stock</li>
           <li class="nav-item" data-tab="supplier-ajanta">
-            <a class="nav-link" style="display: flex; align-items: center; gap: 10px;">
-              <div style="background: #FFFFFF; border-radius: 6px; padding: 2px 4px; display: flex; align-items: center; justify-content: center; height: 22px; min-width: 40px;">
-                <img src="assets/ajanta-logo.png" alt="Ajanta" style="height: 14px; width: auto; object-fit: contain;">
+            <a class="nav-link" style="display: flex; align-items: center; gap: 9px;">
+              <div class="sidebar-supplier-icon">
+                <img src="assets/ajanta-logo.png" alt="Ajanta" style="height: 14px; max-width: 32px; object-fit: contain;">
               </div>
-              <span>Ajanta Shoes</span>
-              <span style="background: #A3E635; color: #0F172A; font-size: 9.5px; font-weight: 800; padding: 2px 7px; border-radius: 10px; margin-left: auto;">Bills</span>
+              <span class="sidebar-nav-text">Ajanta Shoes</span>
+              <span class="sidebar-supplier-badge badge-ajanta">Bills</span>
             </a>
           </li>
           <li class="nav-item" data-tab="supplier-xpania">
-            <a class="nav-link" style="display: flex; align-items: center; gap: 10px;">
-              <div style="background: #FFFFFF; border-radius: 6px; padding: 2px 4px; display: flex; align-items: center; justify-content: center; height: 22px; min-width: 40px;">
-                <img src="assets/xpania-logo.png" alt="Xpania" style="height: 14px; width: auto; object-fit: contain;">
+            <a class="nav-link" style="display: flex; align-items: center; gap: 9px;">
+              <div class="sidebar-supplier-icon">
+                <img src="assets/xpania-logo.png" alt="Xpania" style="height: 14px; max-width: 32px; object-fit: contain;">
               </div>
-              <span>Xpania Footcare</span>
-              <span style="background: #38BDF8; color: #0F172A; font-size: 9.5px; font-weight: 800; padding: 2px 7px; border-radius: 10px; margin-left: auto;">Bills</span>
+              <span class="sidebar-nav-text">Xpania Footcare</span>
+              <span class="sidebar-supplier-badge badge-xpania">6 Bills</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="supplier-cubix">
+            <a class="nav-link" style="display: flex; align-items: center; gap: 9px;">
+              <div class="sidebar-supplier-icon">
+                <img src="assets/cubix-logo.png" alt="Cubix" style="height: 14px; max-width: 32px; object-fit: contain;">
+              </div>
+              <span class="sidebar-nav-text">Cubix Footwear</span>
+              <span class="sidebar-supplier-badge badge-cubix">2 Bills</span>
             </a>
           </li>
           <li class="nav-item" data-tab="sales-metrics">
@@ -217,7 +226,7 @@
               </button>
               <div class="mobile-brand-pill">
                 <div class="brand-squircle-logo-sm">
-                  <img src="assets/skil-black-logo.png" alt="SKIL">
+                  <img src="assets/skil-lifestyle-black-transparent.png" alt="SKIL">
                 </div>
                 <span class="mobile-brand-name">SKIL Master</span>
               </div>
@@ -254,7 +263,7 @@
         <div class="top-bar-right">
           <div class="company-pill" id="companyPillBtn" title="Click to view Tally & Company details">
             <div class="company-avatar-end2end">
-              <img src="assets/skil-black-logo.png" alt="SKIL">
+              <img src="assets/skil-lifestyle-black-transparent.png" alt="SKIL">
             </div>
             <div class="company-info">
               <div class="sync-time-text" id="lastSyncedText">Synced: 15-Oct 19:29</div>
@@ -277,6 +286,28 @@
         </div>
       </header>
 
+      <!-- PLAY STORE / CLOUD UPDATE ALERT BANNER (Auto-shown when new version released) -->
+      <div class="app-update-banner" id="appUpdateBanner" style="display: none; background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); color: #FFFFFF; border-radius: 12px; padding: 12px 18px; margin-bottom: 16px; border: 1px solid #334155; box-shadow: 0 4px 16px rgba(0,0,0,0.15); align-items: center; justify-content: space-between; gap: 12px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="background: #A3E635; color: #0F172A; width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800;">
+            <i data-lucide="sparkles" style="width: 18px; height: 18px;"></i>
+          </div>
+          <div>
+            <div style="font-size: 13px; font-weight: 800;">Major App Update Available (<span id="appUpdateVersionName">v2.2.0</span>)</div>
+            <div style="font-size: 11px; color: #94A3B8;" id="appUpdateNotes">A new version with performance &amp; UI revamps is ready on Play Store.</div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <a id="btnPlayStoreUpdate" href="https://github.com/skillifestyle/master/releases/latest" target="_blank" rel="noopener noreferrer" class="sync-now-btn" style="background: #A3E635; color: #0F172A; text-decoration: none; padding: 7px 14px; font-size: 12px;">
+            <i data-lucide="download" style="width: 14px; height: 14px;"></i>
+            <span>Update Now</span>
+          </a>
+          <button type="button" id="btnDismissUpdate" style="background: transparent; border: none; color: #94A3B8; cursor: pointer; padding: 4px;" title="Dismiss">
+            <i data-lucide="x" style="width: 16px; height: 16px;"></i>
+          </button>
+        </div>
+      </div>
+
       <!-- COLLAPSIBLE SUBTLE INFO BAR (Subtle and hidden by default, toggled via info icon) -->
       <div class="subtle-info-bar" id="subtleInfoBar" style="display: none;">
         <div class="subtle-info-content">
@@ -287,6 +318,8 @@
           <span>🔄 Last Sync: <span id="subtleSyncTimestamp">15-Oct 19:29</span></span>
           <span class="info-sep">•</span>
           <span class="tally-badge-subtle" id="tallyStatusSubtle">Tally Active</span>
+          <span class="info-sep">•</span>
+          <span>📱 App v<span id="appInstalledVersion">2.2.0</span></span>
         </div>
         <button class="subtle-info-close" id="btnCloseSubtleInfo">
           <i data-lucide="x" style="width: 14px; height: 14px;"></i>
@@ -353,6 +386,13 @@
               <div>
                 <div class="hub-tile-title">Xpania Footcare Hub</div>
                 <div class="hub-tile-sub">Purchases &amp; PDF Vault</div>
+              </div>
+            </button>
+            <button type="button" class="home-hub-tile" onclick="navigateToTab('supplier-cubix')">
+              <div class="hub-tile-icon" style="background: #F0F9FF; color: #0369A1;"><i data-lucide="box" style="width: 17px; height: 17px;"></i></div>
+              <div>
+                <div class="hub-tile-title">Cubix Footwear Hub</div>
+                <div class="hub-tile-sub">Bills, Ledger &amp; Vault</div>
               </div>
             </button>
             <button type="button" class="home-hub-tile" onclick="navigateToTab('parties')">
@@ -450,6 +490,7 @@
 
           <select class="filter-pill-dropdown" id="monthFilterSelect">
             <option value="all">All Months</option>
+            <option value="2026-11">November 26</option>
             <option value="2026-10">October 26</option>
             <option value="2026-09">September 26</option>
             <option value="2026-08">August 26</option>
@@ -464,7 +505,7 @@
               <div class="stat-icon-square">
                 <i data-lucide="arrow-up-right"></i>
               </div>
-              <span class="stat-badge-pill">Selected Month</span>
+              <span class="stat-badge-pill" id="kpiBadgeSales">All Months</span>
             </div>
             <div>
               <div class="stat-label">Total Sales (B2B Retail)</div>
@@ -478,7 +519,7 @@
               <div class="stat-icon-square">
                 <i data-lucide="activity"></i>
               </div>
-              <span class="stat-badge-pill">Selected Month</span>
+              <span class="stat-badge-pill" id="kpiBadgePurchase">All Months</span>
             </div>
             <div>
               <div class="stat-label">Total Purchase (COGS)</div>
@@ -492,7 +533,7 @@
               <div class="stat-icon-square">
                 <i data-lucide="wallet"></i>
               </div>
-              <span class="stat-badge-pill">Selected Month</span>
+              <span class="stat-badge-pill" id="kpiBadgeGross">All Months</span>
             </div>
             <div>
               <div class="stat-label">Gross Margin + Claims</div>
@@ -506,7 +547,7 @@
               <div class="stat-icon-square">
                 <i data-lucide="credit-card"></i>
               </div>
-              <span class="stat-badge-pill">Selected Month</span>
+              <span class="stat-badge-pill" id="kpiBadgeNet">All Months</span>
             </div>
             <div>
               <div class="stat-label">Net Realized Profit</div>
@@ -915,7 +956,8 @@
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; gap: 10px;">
               <input type="text" class="filter-pill-dropdown" id="stintSearchInput" placeholder="Search customer, vch #, ref..." style="width: 250px;">
               <select class="filter-pill-dropdown" id="stintMonthSelect">
-                <option value="all">All Stints (27)</option>
+                <option value="all">All Stints</option>
+                <option value="2026-11">November 26</option>
                 <option value="2026-10">October 26</option>
                 <option value="2026-09">September 26</option>
                 <option value="2026-08">August 26</option>
@@ -1415,6 +1457,113 @@
                 </tr>
               </thead>
               <tbody id="xpaniaInvoicesTbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW: CUBIX FOOTWEAR DEDICATED HUB             -->
+      <!-- ============================================== -->
+      <section class="view-panel" id="view-supplier-cubix">
+        <!-- Supplier Hero Header -->
+        <div class="supplier-hero-box">
+          <div class="supplier-hero-left">
+            <div class="supplier-hero-logo-btn" style="background: #FFFFFF;">
+              <img src="assets/cubix-logo.png" alt="Cubix Footwear" style="max-height: 28px; width: auto; object-fit: contain;">
+            </div>
+            <div class="supplier-hero-meta">
+              <h2>Cubix Footwear Private Limited</h2>
+              <p>
+                <span>🏢 Supplier Account &bull; SKIL Lifestyle LLP</span>
+                <span>•</span>
+                <span>📦 2 Invoices Matched 1:1</span>
+                <span>•</span>
+                <span>💰 Total Purchases: ₹1,70,749</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Document Downloads Vault -->
+        <div class="card-white" style="margin-bottom: 20px;">
+          <div class="section-header-row">
+            <div>
+              <h3 class="section-title">Cubix Invoices &amp; Document Vault</h3>
+              <div class="section-subtitle">1-click direct view &amp; download for all Cubix purchase invoices and vendor statements</div>
+            </div>
+          </div>
+
+          <div class="doc-vault-grid">
+            <div class="doc-vault-item">
+              <div class="doc-vault-info">
+                <div class="doc-vault-icon"><i data-lucide="file-text"></i></div>
+                <div>
+                  <div class="doc-vault-title">058 - 2026-27/2155 - Famous VZM</div>
+                  <div class="doc-vault-desc">Dated: 21-10-2026 &bull; ₹65,029</div>
+                </div>
+              </div>
+              <div style="display: flex; gap: 6px;">
+                <button type="button" onclick="openPdfDocument('documents/cubix/058 - 2026-27-2155 - Famous VZM - 21-10-26.pdf', 'Cubix Inv 058')" class="btn-download-sm" style="background: #0F172A; color: #FFFFFF; border: none; cursor: pointer;">
+                  <i data-lucide="eye" style="width: 13px; height: 13px;"></i>
+                  <span>View</span>
+                </button>
+                <a href="documents/cubix/058 - 2026-27-2155 - Famous VZM - 21-10-26.pdf" download class="btn-download-sm">
+                  <i data-lucide="download" style="width: 13px; height: 13px;"></i>
+                  <span>PDF</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="doc-vault-item">
+              <div class="doc-vault-info">
+                <div class="doc-vault-icon"><i data-lucide="file-text"></i></div>
+                <div>
+                  <div class="doc-vault-title">077 - 2026-27/2383 - SF SKLM</div>
+                  <div class="doc-vault-desc">Dated: 09-11-2026 &bull; ₹1,05,720</div>
+                </div>
+              </div>
+              <div style="display: flex; gap: 6px;">
+                <button type="button" onclick="openPdfDocument('documents/cubix/077 - 2026-27-2383 - SF SKLM - 09-11-26.pdf', 'Cubix Inv 077')" class="btn-download-sm" style="background: #0F172A; color: #FFFFFF; border: none; cursor: pointer;">
+                  <i data-lucide="eye" style="width: 13px; height: 13px;"></i>
+                  <span>View</span>
+                </button>
+                <a href="documents/cubix/077 - 2026-27-2383 - SF SKLM - 09-11-26.pdf" download class="btn-download-sm">
+                  <i data-lucide="download" style="width: 13px; height: 13px;"></i>
+                  <span>PDF</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cubix Invoices Table -->
+        <div class="card-white">
+          <div class="section-header-row">
+            <div>
+              <h3 class="section-title">Cubix Drop-Ship Invoices (2 Bills Matched)</h3>
+              <div class="section-subtitle">100% matched to retail customers (Famous Foot Wear, Shree Footwear)</div>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="biz-table" id="cubixInvoicesTable">
+              <thead>
+                <tr>
+                  <th>VCH #</th>
+                  <th>DATE</th>
+                  <th>SUPPLIER INV</th>
+                  <th>CUSTOMER SOLD TO</th>
+                  <th>SALES VCH</th>
+                  <th style="text-align: right;">PURCHASE ₹</th>
+                  <th style="text-align: right;">SALES ₹</th>
+                  <th style="text-align: right;">MARGIN ₹</th>
+                  <th>ACTION</th>
+                </tr>
+              </thead>
+              <tbody id="cubixInvoicesTbody">
                 <!-- Dynamically populated -->
               </tbody>
             </table>

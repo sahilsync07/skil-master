@@ -400,7 +400,7 @@ function renderDropShipMatrix() {
           <td style="font-family: var(--font-mono); font-weight: 600;">${r.purchaseRef}</td>
           <td style="text-align: center;"><span style="font-weight: 700;">${r.cartons} CTN</span> <span style="font-size: 11px; color: var(--text-muted);">(${r.pairs} pr)</span></td>
           <td style="text-align: right; font-family: var(--font-mono); font-weight: 700;">₹ ${r.purchaseAmount.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
-          <td style="font-size: 11.5px; color: var(--text-secondary);">${r.supplier.includes('Xpania') ? 'Xpania' : 'Ajanta'}</td>
+          <td style="font-size: 11.5px; color: var(--text-secondary);">${r.supplier.includes('Xpania') ? 'Xpania' : (r.supplier.includes('Cubix') ? 'Cubix' : 'Ajanta')}</td>
           <td style="font-family: var(--font-mono); font-weight: 700; color: #1D4ED8;">${r.salesVoucher}</td>
           <td style="text-align: right; font-family: var(--font-mono); font-weight: 700;">₹ ${r.salesAmount.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
           <td style="text-align: right; font-family: var(--font-mono); font-weight: 700; color: ${spreadColor};">${spreadSign}₹ ${r.tradeMargin.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>

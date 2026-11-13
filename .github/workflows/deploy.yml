@@ -4,12 +4,18 @@ on:
   push:
     branches: [ main ]
   workflow_dispatch:
+    inputs:
+      force_full_build:
+        description: 'Force Full Android Release Build'
+        required: false
+        default: 'true'
+        type: boolean
 
 permissions:
   contents: write
 
 jobs:
-  build-and-release:
+  detect-and-build:
     name: Build Signed AAB & APK
     runs-on: ubuntu-latest
     env:
@@ -21,7 +27,30 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Detect Changes (Data-Only vs App Revamp)
+        id: check_changes
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "IS_FULL_BUILD=true" >> "$GITHUB_ENV"
+            echo ">> Workflow manually dispatched: Triggering full Android Release build"
+          else
+            # Inspect changed files in the push
+            CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD || true)
+            echo "Changed files in commit:"
+            echo "$CHANGED_FILES"
+            
+            # Check if web code, android native code, or workflow itself was modified
+            if echo "$CHANGED_FILES" | grep -qE '^(web/(index\.html|app\.js|style\.css|tracking-ui\.js|manifest\.json)|android-app/|\.github/workflows/)'; then
+              echo "IS_FULL_BUILD=true" >> "$GITHUB_ENV"
+              echo ">> Code/UI files changed: Triggering full Android Release build"
+            else
+              echo "IS_FULL_BUILD=false" >> "$GITHUB_ENV"
+              echo ">> Data-only changes: Skipping Android binary build (data reflects live via web/data & Supabase)"
+            fi
+          fi
+
       - name: Setup Node.js
+        if: env.IS_FULL_BUILD == 'true'
         uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -29,12 +58,14 @@ jobs:
           cache-dependency-path: 'android-app/package-lock.json'
 
       - name: Install Android Dependencies & Sync Capacitor
+        if: env.IS_FULL_BUILD == 'true'
         run: |
           cd android-app
           npm install
           npx cap sync android
 
       - name: Setup Java Development Kit (JDK 21)
+        if: env.IS_FULL_BUILD == 'true'
         uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
@@ -42,8 +73,8 @@ jobs:
           cache: 'gradle'
 
       - name: Configure Dynamic Versioning
+        if: env.IS_FULL_BUILD == 'true'
         run: |
-          # Calculate strictly increasing version code based on GitHub Run Number
           BUILD_CODE=$((GITHUB_RUN_NUMBER + 10))
           BUILD_NAME="1.0.${GITHUB_RUN_NUMBER}"
           echo "VERSION_CODE=${BUILD_CODE}" > android-app/android/version.properties
@@ -54,10 +85,10 @@ jobs:
           echo "Dynamic Build Version Name: ${BUILD_NAME}"
 
       - name: Prepare Release Signing Keystore
+        if: env.IS_FULL_BUILD == 'true'
         env:
           KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
         run: |
-          # If a GitHub Secret exists for KEYSTORE_BASE64, decode it; otherwise use the repo keystore
           if [ -n "$KEYSTORE_BASE64" ]; then
             echo "$KEYSTORE_BASE64" | base64 -d > android-app/android/skil-release-key.jks
             echo "Keystore restored from GitHub Secrets."
@@ -66,6 +97,7 @@ jobs:
           fi
 
       - name: Build Signed Android App Bundle (AAB) & Universal APK
+        if: env.IS_FULL_BUILD == 'true'
         env:
           RELEASE_STORE_PASSWORD: ${{ secrets.RELEASE_STORE_PASSWORD || 'SkilMaster@2026' }}
           RELEASE_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS || 'skilmaster' }}
@@ -76,6 +108,7 @@ jobs:
           ./gradlew bundleRelease assembleRelease --no-daemon
 
       - name: Prepare Release Artifacts
+        if: env.IS_FULL_BUILD == 'true'
         run: |
           BUILD_NAME="1.0.${GITHUB_RUN_NUMBER}"
           mkdir -p artifacts
@@ -85,6 +118,7 @@ jobs:
           ls -la artifacts/
 
       - name: Publish GitHub Release
+        if: env.IS_FULL_BUILD == 'true'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ env.BUILD_NAME }}
@@ -108,7 +142,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Deploy to Google Play Console (Internal Testing)
-        if: env.PLAY_CONFIGURED == 'true'
+        if: env.IS_FULL_BUILD == 'true' && env.PLAY_CONFIGURED == 'true'
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
@@ -116,3 +150,10 @@ jobs:
           releaseFiles: artifacts/SKIL_Master-v${{ env.BUILD_NAME }}-signed.aab
           track: internal
           status: completed
+
+      - name: Log Data-Only Sync Confirmation
+        if: env.IS_FULL_BUILD == 'false'
+        run: |
+          echo "✅ Data-only update confirmed."
+          echo "All ledger data, vouchers, and statement JSONs are synced live to web/data and Supabase."
+          echo "No Android app store binary release required for data updates."

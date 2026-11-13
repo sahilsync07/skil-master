@@ -42,7 +42,7 @@ targets.forEach(destDir => {
       fs.copyFileSync(src, dest);
     }
   });
-  ['assets', 'data'].forEach(folder => {
+  ['assets', 'data', 'documents'].forEach(folder => {
     const srcFolder = path.join(webDir, folder);
     if (fs.existsSync(srcFolder)) {
       copyDirRecursive(srcFolder, path.join(destDir, folder));
