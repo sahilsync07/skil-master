@@ -68,12 +68,20 @@ class Database {
     writeJson(FILES.state, this.state);
   }
 
-  resetCursors() {
+  resetCursors({ clearData = false } = {}) {
     this.saveState({
       lastMasterAlterId: 0,
       lastStockAlterId: 0,
       lastVoucherAlterId: 0
     });
+    if (clearData) {
+      this.vouchers = {};
+      this.ledgers = {};
+      this.stockItems = {};
+      writeJson(FILES.vouchers, this.vouchers);
+      writeJson(FILES.ledgers, this.ledgers);
+      writeJson(FILES.stockItems, this.stockItems);
+    }
   }
 
   upsertLedgers(list) {

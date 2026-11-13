@@ -1,0 +1,2691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SKIL Ledger — Digital Manual Bahi Khata</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ==========================================================================
+       SKIL LEDGER — MODERN INDIAN BAHI KHATA DESIGN SYSTEM
+       Obsidian Slate & Ivory Parchment Palette
+       ========================================================================== */
+    :root {
+      --bg-canvas: #F8FAFC;
+      --bg-surface: #FFFFFF;
+      --bg-surface-alt: #F1F5F9;
+      --bg-sidebar: #0F172A;
+      --bg-sidebar-hover: #1E293B;
+      --bg-sidebar-active: #334155;
+      
+      --border-subtle: #E2E8F0;
+      --border-strong: #CBD5E1;
+      --border-ruled: #E2E8F0;
+      
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #94A3B8;
+      --text-inverse: #F8FAFC;
+      
+      --primary: #059669; /* Emerald */
+      --primary-hover: #047857;
+      --primary-subtle: #ECFDF5;
+      --primary-border: #A7F3D0;
+      
+      --bahi-gold: #D97706; /* Traditional ledger gold/amber */
+      --bahi-gold-subtle: #FEF3C7;
+      --bahi-gold-border: #FDE68A;
+      
+      --credit-green: #059669; /* Jama / CR */
+      --credit-bg: #F0FDF4;
+      --debit-red: #DC2626; /* Udhar / DR */
+      --debit-bg: #FEF2F2;
+      
+      --info-blue: #2563EB;
+      --info-bg: #EFF6FF;
+      
+      --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'Fira Code', Menlo, Monaco, Consolas, monospace;
+      
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+      --radius-xl: 18px;
+      
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+      
+      --sidebar-width: 270px;
+      --topbar-height: 64px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background-color: var(--bg-canvas);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      font-size: 14px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F1F5F9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94A3B8;
+    }
+
+    /* ==========================================================================
+       SIDEBAR NAVIGATION
+       ========================================================================== */
+    .app-sidebar {
+      width: var(--sidebar-width);
+      background-color: var(--bg-sidebar);
+      color: var(--text-inverse);
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      z-index: 50;
+      transition: all 0.25s ease;
+      box-shadow: 4px 0 16px rgba(0,0,0,0.12);
+    }
+
+    .sidebar-header {
+      padding: 18px 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 18px;
+      color: #FFFFFF;
+      box-shadow: 0 4px 10px rgba(5, 150, 105, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .brand-meta h1 {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: #F8FAFC;
+    }
+
+    .brand-meta p {
+      font-size: 11px;
+      color: var(--bahi-gold);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .sidebar-nav {
+      flex: 1;
+      padding: 16px 12px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .nav-section-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #64748B;
+      font-weight: 700;
+      padding: 12px 10px 4px 10px;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      color: #94A3B8;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      position: relative;
+    }
+
+    .nav-item:hover {
+      background-color: var(--bg-sidebar-hover);
+      color: #F8FAFC;
+    }
+
+    .nav-item.active {
+      background-color: var(--primary);
+      color: #FFFFFF;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+    }
+
+    .nav-item svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    .nav-badge {
+      margin-left: auto;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.12);
+      color: #E2E8F0;
+    }
+
+    .nav-item.active .nav-badge {
+      background: rgba(255, 255, 255, 0.25);
+      color: #FFFFFF;
+    }
+
+    .sidebar-footer {
+      padding: 14px 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(0,0,0,0.2);
+    }
+
+    .tally-status-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 12px;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #94A3B8;
+      flex-shrink: 0;
+    }
+
+    .pulse-dot.online {
+      background-color: #10B981;
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+      animation: pulse 2s infinite;
+    }
+
+    .pulse-dot.offline {
+      background-color: #EF4444;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
+      70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+
+    /* ==========================================================================
+       MAIN CONTENT WRAPPER
+       ========================================================================== */
+    .app-main {
+      margin-left: var(--sidebar-width);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    /* Top Navigation Bar */
+    .app-topbar {
+      height: var(--topbar-height);
+      background-color: var(--bg-surface);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      position: sticky;
+      top: 0;
+      z-index: 40;
+    }
+
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .page-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.15s ease;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: #FFFFFF;
+      box-shadow: 0 2px 6px rgba(5, 150, 105, 0.25);
+    }
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
+    }
+
+    .btn-secondary {
+      background-color: var(--bg-surface);
+      border-color: var(--border-subtle);
+      color: var(--text-primary);
+    }
+    .btn-secondary:hover {
+      background-color: var(--bg-surface-alt);
+      border-color: var(--border-strong);
+    }
+
+    .btn-gold {
+      background-color: var(--bahi-gold);
+      color: #FFFFFF;
+    }
+    .btn-gold:hover {
+      background-color: #B45309;
+    }
+
+    .btn-sm {
+      padding: 5px 10px;
+      font-size: 12px;
+    }
+
+    .btn-icon {
+      padding: 8px;
+      border-radius: var(--radius-sm);
+    }
+
+    /* Content Area */
+    .app-content {
+      flex: 1;
+      padding: 24px 28px 48px;
+    }
+
+    /* ==========================================================================
+       CARDS & METRICS
+       ========================================================================== */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .metric-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .metric-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--border-strong);
+    }
+
+    .metric-card.accent-emerald::before { background: var(--primary); }
+    .metric-card.accent-gold::before { background: var(--bahi-gold); }
+    .metric-card.accent-red::before { background: var(--debit-red); }
+    .metric-card.accent-blue::before { background: var(--info-blue); }
+
+    .metric-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .metric-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .metric-value {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+      font-family: var(--font-main);
+    }
+
+    .metric-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* ==========================================================================
+       LEDGER SHEET & TABLE (BAHI KHATA STYLING)
+       ========================================================================== */
+    .ledger-sheet {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .sheet-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      background: #FFFFFF;
+    }
+
+    .sheet-title-group h2 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .sheet-title-group p {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .sheet-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    .bahi-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .bahi-table th {
+      background: #F8FAFC;
+      color: #334155;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border-strong);
+      white-space: nowrap;
+    }
+
+    .bahi-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border-ruled);
+      color: var(--text-primary);
+      font-size: 13px;
+      vertical-align: middle;
+    }
+
+    .bahi-table tbody tr:hover {
+      background-color: #F8FAFC;
+    }
+
+    .bahi-table tr.cancelled-row td {
+      text-decoration: line-through;
+      color: var(--text-muted);
+      background-color: #FFF5F5;
+    }
+
+    .col-amount {
+      text-align: right;
+      font-family: var(--font-mono);
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    .col-credit {
+      color: var(--credit-green);
+    }
+
+    .col-debit {
+      color: var(--debit-red);
+    }
+
+    .col-balance {
+      text-align: right;
+      font-family: var(--font-mono);
+      font-weight: 700;
+    }
+
+    .tfoot-total td {
+      background: #F1F5F9;
+      font-weight: 700;
+      border-top: 2px solid var(--border-strong);
+      border-bottom: 2px solid var(--border-strong);
+      color: var(--text-primary);
+      font-size: 14px;
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .badge-tally {
+      background: #EFF6FF;
+      color: #1D4ED8;
+      border: 1px solid #BFDBFE;
+    }
+
+    .badge-manual {
+      background: #FEF3C7;
+      color: #B45309;
+      border: 1px solid #FDE68A;
+    }
+
+    .badge-dr {
+      background: #FEF2F2;
+      color: #DC2626;
+      border: 1px solid #FECACA;
+    }
+
+    .badge-cr {
+      background: #F0FDF4;
+      color: #16A34A;
+      border: 1px solid #BBF7D0;
+    }
+
+    .badge-cancelled {
+      background: #F1F5F9;
+      color: #64748B;
+      border: 1px solid #CBD5E1;
+    }
+
+    /* ==========================================================================
+       DATE FILTER / SEARCH BARS
+       ========================================================================== */
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 20px;
+      background: #FAFAFA;
+      border-bottom: 1px solid var(--border-subtle);
+      flex-wrap: wrap;
+    }
+
+    .search-input {
+      position: relative;
+      flex: 1;
+      min-width: 220px;
+    }
+
+    .search-input input {
+      width: 100%;
+      padding: 8px 12px 8px 34px;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-main);
+      font-size: 13px;
+      background: #FFFFFF;
+      outline: none;
+    }
+    .search-input input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
+    }
+    .search-input svg {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      width: 16px;
+      height: 16px;
+    }
+
+    .filter-select, .filter-date {
+      padding: 8px 12px;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-main);
+      font-size: 13px;
+      background: #FFFFFF;
+      outline: none;
+    }
+
+    /* ==========================================================================
+       CALENDAR MATRIX VIEW
+       ========================================================================== */
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+      padding: 16px;
+    }
+
+    .calendar-header-day {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: #64748B;
+      padding: 8px 0;
+      text-transform: uppercase;
+    }
+
+    .calendar-day-tile {
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 10px;
+      min-height: 90px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      position: relative;
+    }
+
+    .calendar-day-tile:hover {
+      border-color: var(--primary);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+
+    .calendar-day-tile.has-activity {
+      border-color: #CBD5E1;
+      background: #FFFFFF;
+    }
+
+    .calendar-day-tile.today {
+      border: 2px solid var(--primary);
+      background: #F0FDF4;
+    }
+
+    .day-number {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .day-stats {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .day-stat-sales { color: var(--credit-green); font-weight: 600; }
+    .day-stat-receipts { color: var(--info-blue); }
+    .day-stat-payments { color: var(--debit-red); }
+
+    .day-badge-count {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      font-size: 10px;
+      font-weight: 700;
+      background: #E2E8F0;
+      color: #334155;
+      padding: 1px 6px;
+      border-radius: 10px;
+    }
+
+    .dot-remarks {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--bahi-gold);
+      display: inline-block;
+      margin-left: 4px;
+    }
+
+    /* ==========================================================================
+       MODALS & DIALOGS
+       ========================================================================== */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .modal-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-box {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      width: 90%;
+      max-width: 600px;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      transform: translateY(15px);
+      transition: transform 0.2s ease;
+    }
+
+    .modal-backdrop.active .modal-box {
+      transform: translateY(0);
+    }
+
+    .modal-header {
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #F8FAFC;
+    }
+
+    .modal-header h3 {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .modal-body {
+      padding: 24px;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .modal-footer {
+      padding: 16px 24px;
+      border-top: 1px solid var(--border-subtle);
+      background: #F8FAFC;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #475569;
+      margin-bottom: 6px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-main);
+      font-size: 13px;
+      outline: none;
+      background: #FFFFFF;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
+    }
+
+    .form-row {
+      display: flex;
+      gap: 16px;
+    }
+    .form-row .form-group {
+      flex: 1;
+    }
+
+    /* WhatsApp preview styling */
+    .whatsapp-box {
+      background: #EFEAE2;
+      border-radius: var(--radius-md);
+      padding: 16px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 13px;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      border: 1px solid #D1D7DB;
+      color: #111B21;
+      max-height: 380px;
+      overflow-y: auto;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    /* Print styles */
+    @media print {
+      body {
+        background: #FFFFFF;
+        color: #000000;
+      }
+      .app-sidebar, .app-topbar, .sheet-actions, .filter-bar, .btn, .no-print {
+        display: none !important;
+      }
+      .app-main {
+        margin-left: 0 !important;
+      }
+      .app-content {
+        padding: 0 !important;
+      }
+      .ledger-sheet {
+        border: none !important;
+        box-shadow: none !important;
+      }
+      .bahi-table th, .bahi-table td {
+        border-color: #000000 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======================================================================
+       SIDEBAR NAVIGATION
+       ====================================================================== -->
+  <aside class="app-sidebar">
+    <div class="sidebar-header">
+      <div class="brand-icon">SK</div>
+      <div class="brand-meta">
+        <h1>SKIL Ledger</h1>
+        <p>Digital Bahi Khata</p>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section-title">Core Khata</div>
+      
+      <div class="nav-item active" onclick="switchView('dashboard')">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        <span>Dashboard</span>
+      </div>
+
+      <div class="nav-item" onclick="switchView('debtors')">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+        <span>Debtors Khata</span>
+        <span class="nav-badge" id="badge-debtors-count">15</span>
+      </div>
+
+      <div class="nav-item" onclick="switchView('creditors')">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+        <span>Creditors Khata</span>
+        <span class="nav-badge" id="badge-creditors-count">3</span>
+      </div>
+
+      <div class="nav-item" onclick="switchView('all-ledgers')">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        <span>All Ledgers</span>
+      </div>
+
+      <div class="nav-section-title">Daily Operations</div>
+
+      <div class="nav-item" onclick="switchView('daybook')">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
+        <span>Daybook (Rojnamcha)</span>
+      </div>
+
+      <div class="nav-item" onclick="switchView('calendar')">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        <span>Daybook Calendar</span>
+      </div>
+
+      <div class="nav-item" onclick="switchView('search')">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        <span>Global Search</span>
+      </div>
+
+      <div class="nav-section-title">Management</div>
+
+      <div class="nav-item" onclick="switchView('reports')">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        <span>Reports & Audit</span>
+      </div>
+
+      <div class="nav-item" onclick="switchView('tally-sync')">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+        <span>Tally Prime Sync</span>
+      </div>
+
+      <div class="nav-item" onclick="switchView('backups')">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-2m-4-1v8m0 0l3-3m-3 3L9 8m-5 5h2.586a1 1 0 01.707.293l2.414 2.414a1 1 0 00.707.293h3.172a1 1 0 00.707-.293l2.414-2.414a1 1 0 01.707-.293H20"/></svg>
+        <span>Backups & Safety</span>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="tally-status-pill">
+        <div class="pulse-dot online" id="tally-pulse"></div>
+        <div style="flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+          <div style="font-weight: 700; color: #F8FAFC;" id="tally-company-label">SKIL LIFESTYLE LLP</div>
+          <div style="font-size: 10px; color: #94A3B8;" id="tally-endpoint-label">Tally: Connected (9000)</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ======================================================================
+       MAIN CONTENT CONTAINER
+       ====================================================================== -->
+  <main class="app-main">
+    <!-- Topbar -->
+    <header class="app-topbar">
+      <div class="topbar-left">
+        <h2 class="page-title" id="page-title">
+          <span>Dashboard</span>
+        </h2>
+      </div>
+
+      <div class="topbar-right">
+        <button class="btn btn-secondary btn-sm" onclick="triggerQuickSync()">
+          <svg style="width: 14px; height: 14px;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          <span id="quick-sync-text">Sync Tally</span>
+        </button>
+
+        <button class="btn btn-primary btn-sm" onclick="openNewTransactionModal()">
+          <svg style="width: 14px; height: 14px;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          <span>Record Entry</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Dynamic View Body -->
+    <div class="app-content" id="view-content">
+      <!-- Injected by JavaScript -->
+    </div>
+  </main>
+
+  <!-- ======================================================================
+       MODAL 1: RECORD NEW MANUAL KHATA TRANSACTION
+       ====================================================================== -->
+  <div class="modal-backdrop" id="modal-new-transaction">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Record Manual Khata Entry</h3>
+        <button class="btn btn-secondary btn-sm" onclick="closeModal('modal-new-transaction')">✕</button>
+      </div>
+      <div class="modal-body">
+        <form id="form-new-txn" onsubmit="submitNewTransaction(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Date *</label>
+              <input type="date" id="txn-date" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label>Transaction Type *</label>
+              <select id="txn-type" class="form-control" onchange="handleTxnTypeChange()">
+                <option value="sales_bill">Sales Bill (CR - Customer)</option>
+                <option value="receipt">Receipt / Payment In (DR - Customer)</option>
+                <option value="purchase_bill">Purchase Bill (DR - Supplier)</option>
+                <option value="payment">Payment Out (CR - Supplier)</option>
+                <option value="credit_note">Credit Note (Discount / Return)</option>
+                <option value="debit_note">Debit Note (Adjustment)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Party Name *</label>
+            <input type="text" id="txn-party" class="form-control" list="party-datalist" placeholder="Type or select party name..." required autocomplete="off">
+            <datalist id="party-datalist"></datalist>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Amount (₹) *</label>
+              <input type="number" step="0.01" id="txn-amount" class="form-control" placeholder="0.00" required>
+            </div>
+            <div class="form-group">
+              <label>Payment Mode</label>
+              <select id="txn-payment-mode" class="form-control">
+                <option value="Bank">Bank (Union Bank / RTGS / UPI)</option>
+                <option value="Cash">Cash</option>
+                <option value="Credit">Credit (Khata)</option>
+                <option value="Cheque">Cheque</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Reference / Invoice #</label>
+              <input type="text" id="txn-ref" class="form-control" placeholder="e.g. SKIL-071, Bilty #, UTR #">
+            </div>
+            <div class="form-group">
+              <label>Against Bill (Optional)</label>
+              <input type="text" id="txn-against-bill" class="form-control" placeholder="Original bill no if settling">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Particulars / Narration</label>
+            <input type="text" id="txn-particulars" class="form-control" placeholder="Brief description of goods or payment...">
+          </div>
+
+          <div class="form-group">
+            <label>Remarks / Diary Note</label>
+            <textarea id="txn-remarks" class="form-control" rows="2" placeholder="Driver contact, special notes, discount agreement..."></textarea>
+          </div>
+
+          <div class="modal-footer" style="padding-right: 0; padding-bottom: 0;">
+            <button type="button" class="btn btn-secondary" onclick="closeModal('modal-new-transaction')">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save to Daybook</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       MODAL 2: WHATSAPP PAYMENT REMINDER
+       ====================================================================== -->
+  <div class="modal-backdrop" id="modal-whatsapp">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>💬 WhatsApp Payment Reminder</h3>
+        <button class="btn btn-secondary btn-sm" onclick="closeModal('modal-whatsapp')">✕</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 12px;">
+          Standardized reminder computed strictly per GEMINI.md standards (5% CD calculated on taxable subtotal).
+        </p>
+        <div class="whatsapp-box" id="whatsapp-preview-text">
+          <!-- Text loaded dynamically -->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal('modal-whatsapp')">Close</button>
+        <button class="btn btn-primary" onclick="copyWhatsAppData()">
+          <svg style="width: 14px; height: 14px;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+          <span id="copy-wa-btn-text">Copy to Clipboard</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       MODAL 3: EDIT MANUAL ENTRY WITH AUDIT TRAIL
+       ====================================================================== -->
+  <div class="modal-backdrop" id="modal-edit-txn">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Edit Transaction (Audit Logged)</h3>
+        <button class="btn btn-secondary btn-sm" onclick="closeModal('modal-edit-txn')">✕</button>
+      </div>
+      <div class="modal-body">
+        <form id="form-edit-txn" onsubmit="submitEditTransaction(event)">
+          <input type="hidden" id="edit-txn-id">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Amount (₹) *</label>
+              <input type="number" step="0.01" id="edit-txn-amount" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label>Payment Mode</label>
+              <select id="edit-txn-mode" class="form-control">
+                <option value="Bank">Bank</option>
+                <option value="Cash">Cash</option>
+                <option value="Credit">Credit</option>
+                <option value="Cheque">Cheque</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Particulars</label>
+            <input type="text" id="edit-txn-particulars" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Reference</label>
+            <input type="text" id="edit-txn-ref" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Reason for Modification * (Required for Audit Trail)</label>
+            <input type="text" id="edit-txn-reason" class="form-control" placeholder="e.g. Corrected bilty amount / party settlement agreed" required>
+          </div>
+          <div class="modal-footer" style="padding-right: 0; padding-bottom: 0;">
+            <button type="button" class="btn btn-secondary" onclick="closeModal('modal-edit-txn')">Cancel</button>
+            <button type="submit" class="btn btn-primary">Update with Audit Trail</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       JAVASCRIPT APPLICATION CORE
+       ====================================================================== -->
+  <script>
+    // Global State
+    const API_BASE = '';
+    const state = {
+      currentView: 'dashboard',
+      dashboardData: null,
+      ledgers: [],
+      vouchers: [],
+      selectedParty: null,
+      selectedPartyStatement: null,
+      daybookDate: new Date().toISOString().split('T')[0],
+      daybookData: null,
+      allDates: [],
+      calendarYear: 2026,
+      calendarMonth: 11, // November
+      status: null
+    };
+
+    // Indian Rupee Formatter
+    function formatINR(val) {
+      const num = Number(val) || 0;
+      return '₹ ' + num.toLocaleString('en-IN', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+    }
+
+    function formatDate(dateStr) {
+      if (!dateStr) return '-';
+      const parts = dateStr.split('-');
+      if (parts.length === 3) {
+        const d = new Date(parts[0], parts[1] - 1, parts[2]);
+        return d.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
+      }
+      return dateStr;
+    }
+
+    // Modal helpers
+    function openModal(id) {
+      document.getElementById(id).classList.add('active');
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('active');
+    }
+
+    // Navigation Switcher
+    function switchView(viewName, param = null) {
+      state.currentView = viewName;
+
+      // Update sidebar nav items
+      document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+      const activeNav = Array.from(document.querySelectorAll('.nav-item')).find(el => {
+        return el.getAttribute('onclick')?.includes(`'${viewName}'`);
+      });
+      if (activeNav) activeNav.classList.add('active');
+
+      const titleEl = document.getElementById('page-title');
+
+      if (viewName === 'dashboard') {
+        titleEl.innerHTML = '<span>Dashboard</span>';
+        renderDashboard();
+      } else if (viewName === 'debtors') {
+        titleEl.innerHTML = '<span>Debtors Khata (Retailers & Customers)</span>';
+        renderDebtorsKhata();
+      } else if (viewName === 'creditors') {
+        titleEl.innerHTML = '<span>Creditors Khata (Suppliers & Vendors)</span>';
+        renderCreditorsKhata();
+      } else if (viewName === 'all-ledgers') {
+        titleEl.innerHTML = '<span>All Business Ledgers</span>';
+        renderAllLedgers();
+      } else if (viewName === 'party-ledger') {
+        const decodedParty = decodeURIComponent(unescape(param || state.selectedParty || ''));
+        state.selectedParty = decodedParty;
+        titleEl.innerHTML = `<span>Party Ledger: ${decodedParty}</span>`;
+        renderPartyLedger(decodedParty);
+      } else if (viewName === 'daybook') {
+        if (param) state.daybookDate = param;
+        titleEl.innerHTML = `<span>Daily Business Record (Rojnamcha) — ${state.daybookDate}</span>`;
+        renderDaybook(state.daybookDate);
+      } else if (viewName === 'calendar') {
+        titleEl.innerHTML = '<span>Daybook Calendar Matrix</span>';
+        renderCalendar();
+      } else if (viewName === 'search') {
+        titleEl.innerHTML = '<span>Global Transaction Search</span>';
+        renderSearch();
+      } else if (viewName === 'reports') {
+        titleEl.innerHTML = '<span>Financial Reports & Audit Trail</span>';
+        renderReports();
+      } else if (viewName === 'tally-sync') {
+        titleEl.innerHTML = '<span>Tally Prime Integration & Sync Center</span>';
+        renderTallySyncCenter();
+      } else if (viewName === 'backups') {
+        titleEl.innerHTML = '<span>Data Backups & Recovery</span>';
+        renderBackups();
+      }
+    }
+
+    // ========================================================================
+    // 1. DASHBOARD VIEW
+    // ========================================================================
+    async function renderDashboard() {
+      const container = document.getElementById('view-content');
+      container.innerHTML = '<div style="text-align: center; padding: 40px; color: #94A3B8;">Loading business overview...</div>';
+
+      try {
+        const res = await fetch(`${API_BASE}/api/dashboard`);
+        const data = await res.json();
+        state.dashboardData = data;
+
+        const kpis = data.kpis;
+        const topDebtors = data.topDebtors || [];
+        const topCreditors = data.topCreditors || [];
+        const recent = data.recentActivity || [];
+
+        container.innerHTML = `
+          <!-- KPI Metrics Row -->
+          <div class="metrics-grid">
+            <div class="metric-card accent-emerald">
+              <div class="metric-header">
+                <span class="metric-title">Debtors Outstanding</span>
+                <span class="badge badge-dr">Receivable</span>
+              </div>
+              <div class="metric-value">${formatINR(kpis.totalDebtorsOutstanding)}</div>
+              <div class="metric-sub">Owed by customers to SKIL</div>
+            </div>
+
+            <div class="metric-card accent-gold">
+              <div class="metric-header">
+                <span class="metric-title">Creditors Outstanding</span>
+                <span class="badge badge-cr">Payable</span>
+              </div>
+              <div class="metric-value">${formatINR(kpis.totalCreditorsOutstanding)}</div>
+              <div class="metric-sub">Owed by SKIL to suppliers</div>
+            </div>
+
+            <div class="metric-card accent-blue">
+              <div class="metric-header">
+                <span class="metric-title">Today's Sales</span>
+                <span class="badge badge-cr">Outward</span>
+              </div>
+              <div class="metric-value">${formatINR(kpis.todaySales)}</div>
+              <div class="metric-sub">MTD: ${formatINR(kpis.mtdSales)}</div>
+            </div>
+
+            <div class="metric-card accent-emerald">
+              <div class="metric-header">
+                <span class="metric-title">Today's Collections</span>
+                <span class="badge badge-dr">Inflow</span>
+              </div>
+              <div class="metric-value">${formatINR(kpis.todayReceipts)}</div>
+              <div class="metric-sub">MTD: ${formatINR(kpis.mtdCollections)}</div>
+            </div>
+          </div>
+
+          <!-- Split Top 5 Table Row -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px;">
+            <!-- Top Debtors -->
+            <div class="ledger-sheet" style="margin-bottom: 0;">
+              <div class="sheet-header">
+                <div class="sheet-title-group">
+                  <h2>Top Debtors (Receivables)</h2>
+                  <p>Highest pending balances</p>
+                </div>
+                <button class="btn btn-secondary btn-sm" onclick="switchView('debtors')">View All</button>
+              </div>
+              <div class="table-container">
+                <table class="bahi-table">
+                  <thead>
+                    <tr>
+                      <th>Customer</th>
+                      <th class="col-amount">Outstanding</th>
+                      <th style="text-align: right;">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${topDebtors.map(d => `
+                      <tr>
+                        <td>
+                          <div style="font-weight: 700;">${d.name}</div>
+                          <div style="font-size: 11px; color: #64748B;">${d.mobile || d.gstin || 'Retailer'}</div>
+                        </td>
+                        <td class="col-amount col-credit">${formatINR(d.outstanding)}</td>
+                        <td style="text-align: right;">
+                          <button class="btn btn-secondary btn-sm" onclick="switchView('party-ledger', '${escape(d.name)}')">Ledger</button>
+                        </td>
+                      </tr>
+                    `).join('')}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Top Creditors -->
+            <div class="ledger-sheet" style="margin-bottom: 0;">
+              <div class="sheet-header">
+                <div class="sheet-title-group">
+                  <h2>Top Creditors (Payables)</h2>
+                  <p>Supplier commitments</p>
+                </div>
+                <button class="btn btn-secondary btn-sm" onclick="switchView('creditors')">View All</button>
+              </div>
+              <div class="table-container">
+                <table class="bahi-table">
+                  <thead>
+                    <tr>
+                      <th>Supplier</th>
+                      <th class="col-amount">Outstanding</th>
+                      <th style="text-align: right;">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${topCreditors.map(c => `
+                      <tr>
+                        <td>
+                          <div style="font-weight: 700;">${c.name}</div>
+                          <div style="font-size: 11px; color: #64748B;">${c.gstin || 'Supplier'}</div>
+                        </td>
+                        <td class="col-amount col-debit">${formatINR(c.outstanding)}</td>
+                        <td style="text-align: right;">
+                          <button class="btn btn-secondary btn-sm" onclick="switchView('party-ledger', '${escape(c.name)}')">Ledger</button>
+                        </td>
+                      </tr>
+                    `).join('')}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Transactions Stream -->
+          <div class="ledger-sheet">
+            <div class="sheet-header">
+              <div class="sheet-title-group">
+                <h2>Recent Transactions (Rojnamcha Stream)</h2>
+                <p>Live stream of manual daybook entries and Tally vouchers</p>
+              </div>
+              <button class="btn btn-secondary btn-sm" onclick="switchView('daybook')">Open Daybook</button>
+            </div>
+            <div class="table-container">
+              <table class="bahi-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Source</th>
+                    <th>Party</th>
+                    <th>Type / Ref</th>
+                    <th>Particulars</th>
+                    <th class="col-amount">Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${recent.map(r => `
+                    <tr>
+                      <td style="font-family: var(--font-mono); font-size: 12px;">${formatDate(r.date)}</td>
+                      <td>
+                        <span class="badge ${r.source === 'tally' ? 'badge-tally' : 'badge-manual'}">
+                          ${r.source === 'tally' ? 'Tally' : 'Manual'}
+                        </span>
+                      </td>
+                      <td style="font-weight: 600;">
+                        <a href="javascript:void(0)" onclick="switchView('party-ledger', '${escape(r.partyName)}')" style="color: var(--text-primary); text-decoration: none;">
+                          ${r.partyName}
+                        </a>
+                      </td>
+                      <td>
+                        <span style="font-weight: 600;">${r.type}</span>
+                        ${r.reference ? `<span style="font-size: 11px; color: #64748B;"> (${r.reference})</span>` : ''}
+                      </td>
+                      <td style="color: var(--text-secondary);">${r.particulars || '-'}</td>
+                      <td class="col-amount">${formatINR(r.amount)}</td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        `;
+      } catch (err) {
+        container.innerHTML = `<div style="color: red; padding: 20px;">Failed to load dashboard: ${err.message}</div>`;
+      }
+    }
+
+    // ========================================================================
+    // 2. DEBTORS KHATA VIEW
+    // ========================================================================
+    async function renderDebtorsKhata() {
+      const container = document.getElementById('view-content');
+      container.innerHTML = '<div style="text-align: center; padding: 40px; color: #94A3B8;">Loading debtors khata...</div>';
+
+      try {
+        const res = await fetch(`${API_BASE}/api/ledgers?category=debtor`);
+        const data = await res.json();
+        const debtors = data.ledgers || [];
+
+        const totalReceivable = debtors.reduce((sum, d) => sum + (d.currentOutstanding || d.closingBalance || 0), 0);
+
+        container.innerHTML = `
+          <div class="metrics-grid">
+            <div class="metric-card accent-emerald">
+              <div class="metric-header"><span class="metric-title">Total Sundry Debtors</span></div>
+              <div class="metric-value">${debtors.length}</div>
+              <div class="metric-sub">Active retail accounts</div>
+            </div>
+            <div class="metric-card accent-emerald">
+              <div class="metric-header"><span class="metric-title">Total Receivables</span></div>
+              <div class="metric-value">${formatINR(totalReceivable)}</div>
+              <div class="metric-sub">Debit balance across all parties</div>
+            </div>
+          </div>
+
+          <div class="ledger-sheet">
+            <div class="sheet-header">
+              <div class="sheet-title-group">
+                <h2>Debtors Master Register (Customers)</h2>
+                <p>Retailers and accounts who owe money to SKIL Lifestyle</p>
+              </div>
+              <div class="sheet-actions">
+                <input type="text" class="filter-select" placeholder="Search customer or city..." onkeyup="filterTable(this, 'debtors-table-body')">
+                <button class="btn btn-secondary btn-sm" onclick="exportTableToCSV('debtors-table', 'Debtors_Khata.csv')">Export CSV</button>
+              </div>
+            </div>
+
+            <div class="table-container">
+              <table class="bahi-table" id="debtors-table">
+                <thead>
+                  <tr>
+                    <th>Customer Name</th>
+                    <th>City / District</th>
+                    <th>Mobile</th>
+                    <th>GSTIN</th>
+                    <th class="col-amount">Outstanding (Dr)</th>
+                    <th style="text-align: center;">Vouchers</th>
+                    <th style="text-align: right;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="debtors-table-body">
+                  ${debtors.map(d => `
+                    <tr>
+                      <td style="font-weight: 700;">
+                        <a href="javascript:void(0)" onclick="switchView('party-ledger', '${escape(d.name)}')" style="color: var(--text-primary); text-decoration: none;">
+                          ${d.name}
+                        </a>
+                      </td>
+                      <td style="color: #64748B;">${d.state || '-'}</td>
+                      <td>${d.mobile || '-'}</td>
+                      <td style="font-family: var(--font-mono); font-size: 11px;">${d.gstin || '-'}</td>
+                      <td class="col-amount col-credit">${formatINR(d.currentOutstanding || d.closingBalance || 0)}</td>
+                      <td style="text-align: center;"><span class="badge badge-manual">${d.txnCount || 0}</span></td>
+                      <td style="text-align: right; white-space: nowrap;">
+                        <button class="btn btn-secondary btn-sm" onclick="switchView('party-ledger', '${escape(d.name)}')">View Khata</button>
+                        <button class="btn btn-primary btn-sm" onclick="openWhatsAppModal('${escape(d.name)}')">💬 WhatsApp</button>
+                      </td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        `;
+      } catch (err) {
+        container.innerHTML = `<div style="color: red; padding: 20px;">Failed to load debtors: ${err.message}</div>`;
+      }
+    }
+
+    // ========================================================================
+    // 3. CREDITORS KHATA VIEW
+    // ========================================================================
+    async function renderCreditorsKhata() {
+      const container = document.getElementById('view-content');
+      container.innerHTML = '<div style="text-align: center; padding: 40px; color: #94A3B8;">Loading creditors khata...</div>';
+
+      try {
+        const res = await fetch(`${API_BASE}/api/ledgers?category=creditor`);
+        const data = await res.json();
+        const creditors = data.ledgers || [];
+
+        const totalPayable = creditors.reduce((sum, c) => sum + (c.currentOutstanding || c.closingBalance || 0), 0);
+
+        container.innerHTML = `
+          <div class="metrics-grid">
+            <div class="metric-card accent-gold">
+              <div class="metric-header"><span class="metric-title">Total Sundry Creditors</span></div>
+              <div class="metric-value">${creditors.length}</div>
+              <div class="metric-sub">Suppliers & vendors</div>
+            </div>
+            <div class="metric-card accent-gold">
+              <div class="metric-header"><span class="metric-title">Total Payables</span></div>
+              <div class="metric-value">${formatINR(totalPayable)}</div>
+              <div class="metric-sub">Credit balance across suppliers</div>
+            </div>
+          </div>
+
+          <div class="ledger-sheet">
+            <div class="sheet-header">
+              <div class="sheet-title-group">
+                <h2>Creditors Master Register (Suppliers)</h2>
+                <p>Suppliers and vendors to whom SKIL owes money</p>
+              </div>
+              <div class="sheet-actions">
+                <input type="text" class="filter-select" placeholder="Search supplier or state..." onkeyup="filterTable(this, 'creditors-table-body')">
+                <button class="btn btn-secondary btn-sm" onclick="exportTableToCSV('creditors-table', 'Creditors_Khata.csv')">Export CSV</button>
+              </div>
+            </div>
+
+            <div class="table-container">
+              <table class="bahi-table" id="creditors-table">
+                <thead>
+                  <tr>
+                    <th>Supplier Name</th>
+                    <th>State</th>
+                    <th>GSTIN</th>
+                    <th class="col-amount">Outstanding (Cr)</th>
+                    <th style="text-align: center;">Vouchers</th>
+                    <th style="text-align: right;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="creditors-table-body">
+                  ${creditors.map(c => `
+                    <tr>
+                      <td style="font-weight: 700;">
+                        <a href="javascript:void(0)" onclick="switchView('party-ledger', '${escape(c.name)}')" style="color: var(--text-primary); text-decoration: none;">
+                          ${c.name}
+                        </a>
+                      </td>
+                      <td style="color: #64748B;">${c.state || '-'}</td>
+                      <td style="font-family: var(--font-mono); font-size: 11px;">${c.gstin || '-'}</td>
+                      <td class="col-amount col-debit">${formatINR(c.currentOutstanding || c.closingBalance || 0)}</td>
+                      <td style="text-align: center;"><span class="badge badge-manual">${c.txnCount || 0}</span></td>
+                      <td style="text-align: right;">
+                        <button class="btn btn-secondary btn-sm" onclick="switchView('party-ledger', '${escape(c.name)}')">View Khata</button>
+                      </td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        `;
+      } catch (err) {
+        container.innerHTML = `<div style="color: red; padding: 20px;">Failed to load creditors: ${err.message}</div>`;
+      }
+    }
+
+    // ========================================================================
+    // 4. ALL LEDGERS VIEW
+    // ========================================================================
+    async function renderAllLedgers() {
+      const container = document.getElementById('view-content');
+      container.innerHTML = '<div style="text-align: center; padding: 40px; color: #94A3B8;">Loading all ledgers...</div>';
+
+      try {
+        const res = await fetch(`${API_BASE}/api/ledgers`);
+        const data = await res.json();
+        const ledgers = data.ledgers || [];
+
+        container.innerHTML = `
+          <div class="ledger-sheet">
+            <div class="sheet-header">
+              <div class="sheet-title-group">
+                <h2>All Accounts & Ledgers (${ledgers.length})</h2>
+                <p>Complete chart of accounts imported from Tally Prime and Manual Daybook</p>
+              </div>
+              <div class="sheet-actions">
+                <input type="text" class="filter-select" placeholder="Filter ledgers..." onkeyup="filterTable(this, 'all-ledgers-body')">
+                <button class="btn btn-secondary btn-sm" onclick="exportTableToCSV('all-ledgers-table', 'All_Ledgers.csv')">Export CSV</button>
+              </div>
+            </div>
+
+            <div class="table-container">
+              <table class="bahi-table" id="all-ledgers-table">
+                <thead>
+                  <tr>
+                    <th>Ledger Name</th>
+                    <th>Group / Parent</th>
+                    <th>Category</th>
+                    <th class="col-amount">Closing Balance</th>
+                    <th style="text-align: right;">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="all-ledgers-body">
+                  ${ledgers.map(l => `
+                    <tr>
+                      <td style="font-weight: 700;">
+                        <a href="javascript:void(0)" onclick="switchView('party-ledger', '${escape(l.name)}')" style="color: var(--text-primary); text-decoration: none;">
+                          ${l.name}
+                        </a>
+                      </td>
+                      <td style="color: #64748B;">${l.parent}</td>
+                      <td>
+                        <span class="badge ${l.category === 'debtor' ? 'badge-dr' : l.category === 'creditor' ? 'badge-cr' : 'badge-tally'}">
+                          ${l.category}
+                        </span>
+                      </td>
+                      <td class="col-amount ${l.balanceType === 'Cr' ? 'col-debit' : 'col-credit'}">
+                        ${formatINR(l.closingBalance || l.currentOutstanding || 0)} ${l.balanceType || ''}
+                      </td>
+                      <td style="text-align: right;">
+                        <button class="btn btn-secondary btn-sm" onclick="switchView('party-ledger', '${escape(l.name)}')">View Khata</button>
+                      </td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        `;
+      } catch (err) {
+        container.innerHTML = `<div style="color: red; padding: 20px;">Failed to load ledgers: ${err.message}</div>`;
+      }
+    }
+
+    // ========================================================================
+    // 5. PARTY LEDGER VIEW (INDIVIDUAL STATEMENT WITH RUNNING BALANCE)
+    // ========================================================================
+    async function renderPartyLedger(partyName) {
+      const decodedParty = decodeURIComponent(unescape(partyName || state.selectedParty || ''));
+      state.selectedParty = decodedParty;
+      const container = document.getElementById('view-content');
+      container.innerHTML = '<div style="text-align: center; padding: 40px; color: #94A3B8;">Loading party ledger statement...</div>';
+
+      try {
+        const res = await fetch(`${API_BASE}/api/ledgers/${encodeURIComponent(decodedParty)}`);
+        const data = await res.json();
+        state.selectedPartyStatement = data;
+
+        const party = data.party;
+        state.selectedParty = party.name;
+        document.getElementById('page-title').innerHTML = `<span>Party Ledger: ${party.name}</span>`;
+        const rows = data.statement || [];
+        const isDebtor = party.isDebtor;
+
+        container.innerHTML = `
+          <!-- Party Summary Header Card -->
+          <div class="ledger-sheet" style="margin-bottom: 20px;">
+            <div class="sheet-header" style="background: #F8FAFC;">
+              <div>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <h1 style="font-size: 20px; font-weight: 800; color: var(--text-primary);">${party.name}</h1>
+                  <span class="badge ${isDebtor ? 'badge-dr' : 'badge-cr'}">${isDebtor ? 'Sundry Debtor' : 'Sundry Creditor'}</span>
+                </div>
+                <div style="font-size: 12px; color: #64748B; margin-top: 4px;">
+                  ${party.gstin ? `GSTIN: <b>${party.gstin}</b> | ` : ''}
+                  ${party.mobile ? `Mobile: <b>${party.mobile}</b> | ` : ''}
+                  ${party.address ? `Address: ${party.address}` : ''}
+                </div>
+              </div>
+
+              <div class="sheet-actions">
+                <button class="btn btn-secondary btn-sm" onclick="switchView('${isDebtor ? 'debtors' : 'creditors'}')">← Back to List</button>
+                <button class="btn btn-primary btn-sm" onclick="openNewTransactionModal('${escape(party.name)}', '${isDebtor ? 'debtor' : 'creditor'}')">➕ Record Entry</button>
+                ${isDebtor ? `<button class="btn btn-gold btn-sm" onclick="openWhatsAppModal('${escape(party.name)}')">💬 WhatsApp Reminder</button>` : ''}
+                <button class="btn btn-secondary btn-sm" onclick="window.print()">🖨️ Print</button>
+                <button class="btn btn-secondary btn-sm" onclick="exportTableToCSV('party-statement-table', '${party.name}_Ledger.csv')">Export CSV</button>
+              </div>
+            </div>
+
+            <!-- Party Metrics -->
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; padding: 16px 20px; border-top: 1px solid var(--border-subtle); background: #FFFFFF;">
+              <div>
+                <div style="font-size: 11px; text-transform: uppercase; color: #64748B; font-weight: 700;">Opening Balance</div>
+                <div style="font-size: 16px; font-weight: 700;">${formatINR(party.openingBalance || 0)}</div>
+              </div>
+              <div>
+                <div style="font-size: 11px; text-transform: uppercase; color: #64748B; font-weight: 700;">${isDebtor ? 'Total Billed (CR)' : 'Total Purchases (DR)'}</div>
+                <div style="font-size: 16px; font-weight: 700; color: var(--credit-green);">${formatINR(party.totalBills)}</div>
+              </div>
+              <div>
+                <div style="font-size: 11px; text-transform: uppercase; color: #64748B; font-weight: 700;">${isDebtor ? 'Total Received (DR)' : 'Total Paid (CR)'}</div>
+                <div style="font-size: 16px; font-weight: 700; color: var(--debit-red);">${formatINR(party.totalPayments)}</div>
+              </div>
+              <div>
+                <div style="font-size: 11px; text-transform: uppercase; color: #64748B; font-weight: 700;">Closing Balance</div>
+                <div style="font-size: 18px; font-weight: 800; color: ${party.closingBalanceType === 'Dr' ? 'var(--credit-green)' : 'var(--debit-red)'};">
+                  ${formatINR(party.calculatedClosingBalance)} <span style="font-size: 12px;">${party.closingBalanceType}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Running Ledger Statement Table -->
+          <div class="ledger-sheet">
+            <div class="sheet-header">
+              <div class="sheet-title-group">
+                <h2>Bahi Khata Statement of Accounts</h2>
+                <p>Chronological entries with running continuous balance</p>
+              </div>
+              <div class="sheet-actions">
+                <input type="date" class="filter-date" id="filter-from-date" onchange="filterPartyDates()">
+                <span style="font-size: 12px; color: #64748B;">to</span>
+                <input type="date" class="filter-date" id="filter-to-date" onchange="filterPartyDates()">
+                <button class="btn btn-secondary btn-sm" onclick="clearPartyDates()">Clear Filter</button>
+              </div>
+            </div>
+
+            <div class="table-container">
+              <table class="bahi-table" id="party-statement-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Ref / Bill #</th>
+                    <th>Particulars & Narration</th>
+                    <th style="text-align: center;">Source</th>
+                    <th class="col-amount">${isDebtor ? 'CR (Bills / Jama)' : 'DR (Purchases / Udhar)'}</th>
+                    <th class="col-amount">${isDebtor ? 'DR (Payment / Vapsi)' : 'CR (Payment / Jama)'}</th>
+                    <th class="col-balance">Running Balance</th>
+                  </tr>
+                </thead>
+                <tbody id="party-statement-body">
+                  <!-- Opening Balance Row -->
+                  <tr style="background: #FAFAFA; font-weight: 600;">
+                    <td>01-Apr-2026</td>
+                    <td>-</td>
+                    <td>Opening Balance B/F</td>
+                    <td style="text-align: center;"><span class="badge badge-tally">System</span></td>
+                    <td class="col-amount">-</td>
+                    <td class="col-amount">-</td>
+                    <td class="col-balance">${formatINR(party.openingBalance || 0)}</td>
+                  </tr>
+
+                  ${rows.map(r => `
+                    <tr class="${r.status === 'cancelled' ? 'cancelled-row' : ''}">
+                      <td style="font-family: var(--font-mono); font-size: 12px; white-space: nowrap;">${formatDate(r.date)}</td>
+                      <td style="font-family: var(--font-mono); font-size: 12px; font-weight: 600;">${r.reference || '-'}</td>
+                      <td>
+                        <div style="font-weight: 600;">${r.particulars}</div>
+                        ${r.narration ? `<div style="font-size: 11px; color: #64748B;">${r.narration}</div>` : ''}
+                      </td>
+                      <td style="text-align: center;">
+                        <span class="badge ${r.source === 'tally' ? 'badge-tally' : 'badge-manual'}">
+                          ${r.source === 'tally' ? 'Tally' : 'Manual'}
+                        </span>
+                      </td>
+                      <td class="col-amount col-credit">${r.bills > 0 ? formatINR(r.bills) : '-'}</td>
+                      <td class="col-amount col-debit">${r.payment > 0 ? formatINR(r.payment) : '-'}</td>
+                      <td class="col-balance ${r.balanceType === 'Dr' ? 'col-credit' : 'col-debit'}">
+                        ${formatINR(r.balance)} ${r.balanceType}
+                      </td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+                <tfoot class="tfoot-total">
+                  <tr>
+                    <td colspan="4" style="text-align: right;">Total of Statement:</td>
+                    <td class="col-amount col-credit">${formatINR(party.totalBills)}</td>
+                    <td class="col-amount col-debit">${formatINR(party.totalPayments)}</td>
+                    <td class="col-balance">${formatINR(party.calculatedClosingBalance)} ${party.closingBalanceType}</td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        `;
+      } catch (err) {
+        container.innerHTML = `<div style="color: red; padding: 20px;">Failed to load party statement: ${err.message}</div>`;
+      }
+    }
+
+    // Filter Party Dates
+    function filterPartyDates() {
+      const from = document.getElementById('filter-from-date')?.value;
+      const to = document.getElementById('filter-to-date')?.value;
+      if (!from && !to) return;
+      const rows = document.querySelectorAll('#party-statement-body tr');
+      rows.forEach((row, idx) => {
+        if (idx === 0) return; // Keep opening balance
+        const dateCell = row.cells[0]?.innerText;
+        // Simple comparison or re-fetch
+      });
+    }
+
+    function clearPartyDates() {
+      if (document.getElementById('filter-from-date')) document.getElementById('filter-from-date').value = '';
+      if (document.getElementById('filter-to-date')) document.getElementById('filter-to-date').value = '';
+      renderPartyLedger(state.selectedParty);
+    }
+
+    // ========================================================================
+    // 6. DAYBOOK VIEW (DAILY BUSINESS ROJNAMCHA & DIARY)
+    // ========================================================================
+    async function renderDaybook(dateStr = state.daybookDate) {
+      state.daybookDate = dateStr;
+      const container = document.getElementById('view-content');
+      container.innerHTML = '<div style="text-align: center; padding: 40px; color: #94A3B8;">Loading daybook for ' + dateStr + '...</div>';
+
+      try {
+        const res = await fetch(`${API_BASE}/api/daybook/${dateStr}`);
+        const data = await res.json();
+        state.daybookData = data;
+
+        const summary = data.summary;
+        const txns = data.combinedTransactions || [];
+        const remarks = data.remarks || '';
+
+        container.innerHTML = `
+          <!-- Date Navigator Bar -->
+          <div class="ledger-sheet" style="margin-bottom: 20px;">
+            <div class="sheet-header" style="background: #FFFFFF;">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <button class="btn btn-secondary btn-sm" onclick="changeDaybookDate(-1)">← Previous Day</button>
+                <input type="date" value="${dateStr}" class="filter-date" onchange="renderDaybook(this.value)" style="font-weight: 700; font-size: 14px;">
+                <button class="btn btn-secondary btn-sm" onclick="changeDaybookDate(1)">Next Day →</button>
+                <button class="btn btn-secondary btn-sm" onclick="renderDaybook('${new Date().toISOString().split('T')[0]}')">Today</button>
+              </div>
+
+              <div class="sheet-actions">
+                <button class="btn btn-primary btn-sm" onclick="openNewTransactionModal(null, null, '${dateStr}')">➕ Record Entry for this Day</button>
+              </div>
+            </div>
+
+            <!-- Day Summary Cards -->
+            <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; padding: 16px 20px; border-top: 1px solid var(--border-subtle); background: #F8FAFC;">
+              <div>
+                <div style="font-size: 11px; text-transform: uppercase; color: #64748B; font-weight: 700;">Sales Bills</div>
+                <div style="font-size: 18px; font-weight: 800; color: var(--credit-green);">${formatINR(summary.totalSales)}</div>
+              </div>
+              <div>
+                <div style="font-size: 11px; text-transform: uppercase; color: #64748B; font-weight: 700;">Purchases</div>
+                <div style="font-size: 18px; font-weight: 800; color: var(--debit-red);">${formatINR(summary.totalPurchases)}</div>
+              </div>
+              <div>
+                <div style="font-size: 11px; text-transform: uppercase; color: #64748B; font-weight: 700;">Collections (Receipts)</div>
+                <div style="font-size: 18px; font-weight: 800; color: var(--info-blue);">${formatINR(summary.totalReceipts)}</div>
+              </div>
+              <div>
+                <div style="font-size: 11px; text-transform: uppercase; color: #64748B; font-weight: 700;">Payments Made</div>
+                <div style="font-size: 18px; font-weight: 800; color: #D97706;">${formatINR(summary.totalPayments)}</div>
+              </div>
+              <div>
+                <div style="font-size: 11px; text-transform: uppercase; color: #64748B; font-weight: 700;">Total Transactions</div>
+                <div style="font-size: 18px; font-weight: 800;">${txns.length}</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Split: Transactions Table & Business Diary -->
+          <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
+            <!-- Left: Transactions Table -->
+            <div class="ledger-sheet" style="margin-bottom: 0;">
+              <div class="sheet-header">
+                <div class="sheet-title-group">
+                  <h2>Daybook Register (All Entries)</h2>
+                  <p>Operational entries recorded for ${formatDate(dateStr)}</p>
+                </div>
+              </div>
+
+              <div class="table-container">
+                <table class="bahi-table">
+                  <thead>
+                    <tr>
+                      <th>Time / ID</th>
+                      <th>Source</th>
+                      <th>Party Name</th>
+                      <th>Type / Particulars</th>
+                      <th class="col-amount">Amount</th>
+                      <th style="text-align: right;">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${txns.length === 0 ? `
+                      <tr><td colspan="6" style="text-align: center; padding: 30px; color: #94A3B8;">No transactions recorded for this date.</td></tr>
+                    ` : txns.map(t => `
+                      <tr class="${t.status === 'cancelled' ? 'cancelled-row' : ''}">
+                        <td style="font-family: var(--font-mono); font-size: 11px;">
+                          ${t.id.slice(-8)}
+                        </td>
+                        <td>
+                          <span class="badge ${t.source === 'tally' ? 'badge-tally' : 'badge-manual'}">
+                            ${t.source === 'tally' ? 'Tally' : 'Manual'}
+                          </span>
+                        </td>
+                        <td style="font-weight: 700;">
+                          <a href="javascript:void(0)" onclick="switchView('party-ledger', '${escape(t.partyName)}')" style="color: var(--text-primary); text-decoration: none;">
+                            ${t.partyName}
+                          </a>
+                        </td>
+                        <td>
+                          <div style="font-weight: 600;">${t.type} ${t.reference ? `(${t.reference})` : ''}</div>
+                          <div style="font-size: 11px; color: #64748B;">${t.particulars || ''}</div>
+                        </td>
+                        <td class="col-amount">${formatINR(t.amount)}</td>
+                        <td style="text-align: right; white-space: nowrap;">
+                          ${t.source === 'manual' && t.status !== 'cancelled' ? `
+                            <button class="btn btn-secondary btn-sm" onclick="openEditModal('${t.id}', '${escape(t.particulars)}', ${t.amount}, '${escape(t.reference || '')}', '${t.paymentMode || 'Bank'}')">Edit</button>
+                            <button class="btn btn-secondary btn-sm" style="color: #DC2626;" onclick="cancelManualTxn('${t.id}')">Cancel</button>
+                          ` : `
+                            <span style="font-size: 11px; color: #94A3B8;">${t.status === 'cancelled' ? 'Cancelled' : 'Locked'}</span>
+                          `}
+                        </td>
+                      </tr>
+                    `).join('')}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Right: Business Diary & Remarks (remarks.md) -->
+            <div class="ledger-sheet" style="margin-bottom: 0;">
+              <div class="sheet-header">
+                <div class="sheet-title-group">
+                  <h2>📝 Business Diary (remarks.md)</h2>
+                  <p>Operational notes, bilty details & memos</p>
+                </div>
+              </div>
+              <div style="padding: 16px;">
+                <textarea id="diary-textarea" class="form-control" style="font-family: var(--font-mono); font-size: 12px; height: 320px; line-height: 1.6;" placeholder="Type notes, transport bilty numbers, customer promises for this date...">${remarks}</textarea>
+                <div style="display: flex; justify-content: flex-end; margin-top: 12px;">
+                  <button class="btn btn-primary btn-sm" onclick="saveDayRemarks('${dateStr}')">Save Diary Notes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      } catch (err) {
+        container.innerHTML = `<div style="color: red; padding: 20px;">Failed to load daybook: ${err.message}</div>`;
+      }
+    }
+
+    function changeDaybookDate(delta) {
+      const parts = state.daybookDate.split('-');
+      const d = new Date(parts[0], parts[1] - 1, parts[2]);
+      d.setDate(d.getDate() + delta);
+      const pad = n => String(n).padStart(2, '0');
+      const newStr = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+      renderDaybook(newStr);
+    }
+
+    async function saveDayRemarks(dateStr) {
+      const content = document.getElementById('diary-textarea')?.value || '';
+      try {
+        const res = await fetch(`${API_BASE}/api/daybook/${dateStr}/remarks`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ content })
+        });
+        const data = await res.json();
+        if (data.status === 'ok') {
+          alert('Diary notes saved to daybook/' + dateStr + '/remarks.md!');
+        } else {
+          alert('Error: ' + data.message);
+        }
+      } catch (err) {
+        alert('Failed to save remarks: ' + err.message);
+      }
+    }
+
+    // ========================================================================
+    // 7. CALENDAR MATRIX VIEW
+    // ========================================================================
+    async function renderCalendar(year = state.calendarYear, month = state.calendarMonth) {
+      state.calendarYear = year;
+      state.calendarMonth = month;
+      const container = document.getElementById('view-content');
+      container.innerHTML = '<div style="text-align: center; padding: 40px; color: #94A3B8;">Loading monthly calendar...</div>';
+
+      try {
+        const res = await fetch(`${API_BASE}/api/calendar/${year}/${month}`);
+        const data = await res.json();
+        const days = data.calendar.days || [];
+
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        const todayStr = new Date().toISOString().split('T')[0];
+
+        // Offset for first day of month (Monday = 0)
+        const firstDayOfWeek = (new Date(year, month - 1, 1).getDay() + 6) % 7;
+
+        container.innerHTML = `
+          <div class="ledger-sheet">
+            <div class="sheet-header">
+              <div class="sheet-title-group">
+                <h2>Daybook Calendar Matrix — ${monthNames[month - 1]} ${year}</h2>
+                <p>Click any date tile to jump to that day's complete ledger and diary</p>
+              </div>
+              <div class="sheet-actions">
+                <button class="btn btn-secondary btn-sm" onclick="changeCalendarMonth(-1)">← Prev Month</button>
+                <button class="btn btn-secondary btn-sm" onclick="changeCalendarMonth(1)">Next Month →</button>
+              </div>
+            </div>
+
+            <div class="calendar-grid">
+              <div class="calendar-header-day">Mon</div>
+              <div class="calendar-header-day">Tue</div>
+              <div class="calendar-header-day">Wed</div>
+              <div class="calendar-header-day">Thu</div>
+              <div class="calendar-header-day">Fri</div>
+              <div class="calendar-header-day">Sat</div>
+              <div class="calendar-header-day">Sun</div>
+
+              <!-- Empty offset slots -->
+              ${Array(firstDayOfWeek).fill(0).map(() => `<div style="background: transparent;"></div>`).join('')}
+
+              <!-- Day Tiles -->
+              ${days.map(d => {
+                const dayNum = parseInt(d.date.split('-')[2], 10);
+                const isToday = d.date === todayStr;
+                const hasActivity = d.transactionCount > 0;
+
+                return `
+                  <div class="calendar-day-tile ${isToday ? 'today' : ''} ${hasActivity ? 'has-activity' : ''}" onclick="switchView('daybook', '${d.date}')">
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                      <span class="day-number">${dayNum}</span>
+                      ${hasActivity ? `<span class="day-badge-count">${d.transactionCount}</span>` : ''}
+                    </div>
+
+                    <div class="day-stats">
+                      ${d.totalSales > 0 ? `<span class="day-stat-sales">+${formatINR(d.totalSales)}</span>` : ''}
+                      ${d.totalReceipts > 0 ? `<span class="day-stat-receipts">+${formatINR(d.totalReceipts)}</span>` : ''}
+                      ${d.totalPayments > 0 ? `<span class="day-stat-payments">-${formatINR(d.totalPayments)}</span>` : ''}
+                    </div>
+
+                    ${d.hasRemarks ? `<div><span class="dot-remarks" title="Has diary remarks"></span></div>` : ''}
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        `;
+      } catch (err) {
+        container.innerHTML = `<div style="color: red; padding: 20px;">Failed to load calendar: ${err.message}</div>`;
+      }
+    }
+
+    function changeCalendarMonth(delta) {
+      let m = state.calendarMonth + delta;
+      let y = state.calendarYear;
+      if (m > 12) { m = 1; y++; }
+      if (m < 1) { m = 12; y--; }
+      renderCalendar(y, m);
+    }
+
+    // ========================================================================
+    // 8. GLOBAL SEARCH VIEW
+    // ========================================================================
+    function renderSearch() {
+      const container = document.getElementById('view-content');
+      container.innerHTML = `
+        <div class="ledger-sheet">
+          <div class="sheet-header">
+            <div class="sheet-title-group">
+              <h2>Global Multi-Field Transaction Search</h2>
+              <p>Search across all Daybooks and Tally Prime Vouchers simultaneously</p>
+            </div>
+          </div>
+
+          <div class="filter-bar">
+            <div class="search-input">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+              <input type="text" id="global-search-input" placeholder="Search party, invoice #, amount, bilty, narration..." onkeyup="if(event.key === 'Enter') executeSearch()">
+            </div>
+            <select class="filter-select" id="search-source">
+              <option value="">All Sources (Tally + Manual)</option>
+              <option value="tally">Tally Only</option>
+              <option value="manual">Manual Khata Only</option>
+            </select>
+            <select class="filter-select" id="search-party-type">
+              <option value="">All Party Types</option>
+              <option value="debtor">Debtors (Customers)</option>
+              <option value="creditor">Creditors (Suppliers)</option>
+            </select>
+            <button class="btn btn-primary btn-sm" onclick="executeSearch()">Search</button>
+          </div>
+
+          <div class="table-container">
+            <table class="bahi-table" id="search-results-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Source</th>
+                  <th>Party Name</th>
+                  <th>Type / Ref</th>
+                  <th>Particulars</th>
+                  <th class="col-amount">Amount</th>
+                </tr>
+              </thead>
+              <tbody id="search-results-body">
+                <tr><td colspan="6" style="text-align: center; padding: 40px; color: #94A3B8;">Enter a query above to search.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      `;
+    }
+
+    async function executeSearch() {
+      const q = document.getElementById('global-search-input')?.value || '';
+      const source = document.getElementById('search-source')?.value || '';
+      const partyType = document.getElementById('search-party-type')?.value || '';
+
+      const tbody = document.getElementById('search-results-body');
+      tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; padding: 20px;">Searching...</td></tr>';
+
+      try {
+        const res = await fetch(`${API_BASE}/api/search?q=${encodeURIComponent(q)}&source=${source}&partyType=${partyType}`);
+        const data = await res.json();
+        const results = data.results || [];
+
+        if (results.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; padding: 40px; color: #94A3B8;">No transactions found matching criteria.</td></tr>';
+          return;
+        }
+
+        tbody.innerHTML = results.map(r => `
+          <tr>
+            <td style="font-family: var(--font-mono); font-size: 12px;">${formatDate(r.date)}</td>
+            <td>
+              <span class="badge ${r.source === 'tally' ? 'badge-tally' : 'badge-manual'}">
+                ${r.source === 'tally' ? 'Tally' : 'Manual'}
+              </span>
+            </td>
+            <td style="font-weight: 700;">
+              <a href="javascript:void(0)" onclick="switchView('party-ledger', '${escape(r.partyName)}')" style="color: var(--text-primary); text-decoration: none;">
+                ${r.partyName}
+              </a>
+            </td>
+            <td>${r.type} ${r.reference ? `(${r.reference})` : ''}</td>
+            <td style="color: #64748B;">${r.particulars}</td>
+            <td class="col-amount">${formatINR(r.amount)}</td>
+          </tr>
+        `).join('');
+      } catch (err) {
+        tbody.innerHTML = `<tr><td colspan="6" style="color: red; text-align: center;">Error: ${err.message}</td></tr>`;
+      }
+    }
+
+    // ========================================================================
+    // 9. REPORTS & AUDIT TRAIL VIEW
+    // ========================================================================
+    async function renderReports(reportType = 'debtors-outstanding') {
+      const container = document.getElementById('view-content');
+      container.innerHTML = '<div style="text-align: center; padding: 40px; color: #94A3B8;">Loading report...</div>';
+
+      try {
+        const res = await fetch(`${API_BASE}/api/reports/${reportType}`);
+        const data = await res.json();
+        const records = data.records || [];
+
+        container.innerHTML = `
+          <div class="ledger-sheet">
+            <div class="sheet-header">
+              <div class="sheet-title-group">
+                <h2>${data.title}</h2>
+                <p>Official accounting and audit register</p>
+              </div>
+              <div class="sheet-actions">
+                <select class="filter-select" onchange="renderReports(this.value)">
+                  <option value="debtors-outstanding" ${reportType === 'debtors-outstanding' ? 'selected' : ''}>Debtors Outstanding Register</option>
+                  <option value="creditors-outstanding" ${reportType === 'creditors-outstanding' ? 'selected' : ''}>Creditors Outstanding Register</option>
+                  <option value="daily-sales" ${reportType === 'daily-sales' ? 'selected' : ''}>Sales Register</option>
+                  <option value="daily-purchases" ${reportType === 'daily-purchases' ? 'selected' : ''}>Purchase Register</option>
+                  <option value="audit-trail" ${reportType === 'audit-trail' ? 'selected' : ''}>Manual Khata Audit Trail</option>
+                </select>
+                <button class="btn btn-secondary btn-sm" onclick="exportTableToCSV('report-table', '${reportType}.csv')">Export CSV</button>
+                <button class="btn btn-secondary btn-sm" onclick="window.print()">🖨️ Print</button>
+              </div>
+            </div>
+
+            <div class="table-container">
+              <table class="bahi-table" id="report-table">
+                ${reportType === 'audit-trail' ? `
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Transaction ID</th>
+                      <th>Party Name</th>
+                      <th>Modified At</th>
+                      <th>Modified By</th>
+                      <th>Reason for Change</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${records.length === 0 ? `<tr><td colspan="6" style="text-align: center; padding: 30px; color: #94A3B8;">No modifications logged. Zero tampering detected.</td></tr>` : records.map(r => `
+                      <tr>
+                        <td style="font-family: var(--font-mono); font-size: 12px;">${formatDate(r.date)}</td>
+                        <td style="font-family: var(--font-mono); font-size: 12px; font-weight: 600;">${r.transactionId}</td>
+                        <td style="font-weight: 700;">${r.partyName}</td>
+                        <td style="font-size: 11px; color: #64748B;">${r.modifiedAt}</td>
+                        <td><b>${r.modifiedBy}</b></td>
+                        <td style="color: var(--bahi-gold); font-weight: 600;">${r.reason}</td>
+                      </tr>
+                    `).join('')}
+                  </tbody>
+                ` : `
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Party Name</th>
+                      <th>State / GSTIN</th>
+                      <th class="col-amount">Amount / Balance</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${records.map((r, idx) => `
+                      <tr>
+                        <td style="color: #94A3B8;">${idx + 1}</td>
+                        <td style="font-weight: 700;">${r.name || r.partyName}</td>
+                        <td style="color: #64748B;">${r.state || r.gstin || '-'}</td>
+                        <td class="col-amount">${formatINR(r.balance || r.amount)}</td>
+                      </tr>
+                    `).join('')}
+                  </tbody>
+                  <tfoot class="tfoot-total">
+                    <tr>
+                      <td colspan="3" style="text-align: right;">Total Amount:</td>
+                      <td class="col-amount">${formatINR(data.totalAmount || 0)}</td>
+                    </tr>
+                  </tfoot>
+                `}
+              </table>
+            </div>
+          </div>
+        `;
+      } catch (err) {
+        container.innerHTML = `<div style="color: red; padding: 20px;">Failed to load report: ${err.message}</div>`;
+      }
+    }
+
+    // ========================================================================
+    // 10. TALLY SYNC CENTER VIEW
+    // ========================================================================
+    async function renderTallySyncCenter() {
+      const container = document.getElementById('view-content');
+      container.innerHTML = '<div style="text-align: center; padding: 40px; color: #94A3B8;">Checking Tally Prime status...</div>';
+
+      try {
+        const res = await fetch(`${API_BASE}/api/status`);
+        const data = await res.json();
+        const tally = data.tally;
+        const counts = data.counts;
+
+        container.innerHTML = `
+          <div class="metrics-grid">
+            <div class="metric-card ${tally.online ? 'accent-emerald' : 'accent-red'}">
+              <div class="metric-header">
+                <span class="metric-title">Tally Connection</span>
+                <span class="badge ${tally.online ? 'badge-cr' : 'badge-dr'}">${tally.online ? 'ONLINE' : 'OFFLINE'}</span>
+              </div>
+              <div class="metric-value">${tally.online ? 'Port 9000 Active' : 'Disconnected'}</div>
+              <div class="metric-sub">${tally.endpoint}</div>
+            </div>
+
+            <div class="metric-card accent-blue">
+              <div class="metric-header"><span class="metric-title">Active Company</span></div>
+              <div class="metric-value" style="font-size: 18px;">${tally.company?.name || 'SKIL LIFESTYLE LLP'}</div>
+              <div class="metric-sub">FY 2026-27 (Books from ${tally.company?.booksFrom || '2026-04-01'})</div>
+            </div>
+
+            <div class="metric-card accent-gold">
+              <div class="metric-header"><span class="metric-title">Synced Vouchers</span></div>
+              <div class="metric-value">${counts.vouchersCount}</div>
+              <div class="metric-sub">Across 43 Ledgers</div>
+            </div>
+          </div>
+
+          <div class="ledger-sheet">
+            <div class="sheet-header">
+              <div class="sheet-title-group">
+                <h2>Tally Prime XML Synchronisation Bridge</h2>
+                <p>Direct loopback synchronization with local Tally Prime instance</p>
+              </div>
+              <div class="sheet-actions">
+                <button class="btn btn-secondary" onclick="triggerSync(false)">⚡ Incremental Sync</button>
+                <button class="btn btn-primary" onclick="triggerSync(true)">🔄 Full Re-Sync</button>
+              </div>
+            </div>
+
+            <div style="padding: 24px;">
+              <h3 style="font-size: 14px; font-weight: 700; margin-bottom: 12px;">Data Separation & Governance Architecture</h3>
+              <p style="color: #64748B; font-size: 13px; line-height: 1.6; margin-bottom: 16px;">
+                Per <code>DATA_POLICY.md</code>, accounting vouchers fetched from Tally Prime reside strictly under <code>Manual Khata/tally-data/</code>.
+                Manual business events, delivery bilties, and cash adjustments are persisted in physical date-stamped directories under <code>Manual Khata/daybook/YYYY-MM-DD/</code>.
+                Synchronisation never modifies manual records and never touches external supplier files.
+              </p>
+
+              <div style="background: #F8FAFC; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 16px; font-family: var(--font-mono); font-size: 12px;">
+                <div style="font-weight: 700; margin-bottom: 8px; color: #0F172A;">Last Synchronisation Snapshot:</div>
+                <pre style="margin: 0; overflow-x: auto;">${JSON.stringify(tally.lastSync, null, 2)}</pre>
+              </div>
+            </div>
+          </div>
+        `;
+      } catch (err) {
+        container.innerHTML = `<div style="color: red; padding: 20px;">Failed to load sync center: ${err.message}</div>`;
+      }
+    }
+
+    async function triggerSync(full = false) {
+      const btnText = full ? 'Full Sync' : 'Incremental Sync';
+      if (!confirm(`Trigger ${btnText} with Tally Prime now?`)) return;
+
+      try {
+        const res = await fetch(`${API_BASE}/api/sync`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ full })
+        });
+        const data = await res.json();
+        if (data.status === 'ok') {
+          alert(`Sync complete in ${data.result.durationMs}ms! Vouchers: ${data.result.totals.totalVouchers}`);
+          renderTallySyncCenter();
+          loadSystemStatus();
+        } else {
+          alert('Sync failed: ' + data.message);
+        }
+      } catch (err) {
+        alert('Sync failed: ' + err.message);
+      }
+    }
+
+    async function triggerQuickSync() {
+      const btn = document.getElementById('quick-sync-text');
+      if (btn) btn.innerText = 'Syncing...';
+      try {
+        const res = await fetch(`${API_BASE}/api/sync`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ full: false })
+        });
+        const data = await res.json();
+        if (data.status === 'ok') {
+          if (btn) btn.innerText = 'Synced!';
+          setTimeout(() => { if (btn) btn.innerText = 'Sync Tally'; }, 2000);
+          switchView(state.currentView, state.selectedParty || state.daybookDate);
+        }
+      } catch (err) {
+        if (btn) btn.innerText = 'Sync Error';
+        setTimeout(() => { if (btn) btn.innerText = 'Sync Tally'; }, 2000);
+      }
+    }
+
+    // ========================================================================
+    // 11. BACKUPS VIEW
+    // ========================================================================
+    async function renderBackups() {
+      const container = document.getElementById('view-content');
+      container.innerHTML = '<div style="text-align: center; padding: 40px; color: #94A3B8;">Loading backups...</div>';
+
+      try {
+        const res = await fetch(`${API_BASE}/api/backups`);
+        const data = await res.json();
+        const backups = data.backups || [];
+
+        container.innerHTML = `
+          <div class="ledger-sheet">
+            <div class="sheet-header">
+              <div class="sheet-title-group">
+                <h2>Data Backups & Permanent Archival</h2>
+                <p>Full date-stamped snapshots of all Daybooks, Tally store and settings</p>
+              </div>
+              <div class="sheet-actions">
+                <button class="btn btn-primary btn-sm" onclick="createBackupNow()">Create Backup Snapshot</button>
+              </div>
+            </div>
+
+            <div class="table-container">
+              <table class="bahi-table">
+                <thead>
+                  <tr>
+                    <th>Archive Filename</th>
+                    <th>Created At</th>
+                    <th>Size</th>
+                    <th style="text-align: right;">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${backups.length === 0 ? `
+                    <tr><td colspan="4" style="text-align: center; padding: 30px; color: #94A3B8;">No backups created yet. Click 'Create Backup Snapshot' above.</td></tr>
+                  ` : backups.map(b => `
+                    <tr>
+                      <td style="font-family: var(--font-mono); font-size: 12px; font-weight: 600;">${b.filename}</td>
+                      <td>${formatDate(b.createdAt.split('T')[0])} ${b.createdAt.split('T')[1].slice(0,5)}</td>
+                      <td style="font-family: var(--font-mono);">${b.sizeKb} KB</td>
+                      <td style="text-align: right;"><span class="badge badge-cr">Verified</span></td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        `;
+      } catch (err) {
+        container.innerHTML = `<div style="color: red; padding: 20px;">Failed to load backups: ${err.message}</div>`;
+      }
+    }
+
+    async function createBackupNow() {
+      try {
+        const res = await fetch(`${API_BASE}/api/backups`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ label: 'manual' })
+        });
+        const data = await res.json();
+        if (data.status === 'ok') {
+          alert('Backup snapshot created: ' + data.backup.filename);
+          renderBackups();
+        }
+      } catch (err) {
+        alert('Failed to create backup: ' + err.message);
+      }
+    }
+
+    // ========================================================================
+    // 12. TRANSACTION MUTATIONS (NEW, EDIT, CANCEL)
+    // ========================================================================
+    function openNewTransactionModal(partyName = null, partyType = null, date = null) {
+      document.getElementById('txn-date').value = date || state.daybookDate || new Date().toISOString().split('T')[0];
+      if (partyName) {
+        document.getElementById('txn-party').value = unescape(partyName);
+      }
+      openModal('modal-new-transaction');
+    }
+
+    function handleTxnTypeChange() {
+      const type = document.getElementById('txn-type').value;
+      const modeSelect = document.getElementById('txn-payment-mode');
+      if (['sales_bill', 'purchase_bill'].includes(type)) {
+        modeSelect.value = 'Credit';
+      } else if (['receipt', 'payment'].includes(type)) {
+        modeSelect.value = 'Bank';
+      }
+    }
+
+    async function submitNewTransaction(e) {
+      e.preventDefault();
+      const payload = {
+        date: document.getElementById('txn-date').value,
+        type: document.getElementById('txn-type').value,
+        partyName: document.getElementById('txn-party').value,
+        amount: parseFloat(document.getElementById('txn-amount').value),
+        paymentMode: document.getElementById('txn-payment-mode').value,
+        reference: document.getElementById('txn-ref').value,
+        againstBill: document.getElementById('txn-against-bill').value,
+        particulars: document.getElementById('txn-particulars').value,
+        remarks: document.getElementById('txn-remarks').value,
+        author: 'Sahil Kumar'
+      };
+
+      try {
+        const res = await fetch(`${API_BASE}/api/transactions/manual`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (data.status === 'ok') {
+          closeModal('modal-new-transaction');
+          document.getElementById('form-new-txn').reset();
+          alert('Transaction saved successfully to Daybook!');
+          if (state.currentView === 'daybook') renderDaybook(payload.date);
+          else if (state.currentView === 'party-ledger') renderPartyLedger(state.selectedParty);
+          else switchView(state.currentView);
+        } else {
+          alert('Error: ' + data.message);
+        }
+      } catch (err) {
+        alert('Failed to save transaction: ' + err.message);
+      }
+    }
+
+    function openEditModal(id, particulars, amount, ref, mode) {
+      document.getElementById('edit-txn-id').value = id;
+      document.getElementById('edit-txn-particulars').value = unescape(particulars);
+      document.getElementById('edit-txn-amount').value = amount;
+      document.getElementById('edit-txn-ref').value = unescape(ref);
+      document.getElementById('edit-txn-mode').value = mode;
+      document.getElementById('edit-txn-reason').value = '';
+      openModal('modal-edit-txn');
+    }
+
+    async function submitEditTransaction(e) {
+      e.preventDefault();
+      const id = document.getElementById('edit-txn-id').value;
+      const payload = {
+        particulars: document.getElementById('edit-txn-particulars').value,
+        amount: parseFloat(document.getElementById('edit-txn-amount').value),
+        reference: document.getElementById('edit-txn-ref').value,
+        paymentMode: document.getElementById('edit-txn-mode').value,
+        reason: document.getElementById('edit-txn-reason').value,
+        author: 'Sahil Kumar'
+      };
+
+      try {
+        const res = await fetch(`${API_BASE}/api/transactions/${id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (data.status === 'ok') {
+          closeModal('modal-edit-txn');
+          alert('Transaction updated with audit trail logged!');
+          renderDaybook(state.daybookDate);
+        } else {
+          alert('Error: ' + data.message);
+        }
+      } catch (err) {
+        alert('Failed to update: ' + err.message);
+      }
+    }
+
+    async function cancelManualTxn(id) {
+      const reason = prompt('Please enter the mandatory reason for cancellation (for audit trail):');
+      if (!reason || !reason.trim()) return;
+
+      try {
+        const res = await fetch(`${API_BASE}/api/transactions/${id}/cancel`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ author: 'Sahil Kumar', reason })
+        });
+        const data = await res.json();
+        if (data.status === 'ok') {
+          alert('Transaction cancelled non-destructively.');
+          renderDaybook(state.daybookDate);
+        } else {
+          alert('Error: ' + data.message);
+        }
+      } catch (err) {
+        alert('Failed to cancel: ' + err.message);
+      }
+    }
+
+    // ========================================================================
+    // 13. WHATSAPP REMINDER MODAL (GEMINI.md COMPLIANT)
+    // ========================================================================
+    async function openWhatsAppModal(partyName) {
+      const decodedParty = unescape(partyName);
+      try {
+        const res = await fetch(`${API_BASE}/api/ledgers/${encodeURIComponent(decodedParty)}`);
+        const data = await res.json();
+        const text = data.whatsappReminder || `Dear ${decodedParty},\n\nPlease find your pending balance details: ${formatINR(data.party.calculatedClosingBalance)}.\n\nThank you!`;
+        document.getElementById('whatsapp-preview-text').innerText = text;
+        document.getElementById('copy-wa-btn-text').innerText = 'Copy to Clipboard';
+        openModal('modal-whatsapp');
+      } catch (err) {
+        alert('Failed to generate WhatsApp reminder: ' + err.message);
+      }
+    }
+
+    function copyWhatsAppData() {
+      const text = document.getElementById('whatsapp-preview-text').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        document.getElementById('copy-wa-btn-text').innerText = 'Copied to Clipboard! ✓';
+        setTimeout(() => {
+          document.getElementById('copy-wa-btn-text').innerText = 'Copy to Clipboard';
+        }, 2500);
+      });
+    }
+
+    // ========================================================================
+    // 14. TABLE UTILITIES (SEARCH FILTER & CSV EXPORT)
+    // ========================================================================
+    function filterTable(input, tbodyId) {
+      const q = input.value.toLowerCase();
+      const rows = document.querySelectorAll(`#${tbodyId} tr`);
+      rows.forEach(r => {
+        const text = r.innerText.toLowerCase();
+        r.style.display = text.includes(q) ? '' : 'none';
+      });
+    }
+
+    function exportTableToCSV(tableId, filename) {
+      const table = document.getElementById(tableId);
+      if (!table) return;
+      let csv = [];
+      const rows = table.querySelectorAll('tr');
+      for (let i = 0; i < rows.length; i++) {
+        let row = [], cols = rows[i].querySelectorAll('td, th');
+        for (let j = 0; j < cols.length; j++) {
+          let data = cols[j].innerText.replace(/(\r\n|\n|\r)/gm, '').replace(/(\s\s+)/gm, ' ');
+          data = data.replace(/"/g, '""');
+          row.push('"' + data + '"');
+        }
+        csv.push(row.join(','));
+      }
+      const csvFile = new Blob([csv.join('\n')], { type: 'text/csv' });
+      const downloadLink = document.createElement('a');
+      downloadLink.download = filename;
+      downloadLink.href = window.URL.createObjectURL(csvFile);
+      downloadLink.style.display = 'none';
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+    }
+
+    // ========================================================================
+    // 15. INITIALIZATION & SYSTEM STATUS
+    // ========================================================================
+    async function loadSystemStatus() {
+      try {
+        const res = await fetch(`${API_BASE}/api/status`);
+        const data = await res.json();
+        state.status = data;
+
+        const pulse = document.getElementById('tally-pulse');
+        const companyLabel = document.getElementById('tally-company-label');
+        const endpointLabel = document.getElementById('tally-endpoint-label');
+        const debtorsBadge = document.getElementById('badge-debtors-count');
+        const creditorsBadge = document.getElementById('badge-creditors-count');
+
+        if (pulse) {
+          pulse.className = 'pulse-dot ' + (data.tally.online ? 'online' : 'offline');
+        }
+        if (companyLabel) {
+          companyLabel.innerText = data.tally.company?.name || 'SKIL LIFESTYLE LLP';
+        }
+        if (endpointLabel) {
+          endpointLabel.innerText = data.tally.online ? 'Tally: Connected (9000)' : 'Tally: Offline';
+        }
+        if (debtorsBadge) {
+          debtorsBadge.innerText = data.counts.debtorsCount;
+        }
+        if (creditorsBadge) {
+          creditorsBadge.innerText = data.counts.creditorsCount;
+        }
+
+        // Populate party autocomplete datalist
+        const ledgersRes = await fetch(`${API_BASE}/api/ledgers`);
+        const ledgersData = await ledgersRes.json();
+        const datalist = document.getElementById('party-datalist');
+        if (datalist && ledgersData.ledgers) {
+          datalist.innerHTML = ledgersData.ledgers.map(l => `<option value="${l.name}">`).join('');
+        }
+      } catch (err) {
+        console.warn('System status check error:', err);
+      }
+    }
+
+    // App Startup
+    window.addEventListener('DOMContentLoaded', () => {
+      loadSystemStatus();
+      switchView('dashboard');
+    });
+  </script>
+</body>
+</html>

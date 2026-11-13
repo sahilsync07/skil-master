@@ -1,0 +1,26 @@
+{
+  "name": "skil-ledger",
+  "version": "1.0.0",
+  "description": "SKIL Ledger — Digital Manual Bahi Khata for SKIL LIFESTYLE LLP",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "sync": "node scripts/tally-sync.js",
+    "backup": "node scripts/backup-manager.js"
+  },
+  "keywords": [
+    "bahi-khata",
+    "ledger",
+    "accounting",
+    "tally-prime",
+    "daybook",
+    "khata"
+  ],
+  "author": "SKIL Lifestyle LLP",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "fast-xml-parser": "^4.3.6"
+  }
+}

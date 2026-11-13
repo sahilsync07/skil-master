@@ -1,0 +1,795 @@
+IRN : 491694a9f5b0ee9a59c797fbbde3bccc6ef0cf2ec1f3999bc312cc83995358ab
+Acknowledgement No. : 182624246157051
+Inv. No. : 1900422215
+Inv. Date : 28.10.2026
+TAX INVOICE CUM CHALLAN
+AJANTA SHOES (INDIA) PRIVATE LIMITED
+CIN:U25190WB2011PTC166511
+GSTIN: 19AAECB6793N1ZV
+PAN: AAECB6793N
+Regd. Office-"Ajanta House",79/2 A.J.C.Bose Road,Kolkata-700014,Ph.033-22271841/58/73/93
+Website:www.ajantashoes.com,Mail-sales@ajantashoes.com
+SalesWorks:JalanComplex,JalanIndustrialComplex,,Domjur,Jangalpur,Biprannapara,,Pin-711411,Howrah,Howrah,WestBengal,Ph-
+Ship-To:
+SKIL LIFESTYLE
+SHOP NO-7A, D.NO.28-10-4,,VASAVI PLAZA,FLOOR NO-3,THEATRE
+ROAD,JAGADAMBA JN,VISAKHAPATNAM-530020(India)
+GSTIN: 37AFZFS2777J1ZV
+Phone: 9348343310 /
+[code:93081
+Bill-To:
+SKIL LIFESTYLE
+SHOP NO-7A, D.NO.28-10-4,,VASAVI PLAZA,FLOOR NO-3,THEATRE
+ROAD,JAGADAMBA JN,VISAKHAPATNAM-530020(India)
+GSTIN: 37AFZFS2777J1ZV
+Phone: 9348343310 /
+[Code:93081]
+Order No. :300368251 (L1)
+Order Date :28.10.2026
+Dealer Code:93081
+PO No. : OCTOBER
+PO Date : 28.10.2026
+e-Waybill No.:
+e-Waybill Date:
+-------------------------------------------------------------------------------------------------------------------------------------
+Brand/Product . Size Pack Carton Pair MRP Rate Amount(Rs.)
+-------------------------------------------------------------------------------------------------------------------------------------
+H2T579661048
+1BETA 03 DP.S.GREEN-SZ 06X10
+(48)/J1
+HSN/SAC: 640220
+48 2 96 139.00 82.75 7,944.00
+-------------------------------------------------------------------------------------------------------------------------------------
+H2E144771048
+1BETA 07 B.BLUE-SZ 07X10 (48)/J1
+HSN/SAC: 640220
+48 2 96 143.00 82.75 7,944.00
+-------------------------------------------------------------------------------------------------------------------------------------
+H2E63382560
+1BETA 10 RED-SZ 02X05 (60)/J1
+HSN/SAC: 640220
+60 1 60 135.00 78.59 4,715.40
+-------------------------------------------------------------------------------------------------------------------------------------
+H2E634761048
+1BETA 10 RED-SZ 06X10 (48)/J1
+HSN/SAC: 640220
+48 2 96 143.00 82.75 7,944.00
+-------------------------------------------------------------------------------------------------------------------------------------
+H12A20723660
+1CARINA/2 (PVSK) SZ-3X6 (60)/J1
+HSN/SAC: 640220
+60 2 120 128.00 76.85 9,222.00
+-------------------------------------------------------------------------------------------------------------------------------------
+H12A20733760
+1CARINA/2 (PVSK) SZ-3X7 (60)/J1
+HSN/SAC: 640220
+60 5 300 128.00 76.85 23,055.00
+-------------------------------------------------------------------------------------------------------------------------------------
+H12A20764760
+1CARINA/2 (PVSK) SZ-4X7 (60)/J1
+HSN/SAC: 640220
+60 2 120 128.00 76.85 9,222.00
+Page: 1
+Continued....
+
+-- 1 of 11 --
+
+IRN : 491694a9f5b0ee9a59c797fbbde3bccc6ef0cf2ec1f3999bc312cc83995358ab
+Acknowledgement No. : 182624246157051
+Inv. No. : 1900422215
+Inv. Date : 28.10.2026
+TAX INVOICE CUM CHALLAN
+AJANTA SHOES (INDIA) PRIVATE LIMITED
+CIN:U25190WB2011PTC166511
+GSTIN: 19AAECB6793N1ZV
+PAN: AAECB6793N
+Regd. Office-"Ajanta House",79/2 A.J.C.Bose Road,Kolkata-700014,Ph.033-22271841/58/73/93
+Website:www.ajantashoes.com,Mail-sales@ajantashoes.com
+SalesWorks:JalanComplex,JalanIndustrialComplex,,Domjur,Jangalpur,Biprannapara,,Pin-711411,Howrah,Howrah,WestBengal,Ph-
+Ship-To:
+SKIL LIFESTYLE
+SHOP NO-7A, D.NO.28-10-4,,VASAVI PLAZA,FLOOR NO-3,THEATRE
+ROAD,JAGADAMBA JN,VISAKHAPATNAM-530020(India)
+GSTIN: 37AFZFS2777J1ZV
+Phone: 9348343310 /
+[code:93081
+Bill-To:
+SKIL LIFESTYLE
+SHOP NO-7A, D.NO.28-10-4,,VASAVI PLAZA,FLOOR NO-3,THEATRE
+ROAD,JAGADAMBA JN,VISAKHAPATNAM-530020(India)
+GSTIN: 37AFZFS2777J1ZV
+Phone: 9348343310 /
+[Code:93081]
+Order No. :300368251 (L1)
+Order Date :28.10.2026
+Dealer Code:93081
+PO No. : OCTOBER
+PO Date : 28.10.2026
+e-Waybill No.:
+e-Waybill Date:
+-------------------------------------------------------------------------------------------------------------------------------------
+Brand/Product . Size Pack Carton Pair MRP Rate Amount(Rs.)
+-------------------------------------------------------------------------------------------------------------------------------------
+H12A20785860
+1CARINA/2 (PVSK) SZ-5X8 (60)/J1
+HSN/SAC: 640220
+60 2 120 128.00 76.85 9,222.00
+-------------------------------------------------------------------------------------------------------------------------------------
+H2T1203660
+1CEL 1023 DP.S.BLUE SZ-3X6 (60)/J1
+HSN/SAC: 640220
+60 3 180 120.00 72.05 12,969.00
+-------------------------------------------------------------------------------------------------------------------------------------
+H2T1294760
+1CEL 1023 S.GREEN SZ-4X7 (60)/J1
+HSN/SAC: 640220
+60 3 180 120.00 72.05 12,969.00
+-------------------------------------------------------------------------------------------------------------------------------------
+H2E124244760
+1CEL 1026 S.GREEN SZ-4X7 (60)/J1
+HSN/SAC: 640220
+60 1 60 120.00 72.05 4,323.00
+-------------------------------------------------------------------------------------------------------------------------------------
+H2Y5973860
+1CEL 103 DP.BLUE SZ-5X8 (60)/J1
+HSN/SAC: 640220
+60 1 60 127.00 76.25 4,575.00
+-------------------------------------------------------------------------------------------------------------------------------------
+H2YT92114760
+1CEL 105 MAGENTA SZ-4X7 (60)/J1
+HSN/SAC: 640220
+60 3 180 127.00 76.25 13,725.00
+-------------------------------------------------------------------------------------------------------------------------------------
+H2T48235760
+1CEL 108 MAGENTA SZ-5X7 (60)/J1
+HSN/SAC: 640220
+60 2 120 127.00 76.25 9,150.00
+Page: 2
+Continued....
+
+-- 2 of 11 --
+
+IRN : 491694a9f5b0ee9a59c797fbbde3bccc6ef0cf2ec1f3999bc312cc83995358ab
+Acknowledgement No. : 182624246157051
+Inv. No. : 1900422215
+Inv. Date : 28.10.2026
+TAX INVOICE CUM CHALLAN
+AJANTA SHOES (INDIA) PRIVATE LIMITED
+CIN:U25190WB2011PTC166511
+GSTIN: 19AAECB6793N1ZV
+PAN: AAECB6793N
+Regd. Office-"Ajanta House",79/2 A.J.C.Bose Road,Kolkata-700014,Ph.033-22271841/58/73/93
+Website:www.ajantashoes.com,Mail-sales@ajantashoes.com
+SalesWorks:JalanComplex,JalanIndustrialComplex,,Domjur,Jangalpur,Biprannapara,,Pin-711411,Howrah,Howrah,WestBengal,Ph-
+Ship-To:
+SKIL LIFESTYLE
+SHOP NO-7A, D.NO.28-10-4,,VASAVI PLAZA,FLOOR NO-3,THEATRE
+ROAD,JAGADAMBA JN,VISAKHAPATNAM-530020(India)
+GSTIN: 37AFZFS2777J1ZV
+Phone: 9348343310 /
+[code:93081
+Bill-To:
+SKIL LIFESTYLE
+SHOP NO-7A, D.NO.28-10-4,,VASAVI PLAZA,FLOOR NO-3,THEATRE
+ROAD,JAGADAMBA JN,VISAKHAPATNAM-530020(India)
+GSTIN: 37AFZFS2777J1ZV
+Phone: 9348343310 /
+[Code:93081]
+Order No. :300368251 (L1)
+Order Date :28.10.2026
+Dealer Code:93081
+PO No. : OCTOBER
+PO Date : 28.10.2026
+e-Waybill No.:
+e-Waybill Date:
+-------------------------------------------------------------------------------------------------------------------------------------
+Brand/Product . Size Pack Carton Pair MRP Rate Amount(Rs.)
+-------------------------------------------------------------------------------------------------------------------------------------
+H2T48155760
+1CEL 108 ONION SZ-5X7 (60)/J1
+HSN/SAC: 640220
+60 2 120 127.00 76.25 9,150.00
+-------------------------------------------------------------------------------------------------------------------------------------
+H2T48173660
+1CEL 108 S.GREEN SZ-3X6 (60)/J1
+HSN/SAC: 640220
+60 1 60 127.00 76.25 4,575.00
+-------------------------------------------------------------------------------------------------------------------------------------
+H2E5326110260
+1CEL 110 MAGENTA SZ-11X02 (60)/J1
+HSN/SAC: 640220
+60 2 120 126.00 75.02 9,002.40
+-------------------------------------------------------------------------------------------------------------------------------------
+H2E9165760
+1CEL 110 ONION SZ-5X7 (60)/J1
+HSN/SAC: 640220
+60 3 180 127.00 76.25 13,725.00
+-------------------------------------------------------------------------------------------------------------------------------------
+H2E9183660
+1CEL 110 S.GREEN SZ-3X6 (60)/J1
+HSN/SAC: 640220
+60 1 60 127.00 76.25 4,575.00
+-------------------------------------------------------------------------------------------------------------------------------------
+H2N9375760
+1CEL PLUS 01 DK.CYAN SZ-5X7
+(60)/J1
+HSN/SAC: 640220
+60 1 60 134.00 80.45 4,827.00
+-------------------------------------------------------------------------------------------------------------------------------------
+H2273261024
+1CG 40 AQUA 6X10#(24 PR)/J1
+HSN/SAC: 640220
+24 1 24 319.00 184.37 4,424.88
+Page: 3
+Continued....
+
+-- 3 of 11 --
+
+IRN : 491694a9f5b0ee9a59c797fbbde3bccc6ef0cf2ec1f3999bc312cc83995358ab
+Acknowledgement No. : 182624246157051
+Inv. No. : 1900422215
+Inv. Date : 28.10.2026
+TAX INVOICE CUM CHALLAN
+AJANTA SHOES (INDIA) PRIVATE LIMITED
+CIN:U25190WB2011PTC166511
+GSTIN: 19AAECB6793N1ZV
+PAN: AAECB6793N
+Regd. Office-"Ajanta House",79/2 A.J.C.Bose Road,Kolkata-700014,Ph.033-22271841/58/73/93
+Website:www.ajantashoes.com,Mail-sales@ajantashoes.com
+SalesWorks:JalanComplex,JalanIndustrialComplex,,Domjur,Jangalpur,Biprannapara,,Pin-711411,Howrah,Howrah,WestBengal,Ph-
+Ship-To:
+SKIL LIFESTYLE
+SHOP NO-7A, D.NO.28-10-4,,VASAVI PLAZA,FLOOR NO-3,THEATRE
+ROAD,JAGADAMBA JN,VISAKHAPATNAM-530020(India)
+GSTIN: 37AFZFS2777J1ZV
+Phone: 9348343310 /
+[code:93081
+Bill-To:
+SKIL LIFESTYLE
+SHOP NO-7A, D.NO.28-10-4,,VASAVI PLAZA,FLOOR NO-3,THEATRE
+ROAD,JAGADAMBA JN,VISAKHAPATNAM-530020(India)
+GSTIN: 37AFZFS2777J1ZV
+Phone: 9348343310 /
+[Code:93081]
+Order No. :300368251 (L1)
+Order Date :28.10.2026
+Dealer Code:93081
+PO No. : OCTOBER
+PO Date : 28.10.2026
+e-Waybill No.:
+e-Waybill Date:
+-------------------------------------------------------------------------------------------------------------------------------------
+Brand/Product . Size Pack Carton Pair MRP Rate Amount(Rs.)
+-------------------------------------------------------------------------------------------------------------------------------------
+H2Y64861024
+1CG 44 N.BLUE 6X10#(24 PR)/J1
+HSN/SAC: 640220
+24 1 24 319.00 184.37 4,424.88
+-------------------------------------------------------------------------------------------------------------------------------------
+H2Y65361024
+1CG 44 OLIVE GREEN 7X10#(24 PR)/J1
+HSN/SAC: 640220
+24 1 24 319.00 184.37 4,424.88
+-------------------------------------------------------------------------------------------------------------------------------------
+H2YT949561024
+1CG 55 DK.GREY 6X10#(24 PR)/J1
+HSN/SAC: 640220
+24 1 24 349.00 201.71 4,841.04
+-------------------------------------------------------------------------------------------------------------------------------------
+11FD240709160
+1DODO 04 WINE SZ-9X1 (60)/J1
+HSN/SAC: 640220
+60 1 60 135.00 76.80 4,608.00
+-------------------------------------------------------------------------------------------------------------------------------------
+H24257909160
+1DODO 05 LT.GREEN SZ-9X1 (60)/J1
+HSN/SAC: 640220
+60 1 60 135.00 76.80 4,608.00
+-------------------------------------------------------------------------------------------------------------------------------------
+H2T47729160
+1DODO 14 LT.GREEN SZ-9X1 (60)/J1
+HSN/SAC: 640220
+60 1 60 135.00 76.80 4,608.00
+-------------------------------------------------------------------------------------------------------------------------------------
+H2E9099160
+1DODO 15 SKY SZ-9X1 (60)/J1
+HSN/SAC: 640220
+60 1 60 135.00 76.80 4,608.00
+Page: 4
+Continued....
+
+-- 4 of 11 --
+
+IRN : 491694a9f5b0ee9a59c797fbbde3bccc6ef0cf2ec1f3999bc312cc83995358ab
+Acknowledgement No. : 182624246157051
+Inv. No. : 1900422215
+Inv. Date : 28.10.2026
+TAX INVOICE CUM CHALLAN
+AJANTA SHOES (INDIA) PRIVATE LIMITED
+CIN:U25190WB2011PTC166511
+GSTIN: 19AAECB6793N1ZV
+PAN: AAECB6793N
+Regd. Office-"Ajanta House",79/2 A.J.C.Bose Road,Kolkata-700014,Ph.033-22271841/58/73/93
+Website:www.ajantashoes.com,Mail-sales@ajantashoes.com
+SalesWorks:JalanComplex,JalanIndustrialComplex,,Domjur,Jangalpur,Biprannapara,,Pin-711411,Howrah,Howrah,WestBengal,Ph-
+Ship-To:
+SKIL LIFESTYLE
+SHOP NO-7A, D.NO.28-10-4,,VASAVI PLAZA,FLOOR NO-3,THEATRE
+ROAD,JAGADAMBA JN,VISAKHAPATNAM-530020(India)
+GSTIN: 37AFZFS2777J1ZV
+Phone: 9348343310 /
+[code:93081
+Bill-To:
+SKIL LIFESTYLE
+SHOP NO-7A, D.NO.28-10-4,,VASAVI PLAZA,FLOOR NO-3,THEATRE
+ROAD,JAGADAMBA JN,VISAKHAPATNAM-530020(India)
+GSTIN: 37AFZFS2777J1ZV
+Phone: 9348343310 /
+[Code:93081]
+Order No. :300368251 (L1)
+Order Date :28.10.2026
+Dealer Code:93081
+PO No. : OCTOBER
+PO Date : 28.10.2026
+e-Waybill No.:
+e-Waybill Date:
+-------------------------------------------------------------------------------------------------------------------------------------
+Brand/Product . Size Pack Carton Pair MRP Rate Amount(Rs.)
+-------------------------------------------------------------------------------------------------------------------------------------
+H2MS73300748
+1ECO 14 DK.MEHENDI- SZ-7X10
+(48)/J1
+HSN/SAC: 640220
+48 2 96 159.00 88.70 8,515.20
+-------------------------------------------------------------------------------------------------------------------------------------
+H2M292706948
+1ECO 15 LT.BROWN- SZ-6X9 (48)/J1
+HSN/SAC: 640220
+48 2 96 149.00 88.70 8,515.20
+-------------------------------------------------------------------------------------------------------------------------------------
+11FD161861048
+1ECO PLUS 08 DP.S.BLUE- SZ-6X10
+(48)/J1
+HSN/SAC: 640220
+48 2 96 179.00 106.56 10,229.76
+-------------------------------------------------------------------------------------------------------------------------------------
+11FD161706948
+1ECO PLUS 08 DP.S.BLUE- SZ-6X9
+(48)/J1
+HSN/SAC: 640220
+48 1 48 179.00 106.56 5,114.88
+-------------------------------------------------------------------------------------------------------------------------------------
+H2N9002560
+1ECO SMART 08 BLACK SZ-2X5
+(60)/J1
+HSN/SAC: 640220
+60 1 60 159.00 94.66 5,679.60
+-------------------------------------------------------------------------------------------------------------------------------------
+H2E277671048
+1ECO SMART 14 B.BLUE SZ-7X10
+(48)/J1
+HSN/SAC: 640220
+48 2 96 169.00 100.61 9,658.56
+Page: 5
+Continued....
+
+-- 5 of 11 --
+
+IRN : 491694a9f5b0ee9a59c797fbbde3bccc6ef0cf2ec1f3999bc312cc83995358ab
+Acknowledgement No. : 182624246157051
+Inv. No. : 1900422215
+Inv. Date : 28.10.2026
+TAX INVOICE CUM CHALLAN
+AJANTA SHOES (INDIA) PRIVATE LIMITED
+CIN:U25190WB2011PTC166511
+GSTIN: 19AAECB6793N1ZV
+PAN: AAECB6793N
+Regd. Office-"Ajanta House",79/2 A.J.C.Bose Road,Kolkata-700014,Ph.033-22271841/58/73/93
+Website:www.ajantashoes.com,Mail-sales@ajantashoes.com
+SalesWorks:JalanComplex,JalanIndustrialComplex,,Domjur,Jangalpur,Biprannapara,,Pin-711411,Howrah,Howrah,WestBengal,Ph-
+Ship-To:
+SKIL LIFESTYLE
+SHOP NO-7A, D.NO.28-10-4,,VASAVI PLAZA,FLOOR NO-3,THEATRE
+ROAD,JAGADAMBA JN,VISAKHAPATNAM-530020(India)
+GSTIN: 37AFZFS2777J1ZV
+Phone: 9348343310 /
+[code:93081
+Bill-To:
+SKIL LIFESTYLE
+SHOP NO-7A, D.NO.28-10-4,,VASAVI PLAZA,FLOOR NO-3,THEATRE
+ROAD,JAGADAMBA JN,VISAKHAPATNAM-530020(India)
+GSTIN: 37AFZFS2777J1ZV
+Phone: 9348343310 /
+[Code:93081]
+Order No. :300368251 (L1)
+Order Date :28.10.2026
+Dealer Code:93081
+PO No. : OCTOBER
+PO Date : 28.10.2026
+e-Waybill No.:
+e-Waybill Date:
+-------------------------------------------------------------------------------------------------------------------------------------
+Brand/Product . Size Pack Carton Pair MRP Rate Amount(Rs.)
+-------------------------------------------------------------------------------------------------------------------------------------
+H2E276671048
+1ECO SMART 14 F.GREEN SZ-7X10
+(48)/J1
+HSN/SAC: 640220
+48 2 96 169.00 100.61 9,658.56
+-------------------------------------------------------------------------------------------------------------------------------------
+H2T7589711160
+1FEMINA NP 55 MAGENTA
+SZ-11X2(60)/J1
+HSN/SAC: 640220
+60 2 120 126.00 75.65 9,078.00
+-------------------------------------------------------------------------------------------------------------------------------------
+H2SU29711260
+1FEMINA NP 60 MAGENTA
+SZ-11X02(60)/J1
+HSN/SAC: 640220
+60 2 120 126.00 75.65 9,078.00
+-------------------------------------------------------------------------------------------------------------------------------------
+H275323X660
+1FEMINA NP 75 N.BLUE SZ-3X6(60)/J1
+HSN/SAC: 640220
+60 1 60 140.00 84.06 5,043.60
+-------------------------------------------------------------------------------------------------------------------------------------
+H275435X760
+1FEMINA NP 76 F.GREEN
+SZ-5X7(60)/J1
+HSN/SAC: 640220
+60 2 120 140.00 84.06 10,087.20
+-------------------------------------------------------------------------------------------------------------------------------------
+H2E32453660
+1FEMINA NP 86 WINE SZ-3X6(60)/J1
+HSN/SAC: 640220
+60 1 60 140.00 84.06 5,043.60
+Page: 6
+Continued....
+
+-- 6 of 11 --
+
+IRN : 491694a9f5b0ee9a59c797fbbde3bccc6ef0cf2ec1f3999bc312cc83995358ab
+Acknowledgement No. : 182624246157051
+Inv. No. : 1900422215
+Inv. Date : 28.10.2026
+TAX INVOICE CUM CHALLAN
+AJANTA SHOES (INDIA) PRIVATE LIMITED
+CIN:U25190WB2011PTC166511
+GSTIN: 19AAECB6793N1ZV
+PAN: AAECB6793N
+Regd. Office-"Ajanta House",79/2 A.J.C.Bose Road,Kolkata-700014,Ph.033-22271841/58/73/93
+Website:www.ajantashoes.com,Mail-sales@ajantashoes.com
+SalesWorks:JalanComplex,JalanIndustrialComplex,,Domjur,Jangalpur,Biprannapara,,Pin-711411,Howrah,Howrah,WestBengal,Ph-
+Ship-To:
+SKIL LIFESTYLE
+SHOP NO-7A, D.NO.28-10-4,,VASAVI PLAZA,FLOOR NO-3,THEATRE
+ROAD,JAGADAMBA JN,VISAKHAPATNAM-530020(India)
+GSTIN: 37AFZFS2777J1ZV
+Phone: 9348343310 /
+[code:93081
+Bill-To:
+SKIL LIFESTYLE
+SHOP NO-7A, D.NO.28-10-4,,VASAVI PLAZA,FLOOR NO-3,THEATRE
+ROAD,JAGADAMBA JN,VISAKHAPATNAM-530020(India)
+GSTIN: 37AFZFS2777J1ZV
+Phone: 9348343310 /
+[Code:93081]
+Order No. :300368251 (L1)
+Order Date :28.10.2026
+Dealer Code:93081
+PO No. : OCTOBER
+PO Date : 28.10.2026
+e-Waybill No.:
+e-Waybill Date:
+-------------------------------------------------------------------------------------------------------------------------------------
+Brand/Product . Size Pack Carton Pair MRP Rate Amount(Rs.)
+-------------------------------------------------------------------------------------------------------------------------------------
+H2E32475760
+1FEMINA NP 86 WINE SZ-5X7(60)/J1
+HSN/SAC: 640220
+60 2 120 140.00 84.06 10,087.20
+-------------------------------------------------------------------------------------------------------------------------------------
+H233904760
+1FEMINA NP 77 D.PINK SZ-4X7(60)/J1
+HSN/SAC: 640220
+60 2 120 140.00 84.06 10,087.20
+-------------------------------------------------------------------------------------------------------------------------------------
+H2TK300006948
+1FITNESS PLUS 101 DP.S.BLUE-
+SZ-6X9 (48)
+HSN/SAC: 640220
+48 2 96 159.00 94.66 9,087.36
+-------------------------------------------------------------------------------------------------------------------------------------
+H2TK300171048
+1FITNESS PLUS 101 DP.S.BLUE-
+SZ-7X10 (48
+HSN/SAC: 640220
+48 1 48 159.00 94.66 4,543.68
+-------------------------------------------------------------------------------------------------------------------------------------
+H2MS670271048
+1FITNESS PLUS 103 RED- SZ-7X10
+(48)/J
+HSN/SAC: 640220
+48 1 48 159.00 94.66 4,543.68
+-------------------------------------------------------------------------------------------------------------------------------------
+H275576X948
+1FITNESS PLUS 106
+KHAKI-SZ-6X9(48)/J1
+HSN/SAC: 640220
+48 1 48 159.00 94.66 4,543.68
+Page: 7
+Continued....
+
+-- 7 of 11 --
+
+IRN : 491694a9f5b0ee9a59c797fbbde3bccc6ef0cf2ec1f3999bc312cc83995358ab
+Acknowledgement No. : 182624246157051
+Inv. No. : 1900422215
+Inv. Date : 28.10.2026
+TAX INVOICE CUM CHALLAN
+AJANTA SHOES (INDIA) PRIVATE LIMITED
+CIN:U25190WB2011PTC166511
+GSTIN: 19AAECB6793N1ZV
+PAN: AAECB6793N
+Regd. Office-"Ajanta House",79/2 A.J.C.Bose Road,Kolkata-700014,Ph.033-22271841/58/73/93
+Website:www.ajantashoes.com,Mail-sales@ajantashoes.com
+SalesWorks:JalanComplex,JalanIndustrialComplex,,Domjur,Jangalpur,Biprannapara,,Pin-711411,Howrah,Howrah,WestBengal,Ph-
+Ship-To:
+SKIL LIFESTYLE
+SHOP NO-7A, D.NO.28-10-4,,VASAVI PLAZA,FLOOR NO-3,THEATRE
+ROAD,JAGADAMBA JN,VISAKHAPATNAM-530020(India)
+GSTIN: 37AFZFS2777J1ZV
+Phone: 9348343310 /
+[code:93081
+Bill-To:
+SKIL LIFESTYLE
+SHOP NO-7A, D.NO.28-10-4,,VASAVI PLAZA,FLOOR NO-3,THEATRE
+ROAD,JAGADAMBA JN,VISAKHAPATNAM-530020(India)
+GSTIN: 37AFZFS2777J1ZV
+Phone: 9348343310 /
+[Code:93081]
+Order No. :300368251 (L1)
+Order Date :28.10.2026
+Dealer Code:93081
+PO No. : OCTOBER
+PO Date : 28.10.2026
+e-Waybill No.:
+e-Waybill Date:
+-------------------------------------------------------------------------------------------------------------------------------------
+Brand/Product . Size Pack Carton Pair MRP Rate Amount(Rs.)
+-------------------------------------------------------------------------------------------------------------------------------------
+1177076X1048
+1FITNESS PLUS 106
+L.BROWN-SZ-6X10(48)/J
+HSN/SAC: 640220
+48 2 96 159.00 94.66 9,087.36
+-------------------------------------------------------------------------------------------------------------------------------------
+1177157X1048
+1FITNESS PLUS 106
+WINE-SZ-7X10(48)/J
+HSN/SAC: 640220
+48 2 96 159.00 94.66 9,087.36
+-------------------------------------------------------------------------------------------------------------------------------------
+H93A24461048
+1TOPZ 101 BLUE SZ-6X10-(48-PR)/B1
+HSN/SAC: 640220
+48 1 48 149.00 88.70 4,257.60
+-------------------------------------------------------------------------------------------------------------------------------------
+H93A92604560
+1TOPZ 101 SZ SZ-4X5-(60-PR)/B1
+HSN/SAC: 640220
+60 2 120 139.00 82.75 9,930.00
+-------------------------------------------------------------------------------------------------------------------------------------
+H93A26961048
+1TOPZ 101 SZ SZ-6X10-(48-PR)/B1
+HSN/SAC: 640220
+48 2 96 149.00 88.70 8,515.20
+-------------------------------------------------------------------------------------------------------------------------------------
+H93A92676848
+1TOPZ 101 SZ SZ-6X8-(48-PR)/B1
+HSN/SAC: 640220
+48 1 48 149.00 88.70 4,257.60
+-------------------------------------------------------------------------------------------------------------------------------------
+H93A92686948
+1TOPZ 101 SZ SZ-6X9-(48-PR)/B1
+HSN/SAC: 640220
+48 1 48 149.00 88.70 4,257.60
+Page: 8
+Continued....
+
+-- 8 of 11 --
+
+IRN : 491694a9f5b0ee9a59c797fbbde3bccc6ef0cf2ec1f3999bc312cc83995358ab
+Acknowledgement No. : 182624246157051
+Inv. No. : 1900422215
+Inv. Date : 28.10.2026
+TAX INVOICE CUM CHALLAN
+AJANTA SHOES (INDIA) PRIVATE LIMITED
+CIN:U25190WB2011PTC166511
+GSTIN: 19AAECB6793N1ZV
+PAN: AAECB6793N
+Regd. Office-"Ajanta House",79/2 A.J.C.Bose Road,Kolkata-700014,Ph.033-22271841/58/73/93
+Website:www.ajantashoes.com,Mail-sales@ajantashoes.com
+SalesWorks:JalanComplex,JalanIndustrialComplex,,Domjur,Jangalpur,Biprannapara,,Pin-711411,Howrah,Howrah,WestBengal,Ph-
+Ship-To:
+SKIL LIFESTYLE
+SHOP NO-7A, D.NO.28-10-4,,VASAVI PLAZA,FLOOR NO-3,THEATRE
+ROAD,JAGADAMBA JN,VISAKHAPATNAM-530020(India)
+GSTIN: 37AFZFS2777J1ZV
+Phone: 9348343310 /
+[code:93081
+Bill-To:
+SKIL LIFESTYLE
+SHOP NO-7A, D.NO.28-10-4,,VASAVI PLAZA,FLOOR NO-3,THEATRE
+ROAD,JAGADAMBA JN,VISAKHAPATNAM-530020(India)
+GSTIN: 37AFZFS2777J1ZV
+Phone: 9348343310 /
+[Code:93081]
+Order No. :300368251 (L1)
+Order Date :28.10.2026
+Dealer Code:93081
+PO No. : OCTOBER
+PO Date : 28.10.2026
+e-Waybill No.:
+e-Waybill Date:
+-------------------------------------------------------------------------------------------------------------------------------------
+Brand/Product . Size Pack Carton Pair MRP Rate Amount(Rs.)
+-------------------------------------------------------------------------------------------------------------------------------------
+11YU591609160
+1TOTO SOFT/33 B.BLUE
+SZ09X01(60)/J1
+HSN/SAC: 640220
+60 2 120 121.00 72.04 8,644.80
+-------------------------------------------------------------------------------------------------------------------------------------
+11YU591709160
+1TOTO SOFT/33 RED SZ09X01(60)/J1
+HSN/SAC: 640220
+60 2 120 121.00 72.04 8,644.80
+-------------------------------------------------------------------------------------------------------------------------------------
+H223789160
+1TOTO SOFT/38 BLUE SZ 09X01(60)/J1
+HSN/SAC: 640220
+60 2 120 121.00 72.04 8,644.80
+-------------------------------------------------------------------------------------------------------------------------------------
+H223779160
+1TOTO SOFT/38 GREEN SZ
+09X01(60)/J1
+HSN/SAC: 640220
+60 2 120 121.00 72.04 8,644.80
+-------------------------------------------------------------------------------------------------------------------------------------
+H2N9439160
+1TOTO SOFT/38 P.BLUE SZ
+09X01(60)/J1
+HSN/SAC: 640220
+60 2 120 121.00 72.04 8,644.80
+-------------------------------------------------------------------------------------------------------------------------------------
+H2YT96689160
+1TOTO SOFT/40 LAVENDER SZ
+09X01(60)/J1
+HSN/SAC: 640220
+60 2 120 121.00 72.04 8,644.80
+Page: 9
+Continued....
+
+-- 9 of 11 --
+
+IRN : 491694a9f5b0ee9a59c797fbbde3bccc6ef0cf2ec1f3999bc312cc83995358ab
+Acknowledgement No. : 182624246157051
+Inv. No. : 1900422215
+Inv. Date : 28.10.2026
+TAX INVOICE CUM CHALLAN
+AJANTA SHOES (INDIA) PRIVATE LIMITED
+CIN:U25190WB2011PTC166511
+GSTIN: 19AAECB6793N1ZV
+PAN: AAECB6793N
+Regd. Office-"Ajanta House",79/2 A.J.C.Bose Road,Kolkata-700014,Ph.033-22271841/58/73/93
+Website:www.ajantashoes.com,Mail-sales@ajantashoes.com
+SalesWorks:JalanComplex,JalanIndustrialComplex,,Domjur,Jangalpur,Biprannapara,,Pin-711411,Howrah,Howrah,WestBengal,Ph-
+Ship-To:
+SKIL LIFESTYLE
+SHOP NO-7A, D.NO.28-10-4,,VASAVI PLAZA,FLOOR NO-3,THEATRE
+ROAD,JAGADAMBA JN,VISAKHAPATNAM-530020(India)
+GSTIN: 37AFZFS2777J1ZV
+Phone: 9348343310 /
+[code:93081
+Bill-To:
+SKIL LIFESTYLE
+SHOP NO-7A, D.NO.28-10-4,,VASAVI PLAZA,FLOOR NO-3,THEATRE
+ROAD,JAGADAMBA JN,VISAKHAPATNAM-530020(India)
+GSTIN: 37AFZFS2777J1ZV
+Phone: 9348343310 /
+[Code:93081]
+Order No. :300368251 (L1)
+Order Date :28.10.2026
+Dealer Code:93081
+PO No. : OCTOBER
+PO Date : 28.10.2026
+e-Waybill No.:
+e-Waybill Date:
+-------------------------------------------------------------------------------------------------------------------------------------
+Brand/Product . Size Pack Carton Pair MRP Rate Amount(Rs.)
+-------------------------------------------------------------------------------------------------------------------------------------
+H2YT96679160
+1TOTO SOFT/40 RED SZ 09X01(60)/J1
+HSN/SAC: 640220
+60 2 120 121.00 72.04 8,644.80
+-------------------------------------------------------------------------------------------------------------------------------------
+H2E8379160
+1TOTO SOFT/43 B.BLUE SZ
+09X01(60)/J1
+HSN/SAC: 640220
+60 2 120 121.00 72.04 8,644.80
+-------------------------------------------------------------------------------------------------------------------------------------
+H2E8419160
+1TOTO SOFT/43 RED SZ 09X01(60)/J1
+HSN/SAC: 640220
+60 2 120 121.00 72.04 8,644.80
+-------------------------------------------------------------------------------------------------------------------------------------
+H2E56519160
+1TOTO SOFT/46 RED SZ 09X01(60)/J1
+HSN/SAC: 640220
+60 2 120 121.00 72.04 8,644.80
+-------------------------------------------------------------------------------------------------------------------------------------
+To
+tal
+:
+109 6,024 493,817.16
+Add:IN:Integrated GST-OP(5.00%) Based On493817.16 24,690.84
+------------------
+Grand Total: Rupees FIVE LAKH EIGHTEEN THOUSAND FIVE
+HUNDRED EIGHT Only
+518,508.00
+-------------------------------------------------------------------------------------------------------------------------------------
+Private Marker:
+Vehicle No.:
+Destination: Direct Vehicle.
+Page: 10
+Continued....
+
+-- 10 of 11 --
+
+IRN : 491694a9f5b0ee9a59c797fbbde3bccc6ef0cf2ec1f3999bc312cc83995358ab
+Acknowledgement No. : 182624246157051
+Inv. No. : 1900422215
+Inv. Date : 28.10.2026
+TAX INVOICE CUM CHALLAN
+AJANTA SHOES (INDIA) PRIVATE LIMITED
+CIN:U25190WB2011PTC166511
+GSTIN: 19AAECB6793N1ZV
+PAN: AAECB6793N
+Regd. Office-"Ajanta House",79/2 A.J.C.Bose Road,Kolkata-700014,Ph.033-22271841/58/73/93
+Website:www.ajantashoes.com,Mail-sales@ajantashoes.com
+SalesWorks:JalanComplex,JalanIndustrialComplex,,Domjur,Jangalpur,Biprannapara,,Pin-711411,Howrah,Howrah,WestBengal,Ph-
+Ship-To:
+SKIL LIFESTYLE
+SHOP NO-7A, D.NO.28-10-4,,VASAVI PLAZA,FLOOR NO-3,THEATRE
+ROAD,JAGADAMBA JN,VISAKHAPATNAM-530020(India)
+GSTIN: 37AFZFS2777J1ZV
+Phone: 9348343310 /
+[code:93081
+Bill-To:
+SKIL LIFESTYLE
+SHOP NO-7A, D.NO.28-10-4,,VASAVI PLAZA,FLOOR NO-3,THEATRE
+ROAD,JAGADAMBA JN,VISAKHAPATNAM-530020(India)
+GSTIN: 37AFZFS2777J1ZV
+Phone: 9348343310 /
+[Code:93081]
+Order No. :300368251 (L1)
+Order Date :28.10.2026
+Dealer Code:93081
+PO No. : OCTOBER
+PO Date : 28.10.2026
+e-Waybill No.:
+e-Waybill Date:
+Billing Remarks:
+-------------------------------------------------------------------------------------------------------------------------------------
+E. & O.E.
+For AJANTA SHOES (INDIA) PVT. LTD.
+Receiver Signature with rubber stamp Aurthorised Signatory
+(Goods once sold can not be returned)
+ALL DISPUTES ARE SUBJECT TO KOLKATA JURISDICTION ONLY
+Interest @18% shall be charged if the bill is not paid within the due date Page: 11
+
+-- 11 of 11 --
+

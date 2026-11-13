@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SKIL Lifestyle LLP — Purchase Summary (September 2026)</title>
+  <style>
+    
+    @page {
+      size: A4 portrait;
+      margin: 10mm 8mm 10mm 8mm;
+    }
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      color: #000;
+      background: #e2e8f0;
+      margin: 0;
+      padding: 20px;
+      font-size: 8.8pt;
+      line-height: 1.3;
+      -webkit-font-smoothing: antialiased;
+    }
+    .sheet {
+      width: 210mm;
+      min-height: 297mm;
+      background: #fff;
+      margin: 0 auto 30px auto;
+      padding: 12mm 10mm;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      border: 1px solid #cbd5e1;
+      position: relative;
+    }
+    .page-break {
+      page-break-before: always;
+    }
+    @media print {
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+        font-size: 8.5pt;
+      }
+      .sheet {
+        width: 100% !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        border: none !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .page-break {
+        page-break-before: always;
+      }
+      tr {
+        page-break-inside: avoid;
+      }
+    }
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+    }
+    .text-center { text-align: center; }
+    .text-right { text-align: right; }
+    .text-left { text-align: left; }
+    .bold { font-weight: 700; }
+    .semibold { font-weight: 600; }
+
+    /* Top Nav Control Bar */
+    .nav-bar {
+      width: 210mm;
+      margin: 0 auto 15px auto;
+      background: #0f172a;
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .nav-bar a {
+      color: #94a3b8;
+      text-decoration: none;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 8.5pt;
+      font-weight: 600;
+      border: 1px solid transparent;
+    }
+    .nav-bar a.active, .nav-bar a:hover {
+      color: #fff;
+      background: #1e293b;
+      border-color: #475569;
+    }
+    .print-btn {
+      background: #fff;
+      color: #0f172a;
+      border: none;
+      padding: 6px 14px;
+      font-weight: 700;
+      font-size: 8.5pt;
+      border-radius: 5px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .print-btn:hover {
+      background: #f1f5f9;
+    }
+
+    /* Document Header */
+    .doc-header {
+      border-bottom: 2px solid #000;
+      padding-bottom: 6px;
+      margin-bottom: 10px;
+    }
+    .company-title {
+      font-size: 14pt;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin: 0 0 2px 0;
+    }
+    .company-sub {
+      font-size: 8pt;
+      color: #222;
+      margin: 0 0 4px 0;
+    }
+    .doc-badge-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-top: 4px;
+    }
+    .report-title {
+      font-size: 10.5pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.2px;
+      background: #000;
+      color: #fff;
+      padding: 3px 8px;
+      display: inline-block;
+    }
+    .report-meta {
+      font-size: 8pt;
+      font-weight: 600;
+      text-align: right;
+    }
+
+    /* KPI Cards */
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+    .kpi-box {
+      border: 1px solid #000;
+      padding: 5px 7px;
+      background: #fafafa;
+    }
+    .kpi-label {
+      font-size: 7pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      color: #333;
+      margin-bottom: 1px;
+    }
+    .kpi-val {
+      font-size: 11pt;
+      font-weight: 800;
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+    }
+    .kpi-sub {
+      font-size: 6.8pt;
+      color: #555;
+      margin-top: 1px;
+    }
+
+    /* Tables */
+    table.audit-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 7.8pt;
+      margin-bottom: 10px;
+    }
+    table.audit-table th {
+      background: #111;
+      color: #fff;
+      border: 1px solid #111;
+      padding: 4px 5px;
+      font-size: 7.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    table.audit-table td {
+      border: 1px solid #000;
+      padding: 3px 5px;
+      vertical-align: middle;
+    }
+    table.audit-table tr.total-row td {
+      background: #f1f1f1;
+      font-weight: 800;
+      border-top: 2px solid #000;
+      border-bottom: 2px solid #000;
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-block;
+      padding: 1px 4px;
+      font-size: 7pt;
+      font-weight: 700;
+      border-radius: 2px;
+      border: 1px solid #000;
+      white-space: nowrap;
+    }
+    .badge-paid {
+      background: #e2e8f0;
+      color: #000;
+    }
+    .badge-partial {
+      background: #fff;
+      color: #000;
+      border-style: dashed;
+    }
+    .badge-pending {
+      background: #fff;
+      color: #000;
+    }
+    .badge-cancelled {
+      background: #000;
+      color: #fff;
+    }
+
+    /* Remarks Column */
+    .col-remarks {
+      width: 38mm;
+      min-width: 38mm;
+      background: #fff;
+    }
+    .handwriting-line {
+      display: block;
+      height: 12px;
+      border-bottom: 1px dotted #ccc;
+    }
+
+    /* Section Headings */
+    .section-title {
+      font-size: 8.8pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      margin: 8px 0 3px 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1.5px solid #000;
+      padding-bottom: 2px;
+    }
+
+    /* Summary Financial Box */
+    .financial-box {
+      border: 1.5px solid #000;
+      padding: 6px 10px;
+      margin-top: 6px;
+      background: #fafafa;
+    }
+    .fin-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      font-size: 8pt;
+    }
+    .fin-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 2px 0;
+      border-bottom: 1px dotted #bbb;
+    }
+    .fin-row.bold-row {
+      font-weight: 800;
+      border-bottom: 1.5px solid #000;
+      border-top: 1.5px solid #000;
+      padding: 3px 0;
+      font-size: 8.5pt;
+      background: #fff;
+    }
+
+    /* Signatures */
+    .sign-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-top: 20px;
+      padding-top: 8px;
+    }
+    .sign-box {
+      border-top: 1px solid #000;
+      padding-top: 3px;
+      font-size: 7.5pt;
+      text-align: center;
+    }
+
+    /* Page Footer */
+    .page-footer {
+      position: absolute;
+      bottom: 6mm;
+      left: 10mm;
+      right: 10mm;
+      display: flex;
+      justify-content: space-between;
+      font-size: 7.2pt;
+      color: #444;
+      border-top: 1px solid #999;
+      padding-top: 3px;
+    }
+  
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAV BAR (Hidden on Print) -->
+  <div class="nav-bar no-print">
+    <div style="display:flex; align-items:center; gap:12px;">
+      <strong style="color:#fff; font-size:10pt; letter-spacing:0.3px;">SKIL AUDIT SUMMARIES:</strong>
+      <div style="display:flex; gap:6px;">
+        
+    <a href="purchase-summary-july-2026.html" class="">July</a>
+  
+    <a href="purchase-summary-august-2026.html" class="">August</a>
+  
+    <a href="purchase-summary-september-2026.html" class="active">September</a>
+  
+    <a href="purchase-summary-october-2026.html" class="">October</a>
+  
+    <a href="purchase-summary-november-2026.html" class="">November</a>
+  
+        <a href="purchase-summary-master.html" style="background:#334155; color:#fff; border-color:#64748b;">All Months Master</a>
+      </div>
+    </div>
+    <div style="display:flex; gap:10px; align-items:center;">
+      <button class="print-btn" onclick="window.print()">
+        🖨️ Print A4 Summary
+      </button>
+    </div>
+  </div>
+
+  <!-- PAGE 1 -->
+  
+    <div class="sheet">
+      <!-- HEADER -->
+      <div class="doc-header">
+        <h1 class="company-title">SKIL LIFESTYLE LLP</h1>
+        <div class="company-sub">
+          Rayagada, Odisha | Authorized Dealer: Ajanta Shoes • Xpania Footcare • Cubix | Zero-Inventory Drop-Shipping Model
+        </div>
+        <div class="doc-badge-row">
+          <div class="report-title">Page 1: Purchase & Sales Recovery Summary — September 2026</div>
+          <div class="report-meta">
+            Audit Period: <span class="mono">September 2026</span> | Verification: <span class="mono">TallyPrime Port 9000</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI CARDS -->
+      <div class="kpi-row">
+        <div class="kpi-box">
+          <div class="kpi-label">Inward Purchases</div>
+          <div class="kpi-val">31 Bills</div>
+          <div class="kpi-sub">₹14,84,790.00 Total Inward</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-label">Outward Sales</div>
+          <div class="kpi-val">₹14,88,717.00</div>
+          <div class="kpi-sub">31 Matching Invoices</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-label">Customer Payments Realized</div>
+          <div class="kpi-val">₹7,08,417.00</div>
+          <div class="kpi-sub">16 Fully Settled Bills</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-label">Outstanding / Pending Recovery</div>
+          <div class="kpi-val">₹7,80,300.00</div>
+          <div class="kpi-sub">13 Open + 2 Partial Bills</div>
+        </div>
+      </div>
+
+      <!-- TABLE -->
+      <div class="section-title">
+        <span>📦 1-to-1 Purchase to Outward Sales & Customer Payment Realization</span>
+      </div>
+
+      <table class="audit-table">
+        <thead>
+          <tr>
+            <th style="width: 7mm;">Sl.</th>
+            <th style="width: 44mm;">Invoice No. & Inward Vch</th>
+            <th style="width: 36mm;">Corresponding Sales Inv</th>
+            <th style="width: 48mm;">Customer / Party Name</th>
+            <th style="width: 37mm;">Party Payment Received / Status</th>
+            <th class="col-remarks">Remarks (Manual Notes)</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+        <tr>
+          <td class="text-center bold">1</td>
+          <td>
+            <strong>#23</strong> | <span class="mono">XPL/2041/26-27</span><br>
+            <span style="font-size:7pt; color:#222;">dt 09-09-2026</span> • <span class="mono bold">₹1,70,306.00</span>
+          </td>
+          <td>
+            <strong class="mono">#SKIL-023</strong><br>
+            <span style="font-size:7pt;">dt 09-09-2026</span> • <span class="mono">₹1,70,306.00</span>
+          </td>
+          <td>
+            <strong>M/S SUSHILA BOOT HOUSE</strong>
+            
+          </td>
+          <td>
+            <span class="badge badge-partial">PARTIAL ⚠️</span><br>
+            <strong class="mono">Recd: ₹1,00,000.00</strong><br><span style="font-size:6.8pt; color:#444;">Due: ₹70,306.00</span>
+          </td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="text-center bold">2</td>
+          <td>
+            <strong>#24</strong> | <span class="mono">1900410889</span><br>
+            <span style="font-size:7pt; color:#222;">dt 11-09-2026</span> • <span class="mono bold">₹22,894.00</span>
+          </td>
+          <td>
+            <strong class="mono">#SKIL-024</strong><br>
+            <span style="font-size:7pt;">dt 11-09-2026</span> • <span class="mono">₹22,890.00</span>
+          </td>
+          <td>
+            <strong>JYOTHI FOOT WEAR</strong>
+            
+          </td>
+          <td>
+            <span class="badge badge-pending">PENDING ⏳</span><br>
+            <strong>Due: ₹22,890.00</strong><br><span style="font-size:6.8pt; color:#444;">Payment due</span>
+          </td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="text-center bold">3</td>
+          <td>
+            <strong>#25</strong> | <span class="mono">1900410928</span><br>
+            <span style="font-size:7pt; color:#222;">dt 11-09-2026</span> • <span class="mono bold">₹18,857.00</span>
+          </td>
+          <td>
+            <strong class="mono">#SKIL-025</strong><br>
+            <span style="font-size:7pt;">dt 11-09-2026</span> • <span class="mono">₹18,855.00</span>
+          </td>
+          <td>
+            <strong>JYOTHI FOOT WEAR</strong>
+            
+          </td>
+          <td>
+            <span class="badge badge-pending">PENDING ⏳</span><br>
+            <strong>Due: ₹18,855.00</strong><br><span style="font-size:6.8pt; color:#444;">Payment due</span>
+          </td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="text-center bold">4</td>
+          <td>
+            <strong>#26</strong> | <span class="mono">1900410970</span><br>
+            <span style="font-size:7pt; color:#222;">dt 11-09-2026</span> • <span class="mono bold">₹4,238.00</span>
+          </td>
+          <td>
+            <strong class="mono">#SKIL-026</strong><br>
+            <span style="font-size:7pt;">dt 11-09-2026</span> • <span class="mono">₹4,238.00</span>
+          </td>
+          <td>
+            <strong>JYOTHI FOOT WEAR</strong>
+            
+          </td>
+          <td>
+            <span class="badge badge-pending">PENDING ⏳</span><br>
+            <strong>Due: ₹4,238.00</strong><br><span style="font-size:6.8pt; color:#444;">Payment due</span>
+          </td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="text-center bold">5</td>
+          <td>
+            <strong>#27</strong> | <span class="mono">1900410890</span><br>
+            <span style="font-size:7pt; color:#222;">dt 11-09-2026</span> • <span class="mono bold">₹53,438.00</span>
+          </td>
+          <td>
+            <strong class="mono">#SKIL-027</strong><br>
+            <span style="font-size:7pt;">dt 11-09-2026</span> • <span class="mono">₹53,430.00</span>
+          </td>
+          <td>
+            <strong>K G N FOOTWARE</strong>
+            
+          </td>
+          <td>
+            <span class="badge badge-paid">PAID ✅</span><br>
+            <strong>₹53,430.00</strong><br><span style="font-size:6.8pt; color:#333;">Rcpt #18 (₹1L part) dt 03-11</span>
+          </td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="text-center bold">6</td>
+          <td>
+            <strong>#28</strong> | <span class="mono">1900410929</span><br>
+            <span style="font-size:7pt; color:#222;">dt 11-09-2026</span> • <span class="mono bold">₹56,783.00</span>
+          </td>
+          <td>
+            <strong class="mono">#SKIL-028</strong><br>
+            <span style="font-size:7pt;">dt 11-09-2026</span> • <span class="mono">₹57,056.00</span>
+          </td>
+          <td>
+            <strong>K G N FOOTWARE</strong>
+            
+          </td>
+          <td>
+            <span class="badge badge-partial">PARTIAL ⚠️</span><br>
+            <strong class="mono">Recd: ₹46,570.00</strong><br><span style="font-size:6.8pt; color:#444;">Due: ₹10,486.00</span>
+          </td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="text-center bold">7</td>
+          <td>
+            <strong>#29</strong> | <span class="mono">1900410971</span><br>
+            <span style="font-size:7pt; color:#222;">dt 11-09-2026</span> • <span class="mono bold">₹34,146.00</span>
+          </td>
+          <td>
+            <strong class="mono">#SKIL-029</strong><br>
+            <span style="font-size:7pt;">dt 11-09-2026</span> • <span class="mono">₹34,144.00</span>
+          </td>
+          <td>
+            <strong>K G N FOOTWARE</strong>
+            
+          </td>
+          <td>
+            <span class="badge badge-pending">PENDING ⏳</span><br>
+            <strong>Due: ₹34,144.00</strong><br><span style="font-size:6.8pt; color:#444;">Payment due</span>
+          </td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="text-center bold">8</td>
+          <td>
+            <strong>#30</strong> | <span class="mono">1900411104</span><br>
+            <span style="font-size:7pt; color:#222;">dt 11-09-2026</span> • <span class="mono bold">₹4,613.00</span>
+          </td>
+          <td>
+            <strong class="mono">#SKIL-030</strong><br>
+            <span style="font-size:7pt;">dt 11-09-2026</span> • <span class="mono">₹4,613.00</span>
+          </td>
+          <td>
+            <strong>JYOTHI FOOT WEAR</strong>
+            
+          </td>
+          <td>
+            <span class="badge badge-pending">PENDING ⏳</span><br>
+            <strong>Due: ₹4,613.00</strong><br><span style="font-size:6.8pt; color:#444;">Payment due</span>
+          </td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="text-center bold">9</td>
+          <td>
+            <strong>#31</strong> | <span class="mono">1900412399</span><br>
+            <span style="font-size:7pt; color:#222;">dt 16-09-2026</span> • <span class="mono bold">₹20,988.00</span>
+          </td>
+          <td>
+            <strong class="mono">#SKIL-031</strong><br>
+            <span style="font-size:7pt;">dt 16-09-2026</span> • <span class="mono">₹21,375.00</span>
+          </td>
+          <td>
+            <strong>M/S.SHREE FOOTWEAR</strong>
+            
+          </td>
+          <td>
+            <span class="badge badge-paid">PAID ✅</span><br>
+            <strong>₹21,375.00</strong><br><span style="font-size:6.8pt; color:#333;">Rcpt #13 + 5% CD (CN #6)</span>
+          </td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="text-center bold">10</td>
+          <td>
+            <strong>#32</strong> | <span class="mono">1900412471</span><br>
+            <span style="font-size:7pt; color:#222;">dt 16-09-2026</span> • <span class="mono bold">₹12,525.00</span>
+          </td>
+          <td>
+            <strong class="mono">#SKIL-032</strong><br>
+            <span style="font-size:7pt;">dt 16-09-2026</span> • <span class="mono">₹12,525.00</span>
+          </td>
+          <td>
+            <strong>M/S.SHREE FOOTWEAR</strong>
+            
+          </td>
+          <td>
+            <span class="badge badge-paid">PAID ✅</span><br>
+            <strong>₹12,525.00</strong><br><span style="font-size:6.8pt; color:#333;">Rcpt #13 + 5% CD (CN #6)</span>
+          </td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="text-center bold">11</td>
+          <td>
+            <strong>#33</strong> | <span class="mono">1900412530</span><br>
+            <span style="font-size:7pt; color:#222;">dt 16-09-2026</span> • <span class="mono bold">₹12,470.00</span>
+          </td>
+          <td>
+            <strong class="mono">#SKIL-033</strong><br>
+            <span style="font-size:7pt;">dt 16-09-2026</span> • <span class="mono">₹12,469.00</span>
+          </td>
+          <td>
+            <strong>M/S.SHREE FOOTWEAR</strong>
+            
+          </td>
+          <td>
+            <span class="badge badge-paid">PAID ✅</span><br>
+            <strong>₹12,469.00</strong><br><span style="font-size:6.8pt; color:#333;">Rcpt #13 + 5% CD (CN #6)</span>
+          </td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="text-center bold">12</td>
+          <td>
+            <strong>#34</strong> | <span class="mono">1900412536</span><br>
+            <span style="font-size:7pt; color:#222;">dt 16-09-2026</span> • <span class="mono bold">₹5,982.00</span>
+          </td>
+          <td>
+            <strong class="mono">#SKIL-034</strong><br>
+            <span style="font-size:7pt;">dt 16-09-2026</span> • <span class="mono">₹5,981.00</span>
+          </td>
+          <td>
+            <strong>M/S.SHREE FOOTWEAR</strong>
+            
+          </td>
+          <td>
+            <span class="badge badge-paid">PAID ✅</span><br>
+            <strong>₹5,981.00</strong><br><span style="font-size:6.8pt; color:#333;">Rcpt #13 + 5% CD (CN #6)</span>
+          </td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="text-center bold">13</td>
+          <td>
+            <strong>#35</strong> | <span class="mono">XPL/2140/26-27</span><br>
+            <span style="font-size:7pt; color:#222;">dt 19-09-2026</span> • <span class="mono bold">₹2,67,292.00</span>
+          </td>
+          <td>
+            <strong class="mono">#SKIL-035</strong><br>
+            <span style="font-size:7pt;">dt 19-09-2026</span> • <span class="mono">₹2,67,292.00</span>
+          </td>
+          <td>
+            <strong>MAHAVIR SHOE HOUSE</strong>
+            
+          </td>
+          <td>
+            <span class="badge badge-paid">PAID ✅</span><br>
+            <strong>₹2,67,292.00</strong><br><span style="font-size:6.8pt; color:#333;">Rcpt #14 + 5% CD (CN #7)</span>
+          </td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="text-center bold">14</td>
+          <td>
+            <strong>#36</strong> | <span class="mono">1900413999</span><br>
+            <span style="font-size:7pt; color:#222;">dt 22-09-2026</span> • <span class="mono bold">₹13,005.00</span>
+          </td>
+          <td>
+            <strong class="mono">#SKIL-036</strong><br>
+            <span style="font-size:7pt;">dt 22-09-2026</span> • <span class="mono">₹13,005.00</span>
+          </td>
+          <td>
+            <strong>M/S.SHREE FOOTWEAR</strong>
+            
+          </td>
+          <td>
+            <span class="badge badge-paid">PAID ✅</span><br>
+            <strong>₹13,005.00</strong><br><span style="font-size:6.8pt; color:#333;">Rcpt #13 + 5% CD (CN #6)</span>
+          </td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="text-center bold">15</td>
+          <td>
+            <strong>#37</strong> | <span class="mono">1900414047</span><br>
+            <span style="font-size:7pt; color:#222;">dt 22-09-2026</span> • <span class="mono bold">₹23,926.00</span>
+          </td>
+          <td>
+            <strong class="mono">#SKIL-037</strong><br>
+            <span style="font-size:7pt;">dt 22-09-2026</span> • <span class="mono">₹23,925.00</span>
+          </td>
+          <td>
+            <strong>M/S.SHREE FOOTWEAR</strong>
+            
+          </td>
+          <td>
+            <span class="badge badge-paid">PAID ✅</span><br>
+            <strong>₹23,925.00</strong><br><span style="font-size:6.8pt; color:#333;">Rcpt #13 + 5% CD (CN #6)</span>
+          </td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="text-center bold">16</td>
+          <td>
+            <strong>#38</strong> | <span class="mono">1900415903</span><br>
+            <span style="font-size:7pt; color:#222;">dt 27-09-2026</span> • <span class="mono bold">₹10,458.00</span>
+          </td>
+          <td>
+            <strong class="mono">#SKIL-038</strong><br>
+            <span style="font-size:7pt;">dt 27-09-2026</span> • <span class="mono">₹10,770.00</span>
+          </td>
+          <td>
+            <strong>M/s Sri Brundabana Enterprises, Rayagada</strong>
+            
+          </td>
+          <td>
+            <span class="badge badge-paid">PAID ✅</span><br>
+            <strong>₹10,770.00</strong><br><span style="font-size:6.8pt; color:#333;">Rcpt #9/10 + 5% CD (CN #5)</span>
+          </td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="text-center bold">17</td>
+          <td>
+            <strong>#39</strong> | <span class="mono">1900415994</span><br>
+            <span style="font-size:7pt; color:#222;">dt 27-09-2026</span> • <span class="mono bold">₹5,606.00</span>
+          </td>
+          <td>
+            <strong class="mono">#SKIL-039</strong><br>
+            <span style="font-size:7pt;">dt 27-09-2026</span> • <span class="mono">₹5,606.00</span>
+          </td>
+          <td>
+            <strong>M/s Sri Brundabana Enterprises, Rayagada</strong>
+            
+          </td>
+          <td>
+            <span class="badge badge-paid">PAID ✅</span><br>
+            <strong>₹5,606.00</strong><br><span style="font-size:6.8pt; color:#333;">Rcpt #9/10 + 5% CD (CN #5)</span>
+          </td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="text-center bold">18</td>
+          <td>
+            <strong>#40</strong> | <span class="mono">1900416575</span><br>
+            <span style="font-size:7pt; color:#222;">dt 28-09-2026</span> • <span class="mono bold">₹3,02,019.00</span>
+          </td>
+          <td>
+            <strong class="mono">#SKIL-040</strong><br>
+            <span style="font-size:7pt;">dt 28-09-2026</span> • <span class="mono">₹3,01,964.00</span>
+          </td>
+          <td>
+            <strong>SRI SHARVANI TRADERS</strong>
+            
+          </td>
+          <td>
+            <span class="badge badge-pending">PENDING ⏳</span><br>
+            <strong>Due: ₹3,01,964.00</strong><br><span style="font-size:6.8pt; color:#444;">Payment due</span>
+          </td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="text-center bold">19</td>
+          <td>
+            <strong>#41</strong> | <span class="mono">1900416574</span><br>
+            <span style="font-size:7pt; color:#222;">dt 28-09-2026</span> • <span class="mono bold">₹78,264.00</span>
+          </td>
+          <td>
+            <strong class="mono">#SKIL-041</strong><br>
+            <span style="font-size:7pt;">dt 28-09-2026</span> • <span class="mono">₹78,249.00</span>
+          </td>
+          <td>
+            <strong>JYOTHI FOOT WEAR</strong>
+            
+          </td>
+          <td>
+            <span class="badge badge-pending">PENDING ⏳</span><br>
+            <strong>Due: ₹78,249.00</strong><br><span style="font-size:6.8pt; color:#444;">Payment due</span>
+          </td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="text-center bold">20</td>
+          <td>
+            <strong>#42</strong> | <span class="mono">1900416622</span><br>
+            <span style="font-size:7pt; color:#222;">dt 28-09-2026</span> • <span class="mono bold">₹50,283.00</span>
+          </td>
+          <td>
+            <strong class="mono">#SKIL-042</strong><br>
+            <span style="font-size:7pt;">dt 28-09-2026</span> • <span class="mono">₹50,655.00</span>
+          </td>
+          <td>
+            <strong>SRI SHARVANI TRADERS</strong>
+            
+          </td>
+          <td>
+            <span class="badge badge-pending">PENDING ⏳</span><br>
+            <strong>Due: ₹50,655.00</strong><br><span style="font-size:6.8pt; color:#444;">Payment due</span>
+          </td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="text-center bold">21</td>
+          <td>
+            <strong>#43</strong> | <span class="mono">1900416634</span><br>
+            <span style="font-size:7pt; color:#222;">dt 29-09-2026</span> • <span class="mono bold">₹39,608.00</span>
+          </td>
+          <td>
+            <strong class="mono">#SKIL-043</strong><br>
+            <span style="font-size:7pt;">dt 29-09-2026</span> • <span class="mono">₹39,697.00</span>
+          </td>
+          <td>
+            <strong>SRI SHARVANI TRADERS</strong>
+            
+          </td>
+          <td>
+            <span class="badge badge-pending">PENDING ⏳</span><br>
+            <strong>Due: ₹39,697.00</strong><br><span style="font-size:6.8pt; color:#444;">Payment due</span>
+          </td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="text-center bold">22</td>
+          <td>
+            <strong>#44</strong> | <span class="mono">1900416912</span><br>
+            <span style="font-size:7pt; color:#222;">dt 29-09-2026</span> • <span class="mono bold">₹38,352.00</span>
+          </td>
+          <td>
+            <strong class="mono">#SKIL-044</strong><br>
+            <span style="font-size:7pt;">dt 29-09-2026</span> • <span class="mono">₹39,180.00</span>
+          </td>
+          <td>
+            <strong>M/s Sri Brundabana Enterprises, Rayagada</strong>
+            
+          </td>
+          <td>
+            <span class="badge badge-paid">PAID ✅</span><br>
+            <strong>₹39,180.00</strong><br><span style="font-size:6.8pt; color:#333;">Rcpt #9/10 + 5% CD (CN #5)</span>
+          </td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="text-center bold">23</td>
+          <td>
+            <strong>#45</strong> | <span class="mono">1900416927</span><br>
+            <span style="font-size:7pt; color:#222;">dt 29-09-2026</span> • <span class="mono bold">₹24,675.00</span>
+          </td>
+          <td>
+            <strong class="mono">#SKIL-045</strong><br>
+            <span style="font-size:7pt;">dt 29-09-2026</span> • <span class="mono">₹24,675.00</span>
+          </td>
+          <td>
+            <strong>M/s Sri Brundabana Enterprises, Rayagada</strong>
+            
+          </td>
+          <td>
+            <span class="badge badge-paid">PAID ✅</span><br>
+            <strong>₹24,675.00</strong><br><span style="font-size:6.8pt; color:#333;">Rcpt #9/10 + 5% CD (CN #5)</span>
+          </td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="text-center bold">24</td>
+          <td>
+            <strong>#46</strong> | <span class="mono">1900416947</span><br>
+            <span style="font-size:7pt; color:#222;">dt 29-09-2026</span> • <span class="mono bold">₹24,296.00</span>
+          </td>
+          <td>
+            <strong class="mono">#SKIL-046</strong><br>
+            <span style="font-size:7pt;">dt 29-09-2026</span> • <span class="mono">₹24,435.00</span>
+          </td>
+          <td>
+            <strong>M/s Sri Brundabana Enterprises, Rayagada</strong>
+            
+          </td>
+          <td>
+            <span class="badge badge-paid">PAID ✅</span><br>
+            <strong>₹24,435.00</strong><br><span style="font-size:6.8pt; color:#333;">Rcpt #9/10 + 5% CD (CN #5)</span>
+          </td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="text-center bold">25</td>
+          <td>
+            <strong>#47</strong> | <span class="mono">1900417275</span><br>
+            <span style="font-size:7pt; color:#222;">dt 29-09-2026</span> • <span class="mono bold">₹43,808.00</span>
+          </td>
+          <td>
+            <strong class="mono">#SKIL-047</strong><br>
+            <span style="font-size:7pt;">dt 29-09-2026</span> • <span class="mono">₹43,801.00</span>
+          </td>
+          <td>
+            <strong>SRI SHARVANI TRADERS</strong>
+            
+          </td>
+          <td>
+            <span class="badge badge-pending">PENDING ⏳</span><br>
+            <strong>Due: ₹43,801.00</strong><br><span style="font-size:6.8pt; color:#444;">Payment due</span>
+          </td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="text-center bold">26</td>
+          <td>
+            <strong>#48</strong> | <span class="mono">1900417852</span><br>
+            <span style="font-size:7pt; color:#222;">dt 30-09-2026</span> • <span class="mono bold">₹28,053.00</span>
+          </td>
+          <td>
+            <strong class="mono">#SKIL-048</strong><br>
+            <span style="font-size:7pt;">dt 30-09-2026</span> • <span class="mono">₹28,890.00</span>
+          </td>
+          <td>
+            <strong>M/S SRI BRUNDABAN ENTERPRISES, MALKANGIRI</strong>
+            
+          </td>
+          <td>
+            <span class="badge badge-pending">PENDING ⏳</span><br>
+            <strong>Due: ₹28,890.00</strong><br><span style="font-size:6.8pt; color:#444;">Payment due</span>
+          </td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="text-center bold">27</td>
+          <td>
+            <strong>#49</strong> | <span class="mono">1900417853</span><br>
+            <span style="font-size:7pt; color:#222;">dt 30-09-2026</span> • <span class="mono bold">₹8,697.00</span>
+          </td>
+          <td>
+            <strong class="mono">#SKIL-049</strong><br>
+            <span style="font-size:7pt;">dt 30-09-2026</span> • <span class="mono">₹8,835.00</span>
+          </td>
+          <td>
+            <strong>M/S.SHREE FOOTWEAR</strong>
+            
+          </td>
+          <td>
+            <span class="badge badge-paid">PAID ✅</span><br>
+            <strong>₹8,835.00</strong><br><span style="font-size:6.8pt; color:#333;">Rcpt #13 + 5% CD (CN #6)</span>
+          </td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="text-center bold">28</td>
+          <td>
+            <strong>#50</strong> | <span class="mono">1900417888</span><br>
+            <span style="font-size:7pt; color:#222;">dt 30-09-2026</span> • <span class="mono bold">₹5,982.00</span>
+          </td>
+          <td>
+            <strong class="mono">#SKIL-050</strong><br>
+            <span style="font-size:7pt;">dt 30-09-2026</span> • <span class="mono">₹5,981.00</span>
+          </td>
+          <td>
+            <strong>M/S SRI BRUNDABAN ENTERPRISES, MALKANGIRI</strong>
+            
+          </td>
+          <td>
+            <span class="badge badge-pending">PENDING ⏳</span><br>
+            <strong>Due: ₹5,981.00</strong><br><span style="font-size:6.8pt; color:#444;">Payment due</span>
+          </td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="text-center bold">29</td>
+          <td>
+            <strong>#51</strong> | <span class="mono">1900417889</span><br>
+            <span style="font-size:7pt; color:#222;">dt 30-09-2026</span> • <span class="mono bold">₹15,620.00</span>
+          </td>
+          <td>
+            <strong class="mono">#SKIL-051</strong><br>
+            <span style="font-size:7pt;">dt 30-09-2026</span> • <span class="mono">₹15,619.00</span>
+          </td>
+          <td>
+            <strong>M/S.SHREE FOOTWEAR</strong>
+            
+          </td>
+          <td>
+            <span class="badge badge-paid">PAID ✅</span><br>
+            <strong>₹15,619.00</strong><br><span style="font-size:6.8pt; color:#333;">Rcpt #13 + 5% CD (CN #6)</span>
+          </td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="text-center bold">30</td>
+          <td>
+            <strong>#52</strong> | <span class="mono">1900417925</span><br>
+            <span style="font-size:7pt; color:#222;">dt 30-09-2026</span> • <span class="mono bold">₹64,992.00</span>
+          </td>
+          <td>
+            <strong class="mono">#SKIL-052</strong><br>
+            <span style="font-size:7pt;">dt 30-09-2026</span> • <span class="mono">₹65,531.00</span>
+          </td>
+          <td>
+            <strong>M/S SRI BRUNDABAN ENTERPRISES, MALKANGIRI</strong>
+            
+          </td>
+          <td>
+            <span class="badge badge-pending">PENDING ⏳</span><br>
+            <strong>Due: ₹65,531.00</strong><br><span style="font-size:6.8pt; color:#444;">Payment due</span>
+          </td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="text-center bold">31</td>
+          <td>
+            <strong>#53</strong> | <span class="mono">1900417926</span><br>
+            <span style="font-size:7pt; color:#222;">dt 30-09-2026</span> • <span class="mono bold">₹22,614.00</span>
+          </td>
+          <td>
+            <strong class="mono">#SKIL-053</strong><br>
+            <span style="font-size:7pt;">dt 30-09-2026</span> • <span class="mono">₹22,725.00</span>
+          </td>
+          <td>
+            <strong>M/S.SHREE FOOTWEAR</strong>
+            
+          </td>
+          <td>
+            <span class="badge badge-paid">PAID ✅</span><br>
+            <strong>₹22,725.00</strong><br><span style="font-size:6.8pt; color:#333;">Rcpt #13 + 5% CD (CN #6)</span>
+          </td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+          
+            <tr class="total-row">
+              <td colspan="2" class="text-right">MONTHLY TOTAL (31 INWARD PURCHASES):</td>
+              <td class="mono">₹14,88,717.00</td>
+              <td class="text-center font-bold">100% Back-to-Back Matched</td>
+              <td class="mono">
+                <span class="bold">Realized: ₹7,08,417.00</span><br>
+                <span style="font-size:7pt;">Due: ₹7,80,300.00</span>
+              </td>
+              <td class="col-remarks"></td>
+            </tr>
+          
+        </tbody>
+      </table>
+
+      <!-- FOOTER -->
+      <div class="page-footer">
+        <span>SKIL LIFESTYLE LLP — Dealership Purchase & Recovery Summary</span>
+        <span class="mono">Page 1 of 2 (September 2026)</span>
+        <span>Generated: 13-Nov-2026 | Tally Verified</span>
+      </div>
+    </div>
+  
+
+  <!-- PAGE 2 -->
+  
+    <div class="sheet page-break">
+      <!-- HEADER -->
+      <div class="doc-header">
+        <h1 class="company-title">SKIL LIFESTYLE LLP</h1>
+        <div class="company-sub">
+          Rayagada, Odisha | Authorized Dealer: Ajanta Shoes • Xpania Footcare • Cubix | Zero-Inventory Drop-Shipping Model
+        </div>
+        <div class="doc-badge-row">
+          <div class="report-title">Page 2: Adjustments, Claims & Incentives — September 2026</div>
+          <div class="report-meta">
+            Audit Period: <span class="mono">September 2026</span> | Verification: <span class="mono">TallyPrime Port 9000</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION A: SUPPLIER CLAIMS -->
+      <div class="section-title">
+        <span>🏭 A. Supplier Incentives, Rate Differences & Discounts Received (Debit Notes)</span>
+      </div>
+      <div style="font-size:7.2pt; color:#333; margin-bottom:3px; font-style:italic;">Note: Includes September scheme claims finalized by Ajanta on 30-Sep (DN #5-7) and mid-October (DN #8 Slab & DN #9 3% CD).</div>
+      <table class="audit-table">
+        <thead>
+          <tr>
+            <th style="width: 7mm;">Sl.</th>
+            <th style="width: 38mm;">Supplier Name</th>
+            <th style="width: 27mm;">Voucher No. & Date</th>
+            <th style="width: 30mm;">Supplier CN Ref</th>
+            <th style="width: 53mm;">Scheme / Claim Description</th>
+            <th style="width: 24mm;" class="text-right">Amount (₹)</th>
+            <th style="width: 22mm;">Status in Books</th>
+            <th class="col-remarks">Remarks (Manual)</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+        <tr>
+          <td class="text-center bold">1</td>
+          <td><strong>Ajanta Shoes India Pvt. Ltd.</strong></td>
+          <td class="mono"><strong>DN #5</strong><br><span style="font-size:7pt;">dt 30-09-2026</span></td>
+          <td><span class="mono">Ajanta CN #160005610</span></td>
+          <td style="font-size:7pt;">Being 3.78% Retail Scheme discount received from Ajanta Shoes on September 2026 purchases as per credit note #160005610 dt 30.09.2026.</td>
+          <td class="mono text-right bold">₹39,584.00</td>
+          <td><span class="badge badge-paid">ADJUSTED ✅</span><br><span style="font-size:6.8pt;">Supplier Ledger Cr</span></td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="text-center bold">2</td>
+          <td><strong>Ajanta Shoes India Pvt. Ltd.</strong></td>
+          <td class="mono"><strong>DN #6</strong><br><span style="font-size:7pt;">dt 30-09-2026</span></td>
+          <td><span class="mono">Ajanta CN #160005580</span></td>
+          <td style="font-size:7pt;">Being scheme discount received from Ajanta Shoes for September 2026 as per credit note #160005580 dt 30.09.2026.</td>
+          <td class="mono text-right bold">₹26,180.00</td>
+          <td><span class="badge badge-paid">ADJUSTED ✅</span><br><span style="font-size:6.8pt;">Supplier Ledger Cr</span></td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="text-center bold">3</td>
+          <td><strong>Ajanta Shoes India Pvt. Ltd.</strong></td>
+          <td class="mono"><strong>DN #7</strong><br><span style="font-size:7pt;">dt 30-09-2026</span></td>
+          <td><span class="mono">Ajanta CN #160005562</span></td>
+          <td style="font-size:7pt;">Being Cash Discount received from Ajanta Shoes on September 2026 purchases as per credit note #160005562 dt 30.09.2026.</td>
+          <td class="mono text-right bold">₹20,943.00</td>
+          <td><span class="badge badge-paid">ADJUSTED ✅</span><br><span style="font-size:6.8pt;">Supplier Ledger Cr</span></td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="text-center bold">4</td>
+          <td><strong>Ajanta Shoes India Pvt. Ltd.</strong></td>
+          <td class="mono"><strong>DN #8</strong><br><span style="font-size:7pt;">dt 12-10-2026</span></td>
+          <td><span class="mono">Ajanta CN #160006436</span></td>
+          <td style="font-size:7pt;">Being slab discount received from Ajanta Shoes for September 2026 (Non-Bengal HW+FTW Slab Scheme) as per Ajanta Credit Note #160006436 dt 12.10.2026.</td>
+          <td class="mono text-right bold">₹20,129.00</td>
+          <td><span class="badge badge-paid">ADJUSTED ✅</span><br><span style="font-size:6.8pt;">Supplier Ledger Cr</span></td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="text-center bold">5</td>
+          <td><strong>Ajanta Shoes India Pvt. Ltd.</strong></td>
+          <td class="mono"><strong>DN #9</strong><br><span style="font-size:7pt;">dt 16-10-2026</span></td>
+          <td><span class="mono">Ajanta CN #160007004</span></td>
+          <td style="font-size:7pt;">Being 3% Cash Discount received from Ajanta Shoes on September 2026 purchases as per Ajanta Credit Note #160007004 dt 16.10.2026.</td>
+          <td class="mono text-right bold">₹31,415.66</td>
+          <td><span class="badge badge-paid">ADJUSTED ✅</span><br><span style="font-size:6.8pt;">Supplier Ledger Cr</span></td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+          
+            <tr class="total-row">
+              <td colspan="5" class="text-right">TOTAL SUPPLIER CLAIMS & INCENTIVES REALIZED:</td>
+              <td class="mono text-right">₹1,38,251.66</td>
+              <td><span class="badge badge-paid">100% REALIZED</span></td>
+              <td class="col-remarks"></td>
+            </tr>
+          
+        </tbody>
+      </table>
+
+      <!-- SECTION B: CUSTOMER DISCOUNTS -->
+      <div class="section-title" style="margin-top: 12px;">
+        <span>🤝 B. Customer Adjustments & Credit Notes Given (5% Cash Discount / Allowances)</span>
+      </div>
+      <table class="audit-table">
+        <thead>
+          <tr>
+            <th style="width: 7mm;">Sl.</th>
+            <th style="width: 38mm;">Customer Party Name</th>
+            <th style="width: 27mm;">Credit Note No.</th>
+            <th style="width: 53mm;">Nature of Adjustment / Description</th>
+            <th style="width: 24mm;" class="text-right">Amount (₹)</th>
+            <th style="width: 22mm;">Status in Books</th>
+            <th class="col-remarks">Remarks (Manual)</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+        <tr>
+          <td class="text-center bold">1</td>
+          <td><strong>M/s Sri Brundabana Enterprises, Rayagada</strong></td>
+          <td class="mono"><strong>CN #5</strong><br><span style="font-size:7pt;">dt 01-10-2026</span></td>
+          <td style="font-size:7pt;">
+            <strong>5% Cash Discount on Taxable Value</strong><br>
+            Being 5% Cash Discount allowed on taxable value of September sales invoices (SKIL-038, SKIL-039, SKIL-044 to 046) dt. 27-09-2026 to 29-09-2026 amounting to Rs. 99,682.08.
+          </td>
+          <td class="mono text-right bold">₹4,984.00</td>
+          <td>
+            <span class="badge badge-paid">CD ALLOWED ✅</span><br>
+            <span style="font-size:6.8pt;">Customer Ledger Cr</span>
+          </td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="text-center bold">2</td>
+          <td><strong>M/S.SHREE FOOTWEAR</strong></td>
+          <td class="mono"><strong>CN #6</strong><br><span style="font-size:7pt;">dt 01-10-2026</span></td>
+          <td style="font-size:7pt;">
+            <strong>5% Cash Discount on Taxable Value</strong><br>
+            Being 5% Cash Discount allowed on taxable value of September sales invoices (SKIL-031 to 034, SKIL-036, SKIL-037, SKIL-049, SKIL-051, SKIL-053) dt. 16-09-2026 to 30-09-2026 amounting to Rs. 1,29,961.23.
+          </td>
+          <td class="mono text-right bold">₹6,498.00</td>
+          <td>
+            <span class="badge badge-paid">CD ALLOWED ✅</span><br>
+            <span style="font-size:6.8pt;">Customer Ledger Cr</span>
+          </td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="text-center bold">3</td>
+          <td><strong>MAHAVIR SHOE HOUSE</strong></td>
+          <td class="mono"><strong>CN #7</strong><br><span style="font-size:7pt;">dt 23-10-2026</span></td>
+          <td style="font-size:7pt;">
+            <strong>5% Cash Discount on Taxable Value</strong><br>
+            Being Credit Note issued to MAHAVIR SHOE HOUSE towards 5% Cash Discount on total value of sales invoices (SKIL-035 dt. 19-09-2026 & SKIL-054 dt. 08-10-2026) amounting to Rs. 4,08,993.00.
+          </td>
+          <td class="mono text-right bold">₹19,475.00</td>
+          <td>
+            <span class="badge badge-paid">CD ALLOWED ✅</span><br>
+            <span style="font-size:6.8pt;">Customer Ledger Cr</span>
+          </td>
+          <td class="col-remarks">
+            <span class="handwriting-line"></span>
+          </td>
+        </tr>
+      
+          
+            <tr class="total-row">
+              <td colspan="4" class="text-right">TOTAL CUSTOMER CREDIT NOTES & ALLOWANCES:</td>
+              <td class="mono text-right">₹30,957.00</td>
+              <td><span class="badge badge-paid">POSTED</span></td>
+              <td class="col-remarks"></td>
+            </tr>
+          
+        </tbody>
+      </table>
+
+      <!-- SECTION C: FINANCIAL MARGIN RECONCILIATION -->
+      <div class="section-title" style="margin-top: 10px;">
+        <span>📊 C. Monthly Trading & Operating Margin Realization Summary</span>
+      </div>
+      <div class="financial-box">
+        <div class="fin-grid">
+          <div>
+            <div class="fin-row">
+              <span>Gross Outward Sales Value (Invoiced to Debtors):</span>
+              <span class="mono bold">₹14,88,717.00</span>
+            </div>
+            <div class="fin-row">
+              <span>Less: Gross Inward Purchases (Direct Suppliers):</span>
+              <span class="mono bold">-₹14,84,790.00</span>
+            </div>
+            <div class="fin-row bold-row">
+              <span>Base Trading Spread (Sales - Purchases):</span>
+              <span class="mono">₹3,927.00</span>
+            </div>
+          </div>
+          <div>
+            <div class="fin-row">
+              <span>Add: Supplier Scheme, Cash Discount & Rate Claims (+):</span>
+              <span class="mono bold" style="color:#000;">+₹1,38,251.66</span>
+            </div>
+            <div class="fin-row">
+              <span>Less: Customer Cash Discounts Allowed 5% (-):</span>
+              <span class="mono bold">-₹30,957.00</span>
+            </div>
+            <div class="fin-row bold-row">
+              <span>Net Monthly Operating Margin Realized:</span>
+              <span class="mono" style="font-size:9.5pt;">₹1,11,221.66</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIGNATURE SECTION -->
+      <div class="sign-row">
+        <div class="sign-box">
+          <strong>Prepared By</strong><br>
+          Accounts Department / SKIL Lifestyle LLP
+        </div>
+        <div class="sign-box">
+          <strong>Internal Audit Cross-Check</strong><br>
+          Port 9000 Automated Ledger Audit
+        </div>
+        <div class="sign-box">
+          <strong>Partner Approval</strong><br>
+          Sisinti Lokanatha Patro / Sahil Kumar
+        </div>
+      </div>
+
+      <!-- FOOTER -->
+      <div class="page-footer">
+        <span>SKIL LIFESTYLE LLP — Dealership Purchase & Recovery Summary</span>
+        <span class="mono">Page 2 of 2 (September 2026)</span>
+        <span>Generated: 13-Nov-2026 | Tally Verified</span>
+      </div>
+    </div>
+  
+
+</body>
+</html>

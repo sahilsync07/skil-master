@@ -75,16 +75,64 @@ function normalizeLedgers(xmlString) {
 
   return list.map(item => {
     const alterId = parseInt(extractText(item.ALTERID) || '0', 10);
+
+    // GSTIN resolution
+    let gstin = extractText(item.PARTYGSTIN);
+    if (!gstin && item['LEDGSTREGDETAILS.LIST']) {
+      const gd = item['LEDGSTREGDETAILS.LIST'];
+      if (Array.isArray(gd)) {
+        for (const g of gd) { if (g.GSTIN) { gstin = extractText(g.GSTIN); break; } }
+      } else if (gd.GSTIN) {
+        gstin = extractText(gd.GSTIN);
+      }
+    }
+
+    // Mobile / Phone resolution
+    let mobile = extractText(item.MOBILENO) || extractText(item.LEDGERMOBILE);
+    if (!mobile && item['CONTACTDETAILS.LIST']) {
+      const cd = item['CONTACTDETAILS.LIST'];
+      if (Array.isArray(cd)) {
+        for (const c of cd) { if (c.PHONENUMBER) { mobile = extractText(c.PHONENUMBER); break; } }
+      } else if (cd.PHONENUMBER) {
+        mobile = extractText(cd.PHONENUMBER);
+      }
+    }
+    const phone = extractText(item.LEDGERPHONE) || extractText(item.PHONE);
+
+    // State resolution
+    let state = extractText(item.STATENAME) || extractText(item.PRIORSTATENAME);
+    let pincode = extractText(item.PINCODE);
+    let address = [];
+    if (item['LEDMAILINGDETAILS.LIST']) {
+      const md = item['LEDMAILINGDETAILS.LIST'];
+      const targetMd = Array.isArray(md) ? md[0] : md;
+      if (targetMd) {
+        if (!state && targetMd.STATE) state = extractText(targetMd.STATE);
+        if (!pincode && targetMd.PINCODE) pincode = extractText(targetMd.PINCODE);
+        if (targetMd['ADDRESS.LIST'] && targetMd['ADDRESS.LIST'].ADDRESS) {
+          const a = targetMd['ADDRESS.LIST'].ADDRESS;
+          address = Array.isArray(a) ? a.map(extractText) : [extractText(a)];
+        }
+      }
+    }
+    if (address.length === 0 && item['ADDRESS.LIST']) {
+      const a = item['ADDRESS.LIST'].ADDRESS;
+      address = Array.isArray(a) ? a.map(extractText) : (a ? [extractText(a)] : []);
+    }
+
     return {
       id: extractText(item.GUID || item['@_NAME'] || item.NAME),
       name: extractText(item['@_NAME'] || item.NAME),
       parent: extractText(item.PARENT),
       openingBalance: parseFloat(extractText(item.OPENINGBALANCE) || '0'),
       closingBalance: parseFloat(extractText(item.CLOSINGBALANCE) || '0'),
-      gstin: extractText(item.PARTYGSTIN),
-      state: extractText(item.STATENAME),
+      gstin: gstin || '',
+      state: state || '',
       email: extractText(item.EMAIL),
-      mobile: extractText(item.MOBILENO),
+      mobile: mobile || '',
+      phone: phone || '',
+      pincode: pincode || '',
+      address: address.join(', '),
       alterId: isNaN(alterId) ? 0 : alterId,
       raw: item
     };

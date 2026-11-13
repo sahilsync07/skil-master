@@ -57,7 +57,7 @@ class SyncService {
       }
 
       if (full) {
-        db.resetCursors();
+        db.resetCursors({ clearData: true });
       }
 
       const state = db.getState();

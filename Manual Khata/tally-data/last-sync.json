@@ -1,0 +1,30 @@
+{
+  "status": "success",
+  "type": "full",
+  "company": "SKIL LIFESTYLE LLP",
+  "durationMs": 7419,
+  "timestamp": "2026-11-11T06:20:12.374Z",
+  "recordsUpdated": {
+    "ledgers": 45,
+    "vouchers": 221
+  },
+  "totals": {
+    "totalLedgers": 45,
+    "totalDebtors": 15,
+    "totalCreditors": 3,
+    "totalVouchers": 221,
+    "breakdown": {
+      "Receipt": 19,
+      "Payment": 32,
+      "Purchase": 77,
+      "Sales": 77,
+      "Debit Note": 9,
+      "Credit Note": 7
+    }
+  },
+  "cursors": {
+    "lastMasterAlterId": 929,
+    "lastVoucherAlterId": 393
+  },
+  "syncRuns": 2
+}

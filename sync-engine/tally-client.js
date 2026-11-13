@@ -163,7 +163,7 @@ class TallyClient {
         <TDLMESSAGE>
           <COLLECTION NAME="SyncLedgers">
             <TYPE>Ledger</TYPE>
-            <FETCH>Name, Parent, OpeningBalance, ClosingBalance, PartyGSTIN, StateName, Email, MobileNo, AlterID, Guid</FETCH>
+            <FETCH>Name, Parent, OpeningBalance, ClosingBalance, PartyGSTIN, StateName, PriorStateName, Email, MobileNo, LedgerMobile, LedgerPhone, Pincode, AlterID, Guid, LedGSTRegDetails.*, LedMailingDetails.*, ContactDetails.*</FETCH>
             ${filterXml}
           </COLLECTION>
           ${formulaXml}

@@ -1,0 +1,38 @@
+{
+  "app": {
+    "name": "SKIL Ledger",
+    "subTitle": "Digital Manual Bahi Khata",
+    "version": "1.0.0",
+    "organization": "SKIL LIFESTYLE LLP",
+    "port": 9050,
+    "host": "127.0.0.1"
+  },
+  "tally": {
+    "host": "127.0.0.1",
+    "port": 9000,
+    "timeoutMs": 10000,
+    "companyName": "SKIL LIFESTYLE LLP",
+    "retryAttempts": 3
+  },
+  "accounting": {
+    "financialYearStart": "2026-04-01",
+    "financialYearEnd": "2027-03-31",
+    "currencySymbol": "₹",
+    "currencyCode": "INR",
+    "locale": "en-IN",
+    "dateFormat": "DD MMM YYYY"
+  },
+  "storage": {
+    "tallyDataDir": "tally-data",
+    "daybookDir": "daybook",
+    "backupsDir": "backups",
+    "maxBackupHistory": 50,
+    "autoBackupOnSync": true
+  },
+  "ui": {
+    "theme": "light",
+    "primaryColor": "#059669",
+    "sidebarDark": "#0D0E12",
+    "itemsPerPage": 25
+  }
+}
