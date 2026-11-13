@@ -1030,13 +1030,17 @@ function generateMonthHTMLFile(mConfig) {
 </html>
 `;
 
+  const outputDir = path.join(ROOT_DIR, 'user-documents-read-only-access', 'Audit & Reconciliation Reports', 'Purchase Summaries');
+  if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
   const fileName = `purchase-summary-${mConfig.slug}-2026.html`;
-  fs.writeFileSync(path.join('C:/Projects/SKIL Master', fileName), fullHTML, 'utf8');
-  console.log(`Saved: ${fileName}`);
+  fs.writeFileSync(path.join(outputDir, fileName), fullHTML, 'utf8');
+  console.log(`Saved: ${fileName} in Purchase Summaries`);
 }
 
 // Generate Master Combined File (All 5 Months in One Clean Document)
 function generateMasterHTMLFile() {
+  const outputDir = path.join(ROOT_DIR, 'user-documents-read-only-access', 'Audit & Reconciliation Reports', 'Purchase Summaries');
+  if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
   const allMonthsHTML = monthsConfig.map(mConfig => {
     const mKey = mConfig.key;
     const purchasesInMonth = allPurchases.filter(p => p.date && p.date.startsWith(mKey));
@@ -1090,8 +1094,8 @@ function generateMasterHTMLFile() {
 </html>
 `;
 
-  fs.writeFileSync('C:/Projects/SKIL Master/purchase-summary-master.html', masterHTML, 'utf8');
-  console.log(`Saved: purchase-summary-master.html`);
+  fs.writeFileSync(path.join(outputDir, 'purchase-summary-master.html'), masterHTML, 'utf8');
+  console.log(`Saved: purchase-summary-master.html in Purchase Summaries`);
 }
 
 // Run All
