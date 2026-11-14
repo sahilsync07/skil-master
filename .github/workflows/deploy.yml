@@ -5,10 +5,15 @@ on:
     branches: [ main ]
   workflow_dispatch:
     inputs:
+      deploy_production:
+        description: 'Deploy / Rollout to Google Play Production track'
+        required: false
+        default: false
+        type: boolean
       force_full_build:
         description: 'Force Full Android Release Build'
         required: false
-        default: 'true'
+        default: true
         type: boolean
 
 permissions:
@@ -33,6 +38,9 @@ jobs:
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             echo "IS_FULL_BUILD=true" >> "$GITHUB_ENV"
             echo ">> Workflow manually dispatched: Triggering full Android Release build"
+            if [ "${{ github.event.inputs.deploy_production }}" = "true" ]; then
+              echo ">> MANUAL PRODUCTION DEPLOYMENT REQUESTED"
+            fi
           else
             # Inspect changed files in the push
             CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD || true)
@@ -57,9 +65,10 @@ jobs:
           cache: 'npm'
           cache-dependency-path: 'android-app/package-lock.json'
 
-      - name: Install Android Dependencies & Sync Capacitor
+      - name: Sync Web Assets to Android & Capacitor
         if: env.IS_FULL_BUILD == 'true'
         run: |
+          node sync-engine/deploy-root-pages.js
           cd android-app
           npm install
           npx cap sync android
@@ -141,7 +150,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Deploy to Google Play Console (Internal Testing)
+      # TRACK 1: Internal Testing (Automatic on push & dispatch)
+      - name: Deploy to Google Play (Internal Testing)
         if: env.IS_FULL_BUILD == 'true' && env.PLAY_CONFIGURED == 'true'
         uses: r0adkll/upload-google-play@v1
         with:
@@ -151,9 +161,44 @@ jobs:
           track: internal
           status: completed
 
+      # TRACK 2: Closed Testing (Alpha - Automatic on push & dispatch)
+      - name: Deploy to Google Play (Closed Testing - Alpha)
+        if: env.IS_FULL_BUILD == 'true' && env.PLAY_CONFIGURED == 'true'
+        continue-on-error: true
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
+          packageName: com.skillifestyle.master
+          releaseFiles: artifacts/SKIL_Master-v${{ env.BUILD_NAME }}-signed.aab
+          track: alpha
+          status: completed
+
+      # TRACK 3: Open Testing (Beta - Automatic on push & dispatch)
+      - name: Deploy to Google Play (Open Testing - Beta)
+        if: env.IS_FULL_BUILD == 'true' && env.PLAY_CONFIGURED == 'true'
+        continue-on-error: true
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
+          packageName: com.skillifestyle.master
+          releaseFiles: artifacts/SKIL_Master-v${{ env.BUILD_NAME }}-signed.aab
+          track: beta
+          status: completed
+
+      # TRACK 4: Production (Manual Trigger Only via workflow_dispatch)
+      - name: Deploy to Google Play (Production) - Manual Trigger
+        if: env.IS_FULL_BUILD == 'true' && env.PLAY_CONFIGURED == 'true' && github.event_name == 'workflow_dispatch' && github.event.inputs.deploy_production == 'true'
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
+          packageName: com.skillifestyle.master
+          releaseFiles: artifacts/SKIL_Master-v${{ env.BUILD_NAME }}-signed.aab
+          track: production
+          status: completed
+
       - name: Log Data-Only Sync Confirmation
         if: env.IS_FULL_BUILD == 'false'
         run: |
           echo "✅ Data-only update confirmed."
-          echo "All ledger data, vouchers, and statement JSONs are synced live to web/data and Supabase."
+          echo "All ledger data, vouchers, and statement JSONs are synced live to web/data."
           echo "No Android app store binary release required for data updates."
