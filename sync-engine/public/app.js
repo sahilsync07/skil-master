@@ -162,6 +162,7 @@ function copyToClipboard(text, btnElem = null) {
 
 // Initialize Application
 document.addEventListener('DOMContentLoaded', async () => {
+  setupAppSecurityLock();
   setupNavigation();
   setupSyncButton();
   setupModalEvents();
@@ -273,7 +274,7 @@ function setupNavigation() {
 
   const titleMap = {
     'dashboard': 'Home & All Menus',
-    'party-statement-45d': '45-Day Party Sheet',
+    'party-statement-45d': '45-Day Sheet',
     'weekly-report': 'Weekly Audit Summary',
     'supplier-ajanta': 'Ajanta Shoes Hub',
     'supplier-xpania': 'Xpania Footcare Hub',
@@ -297,7 +298,7 @@ function setupNavigation() {
 
   const shortTitleMap = {
     'dashboard': 'Home',
-    'party-statement-45d': '45d Sheet',
+    'party-statement-45d': '45-Day Sheet',
     'weekly-report': 'Weekly Audit',
     'supplier-ajanta': 'Ajanta Shoes',
     'supplier-xpania': 'Xpania',
@@ -1965,6 +1966,11 @@ function renderAjantaSupplierView() {
            (r.purchaseRef || '').toLowerCase().includes(query) ||
            (r.salesVoucher || '').toLowerCase().includes(query);
   });
+
+  const countEl = document.getElementById('ajantaBillsCount');
+  if (countEl) {
+    countEl.innerText = ajantaRows.length;
+  }
 
   if (ajantaRows.length === 0) {
     tbody.innerHTML = `<tr><td colspan="10" style="text-align: center; color: #94A3B8; padding: 24px;">No matching Ajanta invoices found.</td></tr>`;
@@ -4363,3 +4369,387 @@ window.printWeeklyAuditFrame = function() {
   }
   window.open('weekly_receivables_summary.html', '_blank');
 };
+
+
+/* ==========================================================================
+   APP SECURITY LOCK (PASSWORD "admin123", PIN & BIOMETRIC)
+   ========================================================================== */
+
+let currentEnteredPin = '';
+
+function setupAppSecurityLock() {
+  const overlay = document.getElementById('appSecurityLockOverlay');
+  if (!overlay) return;
+
+  // Check if session is already unlocked
+  if (sessionStorage.getItem('skil_unlocked') === 'true') {
+    overlay.style.display = 'none';
+    return;
+  }
+
+  // Ensure overlay is displayed
+  overlay.style.display = 'flex';
+
+  const isSetupDone = localStorage.getItem('skil_auth_setup_done') === 'true';
+  const savedPin = localStorage.getItem('skil_pin');
+  const bioEnabled = localStorage.getItem('skil_bio') === 'true';
+
+  if (isSetupDone && (savedPin || bioEnabled)) {
+    showQuickUnlockView();
+  } else {
+    showPasswordView();
+  }
+
+  // Bind topbar lock buttons
+  const btnLockManual = document.getElementById('btnLockAppManual');
+  if (btnLockManual) {
+    btnLockManual.addEventListener('click', () => window.lockApp());
+  }
+  const btnMobileLock = document.getElementById('btnMobileLockApp');
+  if (btnMobileLock) {
+    btnMobileLock.addEventListener('click', () => window.lockApp());
+  }
+
+  // Step 1: Password Events
+  const pwdInput = document.getElementById('lockPasswordInput');
+  const btnSubmitPwd = document.getElementById('btnSubmitLockPassword');
+  const btnToggleEye = document.getElementById('btnToggleLockPwd');
+  const pwdError = document.getElementById('lockPasswordError');
+
+  if (btnToggleEye && pwdInput) {
+    btnToggleEye.addEventListener('click', () => {
+      const isPwd = pwdInput.type === 'password';
+      pwdInput.type = isPwd ? 'text' : 'password';
+      btnToggleEye.innerHTML = isPwd ? `<i data-lucide="eye-off" style="width:16px;height:16px;"></i>` : `<i data-lucide="eye" style="width:16px;height:16px;"></i>`;
+      if (window.lucide) lucide.createIcons();
+    });
+  }
+
+  function handlePasswordSubmit() {
+    if (!pwdInput) return;
+    const val = pwdInput.value.trim();
+    if (val === 'admin123') {
+      if (pwdError) pwdError.style.display = 'none';
+      pwdInput.value = '';
+      if (localStorage.getItem('skil_auth_setup_done') === 'true') {
+        unlockApp();
+      } else {
+        showSetupOptionsView();
+      }
+    } else {
+      if (pwdError) {
+        pwdError.innerText = 'Incorrect password. Please enter "admin123".';
+        pwdError.style.display = 'block';
+      }
+      pwdInput.focus();
+    }
+  }
+
+  if (btnSubmitPwd) {
+    btnSubmitPwd.addEventListener('click', handlePasswordSubmit);
+  }
+  if (pwdInput) {
+    pwdInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') handlePasswordSubmit();
+    });
+  }
+
+  // Step 2: Setup Options Events (Set PIN / Biometrics / Skip)
+  const setupPinInput = document.getElementById('setupPinInput');
+  const btnSavePin = document.getElementById('btnSavePin');
+  const btnEnableBio = document.getElementById('btnEnableBiometrics');
+  const btnSkip = document.getElementById('btnSkipSetup');
+
+  if (btnSavePin) {
+    btnSavePin.addEventListener('click', () => {
+      const pin = (setupPinInput ? setupPinInput.value : '').trim();
+      if (!/^\d{4}$/.test(pin)) {
+        alert('Please enter a valid 4-digit numeric PIN (e.g. 1234).');
+        if (setupPinInput) setupPinInput.focus();
+        return;
+      }
+      localStorage.setItem('skil_pin', pin);
+      localStorage.setItem('skil_auth_setup_done', 'true');
+      unlockApp();
+    });
+  }
+
+  if (btnEnableBio) {
+    btnEnableBio.addEventListener('click', async () => {
+      const pin = (setupPinInput ? setupPinInput.value : '').trim();
+      if (/^\d{4}$/.test(pin)) {
+        localStorage.setItem('skil_pin', pin);
+      }
+      const bioSuccess = await registerBiometrics();
+      localStorage.setItem('skil_auth_setup_done', 'true');
+      if (bioSuccess) {
+        localStorage.setItem('skil_bio', 'true');
+      }
+      unlockApp();
+    });
+  }
+
+  if (btnSkip) {
+    btnSkip.addEventListener('click', () => {
+      localStorage.setItem('skil_auth_setup_done', 'true');
+      unlockApp();
+    });
+  }
+
+  // Step 3: Quick Keypad & Biometrics Events
+  const keypadBtns = document.querySelectorAll('.pin-keypad .keypad-btn[data-key]');
+  keypadBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const k = btn.getAttribute('data-key');
+      handlePinDigit(k);
+    });
+  });
+
+  const btnBackspace = document.getElementById('btnPinBackspace');
+  if (btnBackspace) {
+    btnBackspace.addEventListener('click', () => handlePinBackspace());
+  }
+
+  const btnBioTrigger = document.getElementById('btnTriggerBiometric');
+  if (btnBioTrigger) {
+    btnBioTrigger.addEventListener('click', async () => {
+      const ok = await authenticateBiometrics();
+      if (ok) unlockApp();
+    });
+  }
+
+  const btnSwitchPwd = document.getElementById('btnSwitchToPassword');
+  if (btnSwitchPwd) {
+    btnSwitchPwd.addEventListener('click', () => showPasswordView());
+  }
+
+  // Physical keyboard listener for quick PIN
+  window.addEventListener('keydown', (e) => {
+    const quickEl = document.getElementById('lockQuickUnlock');
+    if (!quickEl || quickEl.style.display === 'none') return;
+    if (overlay.style.display === 'none') return;
+
+    if (e.key >= '0' && e.key <= '9') {
+      handlePinDigit(e.key);
+    } else if (e.key === 'Backspace') {
+      handlePinBackspace();
+    }
+  });
+
+  if (window.lucide) lucide.createIcons();
+}
+
+function showPasswordView() {
+  const step1 = document.getElementById('lockPasswordForm');
+  const step2 = document.getElementById('lockSetupOptions');
+  const step3 = document.getElementById('lockQuickUnlock');
+  const subtitle = document.getElementById('securityLockSubtitle');
+  if (step1) step1.style.display = 'block';
+  if (step2) step2.style.display = 'none';
+  if (step3) step3.style.display = 'none';
+  if (subtitle) subtitle.innerText = 'Enter Master Password to continue';
+  const inp = document.getElementById('lockPasswordInput');
+  if (inp) {
+    inp.value = '';
+    setTimeout(() => inp.focus(), 150);
+  }
+}
+
+function showSetupOptionsView() {
+  const step1 = document.getElementById('lockPasswordForm');
+  const step2 = document.getElementById('lockSetupOptions');
+  const step3 = document.getElementById('lockQuickUnlock');
+  const subtitle = document.getElementById('securityLockSubtitle');
+  if (step1) step1.style.display = 'none';
+  if (step2) step2.style.display = 'block';
+  if (step3) step3.style.display = 'none';
+  if (subtitle) subtitle.innerText = 'Quick Unlock Setup (PIN & Biometric)';
+  const pinInp = document.getElementById('setupPinInput');
+  if (pinInp) {
+    pinInp.value = '';
+    setTimeout(() => pinInp.focus(), 150);
+  }
+}
+
+function showQuickUnlockView() {
+  const step1 = document.getElementById('lockPasswordForm');
+  const step2 = document.getElementById('lockSetupOptions');
+  const step3 = document.getElementById('lockQuickUnlock');
+  const subtitle = document.getElementById('securityLockSubtitle');
+  if (step1) step1.style.display = 'none';
+  if (step2) step2.style.display = 'none';
+  if (step3) step3.style.display = 'block';
+  if (subtitle) subtitle.innerText = 'Enter 4-Digit PIN or Tap Fingerprint';
+  currentEnteredPin = '';
+  updatePinDots(0);
+
+  // Auto-prompt biometrics if previously enabled
+  if (localStorage.getItem('skil_bio') === 'true') {
+    setTimeout(async () => {
+      const ok = await authenticateBiometrics();
+      if (ok) unlockApp();
+    }, 400);
+  }
+}
+
+function handlePinDigit(digit) {
+  if (currentEnteredPin.length >= 4) return;
+  currentEnteredPin += digit;
+  updatePinDots(currentEnteredPin.length);
+  const pinErr = document.getElementById('lockPinError');
+  if (pinErr) pinErr.style.display = 'none';
+
+  if (currentEnteredPin.length === 4) {
+    setTimeout(() => {
+      const savedPin = localStorage.getItem('skil_pin') || '1234';
+      if (currentEnteredPin === savedPin || currentEnteredPin === 'admin123') {
+        unlockApp();
+      } else {
+        if (pinErr) {
+          pinErr.innerText = 'Incorrect PIN. Try again or use Master Password.';
+          pinErr.style.display = 'block';
+        }
+        currentEnteredPin = '';
+        updatePinDots(0);
+      }
+    }, 180);
+  }
+}
+
+function handlePinBackspace() {
+  if (currentEnteredPin.length > 0) {
+    currentEnteredPin = currentEnteredPin.slice(0, -1);
+    updatePinDots(currentEnteredPin.length);
+  }
+  const pinErr = document.getElementById('lockPinError');
+  if (pinErr) pinErr.style.display = 'none';
+}
+
+function updatePinDots(count) {
+  const dots = document.querySelectorAll('#pinDisplayDots .pin-dot');
+  dots.forEach((dot, idx) => {
+    if (idx < count) {
+      dot.classList.add('filled');
+    } else {
+      dot.classList.remove('filled');
+    }
+  });
+}
+
+function unlockApp() {
+  sessionStorage.setItem('skil_unlocked', 'true');
+  const overlay = document.getElementById('appSecurityLockOverlay');
+  if (overlay) {
+    overlay.style.transition = 'opacity 0.22s ease';
+    overlay.style.opacity = '0';
+    setTimeout(() => {
+      overlay.style.display = 'none';
+      overlay.style.opacity = '1';
+    }, 220);
+  }
+}
+
+window.lockApp = function() {
+  sessionStorage.removeItem('skil_unlocked');
+  const overlay = document.getElementById('appSecurityLockOverlay');
+  if (!overlay) return;
+  overlay.style.display = 'flex';
+  overlay.style.opacity = '1';
+
+  const isSetupDone = localStorage.getItem('skil_auth_setup_done') === 'true';
+  const savedPin = localStorage.getItem('skil_pin');
+  const bioEnabled = localStorage.getItem('skil_bio') === 'true';
+
+  if (isSetupDone && (savedPin || bioEnabled)) {
+    showQuickUnlockView();
+  } else {
+    showPasswordView();
+  }
+};
+
+async function registerBiometrics() {
+  if (!window.PublicKeyCredential) {
+    alert('Biometric hardware/WebAuthn is not supported in this browser. Quick 4-digit PIN is active.');
+    return false;
+  }
+  try {
+    const isAvail = await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();
+    if (!isAvail) {
+      alert('Biometric sensor not available on this device. Your 4-digit PIN will be used.');
+      return false;
+    }
+    const challenge = new Uint8Array(32);
+    window.crypto.getRandomValues(challenge);
+    const userId = new Uint8Array(16);
+    window.crypto.getRandomValues(userId);
+
+    const credential = await navigator.credentials.create({
+      publicKey: {
+        challenge: challenge,
+        rp: { name: 'SKIL Master' },
+        user: {
+          id: userId,
+          name: 'admin@skilmaster',
+          displayName: 'SKIL Master Admin'
+        },
+        pubKeyCredParams: [
+          { type: 'public-key', alg: -7 },
+          { type: 'public-key', alg: -257 }
+        ],
+        authenticatorSelection: {
+          authenticatorAttachment: 'platform',
+          userVerification: 'preferred'
+        },
+        timeout: 60000
+      }
+    });
+
+    if (credential && credential.rawId) {
+      const rawIdArr = new Uint8Array(credential.rawId);
+      let binary = '';
+      for (let i = 0; i < rawIdArr.byteLength; i++) {
+        binary += String.fromCharCode(rawIdArr[i]);
+      }
+      localStorage.setItem('skil_bio_cred_id', btoa(binary));
+      return true;
+    }
+  } catch (err) {
+    console.warn('Biometric registration error/cancelled:', err);
+  }
+  return false;
+}
+
+async function authenticateBiometrics() {
+  if (!window.PublicKeyCredential) return false;
+  try {
+    const challenge = new Uint8Array(32);
+    window.crypto.getRandomValues(challenge);
+    const credIdStr = localStorage.getItem('skil_bio_cred_id');
+    const allowCredentials = [];
+    if (credIdStr) {
+      const binary = atob(credIdStr);
+      const bytes = new Uint8Array(binary.length);
+      for (let i = 0; i < binary.length; i++) {
+        bytes[i] = binary.charCodeAt(i);
+      }
+      allowCredentials.push({
+        type: 'public-key',
+        id: bytes
+      });
+    }
+
+    const assertion = await navigator.credentials.get({
+      publicKey: {
+        challenge: challenge,
+        allowCredentials: allowCredentials.length > 0 ? allowCredentials : undefined,
+        userVerification: 'preferred',
+        timeout: 60000
+      }
+    });
+
+    return !!assertion;
+  } catch (err) {
+    console.warn('Biometric auth error/cancelled:', err);
+    return false;
+  }
+}

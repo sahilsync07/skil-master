@@ -30,6 +30,88 @@
 </head>
 <body>
 
+  <!-- APP SECURITY LOCK OVERLAY (Password 'admin123', Fingerprint & PIN) -->
+  <div id="appSecurityLockOverlay" class="security-lock-overlay" style="display: flex;">
+    <div class="security-lock-card">
+      <div class="security-lock-logo">
+        <div class="brand-naked-crop" style="height: 48px; width: 90px;">
+          <img src="assets/skil-lifestyle-white-transparent.png" alt="SKIL Master">
+        </div>
+      </div>
+      <div class="security-lock-title">SKIL Master Security</div>
+      <div class="security-lock-subtitle" id="securityLockSubtitle">Enter Master Password to continue</div>
+
+      <!-- STEP 1: PASSWORD PROMPT (Default) -->
+      <div id="lockPasswordForm" class="lock-form-step">
+        <div class="lock-input-wrap">
+          <input type="password" id="lockPasswordInput" placeholder="Master Password" autocomplete="current-password" autofocus>
+          <button type="button" class="btn-toggle-pwd" id="btnToggleLockPwd" title="Show/Hide Password">
+            <i data-lucide="eye"></i>
+          </button>
+        </div>
+        <button type="button" class="btn-lock-submit" id="btnSubmitLockPassword">
+          <span>Unlock App</span>
+          <i data-lucide="arrow-right"></i>
+        </button>
+        <div class="lock-error-msg" id="lockPasswordError" style="display: none;"></div>
+      </div>
+
+      <!-- STEP 2: SETUP PIN & BIOMETRICS (Shown once after first password unlock if not setup) -->
+      <div id="lockSetupOptions" class="lock-form-step" style="display: none;">
+        <div style="font-size: 13px; color: #CBD5E1; margin-bottom: 14px; line-height: 1.5;">
+          Quick Unlock Setup: Set a 4-digit PIN or enable Fingerprint for faster access next time.
+        </div>
+        <div class="lock-input-wrap" style="margin-bottom: 12px;">
+          <input type="password" maxlength="4" pattern="[0-9]*" inputmode="numeric" id="setupPinInput" placeholder="Enter 4-Digit PIN (e.g. 1234)">
+        </div>
+        <div style="display: flex; gap: 8px; flex-direction: column;">
+          <button type="button" class="btn-lock-submit" id="btnSavePin">
+            <i data-lucide="key-round"></i>
+            <span>Save PIN & Continue</span>
+          </button>
+          <button type="button" class="btn-lock-secondary" id="btnEnableBiometrics">
+            <i data-lucide="fingerprint"></i>
+            <span>Enable Fingerprint & Continue</span>
+          </button>
+          <button type="button" class="btn-lock-skip" id="btnSkipSetup">
+            <span>Skip for now</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 3: QUICK PIN / BIOMETRIC UNLOCK (Shown on subsequent visits) -->
+      <div id="lockQuickUnlock" class="lock-form-step" style="display: none;">
+        <div class="pin-display-dots" id="pinDisplayDots">
+          <span class="pin-dot"></span>
+          <span class="pin-dot"></span>
+          <span class="pin-dot"></span>
+          <span class="pin-dot"></span>
+        </div>
+        <div class="pin-keypad">
+          <button type="button" class="keypad-btn" data-key="1">1</button>
+          <button type="button" class="keypad-btn" data-key="2">2</button>
+          <button type="button" class="keypad-btn" data-key="3">3</button>
+          <button type="button" class="keypad-btn" data-key="4">4</button>
+          <button type="button" class="keypad-btn" data-key="5">5</button>
+          <button type="button" class="keypad-btn" data-key="6">6</button>
+          <button type="button" class="keypad-btn" data-key="7">7</button>
+          <button type="button" class="keypad-btn" data-key="8">8</button>
+          <button type="button" class="keypad-btn" data-key="9">9</button>
+          <button type="button" class="keypad-btn action-key" id="btnTriggerBiometric"><i data-lucide="fingerprint"></i></button>
+          <button type="button" class="keypad-btn" data-key="0">0</button>
+          <button type="button" class="keypad-btn action-key" id="btnPinBackspace"><i data-lucide="delete"></i></button>
+        </div>
+        <div class="lock-error-msg" id="lockPinError" style="display: none;"></div>
+        <div style="margin-top: 14px; text-align: center;">
+          <button type="button" class="btn-link-action" id="btnSwitchToPassword" style="background: none; border: none; color: #A3E635; font-size: 12px; cursor: pointer; text-decoration: underline;">
+            <span>Use Master Password</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- Mobile Backdrop Overlay -->
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
@@ -39,11 +121,11 @@
       <div>
         <div class="sidebar-brand-wrap" style="display: flex; align-items: center; justify-content: space-between; padding-right: 6px;">
           <div class="sidebar-brand" id="brandToggleBtn">
-            <div class="brand-squircle-logo">
-              <img src="assets/skil-lifestyle-black-transparent.png" alt="SKIL Logo">
+            <div class="brand-naked-crop">
+              <img src="assets/skil-lifestyle-white-transparent.png" alt="SKIL">
             </div>
             <div>
-              <div class="brand-title">SKIL Master</div>
+              <div class="brand-title">Master</div>
               <div style="font-size: 10.5px; font-weight: 700; color: #A3E635; letter-spacing: 0.04em; margin-top: 2px;">SKIL LIFESTYLE LLP</div>
             </div>
           </div>
@@ -64,7 +146,7 @@
             <a class="nav-link" style="justify-content: space-between;">
               <div style="display: flex; align-items: center; gap: 11px;">
                 <i data-lucide="file-spreadsheet"></i>
-                <span>45-Day Party Sheet</span>
+                <span>45-Day Sheet</span>
               </div>
               <span style="background: #A3E635; color: #0F172A; font-size: 9.5px; font-weight: 800; padding: 2px 7px; border-radius: 10px;">45d PDF</span>
             </a>
@@ -228,16 +310,19 @@
               <button class="mobile-burger-btn" id="btnMobileMenuToggle" aria-label="Open Navigation Menu">
                 <i data-lucide="menu" style="width: 20px; height: 20px;"></i>
               </button>
-              <div class="mobile-brand-pill">
-                <div class="brand-squircle-logo-sm">
+              <div class="mobile-brand-pill naked-brand-pill">
+                <div class="brand-naked-crop-sm">
                   <img src="assets/skil-lifestyle-black-transparent.png" alt="SKIL">
                 </div>
-                <span class="mobile-brand-name">SKIL Master</span>
+                <span class="mobile-brand-name">Master</span>
               </div>
             </div>
 
             <div class="mobile-top-right">
               <span class="mobile-page-pill" id="mobilePagePill">Dashboard</span>
+              <button class="mobile-icon-btn" id="btnMobileLockApp" title="Lock App">
+                <i data-lucide="lock" style="width: 15px; height: 15px;"></i>
+              </button>
               <button class="mobile-icon-btn" id="btnToggleSubtleInfo" title="Toggle Sync Details">
                 <i data-lucide="info" style="width: 15px; height: 15px;"></i>
               </button>
@@ -250,7 +335,10 @@
           <!-- Desktop Title & Breadcrumb -->
           <div class="desktop-header-title">
             <div class="desktop-brand-crumb">
-              <span class="brand-dim">SKIL Master</span>
+              <div class="brand-naked-crop-sm" style="margin-right: 6px;">
+                <img src="assets/skil-lifestyle-black-transparent.png" alt="SKIL">
+              </div>
+              <span class="brand-dim">Master</span>
               <span class="crumb-slash">/</span>
               <h1 class="page-title" id="activePageTitle">Dashboard</h1>
             </div>
@@ -287,6 +375,10 @@
           <a href="/download/app.apk" download class="btn-icon-action" title="Download Android App (.apk)" style="text-decoration: none; color: #16A34A;" id="btnDownloadApk">
             <i data-lucide="smartphone"></i>
           </a>
+
+          <button class="btn-icon-action" id="btnLockAppManual" title="Lock App (Fingerprint/PIN/Password)" style="background: none; border: none; cursor: pointer; color: #64748B;">
+            <i data-lucide="lock" style="width: 17px; height: 17px;"></i>
+          </button>
         </div>
       </header>
 
@@ -338,7 +430,12 @@
         <div class="home-hub-card">
           <div class="home-hub-header">
             <div>
-              <h2 class="section-title" style="font-size: 16px;">SKIL Master Navigation Hub — All Menus &amp; Reports</h2>
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <div class="brand-naked-crop-sm">
+                  <img src="assets/skil-lifestyle-black-transparent.png" alt="SKIL">
+                </div>
+                <h2 class="section-title" style="font-size: 16px; margin: 0;">Master Navigation Hub — All Menus &amp; Reports</h2>
+              </div>
               <div class="section-subtitle">Direct 1-tap access to every ledger tool, party statement, supplier hub, Khata, and audit report</div>
             </div>
             <div style="display: flex; gap: 8px; flex-wrap: wrap;">
@@ -353,7 +450,7 @@
             <button type="button" class="home-hub-tile hub-tile-featured" onclick="navigateToTab('party-statement-45d')">
               <div class="hub-tile-icon"><i data-lucide="file-spreadsheet" style="width: 17px; height: 17px;"></i></div>
               <div>
-                <div class="hub-tile-title">45-Day Party Sheet</div>
+                <div class="hub-tile-title">45-Day Sheet</div>
                 <div class="hub-tile-sub">Opening Bills, 45d Dr/Cr &amp; PDF</div>
               </div>
             </button>
@@ -708,7 +805,7 @@
             <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
               <button type="button" class="sync-now-btn" onclick="openAndPrint45DaySheet()" style="background: #0F172A; color: #FFFFFF; padding: 8px 13px; font-size: 12px;">
                 <i data-lucide="file-spreadsheet" style="width: 14px; height: 14px;"></i>
-                <span>45-Day Party Sheet</span>
+                <span>45-Day Sheet</span>
               </button>
               <input type="text" class="filter-pill-dropdown" id="partySearchInput" placeholder="Filter party name..." style="width: 200px;">
               <span class="badge-pill badge-neutral">Sorted by Balance</span>
@@ -1287,7 +1384,7 @@
         <div class="card-white">
           <div class="section-header-row">
             <div>
-              <h3 class="section-title">Ajanta Purchase Invoices (51 Bills Matched)</h3>
+              <h3 class="section-title">Ajanta Purchase Invoices (<span id="ajantaBillsCount">75</span> Bills Matched)</h3>
               <div class="section-subtitle">1:1 fulfillment to retail customers with supplier CD (3%) and customer CD (5%) tracking</div>
             </div>
             <input type="text" class="filter-pill-dropdown" id="ajantaInvoiceSearch" placeholder="Filter bill #, customer..." style="width: 220px;">
@@ -1649,7 +1746,7 @@
             <div style="margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap;">
               <button type="button" onclick="navigateToTab('party-statement-45d')" style="background: #FFFFFF; color: #0F172A; border: none; padding: 8px 14px; border-radius: 8px; font-size: 12px; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">
                 <i data-lucide="file-spreadsheet" style="width: 14px; height: 14px;"></i>
-                <span>Open 45-Day Party Sheet</span>
+                <span>Open 45-Day Sheet</span>
               </button>
               <button type="button" onclick="openAndPrint45DaySheet()" style="background: rgba(163, 230, 53, 0.18); color: #A3E635; border: 1px solid rgba(163, 230, 53, 0.45); padding: 8px 14px; border-radius: 8px; font-size: 12px; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">
                 <i data-lucide="printer" style="width: 14px; height: 14px;"></i>
@@ -2476,76 +2573,89 @@
 
   <!-- AJANTA DEALERSHIP AGREEMENT DETAILS MODAL -->
   <div class="modal-backdrop" id="ajantaAgreementModal">
-    <div class="modal-box" style="max-width: 680px;">
-      <div class="modal-header">
-        <div class="modal-title-wrap">
-          <div style="display: flex; align-items: center; gap: 10px;">
-            <div style="background: #FFFFFF; border-radius: 6px; padding: 3px 8px; display: inline-flex;">
-              <img src="assets/ajanta-logo.png" alt="Ajanta" style="height: 18px; width: auto;">
-            </div>
-            <h3 style="font-size: 17px; font-weight: 800; color: #0F172A; margin: 0;">Dealership Business Agreement FY 2026-27</h3>
+    <div class="modal-box agreement-compact-box">
+      <div class="agreement-compact-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="background: #FFFFFF; border-radius: 6px; padding: 2px 7px; display: inline-flex;">
+            <img src="assets/ajanta-logo.png" alt="Ajanta" style="height: 18px; width: auto;">
           </div>
-          <p style="margin: 4px 0 0 0; font-size: 12.5px; color: #64748B;">Ajanta Shoes India Pvt. Ltd. &bull; Dealer Code: <strong>93081</strong> (SKIL LIFESTYLE)</p>
+          <div>
+            <h4 style="font-size: 14px; font-weight: 800; margin: 0; color: #FFFFFF;">Dealership Agreement FY 2026-27</h4>
+            <div style="font-size: 11px; color: #94A3B8;">Code <strong>93081</strong> &bull; SKIL LIFESTYLE &bull; Visakhapatnam</div>
+          </div>
         </div>
-        <button class="modal-close-btn" id="btnCloseAgreementModal">
+        <button class="modal-close-btn" id="btnCloseAgreementModal" style="color: #94A3B8;">
           <i data-lucide="x" style="width: 18px; height: 18px;"></i>
         </button>
       </div>
 
-      <div class="modal-body">
-        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 14px; margin-bottom: 16px;">
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; font-size: 13px;">
-            <div><strong>Party Name:</strong> SKIL LIFESTYLE</div>
-            <div><strong>Dealer Code:</strong> 93081</div>
-            <div><strong>GSTIN:</strong> 37AFZFS2777J1ZV</div>
-            <div><strong>Territory:</strong> Visakhapatnam & Coastal AP</div>
-            <div><strong>Agreement Period:</strong> Aug 2026 – Jul 2027</div>
-            <div><strong>Annual Target:</strong> ₹1,20,00,000 (₹1.20 Cr)</div>
+      <div class="agreement-compact-body">
+        <!-- 4-Pill Key Incentive & Target Matrix -->
+        <div class="agreement-rebate-matrix">
+          <div class="rebate-pill-box">
+            <div class="rebate-pill-rate" style="color: #16A34A;">3.00%</div>
+            <div class="rebate-pill-name">Cash Discount</div>
+          </div>
+          <div class="rebate-pill-box">
+            <div class="rebate-pill-rate" style="color: #0284C7;">2.00%</div>
+            <div class="rebate-pill-name">QTB Bonus</div>
+          </div>
+          <div class="rebate-pill-box">
+            <div class="rebate-pill-rate" style="color: #7C3AED;">3.78%</div>
+            <div class="rebate-pill-name">Scheme Rebate</div>
+          </div>
+          <div class="rebate-pill-box">
+            <div class="rebate-pill-rate" style="color: #D97706;">₹1.20 Cr</div>
+            <div class="rebate-pill-name">Annual Target</div>
           </div>
         </div>
 
-        <h4 style="font-size: 14px; font-weight: 800; color: #0F172A; margin-bottom: 10px;">Commercial Terms & Rebate Structure</h4>
-        <div class="table-responsive" style="margin-bottom: 16px;">
-          <table class="biz-table" style="font-size: 12px;">
-            <thead>
-              <tr>
-                <th>INCENTIVE / REBATE</th>
-                <th>RATE</th>
-                <th>CONDITIONS / BENCHMARKS</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Cash Discount (CD)</strong></td>
-                <td><span class="badge-pill badge-success">3.00%</span></td>
-                <td>Prompt settlement within agreed credit period</td>
-              </tr>
-              <tr>
-                <td><strong>Quarterly Target Bonus (QTB)</strong></td>
-                <td><span class="badge-pill badge-info">2.00%</span></td>
-                <td>Calculated on Quarterly Basic Turnover</td>
-              </tr>
-              <tr>
-                <td><strong>Retailer Scheme</strong></td>
-                <td><span class="badge-pill badge-neutral">3.78%</span></td>
-                <td>Eligible billing categories under authorized rate card</td>
-              </tr>
-              <tr>
-                <td><strong>Quarterly Target Benchmark</strong></td>
-                <td><span class="badge-pill badge-warning">₹10 Lakhs / Mo</span></td>
-                <td>Quarterly achievement bonus on meeting ₹10L/mo benchmark</td>
-              </tr>
-            </tbody>
-          </table>
+        <!-- 2-Column High-Density Specifications -->
+        <div class="agreement-dense-grid">
+          <!-- Column 1: Dealership Identifiers & Milestones -->
+          <div class="agreement-dense-card">
+            <h5><i data-lucide="building-2" style="width: 12px; height: 12px; color: #0284C7;"></i> Dealership Parameters</h5>
+            <div class="agreement-dense-list">
+              <div class="agreement-dense-row"><span>Authorized Code:</span> <span>93081 (SKIL)</span></div>
+              <div class="agreement-dense-row"><span>GSTIN:</span> <span>37AFZFS2777J1ZV</span></div>
+              <div class="agreement-dense-row"><span>Territory:</span> <span>Visakhapatnam & Coastal AP</span></div>
+              <div class="agreement-dense-row"><span>Monthly Benchmark:</span> <span>₹10,00,000 / Month</span></div>
+              <div class="agreement-dense-row"><span>Security Deposit:</span> <span style="color: #16A34A;">₹10,00,000 (RTGS)</span></div>
+            </div>
+          </div>
+
+          <!-- Column 2: Commercial & Credit Terms -->
+          <div class="agreement-dense-card">
+            <h5><i data-lucide="scale" style="width: 12px; height: 12px; color: #16A34A;"></i> Commercial Terms</h5>
+            <div class="agreement-dense-list">
+              <div class="agreement-dense-row"><span>Tenure:</span> <span>Aug 2026 – Jul 2027</span></div>
+              <div class="agreement-dense-row"><span>Credit Cycle:</span> <span>30 Days from Inv Date</span></div>
+              <div class="agreement-dense-row"><span>Overdue Interest:</span> <span>18% p.a. default</span></div>
+              <div class="agreement-dense-row"><span>Dead-Stock Risk:</span> <span>Zero (100% Drop-Ship)</span></div>
+              <div class="agreement-dense-row"><span>Claims & Audit:</span> <span>Reconciled Monthly</span></div>
+            </div>
+          </div>
         </div>
 
-        <div style="display: flex; align-items: center; justify-content: flex-end; gap: 10px; margin-top: 14px;">
-          <a href="documents/ajanta/Ajanta_Dealership_Agreement_FY_2026_27.pdf" download="Ajanta - Skil Lifestyle Dealership Agreement FY 2026-27.pdf" class="btn-download-sm" style="padding: 8px 14px; font-size: 13px; background: #0F172A; color: #FFFFFF; border: none;">
-            <i data-lucide="download" style="width: 15px; height: 15px;"></i>
-            <span>Download Official PDF Agreement</span>
+        <!-- Compact Clause Banner -->
+        <div class="agreement-clauses-strip">
+          <strong>Key Clause:</strong> 3% CD applies on prompt payment within cycle. 2% QTB applies upon achieving ₹30L quarterly billing. Fast replacement on manufacturing defects. Kolkata jurisdiction.
+        </div>
+
+        <!-- Quick 1-Click Action Bar -->
+        <div style="display: flex; align-items: center; justify-content: flex-end; gap: 8px;">
+          <button type="button" class="btn-download-sm" onclick="openPdfDocument('documents/ajanta/Ajanta_Dealership_Agreement_FY_2026_27.pdf', 'Ajanta Dealership Agreement FY 2026-27')" style="padding: 7px 12px; font-size: 11.5px; background: #0284C7; color: #FFFFFF; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">
+            <i data-lucide="eye" style="width: 13px; height: 13px;"></i>
+            <span>View PDF in App</span>
+          </button>
+          <a href="documents/ajanta/Ajanta_Dealership_Agreement_FY_2026_27.pdf" download="Ajanta - Skil Lifestyle Dealership Agreement FY 2026-27.pdf" class="btn-download-sm" style="padding: 7px 12px; font-size: 11.5px; background: #0F172A; color: #FFFFFF; border: none; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+            <i data-lucide="download" style="width: 13px; height: 13px;"></i>
+            <span>Download</span>
           </a>
         </div>
       </div>
+    </div>
+  </div>
     </div>
   </div>
 

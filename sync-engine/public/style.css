@@ -3370,3 +3370,394 @@ select.biz-select {
     print-color-adjust: exact;
   }
 }
+
+
+/* ==========================================================================
+   NAKED ENLARGED LOGO (TOP 20% & BOTTOM 20% CROPPED)
+   ========================================================================== */
+.brand-naked-crop {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  width: 78px;
+  overflow: hidden;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  flex-shrink: 0;
+}
+.brand-naked-crop img {
+  width: 100%;
+  height: auto;
+  transform: scaleY(1.4) scaleX(1.15);
+  transform-origin: center center;
+  object-fit: contain;
+  display: block;
+}
+
+.brand-naked-crop-sm {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  width: 58px;
+  overflow: hidden;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  flex-shrink: 0;
+}
+.brand-naked-crop-sm img {
+  width: 100%;
+  height: auto;
+  transform: scaleY(1.4) scaleX(1.15);
+  transform-origin: center center;
+  object-fit: contain;
+  display: block;
+}
+
+.naked-brand-pill {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ==========================================================================
+   COMPACT HIGH-DENSITY DEALERSHIP AGREEMENT MODAL
+   ========================================================================== */
+.agreement-compact-box {
+  max-width: 650px !important;
+  width: 95% !important;
+  background: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.25);
+  overflow: hidden;
+  border: 1px solid #CBD5E1;
+}
+
+.agreement-compact-header {
+  background: #0F172A;
+  color: #FFFFFF;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.agreement-compact-body {
+  padding: 16px 20px;
+  font-size: 12px;
+  color: #334155;
+}
+
+.agreement-dense-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.agreement-dense-card {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.agreement-dense-card h5 {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #0F172A;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.agreement-dense-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.agreement-dense-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11.5px;
+}
+
+.agreement-dense-row span:first-child {
+  color: #64748B;
+  font-weight: 500;
+}
+
+.agreement-dense-row span:last-child {
+  color: #0F172A;
+  font-weight: 700;
+}
+
+.agreement-rebate-matrix {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.rebate-pill-box {
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  border-radius: 8px;
+  padding: 8px 6px;
+  text-align: center;
+}
+
+.rebate-pill-rate {
+  font-size: 14px;
+  font-weight: 800;
+  color: #0F172A;
+}
+
+.rebate-pill-name {
+  font-size: 9.5px;
+  font-weight: 700;
+  color: #64748B;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.agreement-clauses-strip {
+  background: #EFF6FF;
+  border: 1px solid #BFDBFE;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #1E3A8A;
+  margin-bottom: 14px;
+}
+
+/* ==========================================================================
+   APP SECURITY LOCK SCREEN (PASSWORD "admin123", PIN & FINGERPRINT)
+   ========================================================================== */
+.security-lock-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: #0B1120;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.security-lock-card {
+  width: 100%;
+  max-width: 360px;
+  background: #1E293B;
+  border: 1px solid #334155;
+  border-radius: 24px;
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+  animation: lockFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes lockFadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.security-lock-logo {
+  height: 48px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.security-lock-logo img {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+}
+
+.security-lock-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+
+.security-lock-subtitle {
+  font-size: 12.5px;
+  color: #94A3B8;
+  margin-bottom: 24px;
+}
+
+.lock-input-wrap {
+  position: relative;
+  margin-bottom: 14px;
+}
+
+.lock-input-wrap input {
+  width: 100%;
+  height: 48px;
+  background: #0F172A;
+  border: 1.5px solid #334155;
+  border-radius: 12px;
+  padding: 0 46px 0 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #FFFFFF;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.lock-input-wrap input:focus {
+  border-color: #A3E635;
+}
+
+.btn-toggle-pwd {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #64748B;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.btn-lock-submit {
+  width: 100%;
+  height: 46px;
+  background: #A3E635;
+  color: #0F172A;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 0.15s, background 0.2s;
+}
+
+.btn-lock-submit:hover {
+  background: #BEF264;
+  transform: translateY(-1px);
+}
+
+.btn-lock-secondary {
+  width: 100%;
+  height: 44px;
+  background: #0F172A;
+  color: #FFFFFF;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.btn-lock-skip {
+  background: none;
+  border: none;
+  color: #94A3B8;
+  font-size: 12px;
+  cursor: pointer;
+  margin-top: 10px;
+  text-decoration: underline;
+}
+
+.lock-error-msg {
+  color: #F87171;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+/* PIN Display Dots & Keypad */
+.pin-display-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.pin-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid #64748B;
+  background: transparent;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pin-dot.filled {
+  background: #A3E635;
+  border-color: #A3E635;
+  transform: scale(1.15);
+  box-shadow: 0 0 12px rgba(163, 230, 53, 0.4);
+}
+
+.pin-keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  max-width: 260px;
+  margin: 0 auto;
+}
+
+.keypad-btn {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #0F172A;
+  border: 1px solid #334155;
+  color: #FFFFFF;
+  font-size: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 0 auto;
+  transition: all 0.15s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.keypad-btn:active {
+  background: #334155;
+  transform: scale(0.92);
+}
+
+.keypad-btn.action-key {
+  font-size: 16px;
+  color: #A3E635;
+}
