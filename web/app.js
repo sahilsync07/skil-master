@@ -43,7 +43,7 @@ window.skilTriggerPrint = function(jobName = 'SKIL_Master_Statement') {
 };
 
 // Current Installed Application Version
-const CURRENT_APP_VERSION = '2.2.0';
+const CURRENT_APP_VERSION = '2.2.1';
 
 // Universal Smart PDF Opener (Direct Android Chooser / Google Drive App / Drive Web Viewer)
 window.openPdfDocument = function(filePath, title = 'Document') {
@@ -422,7 +422,7 @@ function setupNavigation() {
 }
 
 // GitHub Cloud Storage Raw Base Configuration
-const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/skillifestyle/master/main';
+const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/skillifestyle/master/main/web';
 
 // Setup Sync Button & Data Refresh (Works for both Desktop Topbar and Mobile Quick Sync)
 function setupSyncButton() {

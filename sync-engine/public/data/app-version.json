@@ -1,11 +1,11 @@
 {
-  "version": "2.2.0",
-  "versionCode": 22,
-  "releaseDate": "2026-11-13",
+  "version": "2.2.1",
+  "versionCode": 27,
+  "releaseDate": "2026-11-14",
   "minRequiredVersion": "2.0.0",
-  "hasMajorUpdate": false,
-  "updateTitle": "SKIL Master v2.2.0 Revamp",
-  "updateNotes": "Comprehensive UI polish, Cubix supplier hub, unified PDF viewer & live data sync.",
+  "hasMajorUpdate": true,
+  "updateTitle": "SKIL Master v2.2.1 Revamp",
+  "updateNotes": "Comprehensive UI polish, Cubix supplier hub, unified PDF viewer, correct Rayagada IFSC & instant cloud sync.",
   "playStoreUrl": "https://play.google.com/store/apps/details?id=com.skillifestyle.master",
-  "apkUrl": "https://github.com/skillifestyle/master/releases/latest"
+  "apkUrl": "https://github.com/sahilsync07/skil-master/releases/latest"
 }
