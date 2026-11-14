@@ -459,7 +459,7 @@ function recalculateSettlement() {
   waText += \`SKIL LIFESTYLE LLP\\n\`;
   waText += \`Union Bank of India | Rayagada\\n\`;
   waText += \`A/c: *348621010000129*\\n\`;
-  waText += \`IFSC: *UBIN0534862*\\n\\n\`;
+  waText += \`IFSC: *UBIN0934861*\\n\\n\`;
   waText += \`Please process the transfer and share the screenshot so we can issue your CD credit note. Thank you! 🙏\`;
 
   const txtPreview = document.getElementById('txtWhatsAppPreview');
@@ -670,7 +670,7 @@ window.generateAndPrintCustomerStatement = function() {
           A/c Name: <strong>SKIL LIFESTYLE LLP</strong><br>
           Bank: <strong>Union Bank of India</strong> | Branch: <strong>Rayagada</strong><br>
           Current A/c No: <strong>348621010000129</strong><br>
-          IFSC Code: <strong>UBIN0534862</strong>
+          IFSC Code: <strong>UBIN0934861</strong>
         </div>
 
         <div style="text-align: right; display: flex; flex-direction: column; justify-content: flex-end;">

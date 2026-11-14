@@ -678,7 +678,7 @@ app.get('/api/ledgers/:partyName', (req, res) => {
         `SKIL LIFESTYLE LLP`,
         `Union Bank of India | Rayagada`,
         `A/c: *348621010000129*`,
-        `IFSC: *UBIN0534862*`,
+        `IFSC: *UBIN0934861*`,
         ``,
         `Please process the transfer and share the screenshot so we can issue your CD credit note. Thank you! 🙏`
       ].join('\n');
