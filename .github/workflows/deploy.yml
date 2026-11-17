@@ -150,42 +150,18 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # TRACK 1: Internal Testing (Automatic on push & dispatch)
-      - name: Deploy to Google Play (Internal Testing)
+      # TRACK 1 & 2: Testing Tracks (Internal & Closed Testing - Alpha)
+      - name: Deploy to Google Play (Internal & Closed Testing)
         if: env.IS_FULL_BUILD == 'true' && env.PLAY_CONFIGURED == 'true'
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
           packageName: com.skillifestyle.master
           releaseFiles: artifacts/SKIL_Master-v${{ env.BUILD_NAME }}-signed.aab
-          track: internal
+          tracks: internal,alpha
           status: completed
 
-      # TRACK 2: Closed Testing (Alpha - Automatic on push & dispatch)
-      - name: Deploy to Google Play (Closed Testing - Alpha)
-        if: env.IS_FULL_BUILD == 'true' && env.PLAY_CONFIGURED == 'true'
-        continue-on-error: true
-        uses: r0adkll/upload-google-play@v1
-        with:
-          serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
-          packageName: com.skillifestyle.master
-          releaseFiles: artifacts/SKIL_Master-v${{ env.BUILD_NAME }}-signed.aab
-          track: alpha
-          status: completed
-
-      # TRACK 3: Open Testing (Beta - Automatic on push & dispatch)
-      - name: Deploy to Google Play (Open Testing - Beta)
-        if: env.IS_FULL_BUILD == 'true' && env.PLAY_CONFIGURED == 'true'
-        continue-on-error: true
-        uses: r0adkll/upload-google-play@v1
-        with:
-          serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
-          packageName: com.skillifestyle.master
-          releaseFiles: artifacts/SKIL_Master-v${{ env.BUILD_NAME }}-signed.aab
-          track: beta
-          status: completed
-
-      # TRACK 4: Production (Manual Trigger Only via workflow_dispatch)
+      # TRACK 3: Production (Manual Trigger Only via workflow_dispatch)
       - name: Deploy to Google Play (Production) - Manual Trigger
         if: env.IS_FULL_BUILD == 'true' && env.PLAY_CONFIGURED == 'true' && github.event_name == 'workflow_dispatch' && github.event.inputs.deploy_production == 'true'
         uses: r0adkll/upload-google-play@v1
@@ -193,7 +169,7 @@ jobs:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
           packageName: com.skillifestyle.master
           releaseFiles: artifacts/SKIL_Master-v${{ env.BUILD_NAME }}-signed.aab
-          track: production
+          tracks: production
           status: completed
 
       - name: Log Data-Only Sync Confirmation
