@@ -1,5 +1,59 @@
 [
   {
+    "id": "1794838366029",
+    "timestamp": "2026-11-16T14:12:46.029Z",
+    "type": "incremental",
+    "status": "success",
+    "durationMs": 769,
+    "company": "SKIL LIFESTYLE LLP",
+    "fetched": {
+      "ledgers": 0,
+      "stockItems": 0,
+      "vouchers": 0
+    },
+    "cursors": {
+      "masterAlterId": 943,
+      "stockAlterId": 959,
+      "voucherAlterId": 414
+    }
+  },
+  {
+    "id": "1794836283561",
+    "timestamp": "2026-11-16T13:38:03.561Z",
+    "type": "incremental",
+    "status": "success",
+    "durationMs": 796,
+    "company": "SKIL LIFESTYLE LLP",
+    "fetched": {
+      "ledgers": 0,
+      "stockItems": 0,
+      "vouchers": 2
+    },
+    "cursors": {
+      "masterAlterId": 943,
+      "stockAlterId": 959,
+      "voucherAlterId": 414
+    }
+  },
+  {
+    "id": "1794835966857",
+    "timestamp": "2026-11-16T13:32:46.857Z",
+    "type": "incremental",
+    "status": "success",
+    "durationMs": 1095,
+    "company": "SKIL LIFESTYLE LLP",
+    "fetched": {
+      "ledgers": 1,
+      "stockItems": 18,
+      "vouchers": 16
+    },
+    "cursors": {
+      "masterAlterId": 943,
+      "stockAlterId": 959,
+      "voucherAlterId": 412
+    }
+  },
+  {
     "id": "1794572692542",
     "timestamp": "2026-11-13T12:24:52.542Z",
     "type": "incremental",

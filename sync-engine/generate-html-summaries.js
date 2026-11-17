@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
+const ROOT_DIR = path.resolve(__dirname, '..');
 const vouchers = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/vouchers.json'), 'utf8'));
 const values = Object.values(vouchers);
 

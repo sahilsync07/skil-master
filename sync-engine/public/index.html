@@ -34,8 +34,8 @@
   <div id="appSecurityLockOverlay" class="security-lock-overlay" style="display: flex;">
     <div class="security-lock-card">
       <div class="security-lock-logo">
-        <div class="brand-naked-crop" style="height: 48px; width: 90px;">
-          <img src="assets/skil-lifestyle-white-transparent.png" alt="SKIL Master">
+        <div class="brand-naked-crop" style="height: 52px; width: auto; max-width: 120px;">
+          <img src="assets/skil-lifestyle-white-transparent.png" alt="SKIL Master" style="height: 52px; width: auto;">
         </div>
       </div>
       <div class="security-lock-title">SKIL Master Security</div>
@@ -769,6 +769,18 @@
       <!-- VIEW 3: PARTIES & AGING -->
       <!-- ============================================== -->
       <section class="view-panel" id="view-parties">
+        <!-- Dual Aging Mode Toggle on Parties Directory -->
+        <div class="aging-mode-toggle-bar" style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 10px 14px; margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <i data-lucide="sliders-horizontal" style="width: 15px; height: 15px; color: #64748B;"></i>
+            <span style="font-size: 12.5px; font-weight: 800; color: #0F172A;">Aging View Mode:</span>
+          </div>
+          <div class="segmented-pills">
+            <button type="button" class="segment-btn active" id="btnPartiesAgingBuckets" onclick="setAgingDisplayMode('buckets')">⏱️ 30d / 45d / 60d Buckets</button>
+            <button type="button" class="segment-btn" id="btnPartiesAgingDays" onclick="setAgingDisplayMode('days')">📅 Days Elapsed Mode</button>
+          </div>
+        </div>
+
         <div class="parties-kpi-grid">
           <div class="card-white">
             <div class="stat-label">Total Outstanding Balance</div>
@@ -812,21 +824,28 @@
             </div>
           </div>
 
-          <div class="table-responsive">
+          <div class="table-responsive parties-desktop-wrap">
             <table class="biz-table">
-              <thead>
+              <thead id="partiesThead">
                 <tr>
                   <th>PARTY NAME</th>
-                  <th>BALANCE</th>
-                  <th>&lt; 30 DAYS</th>
-                  <th>30-90 DAYS</th>
-                  <th>&gt; 90 DAYS</th>
+                  <th style="text-align: right;">BALANCE</th>
+                  <th style="text-align: right;">0–30 DAYS</th>
+                  <th style="text-align: right;">31–45 DAYS</th>
+                  <th style="text-align: right;">46–60 DAYS</th>
+                  <th style="text-align: right;">&gt; 60 DAYS</th>
+                  <th style="text-align: center;">ACTION</th>
                 </tr>
               </thead>
               <tbody id="partiesTbody">
                 <!-- Dynamically populated from live aging report -->
               </tbody>
             </table>
+          </div>
+
+          <!-- Touch-Optimized Mobile Party Cards (Zero Horizontal Scroll) -->
+          <div class="parties-mobile-cards" id="partiesMobileCards" style="margin-top: 12px;">
+            <!-- Dynamically populated from live aging report -->
           </div>
         </div>
       </section>
@@ -1570,21 +1589,73 @@
       <!-- ============================================== -->
       <section class="view-panel" id="view-supplier-cubix">
         <!-- Supplier Hero Header -->
-        <div class="supplier-hero-box">
-          <div class="supplier-hero-left">
-            <div class="supplier-hero-logo-btn" style="background: #FFFFFF;">
-              <img src="assets/cubix-logo.png" alt="Cubix Footwear" style="max-height: 28px; width: auto; object-fit: contain;">
+        <div class="supplier-hero-box" style="background: linear-gradient(135deg, #091E3A 0%, #0F172A 50%, #1E293B 100%); border-radius: 16px; padding: 22px 24px; color: #FFFFFF; margin-bottom: 20px; border: 1px solid rgba(56, 189, 248, 0.25); box-shadow: 0 10px 30px rgba(9, 30, 58, 0.25);">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+            <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+              <div style="background: #FFFFFF; border-radius: 12px; padding: 6px 14px; box-shadow: 0 4px 14px rgba(0,0,0,0.18); display: flex; align-items: center; justify-content: center; height: 46px;">
+                <img src="assets/cubix-logo.png" alt="Cubix Footwear" style="max-height: 28px; width: auto; object-fit: contain;">
+              </div>
+              <div>
+                <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                  <h2 style="font-size: 20px; font-weight: 800; color: #FFFFFF; margin: 0; letter-spacing: -0.01em;">Cubix Footwear Private Limited</h2>
+                  <span class="badge-pill" style="background: rgba(56, 189, 248, 0.18); color: #38BDF8; border: 1px solid rgba(56, 189, 248, 0.35); font-weight: 800; font-size: 10.5px;">Drop-Ship OEM Partner</span>
+                </div>
+                <div style="font-size: 12.5px; color: #94A3B8; margin-top: 4px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                  <span>🏢 Creditor Ledger: CUBIX FOOTWEAR PVT LTD</span>
+                  <span>•</span>
+                  <span>📦 100% Drop-Ship Wholesale Fulfillment</span>
+                </div>
+              </div>
             </div>
-            <div class="supplier-hero-meta">
-              <h2>Cubix Footwear Private Limited</h2>
-              <p>
-                <span>🏢 Supplier Account &bull; SKIL Lifestyle LLP</span>
-                <span>•</span>
-                <span>📦 2 Invoices Matched 1:1</span>
-                <span>•</span>
-                <span>💰 Total Purchases: ₹1,70,749</span>
-              </p>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <button type="button" onclick="openDealershipModal('cubix')" class="sync-now-btn" style="background: rgba(255, 255, 255, 0.12); color: #FFFFFF; border: 1px solid rgba(255, 255, 255, 0.2); padding: 8px 14px; font-size: 12px; border-radius: 8px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">
+                <i data-lucide="file-check-2" style="width: 14px; height: 14px; color: #38BDF8;"></i>
+                <span>Dealership Terms</span>
+              </button>
             </div>
+          </div>
+        </div>
+
+        <!-- 4 Sexy Cubix KPI Stat Cards -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin-bottom: 20px;">
+          <!-- KPI 1: Purchases -->
+          <div class="stat-card" style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <span style="font-size: 11px; font-weight: 700; color: #64748B; text-transform: uppercase; letter-spacing: 0.04em;">Total Procurement</span>
+              <span class="badge-pill" style="background: #EEF2FF; color: #4F46E5; font-size: 10px; font-weight: 800;">2 Invoices</span>
+            </div>
+            <div style="font-size: 22px; font-weight: 800; color: #0F172A; letter-spacing: -0.01em;">₹1,70,749</div>
+            <div style="font-size: 11px; color: #64748B; margin-top: 4px;">1:1 Drop-Ship Billed to Retailers</div>
+          </div>
+
+          <!-- KPI 2: Sales Turnover -->
+          <div class="stat-card" style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <span style="font-size: 11px; font-weight: 700; color: #64748B; text-transform: uppercase; letter-spacing: 0.04em;">Outward Turnover</span>
+              <span class="badge-pill" style="background: #F0FDF4; color: #16A34A; font-size: 10px; font-weight: 800;">+₹459 Margin</span>
+            </div>
+            <div style="font-size: 22px; font-weight: 800; color: #16A34A; letter-spacing: -0.01em;">₹1,71,208</div>
+            <div style="font-size: 11px; color: #64748B; margin-top: 4px;">SKIL-058 &amp; SKIL-077 Matched</div>
+          </div>
+
+          <!-- KPI 3: Total Cartons -->
+          <div class="stat-card" style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <span style="font-size: 11px; font-weight: 700; color: #64748B; text-transform: uppercase; letter-spacing: 0.04em;">Volume Drop-Shipped</span>
+              <span class="badge-pill" style="background: #E0F2FE; color: #0369A1; font-size: 10px; font-weight: 800;">832 Pairs</span>
+            </div>
+            <div style="font-size: 22px; font-weight: 800; color: #0284C7; letter-spacing: -0.01em;">58 CTN</div>
+            <div style="font-size: 11px; color: #64748B; margin-top: 4px;">Direct Factory to Retailer Godown</div>
+          </div>
+
+          <!-- KPI 4: Fulfillment Status -->
+          <div class="stat-card" style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <span style="font-size: 11px; font-weight: 700; color: #64748B; text-transform: uppercase; letter-spacing: 0.04em;">Fulfillment Rate</span>
+              <span class="badge-pill" style="background: #F0FDF4; color: #16A34A; font-size: 10px; font-weight: 800;">100% Sold</span>
+            </div>
+            <div style="font-size: 22px; font-weight: 800; color: #0F172A; letter-spacing: -0.01em;">100% Matched</div>
+            <div style="font-size: 11px; color: #64748B; margin-top: 4px;">Zero Unsold Inventory / Holding</div>
           </div>
         </div>
 
@@ -1597,59 +1668,76 @@
             </div>
           </div>
 
-          <div class="doc-vault-grid">
-            <div class="doc-vault-item">
-              <div class="doc-vault-info">
-                <div class="doc-vault-icon"><i data-lucide="file-text"></i></div>
-                <div>
-                  <div class="doc-vault-title">058 - 2026-27/2155 - Famous VZM</div>
-                  <div class="doc-vault-desc">Dated: 21-10-2026 &bull; ₹65,029</div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <!-- Vault Item 1 -->
+            <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+              <div style="display: flex; align-items: center; gap: 12px; min-width: 0;">
+                <div style="background: #FEF2F2; color: #DC2626; border-radius: 10px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <i data-lucide="file-text" style="width: 20px; height: 20px;"></i>
+                </div>
+                <div style="min-width: 0;">
+                  <div style="font-weight: 800; font-size: 14px; color: #0F172A; display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                    <span>#058 — Cubix Purchase Invoice: 2026-27/2155</span>
+                    <span class="badge-pill" style="background: #E0F2FE; color: #0369A1; font-size: 10px; font-weight: 800;">24 CTN</span>
+                  </div>
+                  <div style="font-size: 12px; color: #64748B; margin-top: 2px;">
+                    📅 21-Oct-2026 &bull; Sold to <strong>Famous Foot Wear (VZM)</strong> &bull; Amount: <strong style="color: #0F172A;">₹65,029</strong>
+                  </div>
                 </div>
               </div>
-              <div style="display: flex; gap: 6px;">
-                <button type="button" onclick="openPdfDocument('documents/cubix/058 - 2026-27-2155 - Famous VZM - 21-10-26.pdf', 'Cubix Inv 058')" class="btn-download-sm" style="background: #0F172A; color: #FFFFFF; border: none; cursor: pointer;">
-                  <i data-lucide="eye" style="width: 13px; height: 13px;"></i>
-                  <span>View</span>
+              <div style="display: flex; gap: 8px; flex-shrink: 0;">
+                <button type="button" onclick="openPdfDocument('documents/cubix/058 - 2026-27-2155 - Famous VZM - 21-10-26.pdf', 'Cubix Inv 058')" class="btn-download-sm" style="background: #0F172A; color: #FFFFFF; border: none; padding: 7px 14px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;">
+                  <i data-lucide="eye" style="width: 14px; height: 14px;"></i>
+                  <span>View PDF</span>
                 </button>
-                <a href="documents/cubix/058 - 2026-27-2155 - Famous VZM - 21-10-26.pdf" download class="btn-download-sm">
-                  <i data-lucide="download" style="width: 13px; height: 13px;"></i>
-                  <span>PDF</span>
+                <a href="documents/cubix/058 - 2026-27-2155 - Famous VZM - 21-10-26.pdf" download class="btn-download-sm" style="background: #F1F5F9; color: #334155; border: 1px solid #CBD5E1; padding: 7px 12px; border-radius: 8px; font-size: 12px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">
+                  <i data-lucide="download" style="width: 14px; height: 14px;"></i>
+                  <span>Download</span>
                 </a>
               </div>
             </div>
 
-            <div class="doc-vault-item">
-              <div class="doc-vault-info">
-                <div class="doc-vault-icon"><i data-lucide="file-text"></i></div>
-                <div>
-                  <div class="doc-vault-title">077 - 2026-27/2383 - SF SKLM</div>
-                  <div class="doc-vault-desc">Dated: 09-11-2026 &bull; ₹1,05,720</div>
+            <!-- Vault Item 2 -->
+            <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+              <div style="display: flex; align-items: center; gap: 12px; min-width: 0;">
+                <div style="background: #FEF2F2; color: #DC2626; border-radius: 10px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <i data-lucide="file-text" style="width: 20px; height: 20px;"></i>
+                </div>
+                <div style="min-width: 0;">
+                  <div style="font-weight: 800; font-size: 14px; color: #0F172A; display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                    <span>#077 — Cubix Purchase Invoice: 2026-27/2383</span>
+                    <span class="badge-pill" style="background: #E0F2FE; color: #0369A1; font-size: 10px; font-weight: 800;">34 CTN</span>
+                  </div>
+                  <div style="font-size: 12px; color: #64748B; margin-top: 2px;">
+                    📅 09-Nov-2026 &bull; Sold to <strong>Shree Footwear (SKLM)</strong> &bull; Amount: <strong style="color: #0F172A;">₹1,05,720</strong>
+                  </div>
                 </div>
               </div>
-              <div style="display: flex; gap: 6px;">
-                <button type="button" onclick="openPdfDocument('documents/cubix/077 - 2026-27-2383 - SF SKLM - 09-11-26.pdf', 'Cubix Inv 077')" class="btn-download-sm" style="background: #0F172A; color: #FFFFFF; border: none; cursor: pointer;">
-                  <i data-lucide="eye" style="width: 13px; height: 13px;"></i>
-                  <span>View</span>
+              <div style="display: flex; gap: 8px; flex-shrink: 0;">
+                <button type="button" onclick="openPdfDocument('documents/cubix/077 - 2026-27-2383 - SF SKLM - 09-11-26.pdf', 'Cubix Inv 077')" class="btn-download-sm" style="background: #0F172A; color: #FFFFFF; border: none; padding: 7px 14px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;">
+                  <i data-lucide="eye" style="width: 14px; height: 14px;"></i>
+                  <span>View PDF</span>
                 </button>
-                <a href="documents/cubix/077 - 2026-27-2383 - SF SKLM - 09-11-26.pdf" download class="btn-download-sm">
-                  <i data-lucide="download" style="width: 13px; height: 13px;"></i>
-                  <span>PDF</span>
+                <a href="documents/cubix/077 - 2026-27-2383 - SF SKLM - 09-11-26.pdf" download class="btn-download-sm" style="background: #F1F5F9; color: #334155; border: 1px solid #CBD5E1; padding: 7px 12px; border-radius: 8px; font-size: 12px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">
+                  <i data-lucide="download" style="width: 14px; height: 14px;"></i>
+                  <span>Download</span>
                 </a>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Cubix Invoices Table -->
+        <!-- Cubix Invoices Table & Mobile Cards -->
         <div class="card-white">
           <div class="section-header-row">
             <div>
-              <h3 class="section-title">Cubix Drop-Ship Invoices (2 Bills Matched)</h3>
+              <h3 class="section-title">Cubix Drop-Ship Invoices (2 Bills 100% Matched)</h3>
               <div class="section-subtitle">100% matched to retail customers (Famous Foot Wear, Shree Footwear)</div>
             </div>
           </div>
 
-          <div class="table-responsive">
+          <!-- Desktop Table View -->
+          <div class="table-responsive cubix-desktop-table-wrap">
             <table class="biz-table" id="cubixInvoicesTable">
               <thead>
                 <tr>
@@ -1668,6 +1756,11 @@
                 <!-- Dynamically populated -->
               </tbody>
             </table>
+          </div>
+
+          <!-- Mobile Cards View (< 640px) -->
+          <div class="cubix-mobile-cards-wrap" id="cubixMobileCards">
+            <!-- Dynamically populated for mobile -->
           </div>
         </div>
       </section>
@@ -1767,6 +1860,23 @@
               <div style="font-size: 18px; font-weight: 800; color: #F87171;" id="valAgingOldestBill">10-Sep-2026</div>
               <div style="font-size: 10.5px; color: #FCA5A5; font-weight: 700;" id="valAgingOldestDays">57 days elapsed</div>
             </div>
+          </div>
+        </div>
+
+        <!-- DUAL AGING DISPLAY MODE TOGGLE BAR ON TOP -->
+        <div class="card-white" style="padding: 12px 18px; margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <i data-lucide="sliders-horizontal" style="width: 17px; height: 17px; color: #0284C7;"></i>
+            <span style="font-size: 13px; font-weight: 800; color: #0F172A;">Aging View Mode:</span>
+            <span style="font-size: 11.5px; color: #64748B;">(Switch between 30/45/60d buckets &amp; exact days elapsed)</span>
+          </div>
+          <div class="segmented-pills" id="agingDisplayModePills" style="max-width: 100%; overflow-x: auto;">
+            <button type="button" class="segment-btn active" id="btnAgingModeBuckets" onclick="setAgingDisplayMode('buckets')">
+              ⏱️ Buckets (30d / 45d / 60d / >60d)
+            </button>
+            <button type="button" class="segment-btn" id="btnAgingModeDays" onclick="setAgingDisplayMode('days')">
+              📅 Exact Days Aging Mode
+            </button>
           </div>
         </div>
 

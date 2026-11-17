@@ -8,11 +8,11 @@
     "gstin": "",
     "stateName": "Andhra Pradesh"
   },
-  "lastMasterAlterId": 929,
-  "lastStockAlterId": 939,
-  "lastVoucherAlterId": 396,
-  "lastSyncTimestamp": "2026-11-13T12:24:52.477Z",
-  "totalSyncRuns": 38,
+  "lastMasterAlterId": 943,
+  "lastStockAlterId": 959,
+  "lastVoucherAlterId": 419,
+  "lastSyncTimestamp": "2026-11-16T14:12:45.990Z",
+  "totalSyncRuns": 41,
   "autoSyncEnabled": false,
   "autoSyncIntervalSec": 30
 }

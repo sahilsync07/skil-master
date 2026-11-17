@@ -52,3 +52,11 @@ targets.forEach(destDir => {
 });
 
 fs.writeFileSync(path.join(webDir, '.nojekyll'), '', 'utf8');
+fs.writeFileSync(path.join(rootDir, '.nojekyll'), '', 'utf8');
+
+// Ensure root has privacy policies and landing redirect
+['privacy-policy.html', 'privacy.html'].forEach(f => {
+  const src = path.join(webDir, f);
+  if (fs.existsSync(src)) fs.copyFileSync(src, path.join(rootDir, f));
+});
+

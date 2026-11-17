@@ -888,17 +888,15 @@ function renderIncomeExpenseChart() {
 
   const months = ['Apr 26', 'May 26', 'Jun 26', 'Jul 26', 'Aug 26', 'Sept 26', 'Oct 26', 'Nov 26', 'Dec 26', 'Jan 27', 'Feb 27'];
   
-  // Real numbers: Aug ₹12.57L / ₹12.52L, Sep ₹14.89L / ₹14.85L, Oct ₹3.77L / ₹3.77L
-  const salesData = [0, 0, 0, 0, 1257406, 1488717, 377195, 0, 0, 0, 0];
-  const purchaseData = [0, 0, 0, 0, 1251736, 1484790, 376931, 0, 0, 0, 0];
+  // Audited Tally trajectories:
+  // Aug: Sales ₹12,57,406 / Pur ₹12,51,737 | Sep: Sales ₹14,88,717 / Pur ₹14,84,790
+  // Oct: Sales ₹19,98,844 / Pur ₹19,91,899 | Nov: Sales ₹6,10,031 / Pur ₹5,50,277
+  const salesData = [0, 0, 0, 0, 1257406, 1488717, 1998844, 610031, 0, 0, 0];
+  const purchaseData = [0, 0, 0, 0, 1251737, 1484790, 1991899, 550277, 0, 0, 0];
 
   const limeGradient = ctx.createLinearGradient(0, 0, 0, 260);
-  limeGradient.addColorStop(0, 'rgba(163, 230, 53, 0.45)');
-  limeGradient.addColorStop(1, 'rgba(163, 230, 53, 0.0)');
-
-  const purpleGradient = ctx.createLinearGradient(0, 0, 0, 260);
-  purpleGradient.addColorStop(0, 'rgba(167, 139, 250, 0.35)');
-  purpleGradient.addColorStop(1, 'rgba(167, 139, 250, 0.0)');
+  limeGradient.addColorStop(0, 'rgba(132, 204, 22, 0.35)');
+  limeGradient.addColorStop(1, 'rgba(132, 204, 22, 0.0)');
 
   state.charts.incomeExpense = new Chart(ctx, {
     type: 'line',
@@ -906,28 +904,35 @@ function renderIncomeExpenseChart() {
       labels: months,
       datasets: [
         {
+          label: 'Purchase (COGS)',
+          data: purchaseData,
+          borderColor: '#8B5CF6',
+          borderWidth: 3.5,
+          borderDash: [6, 4],
+          backgroundColor: 'transparent',
+          fill: false,
+          tension: 0.38,
+          pointRadius: 6,
+          pointBackgroundColor: '#8B5CF6',
+          pointBorderColor: '#FFFFFF',
+          pointBorderWidth: 2,
+          pointHoverRadius: 8,
+          order: 0
+        },
+        {
           label: 'Sales (Revenue)',
           data: salesData,
-          borderColor: '#A3E635',
+          borderColor: '#84CC16',
           borderWidth: 3,
           backgroundColor: limeGradient,
           fill: true,
-          tension: 0.42,
+          tension: 0.38,
           pointRadius: 4,
-          pointBackgroundColor: '#A3E635',
-          pointHoverRadius: 6
-        },
-        {
-          label: 'Purchase (COGS)',
-          data: purchaseData,
-          borderColor: '#A78BFA',
-          borderWidth: 3,
-          backgroundColor: purpleGradient,
-          fill: true,
-          tension: 0.42,
-          pointRadius: 4,
-          pointBackgroundColor: '#A78BFA',
-          pointHoverRadius: 6
+          pointBackgroundColor: '#84CC16',
+          pointBorderColor: '#FFFFFF',
+          pointBorderWidth: 1.5,
+          pointHoverRadius: 7,
+          order: 1
         }
       ]
     },
@@ -1110,6 +1115,23 @@ function renderPartiesView() {
   const parties = (group && group.parties) ? group.parties : [];
   const summary = group ? group.summary : { totalOutstanding: 0, partiesCount: 0, over90: 0 };
 
+  // Current Aging Display Mode ('buckets' or 'days')
+  const currentMode = state.agingDisplayMode || (typeof localStorage !== 'undefined' ? localStorage.getItem('skil_aging_mode') : null) || 'buckets';
+  state.agingDisplayMode = currentMode;
+
+  // Sync Parties Aging Toggle Buttons
+  const btnBuckets = document.getElementById('btnPartiesAgingBuckets');
+  const btnDays = document.getElementById('btnPartiesAgingDays');
+  if (btnBuckets && btnDays) {
+    if (currentMode === 'buckets') {
+      btnBuckets.classList.add('active');
+      btnDays.classList.remove('active');
+    } else {
+      btnDays.classList.add('active');
+      btnBuckets.classList.remove('active');
+    }
+  }
+
   // Update Header & KPI Cards
   const headingElem = document.getElementById('partyListHeading');
   if (headingElem) headingElem.innerText = isDebtor ? 'Debtors List (Receivables)' : 'Creditors List (Payables)';
@@ -1121,43 +1143,209 @@ function renderPartiesView() {
   if (totalBalElem) totalBalElem.innerText = formatINR(summary.totalOutstanding);
   if (countElem) countElem.innerText = parties.length || summary.partiesCount || 0;
   if (riskElem) {
-    const highRiskCount = parties.filter(p => (p.over90 || 0) > 0).length;
+    const highRiskCount = parties.filter(p => (p.over60 || 0) > 0 || (p.over90 || 0) > 0).length;
     riskElem.innerText = highRiskCount;
+  }
+
+  // Update Desktop Table Headers based on mode
+  const thead = document.getElementById('partiesThead');
+  if (thead) {
+    if (currentMode === 'days') {
+      thead.innerHTML = `
+        <tr>
+          <th>PARTY NAME</th>
+          <th style="text-align: right;">BALANCE</th>
+          <th>OLDEST BILL</th>
+          <th style="text-align: center;">DAYS ELAPSED</th>
+          <th style="text-align: center;">AGING STATUS</th>
+          <th style="text-align: center;">ACTION</th>
+        </tr>
+      `;
+    } else {
+      thead.innerHTML = `
+        <tr>
+          <th>PARTY NAME</th>
+          <th style="text-align: right;">BALANCE</th>
+          <th style="text-align: right;">0–30 DAYS</th>
+          <th style="text-align: right;">31–45 DAYS</th>
+          <th style="text-align: right;">46–60 DAYS</th>
+          <th style="text-align: right;">&gt; 60 DAYS</th>
+          <th style="text-align: center;">ACTION</th>
+        </tr>
+      `;
+    }
   }
 
   // Filter parties by search input
   const searchInput = document.getElementById('partySearchInput');
   const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
 
-  const filtered = parties.filter(p => !query || (p.partyName || '').toLowerCase().includes(query));
+  const filtered = parties.filter(p => !query || (p.partyName || '').toLowerCase().includes(query) || (p.city || '').toLowerCase().includes(query));
 
   // Sort descending by balance
   filtered.sort((a, b) => (b.netDue || b.balance || 0) - (a.netDue || a.balance || 0));
 
   const tbody = document.getElementById('partiesTbody');
-  if (!tbody) return;
+  const mobileContainer = document.getElementById('partiesMobileCards');
 
-  if (filtered.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #94A3B8; padding: 30px;">No matching parties found.</td></tr>`;
-    return;
+  // Desktop Table Render
+  if (tbody) {
+    if (filtered.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: #94A3B8; padding: 30px;">No matching parties found.</td></tr>`;
+    } else {
+      tbody.innerHTML = filtered.map(p => {
+        const bal = p.netDue !== undefined ? p.netDue : (p.balance || 0);
+        const isCleared = bal <= 0;
+        const u30 = p.under30 || 0;
+        const d31_45 = p.d31to45 || 0;
+        const d46_60 = p.d46to60 || 0;
+        const o60 = p.over60 || p.over90 || 0;
+        const oldestDays = p.oldestBillDays || 0;
+        const oldestDate = p.oldestBillDate || '—';
+
+        if (currentMode === 'days') {
+          return `
+            <tr>
+              <td class="td-bold">
+                <div style="font-weight: 800; color: #0F172A;">${p.partyName || 'Unknown'}</div>
+                <div style="font-size: 11px; color: #64748B;">${p.state || p.city || 'Retailer'} • ${p.openBillsCount || (p.bills ? p.bills.length : 0)} bills</div>
+              </td>
+              <td style="text-align: right; font-weight: 800; font-size: 13.5px; color: ${isCleared ? '#16A34A' : '#DC2626'};">
+                ${isCleared ? '₹0 (Cleared)' : formatINR(bal)}
+              </td>
+              <td>
+                <div style="font-weight: 600; color: #334155;">${oldestDate}</div>
+              </td>
+              <td style="text-align: center;">
+                <span class="badge-pill ${oldestDays <= 30 ? 'badge-success' : (oldestDays <= 45 ? 'badge-warning' : 'badge-danger')}" style="font-weight: 700; font-size: 11px;">
+                  📅 ${oldestDays} Days
+                </span>
+              </td>
+              <td style="text-align: center;">
+                ${isCleared
+                  ? '<span class="badge-pill badge-success" style="font-size: 10px;">Cleared</span>'
+                  : (oldestDays <= 30
+                    ? '<span class="badge-pill badge-info" style="font-size: 10px;">Current &lt;30d</span>'
+                    : (oldestDays <= 45
+                      ? '<span class="badge-pill badge-warning" style="font-size: 10px;">Aging 31-45d</span>'
+                      : '<span class="badge-pill badge-danger" style="font-size: 10px;">Critical &gt;45d</span>'))}
+              </td>
+              <td style="text-align: center;">
+                ${isDebtor && !isCleared ? `
+                  <button class="btn-download-sm" style="background: #22C55E; color: #FFFFFF; border: none; padding: 5px 10px; font-weight: 700; font-size: 11.5px; border-radius: 6px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;" onclick="openCustomerSettlementModal('${p.partyName.replace(/'/g, "\\'")}')">
+                    <i data-lucide="message-circle" style="width: 12px; height: 12px;"></i>
+                    <span>Settle</span>
+                  </button>
+                ` : `<span style="font-size: 11px; color: #94A3B8;">—</span>`}
+              </td>
+            </tr>
+          `;
+        } else {
+          return `
+            <tr>
+              <td class="td-bold">
+                <div style="font-weight: 800; color: #0F172A;">${p.partyName || 'Unknown'}</div>
+                <div style="font-size: 11px; color: #64748B;">${p.state || p.city || 'Retailer'}</div>
+              </td>
+              <td style="text-align: right; font-weight: 800; font-size: 13.5px; color: ${isCleared ? '#16A34A' : '#DC2626'};">
+                ${isCleared ? '₹0 (Cleared)' : formatINR(bal)}
+              </td>
+              <td style="text-align: right; font-weight: 700; color: ${u30 > 0 ? '#059669' : '#94A3B8'};">${u30 > 0 ? formatINR(u30) : '—'}</td>
+              <td style="text-align: right; font-weight: 700; color: ${d31_45 > 0 ? '#D97706' : '#94A3B8'};">${d31_45 > 0 ? formatINR(d31_45) : '—'}</td>
+              <td style="text-align: right; font-weight: 700; color: ${d46_60 > 0 ? '#EA580C' : '#94A3B8'};">${d46_60 > 0 ? formatINR(d46_60) : '—'}</td>
+              <td style="text-align: right; font-weight: 700; color: ${o60 > 0 ? '#DC2626' : '#94A3B8'};">${o60 > 0 ? formatINR(o60) : '—'}</td>
+              <td style="text-align: center;">
+                ${isDebtor && !isCleared ? `
+                  <button class="btn-download-sm" style="background: #22C55E; color: #FFFFFF; border: none; padding: 5px 10px; font-weight: 700; font-size: 11.5px; border-radius: 6px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;" onclick="openCustomerSettlementModal('${p.partyName.replace(/'/g, "\\'")}')">
+                    <i data-lucide="message-circle" style="width: 12px; height: 12px;"></i>
+                    <span>Settle</span>
+                  </button>
+                ` : `<span style="font-size: 11px; color: #94A3B8;">—</span>`}
+              </td>
+            </tr>
+          `;
+        }
+      }).join('');
+    }
   }
 
-  tbody.innerHTML = filtered.map(p => {
-    const bal = p.netDue !== undefined ? p.netDue : (p.balance || 0);
-    const u30 = p.under30 || 0;
-    const d30_90 = (p.d30to60 || 0) + (p.d60to90 || 0);
-    const o90 = p.over90 || 0;
+  // Mobile Cards Render (Zero Horizontal Scroll!)
+  if (mobileContainer) {
+    if (filtered.length === 0) {
+      mobileContainer.innerHTML = `<div style="text-align: center; color: #94A3B8; padding: 24px;">No matching parties found.</div>`;
+    } else {
+      mobileContainer.innerHTML = filtered.map(p => {
+        const bal = p.netDue !== undefined ? p.netDue : (p.balance || 0);
+        const isCleared = bal <= 0;
+        const u30 = p.under30 || 0;
+        const d31_45 = p.d31to45 || 0;
+        const d46_60 = p.d46to60 || 0;
+        const o60 = p.over60 || p.over90 || 0;
+        const oldestDays = p.oldestBillDays || 0;
+        const oldestDate = p.oldestBillDate || '—';
 
-    return `
-      <tr>
-        <td class="td-bold">${p.partyName || 'Unknown'}</td>
-        <td class="td-bold">${formatINR(bal)}</td>
-        <td class="aging-under30">${formatINR(u30)}</td>
-        <td class="aging-30to90">${formatINR(d30_90)}</td>
-        <td class="${o90 > 0 ? 'aging-over90' : 'td-muted'}">${formatINR(o90)}</td>
-      </tr>
-    `;
-  }).join('');
+        return `
+          <div class="party-card-mobile" style="background: #FFFFFF; border: 1.5px solid #E2E8F0; border-radius: 14px; padding: 14px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); overflow: hidden; max-width: 100%;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
+              <div style="min-width: 0;">
+                <div style="font-weight: 800; font-size: 14px; color: #0F172A; word-break: break-word;">${p.partyName}</div>
+                <div style="font-size: 11px; color: #64748B; margin-top: 2px;">${p.state || p.city || 'Party'} ${p.gstin ? '&bull; ' + p.gstin : ''}</div>
+              </div>
+              <div style="text-align: right; flex-shrink: 0;">
+                <div style="font-size: 15.5px; font-weight: 800; color: ${isCleared ? '#16A34A' : '#DC2626'};">${isCleared ? '₹0' : formatINR(bal)}</div>
+                <span class="badge-pill ${isCleared ? 'badge-success' : 'badge-danger'}" style="font-size: 9px; padding: 2px 6px; margin-top: 3px;">
+                  ${isCleared ? 'CLEARED' : 'DUE'}
+                </span>
+              </div>
+            </div>
+
+            ${currentMode === 'days' ? `
+              <div style="background: #F8FAFC; border: 1px solid #F1F5F9; border-radius: 10px; padding: 9px 12px; margin: 10px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px;">
+                <div style="font-size: 11.5px; color: #64748B;">
+                  Oldest Bill: <strong style="color: #0F172A;">${oldestDate}</strong>
+                </div>
+                <span class="badge-pill ${oldestDays <= 30 ? 'badge-success' : (oldestDays <= 45 ? 'badge-warning' : 'badge-danger')}" style="font-weight: 800; font-size: 11px; padding: 3px 8px;">
+                  📅 ${oldestDays} Days Elapsed
+                </span>
+              </div>
+            ` : `
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 10px 0; background: #F8FAFC; border: 1px solid #F1F5F9; padding: 8px 10px; border-radius: 10px; font-size: 11px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 2px 4px;">
+                  <span style="color: #64748B;">0–30d:</span>
+                  <strong style="color: #059669;">${u30 > 0 ? formatINR(u30) : '—'}</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 2px 4px;">
+                  <span style="color: #64748B;">31–45d:</span>
+                  <strong style="color: #D97706;">${d31_45 > 0 ? formatINR(d31_45) : '—'}</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 2px 4px;">
+                  <span style="color: #64748B;">46–60d:</span>
+                  <strong style="color: #EA580C;">${d46_60 > 0 ? formatINR(d46_60) : '—'}</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 2px 4px;">
+                  <span style="color: #64748B;">&gt;60d:</span>
+                  <strong style="color: #DC2626;">${o60 > 0 ? formatINR(o60) : '—'}</strong>
+                </div>
+              </div>
+            `}
+
+            ${isDebtor && !isCleared ? `
+              <div style="margin-top: 8px;">
+                <button class="btn-download-sm" style="width: 100%; background: #22C55E; color: #FFFFFF; border: none; padding: 8px 12px; font-weight: 700; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 12px;" onclick="openCustomerSettlementModal('${p.partyName.replace(/'/g, "\\'")}')">
+                  <i data-lucide="message-circle" style="width: 13px; height: 13px;"></i>
+                  <span>WhatsApp Settlement &amp; Statement</span>
+                </button>
+              </div>
+            ` : ''}
+          </div>
+        `;
+      }).join('');
+    }
+  }
+
+  if (window.lucide) {
+    lucide.createIcons();
+  }
 }
 
 // ==========================================================================
@@ -1688,236 +1876,8 @@ function renderSchemesView() {
 }
 
 // ==========================================================================
-// 7. PAYMENT AGING VIEW (PARTY-FIRST & DRILLDOWN)
+// 7. PAYMENT AGING VIEW (Delegated to canonical implementation below)
 // ==========================================================================
-
-function renderPaymentAgingView() {
-  const parties = state.aging?.debtors?.parties || [];
-  const tbody = document.getElementById('partyAgingTbody');
-  const mobileContainer = document.getElementById('partyAgingMobileCards');
-  if (!tbody || !mobileContainer) return;
-
-  const totalOutstanding = state.aging?.debtors?.summary?.totalOutstanding || 1762534;
-  const dueCount = parties.filter(p => (p.netDue || 0) > 0).length;
-  const totalCount = parties.length;
-
-  let globalOldestDate = '12-Aug-2026';
-  let globalOldestDays = 65;
-  parties.forEach(p => {
-    if (p.bills && p.bills.length > 0) {
-      p.bills.forEach(b => {
-        if (b.unpaidAmount > 0 && b.daysElapsed > globalOldestDays) {
-          globalOldestDays = b.daysElapsed;
-          globalOldestDate = b.formattedDate;
-        }
-      });
-    }
-  });
-
-  const elTotalRec = document.getElementById('valAgingTotalReceivables');
-  if (elTotalRec) elTotalRec.innerText = formatINR(totalOutstanding);
-  const elPartiesCount = document.getElementById('valAgingPartiesCount');
-  if (elPartiesCount) elPartiesCount.innerText = `${dueCount} / ${totalCount} Parties`;
-  const elOldestBill = document.getElementById('valAgingOldestBill');
-  if (elOldestBill) elOldestBill.innerText = globalOldestDate;
-  const elOldestDays = document.getElementById('valAgingOldestDays');
-  if (elOldestDays) elOldestDays.innerText = `${globalOldestDays} days overdue`;
-  const elCdStake = document.getElementById('valAgingCdAtStake');
-  if (elCdStake) elCdStake.innerText = formatINR(totalOutstanding * 0.05);
-
-  const searchInput = document.getElementById('agingPartySearchInput');
-  const query = (searchInput ? searchInput.value : '').toLowerCase().trim();
-  const filterMode = state.agingFilterMode || 'all';
-
-  const filteredParties = parties.filter(p => {
-    const matchesSearch = !query || p.partyName.toLowerCase().includes(query);
-    const isDue = (p.netDue || 0) > 0;
-    if (!matchesSearch) return false;
-    if (filterMode === 'due') return isDue;
-    if (filterMode === 'cleared') return !isDue;
-    return true;
-  });
-
-  // Desktop Party-First Table with Expandable Drilldown
-  if (filteredParties.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: #94A3B8; padding: 30px;">No matching parties found.</td></tr>`;
-  } else {
-    tbody.innerHTML = filteredParties.map((p, idx) => {
-      const isCleared = (p.netDue || 0) <= 0;
-      const bills = p.bills || [];
-      
-      let oldestOpenBill = null;
-      bills.forEach(b => {
-        if (b.unpaidAmount > 0) {
-          if (!oldestOpenBill || b.daysElapsed > oldestOpenBill.daysElapsed) {
-            oldestOpenBill = b;
-          }
-        }
-      });
-
-      const oldestDueAmt = oldestOpenBill ? oldestOpenBill.unpaidAmount : 0;
-      const oldestDateStr = oldestOpenBill ? oldestOpenBill.formattedDate : '—';
-      const oldestDays = oldestOpenBill ? oldestOpenBill.daysElapsed : 0;
-
-      const rowId = `party-row-${idx}`;
-      const drillId = `party-drill-${idx}`;
-
-      return `
-        <tr class="party-row-main" id="${rowId}" onclick="togglePartyDrilldown('${rowId}', '${drillId}')">
-          <td>
-            <div style="font-weight: 800; font-size: 13.5px; color: #0F172A;">${p.partyName}</div>
-            <div style="font-size: 11px; color: #64748B; margin-top: 2px;">${bills.length} total invoice(s)</div>
-          </td>
-          <td style="text-align: right; font-weight: 800; font-size: 14px; color: ${isCleared ? '#16A34A' : '#DC2626'};">
-            ${isCleared ? '₹0 (Cleared)' : formatINR(p.netDue)}
-          </td>
-          <td style="text-align: right; font-weight: 700; color: ${oldestDueAmt > 0 ? '#B91C1C' : '#64748B'};">
-            ${oldestDueAmt > 0 ? formatINR(oldestDueAmt) : '₹0'}
-          </td>
-          <td>
-            ${oldestOpenBill ? `
-              <div style="font-weight: 700; color: #334155;">${oldestDateStr}</div>
-              <span class="badge-pill ${oldestDays > 30 ? 'badge-danger' : 'badge-warning'}" style="font-size: 10px; margin-top: 2px;">
-                ${oldestDays} days overdue
-              </span>
-            ` : '<span class="badge-pill badge-success" style="font-size: 10px;">All Settled</span>'}
-          </td>
-          <td>
-            <span class="badge-pill ${isCleared ? 'badge-success' : 'badge-warning'}">
-              ${isCleared ? '100% Cleared' : `${p.openBillsCount || bills.length} Pending`}
-            </span>
-          </td>
-          <td style="text-align: center;">
-            <button class="btn-icon-action" style="background: transparent; border: none; cursor: pointer;">
-              <i data-lucide="chevron-down" class="party-chevron-icon" id="chev-${rowId}" style="width: 16px; height: 16px; color: #0284C7;"></i>
-            </button>
-          </td>
-        </tr>
-        <tr class="party-drilldown-row" id="${drillId}" style="display: none;">
-          <td colspan="6">
-            <div class="party-drilldown-box">
-              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; flex-wrap: wrap; gap: 8px;">
-                <div>
-                  <strong style="font-size: 13px; color: #0F172A;">Individual Invoices for ${p.partyName}</strong>
-                  <span style="font-size: 11.5px; color: #64748B; margin-left: 8px;">(${bills.length} bills in statement)</span>
-                </div>
-                ${!isCleared ? `
-                  <button class="btn-download-sm" style="background: #22C55E; color: #FFFFFF; border: none; padding: 5px 10px;" onclick="sendWhatsAppPaymentReminder('${p.partyName.replace(/'/g, "\\'")}', '${p.netDue}', '${oldestDateStr}', '${oldestDays}')">
-                    <i data-lucide="message-circle" style="width: 13px; height: 13px;"></i>
-                    <span>Send WhatsApp Reminder</span>
-                  </button>
-                ` : ''}
-              </div>
-              <div class="table-responsive">
-                <table class="party-sub-table">
-                  <thead>
-                    <tr>
-                      <th>BILL / VCH #</th>
-                      <th>DATE</th>
-                      <th style="text-align: right;">INVOICE ₹</th>
-                      <th style="text-align: right;">SETTLED ₹</th>
-                      <th style="text-align: right;">UNPAID DUE ₹</th>
-                      <th>OVERDUE DAYS</th>
-                      <th>STATUS</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    ${bills.length === 0 ? '<tr><td colspan="7" style="text-align: center; color: #94A3B8;">No individual bills recorded.</td></tr>' :
-                      bills.map(b => `
-                        <tr>
-                          <td style="font-weight: 700; color: #0284C7;">${b.voucherNumber}</td>
-                          <td>${b.formattedDate}</td>
-                          <td style="text-align: right; font-weight: 600;">${formatINR(b.amount)}</td>
-                          <td style="text-align: right; color: #16A34A; font-weight: 600;">${formatINR(b.settledAmount)}</td>
-                          <td style="text-align: right; font-weight: 800; color: ${b.unpaidAmount > 0 ? '#DC2626' : '#16A34A'};">${formatINR(b.unpaidAmount)}</td>
-                          <td style="color: ${b.daysElapsed > 30 ? '#DC2626' : '#475569'}; font-weight: 700;">${b.daysElapsed} days</td>
-                          <td><span class="badge-pill ${b.unpaidAmount > 0 ? 'badge-danger' : 'badge-success'}">${b.unpaidAmount > 0 ? 'OPEN' : 'SETTLED'}</span></td>
-                        </tr>
-                      `).join('')
-                    }
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </td>
-        </tr>
-      `;
-    }).join('');
-  }
-
-  // Mobile Touch-Optimized Cards
-  if (filteredParties.length === 0) {
-    mobileContainer.innerHTML = `<div style="text-align: center; color: #94A3B8; padding: 30px;">No matching parties found.</div>`;
-  } else {
-    mobileContainer.innerHTML = filteredParties.map((p, idx) => {
-      const isCleared = (p.netDue || 0) <= 0;
-      const bills = p.bills || [];
-      let oldestOpenBill = null;
-      bills.forEach(b => {
-        if (b.unpaidAmount > 0) {
-          if (!oldestOpenBill || b.daysElapsed > oldestOpenBill.daysElapsed) {
-            oldestOpenBill = b;
-          }
-        }
-      });
-
-      const oldestDueAmt = oldestOpenBill ? oldestOpenBill.unpaidAmount : 0;
-      const oldestDateStr = oldestOpenBill ? oldestOpenBill.formattedDate : '—';
-      const oldestDays = oldestOpenBill ? oldestOpenBill.daysElapsed : 0;
-      const mobileListId = `mobile-bills-${idx}`;
-
-      return `
-        <div class="party-card-mobile">
-          <div class="party-card-header" onclick="toggleMobilePartyBills('${mobileListId}')">
-            <div>
-              <div class="party-card-name">${p.partyName}</div>
-              <div style="font-size: 11px; color: #64748B; margin-top: 2px;">${bills.length} Invoices &bull; ${p.openBillsCount || (isCleared ? 0 : bills.length)} Pending</div>
-            </div>
-            <div style="text-align: right;">
-              <div class="party-card-due ${isCleared ? 'cleared' : ''}">${isCleared ? '₹0' : formatINR(p.netDue)}</div>
-              <span class="badge-pill ${isCleared ? 'badge-success' : 'badge-danger'}" style="font-size: 9.5px; padding: 2px 6px; margin-top: 4px;">
-                ${isCleared ? 'CLEARED' : 'DUE'}
-              </span>
-            </div>
-          </div>
-
-          <div class="party-card-oldest ${isCleared ? 'cleared' : ''}">
-            <i data-lucide="${isCleared ? 'check-circle-2' : 'clock'}" style="width: 14px; height: 14px; flex-shrink: 0;"></i>
-            <span>${isCleared ? 'All invoices settled & cleared' : `Oldest Bill: <strong>${formatINR(oldestDueAmt)}</strong> due from ${oldestDateStr} (${oldestDays} days overdue)`}</span>
-          </div>
-
-          <div class="party-card-bills-toggle" onclick="toggleMobilePartyBills('${mobileListId}')">
-            <span>View All ${bills.length} Bills</span>
-            <i data-lucide="chevron-down" id="chev-${mobileListId}" style="width: 15px; height: 15px; transition: transform 0.2s ease;"></i>
-          </div>
-
-          <div class="party-mobile-bills-list" id="${mobileListId}">
-            ${bills.map(b => `
-              <div class="party-mobile-bill-item">
-                <div class="party-mobile-bill-row1">
-                  <span style="font-weight: 700; color: #0284C7;">${b.voucherNumber}</span>
-                  <span style="font-weight: 800; color: ${b.unpaidAmount > 0 ? '#DC2626' : '#16A34A'};">${formatINR(b.unpaidAmount > 0 ? b.unpaidAmount : b.amount)}</span>
-                </div>
-                <div class="party-mobile-bill-row2">
-                  <span>📅 ${b.formattedDate}</span>
-                  <span style="color: ${b.daysElapsed > 30 ? '#DC2626' : '#64748B'}; font-weight: 700;">${b.daysElapsed} days overdue</span>
-                </div>
-              </div>
-            `).join('')}
-            ${!isCleared ? `
-              <button class="btn-download-sm" style="background: #22C55E; color: #FFFFFF; border: none; padding: 8px 12px; margin-top: 6px; justify-content: center;" onclick="sendWhatsAppPaymentReminder('${p.partyName.replace(/'/g, "\\'")}', '${p.netDue}', '${oldestDateStr}', '${oldestDays}')">
-                <i data-lucide="message-circle" style="width: 14px; height: 14px;"></i>
-                <span>Send WhatsApp Payment Prompt</span>
-              </button>
-            ` : ''}
-          </div>
-        </div>
-      `;
-    }).join('');
-  }
-
-  if (window.lucide) lucide.createIcons();
-}
 
 // Global window helpers for drilldown & WhatsApp
 window.togglePartyDrilldown = function(rowId, drillId) {
@@ -2052,40 +2012,91 @@ function renderXpaniaSupplierView() {
 
 function renderCubixSupplierView() {
   const tbody = document.getElementById('cubixInvoicesTbody');
-  if (!tbody || !state.masterGrid?.rows) return;
+  const mobileContainer = document.getElementById('cubixMobileCards');
+  if (!state.masterGrid?.rows) return;
 
   const cubixRows = state.masterGrid.rows.filter(r => (r.supplier || '').toLowerCase().includes('cubix'));
 
   if (cubixRows.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="9" style="text-align: center; color: #94A3B8; padding: 24px;">No Cubix invoices found.</td></tr>`;
+    if (tbody) tbody.innerHTML = `<tr><td colspan="9" style="text-align: center; color: #94A3B8; padding: 24px;">No Cubix invoices found.</td></tr>`;
+    if (mobileContainer) mobileContainer.innerHTML = `<div style="text-align: center; color: #94A3B8; padding: 20px;">No Cubix invoices found.</div>`;
     return;
   }
 
-  tbody.innerHTML = cubixRows.map(r => {
-    const vchInt = parseInt(r.purchaseVoucher, 10);
-    const hasPdf = !!INVOICE_PDF_MAP[`cubix_${vchInt}`];
-    return `
-    <tr>
-      <td class="td-bold" style="color: #0284C7;">${r.purchaseVoucher}</td>
-      <td>${r.date}</td>
-      <td class="td-bold">${r.purchaseRef || '—'}</td>
-      <td><div class="td-bold">${r.customer}</div></td>
-      <td class="td-bold">${r.salesVoucher}</td>
-      <td style="text-align: right; font-weight: 700;">${formatINR(r.purchaseAmount)}</td>
-      <td style="text-align: right; font-weight: 700; color: #15803D;">${formatINR(r.salesAmount)}</td>
-      <td style="text-align: right; font-weight: 700; color: #4D7C0F;">+${formatINR(r.tradeMargin)}</td>
-      <td>
-        <div style="display: flex; align-items: center; gap: 6px;">
-          <span class="badge-pill badge-info">100% Sold</span>
-          ${hasPdf ? `
-            <button type="button" class="btn-download-sm" onclick="openInvoicePdf('${r.purchaseVoucher}', 'Cubix Footcare')" style="background: #0F172A; color: #FFFFFF; border: none; padding: 3px 8px; font-size: 10.5px; border-radius: 6px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;" title="View Purchase Bill PDF">
-              <i data-lucide="eye" style="width: 11px; height: 11px;"></i> PDF
-            </button>
-          ` : ''}
+  // Desktop Table
+  if (tbody) {
+    tbody.innerHTML = cubixRows.map(r => {
+      const vchInt = parseInt(r.purchaseVoucher, 10);
+      const hasPdf = !!INVOICE_PDF_MAP[`cubix_${vchInt}`];
+      return `
+      <tr>
+        <td class="td-bold" style="color: #0284C7;">${r.purchaseVoucher}</td>
+        <td>${r.date}</td>
+        <td class="td-bold">${r.purchaseRef || '—'}</td>
+        <td><div class="td-bold">${r.customer}</div></td>
+        <td class="td-bold">${r.salesVoucher}</td>
+        <td style="text-align: right; font-weight: 700;">${formatINR(r.purchaseAmount)}</td>
+        <td style="text-align: right; font-weight: 700; color: #15803D;">${formatINR(r.salesAmount)}</td>
+        <td style="text-align: right; font-weight: 700; color: #4D7C0F;">+${formatINR(r.tradeMargin)}</td>
+        <td>
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <span class="badge-pill badge-info">100% Sold</span>
+            ${hasPdf ? `
+              <button type="button" class="btn-download-sm" onclick="openInvoicePdf('${r.purchaseVoucher}', 'Cubix Footcare')" style="background: #0F172A; color: #FFFFFF; border: none; padding: 3px 8px; font-size: 10.5px; border-radius: 6px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;" title="View Purchase Bill PDF">
+                <i data-lucide="eye" style="width: 11px; height: 11px;"></i> PDF
+              </button>
+            ` : ''}
+          </div>
+        </td>
+      </tr>
+      `;
+    }).join('');
+  }
+
+  // Mobile Cards
+  if (mobileContainer) {
+    mobileContainer.innerHTML = cubixRows.map(r => {
+      const vchInt = parseInt(r.purchaseVoucher, 10);
+      const hasPdf = !!INVOICE_PDF_MAP[`cubix_${vchInt}`];
+      return `
+        <div class="cubix-card-mobile" style="background: #FFFFFF; border: 1.5px solid #E2E8F0; border-radius: 14px; padding: 14px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+            <div>
+              <div style="font-weight: 800; font-size: 14px; color: #0F172A;">${r.customer}</div>
+              <div style="font-size: 11px; color: #64748B; margin-top: 2px;">
+                Vch #${r.purchaseVoucher} &bull; Inv: <strong>${r.purchaseRef || '—'}</strong> &bull; 📅 ${r.date}
+              </div>
+            </div>
+            <span class="badge-pill badge-success" style="font-size: 10px; font-weight: 800; padding: 2px 7px;">100% Sold</span>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; background: #F8FAFC; border: 1px solid #F1F5F9; border-radius: 8px; padding: 8px; text-align: center; margin-bottom: 10px;">
+            <div>
+              <span style="font-size: 10px; color: #64748B; display: block;">Purchase</span>
+              <strong style="font-size: 12px; color: #0F172A;">${formatINR(r.purchaseAmount)}</strong>
+            </div>
+            <div>
+              <span style="font-size: 10px; color: #64748B; display: block;">Sales Vch</span>
+              <strong style="font-size: 12px; color: #15803D;">${r.salesVoucher}</strong>
+            </div>
+            <div>
+              <span style="font-size: 10px; color: #64748B; display: block;">Margin</span>
+              <strong style="font-size: 12px; color: #4D7C0F;">+${formatINR(r.tradeMargin)}</strong>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 8px;">
+            ${hasPdf ? `
+              <button type="button" class="btn-download-sm" onclick="openInvoicePdf('${r.purchaseVoucher}', 'Cubix Footcare')" style="flex: 1; background: #0F172A; color: #FFFFFF; border: none; padding: 7px 12px; border-radius: 8px; font-weight: 700; font-size: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                <i data-lucide="eye" style="width: 13px; height: 13px;"></i>
+                <span>View Invoice PDF</span>
+              </button>
+            ` : ''}
+          </div>
         </div>
-      </td>
-    </tr>
-  `;}).join('');
+      `;
+    }).join('');
+  }
 
   if (window.lucide) lucide.createIcons();
 }
@@ -2609,6 +2620,44 @@ window.filterAgingByBucket = function(bucketKey) {
   renderPaymentAgingView();
 };
 
+// ==========================================================================
+// DUAL AGING DISPLAY MODE TOGGLE: BUCKETS VS EXACT DAYS AGING
+// ==========================================================================
+window.setAgingDisplayMode = function(mode) {
+  state.agingDisplayMode = mode;
+  try { localStorage.setItem('skil_aging_mode', mode); } catch (e) {}
+
+  // Sync Aging & Settlement mode buttons
+  const btnBuckets = document.getElementById('btnAgingModeBuckets');
+  const btnDays = document.getElementById('btnAgingModeDays');
+  if (btnBuckets && btnDays) {
+    if (mode === 'buckets') {
+      btnBuckets.classList.add('active');
+      btnDays.classList.remove('active');
+    } else {
+      btnDays.classList.add('active');
+      btnBuckets.classList.remove('active');
+    }
+  }
+
+  // Sync Parties Directory mode buttons
+  const btnPartiesBuckets = document.getElementById('btnPartiesAgingBuckets');
+  const btnPartiesDays = document.getElementById('btnPartiesAgingDays');
+  if (btnPartiesBuckets && btnPartiesDays) {
+    if (mode === 'buckets') {
+      btnPartiesBuckets.classList.add('active');
+      btnPartiesDays.classList.remove('active');
+    } else {
+      btnPartiesDays.classList.add('active');
+      btnPartiesBuckets.classList.remove('active');
+    }
+  }
+
+  // Always re-render both aging-related views
+  renderPaymentAgingView();
+  renderPartiesView();
+};
+
 function renderPaymentAgingView() {
   const agingData = state.aging?.debtors || {};
   const parties = agingData.parties || [];
@@ -2616,6 +2665,22 @@ function renderPaymentAgingView() {
   const tbody = document.getElementById('partyAgingTbody');
   const mobileContainer = document.getElementById('partyAgingMobileCards');
   if (!tbody || !mobileContainer) return;
+
+  // Retrieve current aging mode ('buckets' or 'days')
+  const currentMode = state.agingDisplayMode || (typeof localStorage !== 'undefined' ? localStorage.getItem('skil_aging_mode') : null) || 'buckets';
+  state.agingDisplayMode = currentMode;
+
+  const btnBuckets = document.getElementById('btnAgingModeBuckets');
+  const btnDays = document.getElementById('btnAgingModeDays');
+  if (btnBuckets && btnDays) {
+    if (currentMode === 'buckets') {
+      btnBuckets.classList.add('active');
+      btnDays.classList.remove('active');
+    } else {
+      btnDays.classList.add('active');
+      btnBuckets.classList.remove('active');
+    }
+  }
 
   const totalOutstanding = summary.totalOutstanding !== undefined ? summary.totalOutstanding : 2505563;
   const dueCount = parties.filter(p => (p.netDue || 0) > 0).length;
@@ -2653,7 +2718,17 @@ function renderPaymentAgingView() {
   const elCdStake = document.getElementById('valAgingCdAtStake');
   if (elCdStake) elCdStake.innerText = formatINR(summary.under30 ? summary.under30 * 0.05 : 76385);
 
-  // 4 Category Bucket KPI Cards
+  // 4 Category Bucket KPI Cards (Adapt labels based on mode)
+  const card1Header = document.querySelector('#cardBucketUnder30 .bucket-label');
+  const card2Header = document.querySelector('#cardBucket31to45 .bucket-label');
+  const card3Header = document.querySelector('#cardBucket46to60 .bucket-label');
+  const card4Header = document.querySelector('#cardBucketOver60 .bucket-label');
+
+  if (card1Header) card1Header.innerText = currentMode === 'days' ? '≤ 30 Days' : '0 – 30 Days';
+  if (card2Header) card2Header.innerText = currentMode === 'days' ? '31 – 45 Days' : '31 – 45 Days';
+  if (card3Header) card3Header.innerText = currentMode === 'days' ? '46 – 60 Days' : '46 – 60 Days';
+  if (card4Header) card4Header.innerText = currentMode === 'days' ? '> 60 Days' : '> 60 Days';
+
   const elUnder30 = document.getElementById('valBucketUnder30');
   if (elUnder30) elUnder30.innerText = formatINR(summary.under30 || 1527690);
   const el31to45 = document.getElementById('valBucket31to45');
@@ -2722,7 +2797,7 @@ function renderPaymentAgingView() {
             ${oldestOpenBill ? `
               <div style="font-weight: 700; color: #334155; font-size: 12px;">${oldestDateStr}</div>
               <span class="badge-pill ${oldestDays > 30 ? 'badge-danger' : 'badge-warning'}" style="font-size: 9.5px; margin-top: 2px;">
-                ${oldestDays}d overdue
+                ${currentMode === 'days' ? `${oldestDays} Days Elapsed` : `${oldestDays}d overdue`}
               </span>
             ` : '<span class="badge-pill badge-success" style="font-size: 9.5px;">All Settled</span>'}
           </td>
@@ -2769,7 +2844,7 @@ function renderPaymentAgingView() {
                       <th style="text-align: right;">TAXABLE (₹)</th>
                       <th style="text-align: right;">5% CD (₹)</th>
                       <th style="text-align: right;">UNPAID DUE (₹)</th>
-                      <th>OVERDUE DAYS</th>
+                      <th>${currentMode === 'days' ? 'DAYS ELAPSED' : 'OVERDUE DAYS'}</th>
                       <th>BUCKET</th>
                       <th>STATUS</th>
                     </tr>
@@ -2801,7 +2876,7 @@ function renderPaymentAgingView() {
     }).join('');
   }
 
-  // Mobile & Foldable Cover Screen Cards
+  // Mobile Touch-Optimized Cards (Responsive 2x2 grid & Days mode — ZERO horizontal scroll!)
   if (filteredParties.length === 0) {
     mobileContainer.innerHTML = '<div style="text-align: center; color: #94A3B8; padding: 30px;">No matching parties found.</div>';
   } else {
@@ -2812,16 +2887,15 @@ function renderPaymentAgingView() {
       const oldestOpenBill = openBills.length > 0 ? openBills[0] : null;
       const oldestDateStr = oldestOpenBill ? oldestOpenBill.formattedDate : '—';
       const oldestDays = oldestOpenBill ? oldestOpenBill.daysElapsed : 0;
-      const mobileListId = `mobile-bills-${idx}`;
 
       return `
-        <div class="party-card-mobile" style="background: #FFFFFF; border: 1.5px solid #E2E8F0; border-radius: 14px; padding: 14px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+        <div class="party-card-mobile" style="background: #FFFFFF; border: 1.5px solid #E2E8F0; border-radius: 14px; padding: 14px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); overflow: hidden; max-width: 100%;">
           <div class="party-card-header" style="display: flex; justify-content: space-between; align-items: flex-start;">
-            <div>
-              <div style="font-weight: 800; font-size: 14px; color: #0F172A;">${p.partyName}</div>
+            <div style="min-width: 0; padding-right: 8px;">
+              <div style="font-weight: 800; font-size: 14px; color: #0F172A; white-space: normal; word-break: break-word;">${p.partyName}</div>
               <div style="font-size: 11px; color: #64748B; margin-top: 2px;">${bills.length} Invoices &bull; ${openBills.length} Pending</div>
             </div>
-            <div style="text-align: right;">
+            <div style="text-align: right; flex-shrink: 0;">
               <div style="font-size: 16px; font-weight: 800; color: ${isCleared ? '#16A34A' : '#DC2626'};">${isCleared ? '₹0' : formatINR(p.netDue)}</div>
               <span class="badge-pill ${isCleared ? 'badge-success' : 'badge-danger'}" style="font-size: 9.5px; padding: 2px 6px; margin-top: 4px;">
                 ${isCleared ? 'CLEARED' : 'DUE'}
@@ -2829,18 +2903,43 @@ function renderPaymentAgingView() {
             </div>
           </div>
 
-          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 10px 0; background: #F8FAFC; padding: 8px; border-radius: 8px; text-align: center; font-size: 10.5px;">
-            <div><span style="color: #64748B; display: block;">0-30d</span><strong style="color: #059669;">${(p.under30 || 0) > 0 ? formatINR(p.under30) : '—'}</strong></div>
-            <div><span style="color: #64748B; display: block;">31-45d</span><strong style="color: #D97706;">${(p.d31to45 || 0) > 0 ? formatINR(p.d31to45) : '—'}</strong></div>
-            <div><span style="color: #64748B; display: block;">46-60d</span><strong style="color: #EA580C;">${(p.d46to60 || 0) > 0 ? formatINR(p.d46to60) : '—'}</strong></div>
-            <div><span style="color: #64748B; display: block;">&gt;60d</span><strong style="color: #DC2626;">${(p.over60 || 0) > 0 ? formatINR(p.over60) : '—'}</strong></div>
-          </div>
+          ${currentMode === 'days' ? `
+            <!-- Exact Days Aging Mode Display -->
+            <div style="background: #F8FAFC; border: 1px solid #F1F5F9; border-radius: 10px; padding: 10px 12px; margin: 10px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px;">
+              <div style="font-size: 11.5px; color: #64748B;">
+                Oldest Unpaid: <strong style="color: #0F172A;">${oldestDateStr}</strong>
+              </div>
+              <span class="badge-pill ${oldestDays <= 30 ? 'badge-success' : (oldestDays <= 45 ? 'badge-warning' : 'badge-danger')}" style="font-weight: 800; font-size: 11px; padding: 3px 8px;">
+                📅 ${oldestDays} Days Elapsed
+              </span>
+            </div>
+          ` : `
+            <!-- Buckets Mode Display (2x2 Grid — fits perfectly on 320px screens) -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 10px 0; background: #F8FAFC; border: 1px solid #F1F5F9; padding: 8px 10px; border-radius: 10px; font-size: 11px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; padding: 2px 4px;">
+                <span style="color: #64748B;">0–30d (CD):</span>
+                <strong style="color: #059669;">${(p.under30 || 0) > 0 ? formatINR(p.under30) : '—'}</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; padding: 2px 4px;">
+                <span style="color: #64748B;">31–45d:</span>
+                <strong style="color: #D97706;">${(p.d31to45 || 0) > 0 ? formatINR(p.d31to45) : '—'}</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; padding: 2px 4px;">
+                <span style="color: #64748B;">46–60d:</span>
+                <strong style="color: #EA580C;">${(p.d46to60 || 0) > 0 ? formatINR(p.d46to60) : '—'}</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; padding: 2px 4px;">
+                <span style="color: #64748B;">&gt;60d:</span>
+                <strong style="color: #DC2626;">${(p.over60 || 0) > 0 ? formatINR(p.over60) : '—'}</strong>
+              </div>
+            </div>
+          `}
 
           ${!isCleared ? `
             <div style="display: flex; gap: 8px; margin-top: 10px;">
               <button class="btn-download-sm" style="flex: 1; background: #22C55E; color: #FFFFFF; border: none; padding: 8px 12px; font-weight: 700; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 12.5px;" onclick="openCustomerSettlementModal('${p.partyName.replace(/'/g, "\\'")}')">
                 <i data-lucide="message-circle" style="width: 14px; height: 14px;"></i>
-                <span>WhatsApp Settlement & PDF</span>
+                <span>WhatsApp Settlement &amp; PDF</span>
               </button>
             </div>
           ` : ''}
@@ -2880,14 +2979,35 @@ window.openCustomerSettlementModal = function(partyName) {
   const isKgn = p.partyName.toLowerCase().includes('k g n') || p.partyName.toLowerCase().includes('kgn');
   const initialOldMonth = isKgn ? 'August' : '';
   const initialOldAmt = isKgn ? 6113 : 0;
-  const initialPartPayment = isKgn ? 25000 : 0;
+
+  // Map bills with full official invoice amount and settled amounts
+  const mappedBills = billsToTrack.map((b, i) => {
+    const isSepBill = isKgn ? (b.voucherNumber === 'SKIL-027' || b.voucherNumber === 'SKIL-028' || b.voucherNumber === 'SKIL-029') : true;
+    return {
+      ...b,
+      checked: isSepBill,
+      gross: b.amount, // Full official invoice amount
+      settledAmount: b.settledAmount || 0,
+      unpaidAmount: b.unpaidAmount !== undefined ? b.unpaidAmount : b.amount,
+      taxable: b.taxableAmount || Math.round((b.amount / 1.05) * 100) / 100,
+      cartons: b.cartons || 1
+    };
+  });
+
+  // Calculate actual payments received by debtor for checked bills
+  const selectedBills = mappedBills.filter(b => b.checked);
+  let autoPartPayment = selectedBills.reduce((sum, b) => sum + (b.settledAmount || 0), 0);
+  if (isKgn) {
+    // For KGN September bills session, ₹1,00,000 was received against SKIL-027, 028, 029
+    autoPartPayment = 100000;
+  }
 
   const txtOldMonth = document.getElementById('txtOldBalanceMonth');
   const txtOldAmt = document.getElementById('txtOldBalanceAmt');
   const txtPartPayment = document.getElementById('txtPartPaymentAmt');
   if (txtOldMonth) txtOldMonth.value = initialOldMonth;
   if (txtOldAmt) txtOldAmt.value = initialOldAmt > 0 ? initialOldAmt : '';
-  if (txtPartPayment) txtPartPayment.value = initialPartPayment > 0 ? initialPartPayment : '';
+  if (txtPartPayment) txtPartPayment.value = autoPartPayment > 0 ? autoPartPayment : '';
 
   // Render session quick-select badges
   const badgeContainer = document.getElementById('settleSessionBadges');
@@ -2913,17 +3033,7 @@ window.openCustomerSettlementModal = function(partyName) {
     partyName: p.partyName,
     party: p,
     sessions,
-    bills: billsToTrack.map((b, i) => {
-      // For KGN, default to checking September bills (SKIL-027, 028, 029) or prompt session
-      const isSepBill = isKgn ? (b.voucherNumber === 'SKIL-027' || b.voucherNumber === 'SKIL-028' || b.voucherNumber === 'SKIL-029') : true;
-      return {
-        ...b,
-        checked: isSepBill,
-        gross: b.unpaidAmount > 0 ? b.unpaidAmount : b.amount,
-        taxable: b.taxableAmount || Math.round((b.amount / 1.05) * 100) / 100,
-        cartons: b.cartons || 1
-      };
-    })
+    bills: mappedBills
   };
 
   renderSettlementChecklist();
@@ -2935,14 +3045,20 @@ window.openCustomerSettlementModal = function(partyName) {
 
 window.selectSettlementSession = function(sessNum) {
   if (!window.currentSettlement?.bills) return;
+  const txtPartPayment = document.getElementById('txtPartPaymentAmt');
+
   if (sessNum === 'all') {
     window.currentSettlement.bills.forEach(b => b.checked = true);
+    const sumRecd = window.currentSettlement.bills.reduce((s, b) => s + (b.settledAmount || 0), 0);
+    if (txtPartPayment) txtPartPayment.value = sumRecd > 0 ? sumRecd : '';
   } else {
     const targetSess = (window.currentSettlement.sessions || []).find(s => s.sessionNumber === sessNum);
     const billNums = targetSess ? targetSess.billNumbers : [];
     window.currentSettlement.bills.forEach(b => {
       b.checked = billNums.includes(b.voucherNumber);
     });
+    const credits = targetSess ? (targetSess.creditsApplied || 0) : 0;
+    if (txtPartPayment) txtPartPayment.value = credits > 0 ? credits : '';
   }
   renderSettlementChecklist();
   recalculateSettlement();
@@ -2974,9 +3090,13 @@ function renderSettlementChecklist() {
         </div>
         <div style="text-align: right;">
           <div style="font-weight: 800; font-size: 13.5px; color: #0F172A;">₹${Number(b.gross).toLocaleString('en-IN')}</div>
-          <span class="badge-pill badge-success" style="font-size: 9.5px; padding: 1px 5px;">
-            5% CD Applicable
-          </span>
+          ${b.settledAmount > 0 ? `
+            <div style="font-size: 10px; color: #16A34A; font-weight: 700;">Paid: ₹${Number(b.settledAmount).toLocaleString('en-IN')} &bull; Due: ₹${Number(b.unpaidAmount).toLocaleString('en-IN')}</div>
+          ` : `
+            <span class="badge-pill badge-success" style="font-size: 9.5px; padding: 1px 5px;">
+              5% CD Applicable
+            </span>
+          `}
         </div>
       </div>
     `;
@@ -3073,7 +3193,7 @@ function recalculateSettlement() {
   const elFinal = document.getElementById('settleFinalPayable');
   if (elFinal) elFinal.innerText = formatINR(finalPayable);
 
-  // Generate SKIL Master Canonical WhatsApp Text
+  // Generate SKIL Master Canonical WhatsApp Text (Rule 4)
   let waText = `Dear ${window.currentSettlement.partyName},\n\n`;
   waText += `Please find the settlement details for your pending bills:\n`;
   if (cdDueDateStr) {

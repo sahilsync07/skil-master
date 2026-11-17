@@ -1725,7 +1725,7 @@
     "voucherType": "Receipt",
     "date": "20261103",
     "partyName": "K G N FOOTWARE",
-    "amount": 100000
+    "amount": 25000
   },
   {
     "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000eb",
@@ -1782,5 +1782,149 @@
     "date": "20261111",
     "partyName": "SRI SHARVANI TRADERS",
     "amount": 59971
+  },
+  {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000f5",
+    "voucherNumber": "78",
+    "voucherType": "Purchase",
+    "date": "20261112",
+    "partyName": "Ajanta Shoes India Pvt. Ltd.",
+    "amount": 118027
+  },
+  {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000f6",
+    "voucherNumber": "SKIL-079",
+    "voucherType": "Sales",
+    "date": "20261112",
+    "partyName": "JYOTHI FOOT WEAR",
+    "amount": 118001
+  },
+  {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000f7",
+    "voucherNumber": "79",
+    "voucherType": "Purchase",
+    "date": "20261112",
+    "partyName": "Ajanta Shoes India Pvt. Ltd.",
+    "amount": 54086
+  },
+  {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000f8",
+    "voucherNumber": "SKIL-080",
+    "voucherType": "Sales",
+    "date": "20261112",
+    "partyName": "M/S.SHREE FOOTWEAR",
+    "amount": 54076
+  },
+  {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000f9",
+    "voucherNumber": "80",
+    "voucherType": "Purchase",
+    "date": "20261112",
+    "partyName": "Ajanta Shoes India Pvt. Ltd.",
+    "amount": 41990
+  },
+  {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000fa",
+    "voucherNumber": "SKIL-081",
+    "voucherType": "Sales",
+    "date": "20261112",
+    "partyName": "SRI LAXMI NARASIMHA AGENCIES",
+    "amount": 41858
+  },
+  {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000fb",
+    "voucherNumber": "81",
+    "voucherType": "Purchase",
+    "date": "20261113",
+    "partyName": "Ajanta Shoes India Pvt. Ltd.",
+    "amount": 9226
+  },
+  {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000fc",
+    "voucherNumber": "SKIL-082",
+    "voucherType": "Sales",
+    "date": "20261113",
+    "partyName": "SRI LAXMI NARASIMHA AGENCIES",
+    "amount": 9225
+  },
+  {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000fd",
+    "voucherNumber": "82",
+    "voucherType": "Purchase",
+    "date": "20261113",
+    "partyName": "Ajanta Shoes India Pvt. Ltd.",
+    "amount": 34456
+  },
+  {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000fe",
+    "voucherNumber": "SKIL-083",
+    "voucherType": "Sales",
+    "date": "20261113",
+    "partyName": "SRI SHARVANI TRADERS",
+    "amount": 34448
+  },
+  {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000106",
+    "voucherNumber": "9",
+    "voucherType": "Credit Note",
+    "date": "20261113",
+    "partyName": "JYOTHI FOOT WEAR",
+    "amount": 3726
+  },
+  {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000105",
+    "voucherNumber": "20",
+    "voucherType": "Receipt",
+    "date": "20261113",
+    "partyName": "JYOTHI FOOT WEAR",
+    "amount": 78249
+  },
+  {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-000000ff",
+    "voucherNumber": "83",
+    "voucherType": "Purchase",
+    "date": "20261116",
+    "partyName": "Ajanta Shoes India Pvt. Ltd.",
+    "amount": 82223
+  },
+  {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000100",
+    "voucherNumber": "84",
+    "voucherType": "Purchase",
+    "date": "20261116",
+    "partyName": "Ajanta Shoes India Pvt. Ltd.",
+    "amount": 54086
+  },
+  {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000101",
+    "voucherNumber": "85",
+    "voucherType": "Purchase",
+    "date": "20261116",
+    "partyName": "Ajanta Shoes India Pvt. Ltd.",
+    "amount": 50463
+  },
+  {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000102",
+    "voucherNumber": "SKIL-084",
+    "voucherType": "Sales",
+    "date": "20261116",
+    "partyName": "SRI SHARVANI TRADERS",
+    "amount": 82202
+  },
+  {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000103",
+    "voucherNumber": "SKIL-085",
+    "voucherType": "Sales",
+    "date": "20261116",
+    "partyName": "SRI LAXMI NARASIMHA AGENCIES",
+    "amount": 54076
+  },
+  {
+    "id": "582e9795-82b7-4062-9f2f-04b60c3dc54e-00000104",
+    "voucherNumber": "SKIL-086",
+    "voucherType": "Sales",
+    "date": "20261116",
+    "partyName": "JYOTHI FOOT WEAR",
+    "amount": 50454
   }
 ]
